@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
-<title>XR_KHR_metal_enable(3)</title>
+<meta name="generator" content="Asciidoctor 2.0.9">
+<title>XR_KHR_composition_layer_equirect(3)</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -723,14 +723,14 @@ p.tableblock.header { color: #6d6e71; }
 .literalblock pre, .listingblock pre { background: #eee; }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="manpage">
 <div id="header">
-<h1>XR_KHR_metal_enable(3) Manual Page</h1>
-<h2>NAME</h2>
+<h1>XR_KHR_composition_layer_equirect(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
 <div class="sectionbody">
-<p>XR_KHR_metal_enable - instance extension</p>
+<p>XR_KHR_composition_layer_equirect - instance extension</p>
 </div>
 </div>
 <div id="content">
@@ -738,10 +738,35 @@ p.tableblock.header { color: #6d6e71; }
 <h2 id="_specification">Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See <a href="../../openxr.html#XR_KHR_metal_enable"> XR_KHR_metal_enable</a> in the main specification for complete information.</p>
+<p>See <a href="../../openxr.html#XR_KHR_composition_layer_equirect"> XR_KHR_composition_layer_equirect</a> in the main specification for complete information.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_registered_extension_number">Registered Extension Number</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved directive in XR_KHR_metal_enable.txt - include::../sources/chapters/extensions/meta/refpage.XR_KHR_metal_enable.adoc[]</p>
+<p>19</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revision">Revision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>3</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extension_and_version_dependencies">Extension and Version Dependencies</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -749,7 +774,7 @@ p.tableblock.header { color: #6d6e71; }
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrGraphicsBindingMetalMacOSKHR.html">XrGraphicsBindingMetalMacOSKHR</a>, <a href="XrGraphicsBindingMetaliOSKHR.html">XrGraphicsBindingMetaliOSKHR</a>, <a href="XrGraphicsRequirementsMetalKHR.html">XrGraphicsRequirementsMetalKHR</a>, <a href="XrSwapchainImageMetalKHR.html">XrSwapchainImageMetalKHR</a>, <a href="xrGetMetalGraphicsRequirementsKHR.html">xrGetMetalGraphicsRequirementsKHR</a></p>
+<p><a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a></p>
 </div>
 </div>
 </div>
@@ -760,7 +785,7 @@ p.tableblock.header { color: #6d6e71; }
 <p>For more information, see the OpenXR Specification at URL</p>
 </div>
 <div class="paragraph">
-<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_metal_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_metal_enable</a></p>
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_equirect" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_equirect</a></p>
 </div>
 <div class="paragraph">
 <p>This page is a generated document.
@@ -781,8 +806,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.90.0<br>
-Last updated 2019-01-24 10:18:33 STD
+Version 0.90.1<br>
+Last updated 2019-05-09 14:44:56 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -798,8 +823,16 @@ MathJax.Hub.Config({
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }
-});
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

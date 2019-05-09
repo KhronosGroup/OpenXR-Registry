@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="generator" content="Asciidoctor 2.0.9">
 <title>OpenXR API Reference Pages</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -723,14 +723,15 @@ p.tableblock.header { color: #6d6e71; }
 .literalblock pre, .listingblock pre { background: #eee; }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="book toc2 toc-left" style="max-width: 200;">
 <div id="header">
 <h1>OpenXR API Reference Pages</h1>
 <div class="details">
-<span id="revnumber">version 0.90.0</span>
-<br>
+<span id="revnumber">version 0.90.1,</span>
+<span id="revdate">Thu, 09 May 2019 14:45:58 +0000</span>
+<br><span id="revremark">from git ref release-0.90.1 commit: de141b3ad1a9dd4ac64363721ba0ace88f85bd17</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -738,268 +739,292 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_copyright">Copyright</a></li>
 <li><a href="#protos">OpenXR Commands</a>
 <ul class="sectlevel2">
-<li><a href="#_xracquireswapchainimage_3">xrAcquireSwapchainImage(3)</a></li>
-<li><a href="#_xrapplyhapticfeedback_3">xrApplyHapticFeedback(3)</a></li>
-<li><a href="#_xrbeginframe_3">xrBeginFrame(3)</a></li>
-<li><a href="#_xrbeginsession_3">xrBeginSession(3)</a></li>
-<li><a href="#_xrconverttimetotimespectimekhr_3">xrConvertTimeToTimespecTimeKHR(3)</a></li>
-<li><a href="#_xrconverttimetowin32performancecounterkhr_3">xrConvertTimeToWin32PerformanceCounterKHR(3)</a></li>
-<li><a href="#_xrconverttimespectimetotimekhr_3">xrConvertTimespecTimeToTimeKHR(3)</a></li>
-<li><a href="#_xrconvertwin32performancecountertotimekhr_3">xrConvertWin32PerformanceCounterToTimeKHR(3)</a></li>
-<li><a href="#_xrcreateaction_3">xrCreateAction(3)</a></li>
-<li><a href="#_xrcreateactionset_3">xrCreateActionSet(3)</a></li>
-<li><a href="#_xrcreateactionspace_3">xrCreateActionSpace(3)</a></li>
-<li><a href="#_xrcreatedebugutilsmessengerext_3">xrCreateDebugUtilsMessengerEXT(3)</a></li>
-<li><a href="#_xrcreateinstance_3">xrCreateInstance(3)</a></li>
-<li><a href="#_xrcreatereferencespace_3">xrCreateReferenceSpace(3)</a></li>
-<li><a href="#_xrcreatesession_3">xrCreateSession(3)</a></li>
-<li><a href="#_xrcreateswapchain_3">xrCreateSwapchain(3)</a></li>
-<li><a href="#_xrcreateswapchainandroidsurfacekhr_3">xrCreateSwapchainAndroidSurfaceKHR(3)</a></li>
-<li><a href="#_xrdestroyaction_3">xrDestroyAction(3)</a></li>
-<li><a href="#_xrdestroyactionset_3">xrDestroyActionSet(3)</a></li>
-<li><a href="#_xrdestroydebugutilsmessengerext_3">xrDestroyDebugUtilsMessengerEXT(3)</a></li>
-<li><a href="#_xrdestroyinstance_3">xrDestroyInstance(3)</a></li>
-<li><a href="#_xrdestroysession_3">xrDestroySession(3)</a></li>
-<li><a href="#_xrdestroyspace_3">xrDestroySpace(3)</a></li>
-<li><a href="#_xrdestroyswapchain_3">xrDestroySwapchain(3)</a></li>
-<li><a href="#_xrendframe_3">xrEndFrame(3)</a></li>
-<li><a href="#_xrendsession_3">xrEndSession(3)</a></li>
-<li><a href="#_xrenumerateapilayerproperties_3">xrEnumerateApiLayerProperties(3)</a></li>
-<li><a href="#_xrenumerateenvironmentblendmodes_3">xrEnumerateEnvironmentBlendModes(3)</a></li>
-<li><a href="#_xrenumerateinstanceextensionproperties_3">xrEnumerateInstanceExtensionProperties(3)</a></li>
-<li><a href="#_xrenumeratereferencespaces_3">xrEnumerateReferenceSpaces(3)</a></li>
-<li><a href="#_xrenumerateswapchainformats_3">xrEnumerateSwapchainFormats(3)</a></li>
-<li><a href="#_xrenumerateswapchainimages_3">xrEnumerateSwapchainImages(3)</a></li>
-<li><a href="#_xrenumerateviewconfigurationviews_3">xrEnumerateViewConfigurationViews(3)</a></li>
-<li><a href="#_xrenumerateviewconfigurations_3">xrEnumerateViewConfigurations(3)</a></li>
-<li><a href="#_xrgetactionstateboolean_3">xrGetActionStateBoolean(3)</a></li>
-<li><a href="#_xrgetactionstatepose_3">xrGetActionStatePose(3)</a></li>
-<li><a href="#_xrgetactionstatevector1f_3">xrGetActionStateVector1f(3)</a></li>
-<li><a href="#_xrgetactionstatevector2f_3">xrGetActionStateVector2f(3)</a></li>
-<li><a href="#_xrgetboundsourcesforaction_3">xrGetBoundSourcesForAction(3)</a></li>
-<li><a href="#_xrgetcurrentinteractionprofile_3">xrGetCurrentInteractionProfile(3)</a></li>
-<li><a href="#_xrgetd3d10graphicsrequirementskhr_3">xrGetD3D10GraphicsRequirementsKHR(3)</a></li>
-<li><a href="#_xrgetd3d11graphicsrequirementskhr_3">xrGetD3D11GraphicsRequirementsKHR(3)</a></li>
-<li><a href="#_xrgetd3d12graphicsrequirementskhr_3">xrGetD3D12GraphicsRequirementsKHR(3)</a></li>
-<li><a href="#_xrgetinputsourcelocalizedname_3">xrGetInputSourceLocalizedName(3)</a></li>
-<li><a href="#_xrgetinstanceprocaddr_3">xrGetInstanceProcAddr(3)</a></li>
-<li><a href="#_xrgetinstanceproperties_3">xrGetInstanceProperties(3)</a></li>
-<li><a href="#_xrgetopenglesgraphicsrequirementskhr_3">xrGetOpenGLESGraphicsRequirementsKHR(3)</a></li>
-<li><a href="#_xrgetopenglgraphicsrequirementskhr_3">xrGetOpenGLGraphicsRequirementsKHR(3)</a></li>
-<li><a href="#_xrgetreferencespaceboundsrect_3">xrGetReferenceSpaceBoundsRect(3)</a></li>
-<li><a href="#_xrgetsystem_3">xrGetSystem(3)</a></li>
-<li><a href="#_xrgetsystemproperties_3">xrGetSystemProperties(3)</a></li>
-<li><a href="#_xrgetviewconfigurationproperties_3">xrGetViewConfigurationProperties(3)</a></li>
-<li><a href="#_xrgetvisibilitymaskkhr_3">xrGetVisibilityMaskKHR(3)</a></li>
-<li><a href="#_xrgetvulkandeviceextensionskhr_3">xrGetVulkanDeviceExtensionsKHR(3)</a></li>
-<li><a href="#_xrgetvulkangraphicsdevicekhr_3">xrGetVulkanGraphicsDeviceKHR(3)</a></li>
-<li><a href="#_xrgetvulkangraphicsrequirementskhr_3">xrGetVulkanGraphicsRequirementsKHR(3)</a></li>
-<li><a href="#_xrgetvulkaninstanceextensionskhr_3">xrGetVulkanInstanceExtensionsKHR(3)</a></li>
-<li><a href="#_xrlocatespace_3">xrLocateSpace(3)</a></li>
-<li><a href="#_xrlocateviews_3">xrLocateViews(3)</a></li>
-<li><a href="#_xrpathtostring_3">xrPathToString(3)</a></li>
-<li><a href="#_xrpollevent_3">xrPollEvent(3)</a></li>
-<li><a href="#_xrreleaseswapchainimage_3">xrReleaseSwapchainImage(3)</a></li>
-<li><a href="#_xrresulttostring_3">xrResultToString(3)</a></li>
-<li><a href="#_xrsessionbegindebugutilslabelregionext_3">xrSessionBeginDebugUtilsLabelRegionEXT(3)</a></li>
-<li><a href="#_xrsessionenddebugutilslabelregionext_3">xrSessionEndDebugUtilsLabelRegionEXT(3)</a></li>
-<li><a href="#_xrsessioninsertdebugutilslabelext_3">xrSessionInsertDebugUtilsLabelEXT(3)</a></li>
-<li><a href="#_xrsetandroidapplicationthreadkhr_3">xrSetAndroidApplicationThreadKHR(3)</a></li>
-<li><a href="#_xrsetdebugutilsobjectnameext_3">xrSetDebugUtilsObjectNameEXT(3)</a></li>
-<li><a href="#_xrsetinteractionprofilesuggestedbindings_3">xrSetInteractionProfileSuggestedBindings(3)</a></li>
-<li><a href="#_xrstophapticfeedback_3">xrStopHapticFeedback(3)</a></li>
-<li><a href="#_xrstringtopath_3">xrStringToPath(3)</a></li>
-<li><a href="#_xrstructuretypetostring_3">xrStructureTypeToString(3)</a></li>
-<li><a href="#_xrsubmitdebugutilsmessageext_3">xrSubmitDebugUtilsMessageEXT(3)</a></li>
-<li><a href="#_xrsyncactiondata_3">xrSyncActionData(3)</a></li>
-<li><a href="#_xrwaitframe_3">xrWaitFrame(3)</a></li>
-<li><a href="#_xrwaitswapchainimage_3">xrWaitSwapchainImage(3)</a></li>
+<li><a href="#_xracquireswapchainimage3">xrAcquireSwapchainImage(3)</a></li>
+<li><a href="#_xrapplyhapticfeedback3">xrApplyHapticFeedback(3)</a></li>
+<li><a href="#_xrbeginframe3">xrBeginFrame(3)</a></li>
+<li><a href="#_xrbeginsession3">xrBeginSession(3)</a></li>
+<li><a href="#_xrconverttimetotimespectimekhr3">xrConvertTimeToTimespecTimeKHR(3)</a></li>
+<li><a href="#_xrconverttimetowin32performancecounterkhr3">xrConvertTimeToWin32PerformanceCounterKHR(3)</a></li>
+<li><a href="#_xrconverttimespectimetotimekhr3">xrConvertTimespecTimeToTimeKHR(3)</a></li>
+<li><a href="#_xrconvertwin32performancecountertotimekhr3">xrConvertWin32PerformanceCounterToTimeKHR(3)</a></li>
+<li><a href="#_xrcreateaction3">xrCreateAction(3)</a></li>
+<li><a href="#_xrcreateactionset3">xrCreateActionSet(3)</a></li>
+<li><a href="#_xrcreateactionspace3">xrCreateActionSpace(3)</a></li>
+<li><a href="#_xrcreatedebugutilsmessengerext3">xrCreateDebugUtilsMessengerEXT(3)</a></li>
+<li><a href="#_xrcreateinstance3">xrCreateInstance(3)</a></li>
+<li><a href="#_xrcreatereferencespace3">xrCreateReferenceSpace(3)</a></li>
+<li><a href="#_xrcreatesession3">xrCreateSession(3)</a></li>
+<li><a href="#_xrcreateswapchain3">xrCreateSwapchain(3)</a></li>
+<li><a href="#_xrcreateswapchainandroidsurfacekhr3">xrCreateSwapchainAndroidSurfaceKHR(3)</a></li>
+<li><a href="#_xrdestroyaction3">xrDestroyAction(3)</a></li>
+<li><a href="#_xrdestroyactionset3">xrDestroyActionSet(3)</a></li>
+<li><a href="#_xrdestroydebugutilsmessengerext3">xrDestroyDebugUtilsMessengerEXT(3)</a></li>
+<li><a href="#_xrdestroyinstance3">xrDestroyInstance(3)</a></li>
+<li><a href="#_xrdestroysession3">xrDestroySession(3)</a></li>
+<li><a href="#_xrdestroyspace3">xrDestroySpace(3)</a></li>
+<li><a href="#_xrdestroyswapchain3">xrDestroySwapchain(3)</a></li>
+<li><a href="#_xrendframe3">xrEndFrame(3)</a></li>
+<li><a href="#_xrendsession3">xrEndSession(3)</a></li>
+<li><a href="#_xrenumerateapilayerproperties3">xrEnumerateApiLayerProperties(3)</a></li>
+<li><a href="#_xrenumerateenvironmentblendmodes3">xrEnumerateEnvironmentBlendModes(3)</a></li>
+<li><a href="#_xrenumerateinstanceextensionproperties3">xrEnumerateInstanceExtensionProperties(3)</a></li>
+<li><a href="#_xrenumeratereferencespaces3">xrEnumerateReferenceSpaces(3)</a></li>
+<li><a href="#_xrenumerateswapchainformats3">xrEnumerateSwapchainFormats(3)</a></li>
+<li><a href="#_xrenumerateswapchainimages3">xrEnumerateSwapchainImages(3)</a></li>
+<li><a href="#_xrenumerateviewconfigurationviews3">xrEnumerateViewConfigurationViews(3)</a></li>
+<li><a href="#_xrenumerateviewconfigurations3">xrEnumerateViewConfigurations(3)</a></li>
+<li><a href="#_xrgetactionstateboolean3">xrGetActionStateBoolean(3)</a></li>
+<li><a href="#_xrgetactionstatepose3">xrGetActionStatePose(3)</a></li>
+<li><a href="#_xrgetactionstatevector1f3">xrGetActionStateVector1f(3)</a></li>
+<li><a href="#_xrgetactionstatevector2f3">xrGetActionStateVector2f(3)</a></li>
+<li><a href="#_xrgetboundsourcesforaction3">xrGetBoundSourcesForAction(3)</a></li>
+<li><a href="#_xrgetcurrentinteractionprofile3">xrGetCurrentInteractionProfile(3)</a></li>
+<li><a href="#_xrgetd3d10graphicsrequirementskhr3">xrGetD3D10GraphicsRequirementsKHR(3)</a></li>
+<li><a href="#_xrgetd3d11graphicsrequirementskhr3">xrGetD3D11GraphicsRequirementsKHR(3)</a></li>
+<li><a href="#_xrgetd3d12graphicsrequirementskhr3">xrGetD3D12GraphicsRequirementsKHR(3)</a></li>
+<li><a href="#_xrgetinputsourcelocalizedname3">xrGetInputSourceLocalizedName(3)</a></li>
+<li><a href="#_xrgetinstanceprocaddr3">xrGetInstanceProcAddr(3)</a></li>
+<li><a href="#_xrgetinstanceproperties3">xrGetInstanceProperties(3)</a></li>
+<li><a href="#_xrgetopenglesgraphicsrequirementskhr3">xrGetOpenGLESGraphicsRequirementsKHR(3)</a></li>
+<li><a href="#_xrgetopenglgraphicsrequirementskhr3">xrGetOpenGLGraphicsRequirementsKHR(3)</a></li>
+<li><a href="#_xrgetreferencespaceboundsrect3">xrGetReferenceSpaceBoundsRect(3)</a></li>
+<li><a href="#_xrgetsystem3">xrGetSystem(3)</a></li>
+<li><a href="#_xrgetsystemproperties3">xrGetSystemProperties(3)</a></li>
+<li><a href="#_xrgetviewconfigurationproperties3">xrGetViewConfigurationProperties(3)</a></li>
+<li><a href="#_xrgetvisibilitymaskkhr3">xrGetVisibilityMaskKHR(3)</a></li>
+<li><a href="#_xrgetvulkandeviceextensionskhr3">xrGetVulkanDeviceExtensionsKHR(3)</a></li>
+<li><a href="#_xrgetvulkangraphicsdevicekhr3">xrGetVulkanGraphicsDeviceKHR(3)</a></li>
+<li><a href="#_xrgetvulkangraphicsrequirementskhr3">xrGetVulkanGraphicsRequirementsKHR(3)</a></li>
+<li><a href="#_xrgetvulkaninstanceextensionskhr3">xrGetVulkanInstanceExtensionsKHR(3)</a></li>
+<li><a href="#_xrlocatespace3">xrLocateSpace(3)</a></li>
+<li><a href="#_xrlocateviews3">xrLocateViews(3)</a></li>
+<li><a href="#_xrpathtostring3">xrPathToString(3)</a></li>
+<li><a href="#_xrpollevent3">xrPollEvent(3)</a></li>
+<li><a href="#_xrreleaseswapchainimage3">xrReleaseSwapchainImage(3)</a></li>
+<li><a href="#_xrresulttostring3">xrResultToString(3)</a></li>
+<li><a href="#_xrsessionbegindebugutilslabelregionext3">xrSessionBeginDebugUtilsLabelRegionEXT(3)</a></li>
+<li><a href="#_xrsessionenddebugutilslabelregionext3">xrSessionEndDebugUtilsLabelRegionEXT(3)</a></li>
+<li><a href="#_xrsessioninsertdebugutilslabelext3">xrSessionInsertDebugUtilsLabelEXT(3)</a></li>
+<li><a href="#_xrsetandroidapplicationthreadkhr3">xrSetAndroidApplicationThreadKHR(3)</a></li>
+<li><a href="#_xrsetdebugutilsobjectnameext3">xrSetDebugUtilsObjectNameEXT(3)</a></li>
+<li><a href="#_xrsetinteractionprofilesuggestedbindings3">xrSetInteractionProfileSuggestedBindings(3)</a></li>
+<li><a href="#_xrstophapticfeedback3">xrStopHapticFeedback(3)</a></li>
+<li><a href="#_xrstringtopath3">xrStringToPath(3)</a></li>
+<li><a href="#_xrstructuretypetostring3">xrStructureTypeToString(3)</a></li>
+<li><a href="#_xrsubmitdebugutilsmessageext3">xrSubmitDebugUtilsMessageEXT(3)</a></li>
+<li><a href="#_xrsyncactiondata3">xrSyncActionData(3)</a></li>
+<li><a href="#_xrwaitframe3">xrWaitFrame(3)</a></li>
+<li><a href="#_xrwaitswapchainimage3">xrWaitSwapchainImage(3)</a></li>
 </ul>
 </li>
 <li><a href="#handles">Object Handles</a>
 <ul class="sectlevel2">
-<li><a href="#_xraction_3">XrAction(3)</a></li>
-<li><a href="#_xractionset_3">XrActionSet(3)</a></li>
-<li><a href="#_xrdebugutilsmessengerext_3">XrDebugUtilsMessengerEXT(3)</a></li>
-<li><a href="#_xrinstance_3">XrInstance(3)</a></li>
-<li><a href="#_xrsession_3">XrSession(3)</a></li>
-<li><a href="#_xrspace_3">XrSpace(3)</a></li>
-<li><a href="#_xrswapchain_3">XrSwapchain(3)</a></li>
+<li><a href="#_xraction3">XrAction(3)</a></li>
+<li><a href="#_xractionset3">XrActionSet(3)</a></li>
+<li><a href="#_xrdebugutilsmessengerext3">XrDebugUtilsMessengerEXT(3)</a></li>
+<li><a href="#_xrinstance3">XrInstance(3)</a></li>
+<li><a href="#_xrsession3">XrSession(3)</a></li>
+<li><a href="#_xrspace3">XrSpace(3)</a></li>
+<li><a href="#_xrswapchain3">XrSwapchain(3)</a></li>
 </ul>
 </li>
 <li><a href="#structs">Structures</a>
 <ul class="sectlevel2">
-<li><a href="#_xractioncreateinfo_3">XrActionCreateInfo(3)</a></li>
-<li><a href="#_xractionsetcreateinfo_3">XrActionSetCreateInfo(3)</a></li>
-<li><a href="#_xractionspacecreateinfo_3">XrActionSpaceCreateInfo(3)</a></li>
-<li><a href="#_xractionstateboolean_3">XrActionStateBoolean(3)</a></li>
-<li><a href="#_xractionstatepose_3">XrActionStatePose(3)</a></li>
-<li><a href="#_xractionstatevector1f_3">XrActionStateVector1f(3)</a></li>
-<li><a href="#_xractionstatevector2f_3">XrActionStateVector2f(3)</a></li>
-<li><a href="#_xractionsuggestedbinding_3">XrActionSuggestedBinding(3)</a></li>
-<li><a href="#_xractiveactionset_3">XrActiveActionSet(3)</a></li>
-<li><a href="#_xrapilayerproperties_3">XrApiLayerProperties(3)</a></li>
-<li><a href="#_xrapplicationinfo_3">XrApplicationInfo(3)</a></li>
-<li><a href="#_xrbaseinstructure_3">XrBaseInStructure(3)</a></li>
-<li><a href="#_xrbaseoutstructure_3">XrBaseOutStructure(3)</a></li>
-<li><a href="#_xrcolor4f_3">XrColor4f(3)</a></li>
-<li><a href="#_xrcompositionlayerbaseheader_3">XrCompositionLayerBaseHeader(3)</a></li>
-<li><a href="#_xrcompositionlayercubekhr_3">XrCompositionLayerCubeKHR(3)</a></li>
-<li><a href="#_xrcompositionlayercylinderkhr_3">XrCompositionLayerCylinderKHR(3)</a></li>
-<li><a href="#_xrcompositionlayerdepthinfokhr_3">XrCompositionLayerDepthInfoKHR(3)</a></li>
-<li><a href="#_xrcompositionlayerequirectkhr_3">XrCompositionLayerEquirectKHR(3)</a></li>
-<li><a href="#_xrcompositionlayerprojection_3">XrCompositionLayerProjection(3)</a></li>
-<li><a href="#_xrcompositionlayerprojectionview_3">XrCompositionLayerProjectionView(3)</a></li>
-<li><a href="#_xrcompositionlayerquad_3">XrCompositionLayerQuad(3)</a></li>
-<li><a href="#_xrdebugutilslabelext_3">XrDebugUtilsLabelEXT(3)</a></li>
-<li><a href="#_xrdebugutilsmessengercallbackdataext_3">XrDebugUtilsMessengerCallbackDataEXT(3)</a></li>
-<li><a href="#_xrdebugutilsmessengercreateinfoext_3">XrDebugUtilsMessengerCreateInfoEXT(3)</a></li>
-<li><a href="#_xrdebugutilsobjectnameinfoext_3">XrDebugUtilsObjectNameInfoEXT(3)</a></li>
-<li><a href="#_xreventdatabaseheader_3">XrEventDataBaseHeader(3)</a></li>
-<li><a href="#_xreventdatabuffer_3">XrEventDataBuffer(3)</a></li>
-<li><a href="#_xreventdataeventslost_3">XrEventDataEventsLost(3)</a></li>
-<li><a href="#_xreventdatainstancelosspending_3">XrEventDataInstanceLossPending(3)</a></li>
-<li><a href="#_xreventdatainteractionprofilechanged_3">XrEventDataInteractionProfileChanged(3)</a></li>
-<li><a href="#_xreventdatareferencespacechangepending_3">XrEventDataReferenceSpaceChangePending(3)</a></li>
-<li><a href="#_xreventdatasessionstatechanged_3">XrEventDataSessionStateChanged(3)</a></li>
-<li><a href="#_xreventdatavisibilitymaskchangedkhr_3">XrEventDataVisibilityMaskChangedKHR(3)</a></li>
-<li><a href="#_xrextensionproperties_3">XrExtensionProperties(3)</a></li>
-<li><a href="#_xrextent2df_3">XrExtent2Df(3)</a></li>
-<li><a href="#_xrextent2di_3">XrExtent2Di(3)</a></li>
-<li><a href="#_xrfovf_3">XrFovf(3)</a></li>
-<li><a href="#_xrframebegininfo_3">XrFrameBeginInfo(3)</a></li>
-<li><a href="#_xrframeendinfo_3">XrFrameEndInfo(3)</a></li>
-<li><a href="#_xrframestate_3">XrFrameState(3)</a></li>
-<li><a href="#_xrframewaitinfo_3">XrFrameWaitInfo(3)</a></li>
-<li><a href="#_xrgraphicsbindingd3d10khr_3">XrGraphicsBindingD3D10KHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingd3d11khr_3">XrGraphicsBindingD3D11KHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingd3d12khr_3">XrGraphicsBindingD3D12KHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingopenglesandroidkhr_3">XrGraphicsBindingOpenGLESAndroidKHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingopenglwaylandkhr_3">XrGraphicsBindingOpenGLWaylandKHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingopenglwin32khr_3">XrGraphicsBindingOpenGLWin32KHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingopenglxcbkhr_3">XrGraphicsBindingOpenGLXcbKHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingopenglxlibkhr_3">XrGraphicsBindingOpenGLXlibKHR(3)</a></li>
-<li><a href="#_xrgraphicsbindingvulkankhr_3">XrGraphicsBindingVulkanKHR(3)</a></li>
-<li><a href="#_xrgraphicsrequirementsd3d10khr_3">XrGraphicsRequirementsD3D10KHR(3)</a></li>
-<li><a href="#_xrgraphicsrequirementsd3d11khr_3">XrGraphicsRequirementsD3D11KHR(3)</a></li>
-<li><a href="#_xrgraphicsrequirementsd3d12khr_3">XrGraphicsRequirementsD3D12KHR(3)</a></li>
-<li><a href="#_xrgraphicsrequirementsopengleskhr_3">XrGraphicsRequirementsOpenGLESKHR(3)</a></li>
-<li><a href="#_xrgraphicsrequirementsopenglkhr_3">XrGraphicsRequirementsOpenGLKHR(3)</a></li>
-<li><a href="#_xrgraphicsrequirementsvulkankhr_3">XrGraphicsRequirementsVulkanKHR(3)</a></li>
-<li><a href="#_xrhapticbaseheader_3">XrHapticBaseHeader(3)</a></li>
-<li><a href="#_xrhapticvibration_3">XrHapticVibration(3)</a></li>
-<li><a href="#_xrinstancecreateinfo_3">XrInstanceCreateInfo(3)</a></li>
-<li><a href="#_xrinstancecreateinfoandroidkhr_3">XrInstanceCreateInfoAndroidKHR(3)</a></li>
-<li><a href="#_xrinstanceproperties_3">XrInstanceProperties(3)</a></li>
-<li><a href="#_xrinteractionprofileinfo_3">XrInteractionProfileInfo(3)</a></li>
-<li><a href="#_xrinteractionprofilesuggestedbinding_3">XrInteractionProfileSuggestedBinding(3)</a></li>
-<li><a href="#_xroffset2df_3">XrOffset2Df(3)</a></li>
-<li><a href="#_xroffset2di_3">XrOffset2Di(3)</a></li>
-<li><a href="#_xrposef_3">XrPosef(3)</a></li>
-<li><a href="#_xrquaternionf_3">XrQuaternionf(3)</a></li>
-<li><a href="#_xrrect2df_3">XrRect2Df(3)</a></li>
-<li><a href="#_xrrect2di_3">XrRect2Di(3)</a></li>
-<li><a href="#_xrreferencespacecreateinfo_3">XrReferenceSpaceCreateInfo(3)</a></li>
-<li><a href="#_xrsessionbegininfo_3">XrSessionBeginInfo(3)</a></li>
-<li><a href="#_xrsessioncreateinfo_3">XrSessionCreateInfo(3)</a></li>
-<li><a href="#_xrspacerelation_3">XrSpaceRelation(3)</a></li>
-<li><a href="#_xrswapchaincreateinfo_3">XrSwapchainCreateInfo(3)</a></li>
-<li><a href="#_xrswapchainimageacquireinfo_3">XrSwapchainImageAcquireInfo(3)</a></li>
-<li><a href="#_xrswapchainimagebaseheader_3">XrSwapchainImageBaseHeader(3)</a></li>
-<li><a href="#_xrswapchainimaged3d10khr_3">XrSwapchainImageD3D10KHR(3)</a></li>
-<li><a href="#_xrswapchainimaged3d11khr_3">XrSwapchainImageD3D11KHR(3)</a></li>
-<li><a href="#_xrswapchainimaged3d12khr_3">XrSwapchainImageD3D12KHR(3)</a></li>
-<li><a href="#_xrswapchainimageopengleskhr_3">XrSwapchainImageOpenGLESKHR(3)</a></li>
-<li><a href="#_xrswapchainimageopenglkhr_3">XrSwapchainImageOpenGLKHR(3)</a></li>
-<li><a href="#_xrswapchainimagereleaseinfo_3">XrSwapchainImageReleaseInfo(3)</a></li>
-<li><a href="#_xrswapchainimagevulkankhr_3">XrSwapchainImageVulkanKHR(3)</a></li>
-<li><a href="#_xrswapchainimagewaitinfo_3">XrSwapchainImageWaitInfo(3)</a></li>
-<li><a href="#_xrswapchainsubimage_3">XrSwapchainSubImage(3)</a></li>
-<li><a href="#_xrsystemgetinfo_3">XrSystemGetInfo(3)</a></li>
-<li><a href="#_xrsystemgraphicsproperties_3">XrSystemGraphicsProperties(3)</a></li>
-<li><a href="#_xrsystemproperties_3">XrSystemProperties(3)</a></li>
-<li><a href="#_xrsystemtrackingproperties_3">XrSystemTrackingProperties(3)</a></li>
-<li><a href="#_xrvector2f_3">XrVector2f(3)</a></li>
-<li><a href="#_xrvector3f_3">XrVector3f(3)</a></li>
-<li><a href="#_xrvector4f_3">XrVector4f(3)</a></li>
-<li><a href="#_xrview_3">XrView(3)</a></li>
-<li><a href="#_xrviewconfigurationproperties_3">XrViewConfigurationProperties(3)</a></li>
-<li><a href="#_xrviewconfigurationview_3">XrViewConfigurationView(3)</a></li>
-<li><a href="#_xrviewlocateinfo_3">XrViewLocateInfo(3)</a></li>
-<li><a href="#_xrviewstate_3">XrViewState(3)</a></li>
-<li><a href="#_xrvisibilitymaskkhr_3">XrVisibilityMaskKHR(3)</a></li>
-<li><a href="#_xrvulkanswapchainformatlistcreateinfokhr_3">XrVulkanSwapchainFormatListCreateInfoKHR(3)</a></li>
+<li><a href="#_xractioncreateinfo3">XrActionCreateInfo(3)</a></li>
+<li><a href="#_xractionsetcreateinfo3">XrActionSetCreateInfo(3)</a></li>
+<li><a href="#_xractionspacecreateinfo3">XrActionSpaceCreateInfo(3)</a></li>
+<li><a href="#_xractionstateboolean3">XrActionStateBoolean(3)</a></li>
+<li><a href="#_xractionstatepose3">XrActionStatePose(3)</a></li>
+<li><a href="#_xractionstatevector1f3">XrActionStateVector1f(3)</a></li>
+<li><a href="#_xractionstatevector2f3">XrActionStateVector2f(3)</a></li>
+<li><a href="#_xractionsuggestedbinding3">XrActionSuggestedBinding(3)</a></li>
+<li><a href="#_xractiveactionset3">XrActiveActionSet(3)</a></li>
+<li><a href="#_xrapilayerproperties3">XrApiLayerProperties(3)</a></li>
+<li><a href="#_xrapplicationinfo3">XrApplicationInfo(3)</a></li>
+<li><a href="#_xrbaseinstructure3">XrBaseInStructure(3)</a></li>
+<li><a href="#_xrbaseoutstructure3">XrBaseOutStructure(3)</a></li>
+<li><a href="#_xrcolor4f3">XrColor4f(3)</a></li>
+<li><a href="#_xrcompositionlayerbaseheader3">XrCompositionLayerBaseHeader(3)</a></li>
+<li><a href="#_xrcompositionlayercubekhr3">XrCompositionLayerCubeKHR(3)</a></li>
+<li><a href="#_xrcompositionlayercylinderkhr3">XrCompositionLayerCylinderKHR(3)</a></li>
+<li><a href="#_xrcompositionlayerdepthinfokhr3">XrCompositionLayerDepthInfoKHR(3)</a></li>
+<li><a href="#_xrcompositionlayerequirectkhr3">XrCompositionLayerEquirectKHR(3)</a></li>
+<li><a href="#_xrcompositionlayerprojection3">XrCompositionLayerProjection(3)</a></li>
+<li><a href="#_xrcompositionlayerprojectionview3">XrCompositionLayerProjectionView(3)</a></li>
+<li><a href="#_xrcompositionlayerquad3">XrCompositionLayerQuad(3)</a></li>
+<li><a href="#_xrdebugutilslabelext3">XrDebugUtilsLabelEXT(3)</a></li>
+<li><a href="#_xrdebugutilsmessengercallbackdataext3">XrDebugUtilsMessengerCallbackDataEXT(3)</a></li>
+<li><a href="#_xrdebugutilsmessengercreateinfoext3">XrDebugUtilsMessengerCreateInfoEXT(3)</a></li>
+<li><a href="#_xrdebugutilsobjectnameinfoext3">XrDebugUtilsObjectNameInfoEXT(3)</a></li>
+<li><a href="#_xreventdatabaseheader3">XrEventDataBaseHeader(3)</a></li>
+<li><a href="#_xreventdatabuffer3">XrEventDataBuffer(3)</a></li>
+<li><a href="#_xreventdataeventslost3">XrEventDataEventsLost(3)</a></li>
+<li><a href="#_xreventdatainstancelosspending3">XrEventDataInstanceLossPending(3)</a></li>
+<li><a href="#_xreventdatainteractionprofilechanged3">XrEventDataInteractionProfileChanged(3)</a></li>
+<li><a href="#_xreventdatareferencespacechangepending3">XrEventDataReferenceSpaceChangePending(3)</a></li>
+<li><a href="#_xreventdatasessionstatechanged3">XrEventDataSessionStateChanged(3)</a></li>
+<li><a href="#_xreventdatavisibilitymaskchangedkhr3">XrEventDataVisibilityMaskChangedKHR(3)</a></li>
+<li><a href="#_xrextensionproperties3">XrExtensionProperties(3)</a></li>
+<li><a href="#_xrextent2df3">XrExtent2Df(3)</a></li>
+<li><a href="#_xrextent2di3">XrExtent2Di(3)</a></li>
+<li><a href="#_xrfovf3">XrFovf(3)</a></li>
+<li><a href="#_xrframebegininfo3">XrFrameBeginInfo(3)</a></li>
+<li><a href="#_xrframeendinfo3">XrFrameEndInfo(3)</a></li>
+<li><a href="#_xrframestate3">XrFrameState(3)</a></li>
+<li><a href="#_xrframewaitinfo3">XrFrameWaitInfo(3)</a></li>
+<li><a href="#_xrgraphicsbindingd3d10khr3">XrGraphicsBindingD3D10KHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingd3d11khr3">XrGraphicsBindingD3D11KHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingd3d12khr3">XrGraphicsBindingD3D12KHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingopenglesandroidkhr3">XrGraphicsBindingOpenGLESAndroidKHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingopenglwaylandkhr3">XrGraphicsBindingOpenGLWaylandKHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingopenglwin32khr3">XrGraphicsBindingOpenGLWin32KHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingopenglxcbkhr3">XrGraphicsBindingOpenGLXcbKHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingopenglxlibkhr3">XrGraphicsBindingOpenGLXlibKHR(3)</a></li>
+<li><a href="#_xrgraphicsbindingvulkankhr3">XrGraphicsBindingVulkanKHR(3)</a></li>
+<li><a href="#_xrgraphicsrequirementsd3d10khr3">XrGraphicsRequirementsD3D10KHR(3)</a></li>
+<li><a href="#_xrgraphicsrequirementsd3d11khr3">XrGraphicsRequirementsD3D11KHR(3)</a></li>
+<li><a href="#_xrgraphicsrequirementsd3d12khr3">XrGraphicsRequirementsD3D12KHR(3)</a></li>
+<li><a href="#_xrgraphicsrequirementsopengleskhr3">XrGraphicsRequirementsOpenGLESKHR(3)</a></li>
+<li><a href="#_xrgraphicsrequirementsopenglkhr3">XrGraphicsRequirementsOpenGLKHR(3)</a></li>
+<li><a href="#_xrgraphicsrequirementsvulkankhr3">XrGraphicsRequirementsVulkanKHR(3)</a></li>
+<li><a href="#_xrhapticbaseheader3">XrHapticBaseHeader(3)</a></li>
+<li><a href="#_xrhapticvibration3">XrHapticVibration(3)</a></li>
+<li><a href="#_xrinstancecreateinfo3">XrInstanceCreateInfo(3)</a></li>
+<li><a href="#_xrinstancecreateinfoandroidkhr3">XrInstanceCreateInfoAndroidKHR(3)</a></li>
+<li><a href="#_xrinstanceproperties3">XrInstanceProperties(3)</a></li>
+<li><a href="#_xrinteractionprofileinfo3">XrInteractionProfileInfo(3)</a></li>
+<li><a href="#_xrinteractionprofilesuggestedbinding3">XrInteractionProfileSuggestedBinding(3)</a></li>
+<li><a href="#_xroffset2df3">XrOffset2Df(3)</a></li>
+<li><a href="#_xroffset2di3">XrOffset2Di(3)</a></li>
+<li><a href="#_xrposef3">XrPosef(3)</a></li>
+<li><a href="#_xrquaternionf3">XrQuaternionf(3)</a></li>
+<li><a href="#_xrrect2df3">XrRect2Df(3)</a></li>
+<li><a href="#_xrrect2di3">XrRect2Di(3)</a></li>
+<li><a href="#_xrreferencespacecreateinfo3">XrReferenceSpaceCreateInfo(3)</a></li>
+<li><a href="#_xrsessionbegininfo3">XrSessionBeginInfo(3)</a></li>
+<li><a href="#_xrsessioncreateinfo3">XrSessionCreateInfo(3)</a></li>
+<li><a href="#_xrspacerelation3">XrSpaceRelation(3)</a></li>
+<li><a href="#_xrswapchaincreateinfo3">XrSwapchainCreateInfo(3)</a></li>
+<li><a href="#_xrswapchainimageacquireinfo3">XrSwapchainImageAcquireInfo(3)</a></li>
+<li><a href="#_xrswapchainimagebaseheader3">XrSwapchainImageBaseHeader(3)</a></li>
+<li><a href="#_xrswapchainimaged3d10khr3">XrSwapchainImageD3D10KHR(3)</a></li>
+<li><a href="#_xrswapchainimaged3d11khr3">XrSwapchainImageD3D11KHR(3)</a></li>
+<li><a href="#_xrswapchainimaged3d12khr3">XrSwapchainImageD3D12KHR(3)</a></li>
+<li><a href="#_xrswapchainimageopengleskhr3">XrSwapchainImageOpenGLESKHR(3)</a></li>
+<li><a href="#_xrswapchainimageopenglkhr3">XrSwapchainImageOpenGLKHR(3)</a></li>
+<li><a href="#_xrswapchainimagereleaseinfo3">XrSwapchainImageReleaseInfo(3)</a></li>
+<li><a href="#_xrswapchainimagevulkankhr3">XrSwapchainImageVulkanKHR(3)</a></li>
+<li><a href="#_xrswapchainimagewaitinfo3">XrSwapchainImageWaitInfo(3)</a></li>
+<li><a href="#_xrswapchainsubimage3">XrSwapchainSubImage(3)</a></li>
+<li><a href="#_xrsystemgetinfo3">XrSystemGetInfo(3)</a></li>
+<li><a href="#_xrsystemgraphicsproperties3">XrSystemGraphicsProperties(3)</a></li>
+<li><a href="#_xrsystemproperties3">XrSystemProperties(3)</a></li>
+<li><a href="#_xrsystemtrackingproperties3">XrSystemTrackingProperties(3)</a></li>
+<li><a href="#_xrvector2f3">XrVector2f(3)</a></li>
+<li><a href="#_xrvector3f3">XrVector3f(3)</a></li>
+<li><a href="#_xrvector4f3">XrVector4f(3)</a></li>
+<li><a href="#_xrview3">XrView(3)</a></li>
+<li><a href="#_xrviewconfigurationproperties3">XrViewConfigurationProperties(3)</a></li>
+<li><a href="#_xrviewconfigurationview3">XrViewConfigurationView(3)</a></li>
+<li><a href="#_xrviewlocateinfo3">XrViewLocateInfo(3)</a></li>
+<li><a href="#_xrviewstate3">XrViewState(3)</a></li>
+<li><a href="#_xrvisibilitymaskkhr3">XrVisibilityMaskKHR(3)</a></li>
+<li><a href="#_xrvulkanswapchainformatlistcreateinfokhr3">XrVulkanSwapchainFormatListCreateInfoKHR(3)</a></li>
 </ul>
 </li>
 <li><a href="#enums">Enumerations</a>
 <ul class="sectlevel2">
-<li><a href="#_xractiontype_3">XrActionType(3)</a></li>
-<li><a href="#_xrandroidthreadtypekhr_3">XrAndroidThreadTypeKHR(3)</a></li>
-<li><a href="#_xrenvironmentblendmode_3">XrEnvironmentBlendMode(3)</a></li>
-<li><a href="#_xreyevisibility_3">XrEyeVisibility(3)</a></li>
-<li><a href="#_xrformfactor_3">XrFormFactor(3)</a></li>
-<li><a href="#_xrobjecttype_3">XrObjectType(3)</a></li>
-<li><a href="#_xrreferencespacetype_3">XrReferenceSpaceType(3)</a></li>
-<li><a href="#_xrresult_3">XrResult(3)</a></li>
-<li><a href="#_xrsessionstate_3">XrSessionState(3)</a></li>
-<li><a href="#_xrstructuretype_3">XrStructureType(3)</a></li>
-<li><a href="#_xrviewconfigurationtype_3">XrViewConfigurationType(3)</a></li>
-<li><a href="#_xrvisibilitymasktypekhr_3">XrVisibilityMaskTypeKHR(3)</a></li>
+<li><a href="#_xractiontype3">XrActionType(3)</a></li>
+<li><a href="#_xrandroidthreadtypekhr3">XrAndroidThreadTypeKHR(3)</a></li>
+<li><a href="#_xrenvironmentblendmode3">XrEnvironmentBlendMode(3)</a></li>
+<li><a href="#_xreyevisibility3">XrEyeVisibility(3)</a></li>
+<li><a href="#_xrformfactor3">XrFormFactor(3)</a></li>
+<li><a href="#_xrobjecttype3">XrObjectType(3)</a></li>
+<li><a href="#_xrreferencespacetype3">XrReferenceSpaceType(3)</a></li>
+<li><a href="#_xrresult3">XrResult(3)</a></li>
+<li><a href="#_xrsessionstate3">XrSessionState(3)</a></li>
+<li><a href="#_xrstructuretype3">XrStructureType(3)</a></li>
+<li><a href="#_xrviewconfigurationtype3">XrViewConfigurationType(3)</a></li>
+<li><a href="#_xrvisibilitymasktypekhr3">XrVisibilityMaskTypeKHR(3)</a></li>
 </ul>
 </li>
 <li><a href="#flags">Flags</a>
 <ul class="sectlevel2">
-<li><a href="#_xrcompositionlayerflags_3">XrCompositionLayerFlags(3)</a></li>
-<li><a href="#_xrinputsourcelocalizednameflags_3">XrInputSourceLocalizedNameFlags(3)</a></li>
-<li><a href="#_xrinstancecreateflags_3">XrInstanceCreateFlags(3)</a></li>
-<li><a href="#_xrsessioncreateflags_3">XrSessionCreateFlags(3)</a></li>
-<li><a href="#_xrspacerelationflags_3">XrSpaceRelationFlags(3)</a></li>
-<li><a href="#_xrswapchaincreateflags_3">XrSwapchainCreateFlags(3)</a></li>
-<li><a href="#_xrswapchainusageflags_3">XrSwapchainUsageFlags(3)</a></li>
-<li><a href="#_xrviewstateflags_3">XrViewStateFlags(3)</a></li>
+<li><a href="#_xrcompositionlayerflags3">XrCompositionLayerFlags(3)</a></li>
+<li><a href="#_xrinputsourcelocalizednameflags3">XrInputSourceLocalizedNameFlags(3)</a></li>
+<li><a href="#_xrinstancecreateflags3">XrInstanceCreateFlags(3)</a></li>
+<li><a href="#_xrsessioncreateflags3">XrSessionCreateFlags(3)</a></li>
+<li><a href="#_xrspacerelationflags3">XrSpaceRelationFlags(3)</a></li>
+<li><a href="#_xrswapchaincreateflags3">XrSwapchainCreateFlags(3)</a></li>
+<li><a href="#_xrswapchainusageflags3">XrSwapchainUsageFlags(3)</a></li>
+<li><a href="#_xrviewstateflags3">XrViewStateFlags(3)</a></li>
 </ul>
 </li>
 <li><a href="#funcpointers">Function Pointer Types</a>
 <ul class="sectlevel2">
-<li><a href="#_pfn_xrdebugutilsmessengercallbackext_3">PFN_xrDebugUtilsMessengerCallbackEXT(3)</a></li>
-<li><a href="#_pfn_xrvoidfunction_3">PFN_xrVoidFunction(3)</a></li>
+<li><a href="#_pfn_xrdebugutilsmessengercallbackext3">PFN_xrDebugUtilsMessengerCallbackEXT(3)</a></li>
+<li><a href="#_pfn_xrvoidfunction3">PFN_xrVoidFunction(3)</a></li>
 </ul>
 </li>
 <li><a href="#basetypes">OpenXR Scalar types</a>
 <ul class="sectlevel2">
-<li><a href="#_xrbool32_3">XrBool32(3)</a></li>
-<li><a href="#_xrduration_3">XrDuration(3)</a></li>
-<li><a href="#_xrflags64_3">XrFlags64(3)</a></li>
-<li><a href="#_xrpath_3">XrPath(3)</a></li>
-<li><a href="#_xrsystemid_3">XrSystemId(3)</a></li>
-<li><a href="#_xrtime_3">XrTime(3)</a></li>
+<li><a href="#_xrbool323">XrBool32(3)</a></li>
+<li><a href="#_xrduration3">XrDuration(3)</a></li>
+<li><a href="#_xrflags643">XrFlags64(3)</a></li>
+<li><a href="#_xrpath3">XrPath(3)</a></li>
+<li><a href="#_xrsystemid3">XrSystemId(3)</a></li>
+<li><a href="#_xrtime3">XrTime(3)</a></li>
 </ul>
 </li>
 <li><a href="#defines">C Macro Definitions</a>
 <ul class="sectlevel2">
-<li><a href="#_xr_current_api_version_3">XR_CURRENT_API_VERSION(3)</a></li>
-<li><a href="#_xr_define_atom_3">XR_DEFINE_ATOM(3)</a></li>
-<li><a href="#_xr_define_handle_3">XR_DEFINE_HANDLE(3)</a></li>
-<li><a href="#_xr_failed_3">XR_FAILED(3)</a></li>
-<li><a href="#_xr_frequency_unspecified_3">XR_FREQUENCY_UNSPECIFIED(3)</a></li>
-<li><a href="#_xr_header_version_3">XR_HEADER_VERSION(3)</a></li>
-<li><a href="#_xr_infinite_duration_3">XR_INFINITE_DURATION(3)</a></li>
-<li><a href="#_xr_make_version_3">XR_MAKE_VERSION(3)</a></li>
-<li><a href="#_xr_max_event_data_size_3">XR_MAX_EVENT_DATA_SIZE(3)</a></li>
-<li><a href="#_xr_may_alias_3">XR_MAY_ALIAS(3)</a></li>
-<li><a href="#_xr_min_haptic_duration_3">XR_MIN_HAPTIC_DURATION(3)</a></li>
-<li><a href="#_xr_no_duration_3">XR_NO_DURATION(3)</a></li>
-<li><a href="#_xr_null_handle_3">XR_NULL_HANDLE(3)</a></li>
-<li><a href="#_xr_null_path_3">XR_NULL_PATH(3)</a></li>
-<li><a href="#_xr_null_system_id_3">XR_NULL_SYSTEM_ID(3)</a></li>
-<li><a href="#_xr_succeeded_3">XR_SUCCEEDED(3)</a></li>
-<li><a href="#_xr_unqualified_success_3">XR_UNQUALIFIED_SUCCESS(3)</a></li>
-<li><a href="#_xr_version_major_3">XR_VERSION_MAJOR(3)</a></li>
-<li><a href="#_xr_version_minor_3">XR_VERSION_MINOR(3)</a></li>
-<li><a href="#_xr_version_patch_3">XR_VERSION_PATCH(3)</a></li>
+<li><a href="#_xr_current_api_version3">XR_CURRENT_API_VERSION(3)</a></li>
+<li><a href="#_xr_define_atom3">XR_DEFINE_ATOM(3)</a></li>
+<li><a href="#_xr_define_handle3">XR_DEFINE_HANDLE(3)</a></li>
+<li><a href="#_xr_failed3">XR_FAILED(3)</a></li>
+<li><a href="#_xr_frequency_unspecified3">XR_FREQUENCY_UNSPECIFIED(3)</a></li>
+<li><a href="#_xr_header_version3">XR_HEADER_VERSION(3)</a></li>
+<li><a href="#_xr_infinite_duration3">XR_INFINITE_DURATION(3)</a></li>
+<li><a href="#_xr_make_version3">XR_MAKE_VERSION(3)</a></li>
+<li><a href="#_xr_max_event_data_size3">XR_MAX_EVENT_DATA_SIZE(3)</a></li>
+<li><a href="#_xr_may_alias3">XR_MAY_ALIAS(3)</a></li>
+<li><a href="#_xr_min_haptic_duration3">XR_MIN_HAPTIC_DURATION(3)</a></li>
+<li><a href="#_xr_no_duration3">XR_NO_DURATION(3)</a></li>
+<li><a href="#_xr_null_handle3">XR_NULL_HANDLE(3)</a></li>
+<li><a href="#_xr_null_path3">XR_NULL_PATH(3)</a></li>
+<li><a href="#_xr_null_system_id3">XR_NULL_SYSTEM_ID(3)</a></li>
+<li><a href="#_xr_succeeded3">XR_SUCCEEDED(3)</a></li>
+<li><a href="#_xr_unqualified_success3">XR_UNQUALIFIED_SUCCESS(3)</a></li>
+<li><a href="#_xr_version_major3">XR_VERSION_MAJOR(3)</a></li>
+<li><a href="#_xr_version_minor3">XR_VERSION_MINOR(3)</a></li>
+<li><a href="#_xr_version_patch3">XR_VERSION_PATCH(3)</a></li>
 </ul>
 </li>
-<li><a href="#extensions">OpenXR Extensions</a></li>
+<li><a href="#extensions">OpenXR Extensions</a>
+<ul class="sectlevel2">
+<li><a href="#_xr_khr_d3d10_enable3">XR_KHR_D3D10_enable(3)</a></li>
+<li><a href="#_xr_khr_d3d11_enable3">XR_KHR_D3D11_enable(3)</a></li>
+<li><a href="#_xr_khr_d3d12_enable3">XR_KHR_D3D12_enable(3)</a></li>
+<li><a href="#_xr_khr_android_create_instance3">XR_KHR_android_create_instance(3)</a></li>
+<li><a href="#_xr_khr_android_surface_swapchain3">XR_KHR_android_surface_swapchain(3)</a></li>
+<li><a href="#_xr_khr_android_thread_settings3">XR_KHR_android_thread_settings(3)</a></li>
+<li><a href="#_xr_khr_composition_layer_cube3">XR_KHR_composition_layer_cube(3)</a></li>
+<li><a href="#_xr_khr_composition_layer_cylinder3">XR_KHR_composition_layer_cylinder(3)</a></li>
+<li><a href="#_xr_khr_composition_layer_depth3">XR_KHR_composition_layer_depth(3)</a></li>
+<li><a href="#_xr_khr_composition_layer_equirect3">XR_KHR_composition_layer_equirect(3)</a></li>
+<li><a href="#_xr_khr_convert_timespec_time3">XR_KHR_convert_timespec_time(3)</a></li>
+<li><a href="#_xr_khr_headless3">XR_KHR_headless(3)</a></li>
+<li><a href="#_xr_khr_opengl_enable3">XR_KHR_opengl_enable(3)</a></li>
+<li><a href="#_xr_khr_opengl_es_enable3">XR_KHR_opengl_es_enable(3)</a></li>
+<li><a href="#_xr_khr_visibility_mask3">XR_KHR_visibility_mask(3)</a></li>
+<li><a href="#_xr_khr_vulkan_enable3">XR_KHR_vulkan_enable(3)</a></li>
+<li><a href="#_xr_khr_vulkan_swapchain_format_list3">XR_KHR_vulkan_swapchain_format_list(3)</a></li>
+<li><a href="#_xr_khr_win32_convert_performance_counter_time3">XR_KHR_win32_convert_performance_counter_time(3)</a></li>
+<li><a href="#_xr_ext_debug_utils3">XR_EXT_debug_utils(3)</a></li>
+<li><a href="#_xr_ext_performance_settings3">XR_EXT_performance_settings(3)</a></li>
+<li><a href="#_xr_ext_thermal_query3">XR_EXT_thermal_query(3)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1018,7 +1043,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="protos">OpenXR Commands</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xracquireswapchainimage_3">xrAcquireSwapchainImage(3)</h3>
+<h3 id="_xracquireswapchainimage3">xrAcquireSwapchainImage(3)</h3>
 <div class="sect3">
 <h4 id="_name">Name</h4>
 <div class="paragraph">
@@ -1168,7 +1193,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrapplyhapticfeedback_3">xrApplyHapticFeedback(3)</h3>
+<h3 id="_xrapplyhapticfeedback3">xrApplyHapticFeedback(3)</h3>
 <div class="sect3">
 <h4 id="_name_2">Name</h4>
 <div class="paragraph">
@@ -1329,7 +1354,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrbeginframe_3">xrBeginFrame(3)</h3>
+<h3 id="_xrbeginframe3">xrBeginFrame(3)</h3>
 <div class="sect3">
 <h4 id="_name_3">Name</h4>
 <div class="paragraph">
@@ -1486,7 +1511,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrbeginsession_3">xrBeginSession(3)</h3>
+<h3 id="_xrbeginsession3">xrBeginSession(3)</h3>
 <div class="sect3">
 <h4 id="_name_4">Name</h4>
 <div class="paragraph">
@@ -1638,7 +1663,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrconverttimetotimespectimekhr_3">xrConvertTimeToTimespecTimeKHR(3)</h3>
+<h3 id="_xrconverttimetotimespectimekhr3">xrConvertTimeToTimespecTimeKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_5">Name</h4>
 <div class="paragraph">
@@ -1771,7 +1796,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrconverttimetowin32performancecounterkhr_3">xrConvertTimeToWin32PerformanceCounterKHR(3)</h3>
+<h3 id="_xrconverttimetowin32performancecounterkhr3">xrConvertTimeToWin32PerformanceCounterKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_6">Name</h4>
 <div class="paragraph">
@@ -1904,7 +1929,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrconverttimespectimetotimekhr_3">xrConvertTimespecTimeToTimeKHR(3)</h3>
+<h3 id="_xrconverttimespectimetotimekhr3">xrConvertTimespecTimeToTimeKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_7">Name</h4>
 <div class="paragraph">
@@ -2040,7 +2065,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrconvertwin32performancecountertotimekhr_3">xrConvertWin32PerformanceCounterToTimeKHR(3)</h3>
+<h3 id="_xrconvertwin32performancecountertotimekhr3">xrConvertWin32PerformanceCounterToTimeKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_8">Name</h4>
 <div class="paragraph">
@@ -2176,7 +2201,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreateaction_3">xrCreateAction(3)</h3>
+<h3 id="_xrcreateaction3">xrCreateAction(3)</h3>
 <div class="sect3">
 <h4 id="_name_9">Name</h4>
 <div class="paragraph">
@@ -2334,7 +2359,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreateactionset_3">xrCreateActionSet(3)</h3>
+<h3 id="_xrcreateactionset3">xrCreateActionSet(3)</h3>
 <div class="sect3">
 <h4 id="_name_10">Name</h4>
 <div class="paragraph">
@@ -2490,7 +2515,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreateactionspace_3">xrCreateActionSpace(3)</h3>
+<h3 id="_xrcreateactionspace3">xrCreateActionSpace(3)</h3>
 <div class="sect3">
 <h4 id="_name_11">Name</h4>
 <div class="paragraph">
@@ -2647,7 +2672,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreatedebugutilsmessengerext_3">xrCreateDebugUtilsMessengerEXT(3)</h3>
+<h3 id="_xrcreatedebugutilsmessengerext3">xrCreateDebugUtilsMessengerEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_12">Name</h4>
 <div class="paragraph">
@@ -2795,7 +2820,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreateinstance_3">xrCreateInstance(3)</h3>
+<h3 id="_xrcreateinstance3">xrCreateInstance(3)</h3>
 <div class="sect3">
 <h4 id="_name_13">Name</h4>
 <div class="paragraph">
@@ -2961,7 +2986,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreatereferencespace_3">xrCreateReferenceSpace(3)</h3>
+<h3 id="_xrcreatereferencespace3">xrCreateReferenceSpace(3)</h3>
 <div class="sect3">
 <h4 id="_name_14">Name</h4>
 <div class="paragraph">
@@ -3126,7 +3151,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreatesession_3">xrCreateSession(3)</h3>
+<h3 id="_xrcreatesession3">xrCreateSession(3)</h3>
 <div class="sect3">
 <h4 id="_name_15">Name</h4>
 <div class="paragraph">
@@ -3235,9 +3260,6 @@ This session is created in the <code>XR_SESSION_STATE_IDLE</code> state.</p>
 <p><code>XR_ERROR_SYSTEM_INVALID</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_FEATURE_UNSUPPORTED</code></p>
-</li>
-<li>
 <p><code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code></p>
 </li>
 <li>
@@ -3280,7 +3302,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreateswapchain_3">xrCreateSwapchain(3)</h3>
+<h3 id="_xrcreateswapchain3">xrCreateSwapchain(3)</h3>
 <div class="sect3">
 <h4 id="_name_16">Name</h4>
 <div class="paragraph">
@@ -3435,7 +3457,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcreateswapchainandroidsurfacekhr_3">xrCreateSwapchainAndroidSurfaceKHR(3)</h3>
+<h3 id="_xrcreateswapchainandroidsurfacekhr3">xrCreateSwapchainAndroidSurfaceKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_17">Name</h4>
 <div class="paragraph">
@@ -3623,7 +3645,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroyaction_3">xrDestroyAction(3)</h3>
+<h3 id="_xrdestroyaction3">xrDestroyAction(3)</h3>
 <div class="sect3">
 <h4 id="_name_18">Name</h4>
 <div class="paragraph">
@@ -3747,7 +3769,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroyactionset_3">xrDestroyActionSet(3)</h3>
+<h3 id="_xrdestroyactionset3">xrDestroyActionSet(3)</h3>
 <div class="sect3">
 <h4 id="_name_19">Name</h4>
 <div class="paragraph">
@@ -3868,7 +3890,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroydebugutilsmessengerext_3">xrDestroyDebugUtilsMessengerEXT(3)</h3>
+<h3 id="_xrdestroydebugutilsmessengerext3">xrDestroyDebugUtilsMessengerEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_20">Name</h4>
 <div class="paragraph">
@@ -3993,7 +4015,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroyinstance_3">xrDestroyInstance(3)</h3>
+<h3 id="_xrdestroyinstance3">xrDestroyInstance(3)</h3>
 <div class="sect3">
 <h4 id="_name_21">Name</h4>
 <div class="paragraph">
@@ -4115,7 +4137,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroysession_3">xrDestroySession(3)</h3>
+<h3 id="_xrdestroysession3">xrDestroySession(3)</h3>
 <div class="sect3">
 <h4 id="_name_22">Name</h4>
 <div class="paragraph">
@@ -4240,7 +4262,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroyspace_3">xrDestroySpace(3)</h3>
+<h3 id="_xrdestroyspace3">xrDestroySpace(3)</h3>
 <div class="sect3">
 <h4 id="_name_23">Name</h4>
 <div class="paragraph">
@@ -4362,7 +4384,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdestroyswapchain_3">xrDestroySwapchain(3)</h3>
+<h3 id="_xrdestroyswapchain3">xrDestroySwapchain(3)</h3>
 <div class="sect3">
 <h4 id="_name_24">Name</h4>
 <div class="paragraph">
@@ -4482,7 +4504,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrendframe_3">xrEndFrame(3)</h3>
+<h3 id="_xrendframe3">xrEndFrame(3)</h3>
 <div class="sect3">
 <h4 id="_name_25">Name</h4>
 <div class="paragraph">
@@ -4662,7 +4684,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrendsession_3">xrEndSession(3)</h3>
+<h3 id="_xrendsession3">xrEndSession(3)</h3>
 <div class="sect3">
 <h4 id="_name_26">Name</h4>
 <div class="paragraph">
@@ -4793,7 +4815,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateapilayerproperties_3">xrEnumerateApiLayerProperties(3)</h3>
+<h3 id="_xrenumerateapilayerproperties3">xrEnumerateApiLayerProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_27">Name</h4>
 <div class="paragraph">
@@ -4939,7 +4961,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateenvironmentblendmodes_3">xrEnumerateEnvironmentBlendModes(3)</h3>
+<h3 id="_xrenumerateenvironmentblendmodes3">xrEnumerateEnvironmentBlendModes(3)</h3>
 <div class="sect3">
 <h4 id="_name_28">Name</h4>
 <div class="paragraph">
@@ -5092,7 +5114,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateinstanceextensionproperties_3">xrEnumerateInstanceExtensionProperties(3)</h3>
+<h3 id="_xrenumerateinstanceextensionproperties3">xrEnumerateInstanceExtensionProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_29">Name</h4>
 <div class="paragraph">
@@ -5259,7 +5281,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumeratereferencespaces_3">xrEnumerateReferenceSpaces(3)</h3>
+<h3 id="_xrenumeratereferencespaces3">xrEnumerateReferenceSpaces(3)</h3>
 <div class="sect3">
 <h4 id="_name_30">Name</h4>
 <div class="paragraph">
@@ -5415,7 +5437,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateswapchainformats_3">xrEnumerateSwapchainFormats(3)</h3>
+<h3 id="_xrenumerateswapchainformats3">xrEnumerateSwapchainFormats(3)</h3>
 <div class="sect3">
 <h4 id="_name_31">Name</h4>
 <div class="paragraph">
@@ -5586,7 +5608,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateswapchainimages_3">xrEnumerateSwapchainImages(3)</h3>
+<h3 id="_xrenumerateswapchainimages3">xrEnumerateSwapchainImages(3)</h3>
 <div class="sect3">
 <h4 id="_name_32">Name</h4>
 <div class="paragraph">
@@ -5743,7 +5765,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateviewconfigurationviews_3">xrEnumerateViewConfigurationViews(3)</h3>
+<h3 id="_xrenumerateviewconfigurationviews3">xrEnumerateViewConfigurationViews(3)</h3>
 <div class="sect3">
 <h4 id="_name_33">Name</h4>
 <div class="paragraph">
@@ -5907,7 +5929,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenumerateviewconfigurations_3">xrEnumerateViewConfigurations(3)</h3>
+<h3 id="_xrenumerateviewconfigurations3">xrEnumerateViewConfigurations(3)</h3>
 <div class="sect3">
 <h4 id="_name_34">Name</h4>
 <div class="paragraph">
@@ -6063,7 +6085,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetactionstateboolean_3">xrGetActionStateBoolean(3)</h3>
+<h3 id="_xrgetactionstateboolean3">xrGetActionStateBoolean(3)</h3>
 <div class="sect3">
 <h4 id="_name_35">Name</h4>
 <div class="paragraph">
@@ -6216,7 +6238,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetactionstatepose_3">xrGetActionStatePose(3)</h3>
+<h3 id="_xrgetactionstatepose3">xrGetActionStatePose(3)</h3>
 <div class="sect3">
 <h4 id="_name_36">Name</h4>
 <div class="paragraph">
@@ -6370,7 +6392,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetactionstatevector1f_3">xrGetActionStateVector1f(3)</h3>
+<h3 id="_xrgetactionstatevector1f3">xrGetActionStateVector1f(3)</h3>
 <div class="sect3">
 <h4 id="_name_37">Name</h4>
 <div class="paragraph">
@@ -6523,7 +6545,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetactionstatevector2f_3">xrGetActionStateVector2f(3)</h3>
+<h3 id="_xrgetactionstatevector2f3">xrGetActionStateVector2f(3)</h3>
 <div class="sect3">
 <h4 id="_name_38">Name</h4>
 <div class="paragraph">
@@ -6676,7 +6698,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetboundsourcesforaction_3">xrGetBoundSourcesForAction(3)</h3>
+<h3 id="_xrgetboundsourcesforaction3">xrGetBoundSourcesForAction(3)</h3>
 <div class="sect3">
 <h4 id="_name_39">Name</h4>
 <div class="paragraph">
@@ -6849,7 +6871,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetcurrentinteractionprofile_3">xrGetCurrentInteractionProfile(3)</h3>
+<h3 id="_xrgetcurrentinteractionprofile3">xrGetCurrentInteractionProfile(3)</h3>
 <div class="sect3">
 <h4 id="_name_40">Name</h4>
 <div class="paragraph">
@@ -6990,7 +7012,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetd3d10graphicsrequirementskhr_3">xrGetD3D10GraphicsRequirementsKHR(3)</h3>
+<h3 id="_xrgetd3d10graphicsrequirementskhr3">xrGetD3D10GraphicsRequirementsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_41">Name</h4>
 <div class="paragraph">
@@ -7134,7 +7156,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetd3d11graphicsrequirementskhr_3">xrGetD3D11GraphicsRequirementsKHR(3)</h3>
+<h3 id="_xrgetd3d11graphicsrequirementskhr3">xrGetD3D11GraphicsRequirementsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_42">Name</h4>
 <div class="paragraph">
@@ -7278,7 +7300,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetd3d12graphicsrequirementskhr_3">xrGetD3D12GraphicsRequirementsKHR(3)</h3>
+<h3 id="_xrgetd3d12graphicsrequirementskhr3">xrGetD3D12GraphicsRequirementsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_43">Name</h4>
 <div class="paragraph">
@@ -7422,7 +7444,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetinputsourcelocalizedname_3">xrGetInputSourceLocalizedName(3)</h3>
+<h3 id="_xrgetinputsourcelocalizedname3">xrGetInputSourceLocalizedName(3)</h3>
 <div class="sect3">
 <h4 id="_name_44">Name</h4>
 <div class="paragraph">
@@ -7495,7 +7517,7 @@ This string is appropriate for showing to users.</p>
 <p><a id="VUID-xrGetInputSourceLocalizedName-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-xrGetInputSourceLocalizedName-whichComponents-parameter"></a> <code>whichComponents</code> <strong class="purple">must</strong> be a valid combinations of <a href="#XrInputSourceLocalizedNameFlagBits">XrInputSourceLocalizedNameFlagBits</a> values</p>
+<p><a id="VUID-xrGetInputSourceLocalizedName-whichComponents-parameter"></a> <code>whichComponents</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrInputSourceLocalizedNameFlagBits">XrInputSourceLocalizedNameFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-xrGetInputSourceLocalizedName-whichComponents-requiredbitmask"></a> <code>whichComponents</code> <strong class="purple">must</strong> not be <code>0</code></p>
@@ -7593,7 +7615,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetinstanceprocaddr_3">xrGetInstanceProcAddr(3)</h3>
+<h3 id="_xrgetinstanceprocaddr3">xrGetInstanceProcAddr(3)</h3>
 <div class="sect3">
 <h4 id="_name_45">Name</h4>
 <div class="paragraph">
@@ -7872,7 +7894,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetinstanceproperties_3">xrGetInstanceProperties(3)</h3>
+<h3 id="_xrgetinstanceproperties3">xrGetInstanceProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_46">Name</h4>
 <div class="paragraph">
@@ -8000,7 +8022,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetopenglesgraphicsrequirementskhr_3">xrGetOpenGLESGraphicsRequirementsKHR(3)</h3>
+<h3 id="_xrgetopenglesgraphicsrequirementskhr3">xrGetOpenGLESGraphicsRequirementsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_47">Name</h4>
 <div class="paragraph">
@@ -8141,7 +8163,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetopenglgraphicsrequirementskhr_3">xrGetOpenGLGraphicsRequirementsKHR(3)</h3>
+<h3 id="_xrgetopenglgraphicsrequirementskhr3">xrGetOpenGLGraphicsRequirementsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_48">Name</h4>
 <div class="paragraph">
@@ -8282,7 +8304,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetreferencespaceboundsrect_3">xrGetReferenceSpaceBoundsRect(3)</h3>
+<h3 id="_xrgetreferencespaceboundsrect3">xrGetReferenceSpaceBoundsRect(3)</h3>
 <div class="sect3">
 <h4 id="_name_49">Name</h4>
 <div class="paragraph">
@@ -8445,7 +8467,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetsystem_3">xrGetSystem(3)</h3>
+<h3 id="_xrgetsystem3">xrGetSystem(3)</h3>
 <div class="sect3">
 <h4 id="_name_50">Name</h4>
 <div class="paragraph">
@@ -8593,7 +8615,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetsystemproperties_3">xrGetSystemProperties(3)</h3>
+<h3 id="_xrgetsystemproperties3">xrGetSystemProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_51">Name</h4>
 <div class="paragraph">
@@ -8734,7 +8756,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetviewconfigurationproperties_3">xrGetViewConfigurationProperties(3)</h3>
+<h3 id="_xrgetviewconfigurationproperties3">xrGetViewConfigurationProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_52">Name</h4>
 <div class="paragraph">
@@ -8879,7 +8901,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetvisibilitymaskkhr_3">xrGetVisibilityMaskKHR(3)</h3>
+<h3 id="_xrgetvisibilitymaskkhr3">xrGetVisibilityMaskKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_53">Name</h4>
 <div class="paragraph">
@@ -9031,7 +9053,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetvulkandeviceextensionskhr_3">xrGetVulkanDeviceExtensionsKHR(3)</h3>
+<h3 id="_xrgetvulkandeviceextensionskhr3">xrGetVulkanDeviceExtensionsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_54">Name</h4>
 <div class="paragraph">
@@ -9184,7 +9206,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetvulkangraphicsdevicekhr_3">xrGetVulkanGraphicsDeviceKHR(3)</h3>
+<h3 id="_xrgetvulkangraphicsdevicekhr3">xrGetVulkanGraphicsDeviceKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_55">Name</h4>
 <div class="paragraph">
@@ -9334,7 +9356,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetvulkangraphicsrequirementskhr_3">xrGetVulkanGraphicsRequirementsKHR(3)</h3>
+<h3 id="_xrgetvulkangraphicsrequirementskhr3">xrGetVulkanGraphicsRequirementsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_56">Name</h4>
 <div class="paragraph">
@@ -9475,7 +9497,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgetvulkaninstanceextensionskhr_3">xrGetVulkanInstanceExtensionsKHR(3)</h3>
+<h3 id="_xrgetvulkaninstanceextensionskhr3">xrGetVulkanInstanceExtensionsKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_57">Name</h4>
 <div class="paragraph">
@@ -9636,7 +9658,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrlocatespace_3">xrLocateSpace(3)</h3>
+<h3 id="_xrlocatespace3">xrLocateSpace(3)</h3>
 <div class="sect3">
 <h4 id="_name_58">Name</h4>
 <div class="paragraph">
@@ -9815,7 +9837,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrlocateviews_3">xrLocateViews(3)</h3>
+<h3 id="_xrlocateviews3">xrLocateViews(3)</h3>
 <div class="sect3">
 <h4 id="_name_59">Name</h4>
 <div class="paragraph">
@@ -10003,7 +10025,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrpathtostring_3">xrPathToString(3)</h3>
+<h3 id="_xrpathtostring3">xrPathToString(3)</h3>
 <div class="sect3">
 <h4 id="_name_60">Name</h4>
 <div class="paragraph">
@@ -10161,7 +10183,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrpollevent_3">xrPollEvent(3)</h3>
+<h3 id="_xrpollevent3">xrPollEvent(3)</h3>
 <div class="sect3">
 <h4 id="_name_61">Name</h4>
 <div class="paragraph">
@@ -10267,9 +10289,6 @@ pointed to by <code>eventData</code>.</p>
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
-</li>
-<li>
 <p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
 </li>
 </ul>
@@ -10279,7 +10298,7 @@ pointed to by <code>eventData</code>.</p>
 </div>
 </div>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Event Descriptions</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -10344,7 +10363,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrreleaseswapchainimage_3">xrReleaseSwapchainImage(3)</h3>
+<h3 id="_xrreleaseswapchainimage3">xrReleaseSwapchainImage(3)</h3>
 <div class="sect3">
 <h4 id="_name_62">Name</h4>
 <div class="paragraph">
@@ -10485,7 +10504,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrresulttostring_3">xrResultToString(3)</h3>
+<h3 id="_xrresulttostring3">xrResultToString(3)</h3>
 <div class="sect3">
 <h4 id="_name_63">Name</h4>
 <div class="paragraph">
@@ -10637,7 +10656,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessionbegindebugutilslabelregionext_3">xrSessionBeginDebugUtilsLabelRegionEXT(3)</h3>
+<h3 id="_xrsessionbegindebugutilslabelregionext3">xrSessionBeginDebugUtilsLabelRegionEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_64">Name</h4>
 <div class="paragraph">
@@ -10766,7 +10785,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessionenddebugutilslabelregionext_3">xrSessionEndDebugUtilsLabelRegionEXT(3)</h3>
+<h3 id="_xrsessionenddebugutilslabelregionext3">xrSessionEndDebugUtilsLabelRegionEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_65">Name</h4>
 <div class="paragraph">
@@ -10901,7 +10920,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessioninsertdebugutilslabelext_3">xrSessionInsertDebugUtilsLabelEXT(3)</h3>
+<h3 id="_xrsessioninsertdebugutilslabelext3">xrSessionInsertDebugUtilsLabelEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_66">Name</h4>
 <div class="paragraph">
@@ -11051,7 +11070,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsetandroidapplicationthreadkhr_3">xrSetAndroidApplicationThreadKHR(3)</h3>
+<h3 id="_xrsetandroidapplicationthreadkhr3">xrSetAndroidApplicationThreadKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_67">Name</h4>
 <div class="paragraph">
@@ -11206,7 +11225,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsetdebugutilsobjectnameext_3">xrSetDebugUtilsObjectNameEXT(3)</h3>
+<h3 id="_xrsetdebugutilsobjectnameext3">xrSetDebugUtilsObjectNameEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_68">Name</h4>
 <div class="paragraph">
@@ -11368,7 +11387,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsetinteractionprofilesuggestedbindings_3">xrSetInteractionProfileSuggestedBindings(3)</h3>
+<h3 id="_xrsetinteractionprofilesuggestedbindings3">xrSetInteractionProfileSuggestedBindings(3)</h3>
 <div class="sect3">
 <h4 id="_name_69">Name</h4>
 <div class="paragraph">
@@ -11511,7 +11530,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrstophapticfeedback_3">xrStopHapticFeedback(3)</h3>
+<h3 id="_xrstophapticfeedback3">xrStopHapticFeedback(3)</h3>
 <div class="sect3">
 <h4 id="_name_70">Name</h4>
 <div class="paragraph">
@@ -11658,7 +11677,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrstringtopath_3">xrStringToPath(3)</h3>
+<h3 id="_xrstringtopath3">xrStringToPath(3)</h3>
 <div class="sect3">
 <h4 id="_name_71">Name</h4>
 <div class="paragraph">
@@ -11819,7 +11838,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrstructuretypetostring_3">xrStructureTypeToString(3)</h3>
+<h3 id="_xrstructuretypetostring3">xrStructureTypeToString(3)</h3>
 <div class="sect3">
 <h4 id="_name_72">Name</h4>
 <div class="paragraph">
@@ -11971,7 +11990,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsubmitdebugutilsmessageext_3">xrSubmitDebugUtilsMessageEXT(3)</h3>
+<h3 id="_xrsubmitdebugutilsmessageext3">xrSubmitDebugUtilsMessageEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_73">Name</h4>
 <div class="paragraph">
@@ -12046,13 +12065,13 @@ the value of <a href="#XrDebugUtilsObjectNameInfoEXT">XrDebugUtilsObjectNameInfo
 <p><a id="VUID-xrSubmitDebugUtilsMessageEXT-instance-parameter"></a> <code>instance</code> <strong class="purple">must</strong> be a valid <a href="#XrInstance">XrInstance</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-xrSubmitDebugUtilsMessageEXT-messageSeverity-parameter"></a> <code>messageSeverity</code> <strong class="purple">must</strong> be a valid combinations of <a href="#XrDebugUtilsMessageSeverityFlagBitsEXT">XrDebugUtilsMessageSeverityFlagBitsEXT</a> values</p>
+<p><a id="VUID-xrSubmitDebugUtilsMessageEXT-messageSeverity-parameter"></a> <code>messageSeverity</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrDebugUtilsMessageSeverityFlagBitsEXT">XrDebugUtilsMessageSeverityFlagBitsEXT</a> values</p>
 </li>
 <li>
 <p><a id="VUID-xrSubmitDebugUtilsMessageEXT-messageSeverity-requiredbitmask"></a> <code>messageSeverity</code> <strong class="purple">must</strong> not be <code>0</code></p>
 </li>
 <li>
-<p><a id="VUID-xrSubmitDebugUtilsMessageEXT-messageTypes-parameter"></a> <code>messageTypes</code> <strong class="purple">must</strong> be a valid combinations of <a href="#XrDebugUtilsMessageTypeFlagBitsEXT">XrDebugUtilsMessageTypeFlagBitsEXT</a> values</p>
+<p><a id="VUID-xrSubmitDebugUtilsMessageEXT-messageTypes-parameter"></a> <code>messageTypes</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrDebugUtilsMessageTypeFlagBitsEXT">XrDebugUtilsMessageTypeFlagBitsEXT</a> values</p>
 </li>
 <li>
 <p><a id="VUID-xrSubmitDebugUtilsMessageEXT-messageTypes-requiredbitmask"></a> <code>messageTypes</code> <strong class="purple">must</strong> not be <code>0</code></p>
@@ -12146,7 +12165,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsyncactiondata_3">xrSyncActionData(3)</h3>
+<h3 id="_xrsyncactiondata3">xrSyncActionData(3)</h3>
 <div class="sect3">
 <h4 id="_name_74">Name</h4>
 <div class="paragraph">
@@ -12324,7 +12343,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrwaitframe_3">xrWaitFrame(3)</h3>
+<h3 id="_xrwaitframe3">xrWaitFrame(3)</h3>
 <div class="sect3">
 <h4 id="_name_75">Name</h4>
 <div class="paragraph">
@@ -12495,7 +12514,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrwaitswapchainimage_3">xrWaitSwapchainImage(3)</h3>
+<h3 id="_xrwaitswapchainimage3">xrWaitSwapchainImage(3)</h3>
 <div class="sect3">
 <h4 id="_name_76">Name</h4>
 <div class="paragraph">
@@ -12660,7 +12679,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="handles">Object Handles</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xraction_3">XrAction(3)</h3>
+<h3 id="_xraction3">XrAction(3)</h3>
 <div class="sect3">
 <h4 id="_name_77">Name</h4>
 <div class="paragraph">
@@ -12710,7 +12729,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionset_3">XrActionSet(3)</h3>
+<h3 id="_xractionset3">XrActionSet(3)</h3>
 <div class="sect3">
 <h4 id="_name_78">Name</h4>
 <div class="paragraph">
@@ -12769,7 +12788,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdebugutilsmessengerext_3">XrDebugUtilsMessengerEXT(3)</h3>
+<h3 id="_xrdebugutilsmessengerext3">XrDebugUtilsMessengerEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_79">Name</h4>
 <div class="paragraph">
@@ -12820,7 +12839,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinstance_3">XrInstance(3)</h3>
+<h3 id="_xrinstance3">XrInstance(3)</h3>
 <div class="sect3">
 <h4 id="_name_80">Name</h4>
 <div class="paragraph">
@@ -12890,7 +12909,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsession_3">XrSession(3)</h3>
+<h3 id="_xrsession3">XrSession(3)</h3>
 <div class="sect3">
 <h4 id="_name_81">Name</h4>
 <div class="paragraph">
@@ -12964,7 +12983,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrspace_3">XrSpace(3)</h3>
+<h3 id="_xrspace3">XrSpace(3)</h3>
 <div class="sect3">
 <h4 id="_name_82">Name</h4>
 <div class="paragraph">
@@ -13067,7 +13086,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchain_3">XrSwapchain(3)</h3>
+<h3 id="_xrswapchain3">XrSwapchain(3)</h3>
 <div class="sect3">
 <h4 id="_name_83">Name</h4>
 <div class="paragraph">
@@ -13156,7 +13175,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="structs">Structures</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xractioncreateinfo_3">XrActionCreateInfo(3)</h3>
+<h3 id="_xractioncreateinfo3">XrActionCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_84">Name</h4>
 <div class="paragraph">
@@ -13345,7 +13364,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionsetcreateinfo_3">XrActionSetCreateInfo(3)</h3>
+<h3 id="_xractionsetcreateinfo3">XrActionSetCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_85">Name</h4>
 <div class="paragraph">
@@ -13478,7 +13497,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionspacecreateinfo_3">XrActionSpaceCreateInfo(3)</h3>
+<h3 id="_xractionspacecreateinfo3">XrActionSpaceCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_86">Name</h4>
 <div class="paragraph">
@@ -13573,7 +13592,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionstateboolean_3">XrActionStateBoolean(3)</h3>
+<h3 id="_xractionstateboolean3">XrActionStateBoolean(3)</h3>
 <div class="sect3">
 <h4 id="_name_87">Name</h4>
 <div class="paragraph">
@@ -13680,7 +13699,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionstatepose_3">XrActionStatePose(3)</h3>
+<h3 id="_xractionstatepose3">XrActionStatePose(3)</h3>
 <div class="sect3">
 <h4 id="_name_88">Name</h4>
 <div class="paragraph">
@@ -13770,7 +13789,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionstatevector1f_3">XrActionStateVector1f(3)</h3>
+<h3 id="_xractionstatevector1f3">XrActionStateVector1f(3)</h3>
 <div class="sect3">
 <h4 id="_name_89">Name</h4>
 <div class="paragraph">
@@ -13875,7 +13894,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionstatevector2f_3">XrActionStateVector2f(3)</h3>
+<h3 id="_xractionstatevector2f3">XrActionStateVector2f(3)</h3>
 <div class="sect3">
 <h4 id="_name_90">Name</h4>
 <div class="paragraph">
@@ -13977,7 +13996,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractionsuggestedbinding_3">XrActionSuggestedBinding(3)</h3>
+<h3 id="_xractionsuggestedbinding3">XrActionSuggestedBinding(3)</h3>
 <div class="sect3">
 <h4 id="_name_91">Name</h4>
 <div class="paragraph">
@@ -14060,7 +14079,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xractiveactionset_3">XrActiveActionSet(3)</h3>
+<h3 id="_xractiveactionset3">XrActiveActionSet(3)</h3>
 <div class="sect3">
 <h4 id="_name_92">Name</h4>
 <div class="paragraph">
@@ -14162,7 +14181,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrapilayerproperties_3">XrApiLayerProperties(3)</h3>
+<h3 id="_xrapilayerproperties3">XrApiLayerProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_93">Name</h4>
 <div class="paragraph">
@@ -14271,7 +14290,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrapplicationinfo_3">XrApplicationInfo(3)</h3>
+<h3 id="_xrapplicationinfo3">XrApplicationInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_94">Name</h4>
 <div class="paragraph">
@@ -14386,7 +14405,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrbaseinstructure_3">XrBaseInStructure(3)</h3>
+<h3 id="_xrbaseinstructure3">XrBaseInStructure(3)</h3>
 <div class="sect3">
 <h4 id="_name_95">Name</h4>
 <div class="paragraph">
@@ -14462,7 +14481,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrbaseoutstructure_3">XrBaseOutStructure(3)</h3>
+<h3 id="_xrbaseoutstructure3">XrBaseOutStructure(3)</h3>
 <div class="sect3">
 <h4 id="_name_96">Name</h4>
 <div class="paragraph">
@@ -14538,7 +14557,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcolor4f_3">XrColor4f(3)</h3>
+<h3 id="_xrcolor4f3">XrColor4f(3)</h3>
 <div class="sect3">
 <h4 id="_name_97">Name</h4>
 <div class="paragraph">
@@ -14622,7 +14641,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayerbaseheader_3">XrCompositionLayerBaseHeader(3)</h3>
+<h3 id="_xrcompositionlayerbaseheader3">XrCompositionLayerBaseHeader(3)</h3>
 <div class="sect3">
 <h4 id="_name_98">Name</h4>
 <div class="paragraph">
@@ -14695,7 +14714,7 @@ an <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a> poin
 <p><a id="VUID-XrCompositionLayerBaseHeader-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerBaseHeader-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
+<p><a id="VUID-XrCompositionLayerBaseHeader-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerBaseHeader-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -14734,7 +14753,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayercubekhr_3">XrCompositionLayerCubeKHR(3)</h3>
+<h3 id="_xrcompositionlayercubekhr3">XrCompositionLayerCubeKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_99">Name</h4>
 <div class="paragraph">
@@ -14822,7 +14841,7 @@ default behavior of no offset.</p>
 <p><a id="VUID-XrCompositionLayerCubeKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerCubeKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
+<p><a id="VUID-XrCompositionLayerCubeKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerCubeKHR-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -14873,7 +14892,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayercylinderkhr_3">XrCompositionLayerCylinderKHR(3)</h3>
+<h3 id="_xrcompositionlayercylinderkhr3">XrCompositionLayerCylinderKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_100">Name</h4>
 <div class="paragraph">
@@ -14969,7 +14988,7 @@ around the 0 radian angle.</p>
 <p><a id="VUID-XrCompositionLayerCylinderKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerCylinderKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
+<p><a id="VUID-XrCompositionLayerCylinderKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerCylinderKHR-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -15023,7 +15042,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayerdepthinfokhr_3">XrCompositionLayerDepthInfoKHR(3)</h3>
+<h3 id="_xrcompositionlayerdepthinfokhr3">XrCompositionLayerDepthInfoKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_101">Name</h4>
 <div class="paragraph">
@@ -15155,7 +15174,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayerequirectkhr_3">XrCompositionLayerEquirectKHR(3)</h3>
+<h3 id="_xrcompositionlayerequirectkhr3">XrCompositionLayerEquirectKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_102">Name</h4>
 <div class="paragraph">
@@ -15247,7 +15266,7 @@ view of the equirect layer within the reference frame of the <code>space</code>.
 <p><a id="VUID-XrCompositionLayerEquirectKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerEquirectKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerEquirectKHR-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -15292,7 +15311,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayerprojection_3">XrCompositionLayerProjection(3)</h3>
+<h3 id="_xrcompositionlayerprojection3">XrCompositionLayerProjection(3)</h3>
 <div class="sect3">
 <h4 id="_name_103">Name</h4>
 <div class="paragraph">
@@ -15381,7 +15400,7 @@ In the case that the projection layer should be head-locked, such as a heads up 
 <p><a id="VUID-XrCompositionLayerProjection-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerProjection-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
+<p><a id="VUID-XrCompositionLayerProjection-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerProjection-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -15429,7 +15448,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayerprojectionview_3">XrCompositionLayerProjectionView(3)</h3>
+<h3 id="_xrcompositionlayerprojectionview3">XrCompositionLayerProjectionView(3)</h3>
 <div class="sect3">
 <h4 id="_name_104">Name</h4>
 <div class="paragraph">
@@ -15544,7 +15563,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrcompositionlayerquad_3">XrCompositionLayerQuad(3)</h3>
+<h3 id="_xrcompositionlayerquad3">XrCompositionLayerQuad(3)</h3>
 <div class="sect3">
 <h4 id="_name_105">Name</h4>
 <div class="paragraph">
@@ -15633,7 +15652,7 @@ to a 1 meter x 1 meter quad centered at {0,0,0} with its front face normal vecto
 <p><a id="VUID-XrCompositionLayerQuad-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerQuad-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
+<p><a id="VUID-XrCompositionLayerQuad-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerQuad-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -15678,7 +15697,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdebugutilslabelext_3">XrDebugUtilsLabelEXT(3)</h3>
+<h3 id="_xrdebugutilslabelext3">XrDebugUtilsLabelEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_106">Name</h4>
 <div class="paragraph">
@@ -15772,7 +15791,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdebugutilsmessengercallbackdataext_3">XrDebugUtilsMessengerCallbackDataEXT(3)</h3>
+<h3 id="_xrdebugutilsmessengercallbackdataext3">XrDebugUtilsMessengerCallbackDataEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_107">Name</h4>
 <div class="paragraph">
@@ -15955,7 +15974,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdebugutilsmessengercreateinfoext_3">XrDebugUtilsMessengerCreateInfoEXT(3)</h3>
+<h3 id="_xrdebugutilsmessengercreateinfoext3">XrDebugUtilsMessengerCreateInfoEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_108">Name</h4>
 <div class="paragraph">
@@ -16039,13 +16058,13 @@ call.</p>
 <p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-messageSeverities-parameter"></a> <code>messageSeverities</code> <strong class="purple">must</strong> be a valid combinations of <a href="#XrDebugUtilsMessageSeverityFlagBitsEXT">XrDebugUtilsMessageSeverityFlagBitsEXT</a> values</p>
+<p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-messageSeverities-parameter"></a> <code>messageSeverities</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrDebugUtilsMessageSeverityFlagBitsEXT">XrDebugUtilsMessageSeverityFlagBitsEXT</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-messageSeverities-requiredbitmask"></a> <code>messageSeverities</code> <strong class="purple">must</strong> not be <code>0</code></p>
 </li>
 <li>
-<p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-messageTypes-parameter"></a> <code>messageTypes</code> <strong class="purple">must</strong> be a valid combinations of <a href="#XrDebugUtilsMessageTypeFlagBitsEXT">XrDebugUtilsMessageTypeFlagBitsEXT</a> values</p>
+<p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-messageTypes-parameter"></a> <code>messageTypes</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrDebugUtilsMessageTypeFlagBitsEXT">XrDebugUtilsMessageTypeFlagBitsEXT</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrDebugUtilsMessengerCreateInfoEXT-messageTypes-requiredbitmask"></a> <code>messageTypes</code> <strong class="purple">must</strong> not be <code>0</code></p>
@@ -16126,7 +16145,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrdebugutilsobjectnameinfoext_3">XrDebugUtilsObjectNameInfoEXT(3)</h3>
+<h3 id="_xrdebugutilsobjectnameinfoext3">XrDebugUtilsObjectNameInfoEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_109">Name</h4>
 <div class="paragraph">
@@ -16251,7 +16270,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatabaseheader_3">XrEventDataBaseHeader(3)</h3>
+<h3 id="_xreventdatabaseheader3">XrEventDataBaseHeader(3)</h3>
 <div class="sect3">
 <h4 id="_name_110">Name</h4>
 <div class="paragraph">
@@ -16345,7 +16364,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatabuffer_3">XrEventDataBuffer(3)</h3>
+<h3 id="_xreventdatabuffer3">XrEventDataBuffer(3)</h3>
 <div class="sect3">
 <h4 id="_name_111">Name</h4>
 <div class="paragraph">
@@ -16448,7 +16467,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdataeventslost_3">XrEventDataEventsLost(3)</h3>
+<h3 id="_xreventdataeventslost3">XrEventDataEventsLost(3)</h3>
 <div class="sect3">
 <h4 id="_name_112">Name</h4>
 <div class="paragraph">
@@ -16547,7 +16566,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatainstancelosspending_3">XrEventDataInstanceLossPending(3)</h3>
+<h3 id="_xreventdatainstancelosspending3">XrEventDataInstanceLossPending(3)</h3>
 <div class="sect3">
 <h4 id="_name_113">Name</h4>
 <div class="paragraph">
@@ -16653,7 +16672,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatainteractionprofilechanged_3">XrEventDataInteractionProfileChanged(3)</h3>
+<h3 id="_xreventdatainteractionprofilechanged3">XrEventDataInteractionProfileChanged(3)</h3>
 <div class="sect3">
 <h4 id="_name_114">Name</h4>
 <div class="paragraph">
@@ -16750,7 +16769,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatareferencespacechangepending_3">XrEventDataReferenceSpaceChangePending(3)</h3>
+<h3 id="_xreventdatareferencespacechangepending3">XrEventDataReferenceSpaceChangePending(3)</h3>
 <div class="sect3">
 <h4 id="_name_115">Name</h4>
 <div class="paragraph">
@@ -16862,7 +16881,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatasessionstatechanged_3">XrEventDataSessionStateChanged(3)</h3>
+<h3 id="_xreventdatasessionstatechanged3">XrEventDataSessionStateChanged(3)</h3>
 <div class="sect3">
 <h4 id="_name_116">Name</h4>
 <div class="paragraph">
@@ -16970,7 +16989,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreventdatavisibilitymaskchangedkhr_3">XrEventDataVisibilityMaskChangedKHR(3)</h3>
+<h3 id="_xreventdatavisibilitymaskchangedkhr3">XrEventDataVisibilityMaskChangedKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_117">Name</h4>
 <div class="paragraph">
@@ -17075,7 +17094,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrextensionproperties_3">XrExtensionProperties(3)</h3>
+<h3 id="_xrextensionproperties3">XrExtensionProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_118">Name</h4>
 <div class="paragraph">
@@ -17171,7 +17190,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrextent2df_3">XrExtent2Df(3)</h3>
+<h3 id="_xrextent2df3">XrExtent2Df(3)</h3>
 <div class="sect3">
 <h4 id="_name_119">Name</h4>
 <div class="paragraph">
@@ -17246,7 +17265,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrextent2di_3">XrExtent2Di(3)</h3>
+<h3 id="_xrextent2di3">XrExtent2Di(3)</h3>
 <div class="sect3">
 <h4 id="_name_120">Name</h4>
 <div class="paragraph">
@@ -17321,7 +17340,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrfovf_3">XrFovf(3)</h3>
+<h3 id="_xrfovf3">XrFovf(3)</h3>
 <div class="sect3">
 <h4 id="_name_121">Name</h4>
 <div class="paragraph">
@@ -17408,7 +17427,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrframebegininfo_3">XrFrameBeginInfo(3)</h3>
+<h3 id="_xrframebegininfo3">XrFrameBeginInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_122">Name</h4>
 <div class="paragraph">
@@ -17500,7 +17519,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrframeendinfo_3">XrFrameEndInfo(3)</h3>
+<h3 id="_xrframeendinfo3">XrFrameEndInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_123">Name</h4>
 <div class="paragraph">
@@ -17576,13 +17595,10 @@ pointers.</p>
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layerCount-parameter"></a> <code>layerCount</code> <strong class="purple">must</strong> be a valid <code>uint32_t</code> value</p>
+<p><a id="VUID-XrFrameEndInfo-layerCount-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layerCount</code> <strong class="purple">must</strong> be a valid <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a> structures</p>
-</li>
-<li>
-<p><a id="VUID-XrFrameEndInfo-layerCount-arraylength"></a> <code>layerCount</code> <strong class="purple">must</strong> be greater than <code>0</code></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a> structures</p>
 </li>
 </ul>
 </div>
@@ -17618,7 +17634,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrframestate_3">XrFrameState(3)</h3>
+<h3 id="_xrframestate3">XrFrameState(3)</h3>
 <div class="sect3">
 <h4 id="_name_124">Name</h4>
 <div class="paragraph">
@@ -17719,7 +17735,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrframewaitinfo_3">XrFrameWaitInfo(3)</h3>
+<h3 id="_xrframewaitinfo3">XrFrameWaitInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_125">Name</h4>
 <div class="paragraph">
@@ -17811,7 +17827,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingd3d10khr_3">XrGraphicsBindingD3D10KHR(3)</h3>
+<h3 id="_xrgraphicsbindingd3d10khr3">XrGraphicsBindingD3D10KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_126">Name</h4>
 <div class="paragraph">
@@ -17912,7 +17928,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingd3d11khr_3">XrGraphicsBindingD3D11KHR(3)</h3>
+<h3 id="_xrgraphicsbindingd3d11khr3">XrGraphicsBindingD3D11KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_127">Name</h4>
 <div class="paragraph">
@@ -18013,7 +18029,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingd3d12khr_3">XrGraphicsBindingD3D12KHR(3)</h3>
+<h3 id="_xrgraphicsbindingd3d12khr3">XrGraphicsBindingD3D12KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_128">Name</h4>
 <div class="paragraph">
@@ -18121,7 +18137,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingopenglesandroidkhr_3">XrGraphicsBindingOpenGLESAndroidKHR(3)</h3>
+<h3 id="_xrgraphicsbindingopenglesandroidkhr3">XrGraphicsBindingOpenGLESAndroidKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_129">Name</h4>
 <div class="paragraph">
@@ -18242,7 +18258,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingopenglwaylandkhr_3">XrGraphicsBindingOpenGLWaylandKHR(3)</h3>
+<h3 id="_xrgraphicsbindingopenglwaylandkhr3">XrGraphicsBindingOpenGLWaylandKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_130">Name</h4>
 <div class="paragraph">
@@ -18349,7 +18365,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingopenglwin32khr_3">XrGraphicsBindingOpenGLWin32KHR(3)</h3>
+<h3 id="_xrgraphicsbindingopenglwin32khr3">XrGraphicsBindingOpenGLWin32KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_131">Name</h4>
 <div class="paragraph">
@@ -18463,7 +18479,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingopenglxcbkhr_3">XrGraphicsBindingOpenGLXcbKHR(3)</h3>
+<h3 id="_xrgraphicsbindingopenglxcbkhr3">XrGraphicsBindingOpenGLXcbKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_132">Name</h4>
 <div class="paragraph">
@@ -18605,7 +18621,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingopenglxlibkhr_3">XrGraphicsBindingOpenGLXlibKHR(3)</h3>
+<h3 id="_xrgraphicsbindingopenglxlibkhr3">XrGraphicsBindingOpenGLXlibKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_133">Name</h4>
 <div class="paragraph">
@@ -18740,7 +18756,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsbindingvulkankhr_3">XrGraphicsBindingVulkanKHR(3)</h3>
+<h3 id="_xrgraphicsbindingvulkankhr3">XrGraphicsBindingVulkanKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_134">Name</h4>
 <div class="paragraph">
@@ -18894,7 +18910,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsrequirementsd3d10khr_3">XrGraphicsRequirementsD3D10KHR(3)</h3>
+<h3 id="_xrgraphicsrequirementsd3d10khr3">XrGraphicsRequirementsD3D10KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_135">Name</h4>
 <div class="paragraph">
@@ -19000,7 +19016,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsrequirementsd3d11khr_3">XrGraphicsRequirementsD3D11KHR(3)</h3>
+<h3 id="_xrgraphicsrequirementsd3d11khr3">XrGraphicsRequirementsD3D11KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_136">Name</h4>
 <div class="paragraph">
@@ -19106,7 +19122,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsrequirementsd3d12khr_3">XrGraphicsRequirementsD3D12KHR(3)</h3>
+<h3 id="_xrgraphicsrequirementsd3d12khr3">XrGraphicsRequirementsD3D12KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_137">Name</h4>
 <div class="paragraph">
@@ -19212,7 +19228,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsrequirementsopengleskhr_3">XrGraphicsRequirementsOpenGLESKHR(3)</h3>
+<h3 id="_xrgraphicsrequirementsopengleskhr3">XrGraphicsRequirementsOpenGLESKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_138">Name</h4>
 <div class="paragraph">
@@ -19323,7 +19339,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsrequirementsopenglkhr_3">XrGraphicsRequirementsOpenGLKHR(3)</h3>
+<h3 id="_xrgraphicsrequirementsopenglkhr3">XrGraphicsRequirementsOpenGLKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_139">Name</h4>
 <div class="paragraph">
@@ -19434,7 +19450,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrgraphicsrequirementsvulkankhr_3">XrGraphicsRequirementsVulkanKHR(3)</h3>
+<h3 id="_xrgraphicsrequirementsvulkankhr3">XrGraphicsRequirementsVulkanKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_140">Name</h4>
 <div class="paragraph">
@@ -19545,7 +19561,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrhapticbaseheader_3">XrHapticBaseHeader(3)</h3>
+<h3 id="_xrhapticbaseheader3">XrHapticBaseHeader(3)</h3>
 <div class="sect3">
 <h4 id="_name_141">Name</h4>
 <div class="paragraph">
@@ -19632,7 +19648,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrhapticvibration_3">XrHapticVibration(3)</h3>
+<h3 id="_xrhapticvibration3">XrHapticVibration(3)</h3>
 <div class="sect3">
 <h4 id="_name_142">Name</h4>
 <div class="paragraph">
@@ -19742,7 +19758,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinstancecreateinfo_3">XrInstanceCreateInfo(3)</h3>
+<h3 id="_xrinstancecreateinfo3">XrInstanceCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_143">Name</h4>
 <div class="paragraph">
@@ -19829,7 +19845,7 @@ of extensions to enable.</p>
 <p><a id="VUID-XrInstanceCreateInfo-next-unique"></a> Each <code>type</code> member in the <code>next</code> chain <strong class="purple">must</strong> be unique</p>
 </li>
 <li>
-<p><a id="VUID-XrInstanceCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrInstanceCreateFlagBits">XrInstanceCreateFlagBits</a> values</p>
+<p><a id="VUID-XrInstanceCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrInstanceCreateFlagBits">XrInstanceCreateFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrInstanceCreateInfo-applicationInfo-parameter"></a> <code>applicationInfo</code> <strong class="purple">must</strong> be a valid <a href="#XrApplicationInfo">XrApplicationInfo</a> structure</p>
@@ -19880,7 +19896,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinstancecreateinfoandroidkhr_3">XrInstanceCreateInfoAndroidKHR(3)</h3>
+<h3 id="_xrinstancecreateinfoandroidkhr3">XrInstanceCreateInfoAndroidKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_144">Name</h4>
 <div class="paragraph">
@@ -19987,7 +20003,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinstanceproperties_3">XrInstanceProperties(3)</h3>
+<h3 id="_xrinstanceproperties3">XrInstanceProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_145">Name</h4>
 <div class="paragraph">
@@ -20081,7 +20097,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinteractionprofileinfo_3">XrInteractionProfileInfo(3)</h3>
+<h3 id="_xrinteractionprofileinfo3">XrInteractionProfileInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_146">Name</h4>
 <div class="paragraph">
@@ -20176,7 +20192,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinteractionprofilesuggestedbinding_3">XrInteractionProfileSuggestedBinding(3)</h3>
+<h3 id="_xrinteractionprofilesuggestedbinding3">XrInteractionProfileSuggestedBinding(3)</h3>
 <div class="sect3">
 <h4 id="_name_147">Name</h4>
 <div class="paragraph">
@@ -20283,7 +20299,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xroffset2df_3">XrOffset2Df(3)</h3>
+<h3 id="_xroffset2df3">XrOffset2Df(3)</h3>
 <div class="sect3">
 <h4 id="_name_148">Name</h4>
 <div class="paragraph">
@@ -20358,7 +20374,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xroffset2di_3">XrOffset2Di(3)</h3>
+<h3 id="_xroffset2di3">XrOffset2Di(3)</h3>
 <div class="sect3">
 <h4 id="_name_149">Name</h4>
 <div class="paragraph">
@@ -20433,7 +20449,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrposef_3">XrPosef(3)</h3>
+<h3 id="_xrposef3">XrPosef(3)</h3>
 <div class="sect3">
 <h4 id="_name_150">Name</h4>
 <div class="paragraph">
@@ -20510,7 +20526,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrquaternionf_3">XrQuaternionf(3)</h3>
+<h3 id="_xrquaternionf3">XrQuaternionf(3)</h3>
 <div class="sect3">
 <h4 id="_name_151">Name</h4>
 <div class="paragraph">
@@ -20590,7 +20606,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrrect2df_3">XrRect2Df(3)</h3>
+<h3 id="_xrrect2df3">XrRect2Df(3)</h3>
 <div class="sect3">
 <h4 id="_name_152">Name</h4>
 <div class="paragraph">
@@ -20664,7 +20680,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrrect2di_3">XrRect2Di(3)</h3>
+<h3 id="_xrrect2di3">XrRect2Di(3)</h3>
 <div class="sect3">
 <h4 id="_name_153">Name</h4>
 <div class="paragraph">
@@ -20739,7 +20755,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrreferencespacecreateinfo_3">XrReferenceSpaceCreateInfo(3)</h3>
+<h3 id="_xrreferencespacecreateinfo3">XrReferenceSpaceCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_154">Name</h4>
 <div class="paragraph">
@@ -20837,7 +20853,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessionbegininfo_3">XrSessionBeginInfo(3)</h3>
+<h3 id="_xrsessionbegininfo3">XrSessionBeginInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_155">Name</h4>
 <div class="paragraph">
@@ -20930,7 +20946,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessioncreateinfo_3">XrSessionCreateInfo(3)</h3>
+<h3 id="_xrsessioncreateinfo3">XrSessionCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_156">Name</h4>
 <div class="paragraph">
@@ -21013,7 +21029,7 @@ begins with <code>"XrGraphicsBinding"</code>) or
 <p><a id="VUID-XrSessionCreateInfo-next-unique"></a> Each <code>type</code> member in the <code>next</code> chain <strong class="purple">must</strong> be unique</p>
 </li>
 <li>
-<p><a id="VUID-XrSessionCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrSessionCreateFlagBits">XrSessionCreateFlagBits</a> values</p>
+<p><a id="VUID-XrSessionCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrSessionCreateFlagBits">XrSessionCreateFlagBits</a> values</p>
 </li>
 </ul>
 </div>
@@ -21049,7 +21065,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrspacerelation_3">XrSpaceRelation(3)</h3>
+<h3 id="_xrspacerelation3">XrSpaceRelation(3)</h3>
 <div class="sect3">
 <h4 id="_name_157">Name</h4>
 <div class="paragraph">
@@ -21136,7 +21152,7 @@ It is represented as a 3D vector, with units of radians per second per second.</
 <p><a id="VUID-XrSpaceRelation-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSpaceRelation-relationFlags-parameter"></a> <code>relationFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrSpaceRelationFlagBits">XrSpaceRelationFlagBits</a> values</p>
+<p><a id="VUID-XrSpaceRelation-relationFlags-parameter"></a> <code>relationFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrSpaceRelationFlagBits">XrSpaceRelationFlagBits</a> values</p>
 </li>
 </ul>
 </div>
@@ -21172,7 +21188,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchaincreateinfo_3">XrSwapchainCreateInfo(3)</h3>
+<h3 id="_xrswapchaincreateinfo3">XrSwapchainCreateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_158">Name</h4>
 <div class="paragraph">
@@ -21271,10 +21287,10 @@ minified sampling of the image.</p>
 <p><a id="VUID-XrSwapchainCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSwapchainCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrSwapchainCreateFlagBits">XrSwapchainCreateFlagBits</a> values</p>
+<p><a id="VUID-XrSwapchainCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrSwapchainCreateFlagBits">XrSwapchainCreateFlagBits</a> values</p>
 </li>
 <li>
-<p><a id="VUID-XrSwapchainCreateInfo-usageFlags-parameter"></a> <code>usageFlags</code> <strong class="purple">must</strong> be a valid combinations of <a href="#XrSwapchainUsageFlagBits">XrSwapchainUsageFlagBits</a> values</p>
+<p><a id="VUID-XrSwapchainCreateInfo-usageFlags-parameter"></a> <code>usageFlags</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrSwapchainUsageFlagBits">XrSwapchainUsageFlagBits</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainCreateInfo-usageFlags-requiredbitmask"></a> <code>usageFlags</code> <strong class="purple">must</strong> not be <code>0</code></p>
@@ -21334,7 +21350,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimageacquireinfo_3">XrSwapchainImageAcquireInfo(3)</h3>
+<h3 id="_xrswapchainimageacquireinfo3">XrSwapchainImageAcquireInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_159">Name</h4>
 <div class="paragraph">
@@ -21422,7 +21438,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimagebaseheader_3">XrSwapchainImageBaseHeader(3)</h3>
+<h3 id="_xrswapchainimagebaseheader3">XrSwapchainImageBaseHeader(3)</h3>
 <div class="sect3">
 <h4 id="_name_160">Name</h4>
 <div class="paragraph">
@@ -21513,7 +21529,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimaged3d10khr_3">XrSwapchainImageD3D10KHR(3)</h3>
+<h3 id="_xrswapchainimaged3d10khr3">XrSwapchainImageD3D10KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_161">Name</h4>
 <div class="paragraph">
@@ -21634,7 +21650,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimaged3d11khr_3">XrSwapchainImageD3D11KHR(3)</h3>
+<h3 id="_xrswapchainimaged3d11khr3">XrSwapchainImageD3D11KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_162">Name</h4>
 <div class="paragraph">
@@ -21755,7 +21771,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimaged3d12khr_3">XrSwapchainImageD3D12KHR(3)</h3>
+<h3 id="_xrswapchainimaged3d12khr3">XrSwapchainImageD3D12KHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_163">Name</h4>
 <div class="paragraph">
@@ -21876,7 +21892,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimageopengleskhr_3">XrSwapchainImageOpenGLESKHR(3)</h3>
+<h3 id="_xrswapchainimageopengleskhr3">XrSwapchainImageOpenGLESKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_164">Name</h4>
 <div class="paragraph">
@@ -21997,7 +22013,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimageopenglkhr_3">XrSwapchainImageOpenGLKHR(3)</h3>
+<h3 id="_xrswapchainimageopenglkhr3">XrSwapchainImageOpenGLKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_165">Name</h4>
 <div class="paragraph">
@@ -22118,7 +22134,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimagereleaseinfo_3">XrSwapchainImageReleaseInfo(3)</h3>
+<h3 id="_xrswapchainimagereleaseinfo3">XrSwapchainImageReleaseInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_166">Name</h4>
 <div class="paragraph">
@@ -22206,7 +22222,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimagevulkankhr_3">XrSwapchainImageVulkanKHR(3)</h3>
+<h3 id="_xrswapchainimagevulkankhr3">XrSwapchainImageVulkanKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_167">Name</h4>
 <div class="paragraph">
@@ -22327,7 +22343,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainimagewaitinfo_3">XrSwapchainImageWaitInfo(3)</h3>
+<h3 id="_xrswapchainimagewaitinfo3">XrSwapchainImageWaitInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_168">Name</h4>
 <div class="paragraph">
@@ -22419,7 +22435,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainsubimage_3">XrSwapchainSubImage(3)</h3>
+<h3 id="_xrswapchainsubimage3">XrSwapchainSubImage(3)</h3>
 <div class="sect3">
 <h4 id="_name_169">Name</h4>
 <div class="paragraph">
@@ -22509,7 +22525,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsystemgetinfo_3">XrSystemGetInfo(3)</h3>
+<h3 id="_xrsystemgetinfo3">XrSystemGetInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_170">Name</h4>
 <div class="paragraph">
@@ -22605,7 +22621,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsystemgraphicsproperties_3">XrSystemGraphicsProperties(3)</h3>
+<h3 id="_xrsystemgraphicsproperties3">XrSystemGraphicsProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_171">Name</h4>
 <div class="paragraph">
@@ -22708,7 +22724,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsystemproperties_3">XrSystemProperties(3)</h3>
+<h3 id="_xrsystemproperties3">XrSystemProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_172">Name</h4>
 <div class="paragraph">
@@ -22814,7 +22830,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsystemtrackingproperties_3">XrSystemTrackingProperties(3)</h3>
+<h3 id="_xrsystemtrackingproperties3">XrSystemTrackingProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_173">Name</h4>
 <div class="paragraph">
@@ -22888,7 +22904,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrvector2f_3">XrVector2f(3)</h3>
+<h3 id="_xrvector2f3">XrVector2f(3)</h3>
 <div class="sect3">
 <h4 id="_name_174">Name</h4>
 <div class="paragraph">
@@ -22963,7 +22979,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrvector3f_3">XrVector3f(3)</h3>
+<h3 id="_xrvector3f3">XrVector3f(3)</h3>
 <div class="sect3">
 <h4 id="_name_175">Name</h4>
 <div class="paragraph">
@@ -23042,7 +23058,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrvector4f_3">XrVector4f(3)</h3>
+<h3 id="_xrvector4f3">XrVector4f(3)</h3>
 <div class="sect3">
 <h4 id="_name_176">Name</h4>
 <div class="paragraph">
@@ -23124,7 +23140,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrview_3">XrView(3)</h3>
+<h3 id="_xrview3">XrView(3)</h3>
 <div class="sect3">
 <h4 id="_name_177">Name</h4>
 <div class="paragraph">
@@ -23222,7 +23238,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrviewconfigurationproperties_3">XrViewConfigurationProperties(3)</h3>
+<h3 id="_xrviewconfigurationproperties3">XrViewConfigurationProperties(3)</h3>
 <div class="sect3">
 <h4 id="_name_178">Name</h4>
 <div class="paragraph">
@@ -23319,7 +23335,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrviewconfigurationview_3">XrViewConfigurationView(3)</h3>
+<h3 id="_xrviewconfigurationview3">XrViewConfigurationView(3)</h3>
 <div class="sect3">
 <h4 id="_name_179">Name</h4>
 <div class="paragraph">
@@ -23456,7 +23472,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrviewlocateinfo_3">XrViewLocateInfo(3)</h3>
+<h3 id="_xrviewlocateinfo3">XrViewLocateInfo(3)</h3>
 <div class="sect3">
 <h4 id="_name_180">Name</h4>
 <div class="paragraph">
@@ -23550,7 +23566,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrviewstate_3">XrViewState(3)</h3>
+<h3 id="_xrviewstate3">XrViewState(3)</h3>
 <div class="sect3">
 <h4 id="_name_181">Name</h4>
 <div class="paragraph">
@@ -23610,7 +23626,7 @@ Attribution 4.0 International License</a>.</p>
 <p><a id="VUID-XrViewState-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code></p>
 </li>
 <li>
-<p><a id="VUID-XrViewState-viewStateFlags-parameter"></a> <code>viewStateFlags</code> <strong class="purple">must</strong> be 0 or a valid combinations of <a href="#XrViewStateFlagBits">XrViewStateFlagBits</a> values</p>
+<p><a id="VUID-XrViewState-viewStateFlags-parameter"></a> <code>viewStateFlags</code> <strong class="purple">must</strong> be 0 or a valid combination of <a href="#XrViewStateFlagBits">XrViewStateFlagBits</a> values</p>
 </li>
 </ul>
 </div>
@@ -23646,7 +23662,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrvisibilitymaskkhr_3">XrVisibilityMaskKHR(3)</h3>
+<h3 id="_xrvisibilitymaskkhr3">XrVisibilityMaskKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_182">Name</h4>
 <div class="paragraph">
@@ -23765,7 +23781,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrvulkanswapchainformatlistcreateinfokhr_3">XrVulkanSwapchainFormatListCreateInfoKHR(3)</h3>
+<h3 id="_xrvulkanswapchainformatlistcreateinfokhr3">XrVulkanSwapchainFormatListCreateInfoKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_183">Name</h4>
 <div class="paragraph">
@@ -23870,7 +23886,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="enums">Enumerations</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xractiontype_3">XrActionType(3)</h3>
+<h3 id="_xractiontype3">XrActionType(3)</h3>
 <div class="sect3">
 <h4 id="_name_184">Name</h4>
 <div class="paragraph">
@@ -23951,7 +23967,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrandroidthreadtypekhr_3">XrAndroidThreadTypeKHR(3)</h3>
+<h3 id="_xrandroidthreadtypekhr3">XrAndroidThreadTypeKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_185">Name</h4>
 <div class="paragraph">
@@ -24033,7 +24049,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrenvironmentblendmode_3">XrEnvironmentBlendMode(3)</h3>
+<h3 id="_xrenvironmentblendmode3">XrEnvironmentBlendMode(3)</h3>
 <div class="sect3">
 <h4 id="_name_186">Name</h4>
 <div class="paragraph">
@@ -24106,7 +24122,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xreyevisibility_3">XrEyeVisibility(3)</h3>
+<h3 id="_xreyevisibility3">XrEyeVisibility(3)</h3>
 <div class="sect3">
 <h4 id="_name_187">Name</h4>
 <div class="paragraph">
@@ -24179,7 +24195,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrformfactor_3">XrFormFactor(3)</h3>
+<h3 id="_xrformfactor3">XrFormFactor(3)</h3>
 <div class="sect3">
 <h4 id="_name_188">Name</h4>
 <div class="paragraph">
@@ -24254,7 +24270,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrobjecttype_3">XrObjectType(3)</h3>
+<h3 id="_xrobjecttype3">XrObjectType(3)</h3>
 <div class="sect3">
 <h4 id="_name_189">Name</h4>
 <div class="paragraph">
@@ -24368,7 +24384,7 @@ Unresolved directive in apispec.txt - include::XrPerfSettingsSubDomainEXT.txt[]<
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrreferencespacetype_3">XrReferenceSpaceType(3)</h3>
+<h3 id="_xrreferencespacetype3">XrReferenceSpaceType(3)</h3>
 <div class="sect3">
 <h4 id="_name_190">Name</h4>
 <div class="paragraph">
@@ -24495,7 +24511,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrresult_3">XrResult(3)</h3>
+<h3 id="_xrresult3">XrResult(3)</h3>
 <div class="sect3">
 <h4 id="_name_191">Name</h4>
 <div class="paragraph">
@@ -24524,7 +24540,6 @@ Attribution 4.0 International License</a>.</p>
     XR_ERROR_DRIVER_INCOMPATIBLE = -5,
     XR_ERROR_INITIALIZATION_FAILED = -6,
     XR_ERROR_FUNCTION_UNSUPPORTED = -7,
-    XR_ERROR_FEATURE_UNSUPPORTED = -8,
     XR_ERROR_EXTENSION_NOT_PRESENT = -9,
     XR_ERROR_LIMIT_REACHED = -10,
     XR_ERROR_SIZE_INSUFFICIENT = -11,
@@ -24616,7 +24631,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessionstate_3">XrSessionState(3)</h3>
+<h3 id="_xrsessionstate3">XrSessionState(3)</h3>
 <div class="sect3">
 <h4 id="_name_192">Name</h4>
 <div class="paragraph">
@@ -24802,7 +24817,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrstructuretype_3">XrStructureType(3)</h3>
+<h3 id="_xrstructuretype3">XrStructureType(3)</h3>
 <div class="sect3">
 <h4 id="_name_193">Name</h4>
 <div class="paragraph">
@@ -24940,7 +24955,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrviewconfigurationtype_3">XrViewConfigurationType(3)</h3>
+<h3 id="_xrviewconfigurationtype3">XrViewConfigurationType(3)</h3>
 <div class="sect3">
 <h4 id="_name_194">Name</h4>
 <div class="paragraph">
@@ -25018,7 +25033,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrvisibilitymasktypekhr_3">XrVisibilityMaskTypeKHR(3)</h3>
+<h3 id="_xrvisibilitymasktypekhr3">XrVisibilityMaskTypeKHR(3)</h3>
 <div class="sect3">
 <h4 id="_name_195">Name</h4>
 <div class="paragraph">
@@ -25109,7 +25124,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="flags">Flags</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xrcompositionlayerflags_3">XrCompositionLayerFlags(3)</h3>
+<h3 id="_xrcompositionlayerflags3">XrCompositionLayerFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_196">Name</h4>
 <div class="paragraph">
@@ -25183,7 +25198,7 @@ Unresolved directive in apispec.txt - include::XrDebugUtilsMessageTypeFlagsEXT.t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinputsourcelocalizednameflags_3">XrInputSourceLocalizedNameFlags(3)</h3>
+<h3 id="_xrinputsourcelocalizednameflags3">XrInputSourceLocalizedNameFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_197">Name</h4>
 <div class="paragraph">
@@ -25254,7 +25269,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrinstancecreateflags_3">XrInstanceCreateFlags(3)</h3>
+<h3 id="_xrinstancecreateflags3">XrInstanceCreateFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_198">Name</h4>
 <div class="paragraph">
@@ -25307,7 +25322,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsessioncreateflags_3">XrSessionCreateFlags(3)</h3>
+<h3 id="_xrsessioncreateflags3">XrSessionCreateFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_199">Name</h4>
 <div class="paragraph">
@@ -25360,7 +25375,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrspacerelationflags_3">XrSpaceRelationFlags(3)</h3>
+<h3 id="_xrspacerelationflags3">XrSpaceRelationFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_200">Name</h4>
 <div class="paragraph">
@@ -25462,7 +25477,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchaincreateflags_3">XrSwapchainCreateFlags(3)</h3>
+<h3 id="_xrswapchaincreateflags3">XrSwapchainCreateFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_201">Name</h4>
 <div class="paragraph">
@@ -25536,7 +25551,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrswapchainusageflags_3">XrSwapchainUsageFlags(3)</h3>
+<h3 id="_xrswapchainusageflags3">XrSwapchainUsageFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_202">Name</h4>
 <div class="paragraph">
@@ -25631,7 +25646,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrviewstateflags_3">XrViewStateFlags(3)</h3>
+<h3 id="_xrviewstateflags3">XrViewStateFlags(3)</h3>
 <div class="sect3">
 <h4 id="_name_203">Name</h4>
 <div class="paragraph">
@@ -25721,7 +25736,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="funcpointers">Function Pointer Types</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_pfn_xrdebugutilsmessengercallbackext_3">PFN_xrDebugUtilsMessengerCallbackEXT(3)</h3>
+<h3 id="_pfn_xrdebugutilsmessengercallbackext3">PFN_xrDebugUtilsMessengerCallbackEXT(3)</h3>
 <div class="sect3">
 <h4 id="_name_204">Name</h4>
 <div class="paragraph">
@@ -25822,7 +25837,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pfn_xrvoidfunction_3">PFN_xrVoidFunction(3)</h3>
+<h3 id="_pfn_xrvoidfunction3">PFN_xrVoidFunction(3)</h3>
 <div class="sect3">
 <h4 id="_name_205">Name</h4>
 <div class="paragraph">
@@ -25893,7 +25908,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="basetypes">OpenXR Scalar types</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xrbool32_3">XrBool32(3)</h3>
+<h3 id="_xrbool323">XrBool32(3)</h3>
 <div class="sect3">
 <h4 id="_name_206">Name</h4>
 <div class="paragraph">
@@ -25958,7 +25973,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrduration_3">XrDuration(3)</h3>
+<h3 id="_xrduration3">XrDuration(3)</h3>
 <div class="sect3">
 <h4 id="_name_207">Name</h4>
 <div class="paragraph">
@@ -26013,7 +26028,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrflags64_3">XrFlags64(3)</h3>
+<h3 id="_xrflags643">XrFlags64(3)</h3>
 <div class="sect3">
 <h4 id="_name_208">Name</h4>
 <div class="paragraph">
@@ -26073,7 +26088,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrpath_3">XrPath(3)</h3>
+<h3 id="_xrpath3">XrPath(3)</h3>
 <div class="sect3">
 <h4 id="_name_209">Name</h4>
 <div class="paragraph">
@@ -26136,7 +26151,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrsystemid_3">XrSystemId(3)</h3>
+<h3 id="_xrsystemid3">XrSystemId(3)</h3>
 <div class="sect3">
 <h4 id="_name_210">Name</h4>
 <div class="paragraph">
@@ -26187,7 +26202,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xrtime_3">XrTime(3)</h3>
+<h3 id="_xrtime3">XrTime(3)</h3>
 <div class="sect3">
 <h4 id="_name_211">Name</h4>
 <div class="paragraph">
@@ -26264,7 +26279,7 @@ Attribution 4.0 International License</a>.</p>
 <h2 id="defines">C Macro Definitions</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_xr_current_api_version_3">XR_CURRENT_API_VERSION(3)</h3>
+<h3 id="_xr_current_api_version3">XR_CURRENT_API_VERSION(3)</h3>
 <div class="sect3">
 <h4 id="_name_212">Name</h4>
 <div class="paragraph">
@@ -26276,7 +26291,7 @@ Attribution 4.0 International License</a>.</p>
 <div id="XR_CURRENT_API_VERSION" class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(0, 90, 0)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(0, 90, 1)</code></pre>
 </div>
 </div>
 </div>
@@ -26315,7 +26330,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_define_atom_3">XR_DEFINE_ATOM(3)</h3>
+<h3 id="_xr_define_atom3">XR_DEFINE_ATOM(3)</h3>
 <div class="sect3">
 <h4 id="_name_213">Name</h4>
 <div class="paragraph">
@@ -26379,7 +26394,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_define_handle_3">XR_DEFINE_HANDLE(3)</h3>
+<h3 id="_xr_define_handle3">XR_DEFINE_HANDLE(3)</h3>
 <div class="sect3">
 <h4 id="_name_214">Name</h4>
 <div class="paragraph">
@@ -26452,7 +26467,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_failed_3">XR_FAILED(3)</h3>
+<h3 id="_xr_failed3">XR_FAILED(3)</h3>
 <div class="sect3">
 <h4 id="_name_215">Name</h4>
 <div class="paragraph">
@@ -26502,7 +26517,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_frequency_unspecified_3">XR_FREQUENCY_UNSPECIFIED(3)</h3>
+<h3 id="_xr_frequency_unspecified3">XR_FREQUENCY_UNSPECIFIED(3)</h3>
 <div class="sect3">
 <h4 id="_name_216">Name</h4>
 <div class="paragraph">
@@ -26549,7 +26564,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_header_version_3">XR_HEADER_VERSION(3)</h3>
+<h3 id="_xr_header_version3">XR_HEADER_VERSION(3)</h3>
 <div class="sect3">
 <h4 id="_name_217">Name</h4>
 <div class="paragraph">
@@ -26561,7 +26576,7 @@ Attribution 4.0 International License</a>.</p>
 <div id="XR_HEADER_VERSION" class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Version of this file
-#define XR_HEADER_VERSION 42</code></pre>
+#define XR_HEADER_VERSION 43</code></pre>
 </div>
 </div>
 </div>
@@ -26603,7 +26618,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_infinite_duration_3">XR_INFINITE_DURATION(3)</h3>
+<h3 id="_xr_infinite_duration3">XR_INFINITE_DURATION(3)</h3>
 <div class="sect3">
 <h4 id="_name_218">Name</h4>
 <div class="paragraph">
@@ -26656,7 +26671,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_make_version_3">XR_MAKE_VERSION(3)</h3>
+<h3 id="_xr_make_version3">XR_MAKE_VERSION(3)</h3>
 <div class="sect3">
 <h4 id="_name_219">Name</h4>
 <div class="paragraph">
@@ -26731,7 +26746,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_max_event_data_size_3">XR_MAX_EVENT_DATA_SIZE(3)</h3>
+<h3 id="_xr_max_event_data_size3">XR_MAX_EVENT_DATA_SIZE(3)</h3>
 <div class="sect3">
 <h4 id="_name_220">Name</h4>
 <div class="paragraph">
@@ -26778,7 +26793,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_may_alias_3">XR_MAY_ALIAS(3)</h3>
+<h3 id="_xr_may_alias3">XR_MAY_ALIAS(3)</h3>
 <div class="sect3">
 <h4 id="_name_221">Name</h4>
 <div class="paragraph">
@@ -26847,7 +26862,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_min_haptic_duration_3">XR_MIN_HAPTIC_DURATION(3)</h3>
+<h3 id="_xr_min_haptic_duration3">XR_MIN_HAPTIC_DURATION(3)</h3>
 <div class="sect3">
 <h4 id="_name_222">Name</h4>
 <div class="paragraph">
@@ -26894,7 +26909,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_no_duration_3">XR_NO_DURATION(3)</h3>
+<h3 id="_xr_no_duration3">XR_NO_DURATION(3)</h3>
 <div class="sect3">
 <h4 id="_name_223">Name</h4>
 <div class="paragraph">
@@ -26945,7 +26960,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_null_handle_3">XR_NULL_HANDLE(3)</h3>
+<h3 id="_xr_null_handle3">XR_NULL_HANDLE(3)</h3>
 <div class="sect3">
 <h4 id="_name_224">Name</h4>
 <div class="paragraph">
@@ -27004,7 +27019,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_null_path_3">XR_NULL_PATH(3)</h3>
+<h3 id="_xr_null_path3">XR_NULL_PATH(3)</h3>
 <div class="sect3">
 <h4 id="_name_225">Name</h4>
 <div class="paragraph">
@@ -27056,7 +27071,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_null_system_id_3">XR_NULL_SYSTEM_ID(3)</h3>
+<h3 id="_xr_null_system_id3">XR_NULL_SYSTEM_ID(3)</h3>
 <div class="sect3">
 <h4 id="_name_226">Name</h4>
 <div class="paragraph">
@@ -27108,7 +27123,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_succeeded_3">XR_SUCCEEDED(3)</h3>
+<h3 id="_xr_succeeded3">XR_SUCCEEDED(3)</h3>
 <div class="sect3">
 <h4 id="_name_227">Name</h4>
 <div class="paragraph">
@@ -27158,7 +27173,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_unqualified_success_3">XR_UNQUALIFIED_SUCCESS(3)</h3>
+<h3 id="_xr_unqualified_success3">XR_UNQUALIFIED_SUCCESS(3)</h3>
 <div class="sect3">
 <h4 id="_name_228">Name</h4>
 <div class="paragraph">
@@ -27208,7 +27223,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_version_major_3">XR_VERSION_MAJOR(3)</h3>
+<h3 id="_xr_version_major3">XR_VERSION_MAJOR(3)</h3>
 <div class="sect3">
 <h4 id="_name_229">Name</h4>
 <div class="paragraph">
@@ -27271,7 +27286,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_version_minor_3">XR_VERSION_MINOR(3)</h3>
+<h3 id="_xr_version_minor3">XR_VERSION_MINOR(3)</h3>
 <div class="sect3">
 <h4 id="_name_230">Name</h4>
 <div class="paragraph">
@@ -27334,7 +27349,7 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_version_patch_3">XR_VERSION_PATCH(3)</h3>
+<h3 id="_xr_version_patch3">XR_VERSION_PATCH(3)</h3>
 <div class="sect3">
 <h4 id="_name_231">Name</h4>
 <div class="paragraph">
@@ -27401,14 +27416,1360 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect1">
 <h2 id="extensions">OpenXR Extensions</h2>
 <div class="sectionbody">
-
+<div class="sect2">
+<h3 id="_xr_khr_d3d10_enable3">XR_KHR_D3D10_enable(3)</h3>
+<div class="sect3">
+<h4 id="_name_232">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_D3D10_enable - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_D3D10_enable"> XR_KHR_D3D10_enable</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number">Registered Extension Number</h4>
+<div class="paragraph">
+<p>27</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_232">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrGraphicsBindingD3D10KHR">XrGraphicsBindingD3D10KHR</a>, <a href="#XrGraphicsRequirementsD3D10KHR">XrGraphicsRequirementsD3D10KHR</a>, <a href="#XrSwapchainImageD3D10KHR">XrSwapchainImageD3D10KHR</a>, <a href="#xrGetD3D10GraphicsRequirementsKHR">xrGetD3D10GraphicsRequirementsKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_232">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_D3D10_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_D3D10_enable</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_233">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_d3d11_enable3">XR_KHR_D3D11_enable(3)</h3>
+<div class="sect3">
+<h4 id="_name_233">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_D3D11_enable - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_2">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_D3D11_enable"> XR_KHR_D3D11_enable</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_2">Registered Extension Number</h4>
+<div class="paragraph">
+<p>28</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_2">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_2">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_233">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrGraphicsBindingD3D11KHR">XrGraphicsBindingD3D11KHR</a>, <a href="#XrGraphicsRequirementsD3D11KHR">XrGraphicsRequirementsD3D11KHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#xrGetD3D11GraphicsRequirementsKHR">xrGetD3D11GraphicsRequirementsKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_233">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_D3D11_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_D3D11_enable</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_234">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_d3d12_enable3">XR_KHR_D3D12_enable(3)</h3>
+<div class="sect3">
+<h4 id="_name_234">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_D3D12_enable - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_3">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_D3D12_enable"> XR_KHR_D3D12_enable</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_3">Registered Extension Number</h4>
+<div class="paragraph">
+<p>29</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_3">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_3">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_234">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, <a href="#XrGraphicsRequirementsD3D12KHR">XrGraphicsRequirementsD3D12KHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#xrGetD3D12GraphicsRequirementsKHR">xrGetD3D12GraphicsRequirementsKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_234">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_D3D12_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_D3D12_enable</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_235">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_android_create_instance3">XR_KHR_android_create_instance(3)</h3>
+<div class="sect3">
+<h4 id="_name_235">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_android_create_instance - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_4">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_android_create_instance"> XR_KHR_android_create_instance</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_4">Registered Extension Number</h4>
+<div class="paragraph">
+<p>9</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_4">Revision</h4>
+<div class="paragraph">
+<p>2</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_4">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_235">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrInstanceCreateInfoAndroidKHR">XrInstanceCreateInfoAndroidKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_235">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_android_create_instance" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_android_create_instance</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_236">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_android_surface_swapchain3">XR_KHR_android_surface_swapchain(3)</h3>
+<div class="sect3">
+<h4 id="_name_236">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_android_surface_swapchain - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_5">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_android_surface_swapchain"> XR_KHR_android_surface_swapchain</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_5">Registered Extension Number</h4>
+<div class="paragraph">
+<p>5</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_5">Revision</h4>
+<div class="paragraph">
+<p>4</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_5">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_236">See Also</h4>
+<div class="paragraph">
+<p><a href="#xrCreateSwapchainAndroidSurfaceKHR">xrCreateSwapchainAndroidSurfaceKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_236">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_android_surface_swapchain" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_android_surface_swapchain</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_237">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_android_thread_settings3">XR_KHR_android_thread_settings(3)</h3>
+<div class="sect3">
+<h4 id="_name_237">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_android_thread_settings - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_6">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_android_thread_settings"> XR_KHR_android_thread_settings</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_6">Registered Extension Number</h4>
+<div class="paragraph">
+<p>4</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_6">Revision</h4>
+<div class="paragraph">
+<p>4</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_6">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_237">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrAndroidThreadTypeKHR">XrAndroidThreadTypeKHR</a>, <a href="#xrSetAndroidApplicationThreadKHR">xrSetAndroidApplicationThreadKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_237">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_android_thread_settings" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_android_thread_settings</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_238">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_composition_layer_cube3">XR_KHR_composition_layer_cube(3)</h3>
+<div class="sect3">
+<h4 id="_name_238">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_composition_layer_cube - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_7">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_composition_layer_cube"> XR_KHR_composition_layer_cube</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_7">Registered Extension Number</h4>
+<div class="paragraph">
+<p>7</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_7">Revision</h4>
+<div class="paragraph">
+<p>8</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_7">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_238">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_238">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_cube" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_cube</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_239">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_composition_layer_cylinder3">XR_KHR_composition_layer_cylinder(3)</h3>
+<div class="sect3">
+<h4 id="_name_239">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_composition_layer_cylinder - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_8">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_composition_layer_cylinder"> XR_KHR_composition_layer_cylinder</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_8">Registered Extension Number</h4>
+<div class="paragraph">
+<p>18</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_8">Revision</h4>
+<div class="paragraph">
+<p>4</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_8">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_239">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_239">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_cylinder" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_cylinder</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_240">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_composition_layer_depth3">XR_KHR_composition_layer_depth(3)</h3>
+<div class="sect3">
+<h4 id="_name_240">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_composition_layer_depth - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_9">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_composition_layer_depth"> XR_KHR_composition_layer_depth</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_9">Registered Extension Number</h4>
+<div class="paragraph">
+<p>11</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_9">Revision</h4>
+<div class="paragraph">
+<p>5</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_9">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_240">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrCompositionLayerDepthInfoKHR">XrCompositionLayerDepthInfoKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_240">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_depth" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_depth</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_241">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_composition_layer_equirect3">XR_KHR_composition_layer_equirect(3)</h3>
+<div class="sect3">
+<h4 id="_name_241">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_composition_layer_equirect - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_10">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_composition_layer_equirect"> XR_KHR_composition_layer_equirect</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_10">Registered Extension Number</h4>
+<div class="paragraph">
+<p>19</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_10">Revision</h4>
+<div class="paragraph">
+<p>3</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_10">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_241">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_241">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_equirect" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_equirect</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_242">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_convert_timespec_time3">XR_KHR_convert_timespec_time(3)</h3>
+<div class="sect3">
+<h4 id="_name_242">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_convert_timespec_time - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_11">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_convert_timespec_time"> XR_KHR_convert_timespec_time</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_11">Registered Extension Number</h4>
+<div class="paragraph">
+<p>37</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_11">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_11">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_242">See Also</h4>
+<div class="paragraph">
+<p><a href="#xrConvertTimeToTimespecTimeKHR">xrConvertTimeToTimespecTimeKHR</a>, <a href="#xrConvertTimespecTimeToTimeKHR">xrConvertTimespecTimeToTimeKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_242">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_convert_timespec_time" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_convert_timespec_time</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_243">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_headless3">XR_KHR_headless(3)</h3>
+<div class="sect3">
+<h4 id="_name_243">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_headless - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_12">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_headless"> XR_KHR_headless</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_12">Registered Extension Number</h4>
+<div class="paragraph">
+<p>14</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_12">Revision</h4>
+<div class="paragraph">
+<p>2</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_12">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_243">See Also</h4>
+<div class="paragraph">
+<p>No cross-references are available</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_243">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_headless" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_headless</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_244">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_opengl_enable3">XR_KHR_opengl_enable(3)</h3>
+<div class="sect3">
+<h4 id="_name_244">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_opengl_enable - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_13">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_opengl_enable"> XR_KHR_opengl_enable</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_13">Registered Extension Number</h4>
+<div class="paragraph">
+<p>24</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_13">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_13">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_244">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrGraphicsBindingOpenGLWaylandKHR">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="#XrGraphicsBindingOpenGLWin32KHR">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="#XrGraphicsBindingOpenGLXcbKHR">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="#XrGraphicsBindingOpenGLXlibKHR">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="#XrGraphicsRequirementsOpenGLKHR">XrGraphicsRequirementsOpenGLKHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#xrGetOpenGLGraphicsRequirementsKHR">xrGetOpenGLGraphicsRequirementsKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_244">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_opengl_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_opengl_enable</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_245">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_opengl_es_enable3">XR_KHR_opengl_es_enable(3)</h3>
+<div class="sect3">
+<h4 id="_name_245">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_opengl_es_enable - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_14">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_opengl_es_enable"> XR_KHR_opengl_es_enable</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_14">Registered Extension Number</h4>
+<div class="paragraph">
+<p>25</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_14">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_14">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_245">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrGraphicsBindingOpenGLESAndroidKHR">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="#XrGraphicsRequirementsOpenGLESKHR">XrGraphicsRequirementsOpenGLESKHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#xrGetOpenGLESGraphicsRequirementsKHR">xrGetOpenGLESGraphicsRequirementsKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_245">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_opengl_es_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_opengl_es_enable</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_246">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_visibility_mask3">XR_KHR_visibility_mask(3)</h3>
+<div class="sect3">
+<h4 id="_name_246">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_visibility_mask - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_15">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_visibility_mask"> XR_KHR_visibility_mask</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_15">Registered Extension Number</h4>
+<div class="paragraph">
+<p>32</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_15">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_15">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_246">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrEventDataVisibilityMaskChangedKHR">XrEventDataVisibilityMaskChangedKHR</a>, <a href="#XrVisibilityMaskKHR">XrVisibilityMaskKHR</a>, <a href="#XrVisibilityMaskTypeKHR">XrVisibilityMaskTypeKHR</a>, <a href="#xrGetVisibilityMaskKHR">xrGetVisibilityMaskKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_246">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_visibility_mask" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_visibility_mask</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_247">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_vulkan_enable3">XR_KHR_vulkan_enable(3)</h3>
+<div class="sect3">
+<h4 id="_name_247">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_vulkan_enable - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_16">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_vulkan_enable"> XR_KHR_vulkan_enable</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_16">Registered Extension Number</h4>
+<div class="paragraph">
+<p>26</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_16">Revision</h4>
+<div class="paragraph">
+<p>6</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_16">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_247">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrGraphicsBindingVulkanKHR">XrGraphicsBindingVulkanKHR</a>, <a href="#XrGraphicsRequirementsVulkanKHR">XrGraphicsRequirementsVulkanKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#xrGetVulkanDeviceExtensionsKHR">xrGetVulkanDeviceExtensionsKHR</a>, <a href="#xrGetVulkanGraphicsDeviceKHR">xrGetVulkanGraphicsDeviceKHR</a>, <a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a>, <a href="#xrGetVulkanInstanceExtensionsKHR">xrGetVulkanInstanceExtensionsKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_247">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_vulkan_enable" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_vulkan_enable</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_248">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_vulkan_swapchain_format_list3">XR_KHR_vulkan_swapchain_format_list(3)</h3>
+<div class="sect3">
+<h4 id="_name_248">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_vulkan_swapchain_format_list - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_17">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_vulkan_swapchain_format_list"> XR_KHR_vulkan_swapchain_format_list</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_17">Registered Extension Number</h4>
+<div class="paragraph">
+<p>15</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_17">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_17">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+<li>
+<p>Requires <code><a href="#XR_KHR_vulkan_enable">[XR_KHR_vulkan_enable]</a></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_248">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrVulkanSwapchainFormatListCreateInfoKHR">XrVulkanSwapchainFormatListCreateInfoKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_248">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_vulkan_swapchain_format_list" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_vulkan_swapchain_format_list</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_249">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_khr_win32_convert_performance_counter_time3">XR_KHR_win32_convert_performance_counter_time(3)</h3>
+<div class="sect3">
+<h4 id="_name_249">Name</h4>
+<div class="paragraph">
+<p>XR_KHR_win32_convert_performance_counter_time - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_18">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_KHR_win32_convert_performance_counter_time"> XR_KHR_win32_convert_performance_counter_time</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_18">Registered Extension Number</h4>
+<div class="paragraph">
+<p>36</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_18">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_18">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_249">See Also</h4>
+<div class="paragraph">
+<p><a href="#xrConvertTimeToWin32PerformanceCounterKHR">xrConvertTimeToWin32PerformanceCounterKHR</a>, <a href="#xrConvertWin32PerformanceCounterToTimeKHR">xrConvertWin32PerformanceCounterToTimeKHR</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_249">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_win32_convert_performance_counter_time" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_win32_convert_performance_counter_time</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_250">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_ext_debug_utils3">XR_EXT_debug_utils(3)</h3>
+<div class="sect3">
+<h4 id="_name_250">Name</h4>
+<div class="paragraph">
+<p>XR_EXT_debug_utils - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_19">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_EXT_debug_utils"> XR_EXT_debug_utils</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_19">Registered Extension Number</h4>
+<div class="paragraph">
+<p>20</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_19">Revision</h4>
+<div class="paragraph">
+<p>2</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_19">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_250">See Also</h4>
+<div class="paragraph">
+<p><a href="#PFN_xrDebugUtilsMessengerCallbackEXT">PFN_xrDebugUtilsMessengerCallbackEXT</a>, <a href="#XrDebugUtilsLabelEXT">XrDebugUtilsLabelEXT</a>, <a href="#XrDebugUtilsMessengerCallbackDataEXT">XrDebugUtilsMessengerCallbackDataEXT</a>, <a href="#XrDebugUtilsMessengerCreateInfoEXT">XrDebugUtilsMessengerCreateInfoEXT</a>, <a href="#XrDebugUtilsObjectNameInfoEXT">XrDebugUtilsObjectNameInfoEXT</a>, <a href="#xrCreateDebugUtilsMessengerEXT">xrCreateDebugUtilsMessengerEXT</a>, <a href="#xrDestroyDebugUtilsMessengerEXT">xrDestroyDebugUtilsMessengerEXT</a>, <a href="#xrSessionBeginDebugUtilsLabelRegionEXT">xrSessionBeginDebugUtilsLabelRegionEXT</a>, <a href="#xrSessionEndDebugUtilsLabelRegionEXT">xrSessionEndDebugUtilsLabelRegionEXT</a>, <a href="#xrSessionInsertDebugUtilsLabelEXT">xrSessionInsertDebugUtilsLabelEXT</a>, <a href="#xrSetDebugUtilsObjectNameEXT">xrSetDebugUtilsObjectNameEXT</a>, <a href="#xrSubmitDebugUtilsMessageEXT">xrSubmitDebugUtilsMessageEXT</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_250">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_EXT_debug_utils" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_EXT_debug_utils</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_251">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_ext_performance_settings3">XR_EXT_performance_settings(3)</h3>
+<div class="sect3">
+<h4 id="_name_251">Name</h4>
+<div class="paragraph">
+<p>XR_EXT_performance_settings - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_20">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_EXT_performance_settings"> XR_EXT_performance_settings</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_20">Registered Extension Number</h4>
+<div class="paragraph">
+<p>16</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_20">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_20">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_251">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrEventDataPerfSettingsEXT">XrEventDataPerfSettingsEXT</a>, <a href="#XrPerfSettingsDomainEXT">XrPerfSettingsDomainEXT</a>, <a href="#XrPerfSettingsLevelEXT">XrPerfSettingsLevelEXT</a>, <a href="#XrPerfSettingsNotificationLevelEXT">XrPerfSettingsNotificationLevelEXT</a>, <a href="#XrPerfSettingsSubDomainEXT">XrPerfSettingsSubDomainEXT</a>, <a href="#xrPerfSettingsSetPerformanceLevelEXT">xrPerfSettingsSetPerformanceLevelEXT</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_251">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_EXT_performance_settings" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_EXT_performance_settings</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_252">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_xr_ext_thermal_query3">XR_EXT_thermal_query(3)</h3>
+<div class="sect3">
+<h4 id="_name_252">Name</h4>
+<div class="paragraph">
+<p>XR_EXT_thermal_query - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_21">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_EXT_thermal_query"> XR_EXT_thermal_query</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_21">Registered Extension Number</h4>
+<div class="paragraph">
+<p>17</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_21">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_21">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 0.90</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_252">See Also</h4>
+<div class="paragraph">
+<p><a href="#XrPerfSettingsDomainEXT">XrPerfSettingsDomainEXT</a>, <a href="#XrPerfSettingsNotificationLevelEXT">XrPerfSettingsNotificationLevelEXT</a>, <a href="#xrThermalGetTemperatureTrendEXT">xrThermalGetTemperatureTrendEXT</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_252">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the OpenXR Specification at URL</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_EXT_thermal_query" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_EXT_thermal_query</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_253">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.90.0<br>
-Last updated 2019-03-14 13:24:14 DST
+Version 0.90.1<br>
+Last updated 2019-05-09 14:44:56 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -27424,8 +28785,16 @@ MathJax.Hub.Config({
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }
-});
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
-<title>XrViewportProjection(3)</title>
+<meta name="generator" content="Asciidoctor 2.0.9">
+<title>XR_KHR_composition_layer_cylinder(3)</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -723,56 +723,50 @@ p.tableblock.header { color: #6d6e71; }
 .literalblock pre, .listingblock pre { background: #eee; }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="manpage">
 <div id="header">
-<h1>XrViewportProjection(3) Manual Page</h1>
-<h2>NAME</h2>
+<h1>XR_KHR_composition_layer_cylinder(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
 <div class="sectionbody">
-<p>XrViewportProjection - Struct containing viewport projection data</p>
+<p>XR_KHR_composition_layer_cylinder - instance extension</p>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="_specification">Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="XrViewportProjection.html">XrViewportProjection</a> structure is defined as:</p>
-</div>
-<div class="paragraph">
-<p>TODO(i/703): make it clear how this is different from <a href="XrViewportProjectionInfo.html">XrViewportProjectionInfo</a>.</p>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in XrViewportProjection.txt - include::../generated/api/structs/XrViewportProjection.txt[]</p>
+<p>See <a href="../../openxr.html#XR_KHR_composition_layer_cylinder"> XR_KHR_composition_layer_cylinder</a> in the main specification for complete information.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_members">Members</h2>
+<h2 id="_registered_extension_number">Registered Extension Number</h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Member Descriptions</div>
+<div class="paragraph">
+<p>18</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revision">Revision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>4</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extension_and_version_dependencies">Extension and Version Dependencies</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewTransform</code> is the transform of the view in the <code>space</code> specified by the <a href="xrGetViewportProjections.html">xrGetViewportProjections</a> command.</p>
-</li>
-<li>
-<p><code>fov</code> is the field of view for the four sides of the projection.</p>
+<p>Requires OpenXR 0.90</p>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Unresolved directive in XrViewportProjection.txt - include::../generated/validity/structs/XrViewportProjection.txt[]</p>
 </div>
 </div>
 </div>
@@ -780,7 +774,7 @@ p.tableblock.header { color: #6d6e71; }
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrFov.html">XrFov</a>, <a href="XrRigidTransformf.html">XrRigidTransformf</a>, <a href="XrViewportProjectionInfo.html">XrViewportProjectionInfo</a>, <a href="xrGetViewportProjections.html">xrGetViewportProjections</a></p>
+<p><a href="XrCompositionLayerCylinderKHR.html">XrCompositionLayerCylinderKHR</a></p>
 </div>
 </div>
 </div>
@@ -791,11 +785,11 @@ p.tableblock.header { color: #6d6e71; }
 <p>For more information, see the OpenXR Specification at URL</p>
 </div>
 <div class="paragraph">
-<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XrViewportProjection" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XrViewportProjection</a></p>
+<p><a href="https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_cylinder" class="bare">https://www.khronos.org/registry/openxr/specs/1.0-extensions/html/xrspec.html#XR_KHR_composition_layer_cylinder</a></p>
 </div>
 <div class="paragraph">
-<p>This page is extracted from the OpenXR Specification.
-Fixes and changes should be made to the Specification, not directly.</p>
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
 </div>
 </div>
 </div>
@@ -812,8 +806,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.90.0<br>
-Last updated 2019-01-24 10:18:33 STD
+Version 0.90.1<br>
+Last updated 2019-05-09 14:44:56 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -829,8 +823,16 @@ MathJax.Hub.Config({
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }
-});
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>
