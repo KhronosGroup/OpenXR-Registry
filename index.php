@@ -23,6 +23,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
             </ul> </li>
         <li> <a href="#repo-loader"> <b>Loader and Validation Layers Repositories</b> </a> </li>
         </ul> </li>
+    <li> <a href="#provisional"> Obsolete: <b>OpenXR 0.90 Provisional Specification</b> </a> </li>
 </ul>
 
 
@@ -129,7 +130,20 @@ include_once("../../assets/static_pages/khr_page_top.php");
 </ul>
 
 
+<h2 id="provisional"> Obsolete: <b>OpenXR 0.90 Provisional API Specification Resources</b> </h2>
 
+<p> These are provided for your convenience in porting to 1.0 only.
+    <b>All users of 0.90 should port to the final 1.0 as soon as possible.</b> </p>
+
+<ul>
+<li> <b>OpenXR 0.90 Provisional API + Khronos-defined Extensions</b>
+     <a href="specs/0.90/html/xrspec.html">(Single-file HTML)</a>
+     <a href="specs/0.90/pdf/xrspec.pdf">(PDF)</a> </li>
+<li> <b>OpenXR 0.90 Reference Pages</b>
+     <a href="specs/0.90/man/html/openxr.html">(Single-file HTML)</a>
+     <a href="specs/0.90/man/html/">(HTML, one file per reference page)</a>
+     </li>
+</ul>
 <?php include_once("../../assets/static_pages/khr_page_bottom.php"); ?>
 </body>
 </html>
