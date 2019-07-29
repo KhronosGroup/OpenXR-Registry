@@ -36,10 +36,10 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <li> <b>OpenXR 1.0 API + All Extensions</b>
      <a href="specs/1.0/html/xrspec.html">(Single-file HTML)</a>
      <a href="specs/1.0/pdf/xrspec.pdf">(PDF)</a> <br>
-     This Specification includes Khronos-defined <tt>KHR</tt> extensions
+     This Specification includes Khronos-defined <kbd>KHR</kbd> extensions
      such as the graphics API interfaces used on different platforms 
      and window systems, as well as vendor-specific and multi-vendor
-     <tt>EXT</tt> non-Khronos extensions. </li>
+     <kbd>EXT</kbd> non-Khronos extensions. </li>
 </ul>
 
 <h2 id="refguide"> <b>OpenXR 1.0 Reference Card</b> </h2>
@@ -54,7 +54,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <p> The OpenXR API Reference Pages describe how to use individual API
     and extension commands. The goal is to define all commands and
     structures in the core API and extensions, although there may be some
-    omissions in non-<tt>KHR</tt> extensions.</p>
+    omissions in non-<kbd>KHR</kbd> extensions.</p>
 
 <ul>
 <li> <b>OpenXR 1.0 Reference Pages</b>
@@ -119,7 +119,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
      as it provides the header and loader with minimum dependencies. </li>
 <li> The <a href="https://github.com/KhronosGroup/OpenXR-SDK-Source">
      OpenXR-SDK-Source</a> repository is where development of the loader takes place.
-     It also contains the beta API layers and a sample application (<tt>hello_xr</tt>).
+     It also contains the beta API layers and a sample application (<kbd>hello_xr</kbd>).
      Unlike OpenXR-SDK, it does not contain the generated source: you need
      Python 3.6 or newer on your system to compile this repository. </li>
 </ul>
