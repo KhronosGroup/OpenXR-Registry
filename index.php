@@ -116,7 +116,11 @@ include_once("../../assets/static_pages/khr_page_top.php");
      as well as the source (including generated files) for the
      OpenXR loader that is used for Linux and Windows.
      Most application developers can use this repository,
-     as it provides the header and loader with minimum dependencies. </li>
+     as it provides the header and loader with minimum dependencies.
+     (<b>Note:</b> This repository is new for 1.0 - the repository
+     previously located at OpenXR-SDK has been renamed to
+     OpenXR-SDK-Source. The two repositories share the same pre-1.0
+     git history, however, for ease of migration.)</li>
 <li> The <a href="https://github.com/KhronosGroup/OpenXR-SDK-Source">
      OpenXR-SDK-Source</a> repository is where development of the loader takes place.
      It also contains the beta API layers and a sample application (<kbd>hello_xr</kbd>).
