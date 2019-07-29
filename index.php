@@ -11,16 +11,17 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <p> Index to the OpenXR Registry page content: </p>
 
 <ul>
-    <li> <a href="#apispecs"/> <b>OpenXR 1.0 API Specifications</b> </a> </li>
-    <li> <a href="#refpages"/> <b>OpenXR API Reference Pages</b> </a> </li>
-    <li> <a href="#repos"/> <b>OpenXR GitHub Repositories</b>
+    <li> <a href="#apispecs"> <b>OpenXR 1.0 API Specifications</b> </a> </li>
+    <li> <a href="#refguide"> <b>OpenXR 1.0 Reference Card</b> </a> </li>
+    <li> <a href="#refpages"> <b>OpenXR API Reference Pages</b> </a> </li>
+    <li> <a href="#repos"> <b>OpenXR GitHub Repositories</b> </a>
         <ul>
-        <li> <a href="#repo-docs"/> <b>API and Extension Specification Repository</b> </a>
+        <li> <a href="#repo-docs"> <b>API and Extension Specification Repository</b> </a>
             <ul>
-            <li> <a href="#headers"/> <b>Header Files</b> </a> </li>
-            <li> <a href="#apiregistry"/> <b>API Registry</b> </a> </li>
+            <li> <a href="#headers"> <b>Header Files</b> </a> </li>
+            <li> <a href="#apiregistry"> <b>API Registry</b> </a> </li>
             </ul> </li>
-        <li> <a href="#repo-loader"/> <b>Loader and Validation Layers Repositories</b> </a> </li>
+        <li> <a href="#repo-loader"> <b>Loader and Validation Layers Repositories</b> </a> </li>
         </ul> </li>
 </ul>
 
@@ -40,6 +41,13 @@ include_once("../../assets/static_pages/khr_page_top.php");
      and window systems, as well as vendor-specific and multi-vendor
      <tt>EXT</tt> non-Khronos extensions. </li>
 </ul>
+
+<h2> <a name="refguide"></a> <b>OpenXR 1.0 Reference Card</b> </h2>
+
+<p> The <a href="specs/1.0/refguide/openxr-10-reference-guide.pdf.pdf">
+    OpenXR 1.0 Reference Card (PDF)</a> is a compact document summarizing
+    the OpenXR 1.0 functions, structures, and enumerants, as well as
+    providing an overview of the input system and a typical OpenXR application's flow.
 
 <h2> <a name="refpages"></a> <b>API Reference Pages</b> </h2>
 
