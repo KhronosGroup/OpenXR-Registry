@@ -25,7 +25,11 @@ include_once("../../assets/static_pages/khr_page_top.php");
             <li> <a href="#headers"> <b>Header Files</b> </a> </li>
             <li> <a href="#apiregistry"> <b>API Registry</b> </a> </li>
             </ul> </li>
-        <li> <a href="#repo-loader"> <b>Loader and Validation Layers Repositories</b> </a> </li>
+        <li> <a href="#repo-loader"> <b>Loader and Validation Layers Repositories</b> </a>
+            <ul>
+            <li> <a href="#repo-sdk"> KhronosGroup/<b>OpenXR-SDK</b> </a> </li>
+            <li> <a href="#repo-sdk-source"> KhronosGroup/<b>OpenXR-SDK-Source</b> </a> </li>
+            </ul> </li>
         </ul> </li>
     <li> <a href="#provisional"> Obsolete: <b>OpenXR 0.90 Provisional Specification</b> </a> </li>
 </ul>
@@ -42,7 +46,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
      <a href="specs/1.0/html/xrspec.html">(Single-file HTML)</a>
      <a href="specs/1.0/pdf/xrspec.pdf">(PDF)</a> <br>
      This Specification includes Khronos-defined <kbd>KHR</kbd> extensions
-     such as the graphics API interfaces used on different platforms 
+     such as the graphics API interfaces used on different platforms
      and window systems, as well as vendor-specific and multi-vendor
      <kbd>EXT</kbd> non-Khronos extensions. </li>
 </ul>
@@ -81,22 +85,24 @@ include_once("../../assets/static_pages/khr_page_top.php");
     OpenXR-Docs</a> repository contains the AsciiDoc source for the OpenXR
     API specification, and for registered OpenXR API extensions. </p>
 
-<p> OpenXR-Docs also contains the header files, API Registry, and
-    reference page sources. </p>
+<p> OpenXR-Docs also contains the generated header files, API Registry
+    <code>xr.xml</code>, and scripts for spec building and verification. </p>
 
 
 <h4 id="headers"> <b>Header Files</b> </h4>
 
 <p> For most developers, the header files provided with the generated
-    loader source in the <a href="#repo-loader">OpenXR-SDK</a> GitHub
+    loader source in the <a href="#repo-sdk">OpenXR-SDK</a> GitHub
     repository is all that's needed. </p>
 
 <p> However, all OpenXR headers provided by Khronos are ultimately obtained
-    from the <a href="#repo-docs"> OpenXR-Docs</a> repository. You may clone
+    from the <a href="#repo-docs">OpenXR-Docs</a> repository. You may clone
     this repository and copy the headers from <b>include/openxr/*.h</b>;
-    or, if you need to generate a customized version of the headers, use the
-    <a href="#apiregistry">API Registry</a> and scripts under
-    <b>xml/</b>. </p>
+    If you need to generate a customized version of the headers and/or loader,
+    use the <a href="#apiregistry">API Registry</a> <code>xr.xml</code> in
+    <a href="#repo-sdk-source">OpenXR-SDK-Source</a> or
+    <a href="#repo-docs">OpenXR-Docs</a> as required, together with the
+    scripts in <b>specification/scripts</b> and/or <b>src/scripts</b>. </p>
 
 
 <h4 id="apiregistry"> <b>API Registry</b> </h4>
@@ -110,28 +116,87 @@ include_once("../../assets/static_pages/khr_page_top.php");
     pages for interface definitions, parameter and member validity
     language, and synchronization language; and more. </p>
 
+<p> The canonical location for the registry is the <a href="#repo-docs">
+    OpenXR-Docs</a> repository in <code>specification/registry/xr.xml</code>,
+    and that is where any changes should be submitted.
+    "Read-only" copies, regularly synchronized, exist in the same relative path in: </p>
+<ul>
+    <li> the <a href="#repo-sdk">OpenXR-SDK</a> repository, for optional,
+         custom code generation by an application. None of the associated
+         scripts are included in this repository, and all generated files
+         are pre-generated, so changes to the XML here do not have any
+         effect except on any custom scripts that might be written explicitly
+         to consume the XML.</li>
+
+    <li> the <a href="#repo-sdk-source">OpenXR-SDK-Source</a> repository, for
+         header generation, loader and API layer source generation,
+         and loader documentation generation. Changes to the XML here
+         affect all these generated files and libraries.</li>
+</ul>
+
 <h3 id="repo-loader"> <b>Loader and Validation Layers Repositories</b> </h3>
 
 <p> There are additional Khronos Github repositories containing OpenXR
     source code, libraries, and tools.
 
+<h4 id="repo-sdk"> KhronosGroup/<b>OpenXR-SDK</b> </h4>
+
+<p> The <a href="https://github.com/KhronosGroup/OpenXR-SDK">
+    OpenXR-SDK</a> repository contains: </p>
 <ul>
-<li> The <a href="https://github.com/KhronosGroup/OpenXR-SDK">
-     OpenXR-SDK</a> repository contains the generated header files,
-     as well as the source (including generated files) for the
-     OpenXR loader that is used for Linux and Windows.
-     Most application developers can use this repository,
-     as it provides the header and loader with minimum dependencies.
-     (<b>Note:</b> This repository is new for 1.0 - the repository
-     previously located at OpenXR-SDK has been renamed to
-     OpenXR-SDK-Source. The two repositories share the same pre-1.0
-     git history, however, for ease of migration.)</li>
-<li> The <a href="https://github.com/KhronosGroup/OpenXR-SDK-Source">
-     OpenXR-SDK-Source</a> repository is where development of the loader takes place.
-     It also contains the beta API layers and a sample application (<kbd>hello_xr</kbd>).
-     Unlike OpenXR-SDK, it does not contain the generated source: you need
-     Python 3.6 or newer on your system to compile this repository. </li>
+    <li> all OpenXR header files (generated and static) </li>
+    <li> source code and CMake build system for the
+         OpenXR loader that is used for Linux and Windows </li>
+    <li> all generated source files required to build the loader </li>
+    <li> rendered HTML of the loader design doc (in <code>doc/loader/</code>) </li>
+    <li> a copy of the XML registry, for optional custom code generation usage </li> </ul>
+
+<p> Most application developers can use this repository,
+    as it provides the header and loader with minimum dependencies,
+    with no requirement for code generation at build time.
+    It is designed for inclusion in your application's source tree,
+    as the loader model for OpenXR on Windows is to bundle the loader
+    (whether statically or dynamically linked) with your application,
+    rather than installing system-wide. </p>
+
+<p> This repository contains a subset of the <a href="#repo-sdk-source">
+    OpenXR-SDK-Source</a> repository (only the loader source),
+    with the generated source code files pre-generated for easier usage.
+    If you're looking for API layers, sample code, etc. see that repo. </p>
+
+<p> <b>Note:</b> This repository is new for 1.0 - the repository
+    previously located at OpenXR-SDK has been renamed to
+    <a href="#repo-sdk-source">OpenXR-SDK-Source</a>. The two repositories
+    share the same pre-1.0 git history, however, for ease of migration.</p>
+
+<h4 id="repo-sdk-source"> KhronosGroup/<b>OpenXR-SDK-Source</b> </h4>
+
+<p> The <a href="https://github.com/KhronosGroup/OpenXR-SDK-Source">
+     OpenXR-SDK-Source</a> repository contains: </p>
+<ul>
+    <li> the static OpenXR header file <code>openxr_platform_defines.h</code> </li>
+    <li> source code and CMake build system for
+        <ul>
+        <li> the OpenXR loader that is used for Linux and Windows </li>
+        <li> two "beta" API layers, <code>XR_LUNARG_core_validation</code>
+                and <code>XR_LUNARG_api_dump</code> </li>
+        <li> the <code>hello_xr</code> sample application </li>
+        <li> tests for the loader </li>
+        </ul> </li>
+    <li> a copy of the XML registry, for required code generation usage </li>
+    <li> code generation scripts (in Python 3) required for the loader,
+         API layers, and tests </li>
+    <li> the loader design document source (in Asciidoctor) and the scripts
+         required to build it </li>
 </ul>
+
+<p> OpenXR-SDK-Source is where development of the loader takes place: changes are migrated to
+    <a href="#repo-sdk">OpenXR-SDK</a> regularly. Unlike that repo, it does not contain the
+    generated headers or source: you need Python 3.6 or newer on your system to compile this repository. </p>
+
+<p> <b>Note:</b> This repository was formerly known as OpenXR-SDK during the 0.90 time frame,
+    and has been renamed to make room for the new, simpler <a href="#repo-sdk">OpenXR-SDK</a>
+    that contains only the loader and headers, and does not require any code generation.</p>
 
 
 <h2 id="provisional"> Obsolete: <b>OpenXR 0.90 Provisional API Specification Resources</b> </h2>
@@ -147,8 +212,8 @@ include_once("../../assets/static_pages/khr_page_top.php");
      <a href="specs/0.90/man/html/openxr.html">(Single-file HTML)</a>
      <a href="specs/0.90/man/html/">(HTML, one file per reference page)</a>
      </li>
-<li> The <a href="specs/0.90/refguide/OpenXR-0.90-web.pdf">OpenXR 0.90 API 
-     Overview (PDF)</a> is a compact document providing an overview of the 
+<li> The <a href="specs/0.90/refguide/OpenXR-0.90-web.pdf">OpenXR 0.90 API
+     Overview (PDF)</a> is a compact document providing an overview of the
      OpenXR 0.90 API, Input and Haptics, and a typical OpenXR app's flow. </li>
 
 </ul>
