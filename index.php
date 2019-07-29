@@ -3,10 +3,14 @@ $static_title = 'Khronos OpenXR Registry';
 include_once("../../assets/static_pages/khr_page_top.php");
 ?>
 
-<p> The OpenXR registry contains formatted specifications of the OpenXR API,
+<p> The OpenXR™ registry contains formatted specifications of the OpenXR API,
     header files, API reference pages, the reference card, and related
     documentation. The registry also links to the GitHub repository where
     the sources for these documents can be found. </p>
+
+<p> For general information on OpenXR, including information on implementations,
+    developer resources, and more, see the <a href="https://www.khronos.org/openxr">
+    OpenXR homepage</a>. </p>
 
 <p> Index to the OpenXR Registry page content: </p>
 
