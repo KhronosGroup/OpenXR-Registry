@@ -26,7 +26,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 </ul>
 
 
-<h2 id="apispecs"></a> <b>OpenXR 1.0 API Specifications</b> </h2>
+<h2 id="apispecs"> <b>OpenXR 1.0 API Specifications</b> </h2>
 
 <p> We currently publish the OpenXR API Specification in PDF and HTML forms.
     There are several versions of the OpenXR 1.0 Specification, as well as
