@@ -32,7 +32,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     related Specifications and collateral material: </p>
 
 <ul>
-<li> <b>OpenXR 1.0 Provisional API + All Extensions</b>
+<li> <b>OpenXR 1.0 API + All Extensions</b>
      <a href="specs/1.0/html/xrspec.html">(Single-file HTML)</a>
      <a href="specs/1.0/pdf/xrspec.pdf">(PDF)</a> </li>
      This Specification includes Khronos-defined <tt>KHR</tt> extensions
