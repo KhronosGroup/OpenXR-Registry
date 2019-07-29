@@ -46,12 +46,11 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <p> The OpenXR API Reference Pages describe how to use individual API
     and extension commands. The goal is to define all commands and
     structures in the core API and extensions, although there may be some
-    omissions. In addition to the format published here, it is possible to
-    generate other formats from the reference page sources, such as PDF or
-    Unix <tt>nroff</tt> man page sources.</p>
+    omissions in non-<tt>KHR</tt> extensions.</p>
 
 <ul>
 <li> <b>OpenXR 1.0 Reference Pages</b>
+     <a href="specs/1.0/man/html/openxr.html">(Single-file HTML)</a>
      <a href="specs/1.0/man/html/">(HTML, one file per reference page)</a>
      </li>
 </ul>
