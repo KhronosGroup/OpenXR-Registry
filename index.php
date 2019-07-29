@@ -34,7 +34,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     related Specifications and collateral material: </p>
 
 <ul>
-<li> <b>OpenXR 1.0 API + All Extensions</b>
+<li> <b>OpenXR 1.0 API + all published Extensions</b>
      <a href="specs/1.0/html/xrspec.html">(Single-file HTML)</a>
      <a href="specs/1.0/pdf/xrspec.pdf">(PDF)</a> <br>
      This Specification includes Khronos-defined <kbd>KHR</kbd> extensions
@@ -136,13 +136,17 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <b>All users of 0.90 should port to the final 1.0 as soon as possible.</b> </p>
 
 <ul>
-<li> <b>OpenXR 0.90 Provisional API + Khronos-defined Extensions</b>
+<li> <b>OpenXR 0.90 Provisional API + all published Extensions</b>
      <a href="specs/0.90/html/xrspec.html">(Single-file HTML)</a>
      <a href="specs/0.90/pdf/xrspec.pdf">(PDF)</a> </li>
-<li> <b>OpenXR 0.90 Reference Pages</b>
+<li> <b>OpenXR 0.90 Reference Pages</b> including all published Extensions
      <a href="specs/0.90/man/html/openxr.html">(Single-file HTML)</a>
      <a href="specs/0.90/man/html/">(HTML, one file per reference page)</a>
      </li>
+<li> The <a href="specs/0.90/refguide/OpenXR-0.90-web.pdf">OpenXR 0.90 API 
+     Overview (PDF)</a> is a compact document providing an overview of the 
+     OpenXR 0.90 API, Input and Haptics, and a typical OpenXR app's flow. </li>
+
 </ul>
 <?php include_once("../../assets/static_pages/khr_page_bottom.php"); ?>
 </body>
