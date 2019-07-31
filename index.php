@@ -53,7 +53,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 
 <h2 id="refguide"> <b>OpenXR 1.0 Reference Card</b> </h2>
 
-<p> The <a href="specs/1.0/refguide/openxr-10-reference-guide.pdf.pdf">
+<p> The <a href="specs/1.0/refguide/openxr-10-reference-guide.pdf">
     OpenXR 1.0 Reference Card (PDF)</a> is a compact document summarizing
     the OpenXR 1.0 functions, structures, and enumerants, as well as
     providing an overview of the input system and a typical OpenXR application's flow.
