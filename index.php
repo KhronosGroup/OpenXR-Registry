@@ -96,8 +96,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     repository is all that's needed. </p>
 
 <p> However, all OpenXR headers provided by Khronos are ultimately obtained
-    from the <a href="#repo-docs">OpenXR-Docs</a> repository. You may clone
-    this repository and copy the headers from <b>include/openxr/*.h</b>;
+    from the <a href="#repo-docs">OpenXR-Docs</a> repository.
     If you need to generate a customized version of the headers and/or loader,
     use the <a href="#apiregistry">API Registry</a> <code>xr.xml</code> in
     <a href="#repo-sdk-source">OpenXR-SDK-Source</a> or
