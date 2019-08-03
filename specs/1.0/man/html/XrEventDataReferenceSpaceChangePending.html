@@ -748,17 +748,17 @@ runtime otherwise switching to a different space definition.</p>
 <p>The reference space change <strong class="purple">must</strong> only take effect for <a href="xrLocateSpace.html">xrLocateSpace</a> or
 <a href="xrLocateViews.html">xrLocateViews</a> calls whose <a href="XrTime.html">XrTime</a> parameter is greater than or
 equal to the <code>changeTime</code> provided in that event.
-Runtimes <strong class="purple">should</strong> provide a <code>changeTime</code> to apps that allows for a deep
-render pipeline to present frames that are already in flight using the
-previous definition of the space.
+Runtimes <strong class="purple">should</strong> provide a <code>changeTime</code> to applications that allows for
+a deep render pipeline to present frames that are already in flight using
+the previous definition of the space.
 Runtimes <strong class="purple">should</strong> choose a <code>changeTime</code> that is midway between the
-<code>displayTime</code> of future frames to avoid threshold issues with apps that
-calculate future frame times using <code>displayPeriod</code>.</p>
+<code>displayTime</code> of future frames to avoid threshold issues with
+applications that calculate future frame times using <code>displayPeriod</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>pose</code> provided here <strong class="purple">must</strong> only describe the change in the natural
 origin of the reference space and <strong class="purple">must</strong> not incorporate any origin offsets
-specified by the app during calls to <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a>.
+specified by the application during calls to <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a>.
 If the runtime does not know the location of the space&#8217;s new origin relative
 to its previous origin, <code>poseValid</code> <strong class="purple">must</strong> be false, and the position and
 orientation of <code>poseInPreviousSpace</code> are undefined.</p>
@@ -885,8 +885,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2019-07-29 03:32:20 UTC
+Version 1.0.1<br>
+Last updated 2019-08-02 22:59:23 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

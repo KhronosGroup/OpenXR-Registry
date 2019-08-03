@@ -837,7 +837,7 @@ The application does this by successfully calling <a href="xrBeginSession.html">
 then running its frame loop by calling <a href="xrWaitFrame.html">xrWaitFrame</a>, <a href="xrBeginFrame.html">xrBeginFrame</a>
 and <a href="xrEndFrame.html">xrEndFrame</a> in a loop.
 If the runtime wishes to return the session to the
-<code>XR_SESSION_STATE_IDLE</code> state, it <strong class="purple">must</strong> wait until the app calls
+<code>XR_SESSION_STATE_IDLE</code> state, it <strong class="purple">must</strong> wait until the application calls
 <a href="xrBeginSession.html">xrBeginSession</a>.
 After returning from the <a href="xrBeginSession.html">xrBeginSession</a> call, the runtime may then
 immediately transition forward through the
@@ -875,13 +875,13 @@ frames.
 The application <strong class="purple">should</strong> continue running its frame loop, rendering and
 submitting its composition layers, although it may wish to pause its
 experience, as users cannot interact with the application at this time.
-It is important for apps to continue rendering when visible, even when they
-do not have focus, so the user continues to see something reasonable
-underneath modal pop-ups.
-Runtimes <strong class="purple">should</strong> make input actions inactive during while the app is
-unfocused, and apps should react to an inactive input action by skipping
-rendering of that action&#8217;s input avatar (depictions of hands or other
-tracked objects controlled by the user).</p>
+It is important for applications to continue rendering when visible, even
+when they do not have focus, so the user continues to see something
+reasonable underneath modal pop-ups.
+Runtimes <strong class="purple">should</strong> make input actions inactive during while the application is
+unfocused, and applications should react to an inactive input action by
+skipping rendering of that action&#8217;s input avatar (depictions of hands or
+other tracked objects controlled by the user).</p>
 </div>
 <div class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_FOCUSED</code> state indicates that the
@@ -978,8 +978,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2019-07-29 03:32:20 UTC
+Version 1.0.1<br>
+Last updated 2019-08-02 22:59:23 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

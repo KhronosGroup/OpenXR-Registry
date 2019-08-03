@@ -756,6 +756,7 @@ space type.</p>
     XR_REFERENCE_SPACE_TYPE_VIEW = 1,
     XR_REFERENCE_SPACE_TYPE_LOCAL = 2,
     XR_REFERENCE_SPACE_TYPE_STAGE = 3,
+    XR_REFERENCE_SPACE_TYPE_UNBOUNDED_MSFT = 1000038000,
     XR_REFERENCE_SPACE_TYPE_MAX_ENUM = 0x7FFFFFFF
 } XrReferenceSpaceType;</code></pre>
 </div>
@@ -803,11 +804,11 @@ The <code>LOCAL</code> reference space establishes a world-locked origin,
 gravity-aligned to exclude pitch and roll, with +Y up, +X to the right,
 and -Z forward.
 This space locks in both its initial position and orientation, which the
-runtime <strong class="purple">may</strong> define to be either the initial position at app launch or
-some other calibrated zero position.</p>
+runtime <strong class="purple">may</strong> define to be either the initial position at application
+launch or some other calibrated zero position.</p>
 <div class="paragraph">
-<p><code>LOCAL</code> space is useful when an app needs to render <strong>seated-scale</strong> content
-that is not positioned relative to the physical floor.</p>
+<p><code>LOCAL</code> space is useful when an application needs to render <strong>seated-scale</strong>
+content that is not positioned relative to the physical floor.</p>
 </div>
 <div class="paragraph">
 <p>When a user needs to recenter <code>LOCAL</code> space, a runtime <strong class="purple">may</strong> offer some
@@ -851,12 +852,12 @@ the X and Z axes aligned with the rectangle edges.
 The runtime <strong class="purple">may</strong> not be able to locate spaces relative to the <code>STAGE</code>
 reference space if the user has not yet defined one within the
 runtime-specific UI.
-Apps can use <a href="xrGetReferenceSpaceBoundsRect.html">xrGetReferenceSpaceBoundsRect</a> to determine the extents
-of the <code>STAGE</code> reference space&#8217;s XZ bounds rectangle, if defined.</p>
+Applications can use <a href="xrGetReferenceSpaceBoundsRect.html">xrGetReferenceSpaceBoundsRect</a> to determine the
+extents of the <code>STAGE</code> reference space&#8217;s XZ bounds rectangle, if defined.</p>
 <div class="paragraph">
-<p><code>STAGE</code> space is useful when an app needs to render <strong>standing-scale</strong> content
-(no bounds) or <strong>room-scale</strong> content (with bounds) that is relative to the
-physical floor.</p>
+<p><code>STAGE</code> space is useful when an application needs to render <strong>standing-scale</strong>
+content (no bounds) or <strong>room-scale</strong> content (with bounds) that is relative
+to the physical floor.</p>
 </div>
 <div class="paragraph">
 <p>When the user redefines the origin or bounds of the current <code>STAGE</code> space,
@@ -927,8 +928,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2019-07-29 03:32:20 UTC
+Version 1.0.1<br>
+Last updated 2019-08-02 22:59:23 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

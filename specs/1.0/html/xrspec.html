@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2019 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.0,</span>
-<span id="revdate">Mon, 29 Jul 2019 03:31:04 +0000</span>
-<br><span id="revremark">from git ref release-1.0.0 commit: db4ce3895fe338b82575ec50190bc6c88ef386f0</span>
+<span id="revnumber">version 1.0.1,</span>
+<span id="revdate">Fri, 02 Aug 2019 22:58:39 +0000</span>
+<br><span id="revremark">from git ref release-1.0.1 commit: 0f3ab11e8c8f75821886c568575d509799836628</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -577,7 +577,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_EXT_debug_utils">12.17. XR_EXT_debug_utils</a></li>
 <li><a href="#XR_EXT_performance_settings">12.18. XR_EXT_performance_settings</a></li>
 <li><a href="#XR_EXT_thermal_query">12.19. XR_EXT_thermal_query</a></li>
-<li><a href="#XR_VARJO_quad_views">12.20. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_MND_headless">12.20. XR_MND_headless</a></li>
+<li><a href="#XR_MSFT_spatial_anchor">12.21. XR_MSFT_spatial_anchor</a></li>
+<li><a href="#XR_MSFT_unbounded_reference_space">12.22. XR_MSFT_unbounded_reference_space</a></li>
+<li><a href="#XR_VARJO_quad_views">12.23. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#index">Index</a>
@@ -1227,7 +1230,7 @@ Therefore, an application <strong class="purple">should</strong> first query whi
 before enabling.</p>
 </div>
 <div class="paragraph">
-<p>The application queries the available list of extensions using the the
+<p>The application queries the available list of extensions using the
 <a href="#xrEnumerateInstanceExtensionProperties">xrEnumerateInstanceExtensionProperties</a> function.
 Once an application determines which target extensions are supported, it
 <strong class="purple">can</strong> enable some subset of them during the call to <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
@@ -1904,6 +1907,7 @@ All run time error codes are negative values.</p>
     XR_ERROR_LOCALIZED_NAME_INVALID = -49,
     XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR = -1000003000,
     XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR = -1000003001,
+    XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT = -1000039001,
     XR_RESULT_MAX_ENUM = 0x7FFFFFFF
 } XrResult;</code></pre>
 </div>
@@ -2186,6 +2190,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR</code></p></td>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">xrSetAndroidApplicationThreadKHR failed setting the thread attributes/priority. (Added by the <code><a href="#XR_KHR_android_thread_settings">XR_KHR_android_thread_settings</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">Spatial anchor could not be created at that location. (Added by the <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2359,6 +2367,7 @@ object handle type <strong class="purple">may</strong> be provided to indicate i
     XR_OBJECT_TYPE_ACTION_SET = 5,
     XR_OBJECT_TYPE_ACTION = 6,
     XR_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT = 1000019000,
+    XR_OBJECT_TYPE_SPATIAL_ANCHOR_MSFT = 1000039000,
     XR_OBJECT_TYPE_MAX_ENUM = 0x7FFFFFFF
 } XrObjectType;</code></pre>
 </div>
@@ -5513,8 +5522,8 @@ simultaneously.</p>
 <div class="sect2">
 <h3 id="form_factor_description">5.1. Form Factors</h3>
 <div class="paragraph">
-<p>The first step in selecting a system is for the app to request its desired
-<strong>form factor</strong>.
+<p>The first step in selecting a system is for the application to request its
+desired <strong>form factor</strong>.
 The form factor defines how the display(s) moves in the environment relative
 to the user&#8217;s head and how the user will interact with the XR experience.
 A runtime <strong class="purple">may</strong> support multiple form factors, such as on a mobile phone that
@@ -7769,6 +7778,7 @@ space type.</p>
     XR_REFERENCE_SPACE_TYPE_VIEW = 1,
     XR_REFERENCE_SPACE_TYPE_LOCAL = 2,
     XR_REFERENCE_SPACE_TYPE_STAGE = 3,
+    XR_REFERENCE_SPACE_TYPE_UNBOUNDED_MSFT = 1000038000,
     XR_REFERENCE_SPACE_TYPE_MAX_ENUM = 0x7FFFFFFF
 } XrReferenceSpaceType;</code></pre>
 </div>
@@ -7811,11 +7821,11 @@ The <code>LOCAL</code> reference space establishes a world-locked origin,
 gravity-aligned to exclude pitch and roll, with +Y up, +X to the right,
 and -Z forward.
 This space locks in both its initial position and orientation, which the
-runtime <strong class="purple">may</strong> define to be either the initial position at app launch or
-some other calibrated zero position.</p>
+runtime <strong class="purple">may</strong> define to be either the initial position at application
+launch or some other calibrated zero position.</p>
 <div class="paragraph">
-<p><code>LOCAL</code> space is useful when an app needs to render <strong>seated-scale</strong> content
-that is not positioned relative to the physical floor.</p>
+<p><code>LOCAL</code> space is useful when an application needs to render <strong>seated-scale</strong>
+content that is not positioned relative to the physical floor.</p>
 </div>
 <div class="paragraph">
 <p>When a user needs to recenter <code>LOCAL</code> space, a runtime <strong class="purple">may</strong> offer some
@@ -7859,12 +7869,12 @@ the X and Z axes aligned with the rectangle edges.
 The runtime <strong class="purple">may</strong> not be able to locate spaces relative to the <code>STAGE</code>
 reference space if the user has not yet defined one within the
 runtime-specific UI.
-Apps can use <a href="#xrGetReferenceSpaceBoundsRect">xrGetReferenceSpaceBoundsRect</a> to determine the extents
-of the <code>STAGE</code> reference space&#8217;s XZ bounds rectangle, if defined.</p>
+Applications can use <a href="#xrGetReferenceSpaceBoundsRect">xrGetReferenceSpaceBoundsRect</a> to determine the
+extents of the <code>STAGE</code> reference space&#8217;s XZ bounds rectangle, if defined.</p>
 <div class="paragraph">
-<p><code>STAGE</code> space is useful when an app needs to render <strong>standing-scale</strong> content
-(no bounds) or <strong>room-scale</strong> content (with bounds) that is relative to the
-physical floor.</p>
+<p><code>STAGE</code> space is useful when an application needs to render <strong>standing-scale</strong>
+content (no bounds) or <strong>room-scale</strong> content (with bounds) that is relative
+to the physical floor.</p>
 </div>
 <div class="paragraph">
 <p>When the user redefines the origin or bounds of the current <code>STAGE</code> space,
@@ -7927,7 +7937,8 @@ If a runtime is unable to provide bounds for a given space,
 <div class="paragraph">
 <p>The returned extents are expressed relative to the natural origin of the
 provided <a href="#XrReferenceSpaceType">XrReferenceSpaceType</a> and <strong class="purple">must</strong> not incorporate any origin
-offsets specified by the app during calls to <a href="#xrCreateReferenceSpace">xrCreateReferenceSpace</a>.</p>
+offsets specified by the application during calls to
+<a href="#xrCreateReferenceSpace">xrCreateReferenceSpace</a>.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_REFERENCE_SPACE_UNSUPPORTED</code> if the
@@ -8059,17 +8070,17 @@ runtime otherwise switching to a different space definition.</p>
 <p>The reference space change <strong class="purple">must</strong> only take effect for <a href="#xrLocateSpace">xrLocateSpace</a> or
 <a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime"><code>XrTime</code></a> parameter is greater than or
 equal to the <code>changeTime</code> provided in that event.
-Runtimes <strong class="purple">should</strong> provide a <code>changeTime</code> to apps that allows for a deep
-render pipeline to present frames that are already in flight using the
-previous definition of the space.
+Runtimes <strong class="purple">should</strong> provide a <code>changeTime</code> to applications that allows for
+a deep render pipeline to present frames that are already in flight using
+the previous definition of the space.
 Runtimes <strong class="purple">should</strong> choose a <code>changeTime</code> that is midway between the
-<code>displayTime</code> of future frames to avoid threshold issues with apps that
-calculate future frame times using <code>displayPeriod</code>.</p>
+<code>displayTime</code> of future frames to avoid threshold issues with
+applications that calculate future frame times using <code>displayPeriod</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>pose</code> provided here <strong class="purple">must</strong> only describe the change in the natural
 origin of the reference space and <strong class="purple">must</strong> not incorporate any origin offsets
-specified by the app during calls to <a href="#xrCreateReferenceSpace">xrCreateReferenceSpace</a>.
+specified by the application during calls to <a href="#xrCreateReferenceSpace">xrCreateReferenceSpace</a>.
 If the runtime does not know the location of the space&#8217;s new origin relative
 to its previous origin, <code>poseValid</code> <strong class="purple">must</strong> be false, and the position and
 orientation of <code>poseInPreviousSpace</code> are undefined.</p>
@@ -10089,15 +10100,15 @@ Once the runtime is synchronized with the application&#8217;s frame loop and rea
 to display its frames, the session will move into the
 <code>XR_SESSION_STATE_SYNCHRONIZED</code> state.
 For frames where <a href="#xrWaitFrame">xrWaitFrame</a> returns an <a href="#XrFrameState">XrFrameState</a> with
-<code>shouldRender</code> set to true, the app should render its composition layers
-and submit them to <a href="#xrEndFrame">xrEndFrame</a>.
+<code>shouldRender</code> set to true, the application should render its
+composition layers and submit them to <a href="#xrEndFrame">xrEndFrame</a>.
 If the application desires to leave a running session, it should call the
 <a href="#xrRequestExitSession">xrRequestExitSession</a> function to request that the runtime transition
 its session to the <code>XR_SESSION_STATE_STOPPING</code> state as soon as
 possible.
-Once the app reaches the <code>XR_SESSION_STATE_STOPPING</code> state, it can call
-<a href="#xrEndSession">xrEndSession</a> to stop the XR session, after which the session will
-transition through <code>XR_SESSION_STATE_IDLE</code> to the
+Once the application reaches the <code>XR_SESSION_STATE_STOPPING</code> state, it
+can call <a href="#xrEndSession">xrEndSession</a> to stop the XR session, after which the session
+will transition through <code>XR_SESSION_STATE_IDLE</code> to the
 <code>XR_SESSION_STATE_EXITING</code> state.</p>
 </div>
 <div class="paragraph">
@@ -11062,7 +11073,7 @@ The application does this by successfully calling <a href="#xrBeginSession">xrBe
 then running its frame loop by calling <a href="#xrWaitFrame">xrWaitFrame</a>, <a href="#xrBeginFrame">xrBeginFrame</a>
 and <a href="#xrEndFrame">xrEndFrame</a> in a loop.
 If the runtime wishes to return the session to the
-<code>XR_SESSION_STATE_IDLE</code> state, it <strong class="purple">must</strong> wait until the app calls
+<code>XR_SESSION_STATE_IDLE</code> state, it <strong class="purple">must</strong> wait until the application calls
 <a href="#xrBeginSession">xrBeginSession</a>.
 After returning from the <a href="#xrBeginSession">xrBeginSession</a> call, the runtime may then
 immediately transition forward through the
@@ -11100,13 +11111,13 @@ frames.
 The application <strong class="purple">should</strong> continue running its frame loop, rendering and
 submitting its composition layers, although it may wish to pause its
 experience, as users cannot interact with the application at this time.
-It is important for apps to continue rendering when visible, even when they
-do not have focus, so the user continues to see something reasonable
-underneath modal pop-ups.
-Runtimes <strong class="purple">should</strong> make input actions inactive during while the app is
-unfocused, and apps should react to an inactive input action by skipping
-rendering of that action&#8217;s input avatar (depictions of hands or other
-tracked objects controlled by the user).</p>
+It is important for applications to continue rendering when visible, even
+when they do not have focus, so the user continues to see something
+reasonable underneath modal pop-ups.
+Runtimes <strong class="purple">should</strong> make input actions inactive during while the application is
+unfocused, and applications should react to an inactive input action by
+skipping rendering of that action&#8217;s input avatar (depictions of hands or
+other tracked objects controlled by the user).</p>
 </div>
 <div class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_FOCUSED</code> state indicates that the
@@ -11904,7 +11915,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a></p>
 </li>
 </ul>
 </div>
@@ -13066,7 +13077,7 @@ for one particular application-generated frame.
 An accurate and consistent display time across all stages and threads in the
 engine pipeline is important to avoid object motion judder.
 If the application has multiple pipeline stages, the application should pass
-its computed display time through its pipeline, as xrWaitFrame must be
+its computed display time through its pipeline, as <a href="#xrWaitFrame">xrWaitFrame</a> must be
 called only once per frame.</p>
 </div>
 </td>
@@ -13749,7 +13760,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
 </li>
 </ul>
 </div>
@@ -14414,12 +14425,13 @@ their assets and rendering techniques differently based on the blend mode
 they choose.
 For example, a black shadow rendered using the
 <code>XR_ENVIRONMENT_BLEND_MODE_ADDITIVE</code> blend mode will appear transparent,
-and so an app in that mode <strong class="purple">may</strong> render a glow as a grounding effect around
-the black shadow to ensure the shadow can be seen.
-Similarly, an app designed for <code>XR_ENVIRONMENT_BLEND_MODE_ADDITIVE</code>
-rendering <strong class="purple">may</strong> choose to leave garbage in their alpha channel as a side
-effect of a rendering optimization, but this garbage would appear as visible
-display artifacts if the environment blend mode was instead
+and so an application in that mode <strong class="purple">may</strong> render a glow as a grounding effect
+around the black shadow to ensure the shadow can be seen.
+Similarly, an application designed for
+<code>XR_ENVIRONMENT_BLEND_MODE_ADDITIVE</code> rendering <strong class="purple">may</strong> choose to leave
+garbage in their alpha channel as a side effect of a rendering optimization,
+but this garbage would appear as visible display artifacts if the
+environment blend mode was instead
 <code>XR_ENVIRONMENT_BLEND_MODE_ALPHA_BLEND</code>.</p>
 </div>
 <div class="paragraph">
@@ -14434,14 +14446,14 @@ the <code>XR_ENVIRONMENT_BLEND_MODE_OPAQUE</code> or
 <div class="paragraph">
 <p>For devices that can support multiple environment blend modes, such as AR
 phones with video passthrough, the runtime <strong class="purple">may</strong> optimize power consumption
-on the device in response to the environment blend mode that the app chooses
-each frame.
-For example, if an app on a video passthrough phone knows that it is
+on the device in response to the environment blend mode that the application
+chooses each frame.
+For example, if an application on a video passthrough phone knows that it is
 currently rendering a 360-degree background covering all screen pixels, it
 can submit frames with an environment blend mode of
 <code>XR_ENVIRONMENT_BLEND_MODE_OPAQUE</code>, saving the runtime the cost of
-compositing a camera-based underlay of the physical world behind the app&#8217;s
-layers.</p>
+compositing a camera-based underlay of the physical world behind the
+application&#8217;s layers.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -18566,6 +18578,15 @@ E.g. <code>Trigger</code>.</p>
 <p><a href="#XR_EXT_thermal_query">XR_EXT_thermal_query</a></p>
 </li>
 <li>
+<p><a href="#XR_MND_headless">XR_MND_headless</a></p>
+</li>
+<li>
+<p><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></p>
+</li>
+<li>
+<p><a href="#XR_MSFT_unbounded_reference_space">XR_MSFT_unbounded_reference_space</a></p>
+</li>
+<li>
 <p><a href="#XR_VARJO_quad_views">XR_VARJO_quad_views</a></p>
 </li>
 </ul>
@@ -20125,15 +20146,15 @@ with the requirement here that <span class="eq">maxDepth ≥ minDepth</span>.</p
 <li>
 <p><code>nearZ</code> is the positive distance in meters of the <code>minDepth</code> value
 in the depth swapchain.
-Apps <strong class="purple">may</strong> use a <code>nearZ</code> that is greater than <code>farZ</code> to indicate
-depth values are reversed.
+Applications <strong class="purple">may</strong> use a <code>nearZ</code> that is greater than <code>farZ</code> to
+indicate depth values are reversed.
 <code>nearZ</code> can be infinite.</p>
 </li>
 <li>
 <p><code>farZ</code> is the positive distance in meters of the <code>maxDepth</code> value
 in the depth swapchain.
 <code>farZ</code> can be infinite.
-Apps <strong class="purple">must</strong> not use the same value as <code>nearZ</code>.</p>
+Applications <strong class="purple">must</strong> not use the same value as <code>nearZ</code>.</p>
 </li>
 </ul>
 </div>
@@ -28394,7 +28415,938 @@ most critical temperature of the domain.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views">12.20. XR_VARJO_quad_views</h3>
+<h3 id="XR_MND_headless">12.20. XR_MND_headless</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_MND_headless</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>43</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Last Modified Date</strong></dt>
+<dd>
+<p>2019-07-25</p>
+</dd>
+<dt class="hdlist1"><strong>IP Status</strong></dt>
+<dd>
+<p>No known IP claims.</p>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Ryan Pavlik, Collabora</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>Some applications may wish to access XR interaction devices without
+presenting any image content on the display(s).
+This extension provides a mechanism for writing such an application using
+the OpenXR API.
+It modifies the specification in the following ways, without adding any new
+named entities.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When this extension is enabled, an application <strong class="purple">may</strong> call
+<a href="#xrCreateSession">xrCreateSession</a> without an <code>XrGraphicsBinding*</code> structure in its
+<code>next</code> chain.
+In this case, the runtime <strong class="purple">must</strong> create a "headless" session that does not
+interact with the display.</p>
+</li>
+<li>
+<p>In a headless session, the session state <strong class="purple">should</strong> proceed to
+<code>XR_SESSION_STATE_READY</code> directly from <code>XR_SESSION_STATE_IDLE</code>.</p>
+</li>
+<li>
+<p>In a headless session, the
+<a href="#XrSessionBeginInfo">XrSessionBeginInfo</a>::<code>primaryViewConfigurationType</code> <strong class="purple">must</strong> be
+ignored and <strong class="purple">may</strong> be <code>0</code>.</p>
+</li>
+<li>
+<p>In a headless session, the session state proceeds to
+<code>XR_SESSION_STATE_SYNCHRONIZED</code>, then <code>XR_SESSION_STATE_VISIBLE</code>
+and <code>XR_SESSION_STATE_FOCUSED</code>, after the call to
+<a href="#xrBeginSession">xrBeginSession</a>.
+The application does not need to call <a href="#xrWaitFrame">xrWaitFrame</a>,
+<a href="#xrBeginFrame">xrBeginFrame</a>, or <a href="#xrEndFrame">xrEndFrame</a>, unlike with non-headless
+sessions.</p>
+</li>
+<li>
+<p>In a headless session, <a href="#xrEnumerateSwapchainFormats">xrEnumerateSwapchainFormats</a> <strong class="purple">must</strong> return
+<code>XR_SUCCESS</code> but enumerate <code>0</code> formats.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because <a href="#xrWaitFrame">xrWaitFrame</a> is not required, an application using a headless
+session <strong class="purple">should</strong> sleep periodically to avoid consuming all available system
+resources in a busy-wait loop.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Not all devices with which this would be useful fit into one of the
+existing <a href="#XrFormFactor">XrFormFactor</a> values.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-07-25 (Ryan Pavlik)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial version reflecting Monado prototype.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_MSFT_spatial_anchor">12.21. XR_MSFT_spatial_anchor</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_MSFT_spatial_anchor</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>40</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This extension allows an application to create a <strong>spatial anchor</strong>, an
+arbitrary freespace point in the user&#8217;s physical environment that will then
+be tracked by the runtime.
+The runtime <strong class="purple">should</strong> then adjust the position and orientation of that
+anchor&#8217;s origin over time as needed, independently of all other spaces and
+anchors, to ensure that it maintains its original mapping to the real world.</p>
+</div>
+<div id="XrSpatialAnchorMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XR_DEFINE_HANDLE(XrSpatialAnchorMSFT)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Spatial anchors are often used in combination with an <code>UNBOUNDED_MSFT</code>
+reference space.
+<code>UNBOUNDED_MSFT</code> reference spaces adjust their origin as necessary to keep
+the viewer&#8217;s coordinates relative to the space&#8217;s origin stable.
+Such adjustments maintain the visual stability of content currently near the
+viewer, but may cause content placed far from the viewer to drift in its
+alignment to the real world by the time the user moves close again.
+By creating an <code>XrSpatialAnchorMSFT</code> where a piece of content is placed and
+then always rendering that content relative to its anchor&#8217;s space, an
+application can ensure that each piece of content stays at a fixed location
+in the environment.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a> function is defined as:</p>
+</div>
+<div id="xrCreateSpatialAnchorMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrCreateSpatialAnchorMSFT(
+    XrSession                                   session,
+    const XrSpatialAnchorCreateInfoMSFT*        createInfo,
+    XrSpatialAnchorMSFT*                        anchor);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is a handle to an <a href="#XrSession">XrSession</a>.</p>
+</li>
+<li>
+<p><code>createInfo</code> is a pointer to an <a href="#XrSpatialAnchorCreateInfoMSFT">XrSpatialAnchorCreateInfoMSFT</a>
+structure containing information about how to create the anchor.</p>
+</li>
+<li>
+<p><code>session</code> is a pointer to a handle in which the created
+<a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> is returned.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Creates an <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> handle representing a spatial anchor
+that will track a fixed location in the physical world over time.
+That real-world location is specified by the position and orientation of the
+specified <code>pose</code> within <code>space</code> at <code>time</code>.</p>
+</div>
+<div class="paragraph">
+<p>If <code>space</code> cannot be located relative to the environment at the moment
+of the call to <a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a>, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT</code>.</p>
+</div>
+<div class="paragraph">
+<p>After the anchor is created, the runtime <strong class="purple">should</strong> then adjust its position
+and orientation over time relative to other spaces so as to maintain maximum
+alignment to its original real-world location, even if that changes the
+anchor&#8217;s relationship to the original <code>space</code> used to initialize it.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorMSFT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorMSFT-createInfo-parameter"></a> <code>createInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrSpatialAnchorCreateInfoMSFT">XrSpatialAnchorCreateInfoMSFT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorMSFT-anchor-parameter"></a> <code>anchor</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_POSE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_TIME_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrSpatialAnchorCreateInfoMSFT">XrSpatialAnchorCreateInfoMSFT</a> structure is defined as:</p>
+</div>
+<div id="XrSpatialAnchorCreateInfoMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrSpatialAnchorCreateInfoMSFT {
+    XrStructureType    type;
+    const void*        next;
+    XrSpace            space;
+    XrPosef            pose;
+    XrTime             time;
+} XrSpatialAnchorCreateInfoMSFT;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
+</li>
+<li>
+<p><code>space</code> is a handle to the <a href="#XrSpace">XrSpace</a> in which <code>pose</code> is
+specified.</p>
+</li>
+<li>
+<p><code>pose</code> is the <a href="#XrPosef">XrPosef</a> within <code>space</code> at <code>time</code> that
+specifies the point in the real world used to initialize the new anchor.</p>
+</li>
+<li>
+<p><code>time</code> is the <a href="#XrTime"><code>XrTime</code></a> at which <code>pose</code> will be evaluated
+within <code>space</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialAnchorCreateInfoMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSpatialAnchorCreateInfoMSFT">XrSpatialAnchorCreateInfoMSFT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialAnchorCreateInfoMSFT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialAnchorCreateInfoMSFT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialAnchorCreateInfoMSFT-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrCreateSpatialAnchorSpaceMSFT">xrCreateSpatialAnchorSpaceMSFT</a> function is defined as:</p>
+</div>
+<div id="xrCreateSpatialAnchorSpaceMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrCreateSpatialAnchorSpaceMSFT(
+    XrSession                                   session,
+    const XrSpatialAnchorSpaceCreateInfoMSFT*   createInfo,
+    XrSpace*                                    space);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is a handle to an <a href="#XrSession">XrSession</a>.</p>
+</li>
+<li>
+<p><code>createInfo</code> is a pointer to an
+<a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a> structure containing information
+about how to create the anchor.</p>
+</li>
+<li>
+<p><code>space</code> is a pointer to a handle in which the created <a href="#XrSpace">XrSpace</a> is
+returned.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Creates an <a href="#XrSpace">XrSpace</a> handle based on a spatial anchor.
+Application <strong class="purple">can</strong> provide an <a href="#XrPosef">XrPosef</a> to define the position and
+orientation of the new space&#8217;s origin relative to the anchor&#8217;s natural
+origin.</p>
+</div>
+<div class="paragraph">
+<p>Multiple <a href="#XrSpace">XrSpace</a> handles may exist for a given
+<a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> simultaneously, up to some limit imposed by the
+runtime.
+The <a href="#XrSpace">XrSpace</a> handle must be eventually freed via the
+<a href="#xrDestroySpace">xrDestroySpace</a> function or by destroying the parent
+<a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> handle.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorSpaceMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrCreateSpatialAnchorSpaceMSFT">xrCreateSpatialAnchorSpaceMSFT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorSpaceMSFT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorSpaceMSFT-createInfo-parameter"></a> <code>createInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialAnchorSpaceMSFT-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrSpace">XrSpace</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_POSE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a> structure is defined as:</p>
+</div>
+<div id="XrSpatialAnchorSpaceCreateInfoMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrSpatialAnchorSpaceCreateInfoMSFT {
+    XrStructureType        type;
+    const void*            next;
+    XrSpatialAnchorMSFT    anchor;
+    XrPosef                poseInAnchorSpace;
+} XrSpatialAnchorSpaceCreateInfoMSFT;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
+</li>
+<li>
+<p><code>anchor</code> is a handle to an <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> previously
+created with <a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a>.</p>
+</li>
+<li>
+<p><code>poseInAnchorSpace</code> is an <a href="#XrPosef">XrPosef</a> defining the position and
+orientation of the new space&#8217;s origin relative to the anchor&#8217;s natural
+origin.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_ACTION_SPACE_CREATE_INFO</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-anchor-parameter"></a> <code>anchor</code> <strong class="purple">must</strong> be a valid <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a> function is defined as:</p>
+</div>
+<div id="xrDestroySpatialAnchorMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrDestroySpatialAnchorMSFT(
+    XrSpatialAnchorMSFT                         anchor);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>anchor</code> is a handle to an <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> previously
+created by <a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> handles are destroyed using
+<a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a>.
+By destroying an anchor, the runtime <strong class="purple">can</strong> stop spending resources used to
+maintain tracking for that anchor&#8217;s origin.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrDestroySpatialAnchorMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrDestroySpatialAnchorMSFT-anchor-parameter"></a> <code>anchor</code> <strong class="purple">must</strong> be a valid <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrObjectType">XrObjectType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_OBJECT_TYPE_SPATIAL_ANCHOR_MSFT</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="#XrStructureType">XrStructureType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="#XrResult">XrResult</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrSpatialAnchorCreateInfoMSFT">XrSpatialAnchorCreateInfoMSFT</a></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a></p>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a></p>
+</div>
+<div class="paragraph">
+<p><a href="#xrCreateSpatialAnchorSpaceMSFT">xrCreateSpatialAnchorSpaceMSFT</a></p>
+</div>
+<div class="paragraph">
+<p><a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-07-30 (Alex Turner)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial extension description</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_MSFT_unbounded_reference_space">12.22. XR_MSFT_unbounded_reference_space</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_MSFT_unbounded_reference_space</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>39</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>This extension allows an application to create an <code>UNBOUNDED_MSFT</code> reference
+space.
+This reference space enables the viewer to move freely through a complex
+environment, often many meters from where they started, while always
+optimizing for coordinate system stability near the viewer.
+This is done by allowing the origin of the reference space to drift as
+necessary to keep the viewer&#8217;s coordinates relative to the space&#8217;s origin
+stable.</p>
+</div>
+<div class="paragraph">
+<p>To create an <code>UNBOUNDED_MSFT</code> reference space, the application <strong class="purple">can</strong> pass
+<code>XR_REFERENCE_SPACE_TYPE_UNBOUNDED_MSFT</code> to
+<a href="#xrCreateReferenceSpace">xrCreateReferenceSpace</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UNBOUNDED_MSFT</code> reference space establishes a world-locked origin,
+gravity-aligned to exclude pitch and roll, with +Y up, +X to the right, and
+-Z forward.
+This space begins with an arbitrary initial position and orientation, which
+the runtime <strong class="purple">may</strong> define to be either the initial position at app launch or
+some other initial zero position.
+Unlike a <code>STAGE</code> reference space, the runtime <strong class="purple">may</strong> place the origin of an
+<code>UNBOUNDED_MSFT</code> reference space at any height, rather than fixing it at the
+floor.
+This is because the viewer may move through various rooms and levels of
+their environment, each of which has a different floor height.
+Runtimes <strong class="purple">should</strong> not automatically adjust the position of the origin when
+the viewer moves to a room with a different floor height.</p>
+</div>
+<div class="paragraph">
+<p><code>UNBOUNDED_MSFT</code> space is useful when an app needs to render <strong>world-scale</strong>
+content that spans beyond the bounds of a single <code>STAGE</code>, for example, an
+entire floor or multiple floors of a building.</p>
+</div>
+<div class="paragraph">
+<p>An <code>UNBOUNDED_MSFT</code> space maintains stability near the viewer by slightly
+adjusting its origin over time.
+The runtime <strong class="purple">must</strong> not queue the <a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a>
+event in response to these minor adjustments.</p>
+</div>
+<div class="paragraph">
+<p>When views, controllers or other spaces experience tracking loss relative to
+the <code>UNBOUNDED_MSFT</code> space, runtimes <strong class="purple">should</strong> continue to provide inferred or
+last-known <code>position</code> and <code>orientation</code> values.
+These inferred poses can, for example, be based on neck model updates,
+inertial dead reckoning, or a last-known position, so long as it is still
+reasonable for the application to use that pose.
+While a runtime is providing position data, it <strong class="purple">must</strong> continue to set
+<code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> and
+<code>XR_VIEW_STATE_POSITION_VALID_BIT</code> but it <strong class="purple">can</strong> clear
+<code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> and
+<code>XR_VIEW_STATE_POSITION_TRACKED_BIT</code> to indicate that the position is
+inferred or last-known in this way.</p>
+</div>
+<div class="paragraph">
+<p>When tracking is recovered, runtimes <strong class="purple">should</strong> snap the pose of other spaces
+back into position relative to the <code>UNBOUNDED_MSFT</code> space&#8217;s original origin.
+However, if tracking recovers into a new tracking volume in which the
+original origin can no longer be located (e.g. the viewer moved through a
+dark hallway and regained tracking in a new room), the runtime <strong class="purple">may</strong> recenter
+the origin arbitrarily, for example moving the origin to coincide with the
+viewer.
+If such recentering occurs, the runtime <strong class="purple">must</strong> queue the
+<a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a> event with <code>poseValid</code> set
+to false.</p>
+</div>
+<div class="paragraph">
+<p>If the viewer moves far enough away from the origin of an <code>UNBOUNDED_MSFT</code>
+reference space that floating point error would introduce noticeable error
+when locating the viewer within that space, the runtime <strong class="purple">may</strong> recenter the
+space&#8217;s origin to a new location closer to the viewer.
+If such recentering occurs, the runtime <strong class="purple">must</strong> queue the
+<a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a> event with <code>poseValid</code> set
+to true.</p>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">must</strong> support the <code>UNBOUNDED_MSFT</code> reference space when this
+extension is enabled.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrReferenceSpaceType">XrReferenceSpaceType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_REFERENCE_SPACE_TYPE_UNBOUNDED_MSFT</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-07-30 (Alex Turner)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial extension description</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_VARJO_quad_views">12.23. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -28440,7 +29392,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_3">12.20.1. Overview</h4>
+<h4 id="_overview_3">12.23.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -28819,6 +29771,12 @@ view.</p>
 <p><a href="#xrCreateSession">xrCreateSession</a></p>
 </li>
 <li>
+<p><a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a></p>
+</li>
+<li>
+<p><a href="#xrCreateSpatialAnchorSpaceMSFT">xrCreateSpatialAnchorSpaceMSFT</a></p>
+</li>
+<li>
 <p><a href="#xrCreateSwapchain">xrCreateSwapchain</a></p>
 </li>
 <li>
@@ -28841,6 +29799,9 @@ view.</p>
 </li>
 <li>
 <p><a href="#xrDestroySpace">xrDestroySpace</a></p>
+</li>
+<li>
+<p><a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a></p>
 </li>
 <li>
 <p><a href="#xrDestroySwapchain">xrDestroySwapchain</a></p>
@@ -29031,6 +29992,9 @@ view.</p>
 </li>
 <li>
 <p><a href="#XrSpace">XrSpace</a></p>
+</li>
+<li>
+<p><a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a></p>
 </li>
 <li>
 <p><a href="#XrSwapchain">XrSwapchain</a></p>
@@ -29281,6 +30245,12 @@ view.</p>
 </li>
 <li>
 <p><a href="#XrSpaceVelocity">XrSpaceVelocity</a></p>
+</li>
+<li>
+<p><a href="#XrSpatialAnchorCreateInfoMSFT">XrSpatialAnchorCreateInfoMSFT</a></p>
+</li>
+<li>
+<p><a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a></p>
 </li>
 <li>
 <p><a href="#XrSwapchainCreateInfo">XrSwapchainCreateInfo</a></p>
@@ -29539,6 +30509,8 @@ the application binary interface.</p>
     XR_TYPE_GRAPHICS_REQUIREMENTS_D3D12_KHR = 1000028002,
     XR_TYPE_VISIBILITY_MASK_KHR = 1000031000,
     XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR = 1000031001,
+    XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT = 1000039000,
+    XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT = 1000039001,
     XR_STRUCTURE_TYPE_MAX_ENUM = 0x7FFFFFFF
 } XrStructureType;</code></pre>
 </div>
@@ -29689,7 +30661,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 0)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 1)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -30610,8 +31582,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2019-07-29 03:30:58 UTC
+Version 1.0.1<br>
+Last updated 2019-08-02 22:58:32 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
