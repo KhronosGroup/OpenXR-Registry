@@ -781,16 +781,16 @@ with the <code>XR_SESSION_STATE_READY</code> state, the application <strong clas
 call <a href="xrBeginSession.html">xrBeginSession</a> to start rendering frames for display to the user.</p>
 </div>
 <div class="paragraph">
-<p>After this function successfully returns, the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running">is
+<p>After this function successfully returns, the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">is
 considered to be running</a>.
 The application <strong class="purple">should</strong> then start its frame loop consisting of some
 sequence of <a href="xrWaitFrame.html">xrWaitFrame</a>/<a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> calls.</p>
 </div>
 <div class="paragraph">
-<p>If the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running">is already running</a> when the application
+<p>If the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">is already running</a> when the application
 calls <a href="xrBeginSession.html">xrBeginSession</a>, the runtime <strong class="purple">must</strong> return error
 <code>XR_ERROR_SESSION_RUNNING</code>.
-If the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running">is not running</a> when the application
+If the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a> when the application
 calls <a href="xrBeginSession.html">xrBeginSession</a>, but the session is not yet in the
 <code>XR_SESSION_STATE_READY</code> state, the runtime <strong class="purple">must</strong> return error
 <code>XR_ERROR_SESSION_NOT_READY</code>.</p>
@@ -890,10 +890,7 @@ return <code>XR_ERROR_VIEW_CONFIGURATION_TYPE_UNSUPPORTED</code>.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the OpenXR Specification at URL</p>
-</div>
-<div class="paragraph">
-<p><a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrBeginSession" class="bare">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrBeginSession</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrBeginSession" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -914,8 +911,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.1<br>
-Last updated 2019-08-02 22:59:23 UTC
+Version 1.0.2<br>
+Last updated 2019-08-27 20:36:16 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

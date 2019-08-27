@@ -790,7 +790,7 @@ applications.
 <p><code>enabledApiLayerNames</code> is a pointer to an array of
 <code>enabledApiLayerCount</code> strings containing the names of API layers to
 enable for the created instance.
-See the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#api-layers-and-extensions">API Layers And Extensions</a> section
+See the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#api-layers-and-extensions" target="_blank" rel="noopener">API Layers And Extensions</a> section
 for further details.</p>
 </li>
 <li>
@@ -822,7 +822,7 @@ enable.</p>
 <p><a id="VUID-XrInstanceCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrDebugUtilsMessengerCreateInfoEXT.html">XrDebugUtilsMessengerCreateInfoEXT</a>, <a href="XrInstanceCreateInfoAndroidKHR.html">XrInstanceCreateInfoAndroidKHR</a></p>
 </li>
 <li>
-<p><a id="VUID-XrInstanceCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="XrInstanceCreateFlagBits.html">XrInstanceCreateFlagBits</a> values</p>
+<p><a id="VUID-XrInstanceCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
 </li>
 <li>
 <p><a id="VUID-XrInstanceCreateInfo-applicationInfo-parameter"></a> <code>applicationInfo</code> <strong class="purple">must</strong> be a valid <a href="XrApplicationInfo.html">XrApplicationInfo</a> structure</p>
@@ -851,10 +851,7 @@ enable.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the OpenXR Specification at URL</p>
-</div>
-<div class="paragraph">
-<p><a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrInstanceCreateInfo" class="bare">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrInstanceCreateInfo</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrInstanceCreateInfo" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -875,8 +872,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.1<br>
-Last updated 2019-08-02 22:59:23 UTC
+Version 1.0.2<br>
+Last updated 2019-08-27 20:36:16 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

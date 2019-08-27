@@ -819,7 +819,7 @@ with <code>"XrGraphicsBinding"</code>) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID
 <p><a id="VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>, <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a>, <a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="XrGraphicsBindingOpenGLWaylandKHR.html">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="XrGraphicsBindingOpenGLWin32KHR.html">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="XrGraphicsBindingOpenGLXlibKHR.html">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a></p>
 </li>
 <li>
-<p><a id="VUID-XrSessionCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="XrSessionCreateFlagBits.html">XrSessionCreateFlagBits</a> values</p>
+<p><a id="VUID-XrSessionCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
 </li>
 </ul>
 </div>
@@ -839,10 +839,7 @@ with <code>"XrGraphicsBinding"</code>) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the OpenXR Specification at URL</p>
-</div>
-<div class="paragraph">
-<p><a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrSessionCreateInfo" class="bare">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrSessionCreateInfo</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrSessionCreateInfo" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -863,8 +860,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.1<br>
-Last updated 2019-08-02 22:59:23 UTC
+Version 1.0.2<br>
+Last updated 2019-08-27 20:36:16 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2019 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.1,</span>
-<span id="revdate">Fri, 02 Aug 2019 22:58:39 +0000</span>
-<br><span id="revremark">from git ref release-1.0.1 commit: 0f3ab11e8c8f75821886c568575d509799836628</span>
+<span id="revnumber">version 1.0.2,</span>
+<span id="revdate">Tue, 27 Aug 2019 20:35:15 +0000</span>
+<br><span id="revremark">from git ref release-1.0.2 commit: 0556e6c26cf692a999d2cba4e8eaf0fda0338903</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -580,7 +580,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_MND_headless">12.20. XR_MND_headless</a></li>
 <li><a href="#XR_MSFT_spatial_anchor">12.21. XR_MSFT_spatial_anchor</a></li>
 <li><a href="#XR_MSFT_unbounded_reference_space">12.22. XR_MSFT_unbounded_reference_space</a></li>
-<li><a href="#XR_VARJO_quad_views">12.23. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_OCULUS_android_session_state_enable">12.23. XR_OCULUS_android_session_state_enable</a></li>
+<li><a href="#XR_VARJO_quad_views">12.24. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#index">Index</a>
@@ -4777,7 +4778,7 @@ enable.</p>
 <p><a id="VUID-XrInstanceCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrDebugUtilsMessengerCreateInfoEXT">XrDebugUtilsMessengerCreateInfoEXT</a>, <a href="#XrInstanceCreateInfoAndroidKHR">XrInstanceCreateInfoAndroidKHR</a></p>
 </li>
 <li>
-<p><a id="VUID-XrInstanceCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="#XrInstanceCreateFlagBits">XrInstanceCreateFlagBits</a> values</p>
+<p><a id="VUID-XrInstanceCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
 </li>
 <li>
 <p><a id="VUID-XrInstanceCreateInfo-applicationInfo-parameter"></a> <code>applicationInfo</code> <strong class="purple">must</strong> be a valid <a href="#XrApplicationInfo">XrApplicationInfo</a> structure</p>
@@ -10349,7 +10350,7 @@ with <code>"XrGraphicsBinding"</code>) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID
 <p><a id="VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrGraphicsBindingD3D11KHR">XrGraphicsBindingD3D11KHR</a>, <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, <a href="#XrGraphicsBindingOpenGLESAndroidKHR">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="#XrGraphicsBindingOpenGLWaylandKHR">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="#XrGraphicsBindingOpenGLWin32KHR">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="#XrGraphicsBindingOpenGLXcbKHR">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="#XrGraphicsBindingOpenGLXlibKHR">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="#XrGraphicsBindingVulkanKHR">XrGraphicsBindingVulkanKHR</a></p>
 </li>
 <li>
-<p><a id="VUID-XrSessionCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="#XrSessionCreateFlagBits">XrSessionCreateFlagBits</a> values</p>
+<p><a id="VUID-XrSessionCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
 </li>
 </ul>
 </div>
@@ -11915,7 +11916,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a></p>
 </li>
 </ul>
 </div>
@@ -13760,7 +13761,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a></p>
 </li>
 </ul>
 </div>
@@ -18585,6 +18586,9 @@ E.g. <code>Trigger</code>.</p>
 </li>
 <li>
 <p><a href="#XR_MSFT_unbounded_reference_space">XR_MSFT_unbounded_reference_space</a></p>
+</li>
+<li>
+<p><a href="#XR_OCULUS_android_session_state_enable">XR_OCULUS_android_session_state_enable</a></p>
 </li>
 <li>
 <p><a href="#XR_VARJO_quad_views">XR_VARJO_quad_views</a></p>
@@ -28651,7 +28655,7 @@ in the environment.</p>
 structure containing information about how to create the anchor.</p>
 </li>
 <li>
-<p><code>session</code> is a pointer to a handle in which the created
+<p><code>anchor</code> is a pointer to a handle in which the created
 <a href="#XrSpatialAnchorMSFT">XrSpatialAnchorMSFT</a> is returned.</p>
 </li>
 </ul>
@@ -28998,7 +29002,7 @@ origin.</p>
 <p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSpatialAnchorSpaceCreateInfoMSFT">XrSpatialAnchorSpaceCreateInfoMSFT</a></p>
 </li>
 <li>
-<p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_ACTION_SPACE_CREATE_INFO</code></p>
+<p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT</code></p>
 </li>
 <li>
 <p><a id="VUID-XrSpatialAnchorSpaceCreateInfoMSFT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
@@ -29346,7 +29350,186 @@ extension is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views">12.23. XR_VARJO_quad_views</h3>
+<h3 id="XR_OCULUS_android_session_state_enable">12.23. XR_OCULUS_android_session_state_enable</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_OCULUS_android_session_state_enable</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>45</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>This extension enables the integration of the Android session lifecycle and
+an OpenXR runtime session state.
+Some OpenXR runtimes may require this extension to transition the
+application to the session READY or STOPPING state.</p>
+</div>
+<div class="paragraph">
+<p>Applications that run on an Android system with this extension enabled have
+a different OpenXR Session state flow.</p>
+</div>
+<div class="paragraph">
+<p>On Android, it is the Android Activity lifecycle that will dictate when the
+system is ready for the application to begin or end its session, not the
+runtime.</p>
+</div>
+<div class="paragraph">
+<p>When XR_OCULUS_android_session_state is enabled, the following changes are
+made to Session State handling:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The runtime does not determine when the application&#8217;s session should be
+moved to the ready state, <code>XR_SESSION_STATE_READY</code>.
+The application should not wait to receive the <code>XR_SESSION_STATE_READY</code>
+session state changed event before beginning a session.
+Instead, the application should begin their session once there is a surface
+and the activity is resumed.</p>
+</li>
+<li>
+<p>The application should not call <a href="#xrRequestExitSession">xrRequestExitSession</a> to request the
+session move to the stopping state, <code>XR_SESSION_STATE_STOPPING</code>.
+<a href="#xrRequestExitSession">xrRequestExitSession</a> will return <code>XR_ERROR_VALIDATION_FAILURE</code> if
+called.</p>
+</li>
+<li>
+<p>The application should not wait to receive the
+<code>XR_SESSION_STATE_STOPPING</code> session state changed event before ending a
+session.
+Instead, the application should end its session once the surface is
+destroyed or the activity is paused.</p>
+</li>
+<li>
+<p>The runtime will not transition to <code>XR_SESSION_STATE_READY</code> or
+<code>XR_SESSION_STATE_STOPPING</code> as the state is implicit from the Android
+activity and surface lifecycles.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Android Activity life cycle</strong></p>
+</div>
+<div class="paragraph">
+<p>An Android Activity can only be in the session running state while the
+activity is in the resumed state.
+The following shows how beginning and ending an XR session fits into the
+Android Activity life cycle.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code>	1.  VrActivity::onCreate() &lt;---------+
+	2.  VrActivity::onStart() &lt;-------+  |
+	3.  VrActivity::onResume() &lt;---+  |  |
+	4.  xrBeginSession()           |  |  |
+	5.  xrEndSession()             |  |  |
+	6.  VrActivity::onPause() -----+  |  |
+	7.  VrActivity::onStop() ---------+  |
+	8.  VrActivity::onDestroy() ---------+</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Android Surface life cycle</strong></p>
+</div>
+<div class="paragraph">
+<p>An Android Activity can only be in the session running state while there is
+a valid Android Surface.
+The following shows how beginning and ending an XR session fits into the
+Android Surface life cycle.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code>	1.  VrActivity::surfaceCreated() &lt;----+
+	2.  VrActivity::surfaceChanged()      |
+	3.  xrBeginSession()                  |
+	4.  xrEndSession()                    |
+	5.  VrActivity::surfaceDestroyed() ---+</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the life cycle of a surface is not necessarily tightly coupled
+with the life cycle of an activity.
+These two life cycles may interleave in complex ways.
+Usually surfaceCreated() is called after onResume() and surfaceDestroyed()
+is called between onPause() and onDestroy().
+However, this is not guaranteed and, for instance, surfaceDestroyed() may be
+called after onDestroy() or even before onPause().</p>
+</div>
+<div class="paragraph">
+<p>An Android Activity is only in the resumed state with a valid Android
+Surface between surfaceChanged() or onResume(), whichever comes last, and
+surfaceDestroyed() or onPause(), whichever comes first.
+In other words, a XR application will typically begin the session from
+surfaceChanged() or onResume(), whichever comes last, and end the session
+from surfaceDestroyed() or onPause(), whichever comes first.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-08-16 (Cass Everitt)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial extension description</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_VARJO_quad_views">12.24. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29392,7 +29575,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_3">12.23.1. Overview</h4>
+<h4 id="_overview_3">12.24.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -30661,7 +30844,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 1)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 2)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31582,8 +31765,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.1<br>
-Last updated 2019-08-02 22:58:32 UTC
+Version 1.0.2<br>
+Last updated 2019-08-27 20:35:08 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
