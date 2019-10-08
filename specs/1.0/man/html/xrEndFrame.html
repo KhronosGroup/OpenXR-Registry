@@ -833,6 +833,10 @@ layer type, or <code>NULL</code> pointer is passed as one of the
 <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::layers.</p>
 </div>
 <div class="paragraph">
+<p><code>XR_ERROR_LAYER_INVALID</code> <strong class="purple">must</strong> be returned if a layer references a
+swapchain that has no released swapchain image.</p>
+</div>
+<div class="paragraph">
 <p><code>XR_ERROR_LAYER_LIMIT_EXCEEDED</code> <strong class="purple">must</strong> be returned if
 <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::layerCount exceeds
 <a href="XrSystemGraphicsProperties.html">XrSystemGraphicsProperties</a>::maxLayerCount or if the runtime is unable
@@ -966,8 +970,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.2<br>
-Last updated 2019-08-27 20:36:16 UTC
+Version 1.0.3<br>
+Last updated 2019-10-08 01:24:16 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

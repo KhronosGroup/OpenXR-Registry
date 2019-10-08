@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2019 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.2,</span>
-<span id="revdate">Tue, 27 Aug 2019 20:35:15 +0000</span>
-<br><span id="revremark">from git ref release-1.0.2 commit: 0556e6c26cf692a999d2cba4e8eaf0fda0338903</span>
+<span id="revnumber">version 1.0.3,</span>
+<span id="revdate">Tue, 08 Oct 2019 01:23:29 +0000</span>
+<br><span id="revremark">from git ref release-1.0.3 commit: d531aa76353ede53d3c9f0d5d9b4c76de650425b</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -577,11 +577,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_EXT_debug_utils">12.17. XR_EXT_debug_utils</a></li>
 <li><a href="#XR_EXT_performance_settings">12.18. XR_EXT_performance_settings</a></li>
 <li><a href="#XR_EXT_thermal_query">12.19. XR_EXT_thermal_query</a></li>
-<li><a href="#XR_MND_headless">12.20. XR_MND_headless</a></li>
-<li><a href="#XR_MSFT_spatial_anchor">12.21. XR_MSFT_spatial_anchor</a></li>
-<li><a href="#XR_MSFT_unbounded_reference_space">12.22. XR_MSFT_unbounded_reference_space</a></li>
-<li><a href="#XR_OCULUS_android_session_state_enable">12.23. XR_OCULUS_android_session_state_enable</a></li>
-<li><a href="#XR_VARJO_quad_views">12.24. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_EXT_view_configuration_depth_range">12.20. XR_EXT_view_configuration_depth_range</a></li>
+<li><a href="#XR_MND_headless">12.21. XR_MND_headless</a></li>
+<li><a href="#XR_MSFT_spatial_anchor">12.22. XR_MSFT_spatial_anchor</a></li>
+<li><a href="#XR_MSFT_unbounded_reference_space">12.23. XR_MSFT_unbounded_reference_space</a></li>
+<li><a href="#XR_OCULUS_android_session_state_enable">12.24. XR_OCULUS_android_session_state_enable</a></li>
+<li><a href="#XR_VARJO_quad_views">12.25. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#index">Index</a>
@@ -9964,7 +9965,7 @@ left and right eyes.</p>
 <p><a id="VUID-XrViewConfigurationView-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_VIEW_CONFIGURATION_VIEW</code></p>
 </li>
 <li>
-<p><a id="VUID-XrViewConfigurationView-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrViewConfigurationView-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrViewConfigurationDepthRangeEXT">XrViewConfigurationDepthRangeEXT</a></p>
 </li>
 </ul>
 </div>
@@ -11916,7 +11917,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a></p>
 </li>
 </ul>
 </div>
@@ -13591,6 +13592,10 @@ layer type, or <code>NULL</code> pointer is passed as one of the
 <a href="#XrFrameEndInfo">XrFrameEndInfo</a>::layers.</p>
 </div>
 <div class="paragraph">
+<p><code>XR_ERROR_LAYER_INVALID</code> <strong class="purple">must</strong> be returned if a layer references a
+swapchain that has no released swapchain image.</p>
+</div>
+<div class="paragraph">
 <p><code>XR_ERROR_LAYER_LIMIT_EXCEEDED</code> <strong class="purple">must</strong> be returned if
 <a href="#XrFrameEndInfo">XrFrameEndInfo</a>::layerCount exceeds
 <a href="#XrSystemGraphicsProperties">XrSystemGraphicsProperties</a>::maxLayerCount or if the runtime is unable
@@ -13761,7 +13766,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a></p>
 </li>
 </ul>
 </div>
@@ -18577,6 +18582,9 @@ E.g. <code>Trigger</code>.</p>
 </li>
 <li>
 <p><a href="#XR_EXT_thermal_query">XR_EXT_thermal_query</a></p>
+</li>
+<li>
+<p><a href="#XR_EXT_view_configuration_depth_range">XR_EXT_view_configuration_depth_range</a></p>
 </li>
 <li>
 <p><a href="#XR_MND_headless">XR_MND_headless</a></p>
@@ -24561,15 +24569,6 @@ detailed description of retrieving the required <code>buffer</code> size.</p>
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>The <a href="#xrGetVulkanGraphicsDeviceKHR">xrGetVulkanGraphicsDeviceKHR</a> function identifies to the
-application what graphics device (Vulkan <code>VkPhysicalDevice</code>) needs to be
-used.
-<a href="#xrGetVulkanGraphicsDeviceKHR">xrGetVulkanGraphicsDeviceKHR</a> must be called prior to calling
-<a href="#xrCreateSession">xrCreateSession</a>, and the <code>VkPhysicalDevice</code> that
-<a href="#xrGetVulkanGraphicsDeviceKHR">xrGetVulkanGraphicsDeviceKHR</a> returns should be passed to
-<a href="#xrCreateSession">xrCreateSession</a>.</p>
-</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -28419,7 +28418,213 @@ most critical temperature of the domain.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_headless">12.20. XR_MND_headless</h3>
+<h3 id="XR_EXT_view_configuration_depth_range">12.20. XR_EXT_view_configuration_depth_range</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_EXT_view_configuration_depth_range</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>47</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Last Modified Date</strong></dt>
+<dd>
+<p>2019-08-16</p>
+</dd>
+<dt class="hdlist1"><strong>IP Status</strong></dt>
+<dd>
+<p>No known IP claims.</p>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Blake Taylor, Magic Leap<br>
+Gilles Cadet, Magic Leap<br>
+Michael Liebenow, Magic Leap<br>
+Supreet Suresh, Magic Leap<br>
+Alex Turner, Microsoft<br>
+Bryce Hutchings, Microsoft<br>
+Yin Li, Microsoft</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>For XR systems there may exist a per view recommended min/max depth range at
+which content should be rendered into the virtual world.
+The depth range may be driven by several factors, including user comfort, or
+fundamental capabilities of the system.</p>
+</div>
+<div class="paragraph">
+<p>Displaying rendered content outside the recommended min/max depth range
+would violate the system requirements for a properly integrated application,
+and can result in a poor user experience due to observed visual artifacts,
+visual discomfort, or fatigue.
+The near/far depth values will fall in the range of (0..+infinity] where
+max(<code>recommendedNearZ</code>, <code>minNearZ</code>) &lt; min(<code>recommendedFarZ</code>,
+<code>maxFarZ</code>).
+Infinity is defined matching the standard library definition such that
+std::isinf will return true for a returned infinite value.</p>
+</div>
+<div class="paragraph">
+<p>In order to provide the application with the appropriate depth range at
+which to render content for each <a href="#XrViewConfigurationView">XrViewConfigurationView</a>, this
+extension provides additional view configuration information, as defined by
+<a href="#XrViewConfigurationDepthRangeEXT">XrViewConfigurationDepthRangeEXT</a>, to inform the application of the
+min/max recommended and absolute distances at which content should be
+rendered for that view.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrStructureType">XrStructureType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrViewConfigurationDepthRangeEXT">XrViewConfigurationDepthRangeEXT</a> structure is defined as:</p>
+</div>
+<div id="XrViewConfigurationDepthRangeEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrViewConfigurationDepthRangeEXT {
+    XrStructureType    type;
+    void*              next;
+    float              recommendedNearZ;
+    float              minNearZ;
+    float              recommendedFarZ;
+    float              maxFarZ;
+} XrViewConfigurationDepthRangeEXT;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
+</li>
+<li>
+<p><code>recommendedNearZ</code> is the recommended minimum positive distance in
+meters that content should be rendered for the view to achieve the best
+user experience.</p>
+</li>
+<li>
+<p><code>minNearZ</code> is the absolute minimum positive distance in meters that
+content should be rendered for the view.</p>
+</li>
+<li>
+<p><code>recommendedFarZ</code> is the recommended maximum positive distance in
+meters that content should be rendered for the view to achieve the best
+user experience.</p>
+</li>
+<li>
+<p><code>maxFarZ</code> is the absolute maximum positive distance in meters that
+content should be rendered for the view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When enumerating the view configurations with
+<a href="#xrEnumerateViewConfigurationViews">xrEnumerateViewConfigurationViews</a>, the application <strong class="purple">can</strong> provide a
+pointer to an <a href="#XrViewConfigurationDepthRangeEXT">XrViewConfigurationDepthRangeEXT</a> in the <code>next</code> chain
+of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrViewConfigurationDepthRangeEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_view_configuration_depth_range">XR_EXT_view_configuration_depth_range</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrViewConfigurationDepthRangeEXT">XrViewConfigurationDepthRangeEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrViewConfigurationDepthRangeEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrViewConfigurationDepthRangeEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-10-01 (Blake Taylor)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial proposal.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_MND_headless">12.21. XR_MND_headless</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -28559,7 +28764,7 @@ existing <a href="#XrFormFactor">XrFormFactor</a> values.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_anchor">12.21. XR_MSFT_spatial_anchor</h3>
+<h3 id="XR_MSFT_spatial_anchor">12.22. XR_MSFT_spatial_anchor</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29186,7 +29391,7 @@ maintain tracking for that anchor&#8217;s origin.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_unbounded_reference_space">12.22. XR_MSFT_unbounded_reference_space</h3>
+<h3 id="XR_MSFT_unbounded_reference_space">12.23. XR_MSFT_unbounded_reference_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29350,7 +29555,7 @@ extension is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_OCULUS_android_session_state_enable">12.23. XR_OCULUS_android_session_state_enable</h3>
+<h3 id="XR_OCULUS_android_session_state_enable">12.24. XR_OCULUS_android_session_state_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29529,7 +29734,7 @@ from surfaceDestroyed() or onPause(), whichever comes first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views">12.24. XR_VARJO_quad_views</h3>
+<h3 id="XR_VARJO_quad_views">12.25. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29575,7 +29780,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_3">12.24.1. Overview</h4>
+<h4 id="_overview_3">12.25.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -30493,6 +30698,9 @@ view.</p>
 <p><a href="#XrView">XrView</a></p>
 </li>
 <li>
+<p><a href="#XrViewConfigurationDepthRangeEXT">XrViewConfigurationDepthRangeEXT</a></p>
+</li>
+<li>
 <p><a href="#XrViewConfigurationProperties">XrViewConfigurationProperties</a></p>
 </li>
 <li>
@@ -30694,6 +30902,7 @@ the application binary interface.</p>
     XR_TYPE_EVENT_DATA_VISIBILITY_MASK_CHANGED_KHR = 1000031001,
     XR_TYPE_SPATIAL_ANCHOR_CREATE_INFO_MSFT = 1000039000,
     XR_TYPE_SPATIAL_ANCHOR_SPACE_CREATE_INFO_MSFT = 1000039001,
+    XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT = 1000046000,
     XR_STRUCTURE_TYPE_MAX_ENUM = 0x7FFFFFFF
 } XrStructureType;</code></pre>
 </div>
@@ -30844,7 +31053,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 2)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 3)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31765,8 +31974,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.2<br>
-Last updated 2019-08-27 20:35:08 UTC
+Version 1.0.3<br>
+Last updated 2019-10-08 01:23:22 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

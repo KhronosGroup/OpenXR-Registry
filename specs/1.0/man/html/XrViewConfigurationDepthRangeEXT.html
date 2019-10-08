@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>xrEndSession(3)</title>
+<title>XrViewConfigurationDepthRangeEXT(3)</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -727,10 +727,10 @@ p.tableblock.header { color: #6d6e71; }
 </head>
 <body class="manpage">
 <div id="header">
-<h1>xrEndSession(3) Manual Page</h1>
+<h1>XrViewConfigurationDepthRangeEXT(3) Manual Page</h1>
 <h2 id="_name">Name</h2>
 <div class="sectionbody">
-<p>xrEndSession - Ends an XrSession</p>
+<p>XrViewConfigurationDepthRangeEXT - View configuration depth range information</p>
 </div>
 </div>
 <div id="content">
@@ -738,30 +738,56 @@ p.tableblock.header { color: #6d6e71; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="xrEndSession.html">xrEndSession</a> function is defined as:</p>
+<p>The <a href="XrViewConfigurationDepthRangeEXT.html">XrViewConfigurationDepthRangeEXT</a> structure is defined as:</p>
 </div>
-<div id="xrEndSession" class="paragraph">
+<div id="XrViewConfigurationDepthRangeEXT" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrEndSession(
-    XrSession                                   session);</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrViewConfigurationDepthRangeEXT {
+    XrStructureType    type;
+    void*              next;
+    float              recommendedNearZ;
+    float              minNearZ;
+    float              recommendedFarZ;
+    float              maxFarZ;
+} XrViewConfigurationDepthRangeEXT;</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_parameters">Parameters</h2>
+<h2 id="_members">Members</h2>
 <div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Parameter Descriptions</div>
+<div class="title">Member Descriptions</div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>session</code> is a handle to a <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">running</a>
-<a href="XrSession.html">XrSession</a>.</p>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
+</li>
+<li>
+<p><code>recommendedNearZ</code> is the recommended minimum positive distance in
+meters that content should be rendered for the view to achieve the best
+user experience.</p>
+</li>
+<li>
+<p><code>minNearZ</code> is the absolute minimum positive distance in meters that
+content should be rendered for the view.</p>
+</li>
+<li>
+<p><code>recommendedFarZ</code> is the recommended maximum positive distance in
+meters that content should be rendered for the view to achieve the best
+user experience.</p>
+</li>
+<li>
+<p><code>maxFarZ</code> is the absolute maximum positive distance in meters that
+content should be rendered for the view.</p>
 </li>
 </ul>
 </div>
@@ -773,34 +799,10 @@ p.tableblock.header { color: #6d6e71; }
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When the application receives <a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a> event
-with the <code>XR_SESSION_STATE_STOPPING</code> state, the application should stop
-its frame loop and then call <a href="xrEndSession.html">xrEndSession</a> to end the
-<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">running</a> session.
-This function signals to the runtime that the application will no longer
-call <a href="xrWaitFrame.html">xrWaitFrame</a>, <a href="xrBeginFrame.html">xrBeginFrame</a> or <a href="xrEndFrame.html">xrEndFrame</a> from any
-thread.
-The application <strong class="purple">must</strong> also avoid reading input state or sending haptic
-output after calling <a href="xrEndSession.html">xrEndSession</a>.</p>
-</div>
-<div class="paragraph">
-<p>If the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a> when the application
-calls <a href="xrEndSession.html">xrEndSession</a>, the runtime <strong class="purple">must</strong> return error
-<code>XR_ERROR_SESSION_NOT_RUNNING</code>.
-If the session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">is still running</a> when the application
-calls <a href="xrEndSession.html">xrEndSession</a>, but the session is not yet in the
-<code>XR_SESSION_STATE_STOPPING</code> state, the runtime <strong class="purple">must</strong> return error
-<code>XR_ERROR_SESSION_NOT_STOPPING</code>.</p>
-</div>
-<div class="paragraph">
-<p>If the application wishes to exit a session that is running but not in the
-<code>XR_SESSION_STATE_STOPPING</code> state, the application should call
-<a href="xrRequestExitSession.html">xrRequestExitSession</a>.
-This requests that the runtime transition to the
-<code>XR_SESSION_STATE_STOPPING</code> state, so that the application can call
-<a href="xrEndSession.html">xrEndSession</a>, after which the session will transition through
-<code>XR_SESSION_STATE_IDLE</code> to the <code>XR_SESSION_STATE_EXITING</code> state and
-quit the XR experience seamlessly.</p>
+<p>When enumerating the view configurations with
+<a href="xrEnumerateViewConfigurationViews.html">xrEnumerateViewConfigurationViews</a>, the application <strong class="purple">can</strong> provide a
+pointer to an <a href="XrViewConfigurationDepthRangeEXT.html">XrViewConfigurationDepthRangeEXT</a> in the <code>next</code> chain
+of <a href="XrViewConfigurationView.html">XrViewConfigurationView</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -808,59 +810,15 @@ quit the XR experience seamlessly.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrEndSession-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+<p><a id="VUID-XrViewConfigurationDepthRangeEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_view_configuration_depth_range">[XR_EXT_view_configuration_depth_range]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrViewConfigurationDepthRangeEXT.html">XrViewConfigurationDepthRangeEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrViewConfigurationDepthRangeEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_VIEW_CONFIGURATION_DEPTH_RANGE_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrViewConfigurationDepthRangeEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Return Codes</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">On success, this command returns</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XR_SUCCESS</code></p>
-</li>
-<li>
-<p><code>XR_SESSION_LOSS_PENDING</code></p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">On failure, this command returns</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XR_ERROR_INSTANCE_LOST</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_SESSION_LOST</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_HANDLE_INVALID</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_SESSION_NOT_STOPPING</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_SESSION_NOT_RUNNING</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -870,7 +828,7 @@ quit the XR experience seamlessly.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSession.html">XrSession</a>, <a href="xrBeginSession.html">xrBeginSession</a>, <a href="xrCreateSession.html">xrCreateSession</a>, <a href="xrDestroySession.html">xrDestroySession</a></p>
+<p><a href="XrStructureType.html">XrStructureType</a>, <a href="XrViewConfigurationView.html">XrViewConfigurationView</a>, <a href="xrEnumerateViewConfigurationViews.html">xrEnumerateViewConfigurationViews</a></p>
 </div>
 </div>
 </div>
@@ -878,7 +836,7 @@ quit the XR experience seamlessly.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrEndSession" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrViewConfigurationDepthRangeEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
