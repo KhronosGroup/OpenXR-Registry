@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2019 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.3,</span>
-<span id="revdate">Tue, 08 Oct 2019 01:23:29 +0000</span>
-<br><span id="revremark">from git ref release-1.0.3 commit: d531aa76353ede53d3c9f0d5d9b4c76de650425b</span>
+<span id="revnumber">version 1.0.4,</span>
+<span id="revdate">Fri, 22 Nov 2019 22:53:05 +0000</span>
+<br><span id="revremark">from git ref release-1.0.4 commit: c658f0ac7f1a50140e8af953513b30954e4c794d</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -574,15 +574,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_KHR_vulkan_enable">12.14. XR_KHR_vulkan_enable</a></li>
 <li><a href="#XR_KHR_vulkan_swapchain_format_list">12.15. XR_KHR_vulkan_swapchain_format_list</a></li>
 <li><a href="#XR_KHR_win32_convert_performance_counter_time">12.16. XR_KHR_win32_convert_performance_counter_time</a></li>
-<li><a href="#XR_EXT_debug_utils">12.17. XR_EXT_debug_utils</a></li>
-<li><a href="#XR_EXT_performance_settings">12.18. XR_EXT_performance_settings</a></li>
-<li><a href="#XR_EXT_thermal_query">12.19. XR_EXT_thermal_query</a></li>
-<li><a href="#XR_EXT_view_configuration_depth_range">12.20. XR_EXT_view_configuration_depth_range</a></li>
-<li><a href="#XR_MND_headless">12.21. XR_MND_headless</a></li>
-<li><a href="#XR_MSFT_spatial_anchor">12.22. XR_MSFT_spatial_anchor</a></li>
-<li><a href="#XR_MSFT_unbounded_reference_space">12.23. XR_MSFT_unbounded_reference_space</a></li>
-<li><a href="#XR_OCULUS_android_session_state_enable">12.24. XR_OCULUS_android_session_state_enable</a></li>
-<li><a href="#XR_VARJO_quad_views">12.25. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_EXT_conformance_automation">12.17. XR_EXT_conformance_automation</a></li>
+<li><a href="#XR_EXT_debug_utils">12.18. XR_EXT_debug_utils</a></li>
+<li><a href="#XR_EXT_performance_settings">12.19. XR_EXT_performance_settings</a></li>
+<li><a href="#XR_EXT_thermal_query">12.20. XR_EXT_thermal_query</a></li>
+<li><a href="#XR_EXT_view_configuration_depth_range">12.21. XR_EXT_view_configuration_depth_range</a></li>
+<li><a href="#XR_MND_headless">12.22. XR_MND_headless</a></li>
+<li><a href="#XR_MSFT_spatial_anchor">12.23. XR_MSFT_spatial_anchor</a></li>
+<li><a href="#XR_MSFT_unbounded_reference_space">12.24. XR_MSFT_unbounded_reference_space</a></li>
+<li><a href="#XR_OCULUS_android_session_state_enable">12.25. XR_OCULUS_android_session_state_enable</a></li>
+<li><a href="#XR_VARJO_quad_views">12.26. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#index">Index</a>
@@ -9980,8 +9981,9 @@ left and right eyes.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="C++">XrInstance instance; // previously initialized
-XrSystemId system; // previously initialized
-XrSession session; // previously initialized
+XrSystemId system;   // previously initialized
+XrSession session;   // previously initialized
+XrSpace sceneSpace;  // previously initialized
 
 // Enumerate the view configurations paths.
 uint32_t configurationCount;
@@ -10019,46 +10021,57 @@ CHK_XR(xrEnumerateViewConfigurationViews(instance, system,
     configViews.data()));
 
 // Set the primary view configuration for the session.
-XrSessionBeginInfo beginInfo = {XR_TYPE_SESSION_BEGIN_INFO, nullptr, XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO };
+XrSessionBeginInfo beginInfo = {XR_TYPE_SESSION_BEGIN_INFO};
+beginInfo.primaryViewConfigurationType = XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO;
 CHK_XR(xrBeginSession(session, &amp;beginInfo));
-
-XrCompositionLayerFlags layerFlags; // previously initialized
 
 // Allocate a buffer according to viewCount.
 std::vector&lt;XrView&gt; views(viewCount, {XR_TYPE_VIEW});
 
-// Get views
-XrTime displayTime; // previously initialized
-XrSpace space; // previously initialized
-
 // Run a per-frame loop.
 while (!quit)
 {
-    XrViewLocateInfo viewLocateInfo{XR_TYPE_VIEW_LOCATE_INFO};
-    viewLocateInfo.displayTime = displayTime;
-    viewLocateInfo.space = space;
-
-    XrViewState viewState{};
-    uint32_t viewCountOutput;
-    CHK_XR(xrLocateViews(session, &amp;viewLocateInfo, &amp;viewState, configViews.size(), &amp;viewCountOutput, views.data()));
-
-    // Wait for beginning the next frame.
+    // Wait for a new frame.
     XrFrameWaitInfo frameWaitInfo{XR_TYPE_FRAME_WAIT_INFO};
     XrFrameState frameState{XR_TYPE_FRAME_STATE};
     CHK_XR(xrWaitFrame(session, &amp;frameWaitInfo, &amp;frameState));
 
-    // Begin frame
+    // Begin frame immediately before GPU work
     XrFrameBeginInfo frameBeginInfo { XR_TYPE_FRAME_BEGIN_INFO };
     CHK_XR(xrBeginFrame(session, &amp;frameBeginInfo));
 
-    // ...
-    // Use view and frameState for scene render.
+    std::vector&lt;XrCompositionLayerBaseHeader*&gt; layers;
+    XrCompositionLayerProjectionView projViews[2] = { /*...*/ };
+    XrCompositionLayerProjection layerProj{ XR_TYPE_COMPOSITION_LAYER_PROJECTION};
 
-    // End frame
-    XrCompositionLayerProjectionView views[2] = { /*...*/ };
-    XrCompositionLayerProjection layerProj{ XR_TYPE_COMPOSITION_LAYER_PROJECTION, nullptr, layerFlags, space, 2, views };
-    XrCompositionLayerBaseHeader* layers[1] = { reinterpret_cast&lt;XrCompositionLayerBaseHeader*&gt;(&amp;layerProj) };
-    XrFrameEndInfo frameEndInfo{ XR_TYPE_FRAME_END_INFO, nullptr, displayTime, XR_ENVIRONMENT_BLEND_MODE_OPAQUE, 1, layers };
+    if (frameState.shouldRender) {
+        XrViewLocateInfo viewLocateInfo{XR_TYPE_VIEW_LOCATE_INFO};
+        viewLocateInfo.displayTime = frameState.predictedDisplayTime;
+        viewLocateInfo.space = sceneSpace;
+
+        XrViewState viewState{XR_TYPE_VIEW_STATE};
+        XrView views[2] = { {XR_TYPE_VIEW}, {XR_TYPE_VIEW}};
+        uint32_t viewCountOutput;
+        CHK_XR(xrLocateViews(session, &amp;viewLocateInfo, &amp;viewState, configViews.size(), &amp;viewCountOutput, views));
+
+        // ...
+        // Use viewState and frameState for scene render, and fill in projViews[2]
+        // ...
+
+        // Assemble composition layers structure
+        layerProj.layerFlags = XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT;
+        layerProj.space = sceneSpace;
+        layerProj.viewCount = 2;
+        layerProj.views = projViews;
+        layers.push_back(reinterpret_cast&lt;XrCompositionLayerBaseHeader*&gt;(&amp;layerProj));
+    }
+
+    // End frame and submit layers, even if layers is empty due to shouldRender = false
+    XrFrameEndInfo frameEndInfo{ XR_TYPE_FRAME_END_INFO};
+    frameEndInfo.displayTime = frameState.predictedDisplayTime;
+    frameEndInfo.environmentBlendMode = XR_ENVIRONMENT_BLEND_MODE_OPAQUE;
+    frameEndInfo.layerCount = (uint32_t)layers.size();
+    frameEndInfo.layers = layers.data();
     CHK_XR(xrEndFrame(session, &amp;frameEndInfo));
 }</code></pre>
 </div>
@@ -11917,7 +11930,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a></p>
 </li>
 </ul>
 </div>
@@ -13766,7 +13779,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
 </li>
 </ul>
 </div>
@@ -16362,7 +16375,7 @@ If <code>topLevelUserPath</code> does not follow the format defined in
 <li>
 <p><code>interactionProfile</code> is the <a href="#XrPath"><code>XrPath</code></a> of the interaction profile
 path for the <code>topLevelUserPath</code> used to retrieve this state, or
-<code>XR_PATH_NULL</code> if there is no active interaction profile at that top
+<a href="#XR_NULL_PATH">XR_NULL_PATH</a> if there is no active interaction profile at that top
 level user path.</p>
 </li>
 </ul>
@@ -16372,13 +16385,13 @@ level user path.</p>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> only include interaction profiles that the application has
 provided bindings for via <a href="#xrSuggestInteractionProfileBindings">xrSuggestInteractionProfileBindings</a> or
-<code>XR_PATH_NULL</code>.
+<a href="#XR_NULL_PATH">XR_NULL_PATH</a>.
 If the runtime is rebinding an interaction profile provided by the
 application to a device that the application did not provide bindings for,
 it <strong class="purple">must</strong> return the interaction profile path that it is emulating.
 If the runtime is unable to provide input because it cannot emulate any of
 the application-provided interaction profiles, it <strong class="purple">must</strong> return
-<code>XR_PATH_NULL</code>.</p>
+<a href="#XR_NULL_PATH">XR_NULL_PATH</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -18033,11 +18046,15 @@ more <a href="#XrActiveActionSet">XrActiveActionSet</a> structures that should b
 </li>
 <li>
 <p><code>subactionPath</code> is a subaction path that was declared when one or more
-actions in the action set was created or <code>XR_PATH_NULL</code> if the actions
-in this action set were not declared with subaction paths.
+actions in the action set was created or <a href="#XR_NULL_PATH">XR_NULL_PATH</a>.
 If the application wants to activate the action set on more than one
 subaction path, it <strong class="purple">can</strong> include additional <a href="#XrActiveActionSet">XrActiveActionSet</a> structs
-with the other <code>subactionPath</code> values.</p>
+with the other <code>subactionPath</code> values.
+Using <a href="#XR_NULL_PATH">XR_NULL_PATH</a> as the value for <code>subactionPath</code>, acts as a
+wildcard for all subaction paths on the actions in the action set.
+If the subaction path was not specified on any of the actions in the
+actionSet when that action was created, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
 </li>
 </ul>
 </div>
@@ -18573,6 +18590,9 @@ E.g. <code>Trigger</code>.</p>
 </li>
 <li>
 <p><a href="#XR_KHR_win32_convert_performance_counter_time">XR_KHR_win32_convert_performance_counter_time</a></p>
+</li>
+<li>
+<p><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></p>
 </li>
 <li>
 <p><a href="#XR_EXT_debug_utils">XR_EXT_debug_utils</a></p>
@@ -25353,7 +25373,748 @@ Windows function.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_debug_utils">12.17. XR_EXT_debug_utils</h3>
+<h3 id="XR_EXT_conformance_automation">12.17. XR_EXT_conformance_automation</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_EXT_conformance_automation</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>48</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Last Modified Date</strong></dt>
+<dd>
+<p>2019-10-01</p>
+</dd>
+<dt class="hdlist1"><strong>IP Status</strong></dt>
+<dd>
+<p>No known IP claims.</p>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Lachlan Ford, Microsoft</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>The XR_EXT_conformance_automation allows conformance test and runtime
+developers to provide hints to the underlying runtime as to what input the
+test is expecting.
+This enables runtime authors to automate the testing of their runtime
+conformance.
+This is useful for achieving rapidly iterative runtime development whilst
+maintaining conformance for runtime releases.</p>
+</div>
+<div class="paragraph">
+<p>This extension provides the following capabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The ability to toggle the active state of an input device.</p>
+</li>
+<li>
+<p>The ability to set the state of an input device button or other input
+component.</p>
+</li>
+<li>
+<p>The ability to set the location of the input device.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Applications <strong class="purple">may</strong> call these functions at any time.
+The runtime <strong class="purple">must</strong> do its best to honor the request of applications calling
+these functions, however it does not guarantee that any state change will be
+reflected immediately, at all, or with the exact value that was requested.
+Applications are thus advised to wait for the state change to be observable
+and to not assume that the value they requested will be the value observed.
+If any of the functions of this extension are called, control over input
+<strong class="purple">must</strong> be removed from the physical hardware of the system.</p>
+</div>
+<div class="paragraph">
+<p>This extension is <strong>not</strong> intended for use by non-conformance-test
+applications.
+A runtime <strong class="purple">may</strong> require a runtime-specified configuration such as a
+"developer mode" to be enabled before reporting support for this extension
+or providing a non-stub implementation of it.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="xrSetInputDeviceActiveEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrSetInputDeviceActiveEXT(
+    XrSession                                   session,
+    XrPath                                      interactionProfile,
+    XrPath                                      topLevelPath,
+    XrBool32                                    isActive);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="#XrSession">XrSession</a> to set the input device state in.</p>
+</li>
+<li>
+<p><code>interactionProfile</code> is the path representing the interaction profile
+of the input device (e.g.
+<em>/interaction_profiles/khr/simple_controller</em>).</p>
+</li>
+<li>
+<p><code>topLevelPath</code> is the path representing the input device (e.g.
+<em>/user/hand/left</em>).</p>
+</li>
+<li>
+<p><code>isActive</code> is the requested activation state of the input device.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> <strong class="purple">must</strong> be a valid session handle.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> <strong class="purple">must</strong> be a valid top level path.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrSetInputDeviceActiveEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrSetInputDeviceActiveEXT">xrSetInputDeviceActiveEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceActiveEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_UNSUPPORTED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="xrSetInputDeviceStateBoolEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrSetInputDeviceStateBoolEXT(
+    XrSession                                   session,
+    XrPath                                      topLevelPath,
+    XrPath                                      inputSourcePath,
+    XrBool32                                    state);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="#XrSession">XrSession</a> to set the input device state in.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> is the path representing the input device (e.g.
+<em>/user/hand/left</em>).</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> is the full path of the input component for which we
+wish to set the state for (e.g.
+<em>/user/hand/left/input/select/click</em>).</p>
+</li>
+<li>
+<p><code>isActive</code> is the requested activation state of the input device.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> <strong class="purple">must</strong> be a valid session handle.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> <strong class="purple">must</strong> be a valid top level path.</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> <strong class="purple">must</strong> be a valid input source path.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrSetInputDeviceStateBoolEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrSetInputDeviceStateBoolEXT">xrSetInputDeviceStateBoolEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceStateBoolEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_UNSUPPORTED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="xrSetInputDeviceStateFloatEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrSetInputDeviceStateFloatEXT(
+    XrSession                                   session,
+    XrPath                                      topLevelPath,
+    XrPath                                      inputSourcePath,
+    float                                       state);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="#XrSession">XrSession</a> to set the input device state in.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> is the path representing the input device (e.g.
+<em>/user/hand/left</em>).</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> is the full path of the input component for which we
+wish to set the state for (e.g.
+<em>/user/hand/left/input/trigger/value</em>).</p>
+</li>
+<li>
+<p><code>isActive</code> is the requested activation state of the input device.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> <strong class="purple">must</strong> be a valid session handle.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> <strong class="purple">must</strong> be a valid top level path.</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> <strong class="purple">must</strong> be a valid input source path.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrSetInputDeviceStateFloatEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrSetInputDeviceStateFloatEXT">xrSetInputDeviceStateFloatEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceStateFloatEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_UNSUPPORTED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="xrSetInputDeviceStateVector2fEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrSetInputDeviceStateVector2fEXT(
+    XrSession                                   session,
+    XrPath                                      topLevelPath,
+    XrPath                                      inputSourcePath,
+    XrVector2f                                  state);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="#XrSession">XrSession</a> to set the input device state in.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> is the path representing the input device (e.g.
+<em>/user/hand/left</em>).</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> is the full path of the input component for which we
+wish to set the state for (e.g.
+<em>/user/hand/left/input/thumbstick</em>).</p>
+</li>
+<li>
+<p><code>isActive</code> is the requested activation state of the input device.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> <strong class="purple">must</strong> be a valid session handle.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> <strong class="purple">must</strong> be a valid top level path.</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> <strong class="purple">must</strong> be a valid input source path.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrSetInputDeviceStateVector2fEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrSetInputDeviceStateVector2fEXT">xrSetInputDeviceStateVector2fEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceStateVector2fEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_UNSUPPORTED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="xrSetInputDeviceLocationEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrSetInputDeviceLocationEXT(
+    XrSession                                   session,
+    XrPath                                      topLevelPath,
+    XrPath                                      inputSourcePath,
+    XrSpace                                     space,
+    XrPosef                                     pose);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="#XrSession">XrSession</a> to set the input device state in.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> is the path representing the input device (e.g.
+<em>/user/hand/left</em>).</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> is the full path of the input component for which we
+wish to set the pose for (e.g. <em>/user/hand/left/input/grip/pose</em>).</p>
+</li>
+<li>
+<p><code>isActive</code> is the requested activation state of the input device.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> <strong class="purple">must</strong> be a valid session handle.</p>
+</li>
+<li>
+<p><code>topLevelPath</code> <strong class="purple">must</strong> be a valid top level path.</p>
+</li>
+<li>
+<p><code>inputSourcePath</code> <strong class="purple">must</strong> be a valid input source path.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrSetInputDeviceLocationEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrSetInputDeviceLocationEXT">xrSetInputDeviceLocationEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceLocationEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="#XrSession">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceLocationEXT-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrSetInputDeviceLocationEXT-space-parent"></a> <code>space</code> <strong class="purple">must</strong> have been created, allocated, or retrieved from <code>session</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_POSE_INVALID</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Function Pointers</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p>None</p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-10-01 (Lachlan Ford)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial draft</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_EXT_debug_utils">12.18. XR_EXT_debug_utils</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -25428,7 +26189,7 @@ tracking.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="object-debug-annotation">12.17.1. Object Debug Annotation</h4>
+<h4 id="object-debug-annotation">12.18.1. Object Debug Annotation</h4>
 <div class="paragraph">
 <p>It can be useful for an application to provide its own content relative to a
 specific OpenXR handle.</p>
@@ -25454,7 +26215,7 @@ structure is an empty string, then any previously set name is removed.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="debug-messengers">12.17.2. Debug Messengers</h4>
+<h4 id="debug-messengers">12.18.2. Debug Messengers</h4>
 <div class="paragraph">
 <p>OpenXR allows an application to register arbitrary number of callbacks with
 all the OpenXR components wishing to report debug information.
@@ -25477,7 +26238,7 @@ debug messages.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="debug-message-categorization">12.17.3. Debug Message Categorization</h4>
+<h4 id="debug-message-categorization">12.18.3. Debug Message Categorization</h4>
 <div class="paragraph">
 <p>Messages that are triggered by the debug messenger are categorized by their
 message type and severity.
@@ -25628,7 +26389,7 @@ this can be done.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="session-labels">12.17.4. Session Labels</h4>
+<h4 id="session-labels">12.18.4. Session Labels</h4>
 <div class="paragraph">
 <p>All OpenXR work is performed inside of an <a href="#XrSession">XrSession</a>.
 There are times that it helps to label areas in your OpenXR session to allow
@@ -27408,7 +28169,7 @@ VK_EXT_debug_utils extension by Peter Kraus (aka @krOoze).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_performance_settings">12.18. XR_EXT_performance_settings</h3>
+<h3 id="XR_EXT_performance_settings">12.19. XR_EXT_performance_settings</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -27453,7 +28214,7 @@ Innovation Center, Inc</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview">12.18.1. Overview</h4>
+<h4 id="_overview">12.19.1. Overview</h4>
 <div class="paragraph">
 <p>This extension defines an API for the application to give performance hints
 to the runtime and for the runtime to send performance related notifications
@@ -27481,7 +28242,7 @@ load without consuming more energy than necessary.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_setting_performance_levels_hints">12.18.2. Setting Performance Levels Hints</h4>
+<h4 id="_setting_performance_levels_hints">12.19.2. Setting Performance Levels Hints</h4>
 <div class="sect4">
 <h5 id="EXT_performance_settings-level-definition">Performance level hint definition</h5>
 <div class="paragraph">
@@ -27662,7 +28423,7 @@ sustainable <code>XR_PERF_SETTINGS_LEVEL_SUSTAINED_HIGH_EXT</code> for CPU</td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_receiving_performance_related_notifications">12.18.3. Receiving Performance Related Notifications</h4>
+<h4 id="_receiving_performance_related_notifications">12.19.3. Receiving Performance Related Notifications</h4>
 <div class="paragraph">
 <p>The XR runtime shall provide performance related notifications to the
 application in the following situations:</p>
@@ -28159,7 +28920,7 @@ the level enumerations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_thermal_query">12.19. XR_EXT_thermal_query</h3>
+<h3 id="XR_EXT_thermal_query">12.20. XR_EXT_thermal_query</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -28204,14 +28965,14 @@ Innovation Center, Inc</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_2">12.19.1. Overview</h4>
+<h4 id="_overview_2">12.20.1. Overview</h4>
 <div class="paragraph">
 <p>This extension provides an API to query a domain&#8217;s current thermal warning
 level and current thermal trend.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_querying_the_current_thermal_level_and_trend">12.19.2. Querying the current thermal level and trend</h4>
+<h4 id="_querying_the_current_thermal_level_and_trend">12.20.2. Querying the current thermal level and trend</h4>
 <div class="paragraph">
 <p>This query allows to determine the extent and urgency of the needed workload
 reduction and to verify that the mitigation measures efficiently reduce the
@@ -28418,7 +29179,7 @@ most critical temperature of the domain.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_view_configuration_depth_range">12.20. XR_EXT_view_configuration_depth_range</h3>
+<h3 id="XR_EXT_view_configuration_depth_range">12.21. XR_EXT_view_configuration_depth_range</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -28624,7 +29385,7 @@ of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_headless">12.21. XR_MND_headless</h3>
+<h3 id="XR_MND_headless">12.22. XR_MND_headless</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -28641,7 +29402,7 @@ of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>1</p>
+<p>2</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -28655,7 +29416,7 @@ of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2019-07-25</p>
+<p>2019-10-22</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -28709,6 +29470,14 @@ sessions.</p>
 <p>In a headless session, <a href="#xrEnumerateSwapchainFormats">xrEnumerateSwapchainFormats</a> <strong class="purple">must</strong> return
 <code>XR_SUCCESS</code> but enumerate <code>0</code> formats.</p>
 </li>
+<li>
+<p><a href="#xrWaitFrame">xrWaitFrame</a> <strong class="purple">must</strong> set <a href="#XrFrameState">XrFrameState</a>::<code>shouldRender</code> to
+<code>XR_FALSE</code> in a headless session.
+The VISIBLE and FOCUSED states are only used for their input-related
+semantics, not their rendering-related semantics, and these functions are
+permitted to allow minimal change between headless and non-headless code
+if desired.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -28760,11 +29529,22 @@ existing <a href="#XrFormFactor">XrFormFactor</a> values.</p>
 </ul>
 </div>
 </li>
+<li>
+<p>Revision 2, 2019-10-22 (Ryan Pavlik)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Clarify that <code>xrWaitFrame</code> is permitted and should set <code>shouldRender</code> to
+false.</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_anchor">12.22. XR_MSFT_spatial_anchor</h3>
+<h3 id="XR_MSFT_spatial_anchor">12.23. XR_MSFT_spatial_anchor</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29391,7 +30171,7 @@ maintain tracking for that anchor&#8217;s origin.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_unbounded_reference_space">12.23. XR_MSFT_unbounded_reference_space</h3>
+<h3 id="XR_MSFT_unbounded_reference_space">12.24. XR_MSFT_unbounded_reference_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29555,7 +30335,7 @@ extension is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_OCULUS_android_session_state_enable">12.24. XR_OCULUS_android_session_state_enable</h3>
+<h3 id="XR_OCULUS_android_session_state_enable">12.25. XR_OCULUS_android_session_state_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29734,7 +30514,7 @@ from surfaceDestroyed() or onPause(), whichever comes first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views">12.25. XR_VARJO_quad_views</h3>
+<h3 id="XR_VARJO_quad_views">12.26. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29780,7 +30560,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_3">12.25.1. Overview</h4>
+<h4 id="_overview_3">12.26.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -30328,6 +31108,21 @@ view.</p>
 </li>
 <li>
 <p><a href="#xrSetDebugUtilsObjectNameEXT">xrSetDebugUtilsObjectNameEXT</a></p>
+</li>
+<li>
+<p><a href="#xrSetInputDeviceActiveEXT">xrSetInputDeviceActiveEXT</a></p>
+</li>
+<li>
+<p><a href="#xrSetInputDeviceLocationEXT">xrSetInputDeviceLocationEXT</a></p>
+</li>
+<li>
+<p><a href="#xrSetInputDeviceStateBoolEXT">xrSetInputDeviceStateBoolEXT</a></p>
+</li>
+<li>
+<p><a href="#xrSetInputDeviceStateFloatEXT">xrSetInputDeviceStateFloatEXT</a></p>
+</li>
+<li>
+<p><a href="#xrSetInputDeviceStateVector2fEXT">xrSetInputDeviceStateVector2fEXT</a></p>
 </li>
 <li>
 <p><a href="#xrStopHapticFeedback">xrStopHapticFeedback</a></p>
@@ -31053,7 +31848,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 3)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 4)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31974,8 +32769,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.3<br>
-Last updated 2019-10-08 01:23:22 UTC
+Version 1.0.4<br>
+Last updated 2019-11-22 22:52:58 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
