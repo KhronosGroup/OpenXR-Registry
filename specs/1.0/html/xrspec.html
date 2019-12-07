@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2019 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.4,</span>
-<span id="revdate">Fri, 22 Nov 2019 22:53:05 +0000</span>
-<br><span id="revremark">from git ref release-1.0.4 commit: c658f0ac7f1a50140e8af953513b30954e4c794d</span>
+<span id="revnumber">version 1.0.5,</span>
+<span id="revdate">Sat, 07 Dec 2019 04:08:42 +0000</span>
+<br><span id="revremark">from git ref release-1.0.5 commit: 6d98ed90cef6260f32e63d2e7393cd1f53ed2636</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -11930,7 +11930,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a></p>
 </li>
 </ul>
 </div>
@@ -13067,7 +13067,10 @@ processor contention between the application and the compositor.</p>
 </div>
 <div class="paragraph">
 <p><a href="#xrWaitFrame">xrWaitFrame</a> <strong class="purple">must</strong> be callable from any thread, including a different
-thread than <a href="#xrBeginFrame">xrBeginFrame</a>/<a href="#xrEndFrame">xrEndFrame</a> are being called from.</p>
+thread than <a href="#xrBeginFrame">xrBeginFrame</a>/<a href="#xrEndFrame">xrEndFrame</a> are being called from.
+Runtimes <strong class="purple">must</strong> not block indefinitely on a second <a href="#xrWaitFrame">xrWaitFrame</a> call in
+the absence of <a href="#xrBeginFrame">xrBeginFrame</a>/<a href="#xrEndFrame">xrEndFrame</a> calls but may do so on
+subsequent <a href="#xrWaitFrame">xrWaitFrame</a> calls.</p>
 </div>
 <div class="paragraph">
 <p>Calling <a href="#xrWaitFrame">xrWaitFrame</a> <strong class="purple">must</strong> be externally synchronized by the
@@ -13779,7 +13782,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
 </li>
 </ul>
 </div>
@@ -14324,7 +14327,7 @@ is evaluated over time.</p>
 the quad in the reference frame of the <code>space</code>.</p>
 </li>
 <li>
-<p><code>size</code> is the width and and height of the quad in meters.</p>
+<p><code>size</code> is the width and height of the quad in meters.</p>
 </li>
 </ul>
 </div>
@@ -31848,7 +31851,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 4)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 5)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -32769,8 +32772,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.4<br>
-Last updated 2019-11-22 22:52:58 UTC
+Version 1.0.5<br>
+Last updated 2019-12-07 04:08:36 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

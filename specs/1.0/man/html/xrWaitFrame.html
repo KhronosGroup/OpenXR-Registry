@@ -814,7 +814,10 @@ processor contention between the application and the compositor.</p>
 </div>
 <div class="paragraph">
 <p><a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be callable from any thread, including a different
-thread than <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> are being called from.</p>
+thread than <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> are being called from.
+Runtimes <strong class="purple">must</strong> not block indefinitely on a second <a href="xrWaitFrame.html">xrWaitFrame</a> call in
+the absence of <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> calls but may do so on
+subsequent <a href="xrWaitFrame.html">xrWaitFrame</a> calls.</p>
 </div>
 <div class="paragraph">
 <p>Calling <a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be externally synchronized by the
@@ -958,8 +961,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.4<br>
-Last updated 2019-11-22 22:53:57 UTC
+Version 1.0.5<br>
+Last updated 2019-12-07 04:09:21 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
