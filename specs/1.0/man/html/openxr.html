@@ -729,9 +729,9 @@ p.tableblock.header { color: #6d6e71; }
 <div id="header">
 <h1>OpenXR API Reference Pages</h1>
 <div class="details">
-<span id="revnumber">version 1.0.5,</span>
-<span id="revdate">Sat, 07 Dec 2019 04:10:26 +0000</span>
-<br><span id="revremark">from git ref release-1.0.5 commit: 6d98ed90cef6260f32e63d2e7393cd1f53ed2636</span>
+<span id="revnumber">version 1.0.6,</span>
+<span id="revdate">Sat, 25 Jan 2020 03:49:00 +0000</span>
+<br><span id="revremark">from git ref release-1.0.6 commit: e17a527581948ecf89bfdda0ba2184794702388b</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1050,6 +1050,7 @@ p.tableblock.header { color: #6d6e71; }
 <li><a href="#_xr_ext_performance_settings3">XR_EXT_performance_settings(3)</a></li>
 <li><a href="#_xr_ext_thermal_query3">XR_EXT_thermal_query(3)</a></li>
 <li><a href="#_xr_ext_view_configuration_depth_range3">XR_EXT_view_configuration_depth_range(3)</a></li>
+<li><a href="#_xr_ext_win32_appcontainer_compatible3">XR_EXT_win32_appcontainer_compatible(3)</a></li>
 <li><a href="#_xr_mnd_headless3">XR_MND_headless(3)</a></li>
 <li><a href="#_xr_msft_spatial_anchor3">XR_MSFT_spatial_anchor(3)</a></li>
 <li><a href="#_xr_msft_unbounded_reference_space3">XR_MSFT_unbounded_reference_space(3)</a></li>
@@ -6837,7 +6838,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a></p>
 </li>
 </ul>
 </div>
@@ -7944,8 +7945,8 @@ no controllers are active.</p>
 <p>If <a href="#xrAttachSessionActionSets">xrAttachSessionActionSets</a> has not yet been called for the
 <code>session</code>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_ACTIONSET_NOT_ATTACHED</code>.
-If <code>topLevelUserPath</code> does not follow the format defined in
-<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-input" target="_blank" rel="noopener">Device input subpaths</a>, the runtime <strong class="purple">must</strong> return
+If <code>topLevelUserPath</code> is not one of the device input subpaths described
+in section <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-user" target="_blank" rel="noopener">/user paths</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
 </div>
 <div class="sidebarblock">
@@ -14340,8 +14341,8 @@ replace them with the new suggested bindings for that profile.</p>
 bindings contain paths that do not follow the format defined in
 <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-input" target="_blank" rel="noopener">Device input subpaths</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.
-If the input source for any of the suggested bindings for the given
-interaction profile does not exist in the whitelist defined in
+If the interaction profile or input source for any of the suggested bindings
+does not exist in the whitelist defined in
 <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles" target="_blank" rel="noopener">Interaction Profile Paths</a>, the
 runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
 </div>
@@ -20786,7 +20787,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
 </li>
 </ul>
 </div>
@@ -28727,7 +28728,7 @@ experience, as users cannot interact with the application at this time.
 It is important for applications to continue rendering when visible, even
 when they do not have focus, so the user continues to see something
 reasonable underneath modal pop-ups.
-Runtimes <strong class="purple">should</strong> make input actions inactive during while the application is
+Runtimes <strong class="purple">should</strong> make input actions inactive while the application is
 unfocused, and applications should react to an inactive input action by
 skipping rendering of that action&#8217;s input avatar (depictions of hands or
 other tracked objects controlled by the user).</p>
@@ -30649,7 +30650,7 @@ Attribution 4.0 International License</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 5)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 6)</code></pre>
 </div>
 </div>
 </div>
@@ -32367,7 +32368,7 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect3">
 <h4 id="_revision_11">Revision</h4>
 <div class="paragraph">
-<p>7</p>
+<p>8</p>
 </div>
 </div>
 <div class="sect3">
@@ -33019,29 +33020,29 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_mnd_headless3">XR_MND_headless(3)</h3>
+<h3 id="_xr_ext_win32_appcontainer_compatible3">XR_EXT_win32_appcontainer_compatible(3)</h3>
 <div class="sect3">
 <h4 id="_name_280">Name</h4>
 <div class="paragraph">
-<p>XR_MND_headless - instance extension</p>
+<p>XR_EXT_win32_appcontainer_compatible - instance extension</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_specification_22">Specification</h4>
 <div class="paragraph">
-<p>See <a href="../../openxr.html#XR_MND_headless"> XR_MND_headless</a> in the main specification for complete information.</p>
+<p>See <a href="../../openxr.html#XR_EXT_win32_appcontainer_compatible"> XR_EXT_win32_appcontainer_compatible</a> in the main specification for complete information.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_registered_extension_number_22">Registered Extension Number</h4>
 <div class="paragraph">
-<p>43</p>
+<p>58</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_revision_22">Revision</h4>
 <div class="paragraph">
-<p>2</p>
+<p>1</p>
 </div>
 </div>
 <div class="sect3">
@@ -33063,7 +33064,7 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect3">
 <h4 id="_document_notes_280">Document Notes</h4>
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_MND_headless" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_EXT_win32_appcontainer_compatible" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is a generated document.
@@ -33080,29 +33081,29 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_msft_spatial_anchor3">XR_MSFT_spatial_anchor(3)</h3>
+<h3 id="_xr_mnd_headless3">XR_MND_headless(3)</h3>
 <div class="sect3">
 <h4 id="_name_281">Name</h4>
 <div class="paragraph">
-<p>XR_MSFT_spatial_anchor - instance extension</p>
+<p>XR_MND_headless - instance extension</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_specification_23">Specification</h4>
 <div class="paragraph">
-<p>See <a href="../../openxr.html#XR_MSFT_spatial_anchor"> XR_MSFT_spatial_anchor</a> in the main specification for complete information.</p>
+<p>See <a href="../../openxr.html#XR_MND_headless"> XR_MND_headless</a> in the main specification for complete information.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_registered_extension_number_23">Registered Extension Number</h4>
 <div class="paragraph">
-<p>40</p>
+<p>43</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_revision_23">Revision</h4>
 <div class="paragraph">
-<p>1</p>
+<p>2</p>
 </div>
 </div>
 <div class="sect3">
@@ -33118,13 +33119,13 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect3">
 <h4 id="_see_also_281">See Also</h4>
 <div class="paragraph">
-<p><a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a>, <a href="#xrCreateSpatialAnchorSpaceMSFT">xrCreateSpatialAnchorSpaceMSFT</a>, <a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a></p>
+<p>No cross-references are available</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_document_notes_281">Document Notes</h4>
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_MSFT_spatial_anchor" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_MND_headless" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is a generated document.
@@ -33141,23 +33142,23 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_msft_unbounded_reference_space3">XR_MSFT_unbounded_reference_space(3)</h3>
+<h3 id="_xr_msft_spatial_anchor3">XR_MSFT_spatial_anchor(3)</h3>
 <div class="sect3">
 <h4 id="_name_282">Name</h4>
 <div class="paragraph">
-<p>XR_MSFT_unbounded_reference_space - instance extension</p>
+<p>XR_MSFT_spatial_anchor - instance extension</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_specification_24">Specification</h4>
 <div class="paragraph">
-<p>See <a href="../../openxr.html#XR_MSFT_unbounded_reference_space"> XR_MSFT_unbounded_reference_space</a> in the main specification for complete information.</p>
+<p>See <a href="../../openxr.html#XR_MSFT_spatial_anchor"> XR_MSFT_spatial_anchor</a> in the main specification for complete information.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_registered_extension_number_24">Registered Extension Number</h4>
 <div class="paragraph">
-<p>39</p>
+<p>40</p>
 </div>
 </div>
 <div class="sect3">
@@ -33179,13 +33180,13 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect3">
 <h4 id="_see_also_282">See Also</h4>
 <div class="paragraph">
-<p>No cross-references are available</p>
+<p><a href="#xrCreateSpatialAnchorMSFT">xrCreateSpatialAnchorMSFT</a>, <a href="#xrCreateSpatialAnchorSpaceMSFT">xrCreateSpatialAnchorSpaceMSFT</a>, <a href="#xrDestroySpatialAnchorMSFT">xrDestroySpatialAnchorMSFT</a></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_document_notes_282">Document Notes</h4>
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_MSFT_unbounded_reference_space" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_MSFT_spatial_anchor" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is a generated document.
@@ -33202,23 +33203,23 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_oculus_android_session_state_enable3">XR_OCULUS_android_session_state_enable(3)</h3>
+<h3 id="_xr_msft_unbounded_reference_space3">XR_MSFT_unbounded_reference_space(3)</h3>
 <div class="sect3">
 <h4 id="_name_283">Name</h4>
 <div class="paragraph">
-<p>XR_OCULUS_android_session_state_enable - instance extension</p>
+<p>XR_MSFT_unbounded_reference_space - instance extension</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_specification_25">Specification</h4>
 <div class="paragraph">
-<p>See <a href="../../openxr.html#XR_OCULUS_android_session_state_enable"> XR_OCULUS_android_session_state_enable</a> in the main specification for complete information.</p>
+<p>See <a href="../../openxr.html#XR_MSFT_unbounded_reference_space"> XR_MSFT_unbounded_reference_space</a> in the main specification for complete information.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_registered_extension_number_25">Registered Extension Number</h4>
 <div class="paragraph">
-<p>45</p>
+<p>39</p>
 </div>
 </div>
 <div class="sect3">
@@ -33246,7 +33247,7 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect3">
 <h4 id="_document_notes_283">Document Notes</h4>
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_OCULUS_android_session_state_enable" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_MSFT_unbounded_reference_space" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is a generated document.
@@ -33263,23 +33264,23 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xr_varjo_quad_views3">XR_VARJO_quad_views(3)</h3>
+<h3 id="_xr_oculus_android_session_state_enable3">XR_OCULUS_android_session_state_enable(3)</h3>
 <div class="sect3">
 <h4 id="_name_284">Name</h4>
 <div class="paragraph">
-<p>XR_VARJO_quad_views - instance extension</p>
+<p>XR_OCULUS_android_session_state_enable - instance extension</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_specification_26">Specification</h4>
 <div class="paragraph">
-<p>See <a href="../../openxr.html#XR_VARJO_quad_views"> XR_VARJO_quad_views</a> in the main specification for complete information.</p>
+<p>See <a href="../../openxr.html#XR_OCULUS_android_session_state_enable"> XR_OCULUS_android_session_state_enable</a> in the main specification for complete information.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_registered_extension_number_26">Registered Extension Number</h4>
 <div class="paragraph">
-<p>38</p>
+<p>45</p>
 </div>
 </div>
 <div class="sect3">
@@ -33307,7 +33308,7 @@ Attribution 4.0 International License</a>.</p>
 <div class="sect3">
 <h4 id="_document_notes_284">Document Notes</h4>
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_VARJO_quad_views" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_OCULUS_android_session_state_enable" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is a generated document.
@@ -33323,13 +33324,74 @@ Attribution 4.0 International License</a>.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_xr_varjo_quad_views3">XR_VARJO_quad_views(3)</h3>
+<div class="sect3">
+<h4 id="_name_285">Name</h4>
+<div class="paragraph">
+<p>XR_VARJO_quad_views - instance extension</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specification_27">Specification</h4>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_VARJO_quad_views"> XR_VARJO_quad_views</a> in the main specification for complete information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registered_extension_number_27">Registered Extension Number</h4>
+<div class="paragraph">
+<p>38</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revision_27">Revision</h4>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_and_version_dependencies_27">Extension and Version Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_285">See Also</h4>
+<div class="paragraph">
+<p>No cross-references are available</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_document_notes_285">Document Notes</h4>
+<div class="paragraph">
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_VARJO_quad_views" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_copyright_286">Copyright</h4>
+<div class="paragraph">
+<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.5<br>
-Last updated 2019-12-07 04:10:26 UTC
+Version 1.0.6<br>
+Last updated 2020-01-25 03:49:00 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

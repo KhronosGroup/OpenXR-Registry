@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Copyright (c) 2017-2019 The Khronos Group Inc.">
+<meta name="author" content="Copyright (c) 2017-2020 The Khronos Group Inc.">
 <title>The OpenXR Specification</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,10 +442,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>The OpenXR Specification</h1>
 <div class="details">
-<span id="author" class="author">Copyright (c) 2017-2019 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.5,</span>
-<span id="revdate">Sat, 07 Dec 2019 04:08:42 +0000</span>
-<br><span id="revremark">from git ref release-1.0.5 commit: 6d98ed90cef6260f32e63d2e7393cd1f53ed2636</span>
+<span id="author" class="author">Copyright (c) 2017-2020 The Khronos Group Inc.</span><br>
+<span id="revnumber">version 1.0.6,</span>
+<span id="revdate">Sat, 25 Jan 2020 03:46:21 +0000</span>
+<br><span id="revremark">from git ref release-1.0.6 commit: e17a527581948ecf89bfdda0ba2184794702388b</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -579,11 +579,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_EXT_performance_settings">12.19. XR_EXT_performance_settings</a></li>
 <li><a href="#XR_EXT_thermal_query">12.20. XR_EXT_thermal_query</a></li>
 <li><a href="#XR_EXT_view_configuration_depth_range">12.21. XR_EXT_view_configuration_depth_range</a></li>
-<li><a href="#XR_MND_headless">12.22. XR_MND_headless</a></li>
-<li><a href="#XR_MSFT_spatial_anchor">12.23. XR_MSFT_spatial_anchor</a></li>
-<li><a href="#XR_MSFT_unbounded_reference_space">12.24. XR_MSFT_unbounded_reference_space</a></li>
-<li><a href="#XR_OCULUS_android_session_state_enable">12.25. XR_OCULUS_android_session_state_enable</a></li>
-<li><a href="#XR_VARJO_quad_views">12.26. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_EXT_win32_appcontainer_compatible">12.22. XR_EXT_win32_appcontainer_compatible</a></li>
+<li><a href="#XR_MND_headless">12.23. XR_MND_headless</a></li>
+<li><a href="#XR_MSFT_spatial_anchor">12.24. XR_MSFT_spatial_anchor</a></li>
+<li><a href="#XR_MSFT_unbounded_reference_space">12.25. XR_MSFT_unbounded_reference_space</a></li>
+<li><a href="#XR_OCULUS_android_session_state_enable">12.26. XR_OCULUS_android_session_state_enable</a></li>
+<li><a href="#XR_VARJO_quad_views">12.27. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#index">Index</a>
@@ -615,7 +616,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2019 The Khronos Group Inc.
+<p>Copyright (c) 2017-2020 The Khronos Group Inc.
 All rights reserved.</p>
 </div>
 <!-- toc disabled -->
@@ -7446,6 +7447,9 @@ use)</p>
 <p><em>&#8230;/input/trigger/click</em></p>
 </li>
 <li>
+<p><em>&#8230;/input/back/click</em></p>
+</li>
+<li>
 <p><em>&#8230;/input/trackpad/x</em></p>
 </li>
 <li>
@@ -11129,7 +11133,7 @@ experience, as users cannot interact with the application at this time.
 It is important for applications to continue rendering when visible, even
 when they do not have focus, so the user continues to see something
 reasonable underneath modal pop-ups.
-Runtimes <strong class="purple">should</strong> make input actions inactive during while the application is
+Runtimes <strong class="purple">should</strong> make input actions inactive while the application is
 unfocused, and applications should react to an inactive input action by
 skipping rendering of that action&#8217;s input avatar (depictions of hands or
 other tracked objects controlled by the user).</p>
@@ -11930,7 +11934,7 @@ API-specific type, not an array of structure pointers.</p>
 <p><a id="VUID-xrEnumerateSwapchainImages-imageCountOutput-parameter"></a> <code>imageCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a></p>
+<p><a id="VUID-xrEnumerateSwapchainImages-images-parameter"></a> If <code>imageCapacityInput</code> is not <code>0</code>, <code>images</code> <strong class="purple">must</strong> be a pointer to an array of <code>imageCapacityInput</code> <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>-based structures. See also: <a href="#XrSwapchainImageD3D11KHR">XrSwapchainImageD3D11KHR</a>, <a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a>, <a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a>, <a href="#XrSwapchainImageOpenGLKHR">XrSwapchainImageOpenGLKHR</a>, <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a></p>
 </li>
 </ul>
 </div>
@@ -13782,7 +13786,7 @@ If layerCount is greater than the maximum supported layer count then
 <p><a id="VUID-XrFrameEndInfo-environmentBlendMode-parameter"></a> <code>environmentBlendMode</code> <strong class="purple">must</strong> be a valid <a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
+<p><a id="VUID-XrFrameEndInfo-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="#XrCompositionLayerCubeKHR">XrCompositionLayerCubeKHR</a>, <a href="#XrCompositionLayerCylinderKHR">XrCompositionLayerCylinderKHR</a>, <a href="#XrCompositionLayerEquirectKHR">XrCompositionLayerEquirectKHR</a>, <a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a>, <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
 </li>
 </ul>
 </div>
@@ -15845,8 +15849,8 @@ replace them with the new suggested bindings for that profile.</p>
 bindings contain paths that do not follow the format defined in
 <a href="#semantic-path-input">Device input subpaths</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.
-If the input source for any of the suggested bindings for the given
-interaction profile does not exist in the whitelist defined in
+If the interaction profile or input source for any of the suggested bindings
+does not exist in the whitelist defined in
 <a href="#semantic-path-interaction-profiles">Interaction Profile Paths</a>, the
 runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
 </div>
@@ -16273,8 +16277,8 @@ no controllers are active.</p>
 <p>If <a href="#xrAttachSessionActionSets">xrAttachSessionActionSets</a> has not yet been called for the
 <code>session</code>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_ACTIONSET_NOT_ATTACHED</code>.
-If <code>topLevelUserPath</code> does not follow the format defined in
-<a href="#semantic-path-input">Device input subpaths</a>, the runtime <strong class="purple">must</strong> return
+If <code>topLevelUserPath</code> is not one of the device input subpaths described
+in section <a href="#semantic-path-user">/user paths</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
 </div>
 <div class="sidebarblock">
@@ -18547,82 +18551,85 @@ E.g. <code>Trigger</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#XR_KHR_android_create_instance">XR_KHR_android_create_instance</a></p>
+<p><code><a href="#XR_KHR_android_create_instance">XR_KHR_android_create_instance</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_android_surface_swapchain">XR_KHR_android_surface_swapchain</a></p>
+<p><code><a href="#XR_KHR_android_surface_swapchain">XR_KHR_android_surface_swapchain</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_android_thread_settings">XR_KHR_android_thread_settings</a></p>
+<p><code><a href="#XR_KHR_android_thread_settings">XR_KHR_android_thread_settings</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_composition_layer_cube">XR_KHR_composition_layer_cube</a></p>
+<p><code><a href="#XR_KHR_composition_layer_cube">XR_KHR_composition_layer_cube</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_composition_layer_cylinder">XR_KHR_composition_layer_cylinder</a></p>
+<p><code><a href="#XR_KHR_composition_layer_cylinder">XR_KHR_composition_layer_cylinder</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_composition_layer_depth">XR_KHR_composition_layer_depth</a></p>
+<p><code><a href="#XR_KHR_composition_layer_depth">XR_KHR_composition_layer_depth</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_composition_layer_equirect">XR_KHR_composition_layer_equirect</a></p>
+<p><code><a href="#XR_KHR_composition_layer_equirect">XR_KHR_composition_layer_equirect</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_convert_timespec_time">XR_KHR_convert_timespec_time</a></p>
+<p><code><a href="#XR_KHR_convert_timespec_time">XR_KHR_convert_timespec_time</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_D3D11_enable">XR_KHR_D3D11_enable</a></p>
+<p><code><a href="#XR_KHR_D3D11_enable">XR_KHR_D3D11_enable</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_D3D12_enable">XR_KHR_D3D12_enable</a></p>
+<p><code><a href="#XR_KHR_D3D12_enable">XR_KHR_D3D12_enable</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_opengl_enable">XR_KHR_opengl_enable</a></p>
+<p><code><a href="#XR_KHR_opengl_enable">XR_KHR_opengl_enable</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_opengl_es_enable">XR_KHR_opengl_es_enable</a></p>
+<p><code><a href="#XR_KHR_opengl_es_enable">XR_KHR_opengl_es_enable</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_visibility_mask">XR_KHR_visibility_mask</a></p>
+<p><code><a href="#XR_KHR_visibility_mask">XR_KHR_visibility_mask</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></p>
+<p><code><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_vulkan_swapchain_format_list">XR_KHR_vulkan_swapchain_format_list</a></p>
+<p><code><a href="#XR_KHR_vulkan_swapchain_format_list">XR_KHR_vulkan_swapchain_format_list</a></code></p>
 </li>
 <li>
-<p><a href="#XR_KHR_win32_convert_performance_counter_time">XR_KHR_win32_convert_performance_counter_time</a></p>
+<p><code><a href="#XR_KHR_win32_convert_performance_counter_time">XR_KHR_win32_convert_performance_counter_time</a></code></p>
 </li>
 <li>
-<p><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></p>
+<p><code><a href="#XR_EXT_conformance_automation">XR_EXT_conformance_automation</a></code></p>
 </li>
 <li>
-<p><a href="#XR_EXT_debug_utils">XR_EXT_debug_utils</a></p>
+<p><code><a href="#XR_EXT_debug_utils">XR_EXT_debug_utils</a></code></p>
 </li>
 <li>
-<p><a href="#XR_EXT_performance_settings">XR_EXT_performance_settings</a></p>
+<p><code><a href="#XR_EXT_performance_settings">XR_EXT_performance_settings</a></code></p>
 </li>
 <li>
-<p><a href="#XR_EXT_thermal_query">XR_EXT_thermal_query</a></p>
+<p><code><a href="#XR_EXT_thermal_query">XR_EXT_thermal_query</a></code></p>
 </li>
 <li>
-<p><a href="#XR_EXT_view_configuration_depth_range">XR_EXT_view_configuration_depth_range</a></p>
+<p><code><a href="#XR_EXT_view_configuration_depth_range">XR_EXT_view_configuration_depth_range</a></code></p>
 </li>
 <li>
-<p><a href="#XR_MND_headless">XR_MND_headless</a></p>
+<p><code><a href="#XR_EXT_win32_appcontainer_compatible">XR_EXT_win32_appcontainer_compatible</a></code></p>
 </li>
 <li>
-<p><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></p>
+<p><code><a href="#XR_MND_headless">XR_MND_headless</a></code></p>
 </li>
 <li>
-<p><a href="#XR_MSFT_unbounded_reference_space">XR_MSFT_unbounded_reference_space</a></p>
+<p><code><a href="#XR_MSFT_spatial_anchor">XR_MSFT_spatial_anchor</a></code></p>
 </li>
 <li>
-<p><a href="#XR_OCULUS_android_session_state_enable">XR_OCULUS_android_session_state_enable</a></p>
+<p><code><a href="#XR_MSFT_unbounded_reference_space">XR_MSFT_unbounded_reference_space</a></code></p>
 </li>
 <li>
-<p><a href="#XR_VARJO_quad_views">XR_VARJO_quad_views</a></p>
+<p><code><a href="#XR_OCULUS_android_session_state_enable">XR_OCULUS_android_session_state_enable</a></code></p>
+</li>
+<li>
+<p><code><a href="#XR_VARJO_quad_views">XR_VARJO_quad_views</a></code></p>
 </li>
 </ul>
 </div>
@@ -21957,7 +21964,7 @@ the <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>7</p>
+<p>8</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -21983,7 +21990,8 @@ the <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>.</p>
 Bryce Hutchings, Microsoft<br>
 Paul Pedriana, Oculus<br>
 Minmin Gong, Microsoft<br>
-Robert Menzel, NVIDIA</p>
+Robert Menzel, NVIDIA<br>
+Jakob Bornecrantz, Collabora</p>
 </dd>
 </dl>
 </div>
@@ -22038,6 +22046,18 @@ The window system defines currently supported by this extension are:</p>
 <p>Note that a runtime implementation of this extension is only required to
 support the structs introduced by this extension which belong to the
 platform it is running on.</p>
+</div>
+<div class="paragraph">
+<p>Note that the OpenGL context given to the call <a href="#xrCreateSession">xrCreateSession</a> <strong class="purple">must</strong>
+not be bound in another thread when calling the functions:
+<a href="#xrCreateSession">xrCreateSession</a>, <a href="#xrDestroySession">xrDestroySession</a>, <a href="#xrBeginFrame">xrBeginFrame</a>,
+<a href="#xrEndFrame">xrEndFrame</a>, <a href="#xrCreateSwapchain">xrCreateSwapchain</a>, <a href="#xrDestroySwapchain">xrDestroySwapchain</a>,
+<a href="#xrEnumerateSwapchainImages">xrEnumerateSwapchainImages</a>, <a href="#xrAcquireSwapchainImage">xrAcquireSwapchainImage</a>,
+<a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a> and <a href="#xrReleaseSwapchainImage">xrReleaseSwapchainImage</a>.
+It <strong class="purple">may</strong> be bound in the thread calling those functions.
+The runtime <strong class="purple">must</strong> not access the context from any other function.
+In particular the application must be able to call <a href="#xrWaitFrame">xrWaitFrame</a> from a
+different thread than the rendering thread.</p>
 </div>
 <div class="paragraph">
 <p><strong>New Object Types</strong></p>
@@ -22770,6 +22790,16 @@ tested OpenGL version.
 <ul>
 <li>
 <p>Adjusted member name in XCB struct</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 8, 2019-11-28 (Jakob Bornecrantz)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added note about context not allowed to be current in a different thread.</p>
 </li>
 </ul>
 </div>
@@ -29388,7 +29418,126 @@ of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_headless">12.22. XR_MND_headless</h3>
+<h3 id="XR_EXT_win32_appcontainer_compatible">12.22. XR_EXT_win32_appcontainer_compatible</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_EXT_win32_appcontainer_compatible</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>58</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Last Modified Date</strong></dt>
+<dd>
+<p>2019-12-16</p>
+</dd>
+<dt class="hdlist1"><strong>IP Status</strong></dt>
+<dd>
+<p>No known IP claims.</p>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Yin Li, Microsoft<br>
+Alex Turner, Microsoft<br>
+Lachlan Ford, Microsoft<br></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>To minimize opportunities for malicious manipulation, a common practice on
+the Windows OS is to isolate the application process in an [AppContainer
+execution environment]
+(<a href="https://docs.microsoft.com/en-us/windows/win32/secauthz/appcontainer-isolation" class="bare">https://docs.microsoft.com/en-us/windows/win32/secauthz/appcontainer-isolation</a>).
+In order for a runtime to work properly in such an application process, the
+runtime <strong class="purple">must</strong> properly [set ACL to device resources and cross process
+resources]
+(<a href="https://docs.microsoft.com/en-us/windows/win32/secauthz/implementing-an-appcontainer" class="bare">https://docs.microsoft.com/en-us/windows/win32/secauthz/implementing-an-appcontainer</a>).</p>
+</div>
+<div class="paragraph">
+<p>An application running in an AppContainer process <strong class="purple">can</strong> request for a runtime
+to enable such AppContainer compatibility by adding
+<code>XR_EXT_WIN32_APPCONTAINER_COMPATIBLE_EXTENSION_NAME</code> to
+<code>enabledExtensionNames</code> of <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> when calling
+<a href="#xrCreateInstance">xrCreateInstance</a>.
+If the runtime is not capable of running properly within the AppContainer
+execution environment, it <strong class="purple">must</strong> return <code>XR_ERROR_EXTENSION_NOT_PRESENT</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the runtime supports this extension, it <strong class="purple">can</strong> further inspect the
+capability based on the connected device.
+If the XR system cannot support an AppContainer execution environment, the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_FORM_FACTOR_UNAVAILABLE</code> when the
+application calls <a href="#xrGetSystem">xrGetSystem</a>.</p>
+</div>
+<div class="paragraph">
+<p>If the call to <a href="#xrGetSystem">xrGetSystem</a> successfully returned with a valid
+<a href="#XrSystemId"><code>XrSystemId</code></a>, the application <strong class="purple">can</strong> rely on the runtime working
+properly in the AppContainer execution environment.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2019-12-16 (Yin Li)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial proposal.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_MND_headless">12.23. XR_MND_headless</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -29547,7 +29696,7 @@ false.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_anchor">12.23. XR_MSFT_spatial_anchor</h3>
+<h3 id="XR_MSFT_spatial_anchor">12.24. XR_MSFT_spatial_anchor</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -30174,7 +30323,7 @@ maintain tracking for that anchor&#8217;s origin.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_unbounded_reference_space">12.24. XR_MSFT_unbounded_reference_space</h3>
+<h3 id="XR_MSFT_unbounded_reference_space">12.25. XR_MSFT_unbounded_reference_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -30338,7 +30487,7 @@ extension is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_OCULUS_android_session_state_enable">12.25. XR_OCULUS_android_session_state_enable</h3>
+<h3 id="XR_OCULUS_android_session_state_enable">12.26. XR_OCULUS_android_session_state_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -30517,7 +30666,7 @@ from surfaceDestroyed() or onPause(), whichever comes first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views">12.26. XR_VARJO_quad_views</h3>
+<h3 id="XR_VARJO_quad_views">12.27. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -30563,7 +30712,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_3">12.26.1. Overview</h4>
+<h4 id="_overview_3">12.27.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -31851,7 +32000,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 5)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 6)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -32772,8 +32921,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.5<br>
-Last updated 2019-12-07 04:08:36 UTC
+Version 1.0.6<br>
+Last updated 2020-01-25 03:46:15 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
