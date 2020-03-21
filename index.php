@@ -16,8 +16,10 @@ include_once("../../assets/static_pages/khr_page_top.php");
 
 <ul>
     <li> <a href="#apispecs"> <b>OpenXR 1.0 API Specifications</b> </a> </li>
-    <li> <a href="#refguide"> <b>OpenXR 1.0 Reference Card</b> </a> </li>
+    <li> <a href="#refguide"> <b>OpenXR 1.0 Reference Guide</b> </a> </li>
     <li> <a href="#refpages"> <b>OpenXR API Reference Pages</b> </a> </li>
+    <li> <a href="#styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </a> </li>
+    <li> <a href="#extprocess"> <b>OpenXR™ Working Group Extension Processes</b> </a> </li>
     <li> <a href="#repos"> <b>OpenXR GitHub Repositories</b> </a>
         <ul>
         <li> <a href="#repo-docs"> <b>API and Extension Specification Repository</b> </a>
@@ -51,10 +53,10 @@ include_once("../../assets/static_pages/khr_page_top.php");
      <kbd>EXT</kbd> non-Khronos extensions. </li>
 </ul>
 
-<h2 id="refguide"> <b>OpenXR 1.0 Reference Card</b> </h2>
+<h2 id="refguide"> <b>OpenXR 1.0 Reference Guide</b> </h2>
 
 <p> The <a href="specs/1.0/refguide/openxr-10-reference-guide.pdf">
-    OpenXR 1.0 Reference Card (PDF)</a> is a compact document summarizing
+    OpenXR 1.0 Reference Guide (PDF)</a> is a compact document summarizing
     the OpenXR 1.0 functions, structures, and enumerants, as well as
     providing an overview of the input system and a typical OpenXR application's flow.
 
@@ -76,6 +78,25 @@ include_once("../../assets/static_pages/khr_page_top.php");
     Specification source, and are not separately checked into GitHub. The
     set of pages linked above are generated from the 1.0 API specification
     including all extensions.</p>
+
+<h2 id="styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </h2>
+
+<p> The <a href="specs/1.0/styleguide.html">
+    OpenXR™ Documentation and Extensions: Procedures and Conventions</a>
+    document (colloquially, the “Style Guide”) defines mandatory and
+    recommended conventions and best practices used in creating and modifying
+    the API Specification and extensions. Authors wishing to write OpenXR
+    extension specifications, or contribute to existing specifications, should
+    familiarize themselves with and adhere to this document.</p>
+
+<h2 id="extprocess"> <b>OpenXR™ Working Group Extension Processes</b> </h2>
+<p> The <a href="specs/1.0/extprocess.html">
+    OpenXR™ Working Group Extension Processes</a> document is a concise definition
+    of the processes followed to add or promote an extension within the OpenXR
+    specification. It is meant to be read in conjunction with the Style Guide.
+    Authors wishing to write OpenXR extension specifications must follow both
+    this document as well as the Style Guide.</p>
+
 
 <h2 id="repos"> <b> OpenXR GitHub Repositories </b> </h2>
 
