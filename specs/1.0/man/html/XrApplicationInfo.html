@@ -722,6 +722,22 @@ p.tableblock.header { color: #6d6e71; }
 
 .literalblock pre, .listingblock pre { background: #eee; }
 
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/901 */
+a code { color: inherit; }
+
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/1157 */
+/* Make VUID anchor handles*/
+li > p > a[id^="VUID-"] { visibility: hidden; position: absolute; z-index: 1001; width: 2.2ex; margin-left: -2.2ex; display: block; text-decoration: none !important; text-align: center; font-weight: normal; }
+
+li > p > a[id^="VUID-"]:before { content: "\00A7"; font-size: 1em; display: block; padding-top: 0em; background: #fff; }
+
+li > p:hover > a[id^="VUID-"], li > p > a[id^="VUID-"]:hover { visibility: visible; }
+
+li > p > a[id^="VUID-"].link { color: black; text-decoration: none; }
+
+/* TODO: not quite sure what these two do */
+li > p > a[id^="VUID-"].link:hover { color: black; }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -815,6 +831,37 @@ return <code>XR_ERROR_API_VERSION_UNSUPPORTED</code>.</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>When using the OpenXR API to implement a reusable engine that will be used
+by many applications, <code>engineName</code> <strong class="purple">should</strong> be set to a unique string
+that identifies the engine, and <code>engineVersion</code> <strong class="purple">should</strong> encode a
+representation of the engine&#8217;s version.
+This way, all applications that share this engine version will provide the
+same <code>engineName</code> and <code>engineVersion</code> to the runtime.
+The engine <strong class="purple">should</strong> then enable individual applications to choose their
+specific <code>applicationName</code> and <code>applicationVersion</code>, enabling one
+application to be distinguished from another application.</p>
+</div>
+<div class="paragraph">
+<p>When using the OpenXR API to implement an individual application without a
+shared engine, the input <code>engineName</code> <strong class="purple">should</strong> be left empty and
+<code>engineVersion</code> <strong class="purple">should</strong> be set to 0.
+The <code>applicationName</code> <strong class="purple">should</strong> then be filled in with a unique string
+that identifies the app and the <code>applicationVersion</code> <strong class="purple">should</strong> encode a
+representation of the application&#8217;s version.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -850,8 +897,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.6<br>
-Last updated 2020-01-25 03:47:25 UTC
+Version 1.0.7<br>
+Last updated 2020-03-21 02:00:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

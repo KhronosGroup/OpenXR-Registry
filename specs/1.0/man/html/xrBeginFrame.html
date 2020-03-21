@@ -722,6 +722,22 @@ p.tableblock.header { color: #6d6e71; }
 
 .literalblock pre, .listingblock pre { background: #eee; }
 
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/901 */
+a code { color: inherit; }
+
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/1157 */
+/* Make VUID anchor handles*/
+li > p > a[id^="VUID-"] { visibility: hidden; position: absolute; z-index: 1001; width: 2.2ex; margin-left: -2.2ex; display: block; text-decoration: none !important; text-align: center; font-weight: normal; }
+
+li > p > a[id^="VUID-"]:before { content: "\00A7"; font-size: 1em; display: block; padding-top: 0em; background: #fff; }
+
+li > p:hover > a[id^="VUID-"], li > p > a[id^="VUID-"]:hover { visibility: visible; }
+
+li > p > a[id^="VUID-"].link { color: black; text-decoration: none; }
+
+/* TODO: not quite sure what these two do */
+li > p > a[id^="VUID-"].link:hover { color: black; }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -783,13 +799,13 @@ work for the frame if <a href="XrFrameState.html">XrFrameState</a>::<code>should
 <code>XR_FALSE</code>.</p>
 </div>
 <div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return the error code <code>XR_ERROR_CALL_ORDER_INVALID</code> if
+there was no corresponding successful call to <a href="xrWaitFrame.html">xrWaitFrame</a>.</p>
+</div>
+<div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return the success code <code>XR_FRAME_DISCARDED</code> if a
 prior <a href="xrBeginFrame.html">xrBeginFrame</a> has been called without an intervening call to
 <a href="xrEndFrame.html">xrEndFrame</a>.</p>
-</div>
-<div class="paragraph">
-<p>The runtime <strong class="purple">must</strong> consider the frame in-progress and ready for an
-<a href="xrEndFrame.html">xrEndFrame</a> call if a success code is returned.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SESSION_NOT_RUNNING</code> if the
@@ -848,6 +864,9 @@ prior <a href="xrBeginFrame.html">xrBeginFrame</a> has been called without an in
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_CALL_ORDER_INVALID</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_NOT_RUNNING</code></p>
 </li>
 <li>
@@ -895,8 +914,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.6<br>
-Last updated 2020-01-25 03:47:25 UTC
+Version 1.0.7<br>
+Last updated 2020-03-21 02:00:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

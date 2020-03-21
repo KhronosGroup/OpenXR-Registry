@@ -722,6 +722,22 @@ p.tableblock.header { color: #6d6e71; }
 
 .literalblock pre, .listingblock pre { background: #eee; }
 
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/901 */
+a code { color: inherit; }
+
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/1157 */
+/* Make VUID anchor handles*/
+li > p > a[id^="VUID-"] { visibility: hidden; position: absolute; z-index: 1001; width: 2.2ex; margin-left: -2.2ex; display: block; text-decoration: none !important; text-align: center; font-weight: normal; }
+
+li > p > a[id^="VUID-"]:before { content: "\00A7"; font-size: 1em; display: block; padding-top: 0em; background: #fff; }
+
+li > p:hover > a[id^="VUID-"], li > p > a[id^="VUID-"]:hover { visibility: visible; }
+
+li > p > a[id^="VUID-"].link { color: black; text-decoration: none; }
+
+/* TODO: not quite sure what these two do */
+li > p > a[id^="VUID-"].link:hover { color: black; }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -789,6 +805,11 @@ the runtime predicts a composited frame will be displayed.
 The runtime <strong class="purple">may</strong> affect this computation by changing the return values and
 throttling of <a href="xrWaitFrame.html">xrWaitFrame</a> in response to feedback from frame
 submission and completion times in <a href="xrEndFrame.html">xrEndFrame</a>.
+An application <strong class="purple">must</strong> eventually match each <a href="xrWaitFrame.html">xrWaitFrame</a> call with one
+call to <a href="xrBeginFrame.html">xrBeginFrame</a>.
+A subsequent <a href="xrWaitFrame.html">xrWaitFrame</a> call <strong class="purple">must</strong> block until the previous frame has
+been begun with <a href="xrBeginFrame.html">xrBeginFrame</a> and <strong class="purple">must</strong> unblock independently of the
+corresponding call to <a href="xrEndFrame.html">xrEndFrame</a>.
 When less than one frame interval has passed since the previous return from
 <a href="xrWaitFrame.html">xrWaitFrame</a>, the runtime <strong class="purple">should</strong> block until the beginning of the next
 frame interval.
@@ -814,10 +835,7 @@ processor contention between the application and the compositor.</p>
 </div>
 <div class="paragraph">
 <p><a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be callable from any thread, including a different
-thread than <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> are being called from.
-Runtimes <strong class="purple">must</strong> not block indefinitely on a second <a href="xrWaitFrame.html">xrWaitFrame</a> call in
-the absence of <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> calls but may do so on
-subsequent <a href="xrWaitFrame.html">xrWaitFrame</a> calls.</p>
+thread than <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> are being called from.</p>
 </div>
 <div class="paragraph">
 <p>Calling <a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be externally synchronized by the
@@ -961,8 +979,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.6<br>
-Last updated 2020-01-25 03:47:25 UTC
+Version 1.0.7<br>
+Last updated 2020-03-21 02:00:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

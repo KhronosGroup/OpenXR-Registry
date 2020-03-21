@@ -722,6 +722,22 @@ p.tableblock.header { color: #6d6e71; }
 
 .literalblock pre, .listingblock pre { background: #eee; }
 
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/901 */
+a code { color: inherit; }
+
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/1157 */
+/* Make VUID anchor handles*/
+li > p > a[id^="VUID-"] { visibility: hidden; position: absolute; z-index: 1001; width: 2.2ex; margin-left: -2.2ex; display: block; text-decoration: none !important; text-align: center; font-weight: normal; }
+
+li > p > a[id^="VUID-"]:before { content: "\00A7"; font-size: 1em; display: block; padding-top: 0em; background: #fff; }
+
+li > p:hover > a[id^="VUID-"], li > p > a[id^="VUID-"]:hover { visibility: visible; }
+
+li > p > a[id^="VUID-"].link { color: black; text-decoration: none; }
+
+/* TODO: not quite sure what these two do */
+li > p > a[id^="VUID-"].link:hover { color: black; }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -816,7 +832,7 @@ with <code>"XrGraphicsBinding"</code>) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID
 <p><a id="VUID-XrSessionCreateInfo-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SESSION_CREATE_INFO</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>, <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a>, <a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="XrGraphicsBindingOpenGLWaylandKHR.html">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="XrGraphicsBindingOpenGLWin32KHR.html">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="XrGraphicsBindingOpenGLXlibKHR.html">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a></p>
+<p><a id="VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>, <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a>, <a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="XrGraphicsBindingOpenGLWaylandKHR.html">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="XrGraphicsBindingOpenGLWin32KHR.html">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="XrGraphicsBindingOpenGLXlibKHR.html">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>, <a href="XrSessionCreateInfoOverlayEXTX.html">XrSessionCreateInfoOverlayEXTX</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSessionCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
@@ -860,8 +876,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.6<br>
-Last updated 2020-01-25 03:47:25 UTC
+Version 1.0.7<br>
+Last updated 2020-03-21 02:00:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

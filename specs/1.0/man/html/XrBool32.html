@@ -722,6 +722,22 @@ p.tableblock.header { color: #6d6e71; }
 
 .literalblock pre, .listingblock pre { background: #eee; }
 
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/901 */
+a code { color: inherit; }
+
+/* From https://github.com/KhronosGroup/Vulkan-Docs/pull/1157 */
+/* Make VUID anchor handles*/
+li > p > a[id^="VUID-"] { visibility: hidden; position: absolute; z-index: 1001; width: 2.2ex; margin-left: -2.2ex; display: block; text-decoration: none !important; text-align: center; font-weight: normal; }
+
+li > p > a[id^="VUID-"]:before { content: "\00A7"; font-size: 1em; display: block; padding-top: 0em; background: #fff; }
+
+li > p:hover > a[id^="VUID-"], li > p > a[id^="VUID-"]:hover { visibility: visible; }
+
+li > p > a[id^="VUID-"].link { color: black; text-decoration: none; }
+
+/* TODO: not quite sure what these two do */
+li > p > a[id^="VUID-"].link:hover { color: black; }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -776,7 +792,7 @@ The only valid values are the following:</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrActionStateBoolean.html">XrActionStateBoolean</a>, <a href="XrActionStateFloat.html">XrActionStateFloat</a>, <a href="XrActionStatePose.html">XrActionStatePose</a>, <a href="XrActionStateVector2f.html">XrActionStateVector2f</a>, <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>, <a href="XrFrameState.html">XrFrameState</a>, <a href="XrSystemTrackingProperties.html">XrSystemTrackingProperties</a>, <a href="XrViewConfigurationProperties.html">XrViewConfigurationProperties</a>, <a href="xrSetInputDeviceActiveEXT.html">xrSetInputDeviceActiveEXT</a>, <a href="xrSetInputDeviceStateBoolEXT.html">xrSetInputDeviceStateBoolEXT</a></p>
+<p><a href="XrActionStateBoolean.html">XrActionStateBoolean</a>, <a href="XrActionStateFloat.html">XrActionStateFloat</a>, <a href="XrActionStatePose.html">XrActionStatePose</a>, <a href="XrActionStateVector2f.html">XrActionStateVector2f</a>, <a href="XrEventDataMainSessionVisibilityChangedEXTX.html">XrEventDataMainSessionVisibilityChangedEXTX</a>, <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>, <a href="XrFrameState.html">XrFrameState</a>, <a href="XrSystemTrackingProperties.html">XrSystemTrackingProperties</a>, <a href="XrViewConfigurationProperties.html">XrViewConfigurationProperties</a>, <a href="xrSetInputDeviceActiveEXT.html">xrSetInputDeviceActiveEXT</a>, <a href="xrSetInputDeviceStateBoolEXT.html">xrSetInputDeviceStateBoolEXT</a></p>
 </div>
 </div>
 </div>
@@ -805,8 +821,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.6<br>
-Last updated 2020-01-25 03:47:25 UTC
+Version 1.0.7<br>
+Last updated 2020-03-21 02:00:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
