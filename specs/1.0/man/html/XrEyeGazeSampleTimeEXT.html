@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>XrVulkanSwapchainFormatListCreateInfoKHR(3)</title>
+<title>XrEyeGazeSampleTimeEXT(3)</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -743,27 +743,26 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </head>
 <body class="manpage">
 <div id="header">
-<h1>XrVulkanSwapchainFormatListCreateInfoKHR(3) Manual Page</h1>
+<h1>XrEyeGazeSampleTimeEXT(3) Manual Page</h1>
 <h2 id="_name">Name</h2>
 <div class="sectionbody">
-<p>XrVulkanSwapchainFormatListCreateInfoKHR - A list of Vulkan view formats</p>
+<p>XrEyeGazeSampleTimeEXT - Eye gaze sample time structure</p>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
-<div id="XrVulkanSwapchainFormatListCreateInfoKHR" class="paragraph">
+<div id="XrEyeGazeSampleTimeEXT" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrVulkanSwapchainFormatListCreateInfoKHR {
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrEyeGazeSampleTimeEXT {
     XrStructureType    type;
-    const void*        next;
-    uint32_t           viewFormatCount;
-    const VkFormat*    viewFormats;
-} XrVulkanSwapchainFormatListCreateInfoKHR;</code></pre>
+    void*              next;
+    XrTime             time;
+} XrEyeGazeSampleTimeEXT;</code></pre>
 </div>
 </div>
 </div>
@@ -783,11 +782,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
 </li>
 <li>
-<p><code>viewFormatCount</code> is the number of view formats passed in
-<code>viewFormats</code>.</p>
-</li>
-<li>
-<p><code>viewFormats</code> is an array of <code>VkFormat</code>.</p>
+<p><code>time</code> is when in time the eye gaze pose is expressed.</p>
 </li>
 </ul>
 </div>
@@ -804,16 +799,13 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-extension-notenabled"></a> The <code><a href="#XR_KHR_vulkan_swapchain_format_list">[XR_KHR_vulkan_swapchain_format_list]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrVulkanSwapchainFormatListCreateInfoKHR.html">XrVulkanSwapchainFormatListCreateInfoKHR</a></p>
+<p><a id="VUID-XrEyeGazeSampleTimeEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_eye_gaze_interaction">[XR_EXT_eye_gaze_interaction]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrEyeGazeSampleTimeEXT.html">XrEyeGazeSampleTimeEXT</a></p>
 </li>
 <li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR</code></p>
+<p><a id="VUID-XrEyeGazeSampleTimeEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_EYE_GAZE_SAMPLE_TIME_EXT</code></p>
 </li>
 <li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
-</li>
-<li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-viewFormats-parameter"></a> If <code>viewFormatCount</code> is not <code>0</code>, <code>viewFormats</code> <strong class="purple">must</strong> be a pointer to an array of <code>viewFormatCount</code> valid <code>VkFormat</code> values</p>
+<p><a id="VUID-XrEyeGazeSampleTimeEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 </ul>
 </div>
@@ -825,7 +817,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrStructureType.html">XrStructureType</a>, <a href="xrCreateSwapchain.html">xrCreateSwapchain</a></p>
+<p><a href="XrStructureType.html">XrStructureType</a>, <a href="XrTime.html">XrTime</a></p>
 </div>
 </div>
 </div>
@@ -833,7 +825,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrVulkanSwapchainFormatListCreateInfoKHR" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrEyeGazeSampleTimeEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.

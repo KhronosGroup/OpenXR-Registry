@@ -781,8 +781,8 @@ on the standard behavior.
 This structure contains additional information on the main session including
 <code>flags</code> which indicate additional state information of the main session.
 Currently, the only flag value supplied is
-<code>XR_MAIN_SESSION_BIT_ENABLED_COMPOSITION_LAYER_INFO_DEPTH_EXTX</code> which
-indicates if the main session has enabled the
+<code>XR_OVERLAY_MAIN_SESSION_ENABLED_COMPOSITION_LAYER_INFO_DEPTH_BIT_EXTX</code>
+which indicates if the main session has enabled the
 <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_KHR_composition_layer_depth" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_KHR_composition_layer_depth</a> extension.</p>
 </div>
 </div>
@@ -796,8 +796,7 @@ indicates if the main session has enabled the
 <div class="ulist">
 <ul>
 <li>
-<p><code>type</code> is
-<code>XR_TYPE_EVENT_DATA_MAIN_SESSION_VISIBILITY_CHANGED_EXTX</code>.</p>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
 </li>
 <li>
 <p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
@@ -873,8 +872,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.7<br>
-Last updated 2020-03-21 02:00:49 UTC
+Version 1.0.8<br>
+Last updated 2020-03-28 02:09:24 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

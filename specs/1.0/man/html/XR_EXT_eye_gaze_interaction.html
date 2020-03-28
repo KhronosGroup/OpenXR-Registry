@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>XrVulkanSwapchainFormatListCreateInfoKHR(3)</title>
+<title>XR_EXT_eye_gaze_interaction(3)</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -743,81 +743,46 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </head>
 <body class="manpage">
 <div id="header">
-<h1>XrVulkanSwapchainFormatListCreateInfoKHR(3) Manual Page</h1>
+<h1>XR_EXT_eye_gaze_interaction(3) Manual Page</h1>
 <h2 id="_name">Name</h2>
 <div class="sectionbody">
-<p>XrVulkanSwapchainFormatListCreateInfoKHR - A list of Vulkan view formats</p>
+<p>XR_EXT_eye_gaze_interaction - instance extension</p>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="_specification">Specification</h2>
 <div class="sectionbody">
-<div id="XrVulkanSwapchainFormatListCreateInfoKHR" class="paragraph">
-<p></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrVulkanSwapchainFormatListCreateInfoKHR {
-    XrStructureType    type;
-    const void*        next;
-    uint32_t           viewFormatCount;
-    const VkFormat*    viewFormats;
-} XrVulkanSwapchainFormatListCreateInfoKHR;</code></pre>
-</div>
+<div class="paragraph">
+<p>See <a href="../../openxr.html#XR_EXT_eye_gaze_interaction"> XR_EXT_eye_gaze_interaction</a> in the main specification for complete information.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_members">Members</h2>
+<h2 id="_registered_extension_number">Registered Extension Number</h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Member Descriptions</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
-</li>
-<li>
-<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
-</li>
-<li>
-<p><code>viewFormatCount</code> is the number of view formats passed in
-<code>viewFormats</code>.</p>
-</li>
-<li>
-<p><code>viewFormats</code> is an array of <code>VkFormat</code>.</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="paragraph">
+<p>31</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description">Description</h2>
+<h2 id="_revision">Revision</h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Valid Usage (Implicit)</div>
+<div class="paragraph">
+<p>1</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extension_and_version_dependencies">Extension and Version Dependencies</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-extension-notenabled"></a> The <code><a href="#XR_KHR_vulkan_swapchain_format_list">[XR_KHR_vulkan_swapchain_format_list]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrVulkanSwapchainFormatListCreateInfoKHR.html">XrVulkanSwapchainFormatListCreateInfoKHR</a></p>
-</li>
-<li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_VULKAN_SWAPCHAIN_FORMAT_LIST_CREATE_INFO_KHR</code></p>
-</li>
-<li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
-</li>
-<li>
-<p><a id="VUID-XrVulkanSwapchainFormatListCreateInfoKHR-viewFormats-parameter"></a> If <code>viewFormatCount</code> is not <code>0</code>, <code>viewFormats</code> <strong class="purple">must</strong> be a pointer to an array of <code>viewFormatCount</code> valid <code>VkFormat</code> values</p>
+<p>Requires OpenXR 1.0</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -825,7 +790,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrStructureType.html">XrStructureType</a>, <a href="xrCreateSwapchain.html">xrCreateSwapchain</a></p>
+<p><a href="XrEyeGazeSampleTimeEXT.html">XrEyeGazeSampleTimeEXT</a>, <a href="XrSystemEyeGazeInteractionPropertiesEXT.html">XrSystemEyeGazeInteractionPropertiesEXT</a></p>
 </div>
 </div>
 </div>
@@ -833,11 +798,11 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrVulkanSwapchainFormatListCreateInfoKHR" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_EXT_eye_gaze_interaction" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
-<p>This page is extracted from the OpenXR Specification.
-Fixes and changes should be made to the Specification, not directly.</p>
+<p>This page is a generated document.
+Fixes and changes should be made to the generator scripts, not directly.</p>
 </div>
 </div>
 </div>
