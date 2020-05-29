@@ -815,13 +815,15 @@ Valid formats are indicated by <a href="xrEnumerateSwapchainFormats.html">xrEnum
 </li>
 <li>
 <p><code>sampleCount</code> is the number of sub-data element samples in the image,
-<strong class="purple">must</strong> not be <code>0</code>.</p>
+<strong class="purple">must</strong> not be <code>0</code> or greater than the graphics API&#8217;s maximum limit.</p>
 </li>
 <li>
-<p><code>width</code> is the width of the image, <strong class="purple">must</strong> not be <code>0</code>.</p>
+<p><code>width</code> is the width of the image, <strong class="purple">must</strong> not be <code>0</code> or greater than
+the graphics API&#8217;s maximum limit.</p>
 </li>
 <li>
-<p><code>height</code> is the height of the image, <strong class="purple">must</strong> not be <code>0</code>.</p>
+<p><code>height</code> is the height of the image, <strong class="purple">must</strong> not be <code>0</code> or greater than
+the graphics API&#8217;s maximum limit.</p>
 </li>
 <li>
 <p><code>faceCount</code> is the number of faces, which can be either <code>6</code> (for
@@ -829,11 +831,12 @@ cubemaps) or <code>1</code>.</p>
 </li>
 <li>
 <p><code>arraySize</code> is the number of array layers in the image or <code>1</code> for a 2D
-image, <strong class="purple">must</strong> not be zero.</p>
+image, <strong class="purple">must</strong> not be <code>0</code> or greater than the graphics API&#8217;s maximum limit.</p>
 </li>
 <li>
 <p><code>mipCount</code> describes the number of levels of detail available for
-minified sampling of the image, <strong class="purple">must</strong> not be <code>0</code>.</p>
+minified sampling of the image, <strong class="purple">must</strong> not be <code>0</code> or greater than the
+graphics API&#8217;s maximum limit.</p>
 </li>
 </ul>
 </div>
@@ -853,7 +856,7 @@ minified sampling of the image, <strong class="purple">must</strong> not be <cod
 <p><a id="VUID-XrSwapchainCreateInfo-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_CREATE_INFO</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSwapchainCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrSwapchainCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.html">XrSecondaryViewConfigurationSwapchainCreateInfoMSFT</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="XrSwapchainCreateFlagBits.html">XrSwapchainCreateFlagBits</a> values</p>
@@ -900,8 +903,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.8<br>
-Last updated 2020-03-28 02:09:24 UTC
+Version 1.0.9<br>
+Last updated 2020-05-29 22:01:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

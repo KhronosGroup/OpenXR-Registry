@@ -865,12 +865,15 @@ the world, even during tracking loss.</p>
 </div>
 <div class="paragraph">
 <p>If an <a href="XrSpaceVelocity.html">XrSpaceVelocity</a> structure is chained to the <code>next</code> pointer
-of <a href="XrSpaceLocation.html">XrSpaceLocation</a>, the runtime <strong class="purple">should</strong> fill in the linear and angular
-velocity of the origin of <code>space</code> within the reference frame of
-<code>baseSpace</code>.
-If the runtime provides linear velocity or angular velocity, it <strong class="purple">must</strong> set
-<code>XR_SPACE_VELOCITY_LINEAR_VALID_BIT</code> or
-<code>XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</code>, respectively.</p>
+of <a href="XrSpaceLocation.html">XrSpaceLocation</a> and the velocity is observed or can be calculated
+by the runtime, the runtime <strong class="purple">must</strong> fill in the linear velocity of the origin
+of space within the reference frame of <code>baseSpace</code> and set the
+<code>XR_SPACE_VELOCITY_LINEAR_VALID_BIT</code>.
+Similarly, if an <a href="XrSpaceVelocity.html">XrSpaceVelocity</a> structure is chained to the
+<code>next</code> pointer of <a href="XrSpaceLocation.html">XrSpaceLocation</a> and the angular velocity is
+observed or can be calculated by the runtime, the runtime <strong class="purple">must</strong> fill in the
+angular velocity of the origin of space within the reference frame of
+<code>baseSpace</code> and set the <code>XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</code>.</p>
 </div>
 <div id="example_locate_space_code" class="paragraph">
 <p>The following example code shows how an application can get both the
@@ -992,8 +995,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.8<br>
-Last updated 2020-03-28 02:09:24 UTC
+Version 1.0.9<br>
+Last updated 2020-05-29 22:01:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

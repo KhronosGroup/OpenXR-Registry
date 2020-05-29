@@ -785,8 +785,7 @@ such as Vulkan protected memory.</p>
 <p><code>XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT</code> indicates that the application
 will acquire and release only one image to this swapchain over its entire
 lifetime.
-When this flag is present, runtimes <strong class="purple">should</strong> allocate fewer images than for
-regular swapchains to reduce memory use.</p>
+The runtime <strong class="purple">must</strong> allocate only one swapchain image.</p>
 </li>
 </ul>
 </div>
@@ -833,8 +832,8 @@ Attribution 4.0 International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.8<br>
-Last updated 2020-03-28 02:09:24 UTC
+Version 1.0.9<br>
+Last updated 2020-05-29 22:01:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
