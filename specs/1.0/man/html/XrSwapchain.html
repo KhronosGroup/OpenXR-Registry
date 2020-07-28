@@ -7,6 +7,18 @@
 <meta name="generator" content="Asciidoctor 2.0.10">
 <title>XrSwapchain(3)</title>
 <style>
+/*
+ * khronos.css:
+ *
+ * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
+ * which incorporates normalize.css v2.1.2.
+ *
+ * Copyright (c) 2017-2020 The Khronos Group Inc.
+ * Copyright (c) 2013-2017 Dan Allen
+ * Copyright (c) 2013 ZURB, inc.
+ * Copyright (c) Nicolas Gallagher and Jonathan Neal
+ * SPDX-License-Identifier: MIT
+ */
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined in IE 8/9. */
@@ -785,10 +797,34 @@ if possible.</p>
 <p>Rendering operations involving composition of submitted layers should be
 assumed to be internally performed by the runtime in linear color space.
 Images submitted in sRGB color space must be created using an API-specific
-sRGB format (e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM_SRGB</code>, <code>GL_SRGBA</code>,
-<code>VK_FORMAT_R8G8B8A8_SRGB</code>) to apply automatic sRGB-to-linear conversion
-when read by the runtime.
+sRGB format (e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM_SRGB</code>,
+<code>GL_SRGB8_ALPHA8</code>, <code>VK_FORMAT_R8G8B8A8_SRGB</code>) to apply automatic
+sRGB-to-linear conversion when read by the runtime.
 All other formats will be treated as linear values.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>OpenXR applications should avoid submitting linear encoded 8 bit color data
+(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it may result
+in color banding.</p>
+</div>
+<div class="paragraph">
+<p>Gritz, L. and d&#8217;Eon, E. 2007.
+The Importance of Being Linear.
+In: H. Nguyen, ed., <em>GPU Gems 3</em>.
+Addison-Wesley Professional.
+<a href="https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-24-importance-being-linear" class="bare">https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-24-importance-being-linear</a></p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -831,18 +867,27 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <div class="sect1">
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright_2">Copyright</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
-<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
-Attribution 4.0 International License</a>.</p>
+<p>Copyright (c) 2014-2020 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.9<br>
-Last updated 2020-05-29 22:01:09 UTC
+Version 1.0.10<br>
+Last updated 2020-07-28 19:42:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

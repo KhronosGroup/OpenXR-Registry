@@ -7,6 +7,18 @@
 <meta name="generator" content="Asciidoctor 2.0.10">
 <title>xrSuggestInteractionProfileBindings(3)</title>
 <style>
+/*
+ * khronos.css:
+ *
+ * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
+ * which incorporates normalize.css v2.1.2.
+ *
+ * Copyright (c) 2017-2020 The Khronos Group Inc.
+ * Copyright (c) 2013-2017 Dan Allen
+ * Copyright (c) 2013 ZURB, inc.
+ * Copyright (c) Nicolas Gallagher and Jonathan Neal
+ * SPDX-License-Identifier: MIT
+ */
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined in IE 8/9. */
@@ -815,10 +827,10 @@ bindings contain paths that do not follow the format defined in
 <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-input" target="_blank" rel="noopener">Device input subpaths</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.
 If the interaction profile or input source for any of the suggested bindings
-does not exist in the whitelist defined in
+does not exist in the allowlist defined in
 <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles" target="_blank" rel="noopener">Interaction Profile Paths</a>, the
 runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>.
-A runtime <strong class="purple">must</strong> accept every valid binding in the whitelist though it is
+A runtime <strong class="purple">must</strong> accept every valid binding in the allowlist though it is
 free to ignore any of them.</p>
 </div>
 <div class="paragraph">
@@ -913,18 +925,27 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <div class="sect1">
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright_2">Copyright</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
-<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
-Attribution 4.0 International License</a>.</p>
+<p>Copyright (c) 2014-2020 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.9<br>
-Last updated 2020-05-29 22:01:09 UTC
+Version 1.0.10<br>
+Last updated 2020-07-28 19:42:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

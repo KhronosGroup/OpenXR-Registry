@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.9,</span>
-<span id="revdate">Fri, 29 May 2020 22:02:25 +0000</span>
-<br><span id="revremark">from git ref release-1.0.9 commit: 8e2dca6301551425145e3b87abb63a68f9c8dadb</span>
+<span id="revnumber">version 1.0.10,</span>
+<span id="revdate">Tue, 28 Jul 2020 19:43:56 +0000</span>
+<br><span id="revremark">from git ref release-1.0.10 commit: ebcf879c04fce7c4b519024a72a0edf5a03c32f0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -595,10 +595,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>Copyright (c) 2014-2020 The Khronos Group Inc.
-This work is licensed under a
-<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
-International License</a>.</p>
+<p>Copyright (c) 2014-2020 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>SPDX-License-Identifier: CC-BY-4.0</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -828,7 +828,7 @@ was.</p>
 <div class="title">Example: Value</div>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 9)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 10)</code></pre>
 </div>
 </div>
 </div>
@@ -2546,7 +2546,7 @@ extension and returned by one of the
 The revision value indicates a patch version of the extension
 specification, and differences in this version number maintain full
 compatibility, as defined in the
-<a href="html/spec.html#fundamentals-versionnum">API Version Numbers and
+<a href="html/xrspec.html#fundamentals-versionnum">API Version Numbers and
 Semantics</a> section of the <a href="#openxr-spec">OpenXR API Specification</a>.</p>
 </li>
 </ul>
@@ -2723,6 +2723,10 @@ const void*            next;</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>If the structure is an output parameter, the <code>next</code> pointer should be
+non-<code>const</code>.</p>
+</div>
+<div class="paragraph">
 <p>It is in principle possible for extensions to provide additional parameters
 through alternate means, such as passing a handle parameter to a structure
 with a <code>type</code> defined by the extension, but this approach is discouraged
@@ -2743,7 +2747,8 @@ specification.</p>
 <div class="paragraph">
 <p>Validation of such extended structure chains is automatically generated from
 the registry, as described in the description of attr:structextends in
-<a href="registry.html">the registry document</a>.</p>
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2/registry.html">the
+registry schema document for Vulkan</a>.</p>
 </div>
 <div class="paragraph">
 <p>Take the following XML structure example:</p>
@@ -4518,11 +4523,12 @@ does*.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that while some text still calls these extension structures, it is more
-accurate to call them chained structures, since there are cases where
-structures are chained entirely within the core specification.
-Wording in the spec conflating chained structures and extensions will be
-gradually corrected over time.</p>
+<p>Note that while some (outdated) text still calls these extension structures,
+it is more accurate to call them chained structures, since there are cases
+where structures are chained entirely within the core specification.
+Wording in the spec conflating chained structures and extensions has been
+gradually corrected over time, but older references may still make this
+error.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4871,7 +4877,9 @@ include::../../generated/api/structs/XrInstanceCreateInfo.txt[]</code></pre>
 <p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
 </li>
 <li>
-<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.</p>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR.</p>
 </li>
 <li>
 <p><code>createFlags</code> is a bitmask of <a href="#XrInstanceCreateFlags">XrInstanceCreateFlags</a> that
@@ -4918,30 +4926,20 @@ enable.</p>
 There is standard boilerplate for the <code>type</code> and <code>next</code> members,
 followed by the members specific to the structure.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">.Member Descriptions
-****
-* pname:type is the elink:XrStructureType of this structure.
-* pname:next is code:NULL or a pointer to an extension-specific structure.
-* pname:createFlags is a bitmask of elink:XrInstanceCreateFlags that
-  identifies options that apply to the creation.
-* pname:applicationInfo is an instance of slink:XrApplicationInfo.
-  This information helps runtimes recognize behavior inherent to classes of
-  applications.
-  slink:XrApplicationInfo is defined in detail below.
-* pname:enabledApiLayerCount is the number of global API layers to enable.
-* pname:enabledApiLayerNames is a pointer to an array of
-  pname:enabledApiLayerCount strings containing the names of API layers to
-  enable for the created instance.
-  See the &lt;&lt;api-layers-and-extensions,API Layers And Extensions&gt;&gt; section
-  for further details.
-* pname:enabledExtensionCount is the number of global extensions to enable.
-* pname:enabledExtensionNames is a pointer to an array of
-  pname:enabledExtensionCount strings containing the names of extensions to
-  enable.
-****</code></pre>
+<div class="paragraph">
+<p>Regarding the <code>next</code> member:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>In extensions, add "or this extension" to the second sentence.</p>
+</li>
+<li>
+<p>If there <strong>is</strong> a known chained structure in the core or this extension,
+remove the second sentence and instead continue the previous one with ",
+such as &#8230;&#8203;"</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>These entries should be short and functional, without describing details of
@@ -4971,6 +4969,7 @@ paragraph of such a list item.</p>
 <div class="paragraph">
 <p>In addition to implicit validity language, there may be additional
 validation language which is explicit.
+This is rare in OpenXR, as such requirements are usually in prose instead.
 Such language is written in a separate block in the specification,
 <em>preceding</em> the validity include.
 Prose description of the structure also goes here, if the prose associated
@@ -5243,8 +5242,8 @@ Adding OpenXR issues in most TODOs.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.9<br>
-Last updated 2020-05-29 22:00:04 UTC
+Version 1.0.10<br>
+Last updated 2020-07-28 19:42:05 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

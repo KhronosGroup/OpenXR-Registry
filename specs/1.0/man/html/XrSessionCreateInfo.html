@@ -7,6 +7,18 @@
 <meta name="generator" content="Asciidoctor 2.0.10">
 <title>XrSessionCreateInfo(3)</title>
 <style>
+/*
+ * khronos.css:
+ *
+ * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
+ * which incorporates normalize.css v2.1.2.
+ *
+ * Copyright (c) 2017-2020 The Khronos Group Inc.
+ * Copyright (c) 2013-2017 Dan Allen
+ * Copyright (c) 2013 ZURB, inc.
+ * Copyright (c) Nicolas Gallagher and Jonathan Neal
+ * SPDX-License-Identifier: MIT
+ */
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined in IE 8/9. */
@@ -783,7 +795,9 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
 </li>
 <li>
-<p><code>next</code> is <code>NULL</code> or a pointer to an extension-specific structure.
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR.
 Note that in most cases one graphics API extension specific struct needs
 to be in this next chain.</p>
 </li>
@@ -832,7 +846,7 @@ with <code>"XrGraphicsBinding"</code>) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID
 <p><a id="VUID-XrSessionCreateInfo-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SESSION_CREATE_INFO</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>, <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a>, <a href="XrGraphicsBindingEGLMNDX.html">XrGraphicsBindingEGLMNDX</a>, <a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="XrGraphicsBindingOpenGLWaylandKHR.html">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="XrGraphicsBindingOpenGLWin32KHR.html">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="XrGraphicsBindingOpenGLXlibKHR.html">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>, <a href="XrSessionCreateInfoOverlayEXTX.html">XrSessionCreateInfoOverlayEXTX</a></p>
+<p><a id="VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>, <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a>, <a href="XrGraphicsBindingEGLMNDX.html">XrGraphicsBindingEGLMNDX</a>, <a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="XrGraphicsBindingOpenGLWaylandKHR.html">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="XrGraphicsBindingOpenGLWin32KHR.html">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="XrGraphicsBindingOpenGLXlibKHR.html">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>, <a href="XrHolographicWindowAttachmentMSFT.html">XrHolographicWindowAttachmentMSFT</a>, <a href="XrSessionCreateInfoOverlayEXTX.html">XrSessionCreateInfoOverlayEXTX</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSessionCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
@@ -866,18 +880,27 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <div class="sect1">
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright_2">Copyright</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2019 Khronos Group. This work is licensed under a
-<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
-Attribution 4.0 International License</a>.</p>
+<p>Copyright (c) 2014-2020 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.9<br>
-Last updated 2020-05-29 22:01:09 UTC
+Version 1.0.10<br>
+Last updated 2020-07-28 19:42:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
