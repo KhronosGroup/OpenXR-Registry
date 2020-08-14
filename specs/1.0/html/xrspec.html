@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2020 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.10,</span>
-<span id="revdate">Tue, 28 Jul 2020 19:42:10 +0000</span>
-<br><span id="revremark">from git ref release-1.0.10 commit: ebcf879c04fce7c4b519024a72a0edf5a03c32f0</span>
+<span id="revnumber">version 1.0.11,</span>
+<span id="revdate">Fri, 14 Aug 2020 21:27:08 +0000</span>
+<br><span id="revremark">from git ref release-1.0.11 commit: 14c25557ab97779a48e9b93bd40c7879ac3a2e2a</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1944,6 +1944,7 @@ All run time error codes are negative values.</p>
     XR_ERROR_ACTIONSETS_ALREADY_ATTACHED = -47,
     XR_ERROR_LOCALIZED_NAME_DUPLICATED = -48,
     XR_ERROR_LOCALIZED_NAME_INVALID = -49,
+    XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING = -50,
     XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR = -1000003000,
     XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR = -1000003001,
     XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT = -1000039001,
@@ -2221,6 +2222,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_LOCALIZED_NAME_INVALID</code></p></td>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The localized name provided was invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The xrGetGraphicsRequirements* call was not made before calling xrCreateSession.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR</code></p></td>
@@ -4113,8 +4118,8 @@ first parameter) that is <code>instance</code> or a child of <code>instance</cod
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a> is a dummy pointer returned by queries,
-specifically those to <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+<p><a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a> is a generic function pointer type returned by
+queries, specifically those to <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
 </div>
 </div>
 </div>
@@ -10395,6 +10400,9 @@ for the new session.</p>
 </li>
 <li>
 <p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code></p>
 </li>
 </ul>
 </div>
@@ -21212,7 +21220,7 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_TIME_INVALID<
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>4</p>
+<p>5</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -21581,9 +21589,10 @@ output structure.</p>
 <p>The <a href="#xrGetD3D11GraphicsRequirementsKHR">xrGetD3D11GraphicsRequirementsKHR</a> function identifies to the
 application what graphics device (Windows LUID) needs to be used and the
 minimum feature level to use.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> on calls to
-<a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetD3D11GraphicsRequirementsKHR">xrGetD3D11GraphicsRequirementsKHR</a> has not
-been called for the same <code>instance</code> and <code>systemId</code>.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetD3D11GraphicsRequirementsKHR">xrGetD3D11GraphicsRequirementsKHR</a>
+has not been called for the same <code>instance</code> and <code>systemId</code>.
 The LUID and feature level that <a href="#xrGetD3D11GraphicsRequirementsKHR">xrGetD3D11GraphicsRequirementsKHR</a>
 returns should be used to create the <code>ID3D11Device</code> that the application
 passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGraphicsBindingD3D11KHR">XrGraphicsBindingD3D11KHR</a>.</p>
@@ -21704,6 +21713,16 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </ul>
 </div>
 </li>
+<li>
+<p>Revision 5, 2020-08-06 (Bryce Hutchings)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code> error code</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -21725,7 +21744,7 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>6</p>
+<p>7</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -22155,9 +22174,10 @@ output structure.</p>
 <p>The <a href="#xrGetD3D12GraphicsRequirementsKHR">xrGetD3D12GraphicsRequirementsKHR</a> function identifies to the
 application what graphics device (Windows LUID) needs to be used and the
 minimum feature level to use.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> on calls to
-<a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetD3D12GraphicsRequirementsKHR">xrGetD3D12GraphicsRequirementsKHR</a> has not
-been called for the same <code>instance</code> and <code>systemId</code>.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetD3D12GraphicsRequirementsKHR">xrGetD3D12GraphicsRequirementsKHR</a>
+has not been called for the same <code>instance</code> and <code>systemId</code>.
 The LUID and feature level that <a href="#xrGetD3D12GraphicsRequirementsKHR">xrGetD3D12GraphicsRequirementsKHR</a>
 returns should be used to create the <code>ID3D12Device</code> that the application
 passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>.</p>
@@ -22298,6 +22318,16 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </ul>
 </div>
 </li>
+<li>
+<p>Revision 7, 2020-08-06 (Bryce Hutchings)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code> error code</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -22319,7 +22349,7 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>8</p>
+<p>9</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -23016,9 +23046,11 @@ output structure.</p>
 <p>The <a href="#xrGetOpenGLGraphicsRequirementsKHR">xrGetOpenGLGraphicsRequirementsKHR</a> function identifies to the
 application the minimum OpenGL version requirement and the highest known
 tested OpenGL version.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> on calls to
-<a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetOpenGLGraphicsRequirementsKHR">xrGetOpenGLGraphicsRequirementsKHR</a> has not
-been called for the same <code>instance</code> and <code>systemId</code>.</p>
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if
+<a href="#xrGetOpenGLGraphicsRequirementsKHR">xrGetOpenGLGraphicsRequirementsKHR</a> has not been called for the same
+<code>instance</code> and <code>systemId</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -23172,6 +23204,16 @@ been called for the same <code>instance</code> and <code>systemId</code>.</p>
 </ul>
 </div>
 </li>
+<li>
+<p>Revision 9, 2020-08-06 (Bryce Hutchings)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code> error code</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -23193,7 +23235,7 @@ been called for the same <code>instance</code> and <code>systemId</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>6</p>
+<p>7</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -23594,9 +23636,11 @@ output structure.</p>
 <p>The <a href="#xrGetOpenGLESGraphicsRequirementsKHR">xrGetOpenGLESGraphicsRequirementsKHR</a> function identifies to the
 application the minimum OpenGL ES version requirement and the highest known
 tested OpenGL ES version.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> on calls to
-<a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetOpenGLESGraphicsRequirementsKHR">xrGetOpenGLESGraphicsRequirementsKHR</a> has not
-been called for the same <code>instance</code> and <code>systemId</code>.</p>
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if
+<a href="#xrGetOpenGLESGraphicsRequirementsKHR">xrGetOpenGLESGraphicsRequirementsKHR</a> has not been called for the same
+<code>instance</code> and <code>systemId</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -23726,6 +23770,16 @@ been called for the same <code>instance</code> and <code>systemId</code>.</p>
 <ul>
 <li>
 <p>Description updated</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 7, 2020-08-06 (Bryce Hutchings)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code> error code</p>
 </li>
 </ul>
 </div>
@@ -24236,7 +24290,7 @@ and index counts <strong class="purple">must</strong> be <code>0</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>6</p>
+<p>7</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -24764,9 +24818,11 @@ output structure.</p>
 <p>The <a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a> function identifies to the
 application the minimum Vulkan version requirement and the highest known
 tested Vulkan version.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> on calls to
-<a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a> has not
-been called for the same <code>instance</code> and <code>systemId</code>.</p>
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if
+<a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a> has not been called for the same
+<code>instance</code> and <code>systemId</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -25271,6 +25327,16 @@ and <code>xrGetVulkanGraphicsDeviceKHR</code> functions into this extension</p>
 <li>
 <p>Reword sections of the spec to shift requirements on to the runtime
 instead of the app</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 7, 2020-08-06 (Bryce Hutchings)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added new <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code> error code</p>
 </li>
 </ul>
 </div>
@@ -30507,7 +30573,7 @@ Controllers:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>/interaction_profile/hp/mixed_reality_controller</em></p>
+<p><em>/interaction_profiles/hp/mixed_reality_controller</em></p>
 </li>
 </ul>
 </div>
@@ -31422,10 +31488,10 @@ controller</a>.</p>
 </div>
 <div class="paragraph">
 <p>This extension added a new interaction profile
-<em>/interaction_profile/samsung/odyssey_controller</em> to describe the
+<em>/interaction_profiles/samsung/odyssey_controller</em> to describe the
 Odyssey controller.
 The action bindings of this interaction profile work exactly the same as the
-<a href="#_microsoft_mixed_reality_motion_controller_profile"><em>/interaction_profile/microsoft/motion_controller</em></a> in terms of
+<a href="#_microsoft_mixed_reality_motion_controller_profile"><em>/interaction_profiles/microsoft/motion_controller</em></a> in terms of
 valid user paths and supported input and output component paths.</p>
 </div>
 <div class="paragraph">
@@ -39371,7 +39437,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 10)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 11)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -40306,8 +40372,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.10<br>
-Last updated 2020-07-28 19:42:05 UTC
+Version 1.0.11<br>
+Last updated 2020-08-14 21:27:03 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

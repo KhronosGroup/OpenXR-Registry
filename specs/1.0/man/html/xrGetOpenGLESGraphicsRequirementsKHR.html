@@ -815,9 +815,11 @@ output structure.</p>
 <p>The <a href="xrGetOpenGLESGraphicsRequirementsKHR.html">xrGetOpenGLESGraphicsRequirementsKHR</a> function identifies to the
 application the minimum OpenGL ES version requirement and the highest known
 tested OpenGL ES version.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> on calls to
-<a href="xrCreateSession.html">xrCreateSession</a> if <a href="xrGetOpenGLESGraphicsRequirementsKHR.html">xrGetOpenGLESGraphicsRequirementsKHR</a> has not
-been called for the same <code>instance</code> and <code>systemId</code>.</p>
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
+on calls to <a href="xrCreateSession.html">xrCreateSession</a> if
+<a href="xrGetOpenGLESGraphicsRequirementsKHR.html">xrGetOpenGLESGraphicsRequirementsKHR</a> has not been called for the same
+<code>instance</code> and <code>systemId</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -925,8 +927,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.10<br>
-Last updated 2020-07-28 19:42:53 UTC
+Version 1.0.11<br>
+Last updated 2020-08-14 21:27:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
