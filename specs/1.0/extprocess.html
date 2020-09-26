@@ -441,9 +441,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>OpenXR™ Working Group Extension Processes</h1>
 <div class="details">
-<span id="revnumber">version 1.0.11,</span>
-<span id="revdate">Fri, 14 Aug 2020 21:28:56 +0000</span>
-<br><span id="revremark">from git ref release-1.0.11 commit: 14c25557ab97779a48e9b93bd40c7879ac3a2e2a</span>
+<span id="revnumber">version 1.0.12,</span>
+<span id="revdate">Sat, 26 Sep 2020 02:20:58 +0000</span>
+<br><span id="revremark">from git ref release-1.0.12 commit: 6b66bbaabdca7479852cf50fa1149452b7cbe299</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -452,6 +452,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_typical_extension_process_flow">2. Typical Extension Process Flow</a>
 <ul class="sectlevel2">
 <li><a href="#_creating_extensions_during_khronos_discussions">2.1. Creating Extensions During Khronos Discussions</a></li>
+<li><a href="#_flags">2.2. Flags</a></li>
 </ul>
 </li>
 <li><a href="#_extension_registration_process">3. Extension Registration Process</a></li>
@@ -702,6 +703,16 @@ There is a "Vendor Extension" label on Khronos GitLab to distinguish issues
 and merge requests regarding such discussions outside the IP zone.
 It is preferable to avoid talking about those types of extensions within
 Khronos whenever possible.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flags">2.2. Flags</h3>
+<div class="paragraph">
+<p>Extensions sometimes need to define new flag bits.
+Only KHR extensions and core specification revisions may allocate new flag
+bits from existing KHR or core flags fields.
+Vendor or EXT extensions should define new flags fields in extension structs
+in their namespace from which they are free to assign flag bits.</p>
 </div>
 </div>
 </div>
@@ -1174,8 +1185,8 @@ ensure equitable licensing, IP, and disclosure terms.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.11<br>
-Last updated 2020-08-14 21:27:03 UTC
+Version 1.0.12<br>
+Last updated 2020-09-26 02:18:42 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
