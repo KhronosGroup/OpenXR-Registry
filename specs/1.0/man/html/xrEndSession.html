@@ -807,7 +807,8 @@ its frame loop and then call <a href="xrEndSession.html">xrEndSession</a> to end
 <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">running</a> session.
 This function signals to the runtime that the application will no longer
 call <a href="xrWaitFrame.html">xrWaitFrame</a>, <a href="xrBeginFrame.html">xrBeginFrame</a> or <a href="xrEndFrame.html">xrEndFrame</a> from any
-thread.
+thread allowing the runtime to safely transition the session to
+<code>XR_SESSION_STATE_IDLE</code>.
 The application <strong class="purple">must</strong> also avoid reading input state or sending haptic
 output after calling <a href="xrEndSession.html">xrEndSession</a>.</p>
 </div>
@@ -821,14 +822,9 @@ calls <a href="xrEndSession.html">xrEndSession</a>, but the session is not yet i
 <code>XR_ERROR_SESSION_NOT_STOPPING</code>.</p>
 </div>
 <div class="paragraph">
-<p>If the application wishes to exit a session that is running but not in the
-<code>XR_SESSION_STATE_STOPPING</code> state, the application should call
-<a href="xrRequestExitSession.html">xrRequestExitSession</a>.
-This requests that the runtime transition to the
-<code>XR_SESSION_STATE_STOPPING</code> state, so that the application can call
-<a href="xrEndSession.html">xrEndSession</a>, after which the session will transition through
-<code>XR_SESSION_STATE_IDLE</code> to the <code>XR_SESSION_STATE_EXITING</code> state and
-quit the XR experience seamlessly.</p>
+<p>If the application wishes to exit a running session, the application can
+call <a href="xrRequestExitSession.html">xrRequestExitSession</a> so that the session transitions from
+<code>XR_SESSION_STATE_IDLE</code> to <code>XR_SESSION_STATE_EXITING</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -936,8 +932,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.12<br>
-Last updated 2020-09-26 02:19:37 UTC
+Version 1.0.13<br>
+Last updated 2020-11-24 18:06:24 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

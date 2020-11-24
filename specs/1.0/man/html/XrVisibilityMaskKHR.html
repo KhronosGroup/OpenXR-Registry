@@ -815,8 +815,19 @@ vertices written or the required capacity in the case that
 </li>
 <li>
 <p><code>vertices</code> is an array of vertices filled in by the runtime that
-specifies mask coordinates in the z=-1 plane of the view.</p>
+specifies mask coordinates in the z=-1 plane of the rendered view&#8212;&#8203;i.e.,
+one meter in front of the view.
+When rendering the mask for use in a projection layer, these vertices must
+be transformed by the application&#8217;s projection matrix used for the
+respective <a href="XrCompositionLayerProjectionView.html">XrCompositionLayerProjectionView</a>.</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>== Description</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>indexCapacityInput</code> is the capacity of the <code>indices</code> array, or
 <code>0</code> to indicate a request to retrieve the required capacity.</p>
@@ -834,11 +845,6 @@ the indices of the mask geometry in the <code>vertices</code> array.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -907,8 +913,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.12<br>
-Last updated 2020-09-26 02:19:37 UTC
+Version 1.0.13<br>
+Last updated 2020-11-24 18:06:24 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

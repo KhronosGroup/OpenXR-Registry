@@ -797,6 +797,8 @@ static const XrViewStateFlags XR_VIEW_STATE_POSITION_TRACKED_BIT = 0x00000008;</
 <li>
 <p><code>XR_VIEW_STATE_ORIENTATION_VALID_BIT</code> indicates whether all
 <a href="XrView.html">XrView</a> orientations contain valid data.
+Applications <strong class="purple">must</strong> not read any of the <a href="XrView.html">XrView</a> <code>pose</code>
+<code>orientation</code> fields if this flag is unset.
 <code>XR_VIEW_STATE_ORIENTATION_TRACKED_BIT</code> <strong class="purple">should</strong> generally remain set
 when this bit is set for views on a tracked headset or handheld device.</p>
 </li>
@@ -807,7 +809,9 @@ When a view loses tracking, runtimes <strong class="purple">should</strong> cont
 untracked view <code>position</code> values that are inferred or last-known, so
 long as it&#8217;s still meaningful for the application to render content using
 that position, clearing <code>XR_VIEW_STATE_POSITION_TRACKED_BIT</code> until
-tracking is recovered.</p>
+tracking is recovered.
+Applications <strong class="purple">must</strong> not read any of the <a href="XrView.html">XrView</a> <code>pose</code>
+<code>position</code> fields if this flag is unset.</p>
 </li>
 <li>
 <p><code>XR_VIEW_STATE_ORIENTATION_TRACKED_BIT</code> indicates whether all
@@ -873,8 +877,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.12<br>
-Last updated 2020-09-26 02:19:37 UTC
+Version 1.0.13<br>
+Last updated 2020-11-24 18:06:24 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

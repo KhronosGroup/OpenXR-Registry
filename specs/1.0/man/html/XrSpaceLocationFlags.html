@@ -799,7 +799,9 @@ static const XrSpaceLocationFlags XR_SPACE_LOCATION_POSITION_TRACKED_BIT = 0x000
 <code>pose</code> field&#8217;s <code>orientation</code> field contains valid data.
 For a space location tracking a device with its own inertial tracking,
 <code>XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</code> <strong class="purple">should</strong> remain set when
-this bit is set.</p>
+this bit is set.
+Applications <strong class="purple">must</strong> not read the <code>pose</code> field&#8217;s <code>orientation</code> if
+this flag is unset.</p>
 </li>
 <li>
 <p><code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> indicates that the <code>pose</code>
@@ -808,7 +810,9 @@ When a space location loses tracking, runtimes <strong class="purple">should</st
 valid but untracked <code>position</code> values that are inferred or last-known,
 so long as it&#8217;s still meaningful for the application to use that position,
 clearing <code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> until positional
-tracking is recovered.</p>
+tracking is recovered.
+Applications <strong class="purple">must</strong> not read the <code>pose</code> field&#8217;s <code>position</code> if this
+flag is unset.</p>
 </li>
 <li>
 <p><code>XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</code> indicates that the
@@ -879,8 +883,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.12<br>
-Last updated 2020-09-26 02:19:37 UTC
+Version 1.0.13<br>
+Last updated 2020-11-24 18:06:24 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
