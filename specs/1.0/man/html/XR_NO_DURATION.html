@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <title>XR_NO_DURATION(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2020 The Khronos Group Inc.
+ * Copyright (c) 2017-2021, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -814,7 +814,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright_2">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2020 The Khronos Group Inc.</p>
+<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -826,8 +826,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.13<br>
-Last updated 2020-11-24 18:06:24 UTC
+Version 1.0.14<br>
+Last updated 2021-01-27 22:36:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -846,13 +846,13 @@ MathJax.Hub.Config({
 })
 MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
   MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
-    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
       data.math.root.display = "block"
     }
     return data
   })
 })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <title>XrResult(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2020 The Khronos Group Inc.
+ * Copyright (c) 2017-2021, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -866,6 +866,284 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="fundamentals-successcodes">Success Codes</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enum</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SUCCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Function successfully completed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_TIMEOUT_EXPIRED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified timeout time occurred before the operation could complete.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SESSION_LOSS_PENDING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session will be lost soon.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_EVENT_UNAVAILABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No event was available.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPACE_BOUNDS_UNAVAILABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The space&#8217;s bounds are not known at the moment.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SESSION_NOT_FOCUSED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session is not in the focused state.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FRAME_DISCARDED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A frame has been discarded from composition.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="fundamentals-errorcodes">Error Codes</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enum</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_VALIDATION_FAILURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The function usage was invalid in some way.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_RUNTIME_FAILURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime failed to handle the function in an unexpected way that is not covered by another error result.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_OUT_OF_MEMORY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A memory allocation has failed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_API_VERSION_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime does not support the requested API version.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_INITIALIZATION_FAILED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialization of object could not be completed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The requested function was not found or is otherwise unsupported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FEATURE_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The requested feature is not supported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_EXTENSION_NOT_PRESENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A requested extension is not supported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LIMIT_REACHED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime supports no more of the requested resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SIZE_INSUFFICIENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The supplied size was smaller than required.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_HANDLE_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A supplied object handle was invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_INSTANCE_LOST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="XrInstance.html">XrInstance</a> was lost or could not be found. It will need to be destroyed and optionally recreated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SESSION_RUNNING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session <a href="#session_running">is already running</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SESSION_NOT_RUNNING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session <a href="#session_not_running">is not yet running</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SESSION_LOST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="XrSession.html">XrSession</a> was lost. It will need to be destroyed and optionally recreated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SYSTEM_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The provided <a href="XrSystemId.html">XrSystemId</a> was invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_PATH_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The provided <a href="XrPath.html">XrPath</a> was not valid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_PATH_COUNT_EXCEEDED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum number of supported semantic paths has been reached.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_PATH_FORMAT_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The semantic path character format is invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_PATH_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The semantic path is unsupported.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LAYER_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The layer was NULL or otherwise invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LAYER_LIMIT_EXCEEDED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of specified layers is greater than the supported number.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SWAPCHAIN_RECT_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The image rect was negatively sized or otherwise invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SWAPCHAIN_FORMAT_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The image format is not supported by the runtime or platform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ACTION_TYPE_MISMATCH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The API used to retrieve an action&#8217;s state does not match the action&#8217;s type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SESSION_NOT_READY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session is not in the ready state.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SESSION_NOT_STOPPING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session is not in the stopping state.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_TIME_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The provided <a href="XrTime.html">XrTime</a> was zero, negative, or out of range.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_REFERENCE_SPACE_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified reference space is not supported by the runtime or system.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FILE_ACCESS_ERROR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The file could not be accessed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FILE_CONTENTS_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The file&#8217;s contents were invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FORM_FACTOR_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified form factor is not supported by the current runtime or platform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FORM_FACTOR_UNAVAILABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified form factor is supported, but the device is currently not available, e.g. not plugged in or powered off.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_API_LAYER_NOT_PRESENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A requested API layer is not present or could not be loaded.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_CALL_ORDER_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The call was made without having made a previously required call.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The given graphics device is not in a valid state. The graphics device could be lost or initialized without meeting graphics requirements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_POSE_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The supplied pose was invalid with respect to the requirements.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_INDEX_OUT_OF_RANGE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The supplied index was outside the range of valid indices.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_VIEW_CONFIGURATION_TYPE_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified view configuration type is not supported by the runtime or platform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ENVIRONMENT_BLEND_MODE_UNSUPPORTED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified environment blend mode is not supported by the runtime or platform.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_NAME_DUPLICATED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name provided was a duplicate of an already-existing resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_NAME_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name provided was invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ACTIONSET_NOT_ATTACHED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A referenced action set is not attached to the session.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ACTIONSETS_ALREADY_ATTACHED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session already has attached action sets.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZED_NAME_DUPLICATED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The localized name provided was a duplicate of an already-existing resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZED_NAME_INVALID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The localized name provided was invalid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>xrGetGraphicsRequirements</code>* call was not made before calling <code>xrCreateSession</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xrSetAndroidApplicationThreadKHR failed as thread id is invalid. (Added by the <code><a href="#XR_KHR_android_thread_settings">[XR_KHR_android_thread_settings]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xrSetAndroidApplicationThreadKHR failed setting the thread attributes/priority. (Added by the <code><a href="#XR_KHR_android_thread_settings">[XR_KHR_android_thread_settings]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spatial anchor could not be created at that location. (Added by the <code><a href="#XR_MSFT_spatial_anchor">[XR_MSFT_spatial_anchor]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SECONDARY_VIEW_CONFIGURATION_TYPE_NOT_ENABLED_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The secondary view configuration was not enabled when creating the session. (Added by the <code><a href="#XR_MSFT_secondary_view_configuration">[XR_MSFT_secondary_view_configuration]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_CONTROLLER_MODEL_KEY_INVALID_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The controller model key is invalid. (Added by the <code><a href="#XR_MSFT_controller_model">[XR_MSFT_controller_model]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_DISPLAY_REFRESH_RATE_UNSUPPORTED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The display refresh rate is not supported by the platform. (Added by the <code><a href="#XR_FB_display_refresh_rate">[XR_FB_display_refresh_rate]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_COLOR_SPACE_UNSUPPORTED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The color space is not supported by the runtime. (Added by the <code><a href="#XR_FB_color_space">[XR_FB_color_space]</a></code> extension)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -898,7 +1176,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright_2">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2020 The Khronos Group Inc.</p>
+<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -910,8 +1188,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.13<br>
-Last updated 2020-11-24 18:06:24 UTC
+Version 1.0.14<br>
+Last updated 2021-01-27 22:36:49 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
@@ -930,13 +1208,13 @@ MathJax.Hub.Config({
 })
 MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
   MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
-    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
       data.math.root.display = "block"
     }
     return data
   })
 })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>

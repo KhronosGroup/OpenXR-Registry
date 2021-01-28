@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Copyright (c) 2017-2020 The Khronos Group Inc.">
+<meta name="generator" content="Asciidoctor 2.0.12">
+<meta name="author" content="Copyright (c) 2017-2021, The Khronos Group Inc.">
 <title>The OpenXR Specification</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -48,7 +48,7 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
@@ -63,10 +63,8 @@ img{-ms-interpolation-mode:bicubic}
 img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
-.center{margin-left:auto;margin-right:auto}
-.stretch{width:100%}
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
 a{color:#2156a5;text-decoration:underline;line-height:inherit}
 a:hover,a:focus{color:#1d4b8f}
 a img{border:0}
@@ -106,19 +104,22 @@ h1{font-size:2.75em}
 h2{font-size:2.3125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
 h4{font-size:1.4375em}}
-table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
 table thead,table tfoot{background:#f7f8f7}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt{background:#f8f8f7}
-table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
 .clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
 .clearfix::after,.float-group::after{clear:both}
-:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
-:not(pre)>code.nobreak{word-wrap:normal}
-:not(pre)>code.nowrap{white-space:nowrap}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
 pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
 pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
 pre>code{display:block}
@@ -183,7 +184,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
-#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 #content{margin-bottom:.625em}
 .sect1{padding-bottom:.625em}
@@ -206,7 +207,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -216,7 +217,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
-.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
 .literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
@@ -262,21 +263,20 @@ pre.pygments .lineno::before{content:"";margin-right:-.125em}
 .quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
 .quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
 .quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
-table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
 td.tableblock>.content>:last-child{margin-bottom:-1.25em}
-td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
-table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
-table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
-table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
-table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
-table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
-table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
 table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
 table.frame-sides{border-width:0 1px}
-table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
@@ -285,7 +285,7 @@ th.valign-top,td.valign-top{vertical-align:top}
 th.valign-bottom,td.valign-bottom{vertical-align:bottom}
 th.valign-middle,td.valign-middle{vertical-align:middle}
 table thead th,table tfoot th{font-weight:bold}
-tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th{background:#f7f8f7}
 tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
 p.tableblock>code:only-child{background:none;padding:0}
 p.tableblock{font-size:1em}
@@ -314,6 +314,7 @@ ol.lowergreek{list-style-type:lower-greek}
 .hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
 .colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
 .colist td:not([class]):first-child img{max-width:none}
@@ -386,7 +387,7 @@ a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
-.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
 .conum[data-value] *{color:#fff!important}
 .conum[data-value]+b{display:none}
 .conum[data-value]::after{content:attr(data-value)}
@@ -413,6 +414,7 @@ thead{display:table-header-group}
 svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
 #toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
 body.book #header{text-align:center}
@@ -437,15 +439,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
 </head>
-<body class="book toc2 toc-left" style="max-width: 100;">
-<div id="header">
+<body class="book toc2 toc-left">
+<div id="header" style="max-width: 100;">
 <h1>The OpenXR Specification</h1>
 <div class="details">
-<span id="author" class="author">Copyright (c) 2017-2020 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.13,</span>
-<span id="revdate">Tue, 24 Nov 2020 18:05:26 +0000</span>
-<br><span id="revremark">from git ref release-1.0.13 commit: 64bdb76a8c2a40f95d4845a1dbc136d463c42a3a</span>
+<span id="author" class="author">Copyright (c) 2017-2021, The Khronos Group Inc.</span><br>
+<span id="revnumber">version 1.0.14,</span>
+<span id="revdate">Wed, 27 Jan 2021 22:35:59 +0000</span>
+<br><span id="revremark">from git ref release-1.0.14 commit: db17de8ba0e2595ef86dd3108dd6352225eb77a5</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -592,25 +595,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_EXT_view_configuration_depth_range">12.31. XR_EXT_view_configuration_depth_range</a></li>
 <li><a href="#XR_EXT_win32_appcontainer_compatible">12.32. XR_EXT_win32_appcontainer_compatible</a></li>
 <li><a href="#XR_EPIC_view_configuration_fov">12.33. XR_EPIC_view_configuration_fov</a></li>
-<li><a href="#XR_FB_color_space">12.34. XR_FB_color_space</a></li>
-<li><a href="#XR_FB_display_refresh_rate">12.35. XR_FB_display_refresh_rate</a></li>
-<li><a href="#XR_HTC_vive_cosmos_controller_interaction">12.36. XR_HTC_vive_cosmos_controller_interaction</a></li>
-<li><a href="#XR_HUAWEI_controller_interaction">12.37. XR_HUAWEI_controller_interaction</a></li>
-<li><a href="#XR_MND_headless">12.38. XR_MND_headless</a></li>
-<li><a href="#XR_MND_swapchain_usage_input_attachment_bit">12.39. XR_MND_swapchain_usage_input_attachment_bit</a></li>
-<li><a href="#XR_MSFT_controller_model">12.40. XR_MSFT_controller_model</a></li>
-<li><a href="#XR_MSFT_first_person_observer">12.41. XR_MSFT_first_person_observer</a></li>
-<li><a href="#XR_MSFT_hand_interaction">12.42. XR_MSFT_hand_interaction</a></li>
-<li><a href="#XR_MSFT_hand_tracking_mesh">12.43. XR_MSFT_hand_tracking_mesh</a></li>
-<li><a href="#XR_MSFT_holographic_window_attachment">12.44. XR_MSFT_holographic_window_attachment</a></li>
-<li><a href="#XR_MSFT_perception_anchor_interop">12.45. XR_MSFT_perception_anchor_interop</a></li>
-<li><a href="#XR_MSFT_secondary_view_configuration">12.46. XR_MSFT_secondary_view_configuration</a></li>
-<li><a href="#XR_MSFT_spatial_anchor">12.47. XR_MSFT_spatial_anchor</a></li>
-<li><a href="#XR_MSFT_spatial_graph_bridge">12.48. XR_MSFT_spatial_graph_bridge</a></li>
-<li><a href="#XR_MSFT_unbounded_reference_space">12.49. XR_MSFT_unbounded_reference_space</a></li>
-<li><a href="#XR_OCULUS_android_session_state_enable">12.50. XR_OCULUS_android_session_state_enable</a></li>
-<li><a href="#XR_VALVE_analog_threshold">12.51. XR_VALVE_analog_threshold</a></li>
-<li><a href="#XR_VARJO_quad_views">12.52. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_FB_android_surface_swapchain_create">12.34. XR_FB_android_surface_swapchain_create</a></li>
+<li><a href="#XR_FB_color_space">12.35. XR_FB_color_space</a></li>
+<li><a href="#XR_FB_display_refresh_rate">12.36. XR_FB_display_refresh_rate</a></li>
+<li><a href="#XR_HTC_vive_cosmos_controller_interaction">12.37. XR_HTC_vive_cosmos_controller_interaction</a></li>
+<li><a href="#XR_HUAWEI_controller_interaction">12.38. XR_HUAWEI_controller_interaction</a></li>
+<li><a href="#XR_MND_headless">12.39. XR_MND_headless</a></li>
+<li><a href="#XR_MND_swapchain_usage_input_attachment_bit">12.40. XR_MND_swapchain_usage_input_attachment_bit</a></li>
+<li><a href="#XR_MSFT_controller_model">12.41. XR_MSFT_controller_model</a></li>
+<li><a href="#XR_MSFT_first_person_observer">12.42. XR_MSFT_first_person_observer</a></li>
+<li><a href="#XR_MSFT_hand_interaction">12.43. XR_MSFT_hand_interaction</a></li>
+<li><a href="#XR_MSFT_hand_tracking_mesh">12.44. XR_MSFT_hand_tracking_mesh</a></li>
+<li><a href="#XR_MSFT_holographic_window_attachment">12.45. XR_MSFT_holographic_window_attachment</a></li>
+<li><a href="#XR_MSFT_perception_anchor_interop">12.46. XR_MSFT_perception_anchor_interop</a></li>
+<li><a href="#XR_MSFT_secondary_view_configuration">12.47. XR_MSFT_secondary_view_configuration</a></li>
+<li><a href="#XR_MSFT_spatial_anchor">12.48. XR_MSFT_spatial_anchor</a></li>
+<li><a href="#XR_MSFT_spatial_graph_bridge">12.49. XR_MSFT_spatial_graph_bridge</a></li>
+<li><a href="#XR_MSFT_unbounded_reference_space">12.50. XR_MSFT_unbounded_reference_space</a></li>
+<li><a href="#XR_OCULUS_android_session_state_enable">12.51. XR_OCULUS_android_session_state_enable</a></li>
+<li><a href="#XR_VALVE_analog_threshold">12.52. XR_VALVE_analog_threshold</a></li>
+<li><a href="#XR_VARJO_quad_views">12.53. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#provisional-extension-appendices-list">13. List of Provisional Extensions</a>
@@ -644,11 +648,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" style="max-width: 100;">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2020 The Khronos Group Inc.
+<p>Copyright (c) 2017-2021, The Khronos Group Inc.
 All rights reserved.</p>
 </div>
 <!-- toc disabled -->
@@ -1087,7 +1091,7 @@ version numbers:</p>
 <div class="paragraph">
 <p>In the above table, the following identify the various cases in detail:</p>
 </div>
-<table class="tableblock frame-topbot grid-none stretch">
+<table class="tableblock frame-ends grid-none stretch">
 <colgroup>
 <col style="width: 35%;">
 <col style="width: 65%;">
@@ -1993,10 +1997,9 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </li>
 </ul>
 </div>
+<div id="fundamentals-successcodes" class="paragraph">
+<p><strong>Success Codes</strong></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="fundamentals-successcodes"><a class="anchor" href="#fundamentals-successcodes"></a>2.8.1. Success Codes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -2039,9 +2042,9 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </tr>
 </tbody>
 </table>
+<div id="fundamentals-errorcodes" class="paragraph">
+<p><strong>Error Codes</strong></p>
 </div>
-<div class="sect3">
-<h4 id="fundamentals-errorcodes"><a class="anchor" href="#fundamentals-errorcodes"></a>2.8.2. Error Codes</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -2164,7 +2167,7 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_TIME_INVALID</code></p></td>
-<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided XrTime was zero, negative, or out of range.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrTime"><code>XrTime</code></a> was zero, negative, or out of range.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_REFERENCE_SPACE_UNSUPPORTED</code></p></td>
@@ -2240,7 +2243,7 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code></p></td>
-<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The xrGetGraphicsRequirements* call was not made before calling xrCreateSession.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The <code>xrGetGraphicsRequirements</code>* call was not made before calling <code>xrCreateSession</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR</code></p></td>
@@ -2273,8 +2276,9 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_convenience_macros"><a class="anchor" href="#_convenience_macros"></a>2.8.3. Convenience Macros</h4>
+<h4 id="_convenience_macros"><a class="anchor" href="#_convenience_macros"></a>2.8.1. Convenience Macros</h4>
 <div class="openblock">
 <div class="content">
 <div id="XR_SUCCEEDED" class="paragraph">
@@ -2326,7 +2330,7 @@ used to compare an <a href="#XrResult">XrResult</a> to <code>0</code> (<code>XR_
 </div>
 </div>
 <div class="sect3">
-<h4 id="_validation"><a class="anchor" href="#_validation"></a>2.8.4. Validation</h4>
+<h4 id="_validation"><a class="anchor" href="#_validation"></a>2.8.2. Validation</h4>
 <div class="paragraph">
 <p>Except as noted below or in individual API specifications, valid API usage
 <strong class="purple">may</strong> be required by the runtime.
@@ -7087,6 +7091,8 @@ It <strong class="purple">may</strong> also be present for squeeze or other comp
 These vary in value from -1 to 1.
 These represent the 2D position of the input source with 0 being the rest
 state on each axis.
+-1 means all the way left for x axis or all the way down for y axis.
++1 means all the way right for x axis or all the way up for y axis.
 x and y components are present for trackpads, thumbsticks, and joysticks.</p>
 </li>
 <li>
@@ -11895,7 +11901,7 @@ graphics API&#8217;s maximum limit.</p>
 <p><a id="VUID-XrSwapchainCreateInfo-type-type" href="#VUID-XrSwapchainCreateInfo-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_CREATE_INFO</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSwapchainCreateInfo-next-next" href="#VUID-XrSwapchainCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrSecondaryViewConfigurationSwapchainCreateInfoMSFT">XrSecondaryViewConfigurationSwapchainCreateInfoMSFT</a></p>
+<p><a id="VUID-XrSwapchainCreateInfo-next-next" href="#VUID-XrSwapchainCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a>, <a href="#XrSecondaryViewConfigurationSwapchainCreateInfoMSFT">XrSecondaryViewConfigurationSwapchainCreateInfoMSFT</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainCreateInfo-createFlags-parameter" href="#VUID-XrSwapchainCreateInfo-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="#XrSwapchainCreateFlagBits">XrSwapchainCreateFlagBits</a> values</p>
@@ -14200,8 +14206,8 @@ The core specification defines <a href="#XrCompositionLayerProjection">XrComposi
 <div class="paragraph">
 <p>The projection layer type represents planar projected images rendered from
 the eye point of each eye using a perspective projection.
-This layer type is typically use to render the virtual world from the user&#8217;s
-perspective.</p>
+This layer type is typically used to render the virtual world from the
+user&#8217;s perspective.</p>
 </div>
 <div class="paragraph">
 <p>The quad layer type describes a posable planar rectangle in the virtual
@@ -16571,7 +16577,8 @@ interaction profiles for a top level user path.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return only interaction profiles for which the application
-has provided bindings with <a href="#xrSuggestInteractionProfileBindings">xrSuggestInteractionProfileBindings</a>.
+has provided bindings with <a href="#xrSuggestInteractionProfileBindings">xrSuggestInteractionProfileBindings</a> or
+<a href="#XR_NULL_PATH">XR_NULL_PATH</a>.
 The runtime <strong class="purple">may</strong> return interaction profiles that do not represent
 physically present hardware, for example if the runtime is using a known
 interaction profile to bind to hardware that the application is not aware
@@ -18987,6 +18994,9 @@ E.g. <code>Trigger</code>.</p>
 <p><code><a href="#XR_EPIC_view_configuration_fov">XR_EPIC_view_configuration_fov</a></code></p>
 </li>
 <li>
+<p><code><a href="#XR_FB_android_surface_swapchain_create">XR_FB_android_surface_swapchain_create</a></code></p>
+</li>
+<li>
 <p><code><a href="#XR_FB_color_space">XR_FB_color_space</a></code></p>
 </li>
 <li>
@@ -19041,11 +19051,11 @@ E.g. <code>Trigger</code>.</p>
 <p><code><a href="#XR_VALVE_analog_threshold">XR_VALVE_analog_threshold</a></code></p>
 </li>
 <li>
-<p><code><a href="#XR_VARJO_quad_views">XR_VARJO_quad_views</a></code></p>
+<p><code><a href="#XR_VARJO_quad_views">XR_VARJO_quad_views</a></code>
+&lt;&lt;&lt;</p>
 </li>
 </ul>
 </div>
-<div style="page-break-after: always;"></div>
 <div class="sect2">
 <h3 id="XR_KHR_android_create_instance"><a class="anchor" href="#XR_KHR_android_create_instance"></a>12.1. XR_KHR_android_create_instance</h3>
 <div class="dlist">
@@ -25173,7 +25183,7 @@ vertices written or the required capacity in the case that
 </li>
 <li>
 <p><code>vertices</code> is an array of vertices filled in by the runtime that
-specifies mask coordinates in the z=-1 plane of the rendered view&#8212;&#8203;i.e.,
+specifies mask coordinates in the z=-1 plane of the rendered view&#8212;&#8203;i.e.
 one meter in front of the view.
 When rendering the mask for use in a projection layer, these vertices must
 be transformed by the application&#8217;s projection matrix used for the
@@ -25653,7 +25663,7 @@ image as:</p>
 <li>
 <p>Having a memory layout compatible with
 <code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code> for color images, or
-<code>VK_IMAGE_LAYOUT_DEPTH_STENCIAL_ATTACHMENT_OPTIMAL</code> for depth images.</p>
+<code>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</code> for depth images.</p>
 </li>
 <li>
 <p>Being owned by the <code>VkQueue</code> specified in
@@ -26672,10 +26682,10 @@ call:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a> function identifies to the
+<p>The <a href="#xrGetVulkanGraphicsRequirements2KHR">xrGetVulkanGraphicsRequirements2KHR</a> function identifies to the
 application the runtime&#8217;s minimum Vulkan version requirement and the highest
 known tested Vulkan version.
-<a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a> <strong class="purple">must</strong> be called prior to calling
+<a href="#xrGetVulkanGraphicsRequirements2KHR">xrGetVulkanGraphicsRequirements2KHR</a> <strong class="purple">must</strong> be called prior to calling
 <a href="#xrCreateSession">xrCreateSession</a>.
 The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
 on calls to <a href="#xrCreateSession">xrCreateSession</a> if
@@ -27038,7 +27048,7 @@ as specified by Vulkan</a>.</p>
 <p><a id="VUID-XrVulkanInstanceCreateInfoKHR-vulkanCreateInfo-parameter" href="#VUID-XrVulkanInstanceCreateInfoKHR-vulkanCreateInfo-parameter"></a> <code>vulkanCreateInfo</code> <strong class="purple">must</strong> be a pointer to a valid <code>VkInstanceCreateInfo</code> value</p>
 </li>
 <li>
-<p><a id="VUID-XrVulkanInstanceCreateInfoKHR-vulkanAllocator-parameter" href="#VUID-XrVulkanInstanceCreateInfoKHR-vulkanAllocator-parameter"></a> <code>vulkanAllocator</code> <strong class="purple">must</strong> be a pointer to a valid <code>VkAllocationCallbacks</code> value</p>
+<p><a id="VUID-XrVulkanInstanceCreateInfoKHR-vulkanAllocator-parameter" href="#VUID-XrVulkanInstanceCreateInfoKHR-vulkanAllocator-parameter"></a> If <code>vulkanAllocator</code> is not <code>NULL</code>, <code>vulkanAllocator</code> <strong class="purple">must</strong> be a pointer to a valid <code>VkAllocationCallbacks</code> value</p>
 </li>
 </ul>
 </div>
@@ -27433,7 +27443,7 @@ as specified by Vulkan</a>.</p>
 <p><a id="VUID-XrVulkanDeviceCreateInfoKHR-vulkanCreateInfo-parameter" href="#VUID-XrVulkanDeviceCreateInfoKHR-vulkanCreateInfo-parameter"></a> <code>vulkanCreateInfo</code> <strong class="purple">must</strong> be a pointer to a valid <code>VkDeviceCreateInfo</code> value</p>
 </li>
 <li>
-<p><a id="VUID-XrVulkanDeviceCreateInfoKHR-vulkanAllocator-parameter" href="#VUID-XrVulkanDeviceCreateInfoKHR-vulkanAllocator-parameter"></a> <code>vulkanAllocator</code> <strong class="purple">must</strong> be a pointer to a valid <code>VkAllocationCallbacks</code> value</p>
+<p><a id="VUID-XrVulkanDeviceCreateInfoKHR-vulkanAllocator-parameter" href="#VUID-XrVulkanDeviceCreateInfoKHR-vulkanAllocator-parameter"></a> If <code>vulkanAllocator</code> is not <code>NULL</code>, <code>vulkanAllocator</code> <strong class="purple">must</strong> be a pointer to a valid <code>VkAllocationCallbacks</code> value</p>
 </li>
 </ul>
 </div>
@@ -27785,7 +27795,7 @@ image as:</p>
 <li>
 <p>Having a memory layout compatible with
 <code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code> for color images, or
-<code>VK_IMAGE_LAYOUT_DEPTH_STENCIAL_ATTACHMENT_OPTIMAL</code> for depth images.</p>
+<code>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</code> for depth images.</p>
 </li>
 <li>
 <p>Being owned by the <code>VkQueue</code> specified in
@@ -32564,10 +32574,7 @@ is undefined and should be avoided.</p>
 <p><a id="VUID-XrHandJointLocationEXT-extension-notenabled" href="#VUID-XrHandJointLocationEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_hand_tracking">XR_EXT_hand_tracking</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrHandJointLocationEXT">XrHandJointLocationEXT</a></p>
 </li>
 <li>
-<p><a id="VUID-XrHandJointLocationEXT-locationFlags-parameter" href="#VUID-XrHandJointLocationEXT-locationFlags-parameter"></a> <code>locationFlags</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrSpaceLocationFlagBits">XrSpaceLocationFlagBits</a> values</p>
-</li>
-<li>
-<p><a id="VUID-XrHandJointLocationEXT-locationFlags-requiredbitmask" href="#VUID-XrHandJointLocationEXT-locationFlags-requiredbitmask"></a> <code>locationFlags</code> <strong class="purple">must</strong> not be <code>0</code></p>
+<p><a id="VUID-XrHandJointLocationEXT-locationFlags-parameter" href="#VUID-XrHandJointLocationEXT-locationFlags-parameter"></a> <code>locationFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="#XrSpaceLocationFlagBits">XrSpaceLocationFlagBits</a> values</p>
 </li>
 </ul>
 </div>
@@ -34886,7 +34893,247 @@ display.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_FB_color_space"><a class="anchor" href="#XR_FB_color_space"></a>12.34. XR_FB_color_space</h3>
+<h3 id="XR_FB_android_surface_swapchain_create"><a class="anchor" href="#XR_FB_android_surface_swapchain_create"></a>12.34. XR_FB_android_surface_swapchain_create</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_FB_android_surface_swapchain_create</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>71</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+<li>
+<p>Requires <code><a href="#XR_KHR_android_surface_swapchain">XR_KHR_android_surface_swapchain</a></code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Cass Everitt, Facebook<br>
+Gloria Kennickell, Facebook<br>
+Tomislav Novak, Facebook</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>This extension provides support for the specification of Android Surface
+specific swapchain create flags.</p>
+</div>
+<div class="paragraph">
+<p>In order to enable the functionality of this extension, you <strong class="purple">must</strong> pass the
+name of the extension into <a href="#xrCreateInstance">xrCreateInstance</a> via the
+<a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> <code>enabledExtensionNames</code> parameter as
+indicated in the <a href="#extensions">Extensions</a> section.</p>
+</div>
+<div class="paragraph">
+<p>To specify the additional create flags, you must create a
+<a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a> structure and pass it on the
+call to <a href="#xrCreateSwapchainAndroidSurfaceKHR">xrCreateSwapchainAndroidSurfaceKHR</a> via the
+<a href="#XrSwapchainCreateInfo">XrSwapchainCreateInfo</a> structure&#8217;s <code>next</code> parameter.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XrAndroidSurfaceSwapchainFlagsFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef XrFlags64 XrAndroidSurfaceSwapchainFlagsFB;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XrAndroidSurfaceSwapchainFlagBitsFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Flag bits for XrAndroidSurfaceSwapchainFlagsFB
+static const XrAndroidSurfaceSwapchainFlagsFB XR_ANDROID_SURFACE_SWAPCHAIN_SYNCHRONOUS_BIT_FB = 0x00000001;
+static const XrAndroidSurfaceSwapchainFlagsFB XR_ANDROID_SURFACE_SWAPCHAIN_USE_TIMESTAMPS_BIT_FB = 0x00000002;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Flag Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ANDROID_SURFACE_SWAPCHAIN_SYNCHRONOUS_BIT_FB</code> indicates the
+underlying BufferQueue should be created in synchronous mode, allowing
+multiple buffers to be queued instead of always replacing the last buffer.
+Buffers are retired in order, and the producer may block until a new
+buffer is available.</p>
+</li>
+<li>
+<p><code>XR_ANDROID_SURFACE_SWAPCHAIN_USE_TIMESTAMPS_BIT_FB</code> indicates the
+compositor should acquire the most recent buffer whose presentation
+timestamp is not greater than the expected display time of the final
+composited frame.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrStructureType">XrStructureType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ANDROID_SURFACE_SWAPCHAIN_SYNCHRONOUS_BIT_FB</code></p>
+</li>
+<li>
+<p><code>XR_ANDROID_SURFACE_SWAPCHAIN_USE_TIMESTAMPS_BIT_FB</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a> structure is defined as:</p>
+</div>
+<div id="XrAndroidSurfaceSwapchainCreateInfoFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrAndroidSurfaceSwapchainCreateInfoFB {
+    XrStructureType                     type;
+    const void*                         next;
+    XrAndroidSurfaceSwapchainFlagsFB    createFlags;
+} XrAndroidSurfaceSwapchainCreateInfoFB;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>createFlags</code> is <code>0</code> or one or more
+<a href="#XrAndroidSurfaceSwapchainFlagBitsFB">XrAndroidSurfaceSwapchainFlagBitsFB</a> which indicate various
+characteristics desired for the Android Surface Swapchain.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a> contains additional Android
+Surface specific create flags when calling
+<a href="#xrCreateSwapchainAndroidSurfaceKHR">xrCreateSwapchainAndroidSurfaceKHR</a>.
+The <a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a> structure <strong class="purple">must</strong> be provided
+in the <code>next</code> chain of the <a href="#XrSwapchainCreateInfo">XrSwapchainCreateInfo</a> structure when
+calling <a href="#xrCreateSwapchainAndroidSurfaceKHR">xrCreateSwapchainAndroidSurfaceKHR</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrAndroidSurfaceSwapchainCreateInfoFB-extension-notenabled" href="#VUID-XrAndroidSurfaceSwapchainCreateInfoFB-extension-notenabled"></a> The <code><a href="#XR_FB_android_surface_swapchain_create">XR_FB_android_surface_swapchain_create</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a></p>
+</li>
+<li>
+<p><a id="VUID-XrAndroidSurfaceSwapchainCreateInfoFB-type-type" href="#VUID-XrAndroidSurfaceSwapchainCreateInfoFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB</code></p>
+</li>
+<li>
+<p><a id="VUID-XrAndroidSurfaceSwapchainCreateInfoFB-next-next" href="#VUID-XrAndroidSurfaceSwapchainCreateInfoFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrAndroidSurfaceSwapchainCreateInfoFB-createFlags-parameter" href="#VUID-XrAndroidSurfaceSwapchainCreateInfoFB-createFlags-parameter"></a> <code>createFlags</code> <strong class="purple">must</strong> be a valid combination of <a href="#XrAndroidSurfaceSwapchainFlagBitsFB">XrAndroidSurfaceSwapchainFlagBitsFB</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrAndroidSurfaceSwapchainCreateInfoFB-createFlags-requiredbitmask" href="#VUID-XrAndroidSurfaceSwapchainCreateInfoFB-createFlags-requiredbitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> not be <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2020-12-10 (Gloria Kennickell)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial draft</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_FB_color_space"><a class="anchor" href="#XR_FB_color_space"></a>12.35. XR_FB_color_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -35469,7 +35716,7 @@ The runtime <strong class="purple">must</strong> return <code>XR_ERROR_COLOR_SPA
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_FB_display_refresh_rate"><a class="anchor" href="#XR_FB_display_refresh_rate"></a>12.35. XR_FB_display_refresh_rate</h3>
+<h3 id="XR_FB_display_refresh_rate"><a class="anchor" href="#XR_FB_display_refresh_rate"></a>12.36. XR_FB_display_refresh_rate</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36032,7 +36279,7 @@ latency and flickering.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_HTC_vive_cosmos_controller_interaction"><a class="anchor" href="#XR_HTC_vive_cosmos_controller_interaction"></a>12.36. XR_HTC_vive_cosmos_controller_interaction</h3>
+<h3 id="XR_HTC_vive_cosmos_controller_interaction"><a class="anchor" href="#XR_HTC_vive_cosmos_controller_interaction"></a>12.37. XR_HTC_vive_cosmos_controller_interaction</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36226,7 +36473,7 @@ use)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_HUAWEI_controller_interaction"><a class="anchor" href="#XR_HUAWEI_controller_interaction"></a>12.37. XR_HUAWEI_controller_interaction</h3>
+<h3 id="XR_HUAWEI_controller_interaction"><a class="anchor" href="#XR_HUAWEI_controller_interaction"></a>12.38. XR_HUAWEI_controller_interaction</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36396,7 +36643,7 @@ Huawei Controller.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_headless"><a class="anchor" href="#XR_MND_headless"></a>12.38. XR_MND_headless</h3>
+<h3 id="XR_MND_headless"><a class="anchor" href="#XR_MND_headless"></a>12.39. XR_MND_headless</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36555,7 +36802,7 @@ false.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_swapchain_usage_input_attachment_bit"><a class="anchor" href="#XR_MND_swapchain_usage_input_attachment_bit"></a>12.39. XR_MND_swapchain_usage_input_attachment_bit</h3>
+<h3 id="XR_MND_swapchain_usage_input_attachment_bit"><a class="anchor" href="#XR_MND_swapchain_usage_input_attachment_bit"></a>12.40. XR_MND_swapchain_usage_input_attachment_bit</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36669,7 +36916,7 @@ At the time of writing this bit only affects Vulkan swapchains.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_controller_model"><a class="anchor" href="#XR_MSFT_controller_model"></a>12.40. XR_MSFT_controller_model</h3>
+<h3 id="XR_MSFT_controller_model"><a class="anchor" href="#XR_MSFT_controller_model"></a>12.41. XR_MSFT_controller_model</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -37772,7 +38019,7 @@ in it&#8217;s parent node space.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_first_person_observer"><a class="anchor" href="#XR_MSFT_first_person_observer"></a>12.41. XR_MSFT_first_person_observer</h3>
+<h3 id="XR_MSFT_first_person_observer"><a class="anchor" href="#XR_MSFT_first_person_observer"></a>12.42. XR_MSFT_first_person_observer</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -37825,7 +38072,7 @@ Alex Turner, Microsoft<br></p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_4"><a class="anchor" href="#_overview_4"></a>12.41.1. Overview</h4>
+<h4 id="_overview_4"><a class="anchor" href="#_overview_4"></a>12.42.1. Overview</h4>
 <div class="paragraph">
 <p>This first-person observer view configuration enables the runtime to request
 the application to render an additional first-person view of the scene to be
@@ -37929,7 +38176,7 @@ blend modes when sharing render passes across both view configurations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_hand_interaction"><a class="anchor" href="#XR_MSFT_hand_interaction"></a>12.42. XR_MSFT_hand_interaction</h3>
+<h3 id="XR_MSFT_hand_interaction"><a class="anchor" href="#XR_MSFT_hand_interaction"></a>12.43. XR_MSFT_hand_interaction</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -38085,7 +38332,7 @@ a controller.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_hand_tracking_mesh"><a class="anchor" href="#XR_MSFT_hand_tracking_mesh"></a>12.43. XR_MSFT_hand_tracking_mesh</h3>
+<h3 id="XR_MSFT_hand_tracking_mesh"><a class="anchor" href="#XR_MSFT_hand_tracking_mesh"></a>12.44. XR_MSFT_hand_tracking_mesh</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -39506,7 +39753,7 @@ while(1){
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_holographic_window_attachment"><a class="anchor" href="#XR_MSFT_holographic_window_attachment"></a>12.44. XR_MSFT_holographic_window_attachment</h3>
+<h3 id="XR_MSFT_holographic_window_attachment"><a class="anchor" href="#XR_MSFT_holographic_window_attachment"></a>12.45. XR_MSFT_holographic_window_attachment</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -39646,7 +39893,7 @@ thread is blocked, otherwise the call <strong class="purple">may</strong> deadlo
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sample_code_2"><a class="anchor" href="#_sample_code_2"></a>12.44.1. Sample code</h4>
+<h4 id="_sample_code_2"><a class="anchor" href="#_sample_code_2"></a>12.45.1. Sample code</h4>
 <div class="paragraph">
 <p>Following example demos the usage of holographic window attachment and use
 the attached CoreWindow to receive keyboard input, use
@@ -39762,7 +40009,7 @@ int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_perception_anchor_interop"><a class="anchor" href="#XR_MSFT_perception_anchor_interop"></a>12.45. XR_MSFT_perception_anchor_interop</h3>
+<h3 id="XR_MSFT_perception_anchor_interop"><a class="anchor" href="#XR_MSFT_perception_anchor_interop"></a>12.46. XR_MSFT_perception_anchor_interop</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -40124,7 +40371,7 @@ object, the function <strong class="purple">must</strong> return <code>XR_SUCCES
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_secondary_view_configuration"><a class="anchor" href="#XR_MSFT_secondary_view_configuration"></a>12.46. XR_MSFT_secondary_view_configuration</h3>
+<h3 id="XR_MSFT_secondary_view_configuration"><a class="anchor" href="#XR_MSFT_secondary_view_configuration"></a>12.47. XR_MSFT_secondary_view_configuration</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -40174,7 +40421,7 @@ Alex Turner, Microsoft<br></p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_5"><a class="anchor" href="#_overview_5"></a>12.46.1. Overview</h4>
+<h4 id="_overview_5"><a class="anchor" href="#_overview_5"></a>12.47.1. Overview</h4>
 <div class="paragraph">
 <p>This extension allows an application to enable support for one or more
 <strong>secondary view configurations</strong>.
@@ -40242,7 +40489,7 @@ structure.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enumerate_supported_secondary_view_configurations"><a class="anchor" href="#_enumerate_supported_secondary_view_configurations"></a>12.46.2. Enumerate supported secondary view configurations</h4>
+<h4 id="_enumerate_supported_secondary_view_configurations"><a class="anchor" href="#_enumerate_supported_secondary_view_configurations"></a>12.47.2. Enumerate supported secondary view configurations</h4>
 <div class="paragraph">
 <p>The first step is for the application to inspect if a runtime supports
 certain secondary view configurations.
@@ -40256,7 +40503,7 @@ and can use this secondary view configuration type in later functions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_secondary_view_configuration_properties"><a class="anchor" href="#_secondary_view_configuration_properties"></a>12.46.3. Secondary view configuration properties</h4>
+<h4 id="_secondary_view_configuration_properties"><a class="anchor" href="#_secondary_view_configuration_properties"></a>12.47.3. Secondary view configuration properties</h4>
 <div class="paragraph">
 <p>The application can inspect the properties of a secondary view configuration
 through the existing <a href="#xrGetViewConfigurationProperties">xrGetViewConfigurationProperties</a>,
@@ -40352,7 +40599,7 @@ configuration type was hinted when swapchain image was created.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enable_secondary_view_configuration"><a class="anchor" href="#_enable_secondary_view_configuration"></a>12.46.4. Enable secondary view configuration</h4>
+<h4 id="_enable_secondary_view_configuration"><a class="anchor" href="#_enable_secondary_view_configuration"></a>12.47.4. Enable secondary view configuration</h4>
 <div class="paragraph">
 <p>The application indicates to the runtime which secondary view configurations
 it can support by chaining an
@@ -40452,7 +40699,7 @@ configuration types that application supports.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_per_frame_active_view_configurations"><a class="anchor" href="#_per_frame_active_view_configurations"></a>12.46.5. Per-frame active view configurations</h4>
+<h4 id="_per_frame_active_view_configurations"><a class="anchor" href="#_per_frame_active_view_configurations"></a>12.47.5. Per-frame active view configurations</h4>
 <div class="paragraph">
 <p>The runtime then tells the application at each <a href="#xrWaitFrame">xrWaitFrame</a> function
 call which of the enabled secondary view configurations are active for that
@@ -40645,7 +40892,7 @@ configuration inactive by setting the corresponding <code>active</code> in the
 </div>
 </div>
 <div class="sect3">
-<h4 id="_locate_and_inspect_view_states_of_secondary_view_configurations"><a class="anchor" href="#_locate_and_inspect_view_states_of_secondary_view_configurations"></a>12.46.6. Locate and inspect view states of secondary view configurations</h4>
+<h4 id="_locate_and_inspect_view_states_of_secondary_view_configurations"><a class="anchor" href="#_locate_and_inspect_view_states_of_secondary_view_configurations"></a>12.47.6. Locate and inspect view states of secondary view configurations</h4>
 <div class="paragraph">
 <p>When the application calls <a href="#xrLocateViews">xrLocateViews</a>, it <strong class="purple">can</strong> use
 <a href="#XrViewLocateInfo">XrViewLocateInfo</a>::viewConfigurationType field to query the view
@@ -40668,7 +40915,7 @@ successfully return, but the resulting <code>XrViewState</code> <strong class="p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_submit_composition_layers_to_secondary_view_configurations"><a class="anchor" href="#_submit_composition_layers_to_secondary_view_configurations"></a>12.46.7. Submit composition layers to secondary view configurations</h4>
+<h4 id="_submit_composition_layers_to_secondary_view_configurations"><a class="anchor" href="#_submit_composition_layers_to_secondary_view_configurations"></a>12.47.7. Submit composition layers to secondary view configurations</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -40980,7 +41227,7 @@ configuration.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_anchor"><a class="anchor" href="#XR_MSFT_spatial_anchor"></a>12.47. XR_MSFT_spatial_anchor</h3>
+<h3 id="XR_MSFT_spatial_anchor"><a class="anchor" href="#XR_MSFT_spatial_anchor"></a>12.48. XR_MSFT_spatial_anchor</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -41611,7 +41858,7 @@ maintain tracking for that anchor&#8217;s origin.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_graph_bridge"><a class="anchor" href="#XR_MSFT_spatial_graph_bridge"></a>12.48. XR_MSFT_spatial_graph_bridge</h3>
+<h3 id="XR_MSFT_spatial_graph_bridge"><a class="anchor" href="#XR_MSFT_spatial_graph_bridge"></a>12.49. XR_MSFT_spatial_graph_bridge</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -41949,7 +42196,7 @@ Dynamic spatial nodes are represented by
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_unbounded_reference_space"><a class="anchor" href="#XR_MSFT_unbounded_reference_space"></a>12.49. XR_MSFT_unbounded_reference_space</h3>
+<h3 id="XR_MSFT_unbounded_reference_space"><a class="anchor" href="#XR_MSFT_unbounded_reference_space"></a>12.50. XR_MSFT_unbounded_reference_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42113,7 +42360,7 @@ extension is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_OCULUS_android_session_state_enable"><a class="anchor" href="#XR_OCULUS_android_session_state_enable"></a>12.50. XR_OCULUS_android_session_state_enable</h3>
+<h3 id="XR_OCULUS_android_session_state_enable"><a class="anchor" href="#XR_OCULUS_android_session_state_enable"></a>12.51. XR_OCULUS_android_session_state_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42292,7 +42539,7 @@ from surfaceDestroyed() or onPause(), whichever comes first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VALVE_analog_threshold"><a class="anchor" href="#XR_VALVE_analog_threshold"></a>12.51. XR_VALVE_analog_threshold</h3>
+<h3 id="XR_VALVE_analog_threshold"><a class="anchor" href="#XR_VALVE_analog_threshold"></a>12.52. XR_VALVE_analog_threshold</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42516,7 +42763,7 @@ binding list for this interaction profile, the runtime <strong class="purple">mu
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views"><a class="anchor" href="#XR_VARJO_quad_views"></a>12.52. XR_VARJO_quad_views</h3>
+<h3 id="XR_VARJO_quad_views"><a class="anchor" href="#XR_VARJO_quad_views"></a>12.53. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42562,7 +42809,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_6"><a class="anchor" href="#_overview_6"></a>12.52.1. Overview</h4>
+<h4 id="_overview_6"><a class="anchor" href="#_overview_6"></a>12.53.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -42661,11 +42908,11 @@ view.</p>
 <p><code><a href="#XR_EXTX_overlay">XR_EXTX_overlay</a></code></p>
 </li>
 <li>
-<p><code><a href="#XR_MNDX_egl_enable">XR_MNDX_egl_enable</a></code></p>
+<p><code><a href="#XR_MNDX_egl_enable">XR_MNDX_egl_enable</a></code>
+&lt;&lt;&lt;</p>
 </li>
 </ul>
 </div>
-<div style="page-break-after: always;"></div>
 <div class="sect2">
 <h3 id="XR_EXTX_overlay"><a class="anchor" href="#XR_EXTX_overlay"></a>13.1. XR_EXTX_overlay</h3>
 <div class="dlist">
@@ -42765,7 +43012,7 @@ on with the main application</p>
 <p>In order to enable the functionality of this extension, you <strong class="purple">must</strong> pass the
 name of the extension into <a href="#xrCreateInstance">xrCreateInstance</a> via the
 <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> <code>enabledExtensionNames</code> parameter as
-indicated in the <a href="#extension">[extension]</a> section.</p>
+indicated in the <a href="#extensions">Extensions</a> section.</p>
 </div>
 <div class="paragraph">
 <p>When you are ready to create an overlay session, you will need to create a
@@ -42870,7 +43117,7 @@ sessions, then the composition will occur in order based on the overlay
 session&#8217;s <a href="#XrSessionCreateInfoOverlayEXTX">XrSessionCreateInfoOverlayEXTX</a>::<code>sessionLayersPlacement</code>
 value as described in the table below:</p>
 </div>
-<table class="tableblock frame-topbot grid-all" style="width: 85%;">
+<table class="tableblock frame-ends grid-all" style="width: 85%;">
 <caption class="title">Table 6. Overlay Session Composition Order</caption>
 <colgroup>
 <col style="width: 30%;">
@@ -43579,6 +43826,9 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 <p><a href="#XrActionType">XrActionType</a></p>
 </li>
 <li>
+<p><a href="#XrAndroidSurfaceSwapchainFlagBitsFB">XrAndroidSurfaceSwapchainFlagBitsFB</a></p>
+</li>
+<li>
 <p><a href="#XrAndroidThreadTypeKHR">XrAndroidThreadTypeKHR</a></p>
 </li>
 <li>
@@ -43693,6 +43943,9 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 <h3 id="index-flags-and-flag-bits"><a class="anchor" href="#index-flags-and-flag-bits"></a>Flags and Flag Bits</h3>
 <div class="ulist">
 <ul>
+<li>
+<p><a href="#XrAndroidSurfaceSwapchainFlagsFB">XrAndroidSurfaceSwapchainFlagsFB</a>&#8201;&#8212;&#8201;See <a href="#XrAndroidSurfaceSwapchainFlagBitsFB">XrAndroidSurfaceSwapchainFlagBitsFB</a></p>
+</li>
 <li>
 <p><a href="#XrCompositionLayerFlags">XrCompositionLayerFlags</a>&#8201;&#8212;&#8201;See <a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a></p>
 </li>
@@ -44155,6 +44408,9 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 </li>
 <li>
 <p><a href="#XrActiveActionSet">XrActiveActionSet</a></p>
+</li>
+<li>
+<p><a href="#XrAndroidSurfaceSwapchainCreateInfoFB">XrAndroidSurfaceSwapchainCreateInfoFB</a></p>
 </li>
 <li>
 <p><a href="#XrApiLayerProperties">XrApiLayerProperties</a></p>
@@ -44809,6 +45065,7 @@ the application binary interface.</p>
     XR_TYPE_CONTROLLER_MODEL_STATE_MSFT = 1000055004,
     XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC = 1000059000,
     XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT = 1000063000,
+    XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB = 1000070000,
     XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE = 1000079000,
     XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR = 1000089000,
     XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR = 1000090000,
@@ -44971,7 +45228,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 13)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 14)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -45904,13 +46161,12 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 </div>
 </div>
-<div id="footer">
+<div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.13<br>
-Last updated 2020-11-24 18:05:24 UTC
+Version 1.0.14<br>
+Last updated 2021-01-27 22:35:57 UTC
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -45928,14 +46184,14 @@ MathJax.Hub.Config({
 })
 MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
   MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
-    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains('stemblock')) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
       data.math.root.display = "block"
     }
     return data
   })
 })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- begin footer docinfo -->
 <script>
   // Don't break between TOC number and first word of title
