@@ -804,7 +804,7 @@ or a pointer to the required capacity in the case that
 </li>
 <li>
 <p><code>images</code> is a pointer to an array of graphics API-specific
-<code>XrSwapchainImage</code> structures based off of
+<code>XrSwapchainImage</code> structures, all of the same type, based on
 <a href="XrSwapchainImageBaseHeader.html">XrSwapchainImageBaseHeader</a>.
 It <strong class="purple">can</strong> be <code>NULL</code> if <code>imageCapacityInput</code> is 0.</p>
 </li>
@@ -833,6 +833,31 @@ for the lifetime of the swapchain.</p>
 <div class="paragraph">
 <p>Note: <code>images</code> is a pointer to an array of structures of graphics
 API-specific type, not an array of structure pointers.</p>
+</div>
+<div class="paragraph">
+<p>The pointer submitted as <code>images</code> will be treated as an array of the
+expected graphics API-specific type based on the graphics API used at
+session creation time.
+If the <code>type</code> member of any array element accessed in this way does not
+match the expected value, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Under a typical memory model, a runtime must treat the supplied pointer as
+an opaque blob beginning with <a href="XrSwapchainImageBaseHeader.html">XrSwapchainImageBaseHeader</a>, until after
+it has verified the <code>type</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -943,8 +968,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.14<br>
-Last updated 2021-01-27 22:36:49 UTC
+Version 1.0.15<br>
+Last updated 2021-04-13 23:29:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

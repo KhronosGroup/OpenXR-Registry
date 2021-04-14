@@ -797,7 +797,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 pointer to a valid <a href="XrSwapchainImageAcquireInfo.html">XrSwapchainImageAcquireInfo</a>.</p>
 </li>
 <li>
-<p><code>index</code> is a pointer to the image index that was acquired.</p>
+<p><code>index</code> is the returned image index that has been acquired.</p>
 </li>
 </ul>
 </div>
@@ -811,8 +811,8 @@ pointer to a valid <a href="XrSwapchainImageAcquireInfo.html">XrSwapchainImageAc
 <div class="paragraph">
 <p>Acquires the image corresponding to the <code>index</code> position in the array
 returned by <a href="xrEnumerateSwapchainImages.html">xrEnumerateSwapchainImages</a>.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_CALL_ORDER_INVALID</code> if <code>index</code>
-has already been acquired and not yet released with
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_CALL_ORDER_INVALID</code> if the next
+available index has already been acquired and not yet released with
 <a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a>.
 If the <code>swapchain</code> was created with the
 <code>XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT</code> set in
@@ -932,8 +932,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.14<br>
-Last updated 2021-01-27 22:36:49 UTC
+Version 1.0.15<br>
+Last updated 2021-04-13 23:29:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

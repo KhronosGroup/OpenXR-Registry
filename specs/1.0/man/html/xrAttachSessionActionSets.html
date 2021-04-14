@@ -817,12 +817,13 @@ See <a href="xrCreateAction.html">xrCreateAction</a> and <a href="xrSuggestInter
 details.</p>
 </div>
 <div class="paragraph">
+<p>After action sets are attached to a session, if any unattached actions are
+passed to functions for the same session, then for those functions the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTIONSET_NOT_ATTACHED</code>.</p>
+</div>
+<div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTIONSETS_ALREADY_ATTACHED</code> if
 <a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a> is called more than once for a given
-<code>session</code>.
-The runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTIONSET_NOT_ATTACHED</code> for any
-action created after <a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a> is called for a given
-<code>session</code> if that handle is used with any call for the same
 <code>session</code>.</p>
 </div>
 <div class="sidebarblock">
@@ -931,8 +932,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.14<br>
-Last updated 2021-01-27 22:36:49 UTC
+Version 1.0.15<br>
+Last updated 2021-04-13 23:29:07 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
