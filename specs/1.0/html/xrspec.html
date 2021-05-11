@@ -446,9 +446,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2021, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.15,</span>
-<span id="revdate">Tue, 13 Apr 2021 23:27:26 +0000</span>
-<br><span id="revremark">from git ref release-1.0.15 commit: 1b56474c8edd408ae1b8e1cddfcdf1c5552220d4</span>
+<span id="revnumber">version 1.0.16,</span>
+<span id="revdate">Tue, 11 May 2021 20:12:11 +0000</span>
+<br><span id="revremark">from git ref release-1.0.16 commit: 862c84a9dcd227450bdc2f8de304567c2ba8722d</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -587,37 +587,39 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#XR_EXT_conformance_automation">12.23. XR_EXT_conformance_automation</a></li>
 <li><a href="#XR_EXT_debug_utils">12.24. XR_EXT_debug_utils</a></li>
 <li><a href="#XR_EXT_eye_gaze_interaction">12.25. XR_EXT_eye_gaze_interaction</a></li>
-<li><a href="#XR_EXT_hand_tracking">12.26. XR_EXT_hand_tracking</a></li>
-<li><a href="#XR_EXT_hp_mixed_reality_controller">12.27. XR_EXT_hp_mixed_reality_controller</a></li>
-<li><a href="#XR_EXT_performance_settings">12.28. XR_EXT_performance_settings</a></li>
-<li><a href="#XR_EXT_samsung_odyssey_controller">12.29. XR_EXT_samsung_odyssey_controller</a></li>
-<li><a href="#XR_EXT_thermal_query">12.30. XR_EXT_thermal_query</a></li>
-<li><a href="#XR_EXT_view_configuration_depth_range">12.31. XR_EXT_view_configuration_depth_range</a></li>
-<li><a href="#XR_EXT_win32_appcontainer_compatible">12.32. XR_EXT_win32_appcontainer_compatible</a></li>
-<li><a href="#XR_EPIC_view_configuration_fov">12.33. XR_EPIC_view_configuration_fov</a></li>
-<li><a href="#XR_FB_android_surface_swapchain_create">12.34. XR_FB_android_surface_swapchain_create</a></li>
-<li><a href="#XR_FB_color_space">12.35. XR_FB_color_space</a></li>
-<li><a href="#XR_FB_display_refresh_rate">12.36. XR_FB_display_refresh_rate</a></li>
-<li><a href="#XR_HTC_vive_cosmos_controller_interaction">12.37. XR_HTC_vive_cosmos_controller_interaction</a></li>
-<li><a href="#XR_HUAWEI_controller_interaction">12.38. XR_HUAWEI_controller_interaction</a></li>
-<li><a href="#XR_MND_headless">12.39. XR_MND_headless</a></li>
-<li><a href="#XR_MND_swapchain_usage_input_attachment_bit">12.40. XR_MND_swapchain_usage_input_attachment_bit</a></li>
-<li><a href="#XR_MSFT_controller_model">12.41. XR_MSFT_controller_model</a></li>
-<li><a href="#XR_MSFT_first_person_observer">12.42. XR_MSFT_first_person_observer</a></li>
-<li><a href="#XR_MSFT_hand_interaction">12.43. XR_MSFT_hand_interaction</a></li>
-<li><a href="#XR_MSFT_hand_tracking_mesh">12.44. XR_MSFT_hand_tracking_mesh</a></li>
-<li><a href="#XR_MSFT_holographic_window_attachment">12.45. XR_MSFT_holographic_window_attachment</a></li>
-<li><a href="#XR_MSFT_perception_anchor_interop">12.46. XR_MSFT_perception_anchor_interop</a></li>
-<li><a href="#XR_MSFT_secondary_view_configuration">12.47. XR_MSFT_secondary_view_configuration</a></li>
-<li><a href="#XR_MSFT_spatial_anchor">12.48. XR_MSFT_spatial_anchor</a></li>
-<li><a href="#XR_MSFT_spatial_graph_bridge">12.49. XR_MSFT_spatial_graph_bridge</a></li>
-<li><a href="#XR_MSFT_unbounded_reference_space">12.50. XR_MSFT_unbounded_reference_space</a></li>
-<li><a href="#XR_OCULUS_android_session_state_enable">12.51. XR_OCULUS_android_session_state_enable</a></li>
-<li><a href="#XR_VALVE_analog_threshold">12.52. XR_VALVE_analog_threshold</a></li>
-<li><a href="#XR_VARJO_composition_layer_depth_test">12.53. XR_VARJO_composition_layer_depth_test</a></li>
-<li><a href="#XR_VARJO_environment_depth_estimation">12.54. XR_VARJO_environment_depth_estimation</a></li>
-<li><a href="#XR_VARJO_foveated_rendering">12.55. XR_VARJO_foveated_rendering</a></li>
-<li><a href="#XR_VARJO_quad_views">12.56. XR_VARJO_quad_views</a></li>
+<li><a href="#XR_EXT_hand_joints_motion_range">12.26. XR_EXT_hand_joints_motion_range</a></li>
+<li><a href="#XR_EXT_hand_tracking">12.27. XR_EXT_hand_tracking</a></li>
+<li><a href="#XR_EXT_hp_mixed_reality_controller">12.28. XR_EXT_hp_mixed_reality_controller</a></li>
+<li><a href="#XR_EXT_performance_settings">12.29. XR_EXT_performance_settings</a></li>
+<li><a href="#XR_EXT_samsung_odyssey_controller">12.30. XR_EXT_samsung_odyssey_controller</a></li>
+<li><a href="#XR_EXT_thermal_query">12.31. XR_EXT_thermal_query</a></li>
+<li><a href="#XR_EXT_view_configuration_depth_range">12.32. XR_EXT_view_configuration_depth_range</a></li>
+<li><a href="#XR_EXT_win32_appcontainer_compatible">12.33. XR_EXT_win32_appcontainer_compatible</a></li>
+<li><a href="#XR_EPIC_view_configuration_fov">12.34. XR_EPIC_view_configuration_fov</a></li>
+<li><a href="#XR_FB_android_surface_swapchain_create">12.35. XR_FB_android_surface_swapchain_create</a></li>
+<li><a href="#XR_FB_color_space">12.36. XR_FB_color_space</a></li>
+<li><a href="#XR_FB_display_refresh_rate">12.37. XR_FB_display_refresh_rate</a></li>
+<li><a href="#XR_FB_swapchain_update_state">12.38. XR_FB_swapchain_update_state</a></li>
+<li><a href="#XR_HTC_vive_cosmos_controller_interaction">12.39. XR_HTC_vive_cosmos_controller_interaction</a></li>
+<li><a href="#XR_HUAWEI_controller_interaction">12.40. XR_HUAWEI_controller_interaction</a></li>
+<li><a href="#XR_MND_headless">12.41. XR_MND_headless</a></li>
+<li><a href="#XR_MND_swapchain_usage_input_attachment_bit">12.42. XR_MND_swapchain_usage_input_attachment_bit</a></li>
+<li><a href="#XR_MSFT_controller_model">12.43. XR_MSFT_controller_model</a></li>
+<li><a href="#XR_MSFT_first_person_observer">12.44. XR_MSFT_first_person_observer</a></li>
+<li><a href="#XR_MSFT_hand_interaction">12.45. XR_MSFT_hand_interaction</a></li>
+<li><a href="#XR_MSFT_hand_tracking_mesh">12.46. XR_MSFT_hand_tracking_mesh</a></li>
+<li><a href="#XR_MSFT_holographic_window_attachment">12.47. XR_MSFT_holographic_window_attachment</a></li>
+<li><a href="#XR_MSFT_perception_anchor_interop">12.48. XR_MSFT_perception_anchor_interop</a></li>
+<li><a href="#XR_MSFT_secondary_view_configuration">12.49. XR_MSFT_secondary_view_configuration</a></li>
+<li><a href="#XR_MSFT_spatial_anchor">12.50. XR_MSFT_spatial_anchor</a></li>
+<li><a href="#XR_MSFT_spatial_graph_bridge">12.51. XR_MSFT_spatial_graph_bridge</a></li>
+<li><a href="#XR_MSFT_unbounded_reference_space">12.52. XR_MSFT_unbounded_reference_space</a></li>
+<li><a href="#XR_OCULUS_android_session_state_enable">12.53. XR_OCULUS_android_session_state_enable</a></li>
+<li><a href="#XR_VALVE_analog_threshold">12.54. XR_VALVE_analog_threshold</a></li>
+<li><a href="#XR_VARJO_composition_layer_depth_test">12.55. XR_VARJO_composition_layer_depth_test</a></li>
+<li><a href="#XR_VARJO_environment_depth_estimation">12.56. XR_VARJO_environment_depth_estimation</a></li>
+<li><a href="#XR_VARJO_foveated_rendering">12.57. XR_VARJO_foveated_rendering</a></li>
+<li><a href="#XR_VARJO_quad_views">12.58. XR_VARJO_quad_views</a></li>
 </ul>
 </li>
 <li><a href="#provisional-extension-appendices-list">13. List of Provisional Extensions</a>
@@ -1964,6 +1966,7 @@ All run time error codes are negative values.</p>
     XR_ERROR_LOCALIZED_NAME_DUPLICATED = -48,
     XR_ERROR_LOCALIZED_NAME_INVALID = -49,
     XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING = -50,
+    XR_ERROR_RUNTIME_UNAVAILABLE = -51,
     XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR = -1000003000,
     XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR = -1000003001,
     XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT = -1000039001,
@@ -2247,6 +2250,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code></p></td>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The <code>xrGetGraphicsRequirements</code>* call was not made before calling <code>xrCreateSession</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The loader was unable to find or load a runtime.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR</code></p></td>
@@ -4622,6 +4629,9 @@ calls.</p>
 <li>
 <p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
 </li>
+<li>
+<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -4796,9 +4806,6 @@ platform but no matching extension struct is provided in
 <p><code>XR_ERROR_LIMIT_REACHED</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_INSTANCE_LOST</code></p>
-</li>
-<li>
 <p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
 </li>
 <li>
@@ -4818,6 +4825,9 @@ platform but no matching extension struct is provided in
 </li>
 <li>
 <p><code>XR_ERROR_NAME_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
 </li>
 </ul>
 </div>
@@ -6977,16 +6987,17 @@ within the controller&#8217;s grip.</p>
 <li>
 <p>The grip orientation&#8217;s +X axis: When you completely open your hand to
 form a flat 5-finger pose, the ray that is normal to the user&#8217;s palm
-(forward from left palm, backward from right palm).</p>
+(away from the palm in the left hand, into the palm in the right hand).</p>
 </li>
 <li>
 <p>The grip orientation&#8217;s -Z axis: When you close your hand partially (as if
-holding the controller), the ray that points "forward" through the tube
-formed by your non-thumb fingers.</p>
+holding the controller), the ray that goes through the center of the tube
+formed by your non-thumb fingers, in the direction of little finger to
+thumb.</p>
 </li>
 <li>
-<p>The grip orientation&#8217;s +Y axis: The right-handed Up axis implied by the
-+X (Right) and -Z (Forward) definitions.</p>
+<p>The grip orientation&#8217;s +Y axis: orthogonal to +Z and +X using the
+right-hand rule.</p>
 </li>
 </ul>
 </div>
@@ -10320,6 +10331,17 @@ will transition through <code>XR_SESSION_STATE_IDLE</code> to the
 <code>XR_SESSION_STATE_EXITING</code> state.</p>
 </div>
 <div class="paragraph">
+<p>On platforms that have applications with lifecycle managed by the system,
+session state changes may be implicitly triggered by application lifecycle
+state changes.
+On such platforms, using platform-specific methods to alter application
+lifecycle state may be the preferred method of provoking session state
+changes.
+The behavior of <a href="#xrRequestExitSession">xrRequestExitSession</a> is not altered, however explicit
+session exit <strong class="purple">may</strong> not interact with the platform-specific application
+lifecycle.</p>
+</div>
+<div class="paragraph">
 <p><a id="session_running"></a>A session is considered <strong>running</strong> after a successful
 call to <a href="#xrBeginSession">xrBeginSession</a> and remains running until any call is made to
 <a href="#xrEndSession">xrEndSession</a>.
@@ -10362,12 +10384,23 @@ These extensions can be activated during <a href="#XrInstance">XrInstance</a> cr
 </div>
 <div class="paragraph">
 <p>During <a href="#XrSession">XrSession</a> creation the application <strong class="purple">must</strong> provide information
-about which graphics API it intends to use by adding an XrGraphicsBinding&#8230;&#8203;
-struct of one (and only one) of the enabled graphics API extensions to the
-next chain of <a href="#XrSessionCreateInfo">XrSessionCreateInfo</a>.
-Unless specified differently in the graphics API extension, the application
-is responsible for creating a valid graphics device binding (for details
-refer to the extension specification of the graphics API).</p>
+about which graphics API it intends to use by adding an
+<code>XrGraphicsBinding*</code> struct of one (and only one) of the enabled
+graphics API extensions to the next chain of <a href="#XrSessionCreateInfo">XrSessionCreateInfo</a>.
+The application <strong class="purple">must</strong> call the <code>xrGet*GraphicsRequirements</code> method
+(where <code>*</code> is a placeholder) provided by the chosen graphics API extension
+before attempting to create the session (for example
+<a href="#xrGetD3D11GraphicsRequirementsKHR">xrGetD3D11GraphicsRequirementsKHR</a>,
+<a href="#xrGetD3D12GraphicsRequirementsKHR">xrGetD3D12GraphicsRequirementsKHR</a>,
+<a href="#xrGetOpenGLGraphicsRequirementsKHR">xrGetOpenGLGraphicsRequirementsKHR</a>,
+<a href="#xrGetOpenGLESGraphicsRequirementsKHR">xrGetOpenGLESGraphicsRequirementsKHR</a>,
+<a href="#xrGetVulkanGraphicsRequirementsKHR">xrGetVulkanGraphicsRequirementsKHR</a>).</p>
+</div>
+<div class="paragraph">
+<p>Unless specified differently in the graphics API extension, the application
+is responsible for creating a valid graphics device binding based on the
+requirements returned by <code>xrGet*GraphicsRequirements</code> methods (for
+details refer to the extension specification of the graphics API).</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -10412,6 +10445,14 @@ This session is created in the <code>XR_SESSION_STATE_IDLE</code> state, and a
 corresponding <a href="#XrEventDataSessionStateChanged">XrEventDataSessionStateChanged</a> event to the
 <code>XR_SESSION_STATE_IDLE</code> state <strong class="purple">must</strong> be generated as the first such event
 for the new session.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> may be returned due to legacy behavior)
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if a function named like
+<code>xrGet*GraphicsRequirements</code> has not been called for the same
+<code>instance</code> and <a href="#XrSessionCreateInfo">XrSessionCreateInfo</a>::<code>systemId</code>.
+(See graphics binding extensions for details.)</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -10546,7 +10587,7 @@ devices to be used by this session.</p>
 <li>
 <p><code>next</code>, unless otherwise specified via an extension, <strong class="purple">must</strong> contain
 exactly one graphics API binding structure (a structure whose name begins
-with <code>"XrGraphicsBinding"</code>) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code>
+with &#8220;XrGraphicsBinding&#8221;) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code>
 <strong class="purple">must</strong> be returned.</p>
 </li>
 </ul>
@@ -11664,7 +11705,7 @@ image may be a depth/stencil rendering target.</p>
 </li>
 <li>
 <p><code>XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</code> indicates that the image may
-be used as data source.</p>
+be accessed out of order and that access may be via atomic operations.</p>
 </li>
 <li>
 <p><code>XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT</code> indicates that the image may be
@@ -16027,8 +16068,9 @@ is obeying suggested bindings: Boolean input sources <strong class="purple">must
 to the action.
 If the path is to a scalar value, a threshold <strong class="purple">must</strong> be applied to the value
 and values over that threshold will be <code>XR_TRUE</code>.
-The threshold may vary from device to device or component to component and
-is left as an implementation detail.
+The runtime <strong class="purple">should</strong> use hysteresis when applying this threshold.
+The threshold and hysteresis range <strong class="purple">may</strong> vary from device to device or
+component to component and are left as an implementation detail.
 If the path refers to the parent of input values instead of to an input
 value itself, the runtime <strong class="purple">must</strong> use <em>&#8230;/example/path/value</em> instead
 of <em>&#8230;/example/path</em> if it is available and apply the same
@@ -19010,6 +19052,9 @@ E.g. <code>Trigger</code>.</p>
 <p><code><a href="#XR_EXT_eye_gaze_interaction">XR_EXT_eye_gaze_interaction</a></code></p>
 </li>
 <li>
+<p><code><a href="#XR_EXT_hand_joints_motion_range">XR_EXT_hand_joints_motion_range</a></code></p>
+</li>
+<li>
 <p><code><a href="#XR_EXT_hand_tracking">XR_EXT_hand_tracking</a></code></p>
 </li>
 <li>
@@ -19041,6 +19086,9 @@ E.g. <code>Trigger</code>.</p>
 </li>
 <li>
 <p><code><a href="#XR_FB_display_refresh_rate">XR_FB_display_refresh_rate</a></code></p>
+</li>
+<li>
+<p><code><a href="#XR_FB_swapchain_update_state">XR_FB_swapchain_update_state</a></code></p>
 </li>
 <li>
 <p><code><a href="#XR_HTC_vive_cosmos_controller_interaction">XR_HTC_vive_cosmos_controller_interaction</a></code></p>
@@ -28671,7 +28719,7 @@ Windows function.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>2</p>
+<p>3</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -28685,7 +28733,7 @@ Windows function.</p>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2019-10-01</p>
+<p>2021-04-14</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -28693,7 +28741,8 @@ Windows function.</p>
 </dd>
 <dt class="hdlist1"><strong>Contributors</strong></dt>
 <dd>
-<p>Lachlan Ford, Microsoft</p>
+<p>Lachlan Ford, Microsoft<br>
+Ryan Pavlik, Collabora<br></p>
 </dd>
 </dl>
 </div>
@@ -28866,6 +28915,9 @@ of the input device (e.g.
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -28984,6 +29036,9 @@ wish to set the state for (e.g.
 </li>
 <li>
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
@@ -29106,6 +29161,9 @@ wish to set the state for (e.g.
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -29224,6 +29282,9 @@ wish to set the state for (e.g.
 </li>
 <li>
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
@@ -29352,6 +29413,9 @@ wish to set the pose for (e.g. <em>/user/hand/left/input/grip/pose</em>).</p>
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -29409,6 +29473,16 @@ wish to set the pose for (e.g. <em>/user/hand/left/input/grip/pose</em>).</p>
 </ul>
 </div>
 </li>
+<li>
+<p>Revision 3, 2021-04-14 (Ryan Pavlik, Collabora)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix missing error code</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -29430,7 +29504,7 @@ wish to set the pose for (e.g. <em>/user/hand/left/input/grip/pose</em>).</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>3</p>
+<p>4</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -29448,7 +29522,7 @@ wish to set the pose for (e.g. <em>/user/hand/left/input/grip/pose</em>).</p>
 <dl>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2018-11-16</p>
+<p>2021-04-14</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -29457,7 +29531,8 @@ wish to set the pose for (e.g. <em>/user/hand/left/input/grip/pose</em>).</p>
 <dt class="hdlist1"><strong>Contributors</strong></dt>
 <dd>
 <p>Mark Young, LunarG<br>
-Karl Schultz, LunarG</p>
+Karl Schultz, LunarG<br>
+Ryan Pavlik, Collabora<br></p>
 </dd>
 </dl>
 </div>
@@ -29467,7 +29542,7 @@ Karl Schultz, LunarG</p>
 <div class="paragraph">
 <p>Due to the nature of the OpenXR interface, there is very little error
 information available to the developer and application.
-By using the XR_EXT_debug_utils extension, developers <strong class="purple">can</strong> obtain more
+By using the <code><a href="#XR_EXT_debug_utils">XR_EXT_debug_utils</a></code> extension, developers <strong class="purple">can</strong> obtain more
 information.
 When combined with validation layers, even more detailed feedback on the
 application&#8217;s use of OpenXR will be provided.</p>
@@ -30845,6 +30920,9 @@ information for the region that should be begun.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -30947,6 +31025,9 @@ matching <a href="#xrSessionBeginDebugUtilsLabelRegionEXT">xrSessionBeginDebugUt
 <div class="ulist">
 <ul>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -31044,6 +31125,9 @@ information for the region that should be begun.</p>
 <dd>
 <div class="ulist">
 <ul>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
 <li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
@@ -31466,7 +31550,20 @@ VK_EXT_debug_utils extension by Peter Kraus (aka @krOoze).</p>
 <p>Update examples.</p>
 </li>
 <li>
-<p>Improve formatting</p>
+<p>Improve formatting.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 4, 2021-04-04 (Ryan Pavlik)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix missing error code.</p>
+</li>
+<li>
+<p>Improve formatting.</p>
 </li>
 </ul>
 </div>
@@ -31911,7 +32008,248 @@ while(true)
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_hand_tracking"><a class="anchor" href="#XR_EXT_hand_tracking"></a>12.26. XR_EXT_hand_tracking</h3>
+<h3 id="XR_EXT_hand_joints_motion_range"><a class="anchor" href="#XR_EXT_hand_joints_motion_range"></a>12.26. XR_EXT_hand_joints_motion_range</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_EXT_hand_joints_motion_range</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>81</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+<li>
+<p>Requires <code><a href="#XR_EXT_hand_tracking">XR_EXT_hand_tracking</a></code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Last Modified Date</strong></dt>
+<dd>
+<p>2021-04-15</p>
+</dd>
+<dt class="hdlist1"><strong>IP Status</strong></dt>
+<dd>
+<p>No known IP claims.</p>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Joe van den Heuvel, Valve<br>
+Rune Berg, Valve<br>
+Joe Ludwig, Valve<br></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>This extension augments the <code><a href="#XR_EXT_hand_tracking">XR_EXT_hand_tracking</a></code> extension to enable
+applications to request that the <a href="#XrHandJointLocationsEXT">XrHandJointLocationsEXT</a> returned by
+<a href="#xrLocateHandJointsEXT">xrLocateHandJointsEXT</a> should return hand joint locations conforming to
+a range of motion specified by the application.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">must</strong> enable the <code><a href="#XR_EXT_hand_tracking">XR_EXT_hand_tracking</a></code> extension in
+order to use this extension.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrHandJointsMotionRangeEXT">XrHandJointsMotionRangeEXT</a> describes the hand joints' range of
+motion returned by <a href="#xrLocateHandJointsEXT">xrLocateHandJointsEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">must</strong> support both
+<code>XR_HAND_JOINTS_MOTION_RANGE_CONFORMING_TO_CONTROLLER_EXT</code> and
+<code>XR_HAND_JOINTS_MOTION_RANGE_UNOBSTRUCTED_EXT</code> for each controller
+interaction profile that supports hand joint data.</p>
+</div>
+<div id="XrHandJointsMotionRangeEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef enum XrHandJointsMotionRangeEXT {
+    XR_HAND_JOINTS_MOTION_RANGE_UNOBSTRUCTED_EXT = 1,
+    XR_HAND_JOINTS_MOTION_RANGE_CONFORMING_TO_CONTROLLER_EXT = 2,
+    XR_HAND_JOINTS_MOTION_RANGE_MAX_ENUM_EXT = 0x7FFFFFFF
+} XrHandJointsMotionRangeEXT;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Enumerant Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_HAND_JOINTS_MOTION_RANGE_UNOBSTRUCTED_EXT</code> This option refers to
+the range of motion of a human hand, without any obstructions.
+Input systems that obstruct the movement of the user’s hand (eg: a held
+controller preventing the user from making a fist) or have only limited
+ability to track finger positions <strong class="purple">must</strong> use the information available to
+them to emulate an unobstructed range of motion.</p>
+</li>
+<li>
+<p><code>XR_HAND_JOINTS_MOTION_RANGE_CONFORMING_TO_CONTROLLER_EXT</code> This option
+refers to the range of motion of the hand joints taking into account any
+physical limits imposed by the controller itself.
+This will tend to be the most accurate pose compared to the user&#8217;s actual
+hand pose, but might not allow a closed fist for example.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the current interaction profile represents a controller, or other
+device that obstructs the hand, the implementation <strong class="purple">must</strong> return joint
+locations conforming to the shape of that device.
+If the current interaction profile is being emulated by a different
+physical controller, the implementation <strong class="purple">may</strong> return joint locations
+conforming to the shape of either the current interaction profile or the
+actual physical controller.</p>
+</li>
+<li>
+<p>If the current interaction profile does not represent a controller, the
+implementation <strong class="purple">must</strong> return joint locations based on the unobstructed
+joint locations.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrHandJointsMotionRangeInfoEXT">XrHandJointsMotionRangeInfoEXT</a> is a structure that an application
+<strong class="purple">can</strong> chain in <a href="#XrHandJointsLocateInfoEXT">XrHandJointsLocateInfoEXT</a> to request the joint motion
+range specified by the <code>handJointsMotionRange</code> field.</p>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">must</strong> return the appropriate joint locations depending on the
+<code>handJointsMotionRange</code> field and the currently active interaction
+profile.</p>
+</div>
+<div id="XrHandJointsMotionRangeInfoEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrHandJointsMotionRangeInfoEXT {
+    XrStructureType               type;
+    const void*                   next;
+    XrHandJointsMotionRangeEXT    handJointsMotionRange;
+} XrHandJointsMotionRangeInfoEXT;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>handJointsMotionRange</code> is an <a href="#XrHandJointsMotionRangeEXT">XrHandJointsMotionRangeEXT</a> that
+defines the hand joint range of motion the application wants.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrHandJointsMotionRangeInfoEXT-extension-notenabled" href="#VUID-XrHandJointsMotionRangeInfoEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_hand_joints_motion_range">XR_EXT_hand_joints_motion_range</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrHandJointsMotionRangeInfoEXT">XrHandJointsMotionRangeInfoEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrHandJointsMotionRangeInfoEXT-type-type" href="#VUID-XrHandJointsMotionRangeInfoEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_HAND_JOINTS_MOTION_RANGE_INFO_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrHandJointsMotionRangeInfoEXT-next-next" href="#VUID-XrHandJointsMotionRangeInfoEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrHandJointsMotionRangeInfoEXT-handJointsMotionRange-parameter" href="#VUID-XrHandJointsMotionRangeInfoEXT-handJointsMotionRange-parameter"></a> <code>handJointsMotionRange</code> <strong class="purple">must</strong> be a valid <a href="#XrHandJointsMotionRangeEXT">XrHandJointsMotionRangeEXT</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2021-04-15 (Rune Berg)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial extension description</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_EXT_hand_tracking"><a class="anchor" href="#XR_EXT_hand_tracking"></a>12.27. XR_EXT_hand_tracking</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -31928,7 +32266,7 @@ while(true)
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>3</p>
+<p>4</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -31946,7 +32284,7 @@ while(true)
 <dl>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2021-04-13</p>
+<p>2021-04-15</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -31961,6 +32299,7 @@ Bryce Hutchings, Microsoft<br>
 Cass Everitt, Oculus<br>
 Blake Taylor, Magic Leap<br>
 Joe van den Heuvel, Valve<br>
+Rune Berg, Valve<br>
 Nicholas Benson, Ultraleap<br>
 Ryan Pavlik, Collabora<br></p>
 </dd>
@@ -32068,12 +32407,24 @@ This handle can be used to locate hand joints using
 <a href="#xrLocateHandJointsEXT">xrLocateHandJointsEXT</a> function.</p>
 </div>
 <div class="paragraph">
-<p>A hand tracker provides accurate fidelity to the user&#8217;s actual hand shape.
-When the hand tracking input requires the user to be holding a controller in
-their hand, the hand tracking input will appear as the user holding the
-controller.
-This input can be used to render the hand shape together with rendering the
-controller in the hand.</p>
+<p>A hand tracker provides joint locations with an unobstructed range of motion
+of an empty human hand.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>This behavior can be modified by the <code><a href="#XR_EXT_hand_joints_motion_range">XR_EXT_hand_joints_motion_range</a></code>
+extension</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -32596,7 +32947,7 @@ locations will be represented.</p>
 <p><a id="VUID-XrHandJointsLocateInfoEXT-type-type" href="#VUID-XrHandJointsLocateInfoEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_HAND_JOINTS_LOCATE_INFO_EXT</code></p>
 </li>
 <li>
-<p><a id="VUID-XrHandJointsLocateInfoEXT-next-next" href="#VUID-XrHandJointsLocateInfoEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrHandJointsLocateInfoEXT-next-next" href="#VUID-XrHandJointsLocateInfoEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrHandJointsMotionRangeInfoEXT">XrHandJointsMotionRangeInfoEXT</a></p>
 </li>
 <li>
 <p><a id="VUID-XrHandJointsLocateInfoEXT-baseSpace-parameter" href="#VUID-XrHandJointsLocateInfoEXT-baseSpace-parameter"></a> <code>baseSpace</code> <strong class="purple">must</strong> be a valid <a href="#XrSpace">XrSpace</a> handle</p>
@@ -32664,6 +33015,14 @@ the returned hand joint locations.</p>
 <p>The application <strong class="purple">must</strong> set <code>jointCount</code> as described by the
 <a href="#XrHandJointSetEXT">XrHandJointSetEXT</a> when creating the <a href="#XrHandTrackerEXT">XrHandTrackerEXT</a> otherwise
 the runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>jointLocations</code> representing the range of
+motion of a human hand, without any obstructions.
+Input systems that obstruct the movement of the user’s hand (eg: a held
+controller preventing the user from making a fist) or that have only limited
+ability to track finger positions <strong class="purple">must</strong> use the information available to
+them to emulate an unobstructed range of motion.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> update the <code>jointLocations</code> array ordered so that the
@@ -33353,11 +33712,25 @@ defined in <a href="#XrHandJointEXT">XrHandJointEXT</a></p>
 </div>
 </li>
 <li>
-<p>Revision 3, 2021-04-13 (Ryan Pavlik)</p>
+<p>Revision 3, 2021-04-13 (Ryan Pavlik, Rune Berg)</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Fix example code to properly use <code>xrGetInstanceProcAddr</code>.</p>
+</li>
+<li>
+<p>Add recommended bone names</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 4, 2021-04-15 (Rune Berg)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Clarify that use of this extension produces an unobstructed hand range of
+motion.</p>
 </li>
 </ul>
 </div>
@@ -33366,7 +33739,7 @@ defined in <a href="#XrHandJointEXT">XrHandJointEXT</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_hp_mixed_reality_controller"><a class="anchor" href="#XR_EXT_hp_mixed_reality_controller"></a>12.27. XR_EXT_hp_mixed_reality_controller</h3>
+<h3 id="XR_EXT_hp_mixed_reality_controller"><a class="anchor" href="#XR_EXT_hp_mixed_reality_controller"></a>12.28. XR_EXT_hp_mixed_reality_controller</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -33526,7 +33899,7 @@ Controllers:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_performance_settings"><a class="anchor" href="#XR_EXT_performance_settings"></a>12.28. XR_EXT_performance_settings</h3>
+<h3 id="XR_EXT_performance_settings"><a class="anchor" href="#XR_EXT_performance_settings"></a>12.29. XR_EXT_performance_settings</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -33543,7 +33916,7 @@ Controllers:</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>2</p>
+<p>3</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -33557,7 +33930,7 @@ Controllers:</p>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2017-11-30</p>
+<p>2021-04-14</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -33572,7 +33945,7 @@ Ryan Pavlik, Collabora<br></p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_2"><a class="anchor" href="#_overview_2"></a>12.28.1. Overview</h4>
+<h4 id="_overview_2"><a class="anchor" href="#_overview_2"></a>12.29.1. Overview</h4>
 <div class="paragraph">
 <p>This extension defines an API for the application to give performance hints
 to the runtime and for the runtime to send performance related notifications
@@ -33600,7 +33973,7 @@ load without consuming more energy than necessary.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_setting_performance_levels_hints"><a class="anchor" href="#_setting_performance_levels_hints"></a>12.28.2. Setting Performance Levels Hints</h4>
+<h4 id="_setting_performance_levels_hints"><a class="anchor" href="#_setting_performance_levels_hints"></a>12.29.2. Setting Performance Levels Hints</h4>
 <div class="sect4">
 <h5 id="EXT_performance_settings-level-definition"><a class="anchor" href="#EXT_performance_settings-level-definition"></a>Performance level hint definition</h5>
 <div class="paragraph">
@@ -33813,7 +34186,7 @@ domain at <code>XR_PERF_SETTINGS_LEVEL_SUSTAINED_HIGH_EXT</code></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_receiving_performance_related_notifications"><a class="anchor" href="#_receiving_performance_related_notifications"></a>12.28.3. Receiving Performance Related Notifications</h4>
+<h4 id="_receiving_performance_related_notifications"><a class="anchor" href="#_receiving_performance_related_notifications"></a>12.29.3. Receiving Performance Related Notifications</h4>
 <div class="paragraph">
 <p>The XR runtime shall provide performance related notifications to the
 application in the following situations:</p>
@@ -34146,6 +34519,9 @@ within thermal limits) have ended.​</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -34319,13 +34695,23 @@ No such structures are defined in core OpenXR or this extension.</p>
 </ul>
 </div>
 </li>
+<li>
+<p>Revision 3, 2021-04-14 (Ryan Pavlik)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix missing error code</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_samsung_odyssey_controller"><a class="anchor" href="#XR_EXT_samsung_odyssey_controller"></a>12.29. XR_EXT_samsung_odyssey_controller</h3>
+<h3 id="XR_EXT_samsung_odyssey_controller"><a class="anchor" href="#XR_EXT_samsung_odyssey_controller"></a>12.30. XR_EXT_samsung_odyssey_controller</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -34430,7 +34816,7 @@ for the form factor of <em>&#8230;/samsung/odyssey_controller.</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_thermal_query"><a class="anchor" href="#XR_EXT_thermal_query"></a>12.30. XR_EXT_thermal_query</h3>
+<h3 id="XR_EXT_thermal_query"><a class="anchor" href="#XR_EXT_thermal_query"></a>12.31. XR_EXT_thermal_query</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -34447,7 +34833,7 @@ for the form factor of <em>&#8230;/samsung/odyssey_controller.</em></p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>1</p>
+<p>2</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -34461,7 +34847,7 @@ for the form factor of <em>&#8230;/samsung/odyssey_controller.</em></p>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2017-11-30</p>
+<p>2021-04-14</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -34475,14 +34861,14 @@ Innovation Center, Inc</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_3"><a class="anchor" href="#_overview_3"></a>12.30.1. Overview</h4>
+<h4 id="_overview_3"><a class="anchor" href="#_overview_3"></a>12.31.1. Overview</h4>
 <div class="paragraph">
 <p>This extension provides an API to query a domain&#8217;s current thermal warning
 level and current thermal trend.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_querying_the_current_thermal_level_and_trend"><a class="anchor" href="#_querying_the_current_thermal_level_and_trend"></a>12.30.2. Querying the current thermal level and trend</h4>
+<h4 id="_querying_the_current_thermal_level_and_trend"><a class="anchor" href="#_querying_the_current_thermal_level_and_trend"></a>12.31.2. Querying the current thermal level and trend</h4>
 <div class="paragraph">
 <p>This query allows to determine the extent and urgency of the needed workload
 reduction and to verify that the mitigation measures efficiently reduce the
@@ -34633,6 +35019,9 @@ most critical temperature of the domain.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -34683,13 +35072,23 @@ most critical temperature of the domain.</p>
 <li>
 <p>Revision 1, 2017-11-30 (Armelle Laine)</p>
 </li>
+<li>
+<p>Revision 2, 2021-04-14 (Ryan Pavlik, Collabora)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix missing error code</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_view_configuration_depth_range"><a class="anchor" href="#XR_EXT_view_configuration_depth_range"></a>12.31. XR_EXT_view_configuration_depth_range</h3>
+<h3 id="XR_EXT_view_configuration_depth_range"><a class="anchor" href="#XR_EXT_view_configuration_depth_range"></a>12.32. XR_EXT_view_configuration_depth_range</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -34897,7 +35296,7 @@ of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EXT_win32_appcontainer_compatible"><a class="anchor" href="#XR_EXT_win32_appcontainer_compatible"></a>12.32. XR_EXT_win32_appcontainer_compatible</h3>
+<h3 id="XR_EXT_win32_appcontainer_compatible"><a class="anchor" href="#XR_EXT_win32_appcontainer_compatible"></a>12.33. XR_EXT_win32_appcontainer_compatible</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -35016,7 +35415,7 @@ properly in the AppContainer execution environment.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_EPIC_view_configuration_fov"><a class="anchor" href="#XR_EPIC_view_configuration_fov"></a>12.33. XR_EPIC_view_configuration_fov</h3>
+<h3 id="XR_EPIC_view_configuration_fov"><a class="anchor" href="#XR_EPIC_view_configuration_fov"></a>12.34. XR_EPIC_view_configuration_fov</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -35193,7 +35592,7 @@ display.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_FB_android_surface_swapchain_create"><a class="anchor" href="#XR_FB_android_surface_swapchain_create"></a>12.34. XR_FB_android_surface_swapchain_create</h3>
+<h3 id="XR_FB_android_surface_swapchain_create"><a class="anchor" href="#XR_FB_android_surface_swapchain_create"></a>12.35. XR_FB_android_surface_swapchain_create</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -35433,7 +35832,7 @@ calling <a href="#xrCreateSwapchainAndroidSurfaceKHR">xrCreateSwapchainAndroidSu
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_FB_color_space"><a class="anchor" href="#XR_FB_color_space"></a>12.35. XR_FB_color_space</h3>
+<h3 id="XR_FB_color_space"><a class="anchor" href="#XR_FB_color_space"></a>12.36. XR_FB_color_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36016,7 +36415,7 @@ The runtime <strong class="purple">must</strong> return <code>XR_ERROR_COLOR_SPA
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_FB_display_refresh_rate"><a class="anchor" href="#XR_FB_display_refresh_rate"></a>12.36. XR_FB_display_refresh_rate</h3>
+<h3 id="XR_FB_display_refresh_rate"><a class="anchor" href="#XR_FB_display_refresh_rate"></a>12.37. XR_FB_display_refresh_rate</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36579,7 +36978,524 @@ latency and flickering.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_HTC_vive_cosmos_controller_interaction"><a class="anchor" href="#XR_HTC_vive_cosmos_controller_interaction"></a>12.37. XR_HTC_vive_cosmos_controller_interaction</h3>
+<h3 id="XR_FB_swapchain_update_state"><a class="anchor" href="#XR_FB_swapchain_update_state"></a>12.38. XR_FB_swapchain_update_state</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_FB_swapchain_update_state</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>72</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires OpenXR 1.0</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Cass Everitt, Facebook<br>
+Gloria Kennickell, Facebook<br></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>This extension enables the application to modify specific mutable state
+associated with a swapchain, examples include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A video application may need to update the default size of the image
+buffers associated with an Android Surface Swapchain.</p>
+</li>
+<li>
+<p>A video application may need to communicate a new width and height for an
+Android Surface Swapchain, as the surface dimensions may be implicitly
+updated by the producer during the life of the Swapchain.
+This is important for correct application of the non-normalized
+<code>imageRect</code> specified via <a href="#XrSwapchainSubImage">XrSwapchainSubImage</a>.</p>
+</li>
+<li>
+<p>On platforms where composition runs in a separate process from the
+application, swapchains must be created in a cross-process friendly way.
+In such cases, the texture image memory may be shared between processes,
+but the texture state may not; and, an explicit mechanism to synchronize
+this texture state between the application and the compositor is required.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to enable the functionality of this extension, you <strong class="purple">must</strong> pass the
+name of the extension into <a href="#xrCreateInstance">xrCreateInstance</a> via the
+<a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> <code>enabledExtensionNames</code> parameter as
+indicated in the <a href="#extensions">Extensions</a> section.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrStructureType">XrStructureType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB</code></p>
+</li>
+<li>
+<p><code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrSwapchainStateBaseHeaderFB">XrSwapchainStateBaseHeaderFB</a> structure is defined as:</p>
+</div>
+<div id="XrSwapchainStateBaseHeaderFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrSwapchainStateBaseHeaderFB {
+    XrStructureType    type;
+    void*              next;
+} XrSwapchainStateBaseHeaderFB;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.
+This base structure itself has no associated <a href="#XrStructureType">XrStructureType</a> value.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrSwapchainStateBaseHeaderFB">XrSwapchainStateBaseHeaderFB</a> is a base structure that can be
+overridden by a specific <code>XrSwapchainState*</code> child structure.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSwapchainStateBaseHeaderFB-extension-notenabled" href="#VUID-XrSwapchainStateBaseHeaderFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">XR_FB_swapchain_update_state</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSwapchainStateBaseHeaderFB">XrSwapchainStateBaseHeaderFB</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateBaseHeaderFB-type-type" href="#VUID-XrSwapchainStateBaseHeaderFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be one of the following XrStructureType values: <code>XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB</code>, <code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateBaseHeaderFB-next-next" href="#VUID-XrSwapchainStateBaseHeaderFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>These structures are only available when the corresponding
+<code>XR_USE_PLATFORM_</code> macro is defined before including <code>openxr_platform.h</code>.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrSwapchainStateAndroidSurfaceDimensionsFB">XrSwapchainStateAndroidSurfaceDimensionsFB</a> structure is defined
+as:</p>
+</div>
+<div id="XrSwapchainStateAndroidSurfaceDimensionsFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrSwapchainStateAndroidSurfaceDimensionsFB {
+    XrStructureType    type;
+    const void*        next;
+    uint32_t           width;
+    uint32_t           height;
+} XrSwapchainStateAndroidSurfaceDimensionsFB;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>width</code> is the width of the image buffer, must not be greater than the
+graphics API&#8217;s maximum limit.</p>
+</li>
+<li>
+<p><code>height</code> is the height of the image buffer, must not be greater than
+the graphics API&#8217;s maximum limit.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When <a href="#XrSwapchainStateAndroidSurfaceDimensionsFB">XrSwapchainStateAndroidSurfaceDimensionsFB</a> is specified in the
+call to <a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a>, the dimensions provided will be used to
+update the default size of the image buffers associated with the Android
+Surface swapchain.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the dimensions provided will become the new source of truth
+for the swapchain width and height, affecting operations such as computing
+the normalized imageRect for the swapchain.</p>
+</div>
+<div class="paragraph">
+<p>To use <a href="#XrSwapchainStateAndroidSurfaceDimensionsFB">XrSwapchainStateAndroidSurfaceDimensionsFB</a>,
+<a href="#XR_USE_PLATFORM_ANDROID">XR_USE_PLATFORM_ANDROID</a> must be defined before including
+<code>openxr_platform.h</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-extension-notenabled" href="#VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">XR_FB_swapchain_update_state</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSwapchainStateAndroidSurfaceDimensionsFB">XrSwapchainStateAndroidSurfaceDimensionsFB</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-type-type" href="#VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-next-next" href="#VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrSwapchainStateSamplerOpenGLESFB">XrSwapchainStateSamplerOpenGLESFB</a> structure is defined as:</p>
+</div>
+<div id="XrSwapchainStateSamplerOpenGLESFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrSwapchainStateSamplerOpenGLESFB {
+    XrStructureType    type;
+    const void*        next;
+    EGLenum            minFilter;
+    EGLenum            magFilter;
+    EGLenum            wrapModeS;
+    EGLenum            wrapModeT;
+    EGLenum            swizzleRed;
+    EGLenum            swizzleGreen;
+    EGLenum            swizzleBlue;
+    EGLenum            swizzleAlpha;
+    float              maxAnisotropy;
+    XrColor4f          borderColor;
+} XrSwapchainStateSamplerOpenGLESFB;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>minFilter</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>magFilter</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>wrapModeS</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>wrapModeT</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>swizzleRed</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>swizzleGreen</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>swizzleBlue</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>swizzleAlpha</code> is a valid Android OpenGL ES <code>EGLenum</code>.</p>
+</li>
+<li>
+<p><code>maxAnisotropy</code> is a valid float used to represent max anisotropy.</p>
+</li>
+<li>
+<p><code>borderColor</code> is an RGBA color to be used as border texels.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When <a href="#XrSwapchainStateSamplerOpenGLESFB">XrSwapchainStateSamplerOpenGLESFB</a> is specified in the call to
+<a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a>, all images in the <a href="#XrSwapchain">XrSwapchain</a> will have the
+specified sampler state applied and the state synchronized with the
+compositor.
+Applications are expected to handle synchronization of the sampler state
+update with application-side rendering.
+Similarly, the compositor will synchronize the sampler state update with
+rendering of the next compositor frame.
+An <code>EGLContext</code>, either the <code>EGLContext</code> bound during
+<a href="#XrSwapchain">XrSwapchain</a> creation or an <code>EGLContext</code> in the same share group,
+is required to be bound on the application calling thread.
+Current texture bindings may be altered by the call, including the active
+texture.</p>
+</div>
+<div class="paragraph">
+<p>To use <a href="#XrSwapchainStateSamplerOpenGLESFB">XrSwapchainStateSamplerOpenGLESFB</a>,
+<a href="#XR_USE_PLATFORM_ANDROID">XR_USE_PLATFORM_ANDROID</a> and <a href="#XR_USE_GRAPHICS_API_OPENGL_ES">XR_USE_GRAPHICS_API_OPENGL_ES</a> must
+both be defined before including <code>openxr_platform.h</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-extension-notenabled" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">XR_FB_swapchain_update_state</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSwapchainStateSamplerOpenGLESFB">XrSwapchainStateSamplerOpenGLESFB</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-type-type" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-next-next" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-minFilter-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-minFilter-parameter"></a> <code>minFilter</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-magFilter-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-magFilter-parameter"></a> <code>magFilter</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-wrapModeS-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-wrapModeS-parameter"></a> <code>wrapModeS</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-wrapModeT-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-wrapModeT-parameter"></a> <code>wrapModeT</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleRed-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleRed-parameter"></a> <code>swizzleRed</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleGreen-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleGreen-parameter"></a> <code>swizzleGreen</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleBlue-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleBlue-parameter"></a> <code>swizzleBlue</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleAlpha-parameter" href="#VUID-XrSwapchainStateSamplerOpenGLESFB-swizzleAlpha-parameter"></a> <code>swizzleAlpha</code> <strong class="purple">must</strong> be a valid <code>EGLenum</code> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a> function is defined as:</p>
+</div>
+<div id="xrUpdateSwapchainFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">XrResult xrUpdateSwapchainFB(
+    XrSwapchain                                 swapchain,
+    const XrSwapchainStateBaseHeaderFB*         state);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>swapchain</code> is the <a href="#XrSwapchain">XrSwapchain</a> to update state for.</p>
+</li>
+<li>
+<p><code>state</code> is a pointer to a <code>XrSwapchainState</code> structure based off of
+<a href="#XrSwapchainStateBaseHeaderFB">XrSwapchainStateBaseHeaderFB</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a> provides support for an application to update
+specific mutable state associated with an <a href="#XrSwapchain">XrSwapchain</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use <a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a>, <a href="#XR_USE_PLATFORM_ANDROID">XR_USE_PLATFORM_ANDROID</a> must be
+defined before including <code>openxr_platform.h</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrUpdateSwapchainFB-extension-notenabled" href="#VUID-xrUpdateSwapchainFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">XR_FB_swapchain_update_state</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a></p>
+</li>
+<li>
+<p><a id="VUID-xrUpdateSwapchainFB-swapchain-parameter" href="#VUID-xrUpdateSwapchainFB-swapchain-parameter"></a> <code>swapchain</code> <strong class="purple">must</strong> be a valid <a href="#XrSwapchain">XrSwapchain</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrUpdateSwapchainFB-state-parameter" href="#VUID-xrUpdateSwapchainFB-state-parameter"></a> <code>state</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrSwapchainStateBaseHeaderFB">XrSwapchainStateBaseHeaderFB</a>-based structure. See also: <a href="#XrSwapchainStateAndroidSurfaceDimensionsFB">XrSwapchainStateAndroidSurfaceDimensionsFB</a>, <a href="#XrSwapchainStateSamplerOpenGLESFB">XrSwapchainStateSamplerOpenGLESFB</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Given we allow mutable state to be updated by the application, should we
+provide a mechanism to query the current state for all update structures?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2021-04-16 (Gloria Kennickell)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial extension description</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_HTC_vive_cosmos_controller_interaction"><a class="anchor" href="#XR_HTC_vive_cosmos_controller_interaction"></a>12.39. XR_HTC_vive_cosmos_controller_interaction</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36773,7 +37689,7 @@ use)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_HUAWEI_controller_interaction"><a class="anchor" href="#XR_HUAWEI_controller_interaction"></a>12.38. XR_HUAWEI_controller_interaction</h3>
+<h3 id="XR_HUAWEI_controller_interaction"><a class="anchor" href="#XR_HUAWEI_controller_interaction"></a>12.40. XR_HUAWEI_controller_interaction</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -36943,7 +37859,7 @@ Huawei Controller.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_headless"><a class="anchor" href="#XR_MND_headless"></a>12.39. XR_MND_headless</h3>
+<h3 id="XR_MND_headless"><a class="anchor" href="#XR_MND_headless"></a>12.41. XR_MND_headless</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -37102,7 +38018,7 @@ false.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MND_swapchain_usage_input_attachment_bit"><a class="anchor" href="#XR_MND_swapchain_usage_input_attachment_bit"></a>12.40. XR_MND_swapchain_usage_input_attachment_bit</h3>
+<h3 id="XR_MND_swapchain_usage_input_attachment_bit"><a class="anchor" href="#XR_MND_swapchain_usage_input_attachment_bit"></a>12.42. XR_MND_swapchain_usage_input_attachment_bit</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -37216,7 +38132,7 @@ At the time of writing this bit only affects Vulkan swapchains.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_controller_model"><a class="anchor" href="#XR_MSFT_controller_model"></a>12.41. XR_MSFT_controller_model</h3>
+<h3 id="XR_MSFT_controller_model"><a class="anchor" href="#XR_MSFT_controller_model"></a>12.43. XR_MSFT_controller_model</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -38319,7 +39235,7 @@ in it&#8217;s parent node space.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_first_person_observer"><a class="anchor" href="#XR_MSFT_first_person_observer"></a>12.42. XR_MSFT_first_person_observer</h3>
+<h3 id="XR_MSFT_first_person_observer"><a class="anchor" href="#XR_MSFT_first_person_observer"></a>12.44. XR_MSFT_first_person_observer</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -38372,7 +39288,7 @@ Alex Turner, Microsoft<br></p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_4"><a class="anchor" href="#_overview_4"></a>12.42.1. Overview</h4>
+<h4 id="_overview_4"><a class="anchor" href="#_overview_4"></a>12.44.1. Overview</h4>
 <div class="paragraph">
 <p>This first-person observer view configuration enables the runtime to request
 the application to render an additional first-person view of the scene to be
@@ -38476,7 +39392,7 @@ blend modes when sharing render passes across both view configurations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_hand_interaction"><a class="anchor" href="#XR_MSFT_hand_interaction"></a>12.43. XR_MSFT_hand_interaction</h3>
+<h3 id="XR_MSFT_hand_interaction"><a class="anchor" href="#XR_MSFT_hand_interaction"></a>12.45. XR_MSFT_hand_interaction</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -38632,7 +39548,7 @@ a controller.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_hand_tracking_mesh"><a class="anchor" href="#XR_MSFT_hand_tracking_mesh"></a>12.44. XR_MSFT_hand_tracking_mesh</h3>
+<h3 id="XR_MSFT_hand_tracking_mesh"><a class="anchor" href="#XR_MSFT_hand_tracking_mesh"></a>12.46. XR_MSFT_hand_tracking_mesh</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -40098,7 +41014,7 @@ while(1){
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_holographic_window_attachment"><a class="anchor" href="#XR_MSFT_holographic_window_attachment"></a>12.45. XR_MSFT_holographic_window_attachment</h3>
+<h3 id="XR_MSFT_holographic_window_attachment"><a class="anchor" href="#XR_MSFT_holographic_window_attachment"></a>12.47. XR_MSFT_holographic_window_attachment</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -40238,7 +41154,7 @@ thread is blocked, otherwise the call <strong class="purple">may</strong> deadlo
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sample_code_2"><a class="anchor" href="#_sample_code_2"></a>12.45.1. Sample code</h4>
+<h4 id="_sample_code_2"><a class="anchor" href="#_sample_code_2"></a>12.47.1. Sample code</h4>
 <div class="paragraph">
 <p>Following example demos the usage of holographic window attachment and use
 the attached CoreWindow to receive keyboard input, use
@@ -40354,7 +41270,7 @@ int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_perception_anchor_interop"><a class="anchor" href="#XR_MSFT_perception_anchor_interop"></a>12.46. XR_MSFT_perception_anchor_interop</h3>
+<h3 id="XR_MSFT_perception_anchor_interop"><a class="anchor" href="#XR_MSFT_perception_anchor_interop"></a>12.48. XR_MSFT_perception_anchor_interop</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -40716,7 +41632,7 @@ object, the function <strong class="purple">must</strong> return <code>XR_SUCCES
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_secondary_view_configuration"><a class="anchor" href="#XR_MSFT_secondary_view_configuration"></a>12.47. XR_MSFT_secondary_view_configuration</h3>
+<h3 id="XR_MSFT_secondary_view_configuration"><a class="anchor" href="#XR_MSFT_secondary_view_configuration"></a>12.49. XR_MSFT_secondary_view_configuration</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -40766,7 +41682,7 @@ Alex Turner, Microsoft<br></p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_5"><a class="anchor" href="#_overview_5"></a>12.47.1. Overview</h4>
+<h4 id="_overview_5"><a class="anchor" href="#_overview_5"></a>12.49.1. Overview</h4>
 <div class="paragraph">
 <p>This extension allows an application to enable support for one or more
 <strong>secondary view configurations</strong>.
@@ -40834,7 +41750,7 @@ structure.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enumerate_supported_secondary_view_configurations"><a class="anchor" href="#_enumerate_supported_secondary_view_configurations"></a>12.47.2. Enumerate supported secondary view configurations</h4>
+<h4 id="_enumerate_supported_secondary_view_configurations"><a class="anchor" href="#_enumerate_supported_secondary_view_configurations"></a>12.49.2. Enumerate supported secondary view configurations</h4>
 <div class="paragraph">
 <p>The first step is for the application to inspect if a runtime supports
 certain secondary view configurations.
@@ -40848,7 +41764,7 @@ and can use this secondary view configuration type in later functions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_secondary_view_configuration_properties"><a class="anchor" href="#_secondary_view_configuration_properties"></a>12.47.3. Secondary view configuration properties</h4>
+<h4 id="_secondary_view_configuration_properties"><a class="anchor" href="#_secondary_view_configuration_properties"></a>12.49.3. Secondary view configuration properties</h4>
 <div class="paragraph">
 <p>The application can inspect the properties of a secondary view configuration
 through the existing <a href="#xrGetViewConfigurationProperties">xrGetViewConfigurationProperties</a>,
@@ -40944,7 +41860,7 @@ configuration type was hinted when swapchain image was created.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enable_secondary_view_configuration"><a class="anchor" href="#_enable_secondary_view_configuration"></a>12.47.4. Enable secondary view configuration</h4>
+<h4 id="_enable_secondary_view_configuration"><a class="anchor" href="#_enable_secondary_view_configuration"></a>12.49.4. Enable secondary view configuration</h4>
 <div class="paragraph">
 <p>The application indicates to the runtime which secondary view configurations
 it can support by chaining an
@@ -41044,7 +41960,7 @@ configuration types that application supports.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_per_frame_active_view_configurations"><a class="anchor" href="#_per_frame_active_view_configurations"></a>12.47.5. Per-frame active view configurations</h4>
+<h4 id="_per_frame_active_view_configurations"><a class="anchor" href="#_per_frame_active_view_configurations"></a>12.49.5. Per-frame active view configurations</h4>
 <div class="paragraph">
 <p>The runtime then tells the application at each <a href="#xrWaitFrame">xrWaitFrame</a> function
 call which of the enabled secondary view configurations are active for that
@@ -41237,7 +42153,7 @@ configuration inactive by setting the corresponding <code>active</code> in the
 </div>
 </div>
 <div class="sect3">
-<h4 id="_locate_and_inspect_view_states_of_secondary_view_configurations"><a class="anchor" href="#_locate_and_inspect_view_states_of_secondary_view_configurations"></a>12.47.6. Locate and inspect view states of secondary view configurations</h4>
+<h4 id="_locate_and_inspect_view_states_of_secondary_view_configurations"><a class="anchor" href="#_locate_and_inspect_view_states_of_secondary_view_configurations"></a>12.49.6. Locate and inspect view states of secondary view configurations</h4>
 <div class="paragraph">
 <p>When the application calls <a href="#xrLocateViews">xrLocateViews</a>, it <strong class="purple">can</strong> use
 <a href="#XrViewLocateInfo">XrViewLocateInfo</a>::viewConfigurationType field to query the view
@@ -41260,7 +42176,7 @@ successfully return, but the resulting <code>XrViewState</code> <strong class="p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_submit_composition_layers_to_secondary_view_configurations"><a class="anchor" href="#_submit_composition_layers_to_secondary_view_configurations"></a>12.47.7. Submit composition layers to secondary view configurations</h4>
+<h4 id="_submit_composition_layers_to_secondary_view_configurations"><a class="anchor" href="#_submit_composition_layers_to_secondary_view_configurations"></a>12.49.7. Submit composition layers to secondary view configurations</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -41572,7 +42488,7 @@ configuration.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_anchor"><a class="anchor" href="#XR_MSFT_spatial_anchor"></a>12.48. XR_MSFT_spatial_anchor</h3>
+<h3 id="XR_MSFT_spatial_anchor"><a class="anchor" href="#XR_MSFT_spatial_anchor"></a>12.50. XR_MSFT_spatial_anchor</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42203,7 +43119,7 @@ maintain tracking for that anchor&#8217;s origin.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_spatial_graph_bridge"><a class="anchor" href="#XR_MSFT_spatial_graph_bridge"></a>12.49. XR_MSFT_spatial_graph_bridge</h3>
+<h3 id="XR_MSFT_spatial_graph_bridge"><a class="anchor" href="#XR_MSFT_spatial_graph_bridge"></a>12.51. XR_MSFT_spatial_graph_bridge</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42541,7 +43457,7 @@ Dynamic spatial nodes are represented by
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_MSFT_unbounded_reference_space"><a class="anchor" href="#XR_MSFT_unbounded_reference_space"></a>12.50. XR_MSFT_unbounded_reference_space</h3>
+<h3 id="XR_MSFT_unbounded_reference_space"><a class="anchor" href="#XR_MSFT_unbounded_reference_space"></a>12.52. XR_MSFT_unbounded_reference_space</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42705,7 +43621,7 @@ extension is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_OCULUS_android_session_state_enable"><a class="anchor" href="#XR_OCULUS_android_session_state_enable"></a>12.51. XR_OCULUS_android_session_state_enable</h3>
+<h3 id="XR_OCULUS_android_session_state_enable"><a class="anchor" href="#XR_OCULUS_android_session_state_enable"></a>12.53. XR_OCULUS_android_session_state_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -42884,7 +43800,7 @@ from surfaceDestroyed() or onPause(), whichever comes first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VALVE_analog_threshold"><a class="anchor" href="#XR_VALVE_analog_threshold"></a>12.52. XR_VALVE_analog_threshold</h3>
+<h3 id="XR_VALVE_analog_threshold"><a class="anchor" href="#XR_VALVE_analog_threshold"></a>12.54. XR_VALVE_analog_threshold</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -43108,7 +44024,7 @@ binding list for this interaction profile, the runtime <strong class="purple">mu
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_composition_layer_depth_test"><a class="anchor" href="#XR_VARJO_composition_layer_depth_test"></a>12.53. XR_VARJO_composition_layer_depth_test</h3>
+<h3 id="XR_VARJO_composition_layer_depth_test"><a class="anchor" href="#XR_VARJO_composition_layer_depth_test"></a>12.55. XR_VARJO_composition_layer_depth_test</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -43355,7 +44271,7 @@ bound.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_environment_depth_estimation"><a class="anchor" href="#XR_VARJO_environment_depth_estimation"></a>12.54. XR_VARJO_environment_depth_estimation</h3>
+<h3 id="XR_VARJO_environment_depth_estimation"><a class="anchor" href="#XR_VARJO_environment_depth_estimation"></a>12.56. XR_VARJO_environment_depth_estimation</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -43554,7 +44470,7 @@ enable the functionality when environment blend mode is set to
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_foveated_rendering"><a class="anchor" href="#XR_VARJO_foveated_rendering"></a>12.55. XR_VARJO_foveated_rendering</h3>
+<h3 id="XR_VARJO_foveated_rendering"><a class="anchor" href="#XR_VARJO_foveated_rendering"></a>12.57. XR_VARJO_foveated_rendering</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -43603,7 +44519,7 @@ Antti Hirvonen, Varjo Technologies</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_6"><a class="anchor" href="#_overview_6"></a>12.55.1. Overview</h4>
+<h4 id="_overview_6"><a class="anchor" href="#_overview_6"></a>12.57.1. Overview</h4>
 <div class="paragraph">
 <p>Varjo headsets provide extremely high pixel density displays in the center
 area of the display, blended with a high density display covering the rest
@@ -43661,7 +44577,7 @@ rendering.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_inspect_system_capability"><a class="anchor" href="#_inspect_system_capability"></a>12.55.2. Inspect system capability</h4>
+<h4 id="_inspect_system_capability"><a class="anchor" href="#_inspect_system_capability"></a>12.57.2. Inspect system capability</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -43731,7 +44647,7 @@ An application <strong class="purple">should</strong> avoid using foveated rende
 </div>
 </div>
 <div class="sect3">
-<h4 id="_determine_foveated_texture_sizes"><a class="anchor" href="#_determine_foveated_texture_sizes"></a>12.55.3. Determine foveated texture sizes</h4>
+<h4 id="_determine_foveated_texture_sizes"><a class="anchor" href="#_determine_foveated_texture_sizes"></a>12.57.3. Determine foveated texture sizes</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -43842,7 +44758,7 @@ rendering gaze is not available.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rendering_gaze_status"><a class="anchor" href="#_rendering_gaze_status"></a>12.55.4. Rendering gaze status</h4>
+<h4 id="_rendering_gaze_status"><a class="anchor" href="#_rendering_gaze_status"></a>12.57.4. Rendering gaze status</h4>
 <div class="paragraph">
 <p>Extension defines new reference space type -
 <code>XR_REFERENCE_SPACE_TYPE_COMBINED_EYE_VARJO</code> which <strong class="purple">should</strong> be used to
@@ -43883,7 +44799,7 @@ if(foveationActive){
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_foveated_field_of_view"><a class="anchor" href="#_request_foveated_field_of_view"></a>12.55.5. Request foveated field of view</h4>
+<h4 id="_request_foveated_field_of_view"><a class="anchor" href="#_request_foveated_field_of_view"></a>12.57.5. Request foveated field of view</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -44029,7 +44945,7 @@ CHK_XR(xrLocateViews(session, &amp;viewLocateInfo, &amp;viewState, viewCapacityI
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VARJO_quad_views"><a class="anchor" href="#XR_VARJO_quad_views"></a>12.56. XR_VARJO_quad_views</h3>
+<h3 id="XR_VARJO_quad_views"><a class="anchor" href="#XR_VARJO_quad_views"></a>12.58. XR_VARJO_quad_views</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -44075,7 +44991,7 @@ Robert Menzel, NVIDIA</p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview_7"><a class="anchor" href="#_overview_7"></a>12.56.1. Overview</h4>
+<h4 id="_overview_7"><a class="anchor" href="#_overview_7"></a>12.58.1. Overview</h4>
 <div class="paragraph">
 <p>This extension adds a new view configuration type -
 <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</code> to
@@ -45126,6 +46042,9 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 <p><a href="#XrHandJointSetEXT">XrHandJointSetEXT</a></p>
 </li>
 <li>
+<p><a href="#XrHandJointsMotionRangeEXT">XrHandJointsMotionRangeEXT</a></p>
+</li>
+<li>
 <p><a href="#XrHandPoseTypeMSFT">XrHandPoseTypeMSFT</a></p>
 </li>
 <li>
@@ -45597,6 +46516,9 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 <p><a href="#xrUpdateHandMeshMSFT">xrUpdateHandMeshMSFT</a></p>
 </li>
 <li>
+<p><a href="#xrUpdateSwapchainFB">xrUpdateSwapchainFB</a></p>
+</li>
+<li>
 <p><a href="#xrWaitFrame">xrWaitFrame</a></p>
 </li>
 <li>
@@ -45890,6 +46812,9 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 <p><a href="#XrHandJointsLocateInfoEXT">XrHandJointsLocateInfoEXT</a></p>
 </li>
 <li>
+<p><a href="#XrHandJointsMotionRangeInfoEXT">XrHandJointsMotionRangeInfoEXT</a></p>
+</li>
+<li>
 <p><a href="#XrHandMeshIndexBufferMSFT">XrHandMeshIndexBufferMSFT</a></p>
 </li>
 <li>
@@ -46050,6 +46975,15 @@ type is <a href="#XR_USE_PLATFORM_EGL">XR_USE_PLATFORM_EGL</a>.</p>
 </li>
 <li>
 <p><a href="#XrSwapchainImageWaitInfo">XrSwapchainImageWaitInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainStateAndroidSurfaceDimensionsFB">XrSwapchainStateAndroidSurfaceDimensionsFB</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainStateBaseHeaderFB">XrSwapchainStateBaseHeaderFB</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainStateSamplerOpenGLESFB">XrSwapchainStateSamplerOpenGLESFB</a></p>
 </li>
 <li>
 <p><a href="#XrSwapchainSubImage">XrSwapchainSubImage</a></p>
@@ -46345,7 +47279,10 @@ the application binary interface.</p>
     XR_TYPE_VIEW_CONFIGURATION_VIEW_FOV_EPIC = 1000059000,
     XR_TYPE_HOLOGRAPHIC_WINDOW_ATTACHMENT_MSFT = 1000063000,
     XR_TYPE_ANDROID_SURFACE_SWAPCHAIN_CREATE_INFO_FB = 1000070000,
+    XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB = 1000071000,
+    XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB = 1000071001,
     XR_TYPE_INTERACTION_PROFILE_ANALOG_THRESHOLD_VALVE = 1000079000,
+    XR_TYPE_HAND_JOINTS_MOTION_RANGE_INFO_EXT = 1000080000,
     XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR = 1000089000,
     XR_TYPE_VULKAN_INSTANCE_CREATE_INFO_KHR = 1000090000,
     XR_TYPE_VULKAN_DEVICE_CREATE_INFO_KHR = 1000090001,
@@ -46511,7 +47448,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 15)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 16)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -47446,8 +48383,8 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.15<br>
-Last updated 2021-04-13 23:27:22 UTC
+Version 1.0.16<br>
+Last updated 2021-05-11 20:12:09 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>

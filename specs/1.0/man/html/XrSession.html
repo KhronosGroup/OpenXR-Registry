@@ -814,6 +814,17 @@ will transition through <code>XR_SESSION_STATE_IDLE</code> to the
 <code>XR_SESSION_STATE_EXITING</code> state.</p>
 </div>
 <div class="paragraph">
+<p>On platforms that have applications with lifecycle managed by the system,
+session state changes may be implicitly triggered by application lifecycle
+state changes.
+On such platforms, using platform-specific methods to alter application
+lifecycle state may be the preferred method of provoking session state
+changes.
+The behavior of <a href="xrRequestExitSession.html">xrRequestExitSession</a> is not altered, however explicit
+session exit <strong class="purple">may</strong> not interact with the platform-specific application
+lifecycle.</p>
+</div>
+<div class="paragraph">
 <p><a id="session_running"></a>A session is considered <strong>running</strong> after a successful
 call to <a href="xrBeginSession.html">xrBeginSession</a> and remains running until any call is made to
 <a href="xrEndSession.html">xrEndSession</a>.
@@ -887,8 +898,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.15<br>
-Last updated 2021-04-13 23:29:07 UTC
+Version 1.0.16<br>
+Last updated 2021-05-11 20:12:59 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

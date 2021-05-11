@@ -817,6 +817,14 @@ corresponding <a href="XrEventDataSessionStateChanged.html">XrEventDataSessionSt
 <code>XR_SESSION_STATE_IDLE</code> state <strong class="purple">must</strong> be generated as the first such event
 for the new session.</p>
 </div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+(<code>XR_ERROR_VALIDATION_FAILURE</code> may be returned due to legacy behavior)
+on calls to <a href="xrCreateSession.html">xrCreateSession</a> if a function named like
+<code>xrGet*GraphicsRequirements</code> has not been called for the same
+<code>instance</code> and <a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>systemId</code>.
+(See graphics binding extensions for details.)</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -935,8 +943,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.15<br>
-Last updated 2021-04-13 23:29:07 UTC
+Version 1.0.16<br>
+Last updated 2021-05-11 20:12:59 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

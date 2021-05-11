@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header" style="max-width: 100;">
 <h1>OpenXR™ Working Group Extension Processes</h1>
 <div class="details">
-<span id="revnumber">version 1.0.15,</span>
-<span id="revdate">Tue, 13 Apr 2021 23:33:14 +0000</span>
-<br><span id="revremark">from git ref release-1.0.15 commit: 1b56474c8edd408ae1b8e1cddfcdf1c5552220d4</span>
+<span id="revnumber">version 1.0.16,</span>
+<span id="revdate">Tue, 11 May 2021 20:14:38 +0000</span>
+<br><span id="revremark">from git ref release-1.0.16 commit: 862c84a9dcd227450bdc2f8de304567c2ba8722d</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -461,7 +461,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_extension_approval_process">4. Extension Approval Process</a>
 <ul class="sectlevel2">
 <li><a href="#_khr_extension_approval_process">4.1. KHR Extension Approval Process</a></li>
-<li><a href="#_ext_extension_approval_process">4.2. EXT Extension Approval Process</a></li>
+<li><a href="#_ext_extension_approval_process">4.2. EXT Extension Approval Process</a>
+<ul class="sectlevel3">
+<li><a href="#bitmasks">4.2.1. Extending Bitmasks</a></li>
+</ul>
+</li>
 <li><a href="#_vendor_specific_extension_approval_process">4.3. Vendor-Specific Extension Approval Process</a></li>
 </ul>
 </li>
@@ -983,11 +987,15 @@ approved by all relevant members.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>CI does not failed for any reason due to the changes within the merge
+<p>CI does not fail for any reason due to the changes within the merge
 request.</p>
 </li>
 <li>
 <p>There are no pending conflicts.</p>
+</li>
+<li>
+<p>There are no additions to core or KHR bitmasks or other limited-space
+entities (see <a href="#bitmasks">Extending Bitmasks</a>).</p>
 </li>
 <li>
 <p>The reviewer <strong class="purple">may</strong> also perform a check of the correctness and style of
@@ -1013,6 +1021,31 @@ and it has been merged to the <code>master</code> branch of the public OpenXR-Do
 repository.</p>
 </li>
 </ol>
+</div>
+<div class="sect3">
+<h4 id="bitmasks">4.2.1. Extending Bitmasks</h4>
+<div class="paragraph">
+<p>Vendor and multi-vendor extensions <strong class="purple">must</strong> not add new bits directly to a core
+or KHR bit mask, due to the limited number of bits available to express
+functionality.
+Only KHR extensions may extend core and KHR bitmasks, and vendors should not
+extend each others' extensions' bitmasks but rather collaborate on a
+replacement multi-vendor extension to satisfy those requirements.
+If the functionality desired is not suitable for a KHR extension, a chained
+struct should be used to contain a new bitmask field, instead of adding a
+value to the existing one.
+Similarly, vendor and multi-vendor <code>EXT</code> extensions <strong class="purple">must</strong> not add to any
+other similarly-limited spaces in the spec.
+The <code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND</code> bit was added before this
+policy was established, and is left as a historical artifact.
+See also
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/styleguide.html#extensions-reserving-bitmask-values">the
+Style Guide discussion of this</a>.</p>
+</div>
+<div class="paragraph">
+<p>Regular enums are not subject to this restriction, as a dedicated range in
+each enum is assigned to each extension based on extension number.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1041,11 +1074,15 @@ completed extension&#8217;s changes.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>CI does not failed for any reason due to the changes within the merge
+<p>CI does not fail for any reason due to the changes within the merge
 request.</p>
 </li>
 <li>
 <p>There are no pending conflicts.</p>
+</li>
+<li>
+<p>There are no additions to core or KHR bitmasks or other limited-space
+entities (see <a href="#bitmasks">Extending Bitmasks</a>).</p>
 </li>
 <li>
 <p>The reviewer <strong class="purple">may</strong> also perform a check of the correctness and style of
@@ -1191,8 +1228,8 @@ ensure equitable licensing, IP, and disclosure terms.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.15<br>
-Last updated 2021-04-13 23:27:22 UTC
+Version 1.0.16<br>
+Last updated 2021-05-11 20:12:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

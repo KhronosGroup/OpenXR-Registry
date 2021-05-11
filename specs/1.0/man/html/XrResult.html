@@ -825,6 +825,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_LOCALIZED_NAME_DUPLICATED = -48,
     XR_ERROR_LOCALIZED_NAME_INVALID = -49,
     XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING = -50,
+    XR_ERROR_RUNTIME_UNAVAILABLE = -51,
     XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR = -1000003000,
     XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR = -1000003001,
     XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT = -1000039001,
@@ -1114,6 +1115,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The <code>xrGetGraphicsRequirements</code>* call was not made before calling <code>xrCreateSession</code>.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The loader was unable to find or load a runtime.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">xrSetAndroidApplicationThreadKHR failed as thread id is invalid. (Added by the <code><a href="#XR_KHR_android_thread_settings">[XR_KHR_android_thread_settings]</a></code> extension)</p></td>
 </tr>
@@ -1188,8 +1193,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.15<br>
-Last updated 2021-04-13 23:29:07 UTC
+Version 1.0.16<br>
+Last updated 2021-05-11 20:12:59 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

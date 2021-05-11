@@ -445,9 +445,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.15,</span>
-<span id="revdate">Tue, 13 Apr 2021 23:33:14 +0000</span>
-<br><span id="revremark">from git ref release-1.0.15 commit: 1b56474c8edd408ae1b8e1cddfcdf1c5552220d4</span>
+<span id="revnumber">version 1.0.16,</span>
+<span id="revdate">Tue, 11 May 2021 20:14:37 +0000</span>
+<br><span id="revremark">from git ref release-1.0.16 commit: 862c84a9dcd227450bdc2f8de304567c2ba8722d</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -497,7 +497,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_author_ids">3.3.2. Author IDs</a></li>
 </ul>
 </li>
-<li><a href="#extensions-naming">3.4. Extension Command, Type, and Token Naming Conventions</a></li>
+<li><a href="#extensions-naming">3.4. Extension Function, Type, and Token Naming Conventions</a></li>
 <li><a href="#extensions-api-registry">3.5. The OpenXR Registry</a></li>
 <li><a href="#extensions-author-ID">3.6. Registering an Author ID with Khronos</a></li>
 <li><a href="#extensions-vendor-id">3.7. Registering a Vendor ID with Khronos</a></li>
@@ -830,7 +830,7 @@ was.</p>
 <div class="title">Example: Value</div>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 15)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 16)</code></pre>
 </div>
 </div>
 </div>
@@ -1371,29 +1371,13 @@ Denotes that a type is a function pointer.</p>
 <div class="paragraph">
 <p>This chapter describes required and recommended processes for writing formal
 extensions and API layers for the OpenXR API.
-It is concerned with processes and registration, while fine-grained naming
-conventions are included in the <a href="#naming">API Naming Conventions chapter</a>.
-Prior to revision 1.0.19 of the <a href="#openxr-spec">OpenXR API Specification</a>,
-most of the content in this chapter existed as part of Appendix C of that
-document.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note</div>
-<div class="paragraph">
-<p>The mechanism and process of specifying extensions is subject to change, as
-we receive feedback from authors and further requirements of documentation
-tooling.
-This document will be updated as changes are made.</p>
-</div>
-</td>
-</tr>
-</table>
+It is concerned with mechanical processes and registration, while
+fine-grained naming conventions are included in the <a href="#naming">API Naming
+Conventions chapter</a>.
+The organizational processes behind extension creation are in a separate
+document, the
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/extprocess.html">OpenXR
+Working Group Extension Processes</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_introduction">3.1. Introduction</h3>
@@ -1424,7 +1408,7 @@ associated with extensions</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Vulkan&#8201;&#8212;&#8201;on which OpenXR leans heavily for its design&#8201;&#8212;&#8201;introduced new new
+<p>Vulkan&#8201;&#8212;&#8201;on which OpenXR leans heavily for its design&#8201;&#8212;&#8201;introduced new
 paradigms that required rethinking the existing design practices:</p>
 </div>
 <div class="ulist">
@@ -1441,7 +1425,8 @@ single global set of token values.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>OpenXR continues to use the standards that were adopted by Vulkan.</p>
+<p>OpenXR continues to use the standards that were adopted by Vulkan, with some
+adaptations.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1472,15 +1457,6 @@ allowed to expose new commands and tokens.</p>
 <li>
 <p>All extensions must be registered with Khronos.</p>
 </li>
-<li>
-<p>Extensions must be strictly additive and backwards-compatible.
-That is, extensions must not remove existing functionality, or change
-existing default behaviors.
-An OpenXR implementation may support any combination of extensions, but
-applications written using only the core API, or a subset of the supported
-extensions, must continue to work in such an implementation without
-changes in behavior.</p>
-</li>
 </ul>
 </div>
 </div>
@@ -1496,8 +1472,8 @@ These names are used in a variety of places:</p>
 <p>When specifying extensions and API layers to enable in the API.</p>
 </li>
 <li>
-<p>As a preprocessor symbol in the <code>openxr.h</code> header file indicating that an
-extension interface is defined at compile time.</p>
+<p>As a preprocessor symbol in the <code>openxr.h</code> and <code>openxr_platform.h</code> header
+files indicating that an extension interface is defined at compile time.</p>
 </li>
 <li>
 <p>To control building the OpenXR Specification from asciidoc source
@@ -1515,8 +1491,15 @@ extensions.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>OpenXR uses a &#8220;single-branch&#8221; model in which most extensions can
-optionally be included or not from a single set of source documents.</p>
+<p>OpenXR uses a &#8220;single-branch&#8221; model in which extensions can optionally be
+included or not from a single set of source documents.
+In contrast with Vulkan, OpenXR also limits most extensions to modifying
+text only in their own dedicated section: hand-written spec language in the
+core of the spec does not conditionally depend on the enabled extensions.
+The auto-generated files (for implicit valid usage, prototypes, etc.) do
+reflect the enabled extensions.
+However, these mentions are automatic and do not require any manual
+maintenance outside of normal maintenance of the XML registry.</p>
 </div>
 <div class="paragraph">
 <p>It is possible that some vendors will choose to maintain their own extension
@@ -1532,7 +1515,7 @@ branches&#8201;&#8212;&#8201;vendors are not required to use the Khronos OpenXR 
 <div class="ulist">
 <ul>
 <li>
-<p>Extensions are named with the syntax: <code>XR_AUTHOR_&lt;name&gt;</code>.</p>
+<p>Extensions are named with the syntax: <code>XR_&lt;AUTHOR&gt;_&lt;name&gt;</code>.</p>
 </li>
 <li>
 <p>API layers are named with the syntax: <code>XR_APILAYER_{AUTHOR|FQDN}_&lt;name&gt;</code>.</p>
@@ -1664,7 +1647,7 @@ XR_KHR_opengl_enable
 XR_EXT_debug_utils
 
 // Vendor API layer name using author ID LUNARG
-XR_APILAYER_LUNARG_xrtrace
+XR_APILAYER_LUNARG_api_dump
 
 // API layer name using the FQDN www.3dxcl.invalid instead of an author ID
 XR_APILAYER_invalid_3dxcl_www_ourlayer</code></pre>
@@ -1689,9 +1672,9 @@ used in the example above.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-naming">3.4. Extension Command, Type, and Token Naming Conventions</h3>
+<h3 id="extensions-naming">3.4. Extension Function, Type, and Token Naming Conventions</h3>
 <div class="paragraph">
-<p>Extensions may add new commands, types, and tokens, or collectively
+<p>Extensions may add new functions, types, and tokens, or collectively
 &#8220;objects&#8221;, to the OpenXR API.
 These objects are given globally unique names by appending the author ID
 defined above for the extension name as described in the
@@ -1712,9 +1695,11 @@ The registry is kept in <code>specification/registry/xr.xml</code> of the
 definitions, definitions of individual commands and structures, and other
 information which must be agreed on by all implementations.
 The registry is used to maintain a single, consistent global namespace for
-the registered entities, to generate the Khronos-supplied <code>openxr.h</code>, and to
-create a variety of related documentation used in generating the API
-specification and reference pages.</p>
+the registered entities, to generate the Khronos-supplied <code>openxr.h</code> and
+related headers, and to create a variety of related documentation used in
+generating the API specification and reference pages.
+In addition, the broader OpenXR community also consumes this XML registry to
+create tools, bindings, and other OpenXR-related software.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1757,8 +1742,8 @@ faith.</p>
 <h3 id="extensions-vendor-id">3.7. Registering a Vendor ID with Khronos</h3>
 <div class="paragraph">
 <p>OpenXR implementers must report a valid vendor ID for their implementation
-when queried by <code>xrGetSystemProperties</code>, as described in the &#8220;Devices&#8221;
-section of the <a href="#openxr-spec">OpenXR API Specification</a>.
+when queried by <code>xrGetSystemProperties</code>, as described in the
+<a href="#openxr-spec">OpenXR API Specification</a>.
 If there is no valid PCI vendor ID defined for the physical device,
 implementations must obtain a Khronos vendor ID.</p>
 </div>
@@ -1814,13 +1799,11 @@ internal gitlab repository against the branch containing the core
 specification against which the extension will be written.
 The merge must modify <code>xr.xml</code> to define extension names, API interfaces,
 and related information.
-Registration is not complete until the registry maintainer has validated and
-accepted the merge.</p>
+Registration is not complete until the registry maintainer (the
+specification editor) has validated and accepted the merge.</p>
 </div>
 <div class="paragraph">
-<p>Since this process could in principle be completely automated, this suggests
-a scalable mechanism for accepting registration of non-Khronos extensions.
-Non-Khronos members who want to create extensions must register with Khronos
+<p>Non-Khronos members who want to create extensions must register with Khronos
 by creating a GitHub account, and registering their author ID and/or FQDNs
 to that account.
 They can then submit new extension registration requests by proposing merges
@@ -1859,8 +1842,8 @@ Changes to both the specification source, and to <code>xr.xml</code> will be nee
 <div class="ulist">
 <ul>
 <li>
-<p>Extension changes to the specification source must be protected by
-asciidoc conditionals as described in the
+<p>Extension changes to the specification source must be limited to the
+added specification section as described in the
 <a href="#extensions-documenting">Documenting Extensions</a> section.</p>
 </li>
 <li>
@@ -1872,11 +1855,6 @@ of the <code>&lt;extension&gt;</code> to <code>supported="openxr"</code>.</p>
 <p>When publishing an extension, mark it as enabled by proposing a merge
 request changing the <code>supported</code> attribute value of the <code>&lt;extension&gt;</code> to
 <code>supported="openxr"</code>.
-This should be completely automated and under the control of the
-publishers, to allow them to align publication on Khronos with product
-releases.
-However, complete automation might be difficult, since steps such as
-regenerating and validating <code>openxr.h</code> are involved.
 Once the merge is accepted and the corresponding updated header with the
 new extension interface is committed to the intended release branch,
 publication is complete.</p>
@@ -1885,7 +1863,8 @@ publication is complete.</p>
 <p>Publishing on the <a href="#openxr-docs">Khronos public GitHub repository</a> is
 preferred whenever possible.
 Khronos members may instead create branches on Khronos' internal gitlab
-server, but those branches will eventually be mirrored to GitHub.</p>
+server, but those branches will eventually be mirrored to GitHub upon
+publication.</p>
 </li>
 <li>
 <p>Once the merge request defining an extension has been accepted into the
@@ -1895,12 +1874,6 @@ pushed out.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>It is still possible to publish a separate branch of the repository with
-appropriate changes relative to the core OpenXR API branch instead, but
-this approach is deprecated and discouraged.
-If this is done, all changes to <code>xr.xml</code> must still be made.</p>
 </li>
 </ul>
 </div>
@@ -1913,23 +1886,23 @@ requesting an extension number reservation should look like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-xml" data-lang="xml">    &lt;extension name="XR_KHR_android_create_instance" number="9" type="instance"
-               supported="openxr"&gt;
-        &lt;require&gt;
-            &lt;enum value="1" name="XR_KHR_android_create_instance_SPEC_VERSION"/&gt;
-            &lt;enum value="&amp;quot;XR_KHR_android_create_instance&amp;quot;"
-                  name="XR_KHR_ANDROID_CREATE_INSTANCE_EXTENSION_NAME"/&gt;
-            &lt;enum offset="0"  extends="XrStructureType"
-                  name="XR_TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR"/&gt;
-            &lt;type name="XrInstanceCreateInfoAndroidKHR"/&gt;
-        &lt;/require&gt;
-    &lt;/extension&gt;
-+     &lt;extension name="XR_LUNARG_extension_10" number="10" author="LUNARG"
-+                contact="Mark Young @marky_lunarg" supported="disabled"&gt;
+<pre class="highlight"><code class="language-diff" data-lang="diff">      &lt;extension name="XR_KHR_android_create_instance" number="9" type="instance"
+                 supported="openxr"&gt;
+          &lt;require&gt;
+              &lt;enum value="1" name="XR_KHR_android_create_instance_SPEC_VERSION"/&gt;
+              &lt;enum value="&amp;quot;XR_KHR_android_create_instance&amp;quot;"
+                    name="XR_KHR_ANDROID_CREATE_INSTANCE_EXTENSION_NAME"/&gt;
+              &lt;enum offset="0"  extends="XrStructureType"
+                    name="XR_TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR"/&gt;
+              &lt;type name="XrInstanceCreateInfoAndroidKHR"/&gt;
+          &lt;/require&gt;
+      &lt;/extension&gt;
++     &lt;extension name="XR_KHR_extension_10" number="10"
++                contact="Ryan Pavlik @rpavlik" supported="disabled"&gt;
 +        &lt;require&gt;
-+           &lt;enum value="0" name="XR_EXT_EXTENSION_10_SPEC_VERSION"/&gt;
-+           &lt;enum value=""XR_LUNARG_extension_10""
-+                 name="XR_EXT_EXTENSION_10_EXTENSION_NAME"/&gt;
++           &lt;enum value="1" name="XR_KHR_extension_10_SPEC_VERSION"/&gt;
++           &lt;enum value="&amp;quot;XR_KHR_extension_10&amp;quot;"
++                 name="XR_KHR_EXTENSION_10_EXTENSION_NAME"/&gt;
 +        &lt;/require&gt;
 +     &lt;/extension&gt;
 &lt;/extensions&gt;</code></pre>
@@ -1955,69 +1928,27 @@ use the <code>xr.xml</code> as a source.</p>
 <div class="sect2">
 <h3 id="extensions-documenting">3.9. Documenting Extensions</h3>
 <div class="paragraph">
-<p>Extensions are documented as modifications to the OpenXR specification.
+<p>Extensions are documented as added chapters to the OpenXR specification.
 Changes specific to an extension are protected by asciidoc conditionals.
 The changes are only visible in generated documentation when the
-Specification is built with an asciidoc attribute of that name defined.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note</div>
-<div class="paragraph">
-<p>This is referred to as the &#8220;single-branch&#8221; model, in contrast to an
-earlier model used by Vulkan where each extension lived in a separate branch
-from the Vulkan <code>1.0</code> core Specification source.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For example, the <code>XR_KHR_opengl_enable</code> extension is now documented in the
-<code>0.1</code> branch of the GitHub <code><a href="#openxr-docs">KhronosGroup/OpenXR-Docs</a></code>
-project.
+Specification is built with an asciidoc attribute of that name defined.
 However, specifications generated from this branch will only include the
 extension when the Makefile is invoked appropriately.</p>
 </div>
 <div class="paragraph">
-<p>Most language defining extensions can be localized either into a small
-number of asciidoc include files which are conditionally included in the
-core specification chapters and appendices, or into parts of <code>xr.xml</code>
-defining the extension interfaces.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note</div>
-<div class="paragraph">
-<p>We do not yet fully document an example of including an extension in the
-single-branch model.
-Instead, authors should refer to the <code>0.1</code> branch and search for the names
-of existing extensions, such as <code>XR_KHR_opengl_enable</code>, as examples.
-Some aspects of the changes for this example extension are described below.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Generally, extensions do not add conditional text to the core of the
+specification, although the generated files included in the core of the
+specification automatically reflect the extensions enabled at build time.</p>
 </div>
 <div class="sect3">
 <h4 id="_extension_documentation_nameslocations">3.9.1. Extension Documentation Names/Locations</h4>
 <div class="paragraph">
 <p>All extension specification documentation can be found under the
 <code>specification/sources/chapters/extensions</code> folder and should end with the
-asciidoc extension ('.adoc') The extension documentation should be named
-based on the lower-case extension name, and without the "XR_" prefix.
+asciidoc extension (<code>.adoc</code>) The extension documentation should be named
+based on the lower-case extension name, and without the <code>XR_</code> prefix.
 For example, the specification documentation for the <code>XR_KHR_opengl_enable</code>
-extension should be called <code>khr_opengl_enable.adoc</code>.</p>
+extension is called <code>khr_opengl_enable.adoc</code>.</p>
 </div>
 <div class="paragraph">
 <p>Extensions are grouped in individual sub-folders based on the lower-case
@@ -2097,23 +2028,7 @@ meaningful:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Status - Complete, Draft, or other.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>When an extension is published in the master branch, it is normally
-assumed to be complete</p>
-</li>
-<li>
-<p>The Status field should be removed at this time, unless it contains
-additional information.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Last Modified Date - if wanted, although git log queries can provide
-equivalent information.</p>
+<p>Last Modified Date</p>
 </li>
 <li>
 <p>IP Status - Such as No known IP claims.</p>
@@ -2124,8 +2039,12 @@ equivalent information.</p>
 <ul>
 <li>
 <p>May include requirements or interactions with optional OpenXR features
-and interactions (other than strictly requiring) with other Vulkan
+and interactions (other than strictly requiring) with other OpenXR
 extensions.</p>
+</li>
+<li>
+<p>Dependencies on OpenXR versions and extensions are automatically
+populated from the data in the registry XML.</p>
 </li>
 </ul>
 </div>
@@ -2140,9 +2059,9 @@ significant direct contributions to this extension.</p>
 <li>
 <p>Extensions usually make significant additions and changes to the OpenXR
 specification.
-However, these sections are kept in the extension appendix and not
+However, these sections are <strong>kept in the extension appendix</strong> and not
 directly integrated into the spec.
-This is to keep the core specification clean of any extensions.</p>
+This is to keep the core specification text clean of any extensions.</p>
 </li>
 <li>
 <p>In every other place where the extension alters the behavior of the core
@@ -2193,72 +2112,16 @@ previously-new extension (A).</p>
 <li>
 <p>For vendor extensions, changes made to existing core Specification source
 files and to <code>xr.xml</code> all fall under the Contributor License Agreement.
-Vendors may use their own copyright on new files they add to the <code>1.0</code>
-branch, although that copyright must be compatible with the Specification
-copyright.</p>
+Vendors <strong class="purple">may</strong> mark their own copyright on files added, and <strong class="purple">must</strong> ensure
+that a copyright statement and SPDX license identifier tag indicating
+CC-BY-4.0 terms are present.</p>
 </li>
 <li>
-<p>In most cases, there will be at most two new files added to the
-specification: <code>extensions/<em>extension_name</em>.adoc</code>, and
-<code>chapters/<em>extension_name</em>.adoc</code>.
-If you need more than one new file in either the <code>chapters/</code> or
-<code>extensions/</code> directories, create a subdirectory named with the extension
-name and place the new files there.
-This has not happened in OpenXR yet, so the example below is from Vulkan.
-For example, instead of <code>chapters/VK_KHR_android_surface.adoc</code>, there is
-<code>chapters/VK_KHR_android_surface/platformCreateSurface_android.adoc</code> and
-<code>chapters/VK_KHR_android_surface/platformQuerySupport_android.adoc</code>, both
-of which are conditionally included elsewhere in the core specification
-files.</p>
-</li>
-<li>
-<p>Valid Usage statements <strong class="purple">must</strong> be kept atomic with regards to extension
-conditionals - do not surround part of a single statement with
-conditionals.
-Valid usage statements are automatically extracted from the specification
-for use by ecosystem components like the validation API layers, and the
-extraction scripts need to know which valid usage statements apply to
-which extensions.
-The loops required to deal with partial statements are simply not worth
-the trouble.
-For one example taken from Vulkan&#8217;s experience, instead of</p>
-<div class="openblock">
-<div class="content">
-<div class="listingblock">
-<div class="title">Example Markup</div>
-<div class="content">
-<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">* If pname:buffer was created with a sharing mode of
-  ename:VK_SHARING_MODE_EXCLUSIVE, pname:srcQueueFamilyIndex and
-  pname:dstQueueFamilyIndex must: either both be
-  ename:VK_QUEUE_FAMILY_IGNORED, or both be a valid queue family (see
-  &lt;&lt;devsandqueues-queueprops&gt;&gt;)
-ifdef::VK_KHX_external_memory[]
-  unless one of them is ename:VK_QUEUE_FAMILY_EXTERNAL_KHX and the other
-  is ename:VK_QUEUE_FAMILY_IGNORED.
-endif::VK_KHX_external_memory[]</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Use</pre>
-</div>
-</div>
-<div class="openblock">
-<div class="content">
-<div class="listingblock">
-<div class="title">Example Markup</div>
-<div class="content">
-<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">* If pname:buffer was created with a sharing mode of
-  ename:VK_SHARING_MODE_EXCLUSIVE, pname:srcQueueFamilyIndex and
-  pname:dstQueueFamilyIndex must: either both be
-  ename:VK_QUEUE_FAMILY_IGNORED, or both be a valid queue family (see
-  &lt;&lt;devsandqueues-queueprops&gt;&gt;)</code></pre>
-</div>
-</div>
-</div>
-</div>
+<p>In most cases, there will be one new file added to the specification:
+<code>extensions/<em>vendor</em>/<em>extension_name</em>.adoc</code>.
+If you need more than one new file in the <code>extensions/</code> directory, create
+a subdirectory named with the extension name and place the new files
+there.</p>
 </li>
 </ul>
 </div>
@@ -2304,7 +2167,7 @@ This process of pulling in extensions into the core API is called
 Extensions that are part of this process become "promoted" extensions.</p>
 </div>
 <div class="paragraph">
-<p>A recent example of this behavior is the recent release of Vulkan 1.1.
+<p>An example of this behavior is the recent release of Vulkan 1.1.
 Vulkan 1.1 was created by pulling in many of the "active" Vulkan extensions
 that were originally added to extend Vulkan 1.0.</p>
 </div>
@@ -2329,7 +2192,7 @@ For example, if the extension was promoted into OpenXR as part of OpenXR
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>&lt;extension name="XR_KHR_metal_enable" number="30" type="instance" protect="XR_USE_GRAPHICS_API_METAL" supported="openxr" promotedto="XR_VERSION_1_1"&gt;
+<pre class="highlight"><code>&lt;extension name="XR_KHR_loader_init" number="89" type="instance" supported="openxr" promotedto="XR_VERSION_1_1"&gt;
    &lt;require&gt;
       ....
    &lt;/require&gt;
@@ -2345,8 +2208,8 @@ functionality is the best way to perform some action or expose a new
 feature.
 However, due to the flexible nature of the API, someone may develop a better
 way to expose the feature.
-When this happens, the original functionality may want to be flagged in some
-way that indicates it is no longer the best way to access the feature.
+When this happens, the group may want to flag the original functionality in
+some way that indicates it is no longer the best way to access the feature.
 The way OpenXR does this is by labeling the extension as "deprecated".
 "Deprecated" extensions are still exposed by at least some of the available
 runtimes, but may disappear at some point in the future.
@@ -2522,7 +2385,12 @@ For EXT and vendor extension bitmask types, reservations must be approved by
 the listed contact of the extension.
 Bits are not reserved, and must not be used in a published implementation or
 specification until the reservation is merged into
-<a href="#extensions-api-registry">xr.xml</a> by the registry maintainer.</p>
+<a href="#extensions-api-registry">xr.xml</a> by the registry maintainer.
+In general, this is not done in any future extensions: create a chained
+structure with an entirely new bitmask field instead.
+See also
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/extprocess.html#bitmasks">the
+Extension Process discussion of this</a>.</p>
 </div>
 </div>
 </div>
@@ -2535,9 +2403,10 @@ extensions must define two additional tokens.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>XR_EXTNAME_SPEC_VERSION</code> is an integer constant which is the revision of
-the extension named <code>XR_extname</code> (<code>EXTNAME</code> is all upper-case, while
-extname is the capitalization of the actual extension name) in <code>vulkan.h</code>.
+<p><code>XR_extname_SPEC_VERSION</code> is an integer constant which is the revision of
+the extension named <code>XR_extname</code> (where <code>extname</code> is the capitalization of
+the actual extension name) in <code>openxr.h</code> or <code>openxr_platform.h</code> (the
+latter is used if a <code>protect</code> attribute is specified for the extension).
 This value begins at 1 with the initial version of an extension
 specification, and is incremented when changes are made.
 Note that the revision of an extension defined in <code>openxr.h</code> and the
@@ -2575,7 +2444,7 @@ dependency information on the original extension.</p>
 <ul>
 <li>
 <p><code>XR_EXTNAME_EXTENSION_NAME</code> is a string constant which is the name of the
-extension.</p>
+extension (where <code>EXTNAME</code> is all upper-case)</p>
 </li>
 </ul>
 </div>
@@ -2585,7 +2454,7 @@ writing the following definitions were in effect:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c" data-lang="c">#define XR_KHR_OPENGL_ENABLE_SPEC_VERSION 1
+<pre class="highlight"><code class="language-c" data-lang="c">#define XR_KHR_opengl_enable_SPEC_VERSION 8
 #define XR_KHR_OPENGL_ENABLE_EXTENSION_NAME "XR_KHR_opengl_enable"</code></pre>
 </div>
 </div>
@@ -2642,25 +2511,20 @@ compilation issues.</p>
 <h3 id="extension-function_prototypes">3.13. Extension Function Prototypes</h3>
 <div class="paragraph">
 <p>Function pointer declarations and function prototypes for all core OpenXR
-API commands are included in either the <code>openxr.h</code> or <code>openxr_platform.h</code>
-header files.
+API commands are included the <code>openxr.h</code> header file.
 These come from the official XML specification of the OpenXR API hosted by
 Khronos.</p>
 </div>
 <div class="paragraph">
-<p>Function pointer declarations are also included in the <code>openxr.h</code> file for
-all commands defined by registered extensions.
-Function prototypes for extensions may be included in <code>openxr.h</code>.
-Extension commands that are part of the OpenXR ABI must be flagged in the
-XML.
-Function prototypes will be included in <code>openxr.h</code> for all extension
-commands that are part of the OpenXR ABI.</p>
+<p>Function pointer declarations are also included in the <code>openxr.h</code> and
+<code>openxr_platform.h</code> file for all commands defined by registered extensions.
+<strong>No</strong> extension functions are part of the OpenXR ABI, and so by default, as
+of OpenXR 1.0.15, extension function prototypes are not exposed in
+<code>openxr.h</code> or <code>openxr_platform.h</code> unless a configuration define is enabled.</p>
 </div>
 <div class="paragraph">
 <p>An extension can be considered platform specific, in which case its
-interfaces appear in <code>openxr_platform.h</code> and are protected by #ifdefs.
-This is orthogonal to whether an extension command is considered to be part
-of the OpenXR ABI.</p>
+interfaces appear in <code>openxr_platform.h</code> and are protected by <code>#ifdefs</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2686,12 +2550,8 @@ commands.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>The OpenXR API loader for Android, Linux, and Windows exports functions for
-all core OpenXR API commands, and for a set of WSI extension commands that
-are applicable to those operating systems (see OpenXR loader documentation
-for the relevant platform/OS for details).
-The WSI functions are considered special, because they are required for many
-applications.</p>
+<p>The official OpenXR API loader for Android, Linux, and Windows exports
+functions for all core OpenXR API functions, and no extension functions.</p>
 </div>
 </td>
 </tr>
@@ -2787,7 +2647,7 @@ OpenXR registry file (xr.xml) in the following fashion:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>[command_name]</code> is the name of the command your extending</p>
+<p><code>[command_name]</code> is the name of the command you are extending</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4712,9 +4572,6 @@ the proper type is used to return the newly created object.</p>
 <p><code>XR_ERROR_LIMIT_REACHED</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_INSTANCE_LOST</code></p>
-</li>
-<li>
 <p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
 </li>
 <li>
@@ -4734,6 +4591,9 @@ the proper type is used to return the newly created object.</p>
 </li>
 <li>
 <p><code>XR_ERROR_NAME_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
 </li>
 </ul>
 </div>
@@ -5244,8 +5104,8 @@ Adding OpenXR issues in most TODOs.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.15<br>
-Last updated 2021-04-13 23:27:22 UTC
+Version 1.0.16<br>
+Last updated 2021-05-11 20:12:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
