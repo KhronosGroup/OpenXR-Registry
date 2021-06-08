@@ -445,9 +445,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.16,</span>
-<span id="revdate">Tue, 11 May 2021 20:14:37 +0000</span>
-<br><span id="revremark">from git ref release-1.0.16 commit: 862c84a9dcd227450bdc2f8de304567c2ba8722d</span>
+<span id="revnumber">version 1.0.17,</span>
+<span id="revdate">Tue, 08 Jun 2021 21:03:43 +0000</span>
+<br><span id="revremark">from git ref release-1.0.17 commit: 02bdab75bb56b006a92eeb191de0441a79a6ef9c</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -793,7 +793,7 @@ convention</a>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Example: <code>XR_KHR_rich_layer_types</code></p>
+<p>Example: <code>XR_KHR_opengl_enable</code></p>
 </li>
 </ul>
 </div>
@@ -830,7 +830,7 @@ was.</p>
 <div class="title">Example: Value</div>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 16)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 17)</code></pre>
 </div>
 </div>
 </div>
@@ -3203,99 +3203,99 @@ table:</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">flink&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Generates a cross-reference or link to the definition of
-                  the command name in the macro argument. Example:
-                  flink&#x3a;xrCreateInstance &#8594; <a href="#xrCreateInstance">xrCreateInstance</a>.</p></td>
+                     the command name in the macro argument. Example:
+                     flink&#x3a;xrCreateInstance &#8594; <a href="#xrCreateInstance">xrCreateInstance</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">fname&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like flink&#x3a;. Does not
-                  generate a cross-reference. Example:
-                  fname&#x3a;xrCreateInstance &#8594; <code>xrCreateInstance</code>.</p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-name">when
-                  necessary</a>.</p></td>
+                     generate a cross-reference. Example:
+                     fname&#x3a;xrCreateInstance &#8594; <code>xrCreateInstance</code>.</p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-name">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ftext&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like fname&#x3a;. May contain
-                  asterisks for wildcards. Not validated. Example:
-                  ftext&#x3a;xrCreate* &#8594; <code>xrCreate*</code>.</p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-text">when
-                  necessary</a>.</p></td>
+                     asterisks for wildcards. Not validated. Example:
+                     ftext&#x3a;xrCreate* &#8594; <code>xrCreate*</code>.</p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-text">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">slink&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Generates a cross-reference or link to the definition
-                  of the structure or handle in the macro argument. Example:
-                  slink&#x3a;XrInstanceCreateInfo &#8594; <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a></p></td>
+                     of the structure or handle in the macro argument. Example:
+                     slink&#x3a;XrInstanceCreateInfo &#8594; <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sname&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like slink&#x3a;. Does not
-                  generate a cross-reference. May also be an abstract
-                  structure or handle name. Example:
-                  sname&#x3a;XrInstanceCreateInfo &#8594;
-                  <code>XrInstanceCreateInfo</code>.</p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-name">when
-                  necessary</a>.</p></td>
+                     generate a cross-reference. May also be an abstract
+                     structure or handle name. Example:
+                     sname&#x3a;XrInstanceCreateInfo &#8594;
+                     <code>XrInstanceCreateInfo</code>.</p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-name">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">stext&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like sname&#x3a;. May contain
-                  asterisks for wildcards. Not validated. Example:
-                  stext&#x3a;Xr*CreateInfo &#8594; <code>Xr*CreateInfo</code>.</p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-text">when
-                  necessary</a>.</p></td>
+                     asterisks for wildcards. Not validated. Example:
+                     stext&#x3a;Xr*CreateInfo &#8594; <code>Xr*CreateInfo</code>.</p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-text">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elink&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument as an OpenXR enumerated
-                  type name and links to the definition of that enumeration
-                  type. Example: ename&#x3a;XrResult &#8594; <code>XrResult</code>.</p></td>
+                     type name and links to the definition of that enumeration
+                     type. Example: ename&#x3a;XrResult &#8594; <code>XrResult</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ename&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument as an OpenXR enumerant name.
-                  Example: ename&#x3a;XR_SUCCESS &#8594; <code>XR_SUCCESS</code>.</p></td>
+                     Example: ename&#x3a;XR_SUCCESS &#8594; <code>XR_SUCCESS</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">etext&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like ename&#x3a;. Not validated.
-                  Examples: etext&#x3a;_RANGE_SIZE &#8594; <code>_RANGE_SIZE</code>,
-                  etext&#x3a;XR_ERROR_* &#8594;
-                  <code>XR_ERROR_*</code></p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-text">when
-                  necessary</a>.</p></td>
+                     Examples: etext&#x3a;_RANGE_SIZE &#8594; <code>_RANGE_SIZE</code>,
+                     etext&#x3a;XR_ERROR_* &#8594;
+                     <code>XR_ERROR_*</code></p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-text">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pname&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument as a OpenXR parameter or
-                  structure member name. Example: pname&#x3a;device &#8594;
-                  <code>device</code>.</p></td>
+                     structure member name. Example: pname&#x3a;device &#8594;
+                     <code>device</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ptext&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like pname&#x3a;. May contain
-                  asterisks for wildcards. Not validated. Example:
-                  ptext&#x3a;sparseResidency* &#8594; <code>sparseResidency</code>*.</p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-text">when
-                  necessary</a>.</p></td>
+                     asterisks for wildcards. Not validated. Example:
+                     ptext&#x3a;sparseResidency* &#8594; <code>sparseResidency</code>*.</p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-text">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tlink&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Generates a cross-reference or link to the definition
-                  of the OpenXR type in the macro argument. Example:
-                  tlink&#x3a;PFN_xrCreateInstance &#8594;
-                  <a href="#PFN_xrCreateInstance">PFN_xrCreateInstance</a>. This is only used for
-                  function pointer types at present.</p></td>
+                     of the OpenXR type in the macro argument. Example:
+                     tlink&#x3a;PFN_xrCreateInstance &#8594;
+                     <a href="#PFN_xrCreateInstance">PFN_xrCreateInstance</a>. This is only used for
+                     function pointer types at present.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tname&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like tlink&#x3a;. Does not
-                  generate a cross-reference. Example:
-                  tname&#x3a;PFN_xrCreateInstance &#8594;
-                  <code>PFN_xrCreateInstance</code>.</p>
-<p class="tableblock">                  Only use this macro <a href="#markup-macros-api-name">when
-                  necessary</a>.</p></td>
+                     generate a cross-reference. Example:
+                     tname&#x3a;PFN_xrCreateInstance &#8594;
+                     <code>PFN_xrCreateInstance</code>.</p>
+<p class="tableblock">                     Only use this macro <a href="#markup-macros-api-name">when
+                     necessary</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dlink&#x3a;</p></td>
@@ -3795,23 +3795,6 @@ This list may not be comprehensive; when in doubt, be guided by the existing
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note</div>
-<div class="paragraph">
-<p>The &#8220;begin/start&#8221; and &#8220;end/finish&#8221; distinction is still being sorted
-out.
-See Vulkan Gitlab issue #61.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="markup-avoid-contractions">4.5.1. Avoid Contractions</h4>
 <div class="paragraph">
@@ -4566,34 +4549,34 @@ the proper type is used to return the newly created object.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_LIMIT_REACHED</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_NAME_INVALID</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_INITIALIZATION_FAILED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_EXTENSION_NOT_PRESENT</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_API_VERSION_UNSUPPORTED</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_API_LAYER_NOT_PRESENT</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_EXTENSION_NOT_PRESENT</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_NAME_INVALID</code></p>
-</li>
-<li>
-<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
 </li>
 </ul>
 </div>
@@ -5104,8 +5087,8 @@ Adding OpenXR issues in most TODOs.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:09 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:01:06 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

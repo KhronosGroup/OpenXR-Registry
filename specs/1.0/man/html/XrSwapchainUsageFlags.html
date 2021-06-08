@@ -766,7 +766,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSwapchainUsageFlags.html">XrSwapchainUsageFlags</a> Specify the intended usage of the swapchain
+<p><a href="XrSwapchainUsageFlags.html">XrSwapchainUsageFlags</a> specify the intended usage of the swapchain
 images.
 When images are created, the runtime needs to know how the images are used
 in a way that requires more information than simply the image format.
@@ -804,32 +804,28 @@ static const XrSwapchainUsageFlags XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND =
 <div class="ulist">
 <ul>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT</code> indicates that the image may
-be a color rendering target.</p>
+<p><code>XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be a color rendering target.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</code> indicates that the
-image may be a depth/stencil rendering target.</p>
+<p><code>XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be a depth/stencil rendering target.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</code> indicates that the image may
-be accessed out of order and that access may be via atomic operations.</p>
+<p><code>XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be accessed out of order and that access <strong class="purple">may</strong> be via atomic operations.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT</code> indicates that the image may be
-the source of a copy operation.</p>
+<p><code>XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be used as the source of a transfer operation.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_TRANSFER_DST_BIT</code> indicates that the image may be
-the destination of a copy operation.</p>
+<p><code>XR_SWAPCHAIN_USAGE_TRANSFER_DST_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be used as the destination of a transfer operation.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_SAMPLED_BIT</code> indicates that the image may be
-sampled by a shader.</p>
+<p><code>XR_SWAPCHAIN_USAGE_SAMPLED_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be sampled by a shader.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</code> indicates that the image
-format may be reinterpreted.</p>
+<p><code>XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be reinterpreted as another image format.</p>
+</li>
+<li>
+<p><code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be used as a input attachment. (Added by the <code><a href="#XR_MND_swapchain_usage_input_attachment_bit">[XR_MND_swapchain_usage_input_attachment_bit]</a></code> extension)</p>
 </li>
 </ul>
 </div>
@@ -879,8 +875,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:59 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:02:02 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

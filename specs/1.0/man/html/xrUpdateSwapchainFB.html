@@ -808,10 +808,6 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <p><a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a> provides support for an application to update
 specific mutable state associated with an <a href="XrSwapchain.html">XrSwapchain</a>.</p>
 </div>
-<div class="paragraph">
-<p>To use <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a>, <a href="XR_USE_PLATFORM_ANDROID.html">XR_USE_PLATFORM_ANDROID</a> must be
-defined before including <code>openxr_platform.h</code>.</p>
-</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -824,7 +820,7 @@ defined before including <code>openxr_platform.h</code>.</p>
 <p><a id="VUID-xrUpdateSwapchainFB-swapchain-parameter"></a> <code>swapchain</code> <strong class="purple">must</strong> be a valid <a href="XrSwapchain.html">XrSwapchain</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-xrUpdateSwapchainFB-state-parameter"></a> <code>state</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSwapchainStateBaseHeaderFB.html">XrSwapchainStateBaseHeaderFB</a>-based structure. See also: <a href="XrSwapchainStateAndroidSurfaceDimensionsFB.html">XrSwapchainStateAndroidSurfaceDimensionsFB</a>, <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a></p>
+<p><a id="VUID-xrUpdateSwapchainFB-state-parameter"></a> <code>state</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSwapchainStateBaseHeaderFB.html">XrSwapchainStateBaseHeaderFB</a>-based structure. See also: <a href="XrSwapchainStateAndroidSurfaceDimensionsFB.html">XrSwapchainStateAndroidSurfaceDimensionsFB</a>, <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a>, <a href="XrSwapchainStateSamplerVulkanFB.html">XrSwapchainStateSamplerVulkanFB</a></p>
 </li>
 </ul>
 </div>
@@ -853,10 +849,10 @@ defined before including <code>openxr_platform.h</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_SESSION_LOST</code></p>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
 </li>
 <li>
 <p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
@@ -865,10 +861,10 @@ defined before including <code>openxr_platform.h</code>.</p>
 <p><code>XR_ERROR_HANDLE_INVALID</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
 </li>
 <li>
-<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 </ul>
 </div>
@@ -921,8 +917,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:59 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:02:02 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

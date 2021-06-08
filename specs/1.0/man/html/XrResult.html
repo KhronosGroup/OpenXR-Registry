@@ -831,6 +831,13 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT = -1000039001,
     XR_ERROR_SECONDARY_VIEW_CONFIGURATION_TYPE_NOT_ENABLED_MSFT = -1000053000,
     XR_ERROR_CONTROLLER_MODEL_KEY_INVALID_MSFT = -1000055000,
+    XR_ERROR_REPROJECTION_MODE_UNSUPPORTED_MSFT = -1000066000,
+    XR_ERROR_COMPUTE_NEW_SCENE_NOT_COMPLETED_MSFT = -1000097000,
+    XR_ERROR_SCENE_COMPONENT_ID_INVALID_MSFT = -1000097001,
+    XR_ERROR_SCENE_COMPONENT_TYPE_MISMATCH_MSFT = -1000097002,
+    XR_ERROR_SCENE_MESH_BUFFER_ID_INVALID_MSFT = -1000097003,
+    XR_ERROR_SCENE_COMPUTE_FEATURE_INCOMPATIBLE_MSFT = -1000097004,
+    XR_ERROR_SCENE_COMPUTE_CONSISTENCY_MISMATCH_MSFT = -1000097005,
     XR_ERROR_DISPLAY_REFRESH_RATE_UNSUPPORTED_FB = -1000101000,
     XR_ERROR_COLOR_SPACE_UNSUPPORTED_FB = -1000108000,
     XR_RESULT_MAX_ENUM = 0x7FFFFFFF
@@ -1139,6 +1146,34 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The controller model key is invalid. (Added by the <code><a href="#XR_MSFT_controller_model">[XR_MSFT_controller_model]</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_REPROJECTION_MODE_UNSUPPORTED_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reprojection mode is not supported. (Added by the <code><a href="#XR_MSFT_composition_layer_reprojection">[XR_MSFT_composition_layer_reprojection]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_COMPUTE_NEW_SCENE_NOT_COMPLETED_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compute new scene not completed. (Added by the <code><a href="#XR_MSFT_scene_understanding">[XR_MSFT_scene_understanding]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SCENE_COMPONENT_ID_INVALID_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scene component id invalid. (Added by the <code><a href="#XR_MSFT_scene_understanding">[XR_MSFT_scene_understanding]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SCENE_COMPONENT_TYPE_MISMATCH_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scene component type mismatch. (Added by the <code><a href="#XR_MSFT_scene_understanding">[XR_MSFT_scene_understanding]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SCENE_MESH_BUFFER_ID_INVALID_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scene mesh buffer id invalid. (Added by the <code><a href="#XR_MSFT_scene_understanding">[XR_MSFT_scene_understanding]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SCENE_COMPUTE_FEATURE_INCOMPATIBLE_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scene compute feature incompatible. (Added by the <code><a href="#XR_MSFT_scene_understanding">[XR_MSFT_scene_understanding]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SCENE_COMPUTE_CONSISTENCY_MISMATCH_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scene compute consistency mismatch. (Added by the <code><a href="#XR_MSFT_scene_understanding">[XR_MSFT_scene_understanding]</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_DISPLAY_REFRESH_RATE_UNSUPPORTED_FB</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The display refresh rate is not supported by the platform. (Added by the <code><a href="#XR_FB_display_refresh_rate">[XR_FB_display_refresh_rate]</a></code> extension)</p></td>
 </tr>
@@ -1193,8 +1228,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:59 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:02:02 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

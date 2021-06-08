@@ -820,7 +820,7 @@ overridden by a specific <code>XrSwapchainState*</code> child structure.</p>
 <p><a id="VUID-XrSwapchainStateBaseHeaderFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">[XR_FB_swapchain_update_state]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSwapchainStateBaseHeaderFB.html">XrSwapchainStateBaseHeaderFB</a></p>
 </li>
 <li>
-<p><a id="VUID-XrSwapchainStateBaseHeaderFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be one of the following XrStructureType values: <code>XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB</code>, <code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB</code></p>
+<p><a id="VUID-XrSwapchainStateBaseHeaderFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be one of the following XrStructureType values: <code>XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB</code>, <code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB</code>, <code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB</code></p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainStateBaseHeaderFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
@@ -835,7 +835,7 @@ overridden by a specific <code>XrSwapchainState*</code> child structure.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrStructureType.html">XrStructureType</a>, <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a></p>
+<p><a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetSwapchainStateFB.html">xrGetSwapchainStateFB</a>, <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a></p>
 </div>
 </div>
 </div>
@@ -873,8 +873,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:59 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:02:02 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

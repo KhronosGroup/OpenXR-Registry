@@ -776,7 +776,7 @@ as:</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrSwapchainStateAndroidSurfaceDimensionsFB {
     XrStructureType    type;
-    const void*        next;
+    void*              next;
     uint32_t           width;
     uint32_t           height;
 } XrSwapchainStateAndroidSurfaceDimensionsFB;</code></pre>
@@ -829,6 +829,11 @@ for the swapchain width and height, affecting operations such as computing
 the normalized imageRect for the swapchain.</p>
 </div>
 <div class="paragraph">
+<p>When <a href="XrSwapchainStateAndroidSurfaceDimensionsFB.html">XrSwapchainStateAndroidSurfaceDimensionsFB</a> is specified in the
+call to <a href="xrGetSwapchainStateFB.html">xrGetSwapchainStateFB</a>, the dimensions will be populated with
+the current swapchain width and height.</p>
+</div>
+<div class="paragraph">
 <p>To use <a href="XrSwapchainStateAndroidSurfaceDimensionsFB.html">XrSwapchainStateAndroidSurfaceDimensionsFB</a>,
 <a href="XR_USE_PLATFORM_ANDROID.html">XR_USE_PLATFORM_ANDROID</a> must be defined before including
 <code>openxr_platform.h</code>.</p>
@@ -839,7 +844,7 @@ the normalized imageRect for the swapchain.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">[XR_FB_swapchain_update_state]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSwapchainStateAndroidSurfaceDimensionsFB.html">XrSwapchainStateAndroidSurfaceDimensionsFB</a></p>
+<p><a id="VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state_android_surface">[XR_FB_swapchain_update_state_android_surface]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSwapchainStateAndroidSurfaceDimensionsFB.html">XrSwapchainStateAndroidSurfaceDimensionsFB</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainStateAndroidSurfaceDimensionsFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB</code></p>
@@ -857,7 +862,7 @@ the normalized imageRect for the swapchain.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrStructureType.html">XrStructureType</a>, <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a></p>
+<p><a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetSwapchainStateFB.html">xrGetSwapchainStateFB</a>, <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a></p>
 </div>
 </div>
 </div>
@@ -895,8 +900,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:59 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:02:02 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

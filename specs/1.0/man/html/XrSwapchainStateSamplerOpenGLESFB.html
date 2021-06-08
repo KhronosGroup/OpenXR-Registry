@@ -775,7 +775,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrSwapchainStateSamplerOpenGLESFB {
     XrStructureType    type;
-    const void*        next;
+    void*              next;
     EGLenum            minFilter;
     EGLenum            magFilter;
     EGLenum            wrapModeS;
@@ -848,23 +848,39 @@ No such structures are defined in core OpenXR or this extension.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a> is specified in the call to
-<a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a>, all images in the <a href="XrSwapchain.html">XrSwapchain</a> will have the
-specified sampler state applied and the state synchronized with the
-compositor.
-Applications are expected to handle synchronization of the sampler state
+<a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a>, texture sampler state for all images in the
+<a href="XrSwapchain.html">XrSwapchain</a> will be updated for both the application and compositor
+processes.</p>
+</div>
+<div class="paragraph">
+<p>For most cases, the sampler state update is only required compositor-side,
+as that is where the swapchain images are sampled.
+For completeness, the application-side sampler state is additionally updated
+to support cases where the application may choose to directly sample the
+swapchain images.</p>
+</div>
+<div class="paragraph">
+<p>Applications are expected to handle synchronization of the sampler state
 update with application-side rendering.
 Similarly, the compositor will synchronize the sampler state update with
-rendering of the next compositor frame.
-An <code>EGLContext</code>, either the <code>EGLContext</code> bound during
+rendering of the next compositor frame.</p>
+</div>
+<div class="paragraph">
+<p>An <code>EGLContext</code>, either the <code>EGLContext</code> bound during
 <a href="XrSwapchain.html">XrSwapchain</a> creation or an <code>EGLContext</code> in the same share group,
 is required to be bound on the application calling thread.
 Current texture bindings may be altered by the call, including the active
 texture.</p>
 </div>
 <div class="paragraph">
+<p>When <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a> is specified in the call to
+<a href="xrGetSwapchainStateFB.html">xrGetSwapchainStateFB</a>, the sampler state will be populated with the
+current swapchain sampler state.</p>
+</div>
+<div class="paragraph">
 <p>To use <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a>,
-<a href="XR_USE_PLATFORM_ANDROID.html">XR_USE_PLATFORM_ANDROID</a> and <a href="XR_USE_GRAPHICS_API_OPENGL_ES.html">XR_USE_GRAPHICS_API_OPENGL_ES</a> must
-both be defined before including <code>openxr_platform.h</code>.</p>
+<a href="XR_USE_GRAPHICS_API_OPENGL_ES.html">XR_USE_GRAPHICS_API_OPENGL_ES</a> must be defined before including
+<code>openxr_platform.h</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -872,7 +888,7 @@ both be defined before including <code>openxr_platform.h</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state">[XR_FB_swapchain_update_state]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a></p>
+<p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-extension-notenabled"></a> The <code><a href="#XR_FB_swapchain_update_state_opengl_es">[XR_FB_swapchain_update_state_opengl_es]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSwapchainStateSamplerOpenGLESFB.html">XrSwapchainStateSamplerOpenGLESFB</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainStateSamplerOpenGLESFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB</code></p>
@@ -914,7 +930,7 @@ both be defined before including <code>openxr_platform.h</code>.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrColor4f.html">XrColor4f</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a></p>
+<p><a href="XrColor4f.html">XrColor4f</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetSwapchainStateFB.html">xrGetSwapchainStateFB</a>, <a href="xrUpdateSwapchainFB.html">xrUpdateSwapchainFB</a></p>
 </div>
 </div>
 </div>
@@ -952,8 +968,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.16<br>
-Last updated 2021-05-11 20:12:59 UTC
+Version 1.0.17<br>
+Last updated 2021-06-08 21:02:02 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
