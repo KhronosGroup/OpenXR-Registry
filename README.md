@@ -5,8 +5,11 @@ API and Extension Registry, including generated specifications and
 reference pages, and reference cards. The sources for these documents are
 found in the separate <https://github.com/KhronosGroup/OpenXR-Docs> repository; this
 repository is used as a backing store for the web view of the registry at
-<https://www.khronos.org/registry/OpenXR/> . Commits to the master branch of
+<https://www.khronos.org/registry/OpenXR/> . Commits to the `main` branch of
 OpenXR-Registry will be reflected in the web view.
+
+*NOTE:* As of 2021-07-25, the default branch of OpenXR-Registry has been
+renamed to `main`.
 
 Interesting files in this repository include:
 
