@@ -847,7 +847,14 @@ runtime should return foveated view configuration view.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrViewConfigurationType viewConfigType... // Select XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO
+<pre class="highlight"><code class="language-c++" data-lang="c++">XrInstance instance; // previously populated
+XrSystemId systemId; // previously populated
+XrViewConfigurationType viewConfigType; // Select XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO
+
+XrSystemFoveatedRenderingPropertiesVARJO foveatedRenderingProperties{XR_TYPE_SYSTEM_FOVEATED_RENDERING_PROPERTIES_VARJO};
+XrSystemProperties systemProperties{XR_TYPE_SYSTEM_PROPERTIES, &amp;foveatedRenderingProperties};
+CHK_XR(xrGetSystemProperties(instance, systemId, &amp;systemProperties));
+
 uint32_t viewCount;
 CHK_XR(xrEnumerateViewConfigurationViews(instance, systemId, viewConfigType, 0, &amp;viewCount, nullptr));
 // Non-foveated rendering views dimensions
@@ -923,8 +930,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.17<br>
-Last updated 2021-06-08 21:02:02 UTC
+Version 1.0.18<br>
+Last updated 2021-07-31 17:47:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

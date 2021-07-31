@@ -851,13 +851,13 @@ it.</p>
 <p>The <code>XR_SESSION_STATE_UNKNOWN</code> state <strong class="purple">must</strong> not be returned by the
 runtime, and is only defined to avoid <code>0</code> being a valid state.</p>
 </div>
-<div class="paragraph">
+<div id="session_idle" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_IDLE</code> state indicates that the runtime
 considers the session is idle.
 Applications in this state <strong class="purple">should</strong> minimize resource consumption but
 continue to call <a href="xrPollEvent.html">xrPollEvent</a> at some reasonable cadence.</p>
 </div>
-<div class="paragraph">
+<div id="session_ready" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_READY</code> state indicates that the runtime
 desires the application to prepare rendering resources, begin its session
 and synchronize its frame loop with the runtime.
@@ -877,7 +877,7 @@ If the system supports a user engagement sensor and runtime is in
 <code>XR_SESSION_STATE_READY</code> state until the user starts engaging with the
 device.</p>
 </div>
-<div class="paragraph">
+<div id="session_synchronized" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_SYNCHRONIZED</code> state indicates that the
 application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
 runtime</a>, but its frames are not visible to the user.
@@ -892,7 +892,7 @@ A runtime <strong class="purple">may</strong> use this frame synchronization to 
 switching from a previous XR application to this application on a frame
 boundary.</p>
 </div>
-<div class="paragraph">
+<div id="session_visible" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_VISIBLE</code> state indicates that the
 application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
 runtime</a>, and the session&#8217;s frames will be visible to the user, but the
@@ -911,7 +911,7 @@ unfocused, and applications should react to an inactive input action by
 skipping rendering of that action&#8217;s input avatar (depictions of hands or
 other tracked objects controlled by the user).</p>
 </div>
-<div class="paragraph">
+<div id="session_focused" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_FOCUSED</code> state indicates that the
 application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
 runtime</a>, the session&#8217;s frames will be visible to the user, and the session
@@ -925,7 +925,7 @@ The runtime <strong class="purple">should</strong> avoid rendering its own input
 application is focused, unless input from a given source is being captured
 by the runtime at the moment.</p>
 </div>
-<div class="paragraph">
+<div id="session_stopping" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_STOPPING</code> state indicates that the
 runtime has determined that the application should halt its rendering loop.
 Applications <strong class="purple">should</strong> exit their rendering loop and call <a href="xrEndSession.html">xrEndSession</a>
@@ -936,14 +936,14 @@ If the system supports a user engagement sensor and the session is running,
 the runtime <strong class="purple">should</strong> transition to the <code>XR_SESSION_STATE_STOPPING</code> state
 when the user stops engaging with the device.</p>
 </div>
-<div class="paragraph">
+<div id="session_exiting" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_EXITING</code> state indicates the runtime
 wishes the application to terminate its XR experience, typically due to a
 user request via a runtime user interface.
 Applications <strong class="purple">should</strong> gracefully end their process when in this state if they
 do not have a non-XR user experience.</p>
 </div>
-<div class="paragraph">
+<div id="session_loss_pending" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_LOSS_PENDING</code> state indicates the
 runtime is no longer able to operate with the current session, for example
 due to the loss of a display hardware connection.
@@ -1012,8 +1012,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.17<br>
-Last updated 2021-06-08 21:02:02 UTC
+Version 1.0.18<br>
+Last updated 2021-07-31 17:47:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

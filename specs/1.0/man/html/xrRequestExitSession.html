@@ -766,6 +766,23 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>When an application wishes to exit a <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">running</a> session,
+it <strong class="purple">can</strong> call <a href="xrRequestExitSession.html">xrRequestExitSession</a>, requesting that the runtime
+transition through the various intermediate session states including
+<code>XR_SESSION_STATE_STOPPING</code> to <code>XR_SESSION_STATE_EXITING</code>.</p>
+</div>
+<div class="paragraph">
+<p>On platforms where an application&#8217;s lifecycle is managed by the system,
+session state changes may be implicitly triggered by application lifecycle
+state changes.
+On such platforms, using platform-specific methods to alter application
+lifecycle state may be the preferred method of provoking session state
+changes.
+The behavior of <a href="xrRequestExitSession.html">xrRequestExitSession</a> is not altered, however explicit
+session exit <strong class="purple">may</strong> not interact with the platform-specific application
+lifecycle.</p>
+</div>
+<div class="paragraph">
 <p>The <a href="xrRequestExitSession.html">xrRequestExitSession</a> function is defined as:</p>
 </div>
 <div id="xrRequestExitSession" class="paragraph">
@@ -799,15 +816,6 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>An application can only call <a href="xrEndSession.html">xrEndSession</a> when the session is in the
-<code>XR_SESSION_STATE_STOPPING</code> state, which allows runtimes to seamlessly
-transition from one application&#8217;s session to another.
-When an application wishes to exit a <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">running</a> session,
-the application can call <a href="xrRequestExitSession.html">xrRequestExitSession</a>, requesting that the
-runtime transition through the various intermediate session states including
-<code>XR_SESSION_STATE_STOPPING</code> to <code>XR_SESSION_STATE_EXITING</code>.</p>
-</div>
 <div class="paragraph">
 <p>If <code>session</code> <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a> when
 <a href="xrRequestExitSession.html">xrRequestExitSession</a> is called, <code>XR_ERROR_SESSION_NOT_RUNNING</code>
@@ -916,8 +924,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.17<br>
-Last updated 2021-06-08 21:02:02 UTC
+Version 1.0.18<br>
+Last updated 2021-07-31 17:47:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -782,85 +782,13 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <p>A session represents an application&#8217;s intention to display XR content to the
 user.</p>
 </div>
-<div class="paragraph">
-<p>First, the application creates a session by choosing a <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#system" target="_blank" rel="noopener">system</a>
-and a graphics API and calling <a href="xrCreateSession.html">xrCreateSession</a>, which creates a
-session in the <code>XR_SESSION_STATE_IDLE</code> state.
-The application then sets up an <a href="xrPollEvent.html">xrPollEvent</a> loop to monitor for
-session state changes delivered through the
-<a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a> event.
-When the runtime determines that the system is ready to start transitioning
-to this session&#8217;s XR content, it notifies the application that its session
-has moved into the <code>XR_SESSION_STATE_READY</code> state.
-When the application is ready to proceed and display its XR content, it
-calls <a href="xrBeginSession.html">xrBeginSession</a> and <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">starts its frame loop</a>,
-which starts its session running.
-While the session is running, the application is expected to continuously
-run its frame loop by calling <a href="xrWaitFrame.html">xrWaitFrame</a>, <a href="xrBeginFrame.html">xrBeginFrame</a> and
-<a href="xrEndFrame.html">xrEndFrame</a> each frame, to establish synchronization with the runtime.
-Once the runtime is synchronized with the application&#8217;s frame loop and ready
-to display its frames, the session will move into the
-<code>XR_SESSION_STATE_SYNCHRONIZED</code> state.
-For frames where <a href="xrWaitFrame.html">xrWaitFrame</a> returns an <a href="XrFrameState.html">XrFrameState</a> with
-<code>shouldRender</code> set to true, the application should render its
-composition layers and submit them to <a href="xrEndFrame.html">xrEndFrame</a>.
-If the application desires to leave a running session, it should call the
-<a href="xrRequestExitSession.html">xrRequestExitSession</a> function to request that the runtime transition
-its session to the <code>XR_SESSION_STATE_STOPPING</code> state as soon as
-possible.
-Once the application reaches the <code>XR_SESSION_STATE_STOPPING</code> state, it
-can call <a href="xrEndSession.html">xrEndSession</a> to stop the XR session, after which the session
-will transition through <code>XR_SESSION_STATE_IDLE</code> to the
-<code>XR_SESSION_STATE_EXITING</code> state.</p>
-</div>
-<div class="paragraph">
-<p>On platforms that have applications with lifecycle managed by the system,
-session state changes may be implicitly triggered by application lifecycle
-state changes.
-On such platforms, using platform-specific methods to alter application
-lifecycle state may be the preferred method of provoking session state
-changes.
-The behavior of <a href="xrRequestExitSession.html">xrRequestExitSession</a> is not altered, however explicit
-session exit <strong class="purple">may</strong> not interact with the platform-specific application
-lifecycle.</p>
-</div>
-<div class="paragraph">
-<p><a id="session_running"></a>A session is considered <strong>running</strong> after a successful
-call to <a href="xrBeginSession.html">xrBeginSession</a> and remains running until any call is made to
-<a href="xrEndSession.html">xrEndSession</a>.
-Certain functions are only valid to call when a session is running, such as
-<a href="xrWaitFrame.html">xrWaitFrame</a>, or else the <code>XR_ERROR_SESSION_NOT_RUNNING</code> error
-<strong class="purple">must</strong> be returned by the runtime.</p>
-</div>
-<div class="paragraph">
-<p><a id="session_not_running"></a>A session is considered <strong>not running</strong> before a
-successful call to <a href="xrBeginSession.html">xrBeginSession</a> and becomes not running again after
-any call is made to <a href="xrEndSession.html">xrEndSession</a>.
-Certain functions are only valid to call when a session is not running, such
-as <a href="xrBeginSession.html">xrBeginSession</a>, or else the <code>XR_ERROR_SESSION_RUNNING</code> error
-<strong class="purple">must</strong> be returned by the runtime.</p>
-</div>
-<div class="paragraph">
-<p>If an error is returned from <a href="xrBeginSession.html">xrBeginSession</a>, the session remains in
-its current running or not running state.
-Calling <a href="xrEndSession.html">xrEndSession</a> always transitions a session to the not running
-state, regardless of any errors returned.</p>
-</div>
-<div class="paragraph">
-<p>Only running sessions may become focused sessions that receive XR input.
-When a session <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>, the application
-<strong class="purple">must</strong> not submit frames.
-This is important because without a running session, the runtime no longer
-has to spend resources on sub-systems (tracking etc.) that are no longer
-needed by the application.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrEventDataInteractionProfileChanged.html">XrEventDataInteractionProfileChanged</a>, <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>, <a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a>, <a href="XrEventDataVisibilityMaskChangedKHR.html">XrEventDataVisibilityMaskChangedKHR</a>, <a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a>, <a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a>, <a href="xrBeginFrame.html">xrBeginFrame</a>, <a href="xrBeginSession.html">xrBeginSession</a>, <a href="xrCreateActionSpace.html">xrCreateActionSpace</a>, <a href="xrCreateHandTrackerEXT.html">xrCreateHandTrackerEXT</a>, <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a>, <a href="xrCreateSceneObserverMSFT.html">xrCreateSceneObserverMSFT</a>, <a href="xrCreateSession.html">xrCreateSession</a>, <a href="xrCreateSpatialAnchorFromPerceptionAnchorMSFT.html">xrCreateSpatialAnchorFromPerceptionAnchorMSFT</a>, <a href="xrCreateSpatialAnchorMSFT.html">xrCreateSpatialAnchorMSFT</a>, <a href="xrCreateSpatialAnchorSpaceMSFT.html">xrCreateSpatialAnchorSpaceMSFT</a>, <a href="xrCreateSpatialGraphNodeSpaceMSFT.html">xrCreateSpatialGraphNodeSpaceMSFT</a>, <a href="xrCreateSwapchain.html">xrCreateSwapchain</a>, <a href="xrCreateSwapchainAndroidSurfaceKHR.html">xrCreateSwapchainAndroidSurfaceKHR</a>, <a href="xrDestroySession.html">xrDestroySession</a>, <a href="xrEndFrame.html">xrEndFrame</a>, <a href="xrEndSession.html">xrEndSession</a>, <a href="xrEnumerateBoundSourcesForAction.html">xrEnumerateBoundSourcesForAction</a>, <a href="xrEnumerateColorSpacesFB.html">xrEnumerateColorSpacesFB</a>, <a href="xrEnumerateDisplayRefreshRatesFB.html">xrEnumerateDisplayRefreshRatesFB</a>, <a href="xrEnumerateReferenceSpaces.html">xrEnumerateReferenceSpaces</a>, <a href="xrEnumerateSwapchainFormats.html">xrEnumerateSwapchainFormats</a>, <a href="xrGetActionStateBoolean.html">xrGetActionStateBoolean</a>, <a href="xrGetActionStateFloat.html">xrGetActionStateFloat</a>, <a href="xrGetActionStatePose.html">xrGetActionStatePose</a>, <a href="xrGetActionStateVector2f.html">xrGetActionStateVector2f</a>, <a href="xrGetControllerModelKeyMSFT.html">xrGetControllerModelKeyMSFT</a>, <a href="xrGetControllerModelPropertiesMSFT.html">xrGetControllerModelPropertiesMSFT</a>, <a href="xrGetControllerModelStateMSFT.html">xrGetControllerModelStateMSFT</a>, <a href="xrGetCurrentInteractionProfile.html">xrGetCurrentInteractionProfile</a>, <a href="xrGetDisplayRefreshRateFB.html">xrGetDisplayRefreshRateFB</a>, <a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a>, <a href="xrGetReferenceSpaceBoundsRect.html">xrGetReferenceSpaceBoundsRect</a>, <a href="xrGetVisibilityMaskKHR.html">xrGetVisibilityMaskKHR</a>, <a href="xrLoadControllerModelMSFT.html">xrLoadControllerModelMSFT</a>, <a href="xrLocateViews.html">xrLocateViews</a>, <a href="xrPerfSettingsSetPerformanceLevelEXT.html">xrPerfSettingsSetPerformanceLevelEXT</a>, <a href="xrRequestDisplayRefreshRateFB.html">xrRequestDisplayRefreshRateFB</a>, <a href="xrRequestExitSession.html">xrRequestExitSession</a>, <a href="xrSessionBeginDebugUtilsLabelRegionEXT.html">xrSessionBeginDebugUtilsLabelRegionEXT</a>, <a href="xrSessionEndDebugUtilsLabelRegionEXT.html">xrSessionEndDebugUtilsLabelRegionEXT</a>, <a href="xrSessionInsertDebugUtilsLabelEXT.html">xrSessionInsertDebugUtilsLabelEXT</a>, <a href="xrSetAndroidApplicationThreadKHR.html">xrSetAndroidApplicationThreadKHR</a>, <a href="xrSetColorSpaceFB.html">xrSetColorSpaceFB</a>, <a href="xrSetEnvironmentDepthEstimationVARJO.html">xrSetEnvironmentDepthEstimationVARJO</a>, <a href="xrSetInputDeviceActiveEXT.html">xrSetInputDeviceActiveEXT</a>, <a href="xrSetInputDeviceLocationEXT.html">xrSetInputDeviceLocationEXT</a>, <a href="xrSetInputDeviceStateBoolEXT.html">xrSetInputDeviceStateBoolEXT</a>, <a href="xrSetInputDeviceStateFloatEXT.html">xrSetInputDeviceStateFloatEXT</a>, <a href="xrSetInputDeviceStateVector2fEXT.html">xrSetInputDeviceStateVector2fEXT</a>, <a href="xrStopHapticFeedback.html">xrStopHapticFeedback</a>, <a href="xrSyncActions.html">xrSyncActions</a>, <a href="xrThermalGetTemperatureTrendEXT.html">xrThermalGetTemperatureTrendEXT</a>, <a href="xrTryGetPerceptionAnchorFromSpatialAnchorMSFT.html">xrTryGetPerceptionAnchorFromSpatialAnchorMSFT</a>, <a href="xrWaitFrame.html">xrWaitFrame</a></p>
+<p><a href="XrEventDataInteractionProfileChanged.html">XrEventDataInteractionProfileChanged</a>, <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>, <a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a>, <a href="XrEventDataVisibilityMaskChangedKHR.html">XrEventDataVisibilityMaskChangedKHR</a>, <a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a>, <a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a>, <a href="xrBeginFrame.html">xrBeginFrame</a>, <a href="xrBeginSession.html">xrBeginSession</a>, <a href="xrCreateActionSpace.html">xrCreateActionSpace</a>, <a href="xrCreateFoveationProfileFB.html">xrCreateFoveationProfileFB</a>, <a href="xrCreateHandTrackerEXT.html">xrCreateHandTrackerEXT</a>, <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a>, <a href="xrCreateSceneObserverMSFT.html">xrCreateSceneObserverMSFT</a>, <a href="xrCreateSession.html">xrCreateSession</a>, <a href="xrCreateSpatialAnchorFromPerceptionAnchorMSFT.html">xrCreateSpatialAnchorFromPerceptionAnchorMSFT</a>, <a href="xrCreateSpatialAnchorFromPersistedNameMSFT.html">xrCreateSpatialAnchorFromPersistedNameMSFT</a>, <a href="xrCreateSpatialAnchorMSFT.html">xrCreateSpatialAnchorMSFT</a>, <a href="xrCreateSpatialAnchorSpaceMSFT.html">xrCreateSpatialAnchorSpaceMSFT</a>, <a href="xrCreateSpatialAnchorStoreConnectionMSFT.html">xrCreateSpatialAnchorStoreConnectionMSFT</a>, <a href="xrCreateSpatialGraphNodeSpaceMSFT.html">xrCreateSpatialGraphNodeSpaceMSFT</a>, <a href="xrCreateSwapchain.html">xrCreateSwapchain</a>, <a href="xrCreateSwapchainAndroidSurfaceKHR.html">xrCreateSwapchainAndroidSurfaceKHR</a>, <a href="xrDestroySession.html">xrDestroySession</a>, <a href="xrEndFrame.html">xrEndFrame</a>, <a href="xrEndSession.html">xrEndSession</a>, <a href="xrEnumerateBoundSourcesForAction.html">xrEnumerateBoundSourcesForAction</a>, <a href="xrEnumerateColorSpacesFB.html">xrEnumerateColorSpacesFB</a>, <a href="xrEnumerateDisplayRefreshRatesFB.html">xrEnumerateDisplayRefreshRatesFB</a>, <a href="xrEnumerateReferenceSpaces.html">xrEnumerateReferenceSpaces</a>, <a href="xrEnumerateSwapchainFormats.html">xrEnumerateSwapchainFormats</a>, <a href="xrGetActionStateBoolean.html">xrGetActionStateBoolean</a>, <a href="xrGetActionStateFloat.html">xrGetActionStateFloat</a>, <a href="xrGetActionStatePose.html">xrGetActionStatePose</a>, <a href="xrGetActionStateVector2f.html">xrGetActionStateVector2f</a>, <a href="xrGetControllerModelKeyMSFT.html">xrGetControllerModelKeyMSFT</a>, <a href="xrGetControllerModelPropertiesMSFT.html">xrGetControllerModelPropertiesMSFT</a>, <a href="xrGetControllerModelStateMSFT.html">xrGetControllerModelStateMSFT</a>, <a href="xrGetCurrentInteractionProfile.html">xrGetCurrentInteractionProfile</a>, <a href="xrGetDisplayRefreshRateFB.html">xrGetDisplayRefreshRateFB</a>, <a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a>, <a href="xrGetReferenceSpaceBoundsRect.html">xrGetReferenceSpaceBoundsRect</a>, <a href="xrGetVisibilityMaskKHR.html">xrGetVisibilityMaskKHR</a>, <a href="xrLoadControllerModelMSFT.html">xrLoadControllerModelMSFT</a>, <a href="xrLocateViews.html">xrLocateViews</a>, <a href="xrPerfSettingsSetPerformanceLevelEXT.html">xrPerfSettingsSetPerformanceLevelEXT</a>, <a href="xrRequestDisplayRefreshRateFB.html">xrRequestDisplayRefreshRateFB</a>, <a href="xrRequestExitSession.html">xrRequestExitSession</a>, <a href="xrSessionBeginDebugUtilsLabelRegionEXT.html">xrSessionBeginDebugUtilsLabelRegionEXT</a>, <a href="xrSessionEndDebugUtilsLabelRegionEXT.html">xrSessionEndDebugUtilsLabelRegionEXT</a>, <a href="xrSessionInsertDebugUtilsLabelEXT.html">xrSessionInsertDebugUtilsLabelEXT</a>, <a href="xrSetAndroidApplicationThreadKHR.html">xrSetAndroidApplicationThreadKHR</a>, <a href="xrSetColorSpaceFB.html">xrSetColorSpaceFB</a>, <a href="xrSetEnvironmentDepthEstimationVARJO.html">xrSetEnvironmentDepthEstimationVARJO</a>, <a href="xrSetInputDeviceActiveEXT.html">xrSetInputDeviceActiveEXT</a>, <a href="xrSetInputDeviceLocationEXT.html">xrSetInputDeviceLocationEXT</a>, <a href="xrSetInputDeviceStateBoolEXT.html">xrSetInputDeviceStateBoolEXT</a>, <a href="xrSetInputDeviceStateFloatEXT.html">xrSetInputDeviceStateFloatEXT</a>, <a href="xrSetInputDeviceStateVector2fEXT.html">xrSetInputDeviceStateVector2fEXT</a>, <a href="xrStopHapticFeedback.html">xrStopHapticFeedback</a>, <a href="xrSyncActions.html">xrSyncActions</a>, <a href="xrThermalGetTemperatureTrendEXT.html">xrThermalGetTemperatureTrendEXT</a>, <a href="xrTryGetPerceptionAnchorFromSpatialAnchorMSFT.html">xrTryGetPerceptionAnchorFromSpatialAnchorMSFT</a>, <a href="xrWaitFrame.html">xrWaitFrame</a></p>
 </div>
 </div>
 </div>
@@ -898,8 +826,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.17<br>
-Last updated 2021-06-08 21:02:02 UTC
+Version 1.0.18<br>
+Last updated 2021-07-31 17:47:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

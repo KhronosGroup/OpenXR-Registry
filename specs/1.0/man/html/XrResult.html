@@ -840,6 +840,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_SCENE_COMPUTE_CONSISTENCY_MISMATCH_MSFT = -1000097005,
     XR_ERROR_DISPLAY_REFRESH_RATE_UNSUPPORTED_FB = -1000101000,
     XR_ERROR_COLOR_SPACE_UNSUPPORTED_FB = -1000108000,
+    XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT = -1000142001,
+    XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT = -1000142002,
     XR_RESULT_MAX_ENUM = 0x7FFFFFFF
 } XrResult;</code></pre>
 </div>
@@ -1181,6 +1183,14 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_COLOR_SPACE_UNSUPPORTED_FB</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The color space is not supported by the runtime. (Added by the <code><a href="#XR_FB_color_space">[XR_FB_color_space]</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A spatial anchor was not found associated with the spatial anchor name provided (Added by the <code><a href="#XR_MSFT_spatial_anchor_persistence">[XR_MSFT_spatial_anchor_persistence]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The spatial anchor name provided was not valid (Added by the <code><a href="#XR_MSFT_spatial_anchor_persistence">[XR_MSFT_spatial_anchor_persistence]</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1228,8 +1238,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.17<br>
-Last updated 2021-06-08 21:02:02 UTC
+Version 1.0.18<br>
+Last updated 2021-07-31 17:47:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
