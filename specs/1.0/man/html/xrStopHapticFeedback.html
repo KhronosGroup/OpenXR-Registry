@@ -808,6 +808,10 @@ provide action and subaction path information.</p>
 <p>If a haptic event from this <a href="XrAction.html">XrAction</a> is in progress, when this
 function is called the runtime <strong class="purple">must</strong> stop that event.</p>
 </div>
+<div class="paragraph">
+<p>If <code>session</code> is not focused, the runtime <strong class="purple">must</strong> return
+<code>XR_SESSION_NOT_FOCUSED</code>.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -837,6 +841,9 @@ function is called the runtime <strong class="purple">must</strong> stop that ev
 </li>
 <li>
 <p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_NOT_FOCUSED</code></p>
 </li>
 </ul>
 </div>
@@ -923,8 +930,8 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.18<br>
-Last updated 2021-07-31 17:47:46 UTC
+Version 1.0.19<br>
+Last updated 2021-08-24 16:40:11 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
