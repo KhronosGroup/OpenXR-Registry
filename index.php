@@ -21,6 +21,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> <a href="#loader"> <b>OpenXR Loader Design Document</b> </a> </li>
     <li> <a href="#styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </a> </li>
     <li> <a href="#extprocess"> <b>OpenXR™ Working Group Extension Processes</b> </a> </li>
+    <li> <a href="#changelogs"> <b>Changelogs for the OpenXR API Specifications and SDK</b> </a> </li>
     <li> <a href="#repos"> <b>OpenXR GitHub Repositories</b> </a>
         <ul>
         <li> <a href="#repo-docs"> <b>API and Extension Specification Repository</b> </a>
@@ -116,6 +117,26 @@ include_once("../../assets/static_pages/khr_page_top.php");
     specification. It is meant to be read in conjunction with the Style Guide.
     Authors wishing to write OpenXR extension specifications must follow both
     this document as well as the Style Guide.</p>
+
+
+<h2 id="changelogs"> <b>Changelogs for the OpenXR API Specifications and SDK</b> </h2>
+<p> Changelogs are maintained for the Specification, SDK, and Conformance Test
+    Suite (CTS). Some changelog items are shared between the Specification and SDK
+    changelog documents, where applicable. Each <a href="#repos">repository</a>
+    contains the relevant changelog file. The links below go to a formatted view
+    of each changelog where it is found on GitHub.</p>
+
+<ul>
+<li>
+    <a href="https://github.com/KhronosGroup/OpenXR-Docs/blob/master/CHANGELOG.Docs.md">Changelog for OpenXR Specifications</a>
+    - in <a href="#repo-docs">OpenXR-Docs</a> and OpenXR-Registry repos</li>
+<li>
+    <a href="https://github.com/KhronosGroup/OpenXR-SDK/blob/master/CHANGELOG.SDK.md">Changelog for OpenXR SDK</a>
+    - in <a href="#repo-sdk">OpenXR-SDK</a> and <a href="#repo-sdk-source">OpenXR-SDK-Source</a> repos</li>
+<li>
+    <a href="https://github.com/KhronosGroup/OpenXR-CTS/blob/approved/CHANGELOG.CTS.md">Changelog for OpenXR CTS</a>
+    - in the <a href="#repo-cts">OpenXR-CTS</a> repo</li>
+</ul>
 
 
 <h2 id="repos"> <b> OpenXR GitHub Repositories </b> </h2>
