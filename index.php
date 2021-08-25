@@ -93,7 +93,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 
 <h2 id="loader"> <b>OpenXR™ Loader Design Document</b> </h2>
 
-<p> The <a href="specs/1.0/OpenXR_loader_design.html">
+<p> The <a href="specs/1.0/loader.html">
     OpenXR™ Loader Design Document</a> describes the underlying design of
     the standard cross-platform loader, along with some platform-specific
     details. It also describes how runtimes interact with the loader and
