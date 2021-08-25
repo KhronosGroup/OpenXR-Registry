@@ -148,8 +148,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <p> OpenXR defines an API Registry for the API and extensions,
     formally defining function prototypes, structures, enumerants, and
     many other aspects of the API and extension mechanisms. The OpenXR
-    Registry is used for many more purposes than most other Khronos API
-    registries, and is the basis for generating the header files;
+    Registry is the basis for generating the header files;
     AsciiDoc include files used in the Specification, and reference
     pages for interface definitions, parameter and member validity
     language, and synchronization language; and more. </p>
