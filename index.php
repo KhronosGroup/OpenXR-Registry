@@ -33,7 +33,8 @@ include_once("../../assets/static_pages/khr_page_top.php");
             <li> <a href="#repo-sdk"> KhronosGroup/<b>OpenXR-SDK</b> </a> </li>
             <li> <a href="#repo-sdk-source"> KhronosGroup/<b>OpenXR-SDK-Source</b> </a> </li>
             </ul> </li>
-        <li> <a href="#repo-cts"> <b>Conformance Test Suite Repository</b> </a> </li>
+        <li> <a href="#repo-cts"> KhronosGroup/<b>OpenXR-CTS Conformance Test Suite Repository</b> </a> </li>
+        <li> <a href="#repo-other"> <b>Other Repositories</b> </a> </li>
         </ul> </li>
     <li> <a href="#provisional"> Obsolete: <b>OpenXR 0.90 Provisional Specification</b> </a> </li>
 </ul>
@@ -236,13 +237,25 @@ include_once("../../assets/static_pages/khr_page_top.php");
     that contains only the loader and headers, and does not require any code generation.</p>
 
 
-<h3> <a name="repo-cts"></a> <b>Conformance Test Suite Repository</b> </h3>
+<h3 id="repo-cts">KhronosGroup/<b>OpenXR-CTS Conformance Test Suite Repository</b> </h3>
 
 <p> The <a href="https://github.com/KhronosGroup/OpenXR-CTS">OpenXR-CTS</a>
     repository contains the source code for the OpenXR Conformance Tests.
     Note that while the CTS source code is freely available, you must be a
     Khronos Adopter and pay the Adopter Fee in order to use the OpenXR
     trademark for your implementation. </p>
+
+
+<h3 id="repo-other"> <b>Other Repositories</b> </h3>
+
+<p> Other Khronos repositories containing OpenXR material include: </p>
+
+<ul>
+<li> The <a href="https://github.com/KhronosGroup/OpenXR-Hpp"
+     id="openxr-hpp">OpenXR-Hpp</a> repository contains code used to
+     generate <kbd>openxr.hpp</kbd> and its included headers, which form
+     a layered C++ binding for OpenXR. </li>
+</ul>
 
 <h2 id="provisional"> Obsolete: <b>OpenXR 0.90 Provisional API Specification Resources</b> </h2>
 
