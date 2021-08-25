@@ -37,6 +37,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
         <li> <a href="#repo-other"> <b>Other Repositories</b> </a> </li>
         </ul> </li>
     <li> <a href="#provisional"> Obsolete: <b>OpenXR 0.90 Provisional Specification</b> </a> </li>
+    <li> <a href="#feedback"> <b>Providing Feedback on the Registry</b> </a> </li>
 </ul>
 
 
@@ -275,6 +276,18 @@ include_once("../../assets/static_pages/khr_page_top.php");
      OpenXR 0.90 API, Input, and Haptics, and a typical OpenXR app's flow. </li>
 
 </ul>
+
+<h3 id="feedback"> <b>Providing Feedback on the Registry</b> </h3>
+
+<p> Khronos welcomes comments and bug reports. To provide feedback on the
+    OpenXR registry itself (such as reporting missing content, bad links,
+    etc.), file an issue in the <a
+    href="https://github.com/KhronosGroup/OpenXR-Registry/issues">
+    OpenXR-Registry </a> GitHub project. </p>
+
+<p> For the OpenXR Specification or other documentation and tools, file an
+    Issue on the appropriate <a href="#repos">GitHub Repository</a>. </p>
+
 <?php include_once("../../assets/static_pages/khr_page_bottom.php"); ?>
 </body>
 </html>
