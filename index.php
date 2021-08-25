@@ -272,7 +272,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
      </li>
 <li> The <a href="specs/0.90/refguide/OpenXR-0.90-web.pdf">OpenXR 0.90 API
      Overview (PDF)</a> is a compact document providing an overview of the
-     OpenXR 0.90 API, Input and Haptics, and a typical OpenXR app's flow. </li>
+     OpenXR 0.90 API, Input, and Haptics, and a typical OpenXR app's flow. </li>
 
 </ul>
 <?php include_once("../../assets/static_pages/khr_page_bottom.php"); ?>
