@@ -18,6 +18,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> <a href="#apispecs"> <b>OpenXR 1.0 API Specifications</b> </a> </li>
     <li> <a href="#refguide"> <b>OpenXR 1.0 Reference Guide</b> </a> </li>
     <li> <a href="#refpages"> <b>OpenXR API Reference Pages</b> </a> </li>
+    <li> <a href="#loader"> <b>OpenXR Loader Design Document</b> </a> </li>
     <li> <a href="#styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </a> </li>
     <li> <a href="#extprocess"> <b>OpenXR™ Working Group Extension Processes</b> </a> </li>
     <li> <a href="#repos"> <b>OpenXR GitHub Repositories</b> </a>
@@ -79,6 +80,15 @@ include_once("../../assets/static_pages/khr_page_top.php");
     Specification source, and are not separately checked into GitHub. The
     set of pages linked above are generated from the 1.0 API specification
     including all extensions.</p>
+
+<h2 id="loader"> <b>OpenXR™ Loader Design Document</b> </h2>
+
+<p> The <a href="specs/1.0/OpenXR_loader_design.html">
+    OpenXR™ Loader Design Document</a> describes the underlying design of
+    the standard cross-platform loader, along with some platform-specific
+    details. It also describes how runtimes interact with the loader and
+    other software that may wish to enumerate or interact with OpenXR
+    runtimes outside of or prior to the ratified specification.</p>
 
 <h2 id="styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </h2>
 
