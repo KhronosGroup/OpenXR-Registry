@@ -1,11 +1,17 @@
+# # Redirect to the main spec for these missing ref pages.
+# Redirect 302 XR_USE_PLATFORM_ANDROID.html "../../html/xrspec.html#XR_USE_PLATFORM_ANDROID"
+# Redirect 302 XR_USE_PLATFORM_WAYLAND.html "../../html/xrspec.html#XR_USE_PLATFORM_WAYLAND"
+# Redirect 302 XR_USE_PLATFORM_WIN32.html "../../html/xrspec.html#XR_USE_PLATFORM_WIN32"
+# Redirect 302 XR_USE_PLATFORM_XCB.html "../../html/xrspec.html#XR_USE_PLATFORM_XCB"
+# Redirect 302 XR_USE_PLATFORM_XLIB.html "../../html/xrspec.html#XR_USE_PLATFORM_XLIB"
 
-# Temporary redirects to the file that's there.
+# # Temporary redirects to the file that's there.
 
-Redirect 302 XrCompositionLayerFlagBits.html XrCompositionLayerFlags.html
-Redirect 302 XrInputSourceLocalizedNameFlagBits.html XrInputSourceLocalizedNameFlags.html
-Redirect 302 XrInstanceCreateFlagBits.html XrInstanceCreateFlags.html
-Redirect 302 XrSessionCreateFlagBits.html XrSessionCreateFlags.html
-Redirect 302 XrSpaceRelationFlagBits.html XrSpaceRelationFlags.html
-Redirect 302 XrSwapchainCreateFlagBits.html XrSwapchainCreateFlags.html
-Redirect 302 XrSwapchainUsageFlagBits.html XrSwapchainUsageFlags.html
-Redirect 302 XrViewStateFlagBits.html XrViewStateFlags.html
+# Redirect 302 XrCompositionLayerFlagBits.html XrCompositionLayerFlags.html
+# Redirect 302 XrInputSourceLocalizedNameFlagBits.html XrInputSourceLocalizedNameFlags.html
+# Redirect 302 XrInstanceCreateFlagBits.html XrInstanceCreateFlags.html
+# Redirect 302 XrSessionCreateFlagBits.html XrSessionCreateFlags.html
+# Redirect 302 XrSpaceRelationFlagBits.html XrSpaceRelationFlags.html
+# Redirect 302 XrSwapchainCreateFlagBits.html XrSwapchainCreateFlags.html
+# Redirect 302 XrSwapchainUsageFlagBits.html XrSwapchainUsageFlags.html
+# Redirect 302 XrViewStateFlagBits.html XrViewStateFlags.html
