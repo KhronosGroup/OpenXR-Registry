@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2021, The Khronos Group Inc.
+ * Copyright (c) 2017-2022, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -801,7 +801,7 @@ runtime, such as via a software update.</p>
 and waited past the specified time, it may then re-try
 <a href="xrCreateInstance.html">xrCreateInstance</a> in a loop waiting for whatever maintenance the
 runtime is performing to complete.
-The runtime will return <code>XR_ERROR_INSTANCE_LOST</code> from
+The runtime will return <code>XR_ERROR_RUNTIME_UNAVAILABLE</code> from
 <a href="xrCreateInstance.html">xrCreateInstance</a> as long as it is unable to create the instance.
 Once the runtime has returned and is able to continue, it <strong class="purple">must</strong> resume
 returning <code>XR_SUCCESS</code> from <a href="xrCreateInstance.html">xrCreateInstance</a> if valid data is
@@ -881,7 +881,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

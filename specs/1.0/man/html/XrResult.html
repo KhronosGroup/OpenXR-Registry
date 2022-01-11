@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2021, The Khronos Group Inc.
+ * Copyright (c) 2017-2022, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -846,6 +846,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_NOT_PERMITTED_PASSTHROUGH_FB = -1000118003,
     XR_ERROR_INSUFFICIENT_RESOURCES_PASSTHROUGH_FB = -1000118004,
     XR_ERROR_UNKNOWN_PASSTHROUGH_FB = -1000118050,
+    XR_ERROR_RENDER_MODEL_KEY_INVALID_FB = -1000119000,
+    XR_RENDER_MODEL_UNAVAILABLE_FB = 1000119020,
     XR_ERROR_MARKER_NOT_TRACKED_VARJO = -1000124000,
     XR_ERROR_MARKER_ID_INVALID_VARJO = -1000124001,
     XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT = -1000142001,
@@ -925,6 +927,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FRAME_DISCARDED</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A frame has been discarded from composition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_RENDER_MODEL_UNAVAILABLE_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The model is unavailable. (Added by the <code><a href="#XR_FB_render_model">[XR_FB_render_model]</a></code> extension)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1216,6 +1222,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unknown Passthrough error (no further details provided). (Added by the <code><a href="#XR_FB_passthrough">[XR_FB_passthrough]</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_RENDER_MODEL_KEY_INVALID_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The model key is invalid. (Added by the <code><a href="#XR_FB_render_model">[XR_FB_render_model]</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MARKER_NOT_TRACKED_VARJO</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Marker tracking is disabled or the specified marker is not currently tracked. (Added by the <code><a href="#XR_VARJO_marker_tracking">[XR_VARJO_marker_tracking]</a></code> extension)</p></td>
 </tr>
@@ -1272,7 +1282,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

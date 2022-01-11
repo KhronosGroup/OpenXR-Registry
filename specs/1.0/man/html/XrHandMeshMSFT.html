@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2021, The Khronos Group Inc.
+ * Copyright (c) 2017-2022, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -853,7 +853,7 @@ buffers when there&#8217;s no new data.</p>
 </div>
 <div class="paragraph">
 <p>The hand mesh is represented in triangle lists and each triangle&#8217;s vertices
-are in counter-clockwise order when looking from outside of the hand.
+are in clockwise order when looking from outside of the hand.
 When hand tracking is active, i.e. when <code>isActive</code> is returned as
 <code>XR_TRUE</code>, the returned <code>indexBuffer.indexCountOutput</code> value <strong class="purple">must</strong> be
 positive and multiple of 3, and <code>vertexBuffer.vertexCountOutput</code> value <strong class="purple">must</strong>
@@ -921,7 +921,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

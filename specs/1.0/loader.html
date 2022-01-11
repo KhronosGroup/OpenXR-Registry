@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.16">
-<meta name="author" content="Copyright (c) 2017-2021, The Khronos Group Inc.">
+<meta name="author" content="Copyright (c) 2017-2022, The Khronos Group Inc.">
 <title>OpenXR&#174; Loader - Design and Operation [DRAFT] (with all published extensions)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -443,9 +443,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header" style="max-width: 100;">
 <h1>OpenXR<sup>&#174;</sup>  Loader - Design and Operation [DRAFT] (with all published extensions)</h1>
 <div class="details">
-<span id="author" class="author">Copyright (c) 2017-2021, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.20</span>
-<br><span id="revremark">from git ref release-1.0.20</span>
+<span id="author" class="author">Copyright (c) 2017-2022, The Khronos Group Inc.</span><br>
+<span id="revnumber">version 1.0.21</span>
+<br><span id="revremark">from git ref release-1.0.21</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -595,7 +595,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2021, The Khronos Group Inc.
+<p>Copyright (c) 2017-2022, The Khronos Group Inc.
 All Rights reserved.</p>
 </div>
 <!-- toc disabled -->
@@ -3360,7 +3360,7 @@ Linux takes place, searching for <code>active_runtime.json</code> files in:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>/odm/etc/openxr/1</code></p>
+<p><code>/oem/etc/openxr/1</code></p>
 </li>
 <li>
 <p><code>/vendor/etc/openxr/1</code></p>
@@ -3714,7 +3714,7 @@ If more than one is found, user preferences are used to identify the
 </div>
 <div class="paragraph">
 <p>The path containing the dynamic library is computed from
-<code>ApplicationInfo.getNativeLibraryDir()</code> and the specified ABI, and the
+<code>ApplicationInfo.nativeLibraryDir</code> and the specified ABI, and the
 filename is returned using the filename found in the OpenXR metadata value.
 The "hasFunctions" column is dynamically generated based on the presence of
 any function metadata entries.</p>
@@ -6089,7 +6089,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

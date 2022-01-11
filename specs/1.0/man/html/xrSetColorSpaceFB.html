@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2021, The Khronos Group Inc.
+ * Copyright (c) 2017-2022, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -815,6 +815,24 @@ The runtime <strong class="purple">must</strong> return <code>XR_ERROR_COLOR_SPA
 <code>colorSpace</code> is not one of the values enumerated by
 <a href="xrEnumerateColorSpacesFB.html">xrEnumerateColorSpacesFB</a>.</p>
 </div>
+<div class="paragraph">
+<p>Formal definitions of color spaces contain a number of aspects such as gamma
+correction, max luminance and more.
+However, <a href="xrSetColorSpaceFB.html">xrSetColorSpaceFB</a> will only affect the color gamut of the
+output by transforming the color gamut from the source (defined by the
+<code>colorSpace</code> parameter) to the HMD display&#8217;s color gamut (defined by the
+hardware internally).
+This call will not affect gamma correction, leaving that to follow the GPU
+texture format standards.
+Luminance, tonemapping, and other aspects of the color space will also
+remain unaffected.</p>
+</div>
+<div class="paragraph">
+<p>For more info on color management in Oculus HMDs, please refer to this
+guide:
+<a href="https://developer.oculus.com/resources/color-management-guide/">Color
+Management in Oculus Headsets</a></p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -924,7 +942,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

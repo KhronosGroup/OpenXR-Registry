@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2021, The Khronos Group Inc.
+ * Copyright (c) 2017-2022, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -804,9 +804,7 @@ No color correction, not recommended for production use.</p>
 <li>
 <p><code>XR_COLOR_SPACE_REC2020_FB</code>.
 Standard Rec.
-2020 chromacities.
-This is the preferred color space for standardized color across all Oculus
-HMDs with D65 white point.</p>
+2020 chromacities with D65 white point.</p>
 </li>
 <li>
 <p><code>XR_COLOR_SPACE_REC709_FB</code>.
@@ -815,7 +813,9 @@ Standard Rec.
 </li>
 <li>
 <p><code>XR_COLOR_SPACE_RIFT_CV1_FB</code>.
-Unique color space, between P3 and Adobe RGB using D75 white point.</p>
+Unique color space, between P3 and Adobe RGB using D75 white point.
+This is the preferred color space for standardized color across all Oculus
+HMDs.</p>
 <div class="paragraph">
 <p>Color Space Details with Chromacity Primaries in CIE 1931 xy:</p>
 </div>
@@ -953,7 +953,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2021, The Khronos Group Inc.
+ * Copyright (c) 2017-2022, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -811,6 +811,11 @@ work for the frame if <a href="XrFrameState.html">XrFrameState</a>::<code>should
 <code>XR_FALSE</code>.</p>
 </div>
 <div class="paragraph">
+<p>Runtimes <strong class="purple">must</strong> not perform frame synchronization or throttling through the
+<a href="xrBeginFrame.html">xrBeginFrame</a> function and <strong class="purple">should</strong> instead do so through
+<a href="xrWaitFrame.html">xrWaitFrame</a>.</p>
+</div>
+<div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return the error code <code>XR_ERROR_CALL_ORDER_INVALID</code> if
 there was no corresponding successful call to <a href="xrWaitFrame.html">xrWaitFrame</a>.</p>
 </div>
@@ -929,7 +934,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.20<br>
+Version 1.0.21<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
