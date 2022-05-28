@@ -804,6 +804,18 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 buffer data following a call to
 <a href="xrTriangleMeshBeginVertexBufferUpdateFB.html">xrTriangleMeshBeginVertexBufferUpdateFB</a>.</p>
 </div>
+<div class="paragraph">
+<p>The triangle mesh <code>mesh</code> <strong class="purple">must</strong> be mutable.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if the mesh is
+immutable.</p>
+</div>
+<div class="paragraph">
+<p>The triangle mesh <code>mesh</code> <strong class="purple">must</strong> be in state
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_vertices" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_vertices</a>.</p>
+</div>
+<div class="paragraph">
+<p>A successful call moves <code>mesh</code> to state <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_ready" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_ready</a>.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -862,6 +874,9 @@ buffer data following a call to
 <li>
 <p><code>XR_ERROR_FEATURE_UNSUPPORTED</code></p>
 </li>
+<li>
+<p><code>XR_ERROR_CALL_ORDER_INVALID</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -875,7 +890,7 @@ buffer data following a call to
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a></p>
+<p><a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a>, <a href="xrTriangleMeshBeginVertexBufferUpdateFB.html">xrTriangleMeshBeginVertexBufferUpdateFB</a></p>
 </div>
 </div>
 </div>
@@ -907,7 +922,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -792,7 +792,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <p><code>mesh</code> is the <a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a> to update.</p>
 </li>
 <li>
-<p><code>outVertexCount</code> is the current vertex count.
+<p><code>outVertexCount</code> is a pointer to a value to populate with the current
+vertex count.
 The updated data must have the exact same number of vertices.</p>
 </li>
 </ul>
@@ -805,18 +806,24 @@ The updated data must have the exact same number of vertices.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Begins an update of the vertex positions of a triangle mesh.
-Can only be called once the mesh topology has been set using
-<a href="xrTriangleMeshBeginUpdateFB.html">xrTriangleMeshBeginUpdateFB</a> followed by
-<a href="xrTriangleMeshEndUpdateFB.html">xrTriangleMeshEndUpdateFB</a>.
-The vertex count is defined by the last invocation to
-<a href="xrTriangleMeshEndUpdateFB.html">xrTriangleMeshEndUpdateFB</a>.
+<p>Begins an update of the vertex positions of a mutable triangle mesh.
+The vertex count returned through <code>outVertexCount</code> is defined by the
+last call to <a href="xrTriangleMeshEndUpdateFB.html">xrTriangleMeshEndUpdateFB</a>.
 Once the modification is done, call
-<a href="xrTriangleMeshEndVertexBufferUpdateFB.html">xrTriangleMeshEndVertexBufferUpdateFB</a> to commit the changes.
-Runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if an invalid count
-is passed.
-Runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if the mesh is
+<a href="xrTriangleMeshEndVertexBufferUpdateFB.html">xrTriangleMeshEndVertexBufferUpdateFB</a> to commit the changes and move
+to state <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_ready" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_ready</a>.</p>
+</div>
+<div class="paragraph">
+<p>The triangle mesh <code>mesh</code> <strong class="purple">must</strong> be mutable.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if the mesh is
 immutable.</p>
+</div>
+<div class="paragraph">
+<p>The triangle mesh <code>mesh</code> <strong class="purple">must</strong> be in state <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_ready" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_ready</a>.</p>
+</div>
+<div class="paragraph">
+<p>A successful call moves <code>mesh</code> to state
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_vertices" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_vertices</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -879,6 +886,9 @@ immutable.</p>
 <li>
 <p><code>XR_ERROR_FEATURE_UNSUPPORTED</code></p>
 </li>
+<li>
+<p><code>XR_ERROR_CALL_ORDER_INVALID</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -892,7 +902,7 @@ immutable.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a></p>
+<p><a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a>, <a href="xrTriangleMeshBeginUpdateFB.html">xrTriangleMeshBeginUpdateFB</a>, <a href="xrTriangleMeshEndVertexBufferUpdateFB.html">xrTriangleMeshEndVertexBufferUpdateFB</a></p>
 </div>
 </div>
 </div>
@@ -924,7 +934,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

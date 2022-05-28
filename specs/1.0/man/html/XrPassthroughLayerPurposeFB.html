@@ -777,6 +777,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_PASSTHROUGH_LAYER_PURPOSE_RECONSTRUCTION_FB = 0,
     XR_PASSTHROUGH_LAYER_PURPOSE_PROJECTED_FB = 1,
     XR_PASSTHROUGH_LAYER_PURPOSE_TRACKED_KEYBOARD_HANDS_FB = 1000203001,
+    XR_PASSTHROUGH_LAYER_PURPOSE_TRACKED_KEYBOARD_MASKED_HANDS_FB = 1000203002,
     XR_PASSTHROUGH_LAYER_PURPOSE_MAX_ENUM_FB = 0x7FFFFFFF
 } XrPassthroughLayerPurposeFB;</code></pre>
 </div>
@@ -799,6 +800,9 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </li>
 <li>
 <p><code>XR_PASSTHROUGH_LAYER_PURPOSE_TRACKED_KEYBOARD_HANDS_FB</code>&#8201;&#8212;&#8201;Passthrough layer purpose for keyboard hands presence.</p>
+</li>
+<li>
+<p><code>XR_PASSTHROUGH_LAYER_PURPOSE_TRACKED_KEYBOARD_MASKED_HANDS_FB</code>&#8201;&#8212;&#8201;Passthrough layer purpose for keyboard hands presence with keyboard masked hand transitions (i.e passthrough hands rendered only when they are over the keyboard).</p>
 </li>
 </ul>
 </div>
@@ -842,7 +846,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

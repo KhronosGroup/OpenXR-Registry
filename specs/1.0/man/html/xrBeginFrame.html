@@ -845,6 +845,18 @@ prior <a href="xrBeginFrame.html">xrBeginFrame</a> has been called without an in
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="title">Thread Safety</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access to the <code>session</code> parameter by any other <a href="xrBeginFrame.html">xrBeginFrame</a> or <a href="xrEndFrame.html">xrEndFrame</a> call <strong class="purple">must</strong> be externally synchronized</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
 <div class="title">Return Codes</div>
 <div class="dlist">
 <dl>
@@ -934,7 +946,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

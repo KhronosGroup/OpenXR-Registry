@@ -855,8 +855,14 @@ parameter <strong class="purple">must</strong> be <code>NULL</code> and mesh dat
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Mesh buffers can be updated between <a href="xrTriangleMeshBeginUpdateFB.html">xrTriangleMeshBeginUpdateFB</a> and
+<p>Mesh buffers <strong class="purple">can</strong> be updated between <a href="xrTriangleMeshBeginUpdateFB.html">xrTriangleMeshBeginUpdateFB</a> and
 <a href="xrTriangleMeshEndUpdateFB.html">xrTriangleMeshEndUpdateFB</a> calls.</p>
+</div>
+<div class="paragraph">
+<p>If the mesh is non-mutable, <code>vertexBuffer</code> <strong class="purple">must</strong> be a pointer to an
+array of <code>vertexCount</code> <a href="XrVector3f.html">XrVector3f</a> structures.
+If the mesh is non-mutable, <code>indexBuffer</code> <strong class="purple">must</strong> be a pointer to an array
+of 3 * <code>triangleCount</code> <code>uint32_t</code> vertex indices.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -873,19 +879,10 @@ parameter <strong class="purple">must</strong> be <code>NULL</code> and mesh dat
 <p><a id="VUID-XrTriangleMeshCreateInfoFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 <li>
-<p><a id="VUID-XrTriangleMeshCreateInfoFB-flags-parameter"></a> <code>flags</code> <strong class="purple">must</strong> be a valid combination of <a href="XrTriangleMeshFlagBitsFB.html">XrTriangleMeshFlagBitsFB</a> values</p>
-</li>
-<li>
-<p><a id="VUID-XrTriangleMeshCreateInfoFB-flags-requiredbitmask"></a> <code>flags</code> <strong class="purple">must</strong> not be <code>0</code></p>
+<p><a id="VUID-XrTriangleMeshCreateInfoFB-flags-parameter"></a> <code>flags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="XrTriangleMeshFlagBitsFB.html">XrTriangleMeshFlagBitsFB</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrTriangleMeshCreateInfoFB-windingOrder-parameter"></a> <code>windingOrder</code> <strong class="purple">must</strong> be a valid <a href="XrWindingOrderFB.html">XrWindingOrderFB</a> value</p>
-</li>
-<li>
-<p><a id="VUID-XrTriangleMeshCreateInfoFB-vertexBuffer-parameter"></a> If <code>vertexBuffer</code> is not <code>NULL</code>, <code>vertexBuffer</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrVector3f.html">XrVector3f</a> structure</p>
-</li>
-<li>
-<p><a id="VUID-XrTriangleMeshCreateInfoFB-indexBuffer-parameter"></a> If <code>indexBuffer</code> is not <code>NULL</code>, <code>indexBuffer</code> <strong class="purple">must</strong> be a pointer to a valid <code>uint32_t</code> value</p>
 </li>
 </ul>
 </div>
@@ -929,7 +926,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

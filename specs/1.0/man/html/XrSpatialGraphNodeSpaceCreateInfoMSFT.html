@@ -779,7 +779,7 @@ for a given spatial node type and node ID.</p>
     XrStructureType               type;
     const void*                   next;
     XrSpatialGraphNodeTypeMSFT    nodeType;
-    uint8_t                       nodeId[16];
+    uint8_t                       nodeId[XR_GUID_SIZE_MSFT];
     XrPosef                       pose;
 } XrSpatialGraphNodeSpaceCreateInfoMSFT;</code></pre>
 </div>
@@ -884,7 +884,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

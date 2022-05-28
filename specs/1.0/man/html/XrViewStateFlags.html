@@ -805,13 +805,13 @@ when this bit is set for views on a tracked headset or handheld device.</p>
 <li>
 <p><code>XR_VIEW_STATE_POSITION_VALID_BIT</code> indicates whether all <a href="XrView.html">XrView</a>
 positions contain valid data.
+Applications <strong class="purple">must</strong> not read any of the <a href="XrView.html">XrView</a>::<code>pose</code>
+<code>position</code> fields if this flag is unset.
 When a view loses tracking, runtimes <strong class="purple">should</strong> continue to provide valid but
 untracked view <code>position</code> values that are inferred or last-known, so
 long as it&#8217;s still meaningful for the application to render content using
 that position, clearing <code>XR_VIEW_STATE_POSITION_TRACKED_BIT</code> until
-tracking is recovered.
-Applications <strong class="purple">must</strong> not read any of the <a href="XrView.html">XrView</a> <code>pose</code>
-<code>position</code> fields if this flag is unset.</p>
+tracking is recovered.</p>
 </li>
 <li>
 <p><code>XR_VIEW_STATE_ORIENTATION_TRACKED_BIT</code> indicates whether all
@@ -871,7 +871,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

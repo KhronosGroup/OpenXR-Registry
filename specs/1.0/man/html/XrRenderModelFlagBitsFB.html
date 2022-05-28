@@ -770,7 +770,9 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrRenderModelFlagsFB</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrRenderModelFlagsFB
+static const XrRenderModelFlagsFB XR_RENDER_MODEL_SUPPORTS_GLTF_2_0_SUBSET_1_BIT_FB = 0x00000001;
+static const XrRenderModelFlagsFB XR_RENDER_MODEL_SUPPORTS_GLTF_2_0_SUBSET_2_BIT_FB = 0x00000002;</code></pre>
 </div>
 </div>
 </div>
@@ -778,9 +780,33 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Flag Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_RENDER_MODEL_SUPPORTS_GLTF_2_0_SUBSET_1_BIT_FB</code>&#8201;&#8212;&#8201;Minimal level of support.  Can only contain a single mesh.  Can only contain a single texture.  Can not contain transparency.  Assumes unlit rendering.  Requires Extension KHR_texturebasisu.</p>
+</li>
+<li>
+<p><code>XR_RENDER_MODEL_SUPPORTS_GLTF_2_0_SUBSET_2_BIT_FB</code>&#8201;&#8212;&#8201;All of XR_RENDER_MODEL_SUPPORTS_GLTF_2_0_SUBSET_1_BIT_FB support plus: Multiple meshes. Multiple Textures. Texture Transparency.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>There are currently no render model flags.
-This is reserved for future use.</p>
+<p>Render Model Support Levels: An application <strong class="purple">should</strong> request a model of a
+certain complexity via the <a href="XrRenderModelCapabilitiesRequestFB.html">XrRenderModelCapabilitiesRequestFB</a> on the
+structure chain of <a href="XrRenderModelPropertiesFB.html">XrRenderModelPropertiesFB</a> passed into
+<a href="xrGetRenderModelPropertiesFB.html">xrGetRenderModelPropertiesFB</a>.
+The flags on the <a href="XrRenderModelCapabilitiesRequestFB.html">XrRenderModelCapabilitiesRequestFB</a> are an
+acknowledgement of the application&#8217;s ability to render such a model.
+Multiple values of <a href="XrRenderModelFlagBitsFB.html">XrRenderModelFlagBitsFB</a> can be set on this variable
+to indicate acceptance of different support levels.
+The flags parameter on the <a href="XrRenderModelPropertiesFB.html">XrRenderModelPropertiesFB</a> will indicate
+what capabilities the model in the runtime actually requires.
+It will be set to a single value of <a href="XrRenderModelFlagBitsFB.html">XrRenderModelFlagBitsFB</a>.</p>
 </div>
 </div>
 </div>
@@ -820,7 +846,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

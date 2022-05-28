@@ -767,8 +767,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="XrHandTrackingCapsulesStateFB.html">XrHandTrackingCapsulesStateFB</a> <strong class="purple">can</strong> be provided in the <code>next</code> chain
-of <a href="XrHandJointsLocateInfoEXT.html">XrHandJointsLocateInfoEXT</a> when calling <a href="xrLocateHandJointsEXT.html">xrLocateHandJointsEXT</a>
-to request collision capsule information associated with this hand.</p>
+of <a href="XrHandJointLocationsEXT.html">XrHandJointLocationsEXT</a> when calling <a href="xrLocateHandJointsEXT.html">xrLocateHandJointsEXT</a> to
+request collision capsule information associated with this hand.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="XrHandTrackingCapsulesStateFB.html">XrHandTrackingCapsulesStateFB</a> structure is defined as:</p>
@@ -781,7 +781,7 @@ to request collision capsule information associated with this hand.</p>
 <pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrHandTrackingCapsulesStateFB {
     XrStructureType    type;
     void*              next;
-    XrHandCapsuleFB    capsules[XR_FB_HAND_TRACKING_CAPSULE_COUNT];
+    XrHandCapsuleFB    capsules[XR_HAND_TRACKING_CAPSULE_COUNT_FB];
 } XrHandTrackingCapsulesStateFB;</code></pre>
 </div>
 </div>
@@ -871,7 +871,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -770,7 +770,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrCompositionLayerSpaceWarpInfoFlagsFB</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrCompositionLayerSpaceWarpInfoFlagsFB
+static const XrCompositionLayerSpaceWarpInfoFlagsFB XR_COMPOSITION_LAYER_SPACE_WARP_INFO_FRAME_SKIP_BIT_FB = 0x00000001;</code></pre>
 </div>
 </div>
 </div>
@@ -778,9 +779,20 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>There are currently no space warp info flags.
-This is reserved for future use.</p>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Flag Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_COMPOSITION_LAYER_SPACE_WARP_INFO_FRAME_SKIP_BIT_FB</code> requests that
+the runtime skips space warp frame extrapolation for a particular frame.
+This can be used when the application has better knowledge the particular
+frame will be not a good fit for space warp frame extrapolation.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -820,7 +832,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

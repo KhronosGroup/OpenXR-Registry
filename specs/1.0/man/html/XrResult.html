@@ -840,6 +840,10 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_SCENE_COMPUTE_CONSISTENCY_MISMATCH_MSFT = -1000097005,
     XR_ERROR_DISPLAY_REFRESH_RATE_UNSUPPORTED_FB = -1000101000,
     XR_ERROR_COLOR_SPACE_UNSUPPORTED_FB = -1000108000,
+    XR_ERROR_SPACE_COMPONENT_NOT_SUPPORTED_FB = -1000113000,
+    XR_ERROR_SPACE_COMPONENT_NOT_ENABLED_FB = -1000113001,
+    XR_ERROR_SPACE_COMPONENT_STATUS_PENDING_FB = -1000113002,
+    XR_ERROR_SPACE_COMPONENT_STATUS_ALREADY_SET_FB = -1000113003,
     XR_ERROR_UNEXPECTED_STATE_PASSTHROUGH_FB = -1000118000,
     XR_ERROR_FEATURE_ALREADY_CREATED_PASSTHROUGH_FB = -1000118001,
     XR_ERROR_FEATURE_REQUIRED_PASSTHROUGH_FB = -1000118002,
@@ -1198,6 +1202,22 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The color space is not supported by the runtime. (Added by the <code><a href="#XR_FB_color_space">[XR_FB_color_space]</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_COMPONENT_NOT_SUPPORTED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The component type is not supported for this space. (Added by the <code><a href="#XR_FB_spatial_entity">[XR_FB_spatial_entity]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_COMPONENT_NOT_ENABLED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required component is not enabled for this space. (Added by the <code><a href="#XR_FB_spatial_entity">[XR_FB_spatial_entity]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_COMPONENT_STATUS_PENDING_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A request to set the component&#8217;s status is currently pending. (Added by the <code><a href="#XR_FB_spatial_entity">[XR_FB_spatial_entity]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_COMPONENT_STATUS_ALREADY_SET_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The component is already set to the requested value. (Added by the <code><a href="#XR_FB_spatial_entity">[XR_FB_spatial_entity]</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_UNEXPECTED_STATE_PASSTHROUGH_FB</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The object state is unexpected for the issued command. (Added by the <code><a href="#XR_FB_passthrough">[XR_FB_passthrough]</a></code> extension)</p></td>
 </tr>
@@ -1250,7 +1270,7 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="xrResultToString.html">xrResultToString</a></p>
+<p><a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="xrResultToString.html">xrResultToString</a></p>
 </div>
 </div>
 </div>
@@ -1282,7 +1302,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

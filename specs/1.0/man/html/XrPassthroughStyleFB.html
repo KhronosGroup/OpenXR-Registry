@@ -786,14 +786,6 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sect1">
 <h2 id="_members">Members</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>It describes a style for a layer.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Member Descriptions</div>
@@ -804,20 +796,40 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </li>
 <li>
 <p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
-chain, such as <a href="XrPassthroughColorMapMonoToRgbaFB.html">XrPassthroughColorMapMonoToRgbaFB</a> or
-<a href="XrPassthroughColorMapMonoToRgbaFB.html">XrPassthroughColorMapMonoToRgbaFB</a>.
-The color map structures are mutually exclusive.</p>
+chain.</p>
 </li>
 <li>
-<p><code>textureOpacityFactor</code> is the opacity factor in range 0.0 to 1.0.</p>
+<p><code>textureOpacityFactor</code> is the opacity of the passthrough imagery in
+the range [0, 1].</p>
 </li>
 <li>
-<p><code>edgeColor</code> is the <a href="XrColor4f.html">XrColor4f</a> that defines the color of the edge.
-Setting edge color to ( 0, 0, 0, 0 ) disables edge rendering.</p>
+<p><code>edgeColor</code> is the <a href="XrColor4f.html">XrColor4f</a> that defines the edge rendering
+color.
+Edges are detected in the original passthrough imagery and rendered on top
+of it.
+Edge rendering is disabled when the alpha value of <code>edgeColor</code> is
+zero.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrPassthroughStyleFB.html">XrPassthroughStyleFB</a> lets applications customize the appearance of
+passthrough layers.
+In addition to the parameters specified here, applications <strong class="purple">may</strong> add one of
+the following structures to the structure chain:
+<a href="XrPassthroughColorMapMonoToRgbaFB.html">XrPassthroughColorMapMonoToRgbaFB</a>,
+<a href="XrPassthroughColorMapMonoToMonoFB.html">XrPassthroughColorMapMonoToMonoFB</a>,
+<a href="XrPassthroughBrightnessContrastSaturationFB.html">XrPassthroughBrightnessContrastSaturationFB</a>.
+These structures are mutually exclusive.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if more than one
+of them are present in the structure chain.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -831,7 +843,7 @@ Setting edge color to ( 0, 0, 0, 0 ) disables edge rendering.</p>
 <p><a id="VUID-XrPassthroughStyleFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_PASSTHROUGH_STYLE_FB</code></p>
 </li>
 <li>
-<p><a id="VUID-XrPassthroughStyleFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrPassthroughStyleFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrPassthroughBrightnessContrastSaturationFB.html">XrPassthroughBrightnessContrastSaturationFB</a>, <a href="XrPassthroughColorMapMonoToMonoFB.html">XrPassthroughColorMapMonoToMonoFB</a>, <a href="XrPassthroughColorMapMonoToRgbaFB.html">XrPassthroughColorMapMonoToRgbaFB</a></p>
 </li>
 </ul>
 </div>
@@ -875,7 +887,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

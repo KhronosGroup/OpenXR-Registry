@@ -806,12 +806,32 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="paragraph">
 <p>Retrieves a pointer to the vertex buffer.
 The vertex buffer is structured as an array of <a href="XrVector3f.html">XrVector3f</a>.
-The size of the buffer is <code>vertexCount</code>.
-The application must call <a href="xrTriangleMeshBeginUpdateFB.html">xrTriangleMeshBeginUpdateFB</a> or
-<a href="xrTriangleMeshBeginVertexBufferUpdateFB.html">xrTriangleMeshBeginVertexBufferUpdateFB</a> before making modifications to
-the vertex buffer.
+The size of the buffer is
+<a href="XrTriangleMeshCreateInfoFB.html">XrTriangleMeshCreateInfoFB</a>::<code>vertexCount</code> elements.
 The buffer location is guaranteed to remain constant over the lifecycle of
 the mesh object.</p>
+</div>
+<div class="paragraph">
+<p>A mesh <strong class="purple">must</strong> be mutable and in a specific state for the application to
+<strong>modify</strong> it through the retrieved vertex buffer.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A mutable triangle mesh <strong class="purple">must</strong> be in state
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_defining_topology" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_defining_topology</a>,
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_mesh" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_mesh</a>, or
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_vertices" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_vertices</a> to modify the <strong>contents</strong> of
+the vertex buffer retrieved by this function.</p>
+</li>
+<li>
+<p>A mutable triangle mesh <strong class="purple">must</strong> be in state
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_defining_topology" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_defining_topology</a> or
+<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_mesh" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#fb_triangle_mesh_state_updating_mesh</a> to modify the <strong>count</strong> of elements
+in the vertex buffer retrieved by this function.
+The new count is passed as a parameter to <a href="xrTriangleMeshEndUpdateFB.html">xrTriangleMeshEndUpdateFB</a>.</p>
+</li>
+</ul>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -887,7 +907,7 @@ the mesh object.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a>, <a href="XrVector3f.html">XrVector3f</a></p>
+<p><a href="XrTriangleMeshFB.html">XrTriangleMeshFB</a>, <a href="XrVector3f.html">XrVector3f</a>, <a href="xrTriangleMeshGetIndexBufferFB.html">xrTriangleMeshGetIndexBufferFB</a></p>
 </div>
 </div>
 </div>
@@ -919,7 +939,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

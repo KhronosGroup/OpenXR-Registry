@@ -794,12 +794,12 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <a href="xrCreateInstance.html">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>unixTime</code> is a <code>timespec</code> obtained from <code>clock_gettime</code> with
-<code>CLOCK_MONOTONIC</code>.</p>
+<p><code>timespecTime</code> is a <code>timespec</code> obtained from <code>clock_gettime</code>
+with <code>CLOCK_MONOTONIC</code>.</p>
 </li>
 <li>
 <p><code>time</code> is the resulting <a href="XrTime.html">XrTime</a> that is equivalent to the
-<code>unixTime</code>.</p>
+<code>timespecTime</code>.</p>
 </li>
 </ul>
 </div>
@@ -815,7 +815,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 by the <code>clock_gettime</code> function to the equivalent <a href="XrTime.html">XrTime</a>.</p>
 </div>
 <div class="paragraph">
-<p>If the output <code>time</code> cannot represent the input <code>unixTime</code>, the
+<p>If the output <code>time</code> cannot represent the input <code>timespecTime</code>, the
 runtime <strong class="purple">must</strong> return <code>XR_ERROR_TIME_INVALID</code>.</p>
 </div>
 <div class="sidebarblock">
@@ -921,7 +921,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

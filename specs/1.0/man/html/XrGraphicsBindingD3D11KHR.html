@@ -812,8 +812,13 @@ No such structures are defined in core OpenXR or this extension.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When creating a D3D11-backed <a href="XrSession.html">XrSession</a>, the application will provide a
-pointer to an <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a> in the <code>next</code> chain of the
-<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>.</p>
+pointer to an <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a> in the
+<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>next</code> field of structure passed to
+<a href="xrCreateSession.html">xrCreateSession</a>.
+The D3D11 device specified in <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>::<code>device</code>
+<strong class="purple">must</strong> be created in accordance with the requirements retrieved through
+<a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a>, otherwise <a href="xrCreateSession.html">xrCreateSession</a>
+<strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -874,7 +879,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

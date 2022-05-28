@@ -793,10 +793,10 @@ static const XrSpaceVelocityFlags XR_SPACE_VELOCITY_ANGULAR_VALID_BIT = 0x000000
 <div class="ulist">
 <ul>
 <li>
-<p><code>XR_SPACE_VELOCITY_LINEAR_VALID_BIT</code>&#8201;&#8212;&#8201;Indicates that the <code>linearVelocity</code> member contains valid data</p>
+<p><code>XR_SPACE_VELOCITY_LINEAR_VALID_BIT</code>&#8201;&#8212;&#8201;Indicates that the <code>linearVelocity</code> member contains valid data. Applications <strong class="purple">must</strong> not read the <code>linearVelocity</code> field if this flag is unset.</p>
 </li>
 <li>
-<p><code>XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</code>&#8201;&#8212;&#8201;Indicates that the <code>angularVelocity</code> member contains valid data</p>
+<p><code>XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</code>&#8201;&#8212;&#8201;Indicates that the <code>angularVelocity</code> member contains valid data. Applications <strong class="purple">must</strong> not read the <code>angularVelocity</code> field if this flag is unset.</p>
 </li>
 </ul>
 </div>
@@ -840,7 +840,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

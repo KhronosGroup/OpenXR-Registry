@@ -800,7 +800,9 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <li>
 <p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
 chain.
-No such structures are defined in core OpenXR or this extension.</p>
+<a href="XrRenderModelCapabilitiesRequestFB.html">XrRenderModelCapabilitiesRequestFB</a> is a structure in this structure
+chain and <strong class="purple">should</strong> be linked when this structure is passed to
+<a href="xrGetRenderModelPropertiesFB.html">xrGetRenderModelPropertiesFB</a>.</p>
 </li>
 <li>
 <p><code>vendorId</code> is the vendor id of the model.</p>
@@ -816,7 +818,9 @@ No such structures are defined in core OpenXR or this extension.</p>
 <p><code>modelVersion</code> is the version number of the model.</p>
 </li>
 <li>
-<p><code>flags</code> is a bitmask of <a href="XrRenderModelFlagsFB.html">XrRenderModelFlagsFB</a>.</p>
+<p><code>flags</code> is a bitmask of <a href="XrRenderModelFlagsFB.html">XrRenderModelFlagsFB</a>.
+After a successful call to <a href="xrGetRenderModelPropertiesFB.html">xrGetRenderModelPropertiesFB</a>, flags must
+contain the support level of the model and no other support levels.</p>
 </li>
 </ul>
 </div>
@@ -858,7 +862,10 @@ The application <strong class="purple">should</strong> then update its cached or
 <p><a id="VUID-XrRenderModelPropertiesFB-modelName-parameter"></a> <code>modelName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to XR_MAX_RENDER_MODEL_NAME_SIZE_FB</p>
 </li>
 <li>
-<p><a id="VUID-XrRenderModelPropertiesFB-flags-zerobitmask"></a> <code>flags</code> <strong class="purple">must</strong> be <code>0</code></p>
+<p><a id="VUID-XrRenderModelPropertiesFB-flags-parameter"></a> <code>flags</code> <strong class="purple">must</strong> be a valid combination of <a href="XrRenderModelFlagBitsFB.html">XrRenderModelFlagBitsFB</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrRenderModelPropertiesFB-flags-requiredbitmask"></a> <code>flags</code> <strong class="purple">must</strong> not be <code>0</code></p>
 </li>
 </ul>
 </div>
@@ -902,7 +909,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

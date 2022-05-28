@@ -785,14 +785,6 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sect1">
 <h2 id="_members">Members</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>It describes a color map style for a layer.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Member Descriptions</div>
@@ -803,16 +795,31 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </li>
 <li>
 <p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
-chain.
-No such structures are defined in core OpenXR or this extension.</p>
+chain.</p>
 </li>
 <li>
-<p><code>textureColorMap</code> is the array of <code>uint8_t</code> intensity values that
-map to original intensity values.</p>
+<p><code>textureColorMap</code> is an array of <code>uint8_t</code> grayscale color values
+to which the passthrough luminance values are mapped.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrPassthroughColorMapMonoToMonoFB.html">XrPassthroughColorMapMonoToMonoFB</a> lets applications define a map which
+replaces each input luminance value in the passthrough imagery with a
+grayscale color value defined in <code>textureColorMap</code>.
+The map is applied before any additional effects (such as edges) are
+rendered on top.</p>
+</div>
+<div class="paragraph">
+<p><a href="XrPassthroughColorMapMonoToMonoFB.html">XrPassthroughColorMapMonoToMonoFB</a> is provided in the <code>next</code> chain
+of <a href="XrPassthroughStyleFB.html">XrPassthroughStyleFB</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -870,7 +877,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.22<br>
+Version 1.0.23<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
