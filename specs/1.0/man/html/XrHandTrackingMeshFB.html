@@ -825,7 +825,7 @@ structure, or <code>0</code> to indicate a request to retrieve the required capa
 <p><code>jointCountOutput</code> is filled in by the runtime with the count of joint
 data elements written, or the required capacity in the case that any of
 <code>jointCapacityInput</code>, <code>vertexCapacityInput</code>, or
-<code>indexCapacityInput</code> is <code>0</code>.</p>
+<code>indexCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>jointBindPoses</code> is an array of poses that matches what is returned by
@@ -847,7 +847,7 @@ capacity.</p>
 <p><code>vertexCountOutput</code> is filled in by the runtime with the count of
 vertex data elements written, or the required capacity in the case that
 any of <code>jointCapacityInput</code>, <code>vertexCapacityInput</code>, or
-<code>indexCapacityInput</code> is <code>0</code>.</p>
+<code>indexCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>vertexPositions</code> is an array of 3D vertex positions.</p>
@@ -872,7 +872,7 @@ structure, or <code>0</code> to indicate a request to retrieve the required capa
 <p><code>indexCountOutput</code> is filled in by the runtime with the count of index
 data elements written, or the required capacity in the case that any of
 <code>jointCapacityInput</code>, <code>vertexCapacityInput</code>, or
-<code>indexCapacityInput</code> is <code>0</code>.</p>
+<code>indexCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>indices</code> is an array of triangle indices.</p>
@@ -993,7 +993,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.23<br>
+Version 1.0.24<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

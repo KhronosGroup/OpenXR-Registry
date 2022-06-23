@@ -445,8 +445,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR Specification</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2022, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.23</span>
-<br><span id="revremark">from git ref release-1.0.23</span>
+<span id="revnumber">version 1.0.24</span>
+<br><span id="revremark">from git ref release-1.0.24</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -4235,7 +4235,7 @@ to indicate a request to retrieve the required capacity.</p>
 <li>
 <p><code>propertyCountOutput</code> is a pointer to the count of properties written,
 or a pointer to the required capacity in the case that
-propertyCapacityInput is 0.</p>
+propertyCapacityInput is insufficient.</p>
 </li>
 <li>
 <p><code>properties</code> is a pointer to an array of <a href="#XrApiLayerProperties">XrApiLayerProperties</a>
@@ -4464,7 +4464,7 @@ API layer to retrieve extensions from, as returned by
 <li>
 <p><code>propertyCountOutput</code> is a pointer to the count of properties written,
 or a pointer to the required capacity in the case that
-<code>propertyCapacityInput</code> is <code>0</code>.</p>
+<code>propertyCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>properties</code> is a pointer to an array of <a href="#XrExtensionProperties">XrExtensionProperties</a>
@@ -6606,7 +6606,7 @@ a request to retrieve the required capacity.</p>
 <li>
 <p><code>bufferCountOutput</code> is a pointer to the count of characters written
 (including the terminating '\0'), or a pointer to the required capacity in
-the case that <code>bufferCapacityInput</code> is 0.</p>
+the case that <code>bufferCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>buffer</code> is a pointer to an application-allocated buffer that will be
@@ -6804,7 +6804,7 @@ See <a href="#input-suggested-bindings">Suggested Bindings</a> for more details.
 examples of input subpaths.</p>
 </div>
 <div class="sect4">
-<h5 id="_standard_identifiers"><a class="anchor" href="#_standard_identifiers"></a>Standard identifiers</h5>
+<h5 id="semantic-path-standard-identifiers"><a class="anchor" href="#semantic-path-standard-identifiers"></a>Standard identifiers</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6890,6 +6890,9 @@ conventions for their components.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect4">
+<h5 id="semantic-path-standard-pose-identifiers"><a class="anchor" href="#semantic-path-standard-pose-identifiers"></a>Standard pose identifiers</h5>
 <div class="paragraph">
 <p>Input sources whose orientation and/or position are tracked also expose pose
 identifiers.</p>
@@ -8400,7 +8403,7 @@ indicate a request to retrieve the required capacity.</p>
 <li>
 <p><code>spaceCountOutput</code> is a pointer to the count of spaces written, or a
 pointer to the required capacity in the case that <code>spaceCapacityInput</code>
-is 0.</p>
+is insufficient.</p>
 </li>
 <li>
 <p><code>spaces</code> is a pointer to an application-allocated array that will be
@@ -9607,7 +9610,7 @@ required capacity.</p>
 <li>
 <p><code>viewConfigurationsTypeCountOutput</code> is a pointer to the count of
 <code>viewConfigurations</code> written, or a pointer to the required capacity in
-the case that <code>viewConfigurationsTypeCapacityInput</code> is 0.</p>
+the case that <code>viewConfigurationsTypeCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>viewConfigurationsTypes</code> is a pointer to an array of
@@ -11577,7 +11580,7 @@ retrieve the required capacity.</p>
 <li>
 <p><code>formatCountOutput</code> is a pointer to the count of <code>uint64_t</code> formats
 written, or a pointer to the required capacity in the case that
-<code>formatCapacityInput</code> is <code>0</code>.</p>
+<code>formatCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>formats</code> is a pointer to an array of <code>int64_t</code> format ids, but
@@ -12191,7 +12194,7 @@ to indicate a request to retrieve the required capacity.</p>
 <li>
 <p><code>imageCountOutput</code> is a pointer to the count of <code>images</code> written,
 or a pointer to the required capacity in the case that
-<code>imageCapacityInput</code> is 0.</p>
+<code>imageCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>images</code> is a pointer to an array of graphics API-specific
@@ -14944,7 +14947,7 @@ the required capacity.</p>
 <li>
 <p><code>environmentBlendModeCountOutput</code> is a pointer to the count of
 <code>environmentBlendModes</code> written, or a pointer to the required capacity
-in the case that <code>environmentBlendModeCapacityInput</code> is 0.</p>
+in the case that <code>environmentBlendModeCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>environmentBlendModes</code> is a pointer to an array of
@@ -17962,7 +17965,7 @@ with an <a href="#XrHapticBaseHeader">XrHapticBaseHeader</a>.</p>
 </div>
 <div class="paragraph">
 <p>Triggers a haptic event through the specified action of type
-<code>XR_TYPE_HAPTIC_VIBRATION</code>.
+<code>XR_ACTION_TYPE_VIBRATION_OUTPUT</code>.
 The runtime <strong class="purple">should</strong> deliver this request to the appropriate device, but
 exactly which device, if any, this event is sent to is up to the runtime to
 decide.
@@ -18634,7 +18637,8 @@ request to retrieve the required capacity.</p>
 </li>
 <li>
 <p><code>sourceCountOutput</code> is a pointer to the count of sources, or a pointer
-to the required capacity in the case that <code>sourceCapacityInput</code> is 0.</p>
+to the required capacity in the case that <code>sourceCapacityInput</code> is
+insufficient.</p>
 </li>
 <li>
 <p><code>sources</code> is a pointer to an application-allocated array that will be
@@ -18836,7 +18840,7 @@ a request to retrieve the required capacity.</p>
 <li>
 <p><code>bufferCountOutput</code> is a pointer to the count of name characters
 written (including the terminating <code>\0</code>), or a pointer to the required
-capacity in the case that <code>bufferCapacityInput</code> is 0.</p>
+capacity in the case that <code>bufferCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>buffer</code> is a pointer to an application-allocated buffer that will be
@@ -25729,7 +25733,7 @@ No such structures are defined in core OpenXR or this extension.</p>
 <li>
 <p><code>vertexCountOutput</code> is filled in by the runtime with the count of
 vertices written or the required capacity in the case that
-<code>vertexCapacityInput</code> or <code>indexCapacityInput</code> is <code>0</code>.</p>
+<code>vertexCapacityInput</code> or <code>indexCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>vertices</code> is an array of vertices filled in by the runtime that
@@ -25746,7 +25750,7 @@ respective <a href="#XrCompositionLayerProjectionView">XrCompositionLayerProject
 <li>
 <p><code>indexCountOutput</code> is filled in by the runtime with the count of
 indices written or the required capacity in the case that
-<code>vertexCapacityInput</code> or <code>indexCapacityInput</code> is <code>0</code>.</p>
+<code>vertexCapacityInput</code> or <code>indexCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>indices</code> is an array of indices filled in by the runtime, specifying
@@ -26867,7 +26871,7 @@ indicate a request to retrieve the required capacity.</p>
 <li>
 <p><code>bufferCountOutput</code> is a pointer to the count of characters written
 (including terminating <code>\0</code>), or a pointer to the required capacity in the
-case that <code>bufferCapacityInput</code> is 0.</p>
+case that <code>bufferCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>buffer</code> is a pointer to an array of characters, but <strong class="purple">can</strong> be <code>NULL</code>
@@ -26988,7 +26992,7 @@ indicate a request to retrieve the required capacity.</p>
 <li>
 <p><code>bufferCountOutput</code> is a pointer to the count of characters written
 (including terminating <code>\0</code>), or a pointer to the required capacity in the
-case that <code>bufferCapacityInput</code> is 0.</p>
+case that <code>bufferCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>buffer</code> is a pointer to an array of characters, but <strong class="purple">can</strong> be <code>NULL</code>
@@ -30323,7 +30327,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 23)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 24)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31110,6 +31114,9 @@ the time of their most recent contribution, are listed below.</p>
 <p>Guodong Chen, Huawei</p>
 </li>
 <li>
+<p>Jack Pritz, Unity Technologies</p>
+</li>
+<li>
 <p>Jakob Bornecrantz, Collabora</p>
 </li>
 <li>
@@ -31289,7 +31296,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.23<br>
+Version 1.0.24<br>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>

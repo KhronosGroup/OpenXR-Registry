@@ -773,6 +773,10 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <pre class="highlight"><code class="language-c++" data-lang="c++">typedef enum XrSpaceComponentTypeFB {
     XR_SPACE_COMPONENT_TYPE_LOCATABLE_FB = 0,
     XR_SPACE_COMPONENT_TYPE_STORABLE_FB = 1,
+    XR_SPACE_COMPONENT_TYPE_BOUNDED_2D_FB = 3,
+    XR_SPACE_COMPONENT_TYPE_BOUNDED_3D_FB = 4,
+    XR_SPACE_COMPONENT_TYPE_SEMANTIC_LABELS_FB = 5,
+    XR_SPACE_COMPONENT_TYPE_ROOM_LAYOUT_FB = 6,
     XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB = 7,
     XR_SPACE_COMPONENT_TYPE_MAX_ENUM_FB = 0x7FFFFFFF
 } XrSpaceComponentTypeFB;</code></pre>
@@ -796,6 +800,18 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </li>
 <li>
 <p><code>XR_SPACE_COMPONENT_TYPE_STORABLE_FB</code>&#8201;&#8212;&#8201;Enables persistence operations: save and erase.</p>
+</li>
+<li>
+<p><code>XR_SPACE_COMPONENT_TYPE_BOUNDED_2D_FB</code>&#8201;&#8212;&#8201;Bounded 2D component.</p>
+</li>
+<li>
+<p><code>XR_SPACE_COMPONENT_TYPE_BOUNDED_3D_FB</code>&#8201;&#8212;&#8201;Bounded 3D component.</p>
+</li>
+<li>
+<p><code>XR_SPACE_COMPONENT_TYPE_SEMANTIC_LABELS_FB</code>&#8201;&#8212;&#8201;Semantic labels component.</p>
+</li>
+<li>
+<p><code>XR_SPACE_COMPONENT_TYPE_ROOM_LAYOUT_FB</code>&#8201;&#8212;&#8201;Room layout component.</p>
 </li>
 <li>
 <p><code>XR_SPACE_COMPONENT_TYPE_SPACE_CONTAINER_FB</code>&#8201;&#8212;&#8201;Space container component.</p>
@@ -842,7 +858,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.23<br>
+Version 1.0.24<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
