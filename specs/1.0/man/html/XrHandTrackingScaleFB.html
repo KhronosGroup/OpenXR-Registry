@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrHandTrackingScaleFB(3)</title>
 <style>
 /*
@@ -781,7 +781,8 @@ transforms.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrHandTrackingScaleFB {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_FB_hand_tracking_mesh
+typedef struct XrHandTrackingScaleFB {
     XrStructureType    type;
     void*              next;
     float              sensorOutput;
@@ -862,7 +863,7 @@ give the joints in mesh binding scale.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrBool32.html">XrBool32</a>, <a href="XrStructureType.html">XrStructureType</a></p>
+<p><a href="XR_FB_hand_tracking_mesh.html">XR_FB_hand_tracking_mesh</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrStructureType.html">XrStructureType</a></p>
 </div>
 </div>
 </div>
@@ -882,7 +883,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -894,7 +895,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

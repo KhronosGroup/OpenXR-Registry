@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrGetInstanceProcAddr(3)</title>
 <style>
 /*
@@ -774,7 +774,8 @@ function <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrGetInstanceProcAddr(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+XrResult xrGetInstanceProcAddr(
     XrInstance                                  instance,
     const char*                                 name,
     PFN_xrVoidFunction*                         function);</code></pre>
@@ -1019,7 +1020,7 @@ first parameter) that is <code>instance</code> or a child of <code>instance</cod
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="PFN_xrVoidFunction.html">PFN_xrVoidFunction</a>, <a href="XrInstance.html">XrInstance</a></p>
+<p><a href="PFN_xrVoidFunction.html">PFN_xrVoidFunction</a>, <a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrInstance.html">XrInstance</a></p>
 </div>
 </div>
 </div>
@@ -1039,7 +1040,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -1051,7 +1052,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

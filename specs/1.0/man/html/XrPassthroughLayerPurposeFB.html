@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrPassthroughLayerPurposeFB(3)</title>
 <style>
 /*
@@ -776,7 +776,9 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <pre class="highlight"><code class="language-c++" data-lang="c++">typedef enum XrPassthroughLayerPurposeFB {
     XR_PASSTHROUGH_LAYER_PURPOSE_RECONSTRUCTION_FB = 0,
     XR_PASSTHROUGH_LAYER_PURPOSE_PROJECTED_FB = 1,
+  // Provided by XR_FB_passthrough_keyboard_hands
     XR_PASSTHROUGH_LAYER_PURPOSE_TRACKED_KEYBOARD_HANDS_FB = 1000203001,
+  // Provided by XR_FB_passthrough_keyboard_hands
     XR_PASSTHROUGH_LAYER_PURPOSE_TRACKED_KEYBOARD_MASKED_HANDS_FB = 1000203002,
     XR_PASSTHROUGH_LAYER_PURPOSE_MAX_ENUM_FB = 0x7FFFFFFF
 } XrPassthroughLayerPurposeFB;</code></pre>
@@ -834,7 +836,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -846,7 +848,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

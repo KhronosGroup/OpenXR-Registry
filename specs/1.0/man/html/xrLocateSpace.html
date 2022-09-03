@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrLocateSpace(3)</title>
 <style>
 /*
@@ -774,7 +774,8 @@ space at a specified time, if currently known by the runtime.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrLocateSpace(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+XrResult xrLocateSpace(
     XrSpace                                     space,
     XrSpace                                     baseSpace,
     XrTime                                      time,
@@ -867,13 +868,15 @@ The location in this case is the difference in the two spaces'
 application-specified transforms relative to that common entity.</p>
 </div>
 <div class="paragraph">
-<p>The runtime <strong class="purple">should</strong> return a location with
-<code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> set and
-<code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> unset for spaces tracking two
-static entities in the world when their relative pose is known to the
+<p>During tracking loss, the runtime <strong class="purple">should</strong> return a location with
+<code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> and
+<code>XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</code> set and
+<code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> and
+<code>XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</code> unset for spaces tracking
+two static entities in the world when their relative pose is known to the
 runtime.
-This enables applications to make use of the runtime&#8217;s latest knowledge of
-the world, even during tracking loss.</p>
+This enables applications to continue to make use of the runtime&#8217;s latest
+knowledge of the world.</p>
 </div>
 <div class="paragraph">
 <p>If an <a href="XrSpaceVelocity.html">XrSpaceVelocity</a> structure is chained to the <code>next</code> pointer
@@ -978,7 +981,7 @@ xrLocateSpace(space, baseSpace, time, &amp;location);</code></pre>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSpace.html">XrSpace</a>, <a href="XrSpaceLocation.html">XrSpaceLocation</a>, <a href="XrSpaceLocationFlags.html">XrSpaceLocationFlags</a>, <a href="XrTime.html">XrTime</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrSpace.html">XrSpace</a>, <a href="XrSpaceLocation.html">XrSpaceLocation</a>, <a href="XrSpaceLocationFlags.html">XrSpaceLocationFlags</a>, <a href="XrTime.html">XrTime</a></p>
 </div>
 </div>
 </div>
@@ -998,7 +1001,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -1010,7 +1013,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

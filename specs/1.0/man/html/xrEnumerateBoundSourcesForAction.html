@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrEnumerateBoundSourcesForAction(3)</title>
 <style>
 /*
@@ -773,7 +773,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrEnumerateBoundSourcesForAction(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+XrResult xrEnumerateBoundSourcesForAction(
     XrSession                                   session,
     const XrBoundSourcesForActionEnumerateInfo* enumerateInfo,
     uint32_t                                    sourceCapacityInput,
@@ -809,7 +810,7 @@ insufficient.</p>
 </li>
 <li>
 <p><code>sources</code> is a pointer to an application-allocated array that will be
-filled with the <a href="XrPath.html">XrPath</a> values for all sources.
+filled with the <a href="XrPath.html">XrPath</a> values for all bound sources.
 It <strong class="purple">can</strong> be <code>NULL</code> if <code>sourceCapacityInput</code> is 0.</p>
 </li>
 <li>
@@ -840,6 +841,24 @@ never attached to the session with <a href="xrAttachSessionActionSets.html">xrAt
 <a href="xrEnumerateBoundSourcesForAction.html">xrEnumerateBoundSourcesForAction</a> <strong class="purple">must</strong> enumerate the same set of bound
 sources, or absence of bound sources, for a given query (defined by the
 <code>enumerateInfo</code> parameter) between any two calls to <a href="xrSyncActions.html">xrSyncActions</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>The <a href="XrPath.html">XrPath</a> bound sources returned by the runtime are opaque values
+and <strong class="purple">should</strong> not be inspected or persisted.
+They are only intended for use in conjunction with
+<a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -921,7 +940,7 @@ sources, or absence of bound sources, for a given query (defined by the
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrAction.html">XrAction</a>, <a href="XrBoundSourcesForActionEnumerateInfo.html">XrBoundSourcesForActionEnumerateInfo</a>, <a href="XrPath.html">XrPath</a>, <a href="XrSession.html">XrSession</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrAction.html">XrAction</a>, <a href="XrBoundSourcesForActionEnumerateInfo.html">XrBoundSourcesForActionEnumerateInfo</a>, <a href="XrPath.html">XrPath</a>, <a href="XrSession.html">XrSession</a></p>
 </div>
 </div>
 </div>
@@ -941,7 +960,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -953,7 +972,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

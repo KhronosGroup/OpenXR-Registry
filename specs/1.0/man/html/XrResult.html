@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrResult(3)</title>
 <style>
 /*
@@ -826,35 +826,65 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_LOCALIZED_NAME_INVALID = -49,
     XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING = -50,
     XR_ERROR_RUNTIME_UNAVAILABLE = -51,
+  // Provided by XR_KHR_android_thread_settings
     XR_ERROR_ANDROID_THREAD_SETTINGS_ID_INVALID_KHR = -1000003000,
+  // Provided by XR_KHR_android_thread_settings
     XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR = -1000003001,
+  // Provided by XR_MSFT_spatial_anchor
     XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT = -1000039001,
+  // Provided by XR_MSFT_secondary_view_configuration
     XR_ERROR_SECONDARY_VIEW_CONFIGURATION_TYPE_NOT_ENABLED_MSFT = -1000053000,
+  // Provided by XR_MSFT_controller_model
     XR_ERROR_CONTROLLER_MODEL_KEY_INVALID_MSFT = -1000055000,
+  // Provided by XR_MSFT_composition_layer_reprojection
     XR_ERROR_REPROJECTION_MODE_UNSUPPORTED_MSFT = -1000066000,
+  // Provided by XR_MSFT_scene_understanding
     XR_ERROR_COMPUTE_NEW_SCENE_NOT_COMPLETED_MSFT = -1000097000,
+  // Provided by XR_MSFT_scene_understanding
     XR_ERROR_SCENE_COMPONENT_ID_INVALID_MSFT = -1000097001,
+  // Provided by XR_MSFT_scene_understanding
     XR_ERROR_SCENE_COMPONENT_TYPE_MISMATCH_MSFT = -1000097002,
+  // Provided by XR_MSFT_scene_understanding
     XR_ERROR_SCENE_MESH_BUFFER_ID_INVALID_MSFT = -1000097003,
+  // Provided by XR_MSFT_scene_understanding
     XR_ERROR_SCENE_COMPUTE_FEATURE_INCOMPATIBLE_MSFT = -1000097004,
+  // Provided by XR_MSFT_scene_understanding
     XR_ERROR_SCENE_COMPUTE_CONSISTENCY_MISMATCH_MSFT = -1000097005,
+  // Provided by XR_FB_display_refresh_rate
     XR_ERROR_DISPLAY_REFRESH_RATE_UNSUPPORTED_FB = -1000101000,
+  // Provided by XR_FB_color_space
     XR_ERROR_COLOR_SPACE_UNSUPPORTED_FB = -1000108000,
+  // Provided by XR_FB_spatial_entity
     XR_ERROR_SPACE_COMPONENT_NOT_SUPPORTED_FB = -1000113000,
+  // Provided by XR_FB_spatial_entity
     XR_ERROR_SPACE_COMPONENT_NOT_ENABLED_FB = -1000113001,
+  // Provided by XR_FB_spatial_entity
     XR_ERROR_SPACE_COMPONENT_STATUS_PENDING_FB = -1000113002,
+  // Provided by XR_FB_spatial_entity
     XR_ERROR_SPACE_COMPONENT_STATUS_ALREADY_SET_FB = -1000113003,
+  // Provided by XR_FB_passthrough
     XR_ERROR_UNEXPECTED_STATE_PASSTHROUGH_FB = -1000118000,
+  // Provided by XR_FB_passthrough
     XR_ERROR_FEATURE_ALREADY_CREATED_PASSTHROUGH_FB = -1000118001,
+  // Provided by XR_FB_passthrough
     XR_ERROR_FEATURE_REQUIRED_PASSTHROUGH_FB = -1000118002,
+  // Provided by XR_FB_passthrough
     XR_ERROR_NOT_PERMITTED_PASSTHROUGH_FB = -1000118003,
+  // Provided by XR_FB_passthrough
     XR_ERROR_INSUFFICIENT_RESOURCES_PASSTHROUGH_FB = -1000118004,
+  // Provided by XR_FB_passthrough
     XR_ERROR_UNKNOWN_PASSTHROUGH_FB = -1000118050,
+  // Provided by XR_FB_render_model
     XR_ERROR_RENDER_MODEL_KEY_INVALID_FB = -1000119000,
+  // Provided by XR_FB_render_model
     XR_RENDER_MODEL_UNAVAILABLE_FB = 1000119020,
+  // Provided by XR_VARJO_marker_tracking
     XR_ERROR_MARKER_NOT_TRACKED_VARJO = -1000124000,
+  // Provided by XR_VARJO_marker_tracking
     XR_ERROR_MARKER_ID_INVALID_VARJO = -1000124001,
+  // Provided by XR_MSFT_spatial_anchor_persistence
     XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT = -1000142001,
+  // Provided by XR_MSFT_spatial_anchor_persistence
     XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT = -1000142002,
     XR_RESULT_MAX_ENUM = 0x7FFFFFFF
 } XrResult;</code></pre>
@@ -1290,7 +1320,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -1302,7 +1332,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrLoadControllerModelMSFT(3)</title>
 <style>
 /*
@@ -777,7 +777,8 @@ The binary glTF data <strong class="purple">must</strong> conform to glTF 2.0 fo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrLoadControllerModelMSFT(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_MSFT_controller_model
+XrResult xrLoadControllerModelMSFT(
     XrSession                                   session,
     XrControllerModelKeyMSFT                    modelKey,
     uint32_t                                    bufferCapacityInput,
@@ -920,7 +921,7 @@ therefore <strong class="purple">should</strong> be invoked from a non-timing cr
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrControllerModelKeyMSFT.html">XrControllerModelKeyMSFT</a>, <a href="XrSession.html">XrSession</a></p>
+<p><a href="XR_MSFT_controller_model.html">XR_MSFT_controller_model</a>, <a href="XrControllerModelKeyMSFT.html">XrControllerModelKeyMSFT</a>, <a href="XrSession.html">XrSession</a></p>
 </div>
 </div>
 </div>
@@ -940,7 +941,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -952,7 +953,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

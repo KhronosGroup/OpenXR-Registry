@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrHandTrackingMeshFB(3)</title>
 <style>
 /*
@@ -778,7 +778,8 @@ and one with index data.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrHandTrackingMeshFB {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_FB_hand_tracking_mesh
+typedef struct XrHandTrackingMeshFB {
     XrStructureType    type;
     void*              next;
     uint32_t           jointCapacityInput;
@@ -916,40 +917,31 @@ retrieved from <a href="xrLocateHandJointsEXT.html">xrLocateHandJointsEXT</a>.</
 <p><a id="VUID-XrHandTrackingMeshFB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-jointBindPoses-parameter"></a> <code>jointBindPoses</code> <strong class="purple">must</strong> be a pointer to an array of <code>jointCapacityInput</code> <a href="XrPosef.html">XrPosef</a> structures</p>
+<p><a id="VUID-XrHandTrackingMeshFB-jointBindPoses-parameter"></a> If <code>jointCapacityInput</code> is not <code>0</code>, <code>jointBindPoses</code> <strong class="purple">must</strong> be a pointer to an array of <code>jointCapacityInput</code> <a href="XrPosef.html">XrPosef</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-jointRadii-parameter"></a> <code>jointRadii</code> <strong class="purple">must</strong> be a pointer to an array of <code>jointCapacityInput</code> <code>float</code> values</p>
+<p><a id="VUID-XrHandTrackingMeshFB-jointRadii-parameter"></a> If <code>jointCapacityInput</code> is not <code>0</code>, <code>jointRadii</code> <strong class="purple">must</strong> be a pointer to an array of <code>jointCapacityInput</code> <code>float</code> values</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-jointParents-parameter"></a> <code>jointParents</code> <strong class="purple">must</strong> be a pointer to an array of <code>jointCapacityInput</code> <a href="XrHandJointEXT.html">XrHandJointEXT</a> values</p>
+<p><a id="VUID-XrHandTrackingMeshFB-jointParents-parameter"></a> If <code>jointCapacityInput</code> is not <code>0</code>, <code>jointParents</code> <strong class="purple">must</strong> be a pointer to an array of <code>jointCapacityInput</code> <a href="XrHandJointEXT.html">XrHandJointEXT</a> values</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-vertexPositions-parameter"></a> <code>vertexPositions</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector3f.html">XrVector3f</a> structures</p>
+<p><a id="VUID-XrHandTrackingMeshFB-vertexPositions-parameter"></a> If <code>vertexCapacityInput</code> is not <code>0</code>, <code>vertexPositions</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector3f.html">XrVector3f</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-vertexNormals-parameter"></a> <code>vertexNormals</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector3f.html">XrVector3f</a> structures</p>
+<p><a id="VUID-XrHandTrackingMeshFB-vertexNormals-parameter"></a> If <code>vertexCapacityInput</code> is not <code>0</code>, <code>vertexNormals</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector3f.html">XrVector3f</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-vertexUVs-parameter"></a> <code>vertexUVs</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector2f.html">XrVector2f</a> structures</p>
+<p><a id="VUID-XrHandTrackingMeshFB-vertexUVs-parameter"></a> If <code>vertexCapacityInput</code> is not <code>0</code>, <code>vertexUVs</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector2f.html">XrVector2f</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-vertexBlendIndices-parameter"></a> <code>vertexBlendIndices</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector4sFB.html">XrVector4sFB</a> structures</p>
+<p><a id="VUID-XrHandTrackingMeshFB-vertexBlendIndices-parameter"></a> If <code>vertexCapacityInput</code> is not <code>0</code>, <code>vertexBlendIndices</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector4sFB.html">XrVector4sFB</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-vertexBlendWeights-parameter"></a> <code>vertexBlendWeights</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector4f.html">XrVector4f</a> structures</p>
+<p><a id="VUID-XrHandTrackingMeshFB-vertexBlendWeights-parameter"></a> If <code>vertexCapacityInput</code> is not <code>0</code>, <code>vertexBlendWeights</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector4f.html">XrVector4f</a> structures</p>
 </li>
 <li>
-<p><a id="VUID-XrHandTrackingMeshFB-indices-parameter"></a> <code>indices</code> <strong class="purple">must</strong> be a pointer to an array of <code>indexCapacityInput</code> <code>int16_t</code> values</p>
-</li>
-<li>
-<p><a id="VUID-XrHandTrackingMeshFB-jointCapacityInput-arraylength"></a> The <code>jointCapacityInput</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
-</li>
-<li>
-<p><a id="VUID-XrHandTrackingMeshFB-vertexCapacityInput-arraylength"></a> The <code>vertexCapacityInput</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
-</li>
-<li>
-<p><a id="VUID-XrHandTrackingMeshFB-indexCapacityInput-arraylength"></a> The <code>indexCapacityInput</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
+<p><a id="VUID-XrHandTrackingMeshFB-indices-parameter"></a> If <code>indexCapacityInput</code> is not <code>0</code>, <code>indices</code> <strong class="purple">must</strong> be a pointer to an array of <code>indexCapacityInput</code> <code>int16_t</code> values</p>
 </li>
 </ul>
 </div>
@@ -961,7 +953,7 @@ retrieved from <a href="xrLocateHandJointsEXT.html">xrLocateHandJointsEXT</a>.</
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrHandJointEXT.html">XrHandJointEXT</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrVector2f.html">XrVector2f</a>, <a href="XrVector3f.html">XrVector3f</a>, <a href="XrVector4f.html">XrVector4f</a>, <a href="XrVector4sFB.html">XrVector4sFB</a>, <a href="xrGetHandMeshFB.html">xrGetHandMeshFB</a></p>
+<p><a href="XR_FB_hand_tracking_mesh.html">XR_FB_hand_tracking_mesh</a>, <a href="XrHandJointEXT.html">XrHandJointEXT</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrVector2f.html">XrVector2f</a>, <a href="XrVector3f.html">XrVector3f</a>, <a href="XrVector4f.html">XrVector4f</a>, <a href="XrVector4sFB.html">XrVector4sFB</a>, <a href="xrGetHandMeshFB.html">xrGetHandMeshFB</a></p>
 </div>
 </div>
 </div>
@@ -981,7 +973,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -993,7 +985,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

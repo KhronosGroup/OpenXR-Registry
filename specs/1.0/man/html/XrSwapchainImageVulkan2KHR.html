@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrSwapchainImageVulkan2KHR(3)</title>
 <style>
 /*
@@ -770,7 +770,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// XrSwapchainImageVulkan2KHR is an alias for XrSwapchainImageVulkanKHR
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_KHR_vulkan_enable2
+// XrSwapchainImageVulkan2KHR is an alias for XrSwapchainImageVulkanKHR
 typedef struct XrSwapchainImageVulkanKHR {
     XrStructureType    type;
     void*              next;
@@ -854,9 +855,6 @@ positive Y pointing down, near Z plane at 0, and far Z plane at 1.</p>
 <li>
 <p><code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrSwapchainImageFoveationVulkanFB.html">XrSwapchainImageFoveationVulkanFB</a></p>
 </li>
-<li>
-<p><code>image</code> <strong class="purple">must</strong> be a valid <code>VkImage</code> value</p>
-</li>
 </ul>
 </div>
 </div>
@@ -867,7 +865,7 @@ positive Y pointing down, near Z plane at 0, and far Z plane at 1.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSwapchainImageBaseHeader.html">XrSwapchainImageBaseHeader</a></p>
+<p><a href="XR_KHR_vulkan_enable2.html">XR_KHR_vulkan_enable2</a>, <a href="XrSwapchainImageBaseHeader.html">XrSwapchainImageBaseHeader</a></p>
 </div>
 </div>
 </div>
@@ -887,7 +885,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -899,7 +897,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

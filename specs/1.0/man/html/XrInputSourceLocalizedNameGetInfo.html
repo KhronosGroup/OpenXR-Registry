@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrInputSourceLocalizedNameGetInfo(3)</title>
 <style>
 /*
@@ -800,8 +800,7 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>source</code> is an <a href="XrPath.html">XrPath</a> representing the source.
-Typically this was returned by a call to
+<p><code>source</code> is an <a href="XrPath.html">XrPath</a> representing a bound source returned by
 <a href="xrEnumerateBoundSourcesForAction.html">xrEnumerateBoundSourcesForAction</a>.</p>
 </li>
 <li>
@@ -817,6 +816,10 @@ Typically this was returned by a call to
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The result of passing an <a href="XrPath.html">XrPath</a> <code>source</code> <strong>not</strong> retrieved from
+<a href="xrEnumerateBoundSourcesForAction.html">xrEnumerateBoundSourcesForAction</a> is not specified.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -864,7 +867,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -876,7 +879,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

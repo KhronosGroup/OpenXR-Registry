@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrGetInputSourceLocalizedName(3)</title>
 <style>
 /*
@@ -773,7 +773,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrGetInputSourceLocalizedName(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+XrResult xrGetInputSourceLocalizedName(
     XrSession                                   session,
     const XrInputSourceLocalizedNameGetInfo*    getInfo,
     uint32_t                                    bufferCapacityInput,
@@ -793,7 +794,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <ul>
 <li>
 <p><code>session</code> is a handle to the <a href="XrSession.html">XrSession</a> associated with the
-action that reported this source.</p>
+action that reported this bound source.</p>
 </li>
 <li>
 <p><code>getInfo</code> is an <a href="XrInputSourceLocalizedNameGetInfo.html">XrInputSourceLocalizedNameGetInfo</a> providing the
@@ -810,7 +811,7 @@ capacity in the case that <code>bufferCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>buffer</code> is a pointer to an application-allocated buffer that will be
-filled with the source name.
+filled with the bound source name.
 It <strong class="purple">can</strong> be <code>NULL</code> if <code>bufferCapacityInput</code> is 0.</p>
 </li>
 <li>
@@ -827,7 +828,7 @@ detailed description of retrieving the required <code>buffer</code> size.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a> returns a string for the input source in
+<p><a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a> returns a string for the bound source in
 the current system locale.</p>
 </div>
 <div class="paragraph">
@@ -917,7 +918,7 @@ the runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTIONSET
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrAction.html">XrAction</a>, <a href="XrInputSourceLocalizedNameGetInfo.html">XrInputSourceLocalizedNameGetInfo</a>, <a href="XrSession.html">XrSession</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrAction.html">XrAction</a>, <a href="XrInputSourceLocalizedNameGetInfo.html">XrInputSourceLocalizedNameGetInfo</a>, <a href="XrSession.html">XrSession</a></p>
 </div>
 </div>
 </div>
@@ -937,7 +938,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -949,7 +950,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

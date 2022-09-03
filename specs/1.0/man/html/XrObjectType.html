@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrObjectType(3)</title>
 <style>
 /*
@@ -770,7 +770,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef enum XrObjectType {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef enum XrObjectType {
     XR_OBJECT_TYPE_UNKNOWN = 0,
     XR_OBJECT_TYPE_INSTANCE = 1,
     XR_OBJECT_TYPE_SESSION = 2,
@@ -778,18 +779,31 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_OBJECT_TYPE_SPACE = 4,
     XR_OBJECT_TYPE_ACTION_SET = 5,
     XR_OBJECT_TYPE_ACTION = 6,
+  // Provided by XR_EXT_debug_utils
     XR_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT = 1000019000,
+  // Provided by XR_MSFT_spatial_anchor
     XR_OBJECT_TYPE_SPATIAL_ANCHOR_MSFT = 1000039000,
+  // Provided by XR_MSFT_spatial_graph_bridge
     XR_OBJECT_TYPE_SPATIAL_GRAPH_NODE_BINDING_MSFT = 1000049000,
+  // Provided by XR_EXT_hand_tracking
     XR_OBJECT_TYPE_HAND_TRACKER_EXT = 1000051000,
+  // Provided by XR_MSFT_scene_understanding
     XR_OBJECT_TYPE_SCENE_OBSERVER_MSFT = 1000097000,
+  // Provided by XR_MSFT_scene_understanding
     XR_OBJECT_TYPE_SCENE_MSFT = 1000097001,
+  // Provided by XR_HTC_facial_tracking
     XR_OBJECT_TYPE_FACIAL_TRACKER_HTC = 1000104000,
+  // Provided by XR_FB_foveation
     XR_OBJECT_TYPE_FOVEATION_PROFILE_FB = 1000114000,
+  // Provided by XR_FB_triangle_mesh
     XR_OBJECT_TYPE_TRIANGLE_MESH_FB = 1000117000,
+  // Provided by XR_FB_passthrough
     XR_OBJECT_TYPE_PASSTHROUGH_FB = 1000118000,
+  // Provided by XR_FB_passthrough
     XR_OBJECT_TYPE_PASSTHROUGH_LAYER_FB = 1000118002,
+  // Provided by XR_FB_passthrough
     XR_OBJECT_TYPE_GEOMETRY_INSTANCE_FB = 1000118004,
+  // Provided by XR_MSFT_spatial_anchor_persistence
     XR_OBJECT_TYPE_SPATIAL_ANCHOR_STORE_CONNECTION_MSFT = 1000142000,
     XR_OBJECT_TYPE_MAX_ENUM = 0x7FFFFFFF
 } XrObjectType;</code></pre>
@@ -858,7 +872,7 @@ relationships:</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrDebugUtilsObjectNameInfoEXT.html">XrDebugUtilsObjectNameInfoEXT</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrDebugUtilsObjectNameInfoEXT.html">XrDebugUtilsObjectNameInfoEXT</a></p>
 </div>
 </div>
 </div>
@@ -878,7 +892,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -890,7 +904,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

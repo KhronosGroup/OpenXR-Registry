@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrSceneComponentTypeMSFT(3)</title>
 <style>
 /*
@@ -774,12 +774,14 @@ component type.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef enum XrSceneComponentTypeMSFT {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_MSFT_scene_understanding
+typedef enum XrSceneComponentTypeMSFT {
     XR_SCENE_COMPONENT_TYPE_INVALID_MSFT = -1,
     XR_SCENE_COMPONENT_TYPE_OBJECT_MSFT = 1,
     XR_SCENE_COMPONENT_TYPE_PLANE_MSFT = 2,
     XR_SCENE_COMPONENT_TYPE_VISUAL_MESH_MSFT = 3,
     XR_SCENE_COMPONENT_TYPE_COLLIDER_MESH_MSFT = 4,
+  // Provided by XR_MSFT_scene_understanding_serialization
     XR_SCENE_COMPONENT_TYPE_SERIALIZED_SCENE_FRAGMENT_MSFT = 1000098000,
     XR_SCENE_COMPONENT_TYPE_MAX_ENUM_MSFT = 0x7FFFFFFF
 } XrSceneComponentTypeMSFT;</code></pre>
@@ -837,7 +839,7 @@ rendering silhouettes of objects for occlusion.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSceneComponentMSFT.html">XrSceneComponentMSFT</a>, <a href="XrSceneComponentsGetInfoMSFT.html">XrSceneComponentsGetInfoMSFT</a></p>
+<p><a href="XR_MSFT_scene_understanding.html">XR_MSFT_scene_understanding</a>, <a href="XrSceneComponentMSFT.html">XrSceneComponentMSFT</a>, <a href="XrSceneComponentsGetInfoMSFT.html">XrSceneComponentsGetInfoMSFT</a></p>
 </div>
 </div>
 </div>
@@ -857,7 +859,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -869,7 +871,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

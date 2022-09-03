@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrPathToString(3)</title>
 <style>
 /*
@@ -770,7 +770,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrPathToString(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+XrResult xrPathToString(
     XrInstance                                  instance,
     XrPath                                      path,
     uint32_t                                    bufferCapacityInput,
@@ -905,7 +906,7 @@ For invalid paths, including <a href="XR_NULL_PATH.html">XR_NULL_PATH</a>, <code
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrInstance.html">XrInstance</a>, <a href="XrPath.html">XrPath</a>, <a href="xrStringToPath.html">xrStringToPath</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrInstance.html">XrInstance</a>, <a href="XrPath.html">XrPath</a>, <a href="xrStringToPath.html">xrStringToPath</a></p>
 </div>
 </div>
 </div>
@@ -925,7 +926,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -937,7 +938,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrHandJointSetEXT(3)</title>
 <style>
 /*
@@ -774,8 +774,10 @@ when creating an <a href="XrHandTrackerEXT.html">XrHandTrackerEXT</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef enum XrHandJointSetEXT {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_EXT_hand_tracking
+typedef enum XrHandJointSetEXT {
     XR_HAND_JOINT_SET_DEFAULT_EXT = 0,
+  // Provided by XR_ULTRALEAP_hand_tracking_forearm
     XR_HAND_JOINT_SET_HAND_WITH_FOREARM_ULTRALEAP = 1000149000,
     XR_HAND_JOINT_SET_MAX_ENUM_EXT = 0x7FFFFFFF
 } XrHandJointSetEXT;</code></pre>
@@ -809,7 +811,7 @@ returns an array of joint locations with the count of
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrHandTrackerCreateInfoEXT.html">XrHandTrackerCreateInfoEXT</a></p>
+<p><a href="XR_EXT_hand_tracking.html">XR_EXT_hand_tracking</a>, <a href="XrHandTrackerCreateInfoEXT.html">XrHandTrackerCreateInfoEXT</a></p>
 </div>
 </div>
 </div>
@@ -829,7 +831,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -841,7 +843,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

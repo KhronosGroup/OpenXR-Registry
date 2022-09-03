@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>XrEventDataInteractionProfileChanged(3)</title>
 <style>
 /*
@@ -773,7 +773,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrEventDataInteractionProfileChanged {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef struct XrEventDataInteractionProfileChanged {
     XrStructureType    type;
     const void*        next;
     XrSession          session;
@@ -834,9 +835,6 @@ to change its own behavior based on the active hardware.</p>
 <li>
 <p><a id="VUID-XrEventDataInteractionProfileChanged-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
-<li>
-<p><a id="VUID-XrEventDataInteractionProfileChanged-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
-</li>
 </ul>
 </div>
 </div>
@@ -847,7 +845,7 @@ to change its own behavior based on the active hardware.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSession.html">XrSession</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetCurrentInteractionProfile.html">xrGetCurrentInteractionProfile</a>, <a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrSession.html">XrSession</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetCurrentInteractionProfile.html">xrGetCurrentInteractionProfile</a>, <a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a></p>
 </div>
 </div>
 </div>
@@ -867,7 +865,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -879,7 +877,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

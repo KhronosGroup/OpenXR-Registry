@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>xrGetSerializedSceneFragmentDataMSFT(3)</title>
 <style>
 /*
@@ -779,7 +779,8 @@ This function follows the two-call idiom for filling the buffer.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrGetSerializedSceneFragmentDataMSFT(
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_MSFT_scene_understanding_serialization
+XrResult xrGetSerializedSceneFragmentDataMSFT(
     XrSceneMSFT                                 scene,
     const XrSerializedSceneFragmentDataGetInfoMSFT* getInfo,
     uint32_t                                    countInput,
@@ -896,6 +897,9 @@ the given scene fragment <a href="XrUuidMSFT.html">XrUuidMSFT</a> was not found.
 <li>
 <p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
 </li>
+<li>
+<p><code>XR_ERROR_SCENE_COMPONENT_ID_INVALID_MSFT</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -909,7 +913,7 @@ the given scene fragment <a href="XrUuidMSFT.html">XrUuidMSFT</a> was not found.
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSceneMSFT.html">XrSceneMSFT</a>, <a href="XrSerializedSceneFragmentDataGetInfoMSFT.html">XrSerializedSceneFragmentDataGetInfoMSFT</a></p>
+<p><a href="XR_MSFT_scene_understanding_serialization.html">XR_MSFT_scene_understanding_serialization</a>, <a href="XrSceneMSFT.html">XrSceneMSFT</a>, <a href="XrSerializedSceneFragmentDataGetInfoMSFT.html">XrSerializedSceneFragmentDataGetInfoMSFT</a></p>
 </div>
 </div>
 </div>
@@ -929,7 +933,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2014-2021, The Khronos Group Inc.</p>
+<p>Copyright 2014-2022 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -941,7 +945,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.24<br>
+Version 1.0.25<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
