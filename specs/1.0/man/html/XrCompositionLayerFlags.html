@@ -766,44 +766,15 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="XrCompositionLayerFlagBits.html">XrCompositionLayerFlagBits</a> bitfield is specified as:</p>
+<p><a href="XrCompositionLayerFlags.html">XrCompositionLayerFlags</a> specifies options for individual composition
+layers.</p>
 </div>
-<div id="XrCompositionLayerFlagBits" class="paragraph">
+<div id="XrCompositionLayerFlags" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrCompositionLayerFlags
-static const XrCompositionLayerFlags XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT = 0x00000001;
-static const XrCompositionLayerFlags XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT = 0x00000002;
-static const XrCompositionLayerFlags XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT = 0x00000004;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="XrCompositionLayerFlags.html">XrCompositionLayerFlags</a> specify options for individual composition
-layers.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Flag Descriptions</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT</code>&#8201;&#8212;&#8201;Enables chromatic aberration correction when not done by default.</p>
-</li>
-<li>
-<p><code>XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT</code>&#8201;&#8212;&#8201;Enables the layer texture alpha channel.</p>
-</li>
-<li>
-<p><code>XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</code>&#8201;&#8212;&#8201;Indicates the texture color channels have not been premultiplied by the texture alpha channel.</p>
-</li>
-</ul>
-</div>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrCompositionLayerFlags;</code></pre>
 </div>
 </div>
 </div>
@@ -812,7 +783,7 @@ layers.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, <a href="XrCompositionLayerCubeKHR.html">XrCompositionLayerCubeKHR</a>, <a href="XrCompositionLayerCylinderKHR.html">XrCompositionLayerCylinderKHR</a>, <a href="XrCompositionLayerEquirect2KHR.html">XrCompositionLayerEquirect2KHR</a>, <a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a>, <a href="XrCompositionLayerPassthroughFB.html">XrCompositionLayerPassthroughFB</a>, <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>, <a href="XrCompositionLayerQuad.html">XrCompositionLayerQuad</a></p>
+<p><a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, <a href="XrCompositionLayerCubeKHR.html">XrCompositionLayerCubeKHR</a>, <a href="XrCompositionLayerCylinderKHR.html">XrCompositionLayerCylinderKHR</a>, <a href="XrCompositionLayerEquirect2KHR.html">XrCompositionLayerEquirect2KHR</a>, <a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a>, <a href="XrCompositionLayerFlagBits.html">XrCompositionLayerFlagBits</a>, <a href="XrCompositionLayerPassthroughFB.html">XrCompositionLayerPassthroughFB</a>, <a href="XrCompositionLayerPassthroughHTC.html">XrCompositionLayerPassthroughHTC</a>, <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>, <a href="XrCompositionLayerQuad.html">XrCompositionLayerQuad</a></p>
 </div>
 </div>
 </div>
@@ -844,7 +815,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

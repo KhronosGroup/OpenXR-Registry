@@ -766,50 +766,16 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a>::<code>whichComponents</code> parameter
-takes bitwise-OR of any of the following values:</p>
+<p>The <a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a>::<code>whichComponents</code> parameter is
+of the following type, and contains a bitwise-OR of one or more of the bits
+defined in <a href="XrInputSourceLocalizedNameFlagBits.html">XrInputSourceLocalizedNameFlagBits</a>.</p>
 </div>
-<div id="XrInputSourceLocalizedNameFlagBits" class="paragraph">
+<div id="XrInputSourceLocalizedNameFlags" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrInputSourceLocalizedNameFlags
-static const XrInputSourceLocalizedNameFlags XR_INPUT_SOURCE_LOCALIZED_NAME_USER_PATH_BIT = 0x00000001;
-static const XrInputSourceLocalizedNameFlags XR_INPUT_SOURCE_LOCALIZED_NAME_INTERACTION_PROFILE_BIT = 0x00000002;
-static const XrInputSourceLocalizedNameFlags XR_INPUT_SOURCE_LOCALIZED_NAME_COMPONENT_BIT = 0x00000004;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Flag Descriptions</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XR_INPUT_SOURCE_LOCALIZED_NAME_USER_PATH_BIT</code> indicates that the
-runtime <strong class="purple">must</strong> include the user path portion of the string in the result,
-if available.
-E.g. <code>Left Hand</code>.</p>
-</li>
-<li>
-<p><code>XR_INPUT_SOURCE_LOCALIZED_NAME_INTERACTION_PROFILE_BIT</code> indicates
-that the runtime <strong class="purple">must</strong> include the interaction profile portion of the
-string in the result, if available.
-E.g. <code>Vive Controller</code>.</p>
-</li>
-<li>
-<p><code>XR_INPUT_SOURCE_LOCALIZED_NAME_COMPONENT_BIT</code> indicates that the
-runtime <strong class="purple">must</strong> include the input component portion of the string in the
-result, if available.
-E.g. <code>Trigger</code>.</p>
-</li>
-</ul>
-</div>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrInputSourceLocalizedNameFlags;</code></pre>
 </div>
 </div>
 </div>
@@ -818,7 +784,7 @@ E.g. <code>Trigger</code>.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrInputSourceLocalizedNameGetInfo.html">XrInputSourceLocalizedNameGetInfo</a>, <a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a></p>
+<p><a href="XrInputSourceLocalizedNameFlagBits.html">XrInputSourceLocalizedNameFlagBits</a>, <a href="XrInputSourceLocalizedNameGetInfo.html">XrInputSourceLocalizedNameGetInfo</a></p>
 </div>
 </div>
 </div>
@@ -850,7 +816,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

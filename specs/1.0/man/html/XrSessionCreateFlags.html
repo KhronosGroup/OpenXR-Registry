@@ -766,24 +766,17 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="XrSessionCreateFlags.html">XrSessionCreateFlags</a> include:</p>
+<p>The <a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>createFlags</code> member is of the following
+type, and contains a bitwise-OR of zero or more of the bits defined in
+<a href="XrSessionCreateFlagBits.html">XrSessionCreateFlagBits</a>.</p>
 </div>
-<div id="XrSessionCreateFlagBits" class="paragraph">
+<div id="XrSessionCreateFlags" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrSessionCreateFlags</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrSessionCreateFlags;</code></pre>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There are currently no session creation flags.
-This is reserved for future use.</p>
 </div>
 </div>
 </div>
@@ -791,7 +784,7 @@ This is reserved for future use.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>, <a href="xrCreateSession.html">xrCreateSession</a></p>
+<p><a href="XrSessionCreateFlagBits.html">XrSessionCreateFlagBits</a>, <a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>, <a href="xrCreateSession.html">xrCreateSession</a></p>
 </div>
 </div>
 </div>
@@ -823,7 +816,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -824,18 +824,6 @@ detailed description of retrieving the required <code>properties</code> size.</p
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If <code>properties</code> is <code>NULL</code>, then the number of extensions properties
-available is returned in <code>propertyCountOutput</code>.
-Otherwise, <code>propertyCountInput</code> must point to a variable set by the user
-to the number of elements in the <code>properties</code> array.
-If <code>propertyCountInput</code> is less than the number of extension properties
-available, the contents of <code>properties</code> will be undefined.
-If <code>propertyCountInput</code> is smaller than the number of extensions
-available, the runtime <strong class="purple">must</strong> return the failure code
-<code>XR_ERROR_SIZE_INSUFFICIENT</code> and the contents of <code>properties</code> are
-undefined.</p>
-</div>
-<div class="paragraph">
 <p>Because the list of available layers may change externally between calls to
 <a href="xrEnumerateInstanceExtensionProperties.html">xrEnumerateInstanceExtensionProperties</a>, two calls <strong class="purple">may</strong> retrieve
 different results if a <code>layerName</code> is available in one call but not in
@@ -944,7 +932,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

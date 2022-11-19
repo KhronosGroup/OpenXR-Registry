@@ -766,24 +766,17 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="XrInstanceCreateFlags.html">XrInstanceCreateFlags</a> include:</p>
+<p>The <a href="XrInstanceCreateInfo.html">XrInstanceCreateInfo</a>::<code>createFlags</code> member is of the following
+type, and contains a bitwise-OR of zero or more of the bits defined in
+<a href="XrInstanceCreateFlagBits.html">XrInstanceCreateFlagBits</a>.</p>
 </div>
-<div id="XrInstanceCreateFlagBits" class="paragraph">
+<div id="XrInstanceCreateFlags" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrInstanceCreateFlags</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrInstanceCreateFlags;</code></pre>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There are currently no instance creation flags.
-This is reserved for future use.</p>
 </div>
 </div>
 </div>
@@ -791,7 +784,7 @@ This is reserved for future use.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrInstanceCreateInfo.html">XrInstanceCreateInfo</a>, <a href="xrCreateInstance.html">xrCreateInstance</a></p>
+<p><a href="XrInstanceCreateFlagBits.html">XrInstanceCreateFlagBits</a>, <a href="XrInstanceCreateInfo.html">XrInstanceCreateInfo</a></p>
 </div>
 </div>
 </div>
@@ -823,7 +816,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

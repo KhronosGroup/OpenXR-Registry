@@ -766,77 +766,16 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>locationFlags</code> member is a bitwise-OR of zero or more of the
-following flags:</p>
+<p>The <a href="XrSpaceLocation.html">XrSpaceLocation</a>::<code>locationFlags</code> member is of the following
+type, and contains a bitwise-OR of zero or more of the bits defined in
+<a href="XrSpaceLocationFlagBits.html">XrSpaceLocationFlagBits</a>.</p>
 </div>
-<div id="XrSpaceLocationFlagBits" class="paragraph">
+<div id="XrSpaceLocationFlags" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrSpaceLocationFlags
-static const XrSpaceLocationFlags XR_SPACE_LOCATION_ORIENTATION_VALID_BIT = 0x00000001;
-static const XrSpaceLocationFlags XR_SPACE_LOCATION_POSITION_VALID_BIT = 0x00000002;
-static const XrSpaceLocationFlags XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT = 0x00000004;
-static const XrSpaceLocationFlags XR_SPACE_LOCATION_POSITION_TRACKED_BIT = 0x00000008;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>where the flags have the following meaning:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Flag Descriptions</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</code> indicates that the
-<code>pose</code> field&#8217;s <code>orientation</code> field contains valid data.
-For a space location tracking a device with its own inertial tracking,
-<code>XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</code> <strong class="purple">should</strong> remain set when
-this bit is set.
-Applications <strong class="purple">must</strong> not read the <code>pose</code> field&#8217;s <code>orientation</code> if
-this flag is unset.</p>
-</li>
-<li>
-<p><code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> indicates that the <code>pose</code>
-field&#8217;s <code>position</code> field contains valid data.
-When a space location loses tracking, runtimes <strong class="purple">should</strong> continue to provide
-valid but untracked <code>position</code> values that are inferred or last-known,
-so long as it&#8217;s still meaningful for the application to use that position,
-clearing <code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> until positional
-tracking is recovered.
-Applications <strong class="purple">must</strong> not read the <code>pose</code> field&#8217;s <code>position</code> if this
-flag is unset.</p>
-</li>
-<li>
-<p><code>XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</code> indicates that the
-<code>pose</code> field&#8217;s <code>orientation</code> field represents an actively tracked
-orientation.
-For a space location tracking a device with its own inertial tracking,
-this bit <strong class="purple">should</strong> remain set when
-<code>XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</code> is set.
-For a space location tracking an object whose orientation is no longer
-known during tracking loss (e.g. an observed QR code), runtimes <strong class="purple">should</strong>
-continue to provide valid but untracked <code>orientation</code> values, so long
-as it&#8217;s still meaningful for the application to use that orientation.</p>
-</li>
-<li>
-<p><code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> indicates that the <code>pose</code>
-field&#8217;s <code>position</code> field represents an actively tracked position.
-When a space location loses tracking, runtimes <strong class="purple">should</strong> continue to provide
-valid but untracked <code>position</code> values that are inferred or last-known,
-e.g. based on neck model updates, inertial dead reckoning, or a last-known
-position, so long as it&#8217;s still meaningful for the application to use that
-position.</p>
-</li>
-</ul>
-</div>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrSpaceLocationFlags;</code></pre>
 </div>
 </div>
 </div>
@@ -845,7 +784,7 @@ position.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrHandJointLocationEXT.html">XrHandJointLocationEXT</a>, <a href="XrSceneComponentLocationMSFT.html">XrSceneComponentLocationMSFT</a>, <a href="XrSpaceLocation.html">XrSpaceLocation</a></p>
+<p><a href="XrHandJointLocationEXT.html">XrHandJointLocationEXT</a>, <a href="XrSceneComponentLocationMSFT.html">XrSceneComponentLocationMSFT</a>, <a href="XrSpaceLocation.html">XrSpaceLocation</a>, <a href="XrSpaceLocationFlagBits.html">XrSpaceLocationFlagBits</a>, <a href="xrLocateSpace.html">xrLocateSpace</a></p>
 </div>
 </div>
 </div>
@@ -877,7 +816,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

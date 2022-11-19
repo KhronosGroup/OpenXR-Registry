@@ -766,48 +766,17 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>createFlags</code> are a combination of the following:</p>
+<p>The <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>createFlags</code> member is of the
+following type, and contains a bitwise-OR of zero or more of the bits
+defined in <a href="XrSwapchainCreateFlagBits.html">XrSwapchainCreateFlagBits</a>.</p>
 </div>
-<div id="XrSwapchainCreateFlagBits" class="paragraph">
+<div id="XrSwapchainCreateFlags" class="paragraph">
 <p></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrSwapchainCreateFlags
-static const XrSwapchainCreateFlags XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT = 0x00000001;
-static const XrSwapchainCreateFlags XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT = 0x00000002;</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrSwapchainCreateFlags;</code></pre>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Flag Descriptions</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT</code> indicates that the
-swapchain&#8217;s images will be protected from CPU access, using a mechanism
-such as Vulkan protected memory.</p>
-</li>
-<li>
-<p><code>XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT</code> indicates that the application
-will acquire and release only one image to this swapchain over its entire
-lifetime.
-The runtime <strong class="purple">must</strong> allocate only one swapchain image.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>A runtime <strong class="purple">may</strong> implement any of these, but is not required to.
-A runtime <strong class="purple">must</strong> return <code>XR_ERROR_FEATURE_UNSUPPORTED</code> from
-<a href="xrCreateSwapchain.html">xrCreateSwapchain</a> if an <a href="XrSwapchainCreateFlags.html">XrSwapchainCreateFlags</a> bit is requested
-but not implemented.</p>
 </div>
 </div>
 </div>
@@ -815,7 +784,7 @@ but not implemented.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>, <a href="xrCreateSwapchain.html">xrCreateSwapchain</a></p>
+<p><a href="XrSwapchainCreateFlagBits.html">XrSwapchainCreateFlagBits</a>, <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a></p>
 </div>
 </div>
 </div>
@@ -847,7 +816,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

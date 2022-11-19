@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR<sup>&#174;</sup>  Loader - Design and Operation (with all registered extensions)</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2022, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.25</span>
-<br><span id="revremark">from git ref release-1.0.25</span>
+<span id="revnumber">version 1.0.26</span>
+<br><span id="revremark">from git ref release-1.0.26</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -3359,12 +3359,21 @@ need the following in their manifest.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR" /&gt;
-&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR_SYSTEM" /&gt;
+<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR_SYSTEM" /&gt;
 
 &lt;queries&gt;
   &lt;provider android:authorities="org.khronos.openxr.runtime_broker;org.khronos.openxr.system_runtime_broker" /&gt;
 &lt;/queries&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Earlier versions of the installable broker also wanted the following permission,
+but this is no longer required. It is harmless to leave it in place, but the broker
+no longer requires it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR" /&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6115,7 +6124,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.25<br>
+Version 1.0.26<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
