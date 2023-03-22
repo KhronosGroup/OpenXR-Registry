@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
-<meta name="author" content="Copyright (c) 2017-2022, The Khronos Group Inc.">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="author" content="Copyright (c) 2017-2023, The Khronos Group Inc.">
 <title>OpenXR&#174; Loader - Design and Operation (with all registered extensions)</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -85,10 +85,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -442,9 +442,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header" style="max-width: 100;">
 <h1>OpenXR<sup>&#174;</sup>  Loader - Design and Operation (with all registered extensions)</h1>
 <div class="details">
-<span id="author" class="author">Copyright (c) 2017-2022, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.26</span>
-<br><span id="revremark">from git ref release-1.0.26</span>
+<span id="author" class="author">Copyright (c) 2017-2023, The Khronos Group Inc.</span><br>
+<span id="revnumber">version 1.0.27</span>
+<br><span id="revremark">from git ref release-1.0.27</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -596,7 +596,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2022, The Khronos Group Inc.
+<p>Copyright (c) 2017-2023, The Khronos Group Inc.
 All Rights reserved.</p>
 </div>
 <!-- toc disabled -->
@@ -2049,9 +2049,9 @@ openxr/1/api_layers/explicit.d</pre>
 <div class="paragraph">
 <p>On Windows, Linux and Android, the loader uses manifest files to discover
 API layers.
-The loader doesn&#8217;t load the API layer libraries (e.g. DLL or .so
-files) for each of the enabled API layers except during <code>xrCreateInstance</code>
-when it sets up the call chain.
+The loader doesn&#8217;t load the API layer libraries (e.g. DLL or .so files) for
+each of the enabled API layers except during <code>xrCreateInstance</code> when it sets
+up the call chain.
 This is to reduce the likelihood of loading a malicious API layer into
 memory.
 Instead, details are read from the manifest file, which are then provided
@@ -2142,13 +2142,13 @@ The only requirement is that the filename extension is ".json".</p>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"api_layer"</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Required</strong> for Implicit / Explicit</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">The identifier used to group a single API layer&#8217;s information together.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrEnumerateApiLayerProperties</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrEnumerateApiLayerProperties</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"name"</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Required</strong> for Implicit / Explicit</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">The string used to uniquely identify this API layer to applications.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrEnumerateApiLayerProperties</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrEnumerateApiLayerProperties</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"library_path"</p></td>
@@ -2171,7 +2171,7 @@ The only requirement is that the filename extension is ".json".</p>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">The major.minor (but not patch) version number of the OpenXR API that the
         shared library file for the library was built against. For example:
         1.0.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrEnumerateApiLayerProperties</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrEnumerateApiLayerProperties</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"implementation_version"</p></td>
@@ -2179,13 +2179,13 @@ The only requirement is that the filename extension is ".json".</p>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">The version of the API layer implemented.  If the API layer itself has any
         major changes, this number should change so the loader and/or
         application can identify it properly.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrEnumerateApiLayerProperties</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrEnumerateApiLayerProperties</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"description"</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Required</strong> for Implicit / Explicit</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A high-level description of the API layer and it&#8217;s intended use.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrEnumerateApiLayerProperties</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">A high-level description of the API layer and its intended use.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrEnumerateApiLayerProperties</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"functions"</p></td>
@@ -2194,9 +2194,9 @@ The only requirement is that the filename extension is ".json".</p>
         the loader to use in place of standard API layer interface functions. The
         "functions" node is required if the API layer is using an alternative name
         for <code>xrNegotiateLoaderApiLayerInterface</code>.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrGet*ProcAddr (except for <code>xrNegotiateLoaderApiLayerInterface</code>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrGetInstanceProcAddr</code> (except for <code>xrNegotiateLoaderApiLayerInterface</code>
             which must be queried using the OS/platform-specific
-            GetProcAddress)s.</p></td>
+            <code>GetProcAddress</code>).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"instance_extensions"</p></td>
@@ -2207,14 +2207,14 @@ The only requirement is that the filename extension is ".json".</p>
         API layer, otherwise the node is optional. Each element of the array
         must have the nodes "name" and "extension_version" which correspond to
         <code>XrExtensionProperties</code> "extensionName" and "extensionVersion" respectively.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">xrEnumerateInstanceExtensionProperties</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>xrEnumerateInstanceExtensionProperties</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">"enable_environment"</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">Optional for Implicit</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Indicates an environment variable used to enable the implicit API layer.
         If provided in the JSON file, this environment variable (which should vary
-		with each "version" of the API layer) must be set in the environment or else
+        with each "version" of the API layer) must be set in the environment or else
         the implicit API layer is not loaded. This is for application environments
         (e.g. Steam) which want to enable an API layer(s) only for applications that
         they launch, and allows for applications run outside of that
@@ -2226,9 +2226,9 @@ The only requirement is that the filename extension is ".json".</p>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>Required</strong> for Implicit</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Indicates an environment variable used to disable the implicit API layer.
         Required to allow users or applications to disable implicit layers that are
-		not desired or that cause problems for the application. The user/application
-		can set this environment variable (before calling OpenXR functions) to
-		"blacklist" the API layer.
+        not desired or that cause problems for the application. The user/application
+        can set this environment variable (before calling OpenXR functions) to skip
+        loading this API layer.
         This environment variable should vary with each "version" of the
         API layer.  If both the
         "enable_environment" and "disable_environment" variables are set, the
@@ -2332,7 +2332,7 @@ renamed version of this function identified in the manifest file).</p>
 <ul>
 <li>
 <p><code>loaderInfo</code> <strong class="purple">must</strong> be a valid pointer to a constant
-<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure.</p>
+<code>XrNegotiateLoaderInfo</code> structure.</p>
 </li>
 <li>
 <p><code>layerName</code> <strong class="purple">must</strong> be NULL or a valid C-style NULL-terminated string
@@ -2341,7 +2341,7 @@ negotiate with.</p>
 </li>
 <li>
 <p><code>layerRequest</code> must be a valid pointer to a
-<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> structure.</p>
+<code>XrNegotiateApiLayerRequest</code> structure.</p>
 </li>
 </ul>
 </div>
@@ -2509,8 +2509,8 @@ This is used because API layers need additional information at
 <h4 id="loader-api-layer-negotiation-process">4.3.1. Loader/API Layer Negotiation Process</h4>
 <div class="paragraph">
 <p>Once the loader has obtained a valid address to the API layer&#8217;s
-<a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> function, the loader will create a
-variable of type <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> and initialize it in the
+<code>xrNegotiateLoaderApiLayerInterface</code> function, the loader will create a
+variable of type <code>XrNegotiateLoaderInfo</code> and initialize it in the
 following ways:</p>
 </div>
 <div class="olist arabic">
@@ -2549,7 +2549,7 @@ loader (the current version at the time of loader compilation).</p>
 </div>
 <div class="paragraph">
 <p>The loader also creates and initializes a variable of type
-<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> to allow the API layer to properly respond
+<code>XrNegotiateApiLayerRequest</code> to allow the API layer to properly respond
 to the request.
 The structure will be initialized by the loader in the following way:</p>
 </div>
@@ -2573,7 +2573,7 @@ The structure will be initialized by the loader in the following way:</p>
 <p>The loader will leave the remaining fields uninitialized to allow each API
 layer to fill in the appropriate information for itself.
 The loader will then individually call each API layer&#8217;s
-<a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> function and each API layer then
+<code>xrNegotiateLoaderApiLayerInterface</code> function and each API layer then
 <strong class="purple">must</strong> :</p>
 </div>
 <div class="ulist">
@@ -2876,11 +2876,11 @@ which is a special API layer command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>info</code> is a pointer to the <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> information
-passed into the standard <a href="#xrCreateInstance">xrCreateInstance</a> command.</p>
+<p><code>info</code> is a pointer to the <code>XrInstanceCreateInfo</code> information
+passed into the standard <code>xrCreateInstance</code> command.</p>
 </li>
 <li>
-<p><code>layerInfo</code> is a pointer to an <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure
+<p><code>layerInfo</code> is a pointer to an <code>XrApiLayerCreateInfo</code> structure
 that contains special information required by a API layer during its
 create instance process.
 This is generated by the loader.</p>
@@ -2929,7 +2929,7 @@ file that can be used.
 This is currently unused.</p>
 </li>
 <li>
-<p><code>nextInfo</code> is a pointer to the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure
+<p><code>nextInfo</code> is a pointer to the <code>XrApiLayerNextInfo</code> structure
 which contains information to work with the next API layer in the chain.</p>
 </li>
 </ul>
@@ -3003,7 +3003,7 @@ receive this information.</p>
 <p>The call enters the loader&#8217;s trampoline function <code>xrCreateInstance</code></p>
 </li>
 <li>
-<p>The loader will generate an instance of the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>
+<p>The loader will generate an instance of the <code>XrApiLayerCreateInfo</code>
 structure</p>
 </li>
 <li>
@@ -3072,18 +3072,18 @@ last created <code>XrApiLayerNextInfo</code> since this is the first API layer i
 call-chain.</p>
 </li>
 <li>
-<p>The loader calls the first API layer&#8217;s <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> command
-passing in the pointer to the created <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a></p>
+<p>The loader calls the first API layer&#8217;s <code>xrCreateApiLayerInstance</code> command
+passing in the pointer to the created <code>XrApiLayerCreateInfo</code></p>
 </li>
 <li>
-<p>The API layer receives the information in its <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> command.</p>
+<p>The API layer receives the information in its <code>xrCreateApiLayerInstance</code> command.</p>
 </li>
 <li>
-<p>The API layer copies the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure into it&#8217;s own structure.</p>
+<p>The API layer copies the <code>XrApiLayerCreateInfo</code> structure into it&#8217;s own structure.</p>
 </li>
 <li>
-<p>The API layer then updates it&#8217;s version of the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure
-setting <code>nextInfo</code> to point to the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> for the
+<p>The API layer then updates it&#8217;s version of the <code>XrApiLayerCreateInfo</code> structure
+setting <code>nextInfo</code> to point to the <code>XrApiLayerNextInfo</code> for the
 next API layer (i.e. <code>XrApiLayerCreateInfo&#8594;nextInfo =
 XrApiLayerCreateInfo&#8594;nextInfo&#8594;next;</code>).</p>
 </li>
@@ -3094,7 +3094,7 @@ checking that the <code>layerName</code> matches.</p>
 <li>
 <p>The API layer then uses the information out of its <code>XrApiLayerNextInfo</code> to call
 down the call-chain to the next <code>xrCreateApiLayerInstance</code>, using a
-pointer to its <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure instead of the one
+pointer to its <code>XrApiLayerCreateInfo</code> structure instead of the one
 that was passed in during its <code>xrCreateApiLayerInstance</code> command.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
@@ -3865,11 +3865,11 @@ renamed version of this function identified in the manifest file).</p>
 <ul>
 <li>
 <p><code>loaderInfo</code> <strong class="purple">must</strong> be a valid pointer to a constant
-<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure.</p>
+<code>XrNegotiateLoaderInfo</code> structure.</p>
 </li>
 <li>
 <p><code>runtimeRequest</code> must be a valid pointer to a
-<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> structure.</p>
+<code>XrNegotiateRuntimeRequest</code> structure.</p>
 </li>
 </ul>
 </div>
@@ -3891,7 +3891,7 @@ defined in more detail below.</p>
 <code>src/common/loader_interfaces.h</code> header.
 It is used to pass information about the loader to a runtime during the
 negotiation process.
-See the definition of <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> under the
+See the definition of <code>XrNegotiateLoaderInfo</code> under the
 <a href="#loader-api-layer-interface-negotiation">layer negotiation</a> section for
 more information.</p>
 </div>
@@ -3936,7 +3936,7 @@ the structure (i.e. sizeof(XrNegotiateRuntimeRequest))</p>
 <a href="#runtime-interface-versions">loader/runtime interface version</a> being
 requested by the runtime.
 Should not be outside of the bounds of the
-<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::`minInterfaceVersion` and
+<code>XrNegotiateLoaderInfo</code>::`minInterfaceVersion` and
 <code>XrNegotiateLoaderInfo</code>::`maxInterfaceVersion` values (inclusive).</p>
 </li>
 <li>
@@ -3978,8 +3978,8 @@ the application is exiting, or some period of inactivity occurs.</p>
 <h4 id="loader-runtime-negotiation-process">5.2.1. Loader/Runtime Negotiation Process</h4>
 <div class="paragraph">
 <p>Once the loader has obtained a valid address to the runtime&#8217;s
-<a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a> function, the loader will create a
-variable of type <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> and initialize it in the
+<code>xrNegotiateLoaderRuntimeInterface</code> function, the loader will create a
+variable of type <code>XrNegotiateLoaderInfo</code> and initialize it in the
 following ways:</p>
 </div>
 <div class="olist arabic">
@@ -4018,7 +4018,7 @@ loader (the current version at the time of loader compilation).</p>
 </div>
 <div class="paragraph">
 <p>The loader will also create an initialize a variable of type
-<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> to allow the runtime to properly respond to
+<code>XrNegotiateRuntimeRequest</code> to allow the runtime to properly respond to
 the request.
 The structure will be initialized by the loader in the following way:</p>
 </div>
@@ -4042,7 +4042,7 @@ The structure will be initialized by the loader in the following way:</p>
 <p>The loader will leave the remaining fields uninitialized to allow each
 runtime to fill in the appropriate information for itself.
 The loader will then individually call each runtime&#8217;s
-<a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a> function and each runtime then <strong class="purple">must</strong></p>
+<code>xrNegotiateLoaderRuntimeInterface</code> function and each runtime then <strong class="purple">must</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -4092,7 +4092,7 @@ remaining OpenXR commands supported by the runtime.</p>
 <div class="sect3">
 <h4 id="runtime-exporting-of-commands">5.2.2. Runtime Exporting of Commands</h4>
 <div class="paragraph">
-<p>The <a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a> should be directly exported by a
+<p>The <code>xrNegotiateLoaderRuntimeInterface</code> should be directly exported by a
 runtime so that using "GetProcAddress" on Windows or "dlsym" on Linux,
 should return a valid function pointer to it.
 However, <strong>all other OpenXR entry points</strong> <strong class="purple">must</strong> either:</p>
@@ -5456,7 +5456,7 @@ that can be used to populate a dispatch table once it has been created:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>table</code> is a pointer to the <a href="#XrGeneratedDispatchTable">XrGeneratedDispatchTable</a> to
+<p><code>table</code> is a pointer to the <code>XrGeneratedDispatchTable</code> to
 populate.</p>
 </li>
 <li>
@@ -5480,7 +5480,7 @@ use the next level&#8217;s (API layer or runtime) implementation of
 <h4 id="_xr_generated_dispatch_table_c">7.2.2. xr_generated_dispatch_table.c</h4>
 <div class="paragraph">
 <p>This file is paired with the above <code>xr_generated_dispatch_table.h</code> header
-and only implements the <a href="#GeneratedXrPopulateDispatchTable">GeneratedXrPopulateDispatchTable</a> function used
+and only implements the <code>GeneratedXrPopulateDispatchTable</code> function used
 to populate the elements of a dispatch table.</p>
 </div>
 </div>
@@ -5638,7 +5638,7 @@ In the case of failure, the loader can call the
 <li>
 <p><code>path</code> <strong class="purple">must</strong> be a constant string containing the absolute path to
 the library file that the loader previously attempted to load using
-<a href="#LoaderPlatformLibraryOpen">LoaderPlatformLibraryOpen</a>.</p>
+<code>LoaderPlatformLibraryOpen</code>.</p>
 </li>
 </ul>
 </div>
@@ -5661,7 +5661,7 @@ platform-specific error code that may have occurred.</p>
 <ul>
 <li>
 <p><code>library</code> <strong class="purple">must</strong> be valid <code>LoaderPlatformLibraryHandle</code> opened using
-<a href="#LoaderPlatformLibraryOpen">LoaderPlatformLibraryOpen</a></p>
+<code>LoaderPlatformLibraryOpen</code></p>
 </li>
 </ul>
 </div>
@@ -5682,8 +5682,8 @@ function:</p>
 <ul>
 <li>
 <p><code>library</code> <strong class="purple">must</strong> be valid <code>LoaderPlatformLibraryHandle</code> opened using
-<a href="#LoaderPlatformLibraryOpen">LoaderPlatformLibraryOpen</a>, but not yet closed using
-<a href="#LoaderPlatformLibraryClose">LoaderPlatformLibraryClose</a>.</p>
+<code>LoaderPlatformLibraryOpen</code>, but not yet closed using
+<code>LoaderPlatformLibraryClose</code>.</p>
 </li>
 <li>
 <p><code>name</code> <strong class="purple">must</strong> contain the name of the library supplied function who&#8217;s
@@ -5711,7 +5711,7 @@ To determine what might have happened, the loader will call the
 <li>
 <p><code>path</code> <strong class="purple">must</strong> be a constant string containing the name of the
 entry point that was attempted to be queried during the previous
-<a href="#LoaderPlatformLibraryGetProcAddr">LoaderPlatformLibraryGetProcAddr</a> call.</p>
+<code>LoaderPlatformLibraryGetProcAddr</code> call.</p>
 </li>
 </ul>
 </div>
@@ -5795,7 +5795,7 @@ the name of the environment variable to get the value of.</p>
 <div class="paragraph">
 <p>If the platform supports secure environment variable reading, the
 appropriate method will be used.
-Otherwise, it will fall back to the standard <a href="#PlatformUtilsGetEnv">PlatformUtilsGetEnv</a> call.</p>
+Otherwise, it will fall back to the standard <code>PlatformUtilsGetEnv</code> call.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6124,7 +6124,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

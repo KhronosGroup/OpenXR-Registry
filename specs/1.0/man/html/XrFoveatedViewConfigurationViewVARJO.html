@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>XrFoveatedViewConfigurationViewVARJO(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2022, The Khronos Group Inc.
+ * Copyright (c) 2017-2023, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -773,8 +773,8 @@ chain <a href="XrFoveatedViewConfigurationViewVARJO.html">XrFoveatedViewConfigur
 <a href="XrViewConfigurationView.html">XrViewConfigurationView</a> and set <code>foveatedRenderingActive</code> to
 <code>XR_TRUE</code>.
 Since an application using foveated rendering with this extension has to
-render 4 views, <code><a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_VARJO_quad_views" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_VARJO_quad_views</a></code> <strong class="purple">must</strong> be enabled along with this
-extension when <a href="XrInstance.html">XrInstance</a> is created.</p>
+render four views, <code><a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_VARJO_quad_views" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_VARJO_quad_views</a></code> <strong class="purple">must</strong> be enabled along with
+this extension when <a href="XrInstance.html">XrInstance</a> is created.</p>
 </div>
 <div class="paragraph">
 <p>First and second views are non foveated views (covering whole field of view
@@ -878,8 +878,8 @@ if (foveatedRenderingProperties.supportsFoveatedRendering &amp;&amp; viewConfigT
 <div class="title">Example 1. Note</div>
 <div class="content">
 <div class="paragraph">
-<p>Applications using this extension are encouraged to create 2 sets of
-swapchains or one big enough set of swapchains and 2 sets of viewports.
+<p>Applications using this extension are encouraged to create two sets of
+swapchains or one big enough set of swapchains and two sets of viewports.
 One set will be used when rendering gaze is not available and other one will
 be used when foveated rendering and rendering gaze is available.
 Using foveated textures <strong class="purple">may</strong> not provide optimal visual quality when
@@ -913,7 +913,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2022 The Khronos Group Inc.</p>
+<p>Copyright 2014-2023 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -925,7 +925,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

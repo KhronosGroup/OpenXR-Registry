@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector">
 <title>OpenXR™ Documentation and Extensions: Procedures and Conventions</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -85,10 +85,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.26</span>
-<br><span id="revremark">from git ref release-1.0.26</span>
+<span id="revnumber">version 1.0.27</span>
+<br><span id="revremark">from git ref release-1.0.27</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -594,7 +594,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>Copyright 2014-2022 The Khronos Group Inc.</p>
+<p>Copyright 2014-2023 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -831,7 +831,7 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 26)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 27)</code></pre>
 </div>
 </div>
 </div>
@@ -1753,7 +1753,7 @@ faith.</p>
 <p>OpenXR implementers must report a valid vendor ID for their implementation
 when queried by <code>xrGetSystemProperties</code>, as described in the
 <a href="#openxr-spec">OpenXR API Specification</a>.
-If there is no valid PCI vendor ID defined for the physical device,
+If there is no valid USB vendor ID defined for the physical device,
 implementations must obtain a Khronos vendor ID.</p>
 </div>
 <div class="paragraph">
@@ -3293,16 +3293,16 @@ table:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tlink&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Generates a cross-reference or link to the definition
                      of the OpenXR type in the macro argument. Example:
-                     tlink&#x3a;PFN_xrCreateInstance &#8594;
-                     <a href="#PFN_xrCreateInstance">PFN_xrCreateInstance</a>. This is only used for
+                     tlink&#x3a;PFN_xrVoidFunction &#8594;
+                     <a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a>. This is only used for
                      function pointer types at present.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tname&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like tlink&#x3a;. Does not
                      generate a cross-reference. Example:
-                     tname&#x3a;PFN_xrCreateInstance &#8594;
-                     <code>PFN_xrCreateInstance</code>.</p>
+                     tname&#x3a;PFN_xrVoidFunction &#8594;
+                     <code>PFN_xrVoidFunction</code>.</p>
 <p class="tableblock">                     Only use this macro <a href="#markup-macros-api-name">when
                      necessary</a>.</p></td>
 </tr>
@@ -3324,10 +3324,9 @@ table:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">basetype&#x3a;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like a basic scalar type
-                     or API handle name. Not validated. Examples:
-                     basetype&#x3a;XrBool32 &#8594; <a href="#XrBool32"><code>XrBool32</code></a>,
-                     basetype&#x3a;XrSize &#8594; <a href="#XrSize"><code>XrSize</code></a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like a basic scalar type.
+                     Example:
+                     basetype&#x3a;XrBool32 &#8594; <a href="#XrBool32"><code>XrBool32</code></a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">code&#x3a;</p></td>
@@ -5102,7 +5101,7 @@ Adding OpenXR issues in most TODOs.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>XrObjectType(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2022, The Khronos Group Inc.
+ * Copyright (c) 2017-2023, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -787,6 +787,8 @@ typedef enum XrObjectType {
     XR_OBJECT_TYPE_SPATIAL_GRAPH_NODE_BINDING_MSFT = 1000049000,
   // Provided by XR_EXT_hand_tracking
     XR_OBJECT_TYPE_HAND_TRACKER_EXT = 1000051000,
+  // Provided by XR_FB_body_tracking
+    XR_OBJECT_TYPE_BODY_TRACKER_FB = 1000076000,
   // Provided by XR_MSFT_scene_understanding
     XR_OBJECT_TYPE_SCENE_OBSERVER_MSFT = 1000097000,
   // Provided by XR_MSFT_scene_understanding
@@ -805,6 +807,12 @@ typedef enum XrObjectType {
     XR_OBJECT_TYPE_GEOMETRY_INSTANCE_FB = 1000118004,
   // Provided by XR_MSFT_spatial_anchor_persistence
     XR_OBJECT_TYPE_SPATIAL_ANCHOR_STORE_CONNECTION_MSFT = 1000142000,
+  // Provided by XR_FB_face_tracking
+    XR_OBJECT_TYPE_FACE_TRACKER_FB = 1000201000,
+  // Provided by XR_FB_eye_tracking_social
+    XR_OBJECT_TYPE_EYE_TRACKER_FB = 1000202000,
+  // Provided by XR_FB_spatial_entity_user
+    XR_OBJECT_TYPE_SPACE_USER_FB = 1000241000,
   // Provided by XR_HTC_passthrough
     XR_OBJECT_TYPE_PASSTHROUGH_HTC = 1000317000,
     XR_OBJECT_TYPE_MAX_ENUM = 0x7FFFFFFF
@@ -894,7 +902,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2022 The Khronos Group Inc.</p>
+<p>Copyright 2014-2023 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -906,7 +914,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

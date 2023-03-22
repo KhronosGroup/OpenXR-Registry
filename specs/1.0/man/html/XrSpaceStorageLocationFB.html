@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>XrSpaceStorageLocationFB(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2022, The Khronos Group Inc.
+ * Copyright (c) 2017-2023, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -774,6 +774,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 typedef enum XrSpaceStorageLocationFB {
     XR_SPACE_STORAGE_LOCATION_INVALID_FB = 0,
     XR_SPACE_STORAGE_LOCATION_LOCAL_FB = 1,
+    XR_SPACE_STORAGE_LOCATION_CLOUD_FB = 2,
     XR_SPACE_STORAGE_LOCATION_MAX_ENUM_FB = 0x7FFFFFFF
 } XrSpaceStorageLocationFB;</code></pre>
 </div>
@@ -798,6 +799,9 @@ locations used to store, erase, and query spatial entities.</p>
 <li>
 <p><code>XR_SPACE_STORAGE_LOCATION_LOCAL_FB</code>&#8201;&#8212;&#8201;Local device storage</p>
 </li>
+<li>
+<p><code>XR_SPACE_STORAGE_LOCATION_CLOUD_FB</code>&#8201;&#8212;&#8201;Cloud storage</p>
+</li>
 </ul>
 </div>
 </div>
@@ -808,7 +812,7 @@ locations used to store, erase, and query spatial entities.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_FB_spatial_entity_storage.html">XR_FB_spatial_entity_storage</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrSpaceEraseInfoFB.html">XrSpaceEraseInfoFB</a>, <a href="XrSpaceSaveInfoFB.html">XrSpaceSaveInfoFB</a>, <a href="XrSpaceStorageLocationFilterInfoFB.html">XrSpaceStorageLocationFilterInfoFB</a></p>
+<p><a href="XR_FB_spatial_entity_storage.html">XR_FB_spatial_entity_storage</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrSpaceEraseInfoFB.html">XrSpaceEraseInfoFB</a>, <a href="XrSpaceListSaveInfoFB.html">XrSpaceListSaveInfoFB</a>, <a href="XrSpaceSaveInfoFB.html">XrSpaceSaveInfoFB</a>, <a href="XrSpaceStorageLocationFilterInfoFB.html">XrSpaceStorageLocationFilterInfoFB</a></p>
 </div>
 </div>
 </div>
@@ -828,7 +832,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2022 The Khronos Group Inc.</p>
+<p>Copyright 2014-2023 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -840,7 +844,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

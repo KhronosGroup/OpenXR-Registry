@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>XrResult(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2022, The Khronos Group Inc.
+ * Copyright (c) 2017-2023, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -886,6 +886,18 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT = -1000142001,
   // Provided by XR_MSFT_spatial_anchor_persistence
     XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT = -1000142002,
+  // Provided by XR_FB_spatial_entity_sharing
+    XR_ERROR_SPACE_MAPPING_INSUFFICIENT_FB = -1000169000,
+  // Provided by XR_FB_spatial_entity_sharing
+    XR_ERROR_SPACE_LOCALIZATION_FAILED_FB = -1000169001,
+  // Provided by XR_FB_spatial_entity_sharing
+    XR_ERROR_SPACE_NETWORK_TIMEOUT_FB = -1000169002,
+  // Provided by XR_FB_spatial_entity_sharing
+    XR_ERROR_SPACE_NETWORK_REQUEST_FAILED_FB = -1000169003,
+  // Provided by XR_FB_spatial_entity_sharing
+    XR_ERROR_SPACE_CLOUD_STORAGE_DISABLED_FB = -1000169004,
+  // Provided by XR_QCOM_tracking_optimization_settings
+    XR_ERROR_HINT_ALREADY_SET_QCOM = -1000306000,
     XR_RESULT_MAX_ENUM = 0x7FFFFFFF
 } XrResult;</code></pre>
 </div>
@@ -1291,6 +1303,30 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The spatial anchor name provided was not valid (Added by the <code><a href="#XR_MSFT_spatial_anchor_persistence">[XR_MSFT_spatial_anchor_persistence]</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_MAPPING_INSUFFICIENT_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anchor import from cloud or export from device failed. (Added by the <code><a href="#XR_FB_spatial_entity_sharing">[XR_FB_spatial_entity_sharing]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_LOCALIZATION_FAILED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anchors were downloaded from the cloud but failed to be imported/aligned on the device. (Added by the <code><a href="#XR_FB_spatial_entity_sharing">[XR_FB_spatial_entity_sharing]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_NETWORK_TIMEOUT_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout occurred while waiting for network request to complete. (Added by the <code><a href="#XR_FB_spatial_entity_sharing">[XR_FB_spatial_entity_sharing]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_NETWORK_REQUEST_FAILED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The network request failed. (Added by the <code><a href="#XR_FB_spatial_entity_sharing">[XR_FB_spatial_entity_sharing]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_CLOUD_STORAGE_DISABLED_FB</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud storage is required for this operation but is currently disabled. (Added by the <code><a href="#XR_FB_spatial_entity_sharing">[XR_FB_spatial_entity_sharing]</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_HINT_ALREADY_SET_QCOM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tracking optimization hint is already set for the domain. (Added by the <code><a href="#XR_QCOM_tracking_optimization_settings">[XR_QCOM_tracking_optimization_settings]</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1300,7 +1336,7 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="xrResultToString.html">xrResultToString</a></p>
+<p><a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="xrResultToString.html">xrResultToString</a></p>
 </div>
 </div>
 </div>
@@ -1320,7 +1356,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2022 The Khronos Group Inc.</p>
+<p>Copyright 2014-2023 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -1332,7 +1368,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

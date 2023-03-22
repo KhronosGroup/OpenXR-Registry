@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>xrEnumerateApiLayerProperties(3)</title>
 <style>
 /*
@@ -13,7 +13,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2022, The Khronos Group Inc.
+ * Copyright (c) 2017-2023, The Khronos Group Inc.
  * Copyright (c) 2013-2017 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -792,17 +792,17 @@ XrResult xrEnumerateApiLayerProperties(
 <div class="ulist">
 <ul>
 <li>
-<p><code>propertyCapacityInput</code> is the capacity of the properties array, or 0
-to indicate a request to retrieve the required capacity.</p>
+<p><code>propertyCapacityInput</code> is the capacity of the <code>properties</code> array,
+or 0 to indicate a request to retrieve the required capacity.</p>
 </li>
 <li>
-<p><code>propertyCountOutput</code> is a pointer to the count of properties written,
-or a pointer to the required capacity in the case that
-propertyCapacityInput is insufficient.</p>
+<p><code>propertyCountOutput</code> is a pointer to the count of <code>properties</code>
+written, or a pointer to the required capacity in the case that
+<code>propertyCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>properties</code> is a pointer to an array of <a href="XrApiLayerProperties.html">XrApiLayerProperties</a>
-structures, but <strong class="purple">can</strong> be <code>NULL</code> if propertyCapacityInput is 0.</p>
+structures, but <strong class="purple">can</strong> be <code>NULL</code> if <code>propertyCapacityInput</code> is 0.</p>
 </li>
 <li>
 <p>See the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#buffer-size-parameters" target="_blank" rel="noopener">Buffer Size Parameters</a> section for a
@@ -907,7 +907,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2022 The Khronos Group Inc.</p>
+<p>Copyright 2014-2023 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -919,7 +919,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.26<br>
+Version 1.0.27<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
