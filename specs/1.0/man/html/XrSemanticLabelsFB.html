@@ -798,22 +798,21 @@ typedef struct XrSemanticLabelsFB {
 </li>
 <li>
 <p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
-chain.
-No such structures are defined in core OpenXR or this extension.</p>
+chain, such as <a href="XrSemanticLabelsSupportInfoFB.html">XrSemanticLabelsSupportInfoFB</a>.</p>
 </li>
 <li>
 <p><code>bufferCapacityInput</code> is the capacity of the <code>buffer</code> array, in
 bytes, or 0 to indicate a request to retrieve the required capacity.</p>
 </li>
 <li>
-<p><code>bufferCountOutput</code> is a pointer to the count of bytes written, or a
-pointer to the required capacity in the case that
-<code>bufferCapacityInput</code> is insufficient.</p>
+<p><code>bufferCountOutput</code> is the count of bytes written, or the required
+capacity in the case that <code>bufferCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>buffer</code> is a pointer to an array of bytes, but can be <code>NULL</code> if
 <code>bufferCapacityInput</code> is 0.
-Multiple labels represented by raw string, separated by comma (,).</p>
+Multiple labels represented by raw string, separated by a comma without
+spaces.</p>
 </li>
 <li>
 <p>See <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#buffer-size-parameters" target="_blank" rel="noopener">Buffer Size Parameters</a> chapter for a
@@ -838,7 +837,7 @@ provide the application with the intended usage of the spatial entity.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrSemanticLabelsFB-extension-notenabled"></a> The <code><a href="#XR_FB_scene">[XR_FB_scene]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSemanticLabelsFB.html">XrSemanticLabelsFB</a></p>
+<p><a id="VUID-XrSemanticLabelsFB-extension-notenabled"></a> The <code><a href="XR_FB_scene.html">XR_FB_scene</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSemanticLabelsFB.html">XrSemanticLabelsFB</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSemanticLabelsFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SEMANTIC_LABELS_FB</code></p>
@@ -891,7 +890,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

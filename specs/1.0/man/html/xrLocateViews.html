@@ -851,6 +851,13 @@ The <a href="XrViewState.html">XrViewState</a> and <a href="XrView.html">XrView<
 calls to <a href="xrLocateViews.html">xrLocateViews</a>, and so applications <strong class="purple">must</strong> not assume it to be
 constant.</p>
 </div>
+<div class="paragraph">
+<p>If an application gives a <code>viewLocateInfo</code> with a
+<code>viewConfigurationType</code> that was not passed in the session&#8217;s call to
+<a href="xrBeginSession.html">xrBeginSession</a> via the
+<code>beginInfo.pname</code>:primaryViewConfigurationType, or enabled though an
+extension, then the runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -966,7 +973,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -834,8 +834,8 @@ as they walk around, such as 360-degree video.</p>
 <p>When the application passes <code>XR_REPROJECTION_MODE_DEPTH_MSFT</code> or
 <code>XR_REPROJECTION_MODE_PLANAR_FROM_DEPTH_MSFT</code> mode, it <strong class="purple">should</strong> also
 provide the depth buffer for the corresponding layer using
-<a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> in <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_KHR_composition_layer_depth" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_KHR_composition_layer_depth</a>
-extension.
+<a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> in
+<code><a href="XR_KHR_composition_layer_depth.html">XR_KHR_composition_layer_depth</a></code> extension.
 However, if the application does not submit this depth buffer, the runtime
 <strong class="purple">must</strong> apply a runtime defined fallback reprojection mode, and <strong class="purple">must</strong> not fail
 the <a href="xrEndFrame.html">xrEndFrame</a> function because of this missing depth.</p>
@@ -844,8 +844,8 @@ the <a href="xrEndFrame.html">xrEndFrame</a> function because of this missing de
 <p>When the application passes <code>XR_REPROJECTION_MODE_PLANAR_MANUAL_MSFT</code> or
 <code>XR_REPROJECTION_MODE_ORIENTATION_ONLY_MSFT</code> mode, it <strong class="purple">should</strong> avoid
 providing a depth buffer for the corresponding layer using
-<a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> in <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_KHR_composition_layer_depth" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_KHR_composition_layer_depth</a>
-extension.
+<a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> in
+<code><a href="XR_KHR_composition_layer_depth.html">XR_KHR_composition_layer_depth</a></code> extension.
 However, if the application does submit this depth buffer, the runtime <strong class="purple">must</strong>
 not fail the <a href="xrEndFrame.html">xrEndFrame</a> function because of this unused depth data.</p>
 </div>
@@ -887,7 +887,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

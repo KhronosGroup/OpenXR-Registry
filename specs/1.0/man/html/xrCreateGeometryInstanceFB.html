@@ -810,8 +810,8 @@ XrResult xrCreateGeometryInstanceFB(
 <div class="sectionbody">
 <div class="paragraph">
 <p>Creates an <a href="XrGeometryInstanceFB.html">XrGeometryInstanceFB</a> handle.
-Geometry instance functionality requires <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_FB_triangle_mesh" class="bare" target="_blank" rel="noopener">https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_FB_triangle_mesh</a> extension
-to be enabled.
+Geometry instance functionality requires <code><a href="XR_FB_triangle_mesh.html">XR_FB_triangle_mesh</a></code>
+extension to be enabled.
 An <a href="XrGeometryInstanceFB.html">XrGeometryInstanceFB</a> connects a layer, a mesh, and a
 transformation, with the semantics that a specific mesh will be instantiated
 in a specific layer with a specific transformation.
@@ -824,7 +824,7 @@ layers.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrCreateGeometryInstanceFB-extension-notenabled"></a> The <code><a href="#XR_FB_passthrough">[XR_FB_passthrough]</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrCreateGeometryInstanceFB.html">xrCreateGeometryInstanceFB</a></p>
+<p><a id="VUID-xrCreateGeometryInstanceFB-extension-notenabled"></a> The <code><a href="XR_FB_passthrough.html">XR_FB_passthrough</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrCreateGeometryInstanceFB.html">xrCreateGeometryInstanceFB</a></p>
 </li>
 <li>
 <p><a id="VUID-xrCreateGeometryInstanceFB-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
@@ -939,7 +939,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

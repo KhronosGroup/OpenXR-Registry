@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.27</span>
-<br><span id="revremark">from git ref release-1.0.27</span>
+<span id="revnumber">version 1.0.28</span>
+<br><span id="revremark">from git ref release-1.0.28</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -472,12 +472,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#naming-funcpointers">2.5.1. Function Pointer Type Names</a></li>
 </ul>
 </li>
-<li><a href="#_function_parameter_and_structunion_member_names">2.6. Function Parameter and Struct/Union Member Names</a></li>
+<li><a href="#_function_parameter_and_structunion_member_names">2.6. Function Parameter and Struct/Union Member Names</a>
+<ul class="sectlevel3">
+<li><a href="#naming-two-call-idiom">2.6.1. Two-call Idiom Parameter Names</a></li>
+<li><a href="#naming-exceptions">2.6.2. Naming exceptions</a></li>
+</ul>
+</li>
 <li><a href="#naming-extension-identifiers">2.7. Extension Identifier Naming Conventions</a>
 <ul class="sectlevel3">
 <li><a href="#_extension_type_names">2.7.1. Extension Type Names</a></li>
 <li><a href="#_extension_enumerant_names">2.7.2. Extension Enumerant Names</a></li>
 <li><a href="#_extension_function_names">2.7.3. Extension Function Names</a></li>
+<li><a href="#_extension_interaction_profile_names">2.7.4. Extension Interaction Profile Names</a></li>
 </ul>
 </li>
 <li><a href="#naming-abbreviations">2.8. Common Abbreviations</a></li>
@@ -623,8 +629,8 @@ documentation.</p>
 the Vulkan documentation.
 A deliberate decision was made to keep the API standards similar, although
 this may diverge over time as changes are made to either standard.
-The OpenXR version of this style guide is also influenced by <em>Etna</em>, the
-proposal that was adopted as a starting point for the OpenXR specification.</p>
+The OpenXR version of this style guide is also influenced by the proposal
+that was adopted as a starting point for the OpenXR specification.</p>
 </div>
 <div class="paragraph">
 <p>The primary purpose is to achieve consistency across the API, as well as
@@ -633,14 +639,18 @@ Consistency makes it easier for developers, editors, reviewers, and users of
 our documentation to understand and modify it.</p>
 </div>
 <div class="paragraph">
-<p>This document has been ratified by the OpenXR working group.</p>
-</div>
-<div class="paragraph">
-<p>This means that unless explicitly stated otherwise, the procedures and
-conventions must be followed when making changes or additions to the OpenXR
-specification.
+<p>Unless explicitly stated otherwise, the procedures and conventions must be
+followed when making changes or additions to the OpenXR specification.
 If you have a strong desire to modify the procedures and conventions, such
 changes must be made through the normal OpenXR Working group process.</p>
+</div>
+<div class="paragraph">
+<p>Note that some conventions in naming and API design that would be relevant
+to a user of the standard are discussed in the "Fundamentals" and "Appendix"
+chapters of the specification itself.
+If a contradiction is found, the specification itself takes precedence, and
+normal working group procedures should be followed to correct this style
+guide.</p>
 </div>
 <div class="sect2">
 <h3 id="introduction-terminology">1.1. Terminology</h3>
@@ -809,7 +819,7 @@ certain platform-specific identifiers related to calling conventions.</p>
 </div>
 </li>
 <li>
-<p>Preprocessor may be used to create aliases between other OpenXR
+<p>The C preprocessor may be used to create aliases between other OpenXR
 identifiers, which could happen if a determination is made that something
 has been misnamed.
 In these cases, the fixed name is added to the API, and the old name is
@@ -822,16 +832,14 @@ was.</p>
 <div class="listingblock">
 <div class="title">Example: Macro</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
-#define XR_VERSION_MAJOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 48)&amp; 0xffffULL)</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0#define XR_VERSION_MAJOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 48)&amp; 0xffffULL)</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example: Value</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
-// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 27)</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 28)</code></pre>
 </div>
 </div>
 </div>
@@ -839,8 +847,8 @@ was.</p>
 <h3 id="_type_names">2.3. Type Names</h3>
 <div class="paragraph">
 <p>Type names are declared with no separator between words.
-Each word starts with a capital letter, and every other character in each
-word is lower case.</p>
+Each word starts with a capital letter, and other characters in each word
+are lower case.</p>
 </div>
 <div class="paragraph">
 <p>Each type name is prefixed with <code>Xr</code>.</p>
@@ -866,7 +874,7 @@ typedefs, and enumerant types.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c" data-lang="c">typedef enum XrStructureType {
     ...
-};</code></pre>
+} XrStructureType;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -888,11 +896,23 @@ typedefs, and enumerant types.</p>
 <h4 id="naming-extension-structures">2.3.1. Extension Structure Names</h4>
 <div class="paragraph">
 <p>Structures which extend other structures through the <code>next</code> chain should
-reflect the name of the base structure they extend.</p>
+reflect the name of the base structure they extend, or the role that they
+play.
+Examples of the "role" guideline include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>GraphicsBinding</code> structures in the <code>XrSessionCreateInfo</code> <code>next</code> chain</p>
+</li>
+<li>
+<p><code>XrSpaceVelocity</code> in the <code>XrSpaceLocation</code> <code>next</code> chain</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>New structures which add extended object creation parameters to a base
-structure should use this naming scheme:</p>
+<p>New non-<code>KHR</code> structures which add extended object creation parameters to a
+base structure should use this naming scheme:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 60%;">
 <caption class="title">Table 1. Extended Object Information Structures</caption>
@@ -946,7 +966,7 @@ the end.</p>
 <code>XR_STRUCTURE_TYPE</code>.</p>
 </li>
 <li>
-<p>Flag types don&#8217;t use FLAGS in the name (e.g. <code>XrSpaceLocationFlags</code> uses
+<p>Flag types don&#8217;t use <code>FLAGS</code> in the name (e.g. <code>XrSpaceLocationFlags</code> uses
 <code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> instead of
 <code>XR_SPACE_LOCATION_FLAGS_POSITION_VALID_BIT</code>).</p>
 </li>
@@ -963,6 +983,10 @@ codes.</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Some graphics API names are exceptions to this rule, see
+<a href="#naming-exceptions">Naming Exceptions</a></p>
 </li>
 </ul>
 </div>
@@ -1072,12 +1096,67 @@ idiom.
 The <code>size</code> rule overrides this rule, though it is possible to have multiple
 sizes (e.g. <code>sizeCount</code>).
 If the member is an array length, then the name of length should correspond
-to the name of the array member, usually <code>XYZCount</code> for an array named
-<code>XYZs</code>.
+to the name of the array member, usually <code>xyzCount</code> for an array named
+<code>xyzs</code>.
 If a member of a chained extension structure is an array whose length must
 match the length of an array of the base structure, then the chained
 extension structure should include an array length member with the same name
 as the length in the base structure.</p>
+</div>
+<div class="sect3">
+<h4 id="naming-two-call-idiom">2.6.1. Two-call Idiom Parameter Names</h4>
+<div class="paragraph">
+<p>The two-call idiom for buffer size parameters uses names as follows.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For arrays of typed structures that are not strings or byte buffers,
+naming is based on a noun describing a single item.
+In this example, we will use <code>item</code> as that noun.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The first parameter should be the singular noun followed by
+<code>CapacityInput</code>.
+e.g. <code>itemCapacityInput</code></p>
+</li>
+<li>
+<p>The second parameter should be the singular noun followed by
+<code>CountOutput</code>.
+e.g. <code>itemCountOutput</code></p>
+</li>
+<li>
+<p>The third parameter (the array output) should be the item noun
+pluralized.
+e.g. <code>items</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For byte buffers or strings (<code>char</code> arrays), the following parameter names
+are used:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bufferCapacityInput</code></p>
+</li>
+<li>
+<p><code>bufferCountOutput</code></p>
+</li>
+<li>
+<p><code>buffer</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This naming is enforced by the <code>xml_consistency</code> script.
+If your item name is unusual to pluralize (e.g. "index" &#8594; "indices") the
+script may need modification.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example: Function Parameters (including a single indirected pointer)</div>
@@ -1149,6 +1228,30 @@ typedef struct XrCompositionLayerProjection {
     uint32_t                                   viewCount;
     const XrCompositionLayerProjectionView*    views;
 } XrCompositionLayerProjection;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="naming-exceptions">2.6.2. Naming exceptions</h4>
+<div class="paragraph">
+<p>There are a few graphics API-related names that have specific capitalization
+that are an exception to these rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Direct3D, usually shortened to D3D, followed by a version number with no
+delimiter.
+Left as-is in all names, e.g. <code>D3D11</code></p>
+</li>
+<li>
+<p>OpenGL</p>
+</li>
+<li>
+<p>OpenGL ES - <code>OpenGLES</code> in function and type names, and <code>OPENGL_ES</code> in
+enumerants.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1232,6 +1335,27 @@ XrResult xrGetVulkanGraphicsRequirementsKHR(
     XrInstance                                  instance,
     XrSystemId                                  systemId,
     XrGraphicsRequirementsVulkanKHR*            graphicsRequirements);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extension_interaction_profile_names">2.7.4. Extension Interaction Profile Names</h4>
+<div class="paragraph">
+<p>Interaction Profile names defined by extensions have the author ID appended
+to the end of the name.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example: Interaction Profile name with _khr appended.</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">    &lt;extensions&gt;
+        &lt;extension name="XR_KHR_loader_init" number="89" type="instance" supported="openxr"&gt;
+            &lt;require&gt;
+                &lt;enum value="1" name="XR_KHR_loader_init_SPEC_VERSION"/&gt;
+                &lt;enum value="&amp;quot;XR_KHR_loader_init&amp;quot;" name="XR_KHR_LOADER_INIT_EXTENSION_NAME"/&gt;
+                &lt;interaction_profile name="/interaction_profiles/khr/flux_compensator_khr"/&gt;
+            &lt;/require&gt;
+        &lt;/extension&gt;
+    &lt;/extensions&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1684,8 +1808,8 @@ used in the example above.</p>
 <h3 id="extensions-naming">3.4. Extension Function, Type, and Token Naming Conventions</h3>
 <div class="paragraph">
 <p>Extensions may add new functions, types, and tokens, or collectively
-&#8220;objects&#8221;, to the OpenXR API.
-These objects are given globally unique names by appending the author ID
+&#8220;entities&#8221;, to the OpenXR API.
+These entities are given globally unique names by appending the author ID
 defined above for the extension name as described in the
 <a href="#naming-extension-identifiers">Extension Identifier Naming Conventions</a>
 section above.</p>
@@ -1833,9 +1957,7 @@ This is done by proposing a merge request against <code>xr.xml</code> similarly 
 how <a href="#extensions-author-ID">author IDs are reserved</a>.
 The merge should add a new <code>&lt;extension&gt;</code> tag at the end of the file with
 attributes specifying the proposed extension <code>name</code>, the next unused
-sequential extension <code>number</code>, the <code>author</code> and <code>contact</code> information (if
-different than that already specified for the author ID used in the
-extension name), and finally, specifying <code>supported="disabled"</code>.
+sequential extension <code>number</code>, and specifying <code>supported="disabled"</code>.
 The extension number will be reserved only once this merge request is
 accepted.
 See the <a href="#mr-reserve-extension-number">example</a> below.</p>
@@ -1853,7 +1975,11 @@ Changes to both the specification source, and to <code>xr.xml</code> will be nee
 <li>
 <p>Extension changes to the specification source must be limited to the
 added specification section as described in the
-<a href="#extensions-documenting">Documenting Extensions</a> section.</p>
+<a href="#extensions-documenting">Documenting Extensions</a> section.
+(Their entities may be included in generated files incorporated into the
+final specification output document.) If, in a rare exception, such
+changes to the core source do need to occur, they must be protected by
+asciidoc conditionals.</p>
 </li>
 <li>
 <p>Changes to <code>xr.xml</code> must define the extension interfaces in the
@@ -1872,7 +1998,7 @@ publication is complete.</p>
 <p>Publishing on the <a href="#openxr-docs">Khronos public GitHub repository</a> is
 preferred whenever possible.
 Khronos members may instead create branches on Khronos' internal gitlab
-server, but those branches will eventually be mirrored to GitHub upon
+server, but those changes will eventually be mirrored to GitHub upon
 publication.</p>
 </li>
 <li>
@@ -1928,7 +2054,7 @@ When making your change, please follow the layout spacing in the actual
 change.
 Notice how the pending extension is now the last extension in the file and
 <code>supported</code> is set to "disabled".
-The later change ensures the extension isn&#8217;t used by any of the tools which
+The latter detail ensures the extension isn&#8217;t used by any of the tools which
 use the <code>xr.xml</code> as a source.</p>
 </div>
 </div>
@@ -1948,6 +2074,53 @@ extension when the Makefile is invoked appropriately.</p>
 <p>Generally, extensions do not add conditional text to the core of the
 specification, although the generated files included in the core of the
 specification automatically reflect the extensions enabled at build time.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>This is referred to as the &#8220;single-branch&#8221; model, in contrast to an
+earlier model used by Vulkan where each extension lived in a separate branch
+from the Vulkan 1.0 core Specification source.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, the <code>XR_KHR_opengl_enable</code> extension is documented in the
+<code>main</code> branch of the GitHub <code><a href="#openxr-docs">KhronosGroup/OpenXR-Docs</a></code>
+project and internal GitLab.
+However, specifications generated from this branch will only include the
+extension when the Makefile is invoked appropriately.</p>
+</div>
+<div class="paragraph">
+<p>Except for extraordinary cases, language defining extensions should be
+localized into:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>modification of parts of <code>xr.xml</code> defining the extension interfaces.</p>
+</li>
+<li>
+<p>one or a small number of asciidoc include files.
+One must be named
+<code>specification/sources/chapters/extensions/<em>author</em>/<em>extension_name</em>.adoc</code>
+where <code><em>author</em></code> is the author/vendor tag in all lowercase, and
+<code><em>extension_name</em></code> is the extension name without the leading <code>XR_</code> and
+in all lowercase.
+This file will be conditionally and automatically included in the table of
+contents and generated specification documents and reference pages if
+enabled during a specification build.
+See below for more details.</p>
+</li>
+</ul>
 </div>
 <div class="sect3">
 <h4 id="_extension_documentation_nameslocations">3.9.1. Extension Documentation Names/Locations</h4>
@@ -2025,8 +2198,8 @@ automatically generated metadata information.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>This information includes the extension name string, type, number,
-revision, and contact information from xr.xml.</p>
+<p>This information includes the extension name string, type, number, and
+revision from xr.xml.</p>
 </li>
 </ul>
 </div>
@@ -2062,6 +2235,69 @@ populated from the data in the registry XML.</p>
 <p>Contributors - Names and corporate affiliations of people who have made
 significant direct contributions to this extension.</p>
 </li>
+<li>
+<p>Overview - a brief introduction</p>
+</li>
+<li>
+<p>New Object Types - leave empty if none.</p>
+</li>
+<li>
+<p>New Flag Types - leave empty if none.</p>
+</li>
+<li>
+<p>New Enum Constants - leave empty if none.
+This is where you may add something like the following for additions to
+core enumerations - most often <code>XrStructureType</code>.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example Markup</div>
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">*New Enum Constants*
+
+elink:XrStructureType enumeration is extended with:
+
+* ename:XR_TYPE_COMPOSITION_LAYER_CYLINDER_KHR</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>New Enums - leave empty if none.</p>
+</li>
+<li>
+<p>New Structures - leave empty if none.</p>
+</li>
+<li>
+<p>New Functions - leave empty if none.</p>
+</li>
+<li>
+<p>Issues</p>
+</li>
+<li>
+<p>Version History - this must be formatted exactly as found in existing
+specifications, and updated when a "substantial" change is made.
+It is parsed by <code>xml_consistency</code> and cross-checked against the version
+enum in the XML registry.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="title">Example Markup</div>
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">*Version History*
+
+* Revision 1, 2019-07-12 (Ryan Pavlik)
+** A brief revision description goes here.
+   Mark up entity names with back-ticks instead of the normal macros
+   in the version history to prevent errors in case future revisions rename things.
+* Revision 2, 2019-07-12 (Ryan Pavlik)
+** ... etc. ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
 </ul>
 </div>
 </li>
@@ -2074,7 +2310,7 @@ This is to keep the core specification text clean of any extensions.</p>
 </li>
 <li>
 <p>In every other place where the extension alters the behavior of the core
-Specification, clearly indicate the section in the extension appendix that
+Specification, clearly indicate the section in the extension appendix what
 is modified and in what way.
 Since the changes are not made to the specification language directly,
 care must be taken to make it abundantly clear what new behavior occurs
@@ -2168,15 +2404,15 @@ extension will eventually go down one of 3 paths:</p>
 <div class="sect4">
 <h5 id="_extension_promotion">Extension Promotion</h5>
 <div class="paragraph">
-<p>When the OpenXR Working Group decides to release a new version of the OpenXR
-API, they typically will meet and decide to pull in a set of "active"
-extensions into the core API.
+<p>When the OpenXR Working Group decides to release a new major or minor
+version of the OpenXR API, they typically will meet and decide to pull in a
+set of "active" extensions into the core API.
 This process of pulling in extensions into the core API is called
 <code>promotion</code>.
 Extensions that are part of this process become "promoted" extensions.</p>
 </div>
 <div class="paragraph">
-<p>An example of this behavior is the recent release of Vulkan 1.1.
+<p>An example of this behavior pattern in Vulkan is the release of Vulkan 1.1.
 Vulkan 1.1 was created by pulling in many of the "active" Vulkan extensions
 that were originally added to extend Vulkan 1.0.</p>
 </div>
@@ -2203,7 +2439,7 @@ For example, if the extension was promoted into OpenXR as part of OpenXR
 <div class="content">
 <pre class="highlight"><code>&lt;extension name="XR_KHR_loader_init" number="89" type="instance" supported="openxr" promotedto="XR_VERSION_1_1"&gt;
    &lt;require&gt;
-      ....
+      &lt;!-- ... --&gt;
    &lt;/require&gt;
 &lt;/extension&gt;</code></pre>
 </div>
@@ -2249,9 +2485,7 @@ For example, if the <code>XR_KHR_metal_enable</code> extension was replaced by t
 <div class="paragraph">
 <p>To make it clear which extensions are "active" and which are "deprecated",
 all "deprecated" extensions are listed in a separate extension list in the
-main specification.
-If no "deprecated" extensions exist, then only one extension list is ever
-created.</p>
+specification output documents.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2474,16 +2708,16 @@ writing the following definitions were in effect:</p>
 <p>Expanding on previous discussion, extensions can add values to existing
 enums; and can add their own commands, enums, typedefs, etc.
 This is done by adding to <a href="#extensions-api-registry">xr.xml</a>.
-All such additions will be included in the <code>openxr.h</code> or <code>openxr_platform.h</code>
-headers supplied by Khronos.</p>
+All such additions will be included in the <code>openxr.h</code> and related headers
+supplied by Khronos.</p>
 </div>
 <div class="paragraph">
-<p>If the extension adds a new handle to OpenXR, a corresponding value must be
+<p>If the extension adds a new handle to OpenXR, a corresponding value <strong class="purple">must</strong> be
 added to <code>XrObjectType</code> in order to allow components to identify and
 track objects of the new type.</p>
 </div>
 <div class="paragraph">
-<p>The new enumeration value must conform to the naming defined in the
+<p>The new enumeration value <strong class="purple">must</strong> conform to the naming defined in the
 <a href="#extension-enumerant-names">Extension Enumerant Names</a> section.
 In this case, the type&#8217;s <code>Xr</code> prefix is replaced with the enum prefix
 <code>XR_OBJECT_TYPE_</code>, and the rest of the handle name is converted as
@@ -2643,7 +2877,7 @@ registry schema document for Vulkan</a>.</p>
 <p>Sometimes, extensions <strong class="purple">may</strong> add additional return values to an existing
 OpenXR command.
 This is done by adding a special tag in the new extension&#8217;s section of the
-OpenXR registry file (xr.xml) in the following fashion:</p>
+OpenXR registry file (<code>xr.xml</code>) in the following fashion:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3092,20 +3326,20 @@ anchors corresponding to API names, such as flink:xrCreateCommandPool.</code></p
 <h5 id="markup-sample-section-extensions">Extensions</h5>
 <div class="paragraph">
 <p>Extensions, like commands and structures, have an auto-generated anchor.
-The standardized way of referring to an extension by name is to wrap it in
-both backticks and angle-brackets: for example, <code><a href="#XR_KHR_vulkan_enable">[XR_KHR_vulkan_enable]</a></code>.
+The standardized way of referring to an extension by name is to prepend
+<code>apiext&#x3a;</code>: for example, <code><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></code>.
 When a link would be inappropriate (e.g. in the &#8220;Name&#8221; portion of the
-extension&#8217;s spec itself), surrounding it with backticks only is acceptable:
+extension&#8217;s spec itself), surrounding it with backticks is acceptable:
 <code>XR_KHR_vulkan_enable</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example Markup</div>
 <div class="content">
 <pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">Extensions, like commands and structures, have an auto-generated anchor.
-The standardized way of referring to an extension by name is to wrap it
-in both backticks and angle-brackets: for example, `&lt;&lt;XR_KHR_vulkan_enable&gt;&gt;`.
+The standardized way of referring to an extension by name is to prepend
+`apiext{cl}`: for example, apiext:XR_KHR_vulkan_enable.
 When a link would be inappropriate (e.g. in the "`Name`" portion of the
-extension's spec itself), surrounding it with backticks only is acceptable:
+extension's spec itself), surrounding it with backticks is acceptable:
 `XR_KHR_vulkan_enable`.</code></pre>
 </div>
 </div>
@@ -3285,7 +3519,7 @@ table:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ptext&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like pname&#x3a;. May contain
                      asterisks for wildcards. Not validated. Example:
-                     ptext&#x3a;sparseResidency* &#8594; <code>sparseResidency</code>*.</p>
+                     ptext&#x3a;sparseResidency* &#8594; <code>sparseResidency*</code>.</p>
 <p class="tableblock">                     Only use this macro <a href="#markup-macros-api-text">when
                      necessary</a>.</p></td>
 </tr>
@@ -3326,7 +3560,12 @@ table:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">basetype&#x3a;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Formats the macro argument like a basic scalar type.
                      Example:
-                     basetype&#x3a;XrBool32 &#8594; <a href="#XrBool32"><code>XrBool32</code></a></p></td>
+                     basetype&#x3a;XrBool32 &#8594; <a href="#XrBool32">XrBool32</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apiext&#x3a;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generates a cross-reference or link to the target as an
+                     extension.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">code&#x3a;</p></td>
@@ -5101,7 +5340,7 @@ Adding OpenXR issues in most TODOs.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

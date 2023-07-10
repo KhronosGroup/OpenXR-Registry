@@ -818,6 +818,7 @@ the value of <code>timeout</code>.
 The <code>requestId</code> <strong class="purple">can</strong> be used to later refer to the request, such as
 identifying which request has completed when an
 <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a> is posted to the event queue.
+If this function returns a failure code, no event is posted.
 This function <strong class="purple">must</strong> return <code>XR_ERROR_SPACE_COMPONENT_NOT_SUPPORTED_FB</code>
 if the <a href="XrSpace.html">XrSpace</a> does not support the specified component type.</p>
 </div>
@@ -827,7 +828,7 @@ if the <a href="XrSpace.html">XrSpace</a> does not support the specified compone
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrSetSpaceComponentStatusFB-extension-notenabled"></a> The <code><a href="#XR_FB_spatial_entity">[XR_FB_spatial_entity]</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrSetSpaceComponentStatusFB.html">xrSetSpaceComponentStatusFB</a></p>
+<p><a id="VUID-xrSetSpaceComponentStatusFB-extension-notenabled"></a> The <code><a href="XR_FB_spatial_entity.html">XR_FB_spatial_entity</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrSetSpaceComponentStatusFB.html">xrSetSpaceComponentStatusFB</a></p>
 </li>
 <li>
 <p><a id="VUID-xrSetSpaceComponentStatusFB-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="XrSpace.html">XrSpace</a> handle</p>
@@ -939,7 +940,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

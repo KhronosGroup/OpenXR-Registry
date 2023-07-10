@@ -828,9 +828,9 @@ array.
 This may be <code>0</code>.</p>
 </li>
 <li>
-<p><code>objects</code> is a pointer to an array of
+<p><code>objects</code> is <code>NULL</code> or a pointer to an array of
 <a href="XrDebugUtilsObjectNameInfoEXT.html">XrDebugUtilsObjectNameInfoEXT</a> objects related to the detected issue.
-The array is roughly in order or importance, but the 0th element is always
+The array is roughly in order of importance, but the 0th element is always
 guaranteed to be the most important object for this message.</p>
 </li>
 <li>
@@ -839,13 +839,7 @@ guaranteed to be the most important object for this message.</p>
 This may be <code>0</code>.</p>
 </li>
 <li>
-<p><code>sessionLabels</code> is a pointer to an array of <a href="XrDebugUtilsLabelEXT.html">XrDebugUtilsLabelEXT</a>
-objects related to the detected issue.
-The array is roughly in order or importance, but the 0th element is always
-guaranteed to be the most important object for this message.</p>
-</li>
-<li>
-<p><code>sessionLabels</code> is NULL or a pointer to an array of
+<p><code>sessionLabels</code> is <code>NULL</code> or a pointer to an array of
 <a href="XrDebugUtilsLabelEXT.html">XrDebugUtilsLabelEXT</a> active in the current <a href="XrSession.html">XrSession</a> at the
 time the callback was triggered.
 Refer to <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session-labels" target="_blank" rel="noopener">Session Labels</a> for more information.</p>
@@ -865,7 +859,7 @@ Refer to <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrDebugUtilsMessengerCallbackDataEXT-extension-notenabled"></a> The <code><a href="#XR_EXT_debug_utils">[XR_EXT_debug_utils]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrDebugUtilsMessengerCallbackDataEXT.html">XrDebugUtilsMessengerCallbackDataEXT</a></p>
+<p><a id="VUID-XrDebugUtilsMessengerCallbackDataEXT-extension-notenabled"></a> The <code><a href="XR_EXT_debug_utils.html">XR_EXT_debug_utils</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrDebugUtilsMessengerCallbackDataEXT.html">XrDebugUtilsMessengerCallbackDataEXT</a></p>
 </li>
 <li>
 <p><a id="VUID-XrDebugUtilsMessengerCallbackDataEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT</code></p>
@@ -949,7 +943,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

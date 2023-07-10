@@ -814,13 +814,20 @@ containing the <a href="XrRoomLayoutFB.html">XrRoomLayoutFB</a> for <code>space<
 entity with the <code>XR_SPACE_COMPONENT_TYPE_ROOM_LAYOUT_FB</code> component type
 enabled.</p>
 </div>
+<div class="paragraph">
+<p>If the <a href="XrRoomLayoutFB.html">XrRoomLayoutFB</a>::<code>wallUuidCapacityInput</code> field is zero
+(indicating a request to retrieve the required capacity for the
+<a href="XrRoomLayoutFB.html">XrRoomLayoutFB</a>::<code>wallUuids</code> array), or if
+<a href="xrGetSpaceRoomLayoutFB.html">xrGetSpaceRoomLayoutFB</a> returns failure, then the values of <code>floorUuid</code>
+and <code>ceilingUuid</code> are unspecified and should not be used.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrGetSpaceRoomLayoutFB-extension-notenabled"></a> The <code><a href="#XR_FB_scene">[XR_FB_scene]</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetSpaceRoomLayoutFB.html">xrGetSpaceRoomLayoutFB</a></p>
+<p><a id="VUID-xrGetSpaceRoomLayoutFB-extension-notenabled"></a> The <code><a href="XR_FB_scene.html">XR_FB_scene</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetSpaceRoomLayoutFB.html">xrGetSpaceRoomLayoutFB</a></p>
 </li>
 <li>
 <p><a id="VUID-xrGetSpaceRoomLayoutFB-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
@@ -879,6 +886,9 @@ enabled.</p>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SPACE_COMPONENT_NOT_ENABLED_FB</code></p>
 </li>
 <li>
@@ -929,7 +939,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -444,8 +444,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR&#8482; Specification</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.0.27</span>
-<br><span id="revremark">from git ref release-1.0.27</span>
+<span id="revnumber">version 1.0.28</span>
+<br><span id="revremark">from git ref release-1.0.28</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -470,20 +470,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#runtime">2.5. Runtime</a></li>
 <li><a href="#extensions">2.6. Extensions</a></li>
 <li><a href="#api-layers">2.7. API Layers</a></li>
-<li><a href="#return-codes">2.8. Return Codes</a></li>
-<li><a href="#handles">2.9. Handles</a></li>
-<li><a href="#object-handle-types">2.10. Object Handle Types</a></li>
-<li><a href="#buffer-size-parameters">2.11. Buffer Size Parameters</a></li>
-<li><a href="#time">2.12. Time</a></li>
-<li><a href="#duration">2.13. Duration</a></li>
-<li><a href="#prediction-time-limits">2.14. Prediction Time Limits</a></li>
-<li><a href="#colors">2.15. Colors</a></li>
-<li><a href="#coordinate-system">2.16. Coordinate System</a></li>
-<li><a href="#common-object-types">2.17. Common Object Types</a></li>
-<li><a href="#angles">2.18. Angles</a></li>
-<li><a href="#_boolean_values">2.19. Boolean Values</a></li>
-<li><a href="#events">2.20. Events</a></li>
-<li><a href="#resource-lifetime">2.21. System resource lifetime</a></li>
+<li><a href="#type-aliasing">2.8. Type Aliasing</a></li>
+<li><a href="#valid-usage">2.9. Valid Usage</a></li>
+<li><a href="#return-codes">2.10. Return Codes</a></li>
+<li><a href="#handles">2.11. Handles</a></li>
+<li><a href="#object-handle-types">2.12. Object Handle Types</a></li>
+<li><a href="#buffer-size-parameters">2.13. Buffer Size Parameters</a></li>
+<li><a href="#time">2.14. Time</a></li>
+<li><a href="#duration">2.15. Duration</a></li>
+<li><a href="#prediction-time-limits">2.16. Prediction Time Limits</a></li>
+<li><a href="#colors">2.17. Colors</a></li>
+<li><a href="#coordinate-system">2.18. Coordinate System</a></li>
+<li><a href="#common-object-types">2.19. Common Object Types</a></li>
+<li><a href="#angles">2.20. Angles</a></li>
+<li><a href="#_boolean_values">2.21. Boolean Values</a></li>
+<li><a href="#events">2.22. Events</a></li>
+<li><a href="#resource-lifetime">2.23. System resource lifetime</a></li>
 </ul>
 </li>
 <li><a href="#api-initialization">3. API Initialization</a>
@@ -545,6 +547,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#view-projections">10.2. View and Projection State</a></li>
 <li><a href="#frame-synchronization">10.3. Frame Synchronization</a></li>
 <li><a href="#frame-submission">10.4. Frame Submission</a></li>
+<li><a href="#frame-rate">10.5. Frame Rate</a></li>
+<li><a href="#compositing">10.6. Compositing</a></li>
 </ul>
 </li>
 <li><a href="#input">11. Input and Haptics</a>
@@ -928,7 +932,7 @@ typedef uint64_t XrVersion;</code></pre>
 <div class="paragraph">
 <p>In each such use, the API major version number, minor version number, and
 patch version number are packed into a 64-bit integer, referred to as
-<a href="#XrVersion"><code>XrVersion</code></a>, as follows:</p>
+<a href="#XrVersion">XrVersion</a>, as follows:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1440,8 +1444,9 @@ This will return the list of extensions implemented internally in that API
 layer.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="type-aliasing"><a class="anchor" href="#type-aliasing"></a>2.7.5. Type Aliasing</h4>
+</div>
+<div class="sect2">
+<h3 id="type-aliasing"><a class="anchor" href="#type-aliasing"></a>2.8. Type Aliasing</h3>
 <div class="paragraph">
 <p>Type aliasing refers to the situation in which the actual type of a element
 does not match the declared type.
@@ -1455,13 +1460,16 @@ The OpenXR specification does not support strict aliasing, as there are some
 cases in which an application intentionally provides a struct with a type
 that differs from the declared type.
 For example, <a href="#XrFrameEndInfo">XrFrameEndInfo</a>::<code>layers</code> is an array of type
-<code>const</code> <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a> <code>*</code> <code>const</code>.
+<code>const</code> <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a> code:* <code>const</code>.
 However, the array <strong class="purple">must</strong> be of one of the specific layer types, such as
 <a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a>.
 Similarly, <a href="#xrEnumerateSwapchainImages">xrEnumerateSwapchainImages</a> accepts an array of
 <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>, whereas the actual type passed <strong class="purple">must</strong> be an
-array of a type such as <a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>.
-For OpenXR to work correctly, the compiler <strong class="purple">must</strong> support the type aliasing
+array of a type such as
+<a href="#XrSwapchainImageVulkanKHR">XrSwapchainImageVulkanKHR</a>.</p>
+</div>
+<div class="paragraph">
+<p>For OpenXR to work correctly, the compiler <strong class="purple">must</strong> support the type aliasing
 described here.</p>
 </div>
 <div class="openblock">
@@ -1472,7 +1480,6 @@ described here.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #if !defined(XR_MAY_ALIAS)
 #if defined(__clang__) || (defined(__GNUC__) &amp;&amp; (__GNUC__ &gt; 4))
 #define XR_MAY_ALIAS __attribute__((__may_alias__))
@@ -1498,8 +1505,8 @@ type-based aliasing analysis.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="valid-usage"><a class="anchor" href="#valid-usage"></a>2.7.6. Valid Usage</h4>
+<div class="sect2">
+<h3 id="valid-usage"><a class="anchor" href="#valid-usage"></a>2.9. Valid Usage</h3>
 <div class="paragraph">
 <p>Valid usage defines a set of conditions which <strong class="purple">must</strong> be met in order to
 achieve well-defined run-time behavior in an application.
@@ -1520,9 +1527,8 @@ an application.
 This is such that a validation API layer or linter <strong class="purple">can</strong> be written directly
 against these statements at the point they are specified.</p>
 </div>
-</div>
 <div class="sect3">
-<h4 id="implicit-valid-usage"><a class="anchor" href="#implicit-valid-usage"></a>2.7.7. Implicit Valid Usage</h4>
+<h4 id="implicit-valid-usage"><a class="anchor" href="#implicit-valid-usage"></a>2.9.1. Implicit Valid Usage</h4>
 <div class="paragraph">
 <p>Some valid usage conditions apply to all functions and structures in the
 API, unless explicitly denoted otherwise for a specific function or
@@ -1530,8 +1536,9 @@ structure.
 These conditions are considered implicit.
 Implicit valid usage conditions are described in detail below.</p>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-object-handles"><a class="anchor" href="#valid-usage-for-object-handles"></a>Valid Usage for Object Handles</h5>
+</div>
+<div class="sect3">
+<h4 id="valid-usage-for-object-handles"><a class="anchor" href="#valid-usage-for-object-handles"></a>2.9.2. Valid Usage for Object Handles</h4>
 <div class="paragraph">
 <p>Any input parameter to a function that is an object handle <strong class="purple">must</strong> be a valid
 object handle, unless otherwise specified.
@@ -1563,8 +1570,8 @@ In those cases, the API uses <a href="#XR_NULL_HANDLE">XR_NULL_HANDLE</a>, which
 value <code>0</code>.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-pointers"><a class="anchor" href="#valid-usage-for-pointers"></a>Valid Usage for Pointers</h5>
+<div class="sect3">
+<h4 id="valid-usage-for-pointers"><a class="anchor" href="#valid-usage-for-pointers"></a>2.9.3. Valid Usage for Pointers</h4>
 <div class="paragraph">
 <p>Any parameter that is a pointer <strong class="purple">must</strong> be a valid pointer when the
 specification indicates that the runtime uses the pointer.
@@ -1574,8 +1581,8 @@ accessed through the pointer (e.g. as elements of an array or as members of
 a structure) satisfy the alignment requirements of the host processor.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-enumerated-types"><a class="anchor" href="#valid-usage-for-enumerated-types"></a>Valid Usage for Enumerated Types</h5>
+<div class="sect3">
+<h4 id="valid-usage-for-enumerated-types"><a class="anchor" href="#valid-usage-for-enumerated-types"></a>2.9.4. Valid Usage for Enumerated Types</h4>
 <div class="paragraph">
 <p>Any parameter of an enumerated type <strong class="purple">must</strong> be a valid enumerant for that
 type.
@@ -1583,13 +1590,13 @@ An enumerant is valid if and only if the enumerant is defined as part of the
 enumerated type in question.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-flags"><a class="anchor" href="#valid-usage-for-flags"></a>Valid Usage for Flags</h5>
+<div class="sect3">
+<h4 id="valid-usage-for-flags"><a class="anchor" href="#valid-usage-for-flags"></a>2.9.5. Valid Usage for Flags</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
 <p>A collection of flags is represented by a bitmask using the type
-<a href="#XrFlags64"><code>XrFlags64</code></a>:</p>
+<a href="#XrFlags64">XrFlags64</a>:</p>
 </div>
 <div id="XrFlags64" class="paragraph">
 <p></p>
@@ -1601,10 +1608,10 @@ enumerated type in question.</p>
 </div>
 <div class="paragraph">
 <p>Bitmasks are passed to many functions and structures to compactly represent
-options and are stored in memory defined by the <a href="#XrFlags64"><code>XrFlags64</code></a> type.
-But the API does not use the <a href="#XrFlags64"><code>XrFlags64</code></a> type directly.
+options and are stored in memory defined by the <a href="#XrFlags64">XrFlags64</a> type.
+But the API does not use the <a href="#XrFlags64">XrFlags64</a> type directly.
 Instead, a <code>Xr*Flags</code> type is used which is an alias of the
-<a href="#XrFlags64"><code>XrFlags64</code></a> type.
+<a href="#XrFlags64">XrFlags64</a> type.
 The API also defines a set of constant bit definitions used to set the
 bitmasks.</p>
 </div>
@@ -1637,8 +1644,8 @@ are mutually exclusive.</p>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-structure-types"><a class="anchor" href="#valid-usage-for-structure-types"></a>Valid Usage for Structure Types</h5>
+<div class="sect3">
+<h4 id="valid-usage-for-structure-types"><a class="anchor" href="#valid-usage-for-structure-types"></a>2.9.6. Valid Usage for Structure Types</h4>
 <div class="paragraph">
 <p>Any parameter that is a structure containing a <code>type</code> member <strong class="purple">must</strong> have
 a value of <code>type</code> which is a valid <a href="#XrStructureType">XrStructureType</a> value matching
@@ -1669,16 +1676,13 @@ are converted in a way that produces a more readable value:</p>
 <li>
 <p>D3D &#8658; _D3D</p>
 </li>
-<li>
-<p>VULKAN &#8658; _VULKAN</p>
-</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-structure-pointer-chains"><a class="anchor" href="#valid-usage-for-structure-pointer-chains"></a>Valid Usage for Structure Pointer Chains</h5>
+<div class="sect3">
+<h4 id="valid-usage-for-structure-pointer-chains"><a class="anchor" href="#valid-usage-for-structure-pointer-chains"></a>2.9.7. Valid Usage for Structure Pointer Chains</h4>
 <div class="paragraph">
 <p>Any structure containing a <code>void*</code> <code>next</code> member <strong class="purple">must</strong> have a value
 of <code>next</code> that is either <code>NULL</code>, or points to a valid structure that
@@ -1711,8 +1715,8 @@ modified by the runtime with the exception of the type and next fields.
 Upon return from any function, all type and next fields in the chain <strong class="purple">must</strong>
 be unmodified.</p>
 </div>
-<div class="sect5">
-<h6 id="_useful_base_structures"><a class="anchor" href="#_useful_base_structures"></a>Useful Base Structures</h6>
+<div class="sect4">
+<h5 id="_useful_base_structures"><a class="anchor" href="#_useful_base_structures"></a>Useful Base Structures</h5>
 <div class="paragraph">
 <p>As a convenience to runtimes and layers needing to iterate through a
 structure pointer chain, the OpenXR API provides the following base
@@ -1805,8 +1809,8 @@ structure pointer chain that returns data back to the application.</p>
 functions that operate on generic inputs and outputs.</p>
 </div>
 </div>
-<div class="sect5">
-<h6 id="next-chain-structure-uniqueness"><a class="anchor" href="#next-chain-structure-uniqueness"></a>Next Chain Structure Uniqueness</h6>
+<div class="sect4">
+<h5 id="next-chain-structure-uniqueness"><a class="anchor" href="#next-chain-structure-uniqueness"></a>Next Chain Structure Uniqueness</h5>
 <div class="paragraph">
 <p>Applications <strong class="purple">should</strong> ensure that they create and insert no more than one
 occurrence of each type of extension structure in a given <code>next</code> chain.
@@ -1833,8 +1837,8 @@ particular OpenXR component is present and/or enabled on the system.</p>
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="valid-usage-for-nested-structures"><a class="anchor" href="#valid-usage-for-nested-structures"></a>Valid Usage for Nested Structures</h5>
+<div class="sect3">
+<h4 id="valid-usage-for-nested-structures"><a class="anchor" href="#valid-usage-for-nested-structures"></a>2.9.8. Valid Usage for Nested Structures</h4>
 <div class="paragraph">
 <p>The above conditions also apply recursively to members of structures
 provided as input to a function, either as a direct argument to the
@@ -1846,12 +1850,12 @@ sections.</p>
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="return-codes"><a class="anchor" href="#return-codes"></a>2.8. Return Codes</h3>
+<h3 id="return-codes"><a class="anchor" href="#return-codes"></a>2.10. Return Codes</h3>
 <div class="paragraph">
-<p>While the core API is not designed to capture incorrect usage, some
-circumstances still require return codes.
+<p>The core API is designed to capture most, but not all, instances of
+incorrect usage.
+As such, most functions provide return codes.
 Functions in the API return their status via return codes that are in one of
 the two categories below.</p>
 </div>
@@ -2092,11 +2096,11 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_SYSTEM_INVALID</code></p></td>
-<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrSystemId"><code>XrSystemId</code></a> was invalid.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrSystemId">XrSystemId</a> was invalid.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_PATH_INVALID</code></p></td>
-<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrPath"><code>XrPath</code></a> was not valid.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrPath">XrPath</a> was not valid.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_PATH_COUNT_EXCEEDED</code></p></td>
@@ -2140,7 +2144,7 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_TIME_INVALID</code></p></td>
-<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrTime"><code>XrTime</code></a> was zero, negative, or out of range.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">The provided <a href="#XrTime">XrTime</a> was zero, negative, or out of range.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_REFERENCE_SPACE_UNSUPPORTED</code></p></td>
@@ -2235,7 +2239,7 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_convenience_macros"><a class="anchor" href="#_convenience_macros"></a>2.8.1. Convenience Macros</h4>
+<h4 id="_convenience_macros"><a class="anchor" href="#_convenience_macros"></a>2.10.1. Convenience Macros</h4>
 <div class="openblock">
 <div class="content">
 <div id="XR_SUCCEEDED" class="paragraph">
@@ -2244,7 +2248,6 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_SUCCEEDED(result) ((result) &gt;= 0)</code></pre>
 </div>
 </div>
@@ -2262,7 +2265,6 @@ This may be a qualified success such as <code>XR_FRAME_DISCARDED</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_FAILED(result) ((result) &lt; 0)</code></pre>
 </div>
 </div>
@@ -2280,7 +2282,6 @@ some way.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_UNQUALIFIED_SUCCESS(result) ((result) == 0)</code></pre>
 </div>
 </div>
@@ -2293,7 +2294,7 @@ used to compare an <a href="#XrResult">XrResult</a> to <code>0</code> (<code>XR_
 </div>
 </div>
 <div class="sect3">
-<h4 id="_validation"><a class="anchor" href="#_validation"></a>2.8.2. Validation</h4>
+<h4 id="_validation"><a class="anchor" href="#_validation"></a>2.10.2. Validation</h4>
 <div class="paragraph">
 <p>Except as noted below or in individual API specifications, valid API usage
 <strong class="purple">may</strong> be required by the runtime.
@@ -2334,7 +2335,7 @@ access data belonging to another application.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="handles"><a class="anchor" href="#handles"></a>2.9. Handles</h3>
+<h3 id="handles"><a class="anchor" href="#handles"></a>2.11. Handles</h3>
 <div class="paragraph">
 <p>Objects which are allocated by the runtime on behalf of applications are
 represented by handles.
@@ -2371,7 +2372,7 @@ Thus <a href="#XrSwapchain">XrSwapchain</a> is a child handle to <a href="#XrSes
 </div>
 </div>
 <div class="sect2">
-<h3 id="object-handle-types"><a class="anchor" href="#object-handle-types"></a>2.10. Object Handle Types</h3>
+<h3 id="object-handle-types"><a class="anchor" href="#object-handle-types"></a>2.12. Object Handle Types</h3>
 <div class="paragraph">
 <p>The type of an object handle used in a function is usually determined by the
 specification of that function, as discussed in
@@ -2470,7 +2471,7 @@ relationships:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="buffer-size-parameters"><a class="anchor" href="#buffer-size-parameters"></a>2.11. Buffer Size Parameters</h3>
+<h3 id="buffer-size-parameters"><a class="anchor" href="#buffer-size-parameters"></a>2.13. Buffer Size Parameters</h3>
 <div class="paragraph">
 <p>Functions with input/output buffer parameters take on either parameter form
 or struct form, looking like one of the following examples, with the element
@@ -2594,17 +2595,17 @@ in all buffers is undefined.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="time"><a class="anchor" href="#time"></a>2.12. Time</h3>
+<h3 id="time"><a class="anchor" href="#time"></a>2.14. Time</h3>
 <div class="paragraph">
 <p>Time is represented by a 64-bit signed integer representing nanoseconds
-(<a href="#XrTime"><code>XrTime</code></a>).
+(<a href="#XrTime">XrTime</a>).
 The passage of time <strong class="purple">must</strong> be monotonic and not real-time (i.e. wall clock
 time).
 Thus the time is always increasing at a constant rate and is unaffected by
 clock changes, time zones, daylight savings, etc.</p>
 </div>
 <div class="sect3">
-<h4 id="_xrtime"><a class="anchor" href="#_xrtime"></a>2.12.1. XrTime</h4>
+<h4 id="_xrtime"><a class="anchor" href="#_xrtime"></a>2.14.1. XrTime</h4>
 <div class="openblock">
 <div class="content">
 <div id="XrTime" class="paragraph">
@@ -2616,13 +2617,13 @@ clock changes, time zones, daylight savings, etc.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#XrTime"><code>XrTime</code></a> is a base value type that represents time as a signed 64-bit
+<p><a href="#XrTime">XrTime</a> is a base value type that represents time as a signed 64-bit
 integer, representing the monotonically-increasing count of nanoseconds that
 have elapsed since a runtime-chosen epoch.
-<a href="#XrTime"><code>XrTime</code></a> always represents the time elapsed since that constant
+<a href="#XrTime">XrTime</a> always represents the time elapsed since that constant
 epoch, rather than a duration or a time point relative to some moving epoch
 such as vsync time, etc.
-Durations are instead represented by <a href="#XrDuration"><code>XrDuration</code></a>.</p>
+Durations are instead represented by <a href="#XrDuration">XrDuration</a>.</p>
 </div>
 <div class="paragraph">
 <p>A single runtime <strong class="purple">must</strong> use the same epoch for all simultaneous applications.
@@ -2641,24 +2642,24 @@ microsecond-level granularity.</p>
 </div>
 <div class="paragraph">
 <p>Unless specified otherwise, zero or a negative value is not a valid
-<a href="#XrTime"><code>XrTime</code></a>, and related functions <strong class="purple">must</strong> return error
+<a href="#XrTime">XrTime</a>, and related functions <strong class="purple">must</strong> return error
 <code>XR_ERROR_TIME_INVALID</code>.
-Applications <strong class="purple">must</strong> not initialize such <a href="#XrTime"><code>XrTime</code></a> fields to a zero
+Applications <strong class="purple">must</strong> not initialize such <a href="#XrTime">XrTime</a> fields to a zero
 value.
-Instead, applications <strong class="purple">should</strong> always assign <a href="#XrTime"><code>XrTime</code></a> fields to the
+Instead, applications <strong class="purple">should</strong> always assign <a href="#XrTime">XrTime</a> fields to the
 meaningful point in time they are choosing to reason about, such as a
 frame&#8217;s predicted display time, or an action&#8217;s last change time.</p>
 </div>
 <div class="paragraph">
 <p>The behavior of a runtime is undefined when time overflows beyond the
-maximum positive value that can be represented by an <a href="#XrTime"><code>XrTime</code></a>.
+maximum positive value that can be represented by an <a href="#XrTime">XrTime</a>.
 Runtimes <strong class="purple">should</strong> choose an epoch that minimizes the chance of overflow.
 Runtimes <strong class="purple">should</strong> also choose an epoch that minimizes the chance of underflow
 below 0 for applications performing a reasonable amount of historical pose
 lookback.
 For example, if the runtime chooses an epoch relative to its startup time,
 it <strong class="purple">should</strong> push the epoch into the past by enough time to avoid applications
-performing reasonable pose lookback from reaching a negative <a href="#XrTime"><code>XrTime</code></a>
+performing reasonable pose lookback from reaching a negative <a href="#XrTime">XrTime</a>
 value.</p>
 </div>
 <div class="paragraph">
@@ -2667,21 +2668,22 @@ will maintain a constant relationship across frames and <strong class="purple">s
 storing such an offset, as this may cause time drift.
 Applications <strong class="purple">should</strong> instead always use time interop functions to convert a
 relevant time point across the system&#8217;s clock and the runtime&#8217;s clock using
-extensions, for example, <a href="#XR_KHR_win32_convert_performance_counter_time">XR_KHR_win32_convert_performance_counter_time</a>
-or <a href="#XR_KHR_convert_timespec_time">XR_KHR_convert_timespec_time</a>.</p>
+extensions, for example,
+<code><a href="#XR_KHR_win32_convert_performance_counter_time">XR_KHR_win32_convert_performance_counter_time</a></code> or
+<code><a href="#XR_KHR_convert_timespec_time">XR_KHR_convert_timespec_time</a></code>.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="duration"><a class="anchor" href="#duration"></a>2.13. Duration</h3>
+<h3 id="duration"><a class="anchor" href="#duration"></a>2.15. Duration</h3>
 <div class="paragraph">
 <p>Duration refers to an elapsed period of time, as opposed to an absolute
 timepoint.</p>
 </div>
 <div class="sect3">
-<h4 id="_xrduration"><a class="anchor" href="#_xrduration"></a>2.13.1. XrDuration</h4>
+<h4 id="_xrduration"><a class="anchor" href="#_xrduration"></a>2.15.1. XrDuration</h4>
 <div class="openblock">
 <div class="content">
 <div id="XrDuration" class="paragraph">
@@ -2694,11 +2696,11 @@ timepoint.</p>
 </div>
 <div class="paragraph">
 <p>The difference between two timepoints is a duration, and thus the difference
-between two <a href="#XrTime"><code>XrTime</code></a> values is an <a href="#XrDuration"><code>XrDuration</code></a> value.</p>
+between two <a href="#XrTime">XrTime</a> values is an <a href="#XrDuration">XrDuration</a> value.</p>
 </div>
 <div class="paragraph">
-<p>Functions that refer to durations use <a href="#XrDuration"><code>XrDuration</code></a> as opposed to
-<a href="#XrTime"><code>XrTime</code></a>.</p>
+<p>Functions that refer to durations use <a href="#XrDuration">XrDuration</a> as opposed to
+<a href="#XrTime">XrTime</a>.</p>
 </div>
 </div>
 </div>
@@ -2710,7 +2712,6 @@ between two <a href="#XrTime"><code>XrTime</code></a> values is an <a href="#XrD
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_NO_DURATION 0</code></pre>
 </div>
 </div>
@@ -2728,7 +2729,6 @@ indicate that the timeout is immediate.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_INFINITE_DURATION 0x7fffffffffffffffLL</code></pre>
 </div>
 </div>
@@ -2743,7 +2743,7 @@ timeout of <a href="#XR_NO_DURATION">XR_NO_DURATION</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="prediction-time-limits"><a class="anchor" href="#prediction-time-limits"></a>2.14. Prediction Time Limits</h3>
+<h3 id="prediction-time-limits"><a class="anchor" href="#prediction-time-limits"></a>2.16. Prediction Time Limits</h3>
 <div class="paragraph">
 <p>Some functions involve prediction.
 For example, <a href="#xrLocateViews">xrLocateViews</a> accepts a display time for which to return
@@ -2766,7 +2766,7 @@ reduced or unspecified.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="colors"><a class="anchor" href="#colors"></a>2.15. Colors</h3>
+<h3 id="colors"><a class="anchor" href="#colors"></a>2.17. Colors</h3>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -2822,7 +2822,7 @@ zero.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="coordinate-system"><a class="anchor" href="#coordinate-system"></a>2.16. Coordinate System</h3>
+<h3 id="coordinate-system"><a class="anchor" href="#coordinate-system"></a>2.18. Coordinate System</h3>
 <div class="paragraph">
 <p>This API uses a Cartesian right-handed coordinate system.</p>
 </div>
@@ -3056,7 +3056,7 @@ norm deviates by more than 1% from unit length.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="common-object-types"><a class="anchor" href="#common-object-types"></a>2.17. Common Object Types</h3>
+<h3 id="common-object-types"><a class="anchor" href="#common-object-types"></a>2.19. Common Object Types</h3>
 <div class="paragraph">
 <p>Some types of OpenXR objects are used in multiple structures.
 Those include the <code>XrVector*f</code> and types specified above but also the
@@ -3317,7 +3317,7 @@ used instead.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="angles"><a class="anchor" href="#angles"></a>2.18. Angles</h3>
+<h3 id="angles"><a class="anchor" href="#angles"></a>2.20. Angles</h3>
 <div class="paragraph">
 <p>Where a value is provided as a function parameter or as a structure member
 and will be interpreted as an angle, the value is defined to be in radians.</p>
@@ -3387,7 +3387,7 @@ flipped vertically.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_boolean_values"><a class="anchor" href="#_boolean_values"></a>2.19. Boolean Values</h3>
+<h3 id="_boolean_values"><a class="anchor" href="#_boolean_values"></a>2.21. Boolean Values</h3>
 <div class="openblock">
 <div class="content">
 <div id="XrBool32" class="paragraph">
@@ -3399,7 +3399,7 @@ flipped vertically.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Boolean values used by OpenXR are of type <a href="#XrBool32"><code>XrBool32</code></a> and are 32-bits
+<p>Boolean values used by OpenXR are of type <a href="#XrBool32">XrBool32</a> and are 32-bits
 wide as suggested by the name.
 The only valid values are the following:</p>
 </div>
@@ -3446,12 +3446,12 @@ The only valid values are the following:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="events"><a class="anchor" href="#events"></a>2.20. Events</h3>
+<h3 id="events"><a class="anchor" href="#events"></a>2.22. Events</h3>
 <div class="paragraph">
 <p>Events are messages sent from the runtime to the application.</p>
 </div>
 <div class="sect3">
-<h4 id="event-polling"><a class="anchor" href="#event-polling"></a>2.20.1. Event Polling</h4>
+<h4 id="event-polling"><a class="anchor" href="#event-polling"></a>2.22.1. Event Polling</h4>
 <div class="paragraph">
 <p>These events are placed in a queue and the application <strong class="purple">must</strong> read from the
 queue with regularity.
@@ -3768,7 +3768,6 @@ data elements for all specified event data types.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_MAX_EVENT_DATA_SIZE sizeof(XrEventDataBuffer)</code></pre>
 </div>
 </div>
@@ -3846,7 +3845,7 @@ their definition is most relevant.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="resource-lifetime"><a class="anchor" href="#resource-lifetime"></a>2.21. System resource lifetime</h3>
+<h3 id="resource-lifetime"><a class="anchor" href="#resource-lifetime"></a>2.23. System resource lifetime</h3>
 <div class="paragraph">
 <p>The creator of an underlying system resource is responsible for ensuring the
 resource&#8217;s lifetime matches the lifetime of the associated OpenXR handle.</p>
@@ -5681,7 +5680,7 @@ logical objects that applications interact with directly.
 A system represents a collection of related devices in the runtime, often
 made up of several individual hardware components working together to enable
 XR experiences.
-An <a href="#XrSystemId"><code>XrSystemId</code></a> is returned by <a href="#xrGetSystem">xrGetSystem</a> representing the
+An <a href="#XrSystemId">XrSystemId</a> is returned by <a href="#xrGetSystem">xrGetSystem</a> representing the
 system of devices the runtime will use to support a given
 <a href="#form_factor_description">form factor</a>.
 Each system may include: a VR/AR display, various forms of input (gamepad,
@@ -5775,7 +5774,7 @@ an example of this form factor.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>An <a href="#XrSystemId"><code>XrSystemId</code></a> is an opaque atom used by the runtime to identify a
+<p>An <a href="#XrSystemId">XrSystemId</a> is an opaque atom used by the runtime to identify a
 system.
 The value <a href="#XR_NULL_SYSTEM_ID">XR_NULL_SYSTEM_ID</a> is considered an invalid system.</p>
 </div>
@@ -5789,16 +5788,15 @@ The value <a href="#XR_NULL_SYSTEM_ID">XR_NULL_SYSTEM_ID</a> is considered an in
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_NULL_SYSTEM_ID 0</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The only <a href="#XrSystemId"><code>XrSystemId</code></a> value defined to be constant across all
+<p>The only <a href="#XrSystemId">XrSystemId</a> value defined to be constant across all
 instances is the invalid system <a href="#XR_NULL_SYSTEM_ID">XR_NULL_SYSTEM_ID</a>.
 No supported system is associated with <a href="#XR_NULL_SYSTEM_ID">XR_NULL_SYSTEM_ID</a>.
 Unless explicitly permitted, it <strong class="purple">should</strong> not be passed to API calls or used
-as a structure attribute when a valid <a href="#XrSystemId"><code>XrSystemId</code></a> is required.</p>
+as a structure attribute when a valid <a href="#XrSystemId">XrSystemId</a> is required.</p>
 </div>
 </div>
 </div>
@@ -5833,16 +5831,16 @@ information.</p>
 containing the application&#8217;s requests for a system.</p>
 </li>
 <li>
-<p><code>systemId</code> is the returned <a href="#XrSystemId"><code>XrSystemId</code></a>.</p>
+<p><code>systemId</code> is the returned <a href="#XrSystemId">XrSystemId</a>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>To get an <a href="#XrSystemId"><code>XrSystemId</code></a>, an application specifies its desired
+<p>To get an <a href="#XrSystemId">XrSystemId</a>, an application specifies its desired
 <a href="#form_factor_description">form factor</a> to <a href="#xrGetSystem">xrGetSystem</a> and gets the
-runtime&#8217;s <a href="#XrSystemId"><code>XrSystemId</code></a> associated with that configuration.</p>
+runtime&#8217;s <a href="#XrSystemId">XrSystemId</a> associated with that configuration.</p>
 </div>
 <div class="paragraph">
 <p>If the form factor is supported but temporarily unavailable,
@@ -5864,7 +5862,7 @@ form factor to become available.</p>
 <p><a id="VUID-xrGetSystem-getInfo-parameter" href="#VUID-xrGetSystem-getInfo-parameter"></a> <code>getInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrSystemGetInfo">XrSystemGetInfo</a> structure</p>
 </li>
 <li>
-<p><a id="VUID-xrGetSystem-systemId-parameter" href="#VUID-xrGetSystem-systemId-parameter"></a> <code>systemId</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrSystemId"><code>XrSystemId</code></a> value</p>
+<p><a id="VUID-xrGetSystem-systemId-parameter" href="#VUID-xrGetSystem-systemId-parameter"></a> <code>systemId</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrSystemId">XrSystemId</a> value</p>
 </li>
 </ul>
 </div>
@@ -6028,7 +6026,7 @@ XrResult xrGetSystemProperties(
 <p><code>instance</code> is the instance from which <code>systemId</code> was retrieved.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> whose properties will be
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> whose properties will be
 queried.</p>
 </li>
 <li>
@@ -6143,7 +6141,7 @@ No such structures are defined in core OpenXR.</p>
 <p><code>vendorId</code> is a unique identifier for the vendor of the system.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> identifying the system.</p>
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> identifying the system.</p>
 </li>
 <li>
 <p><code>systemName</code> is a string containing the name of the system.</p>
@@ -6232,7 +6230,6 @@ The runtime <strong class="purple">must</strong> support at least
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_MIN_COMPOSITION_LAYERS_SUPPORTED 16</code></pre>
 </div>
 </div>
@@ -6303,9 +6300,9 @@ or kind of semantic meaning.</p>
 </div>
 <div class="paragraph">
 <p>In regular use in an application, path name strings are converted to
-instance-specific <a href="#XrPath"><code>XrPath</code></a> values which are used in place of path
+instance-specific <a href="#XrPath">XrPath</a> values which are used in place of path
 strings.
-The mapping between <a href="#XrPath"><code>XrPath</code></a> values and their corresponding path name
+The mapping between <a href="#XrPath">XrPath</a> values and their corresponding path name
 strings <strong class="purple">may</strong> be considered to be tracked by the runtime in a one-to-one
 mapping in addition to the natural tree structure of the referenced
 entities.
@@ -6314,16 +6311,16 @@ requirements.</p>
 </div>
 <div class="paragraph">
 <p>Formally, the runtime maintains an instance-specific bijective mapping
-between well-formed path name strings and valid <a href="#XrPath"><code>XrPath</code></a>
+between well-formed path name strings and valid <a href="#XrPath">XrPath</a>
 (<code>uint64_t</code>) values.
-These <a href="#XrPath"><code>XrPath</code></a> values are only valid within a single
+These <a href="#XrPath">XrPath</a> values are only valid within a single
 <a href="#XrInstance">XrInstance</a>, and applications <strong class="purple">must</strong> not share these values between
 instances.
 Applications <strong class="purple">must</strong> instead use the string representation of a path in their
-code and configuration, and obtain the correct corresponding <a href="#XrPath"><code>XrPath</code></a>
+code and configuration, and obtain the correct corresponding <a href="#XrPath">XrPath</a>
 at runtime in each <a href="#XrInstance">XrInstance</a>.
 The term <em>path</em> or <em>semantic path</em> <strong class="purple">may</strong> refer interchangeably to either the
-path name string or its associated <a href="#XrPath"><code>XrPath</code></a> value within an instance
+path name string or its associated <a href="#XrPath">XrPath</a> value within an instance
 when context makes it clear which type is being discussed.</p>
 </div>
 <div class="paragraph">
@@ -6335,13 +6332,13 @@ They <strong class="purple">may</strong> also be used to represent frames of ref
 by the application and the runtime, as defined by an <a href="#XrSpace">XrSpace</a>.
 Additionally, to permit runtime re-configuration and support
 hardware-independent development, any syntactically-valid path string <strong class="purple">may</strong>
-be used to retrieve a corresponding <a href="#XrPath"><code>XrPath</code></a> without error given
+be used to retrieve a corresponding <a href="#XrPath">XrPath</a> without error given
 sufficient resources, <em>even if</em> no logical or hardware entity currently
 corresponds to that path at the time of the call.
-Later retrieval of the associated path string of such an <a href="#XrPath"><code>XrPath</code></a>
+Later retrieval of the associated path string of such an <a href="#XrPath">XrPath</a>
 using <a href="#xrPathToString">xrPathToString</a> <strong class="purple">should</strong> succeed if the other requirements of that
 call are met.
-However, using such an <a href="#XrPath"><code>XrPath</code></a> in a later call to any other API
+However, using such an <a href="#XrPath">XrPath</a> in a later call to any other API
 function <strong class="purple">may</strong> result in an error if no entity of the type required by the
 call is available at the path at that later time.
 A runtime <strong class="purple">should</strong> permit the entity referenced by a path to vary over time
@@ -6360,28 +6357,28 @@ to naturally reflect varying system configuration and hardware availability.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="#XrPath"><code>XrPath</code></a> is an atom that connects an application with a single
+<p>The <a href="#XrPath">XrPath</a> is an atom that connects an application with a single
 path, within the context of a single instance.
 There is a bijective mapping between well-formed path strings and atoms in
 use.
 This atom is used&#8201;&#8212;&#8201;in place of the path name string it corresponds to&#8201;&#8212;&#8201;to retrieve state and perform other operations.</p>
 </div>
 <div class="paragraph">
-<p>As an <a href="#XrPath"><code>XrPath</code></a> is only shorthand for a well-formed path string, they
+<p>As an <a href="#XrPath">XrPath</a> is only shorthand for a well-formed path string, they
 have no explicit life cycle.</p>
 </div>
 <div class="paragraph">
 <p>Lifetime is implicitly managed by the <a href="#XrInstance">XrInstance</a>.
-An <a href="#XrPath"><code>XrPath</code></a> <strong class="purple">must</strong> not be used unless it is received at execution time
+An <a href="#XrPath">XrPath</a> <strong class="purple">must</strong> not be used unless it is received at execution time
 from the runtime in the context of a particular <a href="#XrInstance">XrInstance</a>.
-Therefore, with the exception of <a href="#XR_NULL_PATH">XR_NULL_PATH</a>, <a href="#XrPath"><code>XrPath</code></a> values
+Therefore, with the exception of <a href="#XR_NULL_PATH">XR_NULL_PATH</a>, <a href="#XrPath">XrPath</a> values
 <strong class="purple">must</strong> not be specified as constant values in applications: the corresponding
 path string <strong class="purple">should</strong> be used instead.
-During the lifetime of a given <a href="#XrInstance">XrInstance</a>, the <a href="#XrPath"><code>XrPath</code></a>
+During the lifetime of a given <a href="#XrInstance">XrInstance</a>, the <a href="#XrPath">XrPath</a>
 associated with that instance with any given well-formed path <strong class="purple">must</strong> not
 vary, and similarly the well-formed path string that corresponds to a given
-<a href="#XrPath"><code>XrPath</code></a> in that instance <strong class="purple">must</strong> not vary.
-An <a href="#XrPath"><code>XrPath</code></a> that is received from one <a href="#XrInstance">XrInstance</a> <strong class="purple">may</strong> not be
+<a href="#XrPath">XrPath</a> in that instance <strong class="purple">must</strong> not vary.
+An <a href="#XrPath">XrPath</a> that is received from one <a href="#XrInstance">XrInstance</a> <strong class="purple">may</strong> not be
 used with another.
 Such an invalid use <strong class="purple">may</strong> be detected and result in an error being returned,
 or it <strong class="purple">may</strong> result in undefined behavior.</p>
@@ -6391,7 +6388,7 @@ or it <strong class="purple">may</strong> result in undefined behavior.</p>
 <div class="paragraph">
 <p>Well-written applications <strong class="purple">should</strong> typically use a small, bounded set of
 paths in practice.
-However, the runtime <strong class="purple">should</strong> support looking up the <a href="#XrPath"><code>XrPath</code></a> for a
+However, the runtime <strong class="purple">should</strong> support looking up the <a href="#XrPath">XrPath</a> for a
 large number of path strings for maximum compatibility.
 Runtime implementers <strong class="purple">should</strong> keep in mind that applications supporting
 diverse systems <strong class="purple">may</strong> look up path strings in a quantity exceeding the number
@@ -6403,11 +6400,11 @@ conditions.</p>
 </div>
 <div class="paragraph">
 <p>When discussing the behavior of runtimes at these limits, a <em>new</em>
-<a href="#XrPath"><code>XrPath</code></a> refers to an <a href="#XrPath"><code>XrPath</code></a> value that, as of some point in
+<a href="#XrPath">XrPath</a> refers to an <a href="#XrPath">XrPath</a> value that, as of some point in
 time, has neither been received by the application nor tracked internally by
 the runtime.
 In this case, since an application has not yet received the value of such an
-<a href="#XrPath"><code>XrPath</code></a>, the runtime has not yet made any assertions about its
+<a href="#XrPath">XrPath</a>, the runtime has not yet made any assertions about its
 association with any path string.
 In this context, <em>new</em> only refers to the fact that the mapping has not
 necessarily been made constant for a given value/path string pair for the
@@ -6418,21 +6415,21 @@ such a path.
 Similarly, it does not imply the absence of such an entity prior to that
 point.
 Entities in the path tree have varied lifetime that is independent from the
-duration of the mapping from path string to <a href="#XrPath"><code>XrPath</code></a>.</p>
+duration of the mapping from path string to <a href="#XrPath">XrPath</a>.</p>
 </div>
 <div class="paragraph">
 <p>For flexibility, the runtime <strong class="purple">may</strong> internally track or otherwise make
 constant, in instance or larger scope, any mapping of a path string to an
-<a href="#XrPath"><code>XrPath</code></a> value even before an application would otherwise receive
+<a href="#XrPath">XrPath</a> value even before an application would otherwise receive
 that value, thus making it no longer <em>new</em> by the above definition.</p>
 </div>
 <div class="paragraph">
-<p>When the runtime&#8217;s resources to track the path string-<a href="#XrPath"><code>XrPath</code></a>
+<p>When the runtime&#8217;s resources to track the path string-<a href="#XrPath">XrPath</a>
 mapping are exhausted, and the application makes an API call that would have
-otherwise retrieved a <em>new</em> <a href="#XrPath"><code>XrPath</code></a> as defined above, the runtime
+otherwise retrieved a <em>new</em> <a href="#XrPath">XrPath</a> as defined above, the runtime
 <strong class="purple">must</strong> return <code>XR_ERROR_PATH_COUNT_EXCEEDED</code>.
 This includes both explicit calls to <a href="#xrStringToPath">xrStringToPath</a> as well as other
-calls that retrieve an <a href="#XrPath"><code>XrPath</code></a> in any other way.</p>
+calls that retrieve an <a href="#XrPath">XrPath</a> in any other way.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">should</strong> support creating as many paths as memory will allow and
@@ -6447,16 +6444,15 @@ no more can be created.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_NULL_PATH 0</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The only <a href="#XrPath"><code>XrPath</code></a> value defined to be constant across all instances
+<p>The only <a href="#XrPath">XrPath</a> value defined to be constant across all instances
 is the invalid path <a href="#XR_NULL_PATH">XR_NULL_PATH</a>.
 No well-formed path string is associated with <a href="#XR_NULL_PATH">XR_NULL_PATH</a>.
 Unless explicitly permitted, it <strong class="purple">should</strong> not be passed to API calls or used
-as a structure attribute when a valid <a href="#XrPath"><code>XrPath</code></a> is required.</p>
+as a structure attribute when a valid <a href="#XrPath">XrPath</a> is required.</p>
 </div>
 </div>
 </div>
@@ -6553,11 +6549,11 @@ XrResult xrStringToPath(
 </li>
 <li>
 <p><code>pathString</code> is the path name string to retrieve the associated
-<a href="#XrPath"><code>XrPath</code></a> for.</p>
+<a href="#XrPath">XrPath</a> for.</p>
 </li>
 <li>
 <p><code>path</code> is the output parameter, which <strong class="purple">must</strong> point to an
-<a href="#XrPath"><code>XrPath</code></a>.
+<a href="#XrPath">XrPath</a>.
 Given a well-formed path name string, this will be populated with an
 opaque value that is constant for that path string during the lifetime of
 that instance.</p>
@@ -6567,12 +6563,12 @@ that instance.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#xrStringToPath">xrStringToPath</a> retrieves the <a href="#XrPath"><code>XrPath</code></a> value for a well-formed
+<p><a href="#xrStringToPath">xrStringToPath</a> retrieves the <a href="#XrPath">XrPath</a> value for a well-formed
 path string.
 If such a value had not yet been assigned by the runtime to the provided
 path string in this <a href="#XrInstance">XrInstance</a>, one <strong class="purple">must</strong> be assigned at this point.
 All calls to this function with the same <a href="#XrInstance">XrInstance</a> and path string
-<strong class="purple">must</strong> retrieve the same <a href="#XrPath"><code>XrPath</code></a> value.
+<strong class="purple">must</strong> retrieve the same <a href="#XrPath">XrPath</a> value.
 Upon failure, <a href="#xrStringToPath">xrStringToPath</a> <strong class="purple">must</strong> return an appropriate
 <a href="#XrResult">XrResult</a>, and <strong class="purple">may</strong> set the output parameter to <a href="#XR_NULL_PATH">XR_NULL_PATH</a>.
 See <a href="#path-atom-type">Path Atom Type</a> for the conditions under which an
@@ -6596,7 +6592,7 @@ A return value of <code>XR_SUCCESS</code> from <a href="#xrStringToPath">xrStrin
 necessarily imply that the runtime has a component or other source of data
 that will be accessible through that semantic path.
 It only means that the path string supplied was well-formed and that the
-retrieved <a href="#XrPath"><code>XrPath</code></a> maps to the given path string within and during
+retrieved <a href="#XrPath">XrPath</a> maps to the given path string within and during
 the lifetime of the <a href="#XrInstance">XrInstance</a> given.
 </td>
 </tr>
@@ -6614,7 +6610,7 @@ the lifetime of the <a href="#XrInstance">XrInstance</a> given.
 <p><a id="VUID-xrStringToPath-pathString-parameter" href="#VUID-xrStringToPath-pathString-parameter"></a> <code>pathString</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string</p>
 </li>
 <li>
-<p><a id="VUID-xrStringToPath-path-parameter" href="#VUID-xrStringToPath-path-parameter"></a> <code>path</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrPath"><code>XrPath</code></a> value</p>
+<p><a id="VUID-xrStringToPath-path-parameter" href="#VUID-xrStringToPath-path-parameter"></a> <code>path</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrPath">XrPath</a> value</p>
 </li>
 </ul>
 </div>
@@ -6694,7 +6690,7 @@ XrResult xrPathToString(
 <p><code>instance</code> is an instance previously created.</p>
 </li>
 <li>
-<p><code>path</code> is the valid <a href="#XrPath"><code>XrPath</code></a> value to retrieve the path string
+<p><code>path</code> is the valid <a href="#XrPath">XrPath</a> value to retrieve the path string
 for.</p>
 </li>
 <li>
@@ -6722,15 +6718,15 @@ detailed description of retrieving the required <code>buffer</code> size.</p>
 </div>
 <div class="paragraph">
 <p><a href="#xrPathToString">xrPathToString</a> retrieves the path name string associated with an
-<a href="#XrPath"><code>XrPath</code></a>, in the context of a given <a href="#XrInstance">XrInstance</a>, in the form of
+<a href="#XrPath">XrPath</a>, in the context of a given <a href="#XrInstance">XrInstance</a>, in the form of
 a <code>NULL</code> terminated string placed into a <em>caller-allocated</em> buffer.
 Since the mapping between a well-formed path name string and an
-<a href="#XrPath"><code>XrPath</code></a> is bijective, there will always be exactly one string for
-each valid <a href="#XrPath"><code>XrPath</code></a> value.
-This can be useful if the calling application receives an <a href="#XrPath"><code>XrPath</code></a>
+<a href="#XrPath">XrPath</a> is bijective, there will always be exactly one string for
+each valid <a href="#XrPath">XrPath</a> value.
+This can be useful if the calling application receives an <a href="#XrPath">XrPath</a>
 value that they had not previously retrieved via <a href="#xrStringToPath">xrStringToPath</a>.
 During the lifetime of the given <a href="#XrInstance">XrInstance</a>, the path name string
-retrieved by this function for a given valid <a href="#XrPath"><code>XrPath</code></a> will not
+retrieved by this function for a given valid <a href="#XrPath">XrPath</a> will not
 change.
 For invalid paths, including <a href="#XR_NULL_PATH">XR_NULL_PATH</a>, <code>XR_ERROR_PATH_INVALID</code>
 <strong class="purple">must</strong> be returned.</p>
@@ -7062,8 +7058,8 @@ The aim pose is defined as follows:</p>
 <p>For tracked hands: The ray that follows platform conventions for how the
 user aims at objects in the world with their entire hand, with +Y up, +X
 to the right, and -Z forward.
-The ray chosen will be runtime-dependent, for example, a ray emerging
-from the palm parallel to the forearm.</p>
+The ray chosen will be runtime-dependent, often a ray emerging from the
+hand at a target pointed by moving the forearm.</p>
 </li>
 <li>
 <p>For handheld motion controllers: The ray that follows platform
@@ -8068,7 +8064,7 @@ space.
 When such a recentering occurs, the runtime <strong class="purple">must</strong> queue the
 <a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a> event, with the recentered
 <code>LOCAL</code> space origin only taking effect for <a href="#xrLocateSpace">xrLocateSpace</a> or
-<a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime"><code>XrTime</code></a> parameter is greater than or
+<a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime">XrTime</a> parameter is greater than or
 equal to the <code>changeTime</code> provided in that event.</p>
 </div>
 <div class="paragraph">
@@ -8114,7 +8110,7 @@ to the physical floor.</p>
 or the runtime otherwise switches to a new <code>STAGE</code> definition, the runtime
 <strong class="purple">must</strong> queue the <a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a> event, with the
 new <code>STAGE</code> space origin only taking effect for <a href="#xrLocateSpace">xrLocateSpace</a> or
-<a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime"><code>XrTime</code></a> parameter is greater than or
+<a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime">XrTime</a> parameter is greater than or
 equal to the <code>changeTime</code> provided in that event.</p>
 </div>
 <div class="paragraph">
@@ -8302,7 +8298,7 @@ runtime otherwise switching to a different space definition.</p>
 </div>
 <div class="paragraph">
 <p>The reference space change <strong class="purple">must</strong> only take effect for <a href="#xrLocateSpace">xrLocateSpace</a> or
-<a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime"><code>XrTime</code></a> parameter is greater than or
+<a href="#xrLocateViews">xrLocateViews</a> calls whose <a href="#XrTime">XrTime</a> parameter is greater than or
 equal to the <code>changeTime</code> provided in that event.
 Runtimes <strong class="purple">should</strong> provide a <code>changeTime</code> to applications that allows for
 a deep render pipeline to present frames that are already in flight using
@@ -8358,7 +8354,7 @@ changing.</p>
 changing.</p>
 </li>
 <li>
-<p><code>changeTime</code> is the target <a href="#XrTime"><code>XrTime</code></a> after which
+<p><code>changeTime</code> is the target <a href="#XrTime">XrTime</a> after which
 <a href="#xrLocateSpace">xrLocateSpace</a> or <a href="#xrLocateViews">xrLocateViews</a> will return values that respect
 this change.</p>
 </li>
@@ -8963,7 +8959,7 @@ No such structures are defined in core OpenXR.</p>
 <a href="#xrCreateAction">xrCreateAction</a>.</p>
 </li>
 <li>
-<p><code>subactionPath</code> is <a href="#XR_NULL_PATH">XR_NULL_PATH</a> or an <a href="#XrPath"><code>XrPath</code></a> that was
+<p><code>subactionPath</code> is <a href="#XR_NULL_PATH">XR_NULL_PATH</a> or an <a href="#XrPath">XrPath</a> that was
 specified when the action was created.
 If <code>subactionPath</code> is a valid path not specified when the action was
 created the runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>.
@@ -9737,7 +9733,7 @@ XrResult xrEnumerateViewConfigurations(
 <p><code>instance</code> is the instance from which <code>systemId</code> was retrieved.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> whose view configurations will
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> whose view configurations will
 be enumerated.</p>
 </li>
 <li>
@@ -9766,7 +9762,7 @@ size.</p>
 </div>
 <div class="paragraph">
 <p><a href="#xrEnumerateViewConfigurations">xrEnumerateViewConfigurations</a> enumerates the view configuration types
-supported by the <a href="#XrSystemId"><code>XrSystemId</code></a>.
+supported by the <a href="#XrSystemId">XrSystemId</a>.
 The supported set for that system <strong class="purple">must</strong> not change during the lifetime of
 its <a href="#XrInstance">XrInstance</a>.
 The returned list of primary view configurations <strong class="purple">should</strong> be in order from
@@ -9872,7 +9868,7 @@ XrResult xrGetViewConfigurationProperties(
 <p><code>instance</code> is the instance from which <code>systemId</code> was retrieved.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> whose view configuration is
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> whose view configuration is
 being queried.</p>
 </li>
 <li>
@@ -10057,7 +10053,7 @@ XrResult xrEnumerateViewConfigurationViews(
 <p><code>instance</code> is the instance from which <code>systemId</code> was retrieved.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> whose view configuration is
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> whose view configuration is
 being queried.</p>
 </li>
 <li>
@@ -10087,7 +10083,7 @@ with it.
 Applications can query more details of each view element using
 <a href="#xrEnumerateViewConfigurationViews">xrEnumerateViewConfigurationViews</a>.
 If the supplied <code>viewConfigurationType</code> is not supported by this
-<a href="#XrInstance">XrInstance</a> and <a href="#XrSystemId"><code>XrSystemId</code></a>, the runtime <strong class="purple">must</strong> return
+<a href="#XrInstance">XrInstance</a> and <a href="#XrSystemId">XrSystemId</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_VIEW_CONFIGURATION_TYPE_UNSUPPORTED</code>.</p>
 </div>
 <div class="paragraph">
@@ -10737,7 +10733,7 @@ to be in this next chain.</p>
 creation.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> representing the system of
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> representing the system of
 devices to be used by this session.</p>
 </li>
 </ul>
@@ -10750,7 +10746,7 @@ devices to be used by this session.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>systemId</code> <strong class="purple">must</strong> be a valid <a href="#XrSystemId"><code>XrSystemId</code></a> or
+<p><code>systemId</code> <strong class="purple">must</strong> be a valid <a href="#XrSystemId">XrSystemId</a> or
 <code>XR_ERROR_SYSTEM_INVALID</code> <strong class="purple">must</strong> be returned.</p>
 </li>
 <li>
@@ -10984,7 +10980,7 @@ from when the same session was previously running.</p>
 </div>
 <div class="paragraph">
 <p>If <code>primaryViewConfigurationType</code> in <code>beginInfo</code> is not supported by
-the <a href="#XrSystemId"><code>XrSystemId</code></a> used to create the <code>session</code>, the runtime <strong class="purple">must</strong>
+the <a href="#XrSystemId">XrSystemId</a> used to create the <code>session</code>, the runtime <strong class="purple">must</strong>
 return <code>XR_ERROR_VIEW_CONFIGURATION_TYPE_UNSUPPORTED</code>.</p>
 </div>
 <div class="sidebarblock">
@@ -11394,7 +11390,7 @@ No such structures are defined in core OpenXR.</p>
 <p><code>state</code> is the current <a href="#XrSessionState">XrSessionState</a> of the <code>session</code>.</p>
 </li>
 <li>
-<p><code>time</code> is an <a href="#XrTime"><code>XrTime</code></a> which indicates the time of the state
+<p><code>time</code> is an <a href="#XrTime">XrTime</a> which indicates the time of the state
 change.</p>
 </li>
 </ul>
@@ -11603,7 +11599,7 @@ runtime is no longer able to operate with the current session, for example
 due to the loss of a display hardware connection.
 An application <strong class="purple">should</strong> call <a href="#xrDestroySession">xrDestroySession</a> and <strong class="purple">may</strong> end its process
 or decide to poll <a href="#xrGetSystem">xrGetSystem</a> at some reasonable cadence to get a new
-<a href="#XrSystemId"><code>XrSystemId</code></a>, and re-initialize all graphics resources related to the
+<a href="#XrSystemId">XrSystemId</a>, and re-initialize all graphics resources related to the
 new system, and then create a new session using <a href="#xrCreateSession">xrCreateSession</a>.
 After the event is queued, subsequent calls to functions that accept
 <a href="#XrSession">XrSession</a> parameters <strong class="purple">must</strong> no longer return any success code other
@@ -12229,7 +12225,7 @@ static const XrSwapchainUsageFlags XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_KHR =
 <p><code>XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be reinterpreted as another image format.</p>
 </li>
 <li>
-<p><code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be used as a input attachment. (Added by the <code><a href="#XR_MND_swapchain_usage_input_attachment_bit">[XR_MND_swapchain_usage_input_attachment_bit]</a></code> extension)</p>
+<p><code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be used as a input attachment. (Added by the <code><code>XR_MND_swapchain_usage_input_attachment_bit</code></code> extension)</p>
 </li>
 <li>
 <p><code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_KHR</code>&#8201;&#8212;&#8201;Specifies that the image <strong class="purple">may</strong> be used as a input attachment. (Added by the <code><a href="#XR_KHR_swapchain_usage_input_attachment_bit">XR_KHR_swapchain_usage_input_attachment_bit</a></code> extension)</p>
@@ -13209,6 +13205,13 @@ The <a href="#XrViewState">XrViewState</a> and <a href="#XrView">XrView</a> memb
 calls to <a href="#xrLocateViews">xrLocateViews</a>, and so applications <strong class="purple">must</strong> not assume it to be
 constant.</p>
 </div>
+<div class="paragraph">
+<p>If an application gives a <code>viewLocateInfo</code> with a
+<code>viewConfigurationType</code> that was not passed in the session&#8217;s call to
+<a href="#xrBeginSession">xrBeginSession</a> via the
+<code>beginInfo.pname</code>:primaryViewConfigurationType, or enabled though an
+extension, then the runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -13851,11 +13854,11 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>predictedDisplayTime</code> is the anticipated display <a href="#XrTime"><code>XrTime</code></a> for
+<p><code>predictedDisplayTime</code> is the anticipated display <a href="#XrTime">XrTime</a> for
 the next application-generated frame.</p>
 </li>
 <li>
-<p><code>predictedDisplayPeriod</code> is the <a href="#XrDuration"><code>XrDuration</code></a> of the display
+<p><code>predictedDisplayPeriod</code> is the <a href="#XrDuration">XrDuration</a> of the display
 period for the next application-generated frame, for use in predicting
 display times beyond the next one.</p>
 </li>
@@ -14387,7 +14390,7 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>displayTime</code> is the <a href="#XrTime"><code>XrTime</code></a> at which this frame <strong class="purple">should</strong> be
+<p><code>displayTime</code> is the <a href="#XrTime">XrTime</a> at which this frame <strong class="purple">should</strong> be
 displayed.</p>
 </li>
 <li>
@@ -14437,8 +14440,9 @@ If layerCount is greater than the maximum supported layer count then
 <p>All layers submitted to <a href="#xrEndFrame">xrEndFrame</a> will be presented to the primary
 view configuration of the running session.</p>
 </div>
-<div class="sect3">
-<h4 id="frame-rate"><a class="anchor" href="#frame-rate"></a>10.4.1. Frame Rate</h4>
+</div>
+<div class="sect2">
+<h3 id="frame-rate"><a class="anchor" href="#frame-rate"></a>10.5. Frame Rate</h3>
 <div class="paragraph">
 <p>For every application-generated frame, the application <strong class="purple">may</strong> call
 <a href="#xrEndFrame">xrEndFrame</a> to submit the application-generated composition layers.
@@ -14451,8 +14455,8 @@ The earliest the runtime will return from <a href="#xrWaitFrame">xrWaitFrame</a>
 determines that the application <strong class="purple">should</strong> start drawing the next frame.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="compositing"><a class="anchor" href="#compositing"></a>10.4.2. Compositing</h4>
+<div class="sect2">
+<h3 id="compositing"><a class="anchor" href="#compositing"></a>10.6. Compositing</h3>
 <div class="paragraph">
 <p>Composition layers are submitted by the application via the <a href="#xrEndFrame">xrEndFrame</a>
 call.
@@ -14470,14 +14474,14 @@ Layers <strong class="purple">must</strong> be drawn with a "painter&#8217;s alg
 layer potentially overwriting the destination layers whether or not the new
 layers are virtually closer to the viewer.</p>
 </div>
-</div>
 <div class="sect3">
-<h4 id="composition-layer-flags"><a class="anchor" href="#composition-layer-flags"></a>10.4.3. Composition Layer Flags</h4>
+<h4 id="composition-layer-flags"><a class="anchor" href="#composition-layer-flags"></a>10.6.1. Composition Layer Flags</h4>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
 <p><a href="#XrCompositionLayerFlags">XrCompositionLayerFlags</a> specifies options for individual composition
-layers.</p>
+layers, and contains a bitwise-OR of zero or more of the bits defined in
+<a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a>.</p>
 </div>
 <div id="XrCompositionLayerFlags" class="paragraph">
 <p></p>
@@ -14531,7 +14535,7 @@ static const XrCompositionLayerFlags XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_
 </div>
 </div>
 <div class="sect3">
-<h4 id="composition-layer-blending"><a class="anchor" href="#composition-layer-blending"></a>10.4.4. Composition Layer Blending</h4>
+<h4 id="composition-layer-blending"><a class="anchor" href="#composition-layer-blending"></a>10.6.2. Composition Layer Blending</h4>
 <div class="paragraph">
 <p>All types of composition layers are subject to blending with other layers.
 Blending of layers can be controlled by layer per-texel source alpha.
@@ -14572,7 +14576,7 @@ initialized to zero.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="composition-layer-types"><a class="anchor" href="#composition-layer-types"></a>10.4.5. Composition Layer Types</h4>
+<h4 id="composition-layer-types"><a class="anchor" href="#composition-layer-types"></a>10.6.3. Composition Layer Types</h4>
 <div class="paragraph">
 <p>Composition layers allow an application to offload the composition of the
 final image to a runtime-supplied compositor.
@@ -15102,7 +15106,7 @@ right eye.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="environment_blend_mode"><a class="anchor" href="#environment_blend_mode"></a>10.4.6. Environment Blend Mode</h4>
+<h4 id="environment_blend_mode"><a class="anchor" href="#environment_blend_mode"></a>10.6.4. Environment Blend Mode</h4>
 <div class="paragraph">
 <p>After the compositor has blended and flattened all layers (including any
 layers added by the runtime itself), it will then present this image to the
@@ -15184,7 +15188,7 @@ XrResult xrEnumerateEnvironmentBlendModes(
 <p><code>instance</code> is the instance from which <code>systemId</code> was retrieved.</p>
 </li>
 <li>
-<p><code>systemId</code> is the <a href="#XrSystemId"><code>XrSystemId</code></a> whose environment blend modes
+<p><code>systemId</code> is the <a href="#XrSystemId">XrSystemId</a> whose environment blend modes
 will be enumerated.</p>
 </li>
 <li>
@@ -16033,7 +16037,7 @@ the name of this action.</p>
 If <code>subactionPaths</code> is NULL, this parameter must be 0.</p>
 </li>
 <li>
-<p><code>subactionPaths</code> is an array of <a href="#XrPath"><code>XrPath</code></a> or <code>NULL</code>.
+<p><code>subactionPaths</code> is an array of <a href="#XrPath">XrPath</a> or <code>NULL</code>.
 If this array is specified, it contains one or more subaction paths that
 the application intends to query action state for.</p>
 </li>
@@ -16165,7 +16169,7 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_FORMAT_I
 <p><a id="VUID-XrActionCreateInfo-actionType-parameter" href="#VUID-XrActionCreateInfo-actionType-parameter"></a> <code>actionType</code> <strong class="purple">must</strong> be a valid <a href="#XrActionType">XrActionType</a> value</p>
 </li>
 <li>
-<p><a id="VUID-XrActionCreateInfo-subactionPaths-parameter" href="#VUID-XrActionCreateInfo-subactionPaths-parameter"></a> If <code>countSubactionPaths</code> is not <code>0</code>, <code>subactionPaths</code> <strong class="purple">must</strong> be a pointer to an array of <code>countSubactionPaths</code> valid <a href="#XrPath"><code>XrPath</code></a> values</p>
+<p><a id="VUID-XrActionCreateInfo-subactionPaths-parameter" href="#VUID-XrActionCreateInfo-subactionPaths-parameter"></a> If <code>countSubactionPaths</code> is not <code>0</code>, <code>subactionPaths</code> <strong class="purple">must</strong> be a pointer to an array of <code>countSubactionPaths</code> valid <a href="#XrPath">XrPath</a> values</p>
 </li>
 <li>
 <p><a id="VUID-XrActionCreateInfo-localizedActionName-parameter" href="#VUID-XrActionCreateInfo-localizedActionName-parameter"></a> <code>localizedActionName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to <code>XR_MAX_LOCALIZED_ACTION_NAME_SIZE</code></p>
@@ -16403,8 +16407,8 @@ action or it will be unbound.</p>
 is obeying suggested bindings: If the input value specified by the path is
 scalar, the input value <strong class="purple">must</strong> be bound directly to the float.
 If the path refers to the parent of input values instead of to an input
-value itself, the runtime <strong class="purple">must</strong> use <em>/example/path/value</em> instead of
-<em>&#8230;/example/path</em> as the source of the value.
+value itself, the runtime <strong class="purple">must</strong> use <em>&#8230;/example/path/value</em> instead
+of <em>&#8230;/example/path</em> as the source of the value.
 If a parent path does not have a <em>&#8230;/value</em> subpath, the runtime
 <strong class="purple">must</strong> use <em>&#8230;/click.</em>
 If the input value is boolean, the runtime <strong class="purple">must</strong> supply 0.0 or 1.0 as a
@@ -16664,7 +16668,7 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>interactionProfile</code> is the <a href="#XrPath"><code>XrPath</code></a> of an interaction profile.</p>
+<p><code>interactionProfile</code> is the <a href="#XrPath">XrPath</a> of an interaction profile.</p>
 </li>
 <li>
 <p><code>countSuggestedBindings</code> is the number of suggested bindings in the
@@ -16727,7 +16731,7 @@ application&#8217;s suggested bindings for the specified interaction profile.</p
 <p><code>action</code> is the <a href="#XrAction">XrAction</a> handle for an action</p>
 </li>
 <li>
-<p><code>binding</code> is the <a href="#XrPath"><code>XrPath</code></a> of a binding for the action specified
+<p><code>binding</code> is the <a href="#XrPath">XrPath</a> of a binding for the action specified
 in <code>action</code>.
 This path is any top level user path plus input source path, for example
 <em>/user/hand/right/input/trigger/click.</em>
@@ -17098,7 +17102,7 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>interactionProfile</code> is the <a href="#XrPath"><code>XrPath</code></a> of the interaction profile
+<p><code>interactionProfile</code> is the <a href="#XrPath">XrPath</a> of the interaction profile
 path for the <code>topLevelUserPath</code> used to retrieve this state, or
 <a href="#XR_NULL_PATH">XR_NULL_PATH</a> if there is no active interaction profile at that top
 level user path.</p>
@@ -17276,7 +17280,7 @@ No such structures are defined in core OpenXR.</p>
 <p><code>action</code> is the <a href="#XrAction">XrAction</a> being queried.</p>
 </li>
 <li>
-<p><code>subactionPath</code> is the subaction path <a href="#XrPath"><code>XrPath</code></a> to query data
+<p><code>subactionPath</code> is the subaction path <a href="#XrPath">XrPath</a> to query data
 from, or <a href="#XR_NULL_PATH">XR_NULL_PATH</a> to specify all subaction paths.
 If the subaction path is specified, it is one of the subaction paths that
 were specified when the action was created.
@@ -17351,7 +17355,7 @@ No such structures are defined in core OpenXR.</p>
 action.</p>
 </li>
 <li>
-<p><code>subactionPath</code> is the subaction path <a href="#XrPath"><code>XrPath</code></a> of the device to
+<p><code>subactionPath</code> is the subaction path <a href="#XrPath">XrPath</a> of the device to
 send the haptic event to, or <a href="#XR_NULL_PATH">XR_NULL_PATH</a> to specify all subaction
 paths.
 If the subaction path is specified, it is one of the subaction paths that
@@ -17554,7 +17558,7 @@ E.g. if both <code>changedSinceLastSync</code> and <code>currentState</code> are
 taken place.</p>
 </li>
 <li>
-<p><code>lastChangeTime</code> is the <a href="#XrTime"><code>XrTime</code></a> when this action&#8217;s value last
+<p><code>lastChangeTime</code> is the <a href="#XrTime">XrTime</a> when this action&#8217;s value last
 changed.</p>
 </li>
 <li>
@@ -17747,7 +17751,7 @@ No such structures are defined in core OpenXR.</p>
 <a href="#xrSyncActions">xrSyncActions</a>.</p>
 </li>
 <li>
-<p><code>lastChangeTime</code> is the <a href="#XrTime"><code>XrTime</code></a> in nanoseconds since this
+<p><code>lastChangeTime</code> is the <a href="#XrTime">XrTime</a> in nanoseconds since this
 action&#8217;s value last changed.</p>
 </li>
 <li>
@@ -17937,7 +17941,7 @@ No such structures are defined in core OpenXR.</p>
 <a href="#xrSyncActions">xrSyncActions</a>.</p>
 </li>
 <li>
-<p><code>lastChangeTime</code> is the <a href="#XrTime"><code>XrTime</code></a> in nanoseconds since this
+<p><code>lastChangeTime</code> is the <a href="#XrTime">XrTime</a> in nanoseconds since this
 action&#8217;s value last changed.</p>
 </li>
 <li>
@@ -18464,7 +18468,6 @@ haptic pulse of the minimal supported duration for the haptic device.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_MIN_HAPTIC_DURATION -1</code></pre>
 </div>
 </div>
@@ -18483,7 +18486,6 @@ pulse.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #define XR_FREQUENCY_UNSPECIFIED 0</code></pre>
 </div>
 </div>
@@ -18861,7 +18863,7 @@ Applications <strong class="purple">can</strong> provide a list of these structu
 <p>An application <strong class="purple">can</strong> use the <a href="#xrEnumerateBoundSourcesForAction">xrEnumerateBoundSourcesForAction</a> and
 <a href="#xrGetInputSourceLocalizedName">xrGetInputSourceLocalizedName</a> calls to prompt the user which physical
 inputs to use in order to perform an action.
-The bound <code>sources</code> are <a href="#XrPath"><code>XrPath</code></a> semantic paths representing the
+The bound <code>sources</code> are <a href="#XrPath">XrPath</a> semantic paths representing the
 physical controls that an action is bound to.
 An action <strong class="purple">may</strong> be bound to multiple sources at one time, for example an
 action named <code>hold</code> could be bound to both the X and A buttons.</p>
@@ -18914,7 +18916,7 @@ pointer to the required capacity in the case that
 </li>
 <li>
 <p><code>sources</code> is a pointer to an application-allocated array that will be
-filled with the <a href="#XrPath"><code>XrPath</code></a> values for all bound sources.
+filled with the <a href="#XrPath">XrPath</a> values for all bound sources.
 It <strong class="purple">can</strong> be <code>NULL</code> if <code>sourceCapacityInput</code> is 0.</p>
 </li>
 <li>
@@ -18950,7 +18952,7 @@ sources, or absence of bound sources, for a given query (defined by the
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>The <a href="#XrPath"><code>XrPath</code></a> bound sources returned by the runtime are opaque values
+<p>The <a href="#XrPath">XrPath</a> bound sources returned by the runtime are opaque values
 and <strong class="purple">should</strong> not be inspected or persisted.
 They are only intended for use in conjunction with
 <a href="#xrGetInputSourceLocalizedName">xrGetInputSourceLocalizedName</a>.</p>
@@ -18974,7 +18976,7 @@ They are only intended for use in conjunction with
 <p><a id="VUID-xrEnumerateBoundSourcesForAction-sourceCountOutput-parameter" href="#VUID-xrEnumerateBoundSourcesForAction-sourceCountOutput-parameter"></a> <code>sourceCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrEnumerateBoundSourcesForAction-sources-parameter" href="#VUID-xrEnumerateBoundSourcesForAction-sources-parameter"></a> If <code>sourceCapacityInput</code> is not <code>0</code>, <code>sources</code> <strong class="purple">must</strong> be a pointer to an array of <code>sourceCapacityInput</code> <a href="#XrPath"><code>XrPath</code></a> values</p>
+<p><a id="VUID-xrEnumerateBoundSourcesForAction-sources-parameter" href="#VUID-xrEnumerateBoundSourcesForAction-sources-parameter"></a> If <code>sourceCapacityInput</code> is not <code>0</code>, <code>sources</code> <strong class="purple">must</strong> be a pointer to an array of <code>sourceCapacityInput</code> <a href="#XrPath">XrPath</a> values</p>
 </li>
 </ul>
 </div>
@@ -19266,7 +19268,7 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>sourcePath</code> is an <a href="#XrPath"><code>XrPath</code></a> representing a bound source
+<p><code>sourcePath</code> is an <a href="#XrPath">XrPath</a> representing a bound source
 returned by <a href="#xrEnumerateBoundSourcesForAction">xrEnumerateBoundSourcesForAction</a>.</p>
 </li>
 <li>
@@ -19278,7 +19280,7 @@ returned by <a href="#xrEnumerateBoundSourcesForAction">xrEnumerateBoundSourcesF
 </div>
 </div>
 <div class="paragraph">
-<p>The result of passing an <a href="#XrPath"><code>XrPath</code></a> <code>source</code> <strong>not</strong> retrieved from
+<p>The result of passing an <a href="#XrPath">XrPath</a> <code>source</code> <strong>not</strong> retrieved from
 <a href="#xrEnumerateBoundSourcesForAction">xrEnumerateBoundSourcesForAction</a> is not specified.</p>
 </div>
 <div class="sidebarblock">
@@ -22276,10 +22278,10 @@ render an equirectangular image onto a sphere when calling <a href="#xrEndFrame"
 </div>
 <div class="paragraph">
 <p>This extension provides two functions for converting between timespec
-monotonic time and <a href="#XrTime"><code>XrTime</code></a>.
+monotonic time and <a href="#XrTime">XrTime</a>.
 The <a href="#xrConvertTimespecTimeToTimeKHR">xrConvertTimespecTimeToTimeKHR</a> function converts from timespec
-time to <a href="#XrTime"><code>XrTime</code></a>, while the <a href="#xrConvertTimeToTimespecTimeKHR">xrConvertTimeToTimespecTimeKHR</a>
-function converts <a href="#XrTime"><code>XrTime</code></a> to timespec monotonic time.
+time to <a href="#XrTime">XrTime</a>, while the <a href="#xrConvertTimeToTimespecTimeKHR">xrConvertTimeToTimespecTimeKHR</a>
+function converts <a href="#XrTime">XrTime</a> to timespec monotonic time.
 The primary use case for this functionality is to be able to synchronize
 events between the local system and the OpenXR system.</p>
 </div>
@@ -22304,7 +22306,7 @@ events between the local system and the OpenXR system.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>To convert from timespec monotonic time to <a href="#XrTime"><code>XrTime</code></a>, call:</p>
+<p>To convert from timespec monotonic time to <a href="#XrTime">XrTime</a>, call:</p>
 </div>
 <div id="xrConvertTimespecTimeToTimeKHR" class="paragraph">
 <p></p>
@@ -22332,7 +22334,7 @@ XrResult xrConvertTimespecTimeToTimeKHR(
 with <code>CLOCK_MONOTONIC</code>.</p>
 </li>
 <li>
-<p><code>time</code> is the resulting <a href="#XrTime"><code>XrTime</code></a> that is equivalent to the
+<p><code>time</code> is the resulting <a href="#XrTime">XrTime</a> that is equivalent to the
 <code>timespecTime</code>.</p>
 </li>
 </ul>
@@ -22341,7 +22343,7 @@ with <code>CLOCK_MONOTONIC</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="#xrConvertTimespecTimeToTimeKHR">xrConvertTimespecTimeToTimeKHR</a> function converts a time obtained
-by the <code>clock_gettime</code> function to the equivalent <a href="#XrTime"><code>XrTime</code></a>.</p>
+by the <code>clock_gettime</code> function to the equivalent <a href="#XrTime">XrTime</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the output <code>time</code> cannot represent the input <code>timespecTime</code>, the
@@ -22362,7 +22364,7 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_TIME_INVALID<
 <p><a id="VUID-xrConvertTimespecTimeToTimeKHR-timespecTime-parameter" href="#VUID-xrConvertTimespecTimeToTimeKHR-timespecTime-parameter"></a> <code>timespecTime</code> <strong class="purple">must</strong> be a pointer to a valid <code>timespec</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrConvertTimespecTimeToTimeKHR-time-parameter" href="#VUID-xrConvertTimespecTimeToTimeKHR-time-parameter"></a> <code>time</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrTime"><code>XrTime</code></a> value</p>
+<p><a id="VUID-xrConvertTimespecTimeToTimeKHR-time-parameter" href="#VUID-xrConvertTimespecTimeToTimeKHR-time-parameter"></a> <code>time</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrTime">XrTime</a> value</p>
 </li>
 </ul>
 </div>
@@ -22417,7 +22419,7 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_TIME_INVALID<
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>To convert from <a href="#XrTime"><code>XrTime</code></a> to timespec monotonic time, call:</p>
+<p>To convert from <a href="#XrTime">XrTime</a> to timespec monotonic time, call:</p>
 </div>
 <div id="xrConvertTimeToTimespecTimeKHR" class="paragraph">
 <p></p>
@@ -22441,7 +22443,7 @@ XrResult xrConvertTimeToTimespecTimeKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>time</code> is an <a href="#XrTime"><code>XrTime</code></a>.</p>
+<p><code>time</code> is an <a href="#XrTime">XrTime</a>.</p>
 </li>
 <li>
 <p><code>timespecTime</code> is the resulting timespec time that is equivalent to a
@@ -22453,7 +22455,7 @@ XrResult xrConvertTimeToTimespecTimeKHR(
 </div>
 <div class="paragraph">
 <p>The <a href="#xrConvertTimeToTimespecTimeKHR">xrConvertTimeToTimespecTimeKHR</a> function converts an
-<a href="#XrTime"><code>XrTime</code></a> to time as if generated by <code>clock_gettime</code>.</p>
+<a href="#XrTime">XrTime</a> to time as if generated by <code>clock_gettime</code>.</p>
 </div>
 <div class="paragraph">
 <p>If the output <code>timespecTime</code> cannot represent the input <code>time</code>, the
@@ -22982,7 +22984,7 @@ XrResult xrGetD3D11GraphicsRequirementsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -23652,7 +23654,7 @@ XrResult xrGetD3D12GraphicsRequirementsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -24957,7 +24959,7 @@ XrResult xrGetOpenGLGraphicsRequirementsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -25590,7 +25592,7 @@ XrResult xrGetOpenGLESGraphicsRequirementsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -26971,7 +26973,7 @@ XrResult xrGetVulkanGraphicsRequirementsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -27093,7 +27095,7 @@ XrResult xrGetVulkanGraphicsDeviceKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -27208,7 +27210,7 @@ XrResult xrGetVulkanInstanceExtensionsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -27330,7 +27332,7 @@ XrResult xrGetVulkanDeviceExtensionsKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -27673,7 +27675,7 @@ on calls to <a href="#xrCreateSession">xrCreateSession</a> if
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -27991,7 +27993,7 @@ chain.
 No such structures are defined in core OpenXR or this extension</p>
 </li>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -28225,7 +28227,7 @@ typedef struct XrVulkanGraphicsDeviceGetInfoKHR {
 <div class="ulist">
 <ul>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -28418,7 +28420,7 @@ typedef struct XrVulkanDeviceCreateInfoKHR {
 <div class="ulist">
 <ul>
 <li>
-<p><code>systemId</code> is an <a href="#XrSystemId"><code>XrSystemId</code></a> handle for the system which will
+<p><code>systemId</code> is an <a href="#XrSystemId">XrSystemId</a> handle for the system which will
 be used to create a session.</p>
 </li>
 <li>
@@ -29319,11 +29321,11 @@ Bryce Hutchings, Microsoft</p>
 </div>
 <div class="paragraph">
 <p>This extension provides two functions for converting between the Windows
-performance counter (QPC) time stamps and <a href="#XrTime"><code>XrTime</code></a>.
+performance counter (QPC) time stamps and <a href="#XrTime">XrTime</a>.
 The <a href="#xrConvertWin32PerformanceCounterToTimeKHR">xrConvertWin32PerformanceCounterToTimeKHR</a> function converts from
-Windows performance counter time stamps to <a href="#XrTime"><code>XrTime</code></a>, while the
+Windows performance counter time stamps to <a href="#XrTime">XrTime</a>, while the
 <a href="#xrConvertTimeToWin32PerformanceCounterKHR">xrConvertTimeToWin32PerformanceCounterKHR</a> function converts
-<a href="#XrTime"><code>XrTime</code></a> to Windows performance counter time stamps.
+<a href="#XrTime">XrTime</a> to Windows performance counter time stamps.
 The primary use case for this functionality is to be able to synchronize
 events between the local system and the OpenXR system.</p>
 </div>
@@ -29348,7 +29350,7 @@ events between the local system and the OpenXR system.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>To convert from a Windows performance counter time stamp to <a href="#XrTime"><code>XrTime</code></a>,
+<p>To convert from a Windows performance counter time stamp to <a href="#XrTime">XrTime</a>,
 call:</p>
 </div>
 <div id="xrConvertWin32PerformanceCounterToTimeKHR" class="paragraph">
@@ -29377,7 +29379,7 @@ XrResult xrConvertWin32PerformanceCounterToTimeKHR(
 <code>QueryPerformanceCounter</code>.</p>
 </li>
 <li>
-<p><code>time</code> is the resulting <a href="#XrTime"><code>XrTime</code></a> that is equivalent to the
+<p><code>time</code> is the resulting <a href="#XrTime">XrTime</a> that is equivalent to the
 <code>performanceCounter</code>.</p>
 </li>
 </ul>
@@ -29387,7 +29389,7 @@ XrResult xrConvertWin32PerformanceCounterToTimeKHR(
 <div class="paragraph">
 <p>The <a href="#xrConvertWin32PerformanceCounterToTimeKHR">xrConvertWin32PerformanceCounterToTimeKHR</a> function converts a time
 stamp obtained by the <code>QueryPerformanceCounter</code> Windows function to the
-equivalent <a href="#XrTime"><code>XrTime</code></a>.</p>
+equivalent <a href="#XrTime">XrTime</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the output <code>time</code> cannot represent the input
@@ -29409,7 +29411,7 @@ equivalent <a href="#XrTime"><code>XrTime</code></a>.</p>
 <p><a id="VUID-xrConvertWin32PerformanceCounterToTimeKHR-performanceCounter-parameter" href="#VUID-xrConvertWin32PerformanceCounterToTimeKHR-performanceCounter-parameter"></a> <code>performanceCounter</code> <strong class="purple">must</strong> be a pointer to a valid <code>LARGE_INTEGER</code> value</p>
 </li>
 <li>
-<p><a id="VUID-xrConvertWin32PerformanceCounterToTimeKHR-time-parameter" href="#VUID-xrConvertWin32PerformanceCounterToTimeKHR-time-parameter"></a> <code>time</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrTime"><code>XrTime</code></a> value</p>
+<p><a id="VUID-xrConvertWin32PerformanceCounterToTimeKHR-time-parameter" href="#VUID-xrConvertWin32PerformanceCounterToTimeKHR-time-parameter"></a> <code>time</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrTime">XrTime</a> value</p>
 </li>
 </ul>
 </div>
@@ -29464,7 +29466,7 @@ equivalent <a href="#XrTime"><code>XrTime</code></a>.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>To convert from <a href="#XrTime"><code>XrTime</code></a> to a Windows performance counter time stamp,
+<p>To convert from <a href="#XrTime">XrTime</a> to a Windows performance counter time stamp,
 call:</p>
 </div>
 <div id="xrConvertTimeToWin32PerformanceCounterKHR" class="paragraph">
@@ -29489,7 +29491,7 @@ XrResult xrConvertTimeToWin32PerformanceCounterKHR(
 <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
 </li>
 <li>
-<p><code>time</code> is an <a href="#XrTime"><code>XrTime</code></a>.</p>
+<p><code>time</code> is an <a href="#XrTime">XrTime</a>.</p>
 </li>
 <li>
 <p><code>performanceCounter</code> is the resulting Windows performance counter time
@@ -29501,7 +29503,7 @@ stamp that is equivalent to the <code>time</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="#xrConvertTimeToWin32PerformanceCounterKHR">xrConvertTimeToWin32PerformanceCounterKHR</a> function converts an
-<a href="#XrTime"><code>XrTime</code></a> to time as if generated by the <code>QueryPerformanceCounter</code>
+<a href="#XrTime">XrTime</a> to time as if generated by the <code>QueryPerformanceCounter</code>
 Windows function.</p>
 </div>
 <div class="paragraph">
@@ -29603,25 +29605,25 @@ Windows function.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#XrBool32"><code>XrBool32</code></a></p>
+<p><a href="#XrBool32">XrBool32</a></p>
 </li>
 <li>
-<p><a href="#XrDuration"><code>XrDuration</code></a></p>
+<p><a href="#XrDuration">XrDuration</a></p>
 </li>
 <li>
-<p><a href="#XrFlags64"><code>XrFlags64</code></a></p>
+<p><a href="#XrFlags64">XrFlags64</a></p>
 </li>
 <li>
-<p><a href="#XrPath"><code>XrPath</code></a></p>
+<p><a href="#XrPath">XrPath</a></p>
 </li>
 <li>
-<p><a href="#XrSystemId"><code>XrSystemId</code></a></p>
+<p><a href="#XrSystemId">XrSystemId</a></p>
 </li>
 <li>
-<p><a href="#XrTime"><code>XrTime</code></a></p>
+<p><a href="#XrTime">XrTime</a></p>
 </li>
 <li>
-<p><a href="#XrVersion"><code>XrVersion</code></a></p>
+<p><a href="#XrVersion">XrVersion</a></p>
 </li>
 </ul>
 </div>
@@ -29638,6 +29640,12 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#XR_DEFINE_HANDLE">XR_DEFINE_HANDLE</a></p>
+</li>
+<li>
+<p><a href="#XR_EXTENSION_ENUM_BASE">XR_EXTENSION_ENUM_BASE</a></p>
+</li>
+<li>
+<p><a href="#XR_EXTENSION_ENUM_STRIDE">XR_EXTENSION_ENUM_STRIDE</a></p>
 </li>
 <li>
 <p><a href="#XR_FAILED">XR_FAILED</a></p>
@@ -30646,26 +30654,59 @@ matching the type of the structure, as described more fully in
 <a href="#valid-usage-for-structure-types">Valid Usage for Structure Types</a>.</p>
 </div>
 <div class="paragraph">
-<p>Note that all extension enums begin at the extension enum base of
-<span class="eq">1<sup>10</sup></span> (base 10).
+<p>Note that all extension enums begin at the extension enum base of <span class="eq">10^9</span>
+(base 10).
 Each extension is assigned a block of 1000 enums, starting at the enum base
-and arranged by the extension&#8217;s index.</p>
+and arranged by the extension&#8217;s number.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_EXTENSION_ENUM_BASE" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
+#define XR_EXTENSION_ENUM_BASE 1000000000</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_EXTENSION_ENUM_STRIDE" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
+#define XR_EXTENSION_ENUM_STRIDE 1000</code></pre>
+</div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, if an extension with index 5 wants to use an enum value of 3,
-the final enum is computed by:</p>
+<p>For example, if extension number 5 wants to use an enum value of 3, the
+final enum is computed by:</p>
 </div>
 <div class="paragraph">
-<p><span class="eq">enum = enum_base + (enum_index - 1) * 1000 + enum_value</span>
-<span class="eq">1000004003 = 1000000000 + 4 * 1000 + 3</span></p>
+<p><span class="eq">enum = <a href="#XR_EXTENSION_ENUM_BASE">XR_EXTENSION_ENUM_BASE</a> + (extension_number - 1) *
+<a href="#XR_EXTENSION_ENUM_STRIDE">XR_EXTENSION_ENUM_STRIDE</a> + enum_value</span></p>
+</div>
+<div class="paragraph">
+<p><span class="eq">1000004003 = 1000000000 + 4 * 1000 + 3</span></p>
+</div>
+<div class="paragraph">
+<p>The maximum allowed enum value in an extension is 2,147,482,999, which
+belongs to extension number 2147483.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="flag-types"><a class="anchor" href="#flag-types"></a>Flag Types</h4>
 <div class="paragraph">
-<p>Flag types are all bitmasks aliasing the base type <a href="#XrFlags64"><code>XrFlags64</code></a> and
+<p>Flag types are all bitmasks aliasing the base type <a href="#XrFlags64">XrFlags64</a> and
 with corresponding bit flag types defining the valid bits for that flag, as
 described in <a href="#valid-usage-for-flags">Valid Usage for Flags</a>.</p>
 </div>
@@ -30718,9 +30759,8 @@ Macros</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 27)</code></pre>
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 28)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -30788,8 +30828,7 @@ Version Numbers and Semantics</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-#define XR_VERSION_MAJOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 48)&amp; 0xffffULL)</code></pre>
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0#define XR_VERSION_MAJOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 48)&amp; 0xffffULL)</code></pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -30818,8 +30857,7 @@ version number.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-#define XR_VERSION_MINOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 32) &amp; 0xffffULL)</code></pre>
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0#define XR_VERSION_MINOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 32) &amp; 0xffffULL)</code></pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -30848,8 +30886,7 @@ version number.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-#define XR_VERSION_PATCH(version) (uint32_t)((uint64_t)(version) &amp; 0xffffffffULL)</code></pre>
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0#define XR_VERSION_PATCH(version) (uint32_t)((uint64_t)(version) &amp; 0xffffffffULL)</code></pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -30882,7 +30919,6 @@ version number.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #if !defined(XR_DEFINE_HANDLE)
 #if (XR_PTR_SIZE == 8)
     #define XR_DEFINE_HANDLE(object) typedef struct object##_T* object;
@@ -30922,7 +30958,6 @@ platforms with 64 bit pointers.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0
-
 #if !defined(XR_NULL_HANDLE)
 #if (XR_PTR_SIZE == 8) &amp;&amp; XR_CPP_NULLPTR_SUPPORTED
     #define XR_NULL_HANDLE nullptr
@@ -31696,7 +31731,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>

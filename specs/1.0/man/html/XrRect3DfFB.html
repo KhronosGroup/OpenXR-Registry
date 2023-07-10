@@ -809,13 +809,22 @@ typedef struct XrRect3DfFB {
 <p>This structure is used for component values that may be fractional
 (floating-point).</p>
 </div>
+<div class="paragraph">
+<p>The bounding box is defined by an <code>offset</code> and <code>extent</code>.
+The <code>offset</code> refers to the coordinate of the minimum corner of the box
+in the local space of the <a href="XrSpace.html">XrSpace</a>; that is, the corner whose
+coordinate has the minimum value on each axis.
+The <code>extent</code> refers to the dimensions of the box along each axis.
+The maximum corner can therefore be computed as <span class="eq"><code>offset</code><br>
+<code>extent</code></span>.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrRect3DfFB-extension-notenabled"></a> The <code><a href="#XR_FB_scene">[XR_FB_scene]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrRect3DfFB.html">XrRect3DfFB</a></p>
+<p><a id="VUID-XrRect3DfFB-extension-notenabled"></a> The <code><a href="XR_FB_scene.html">XR_FB_scene</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrRect3DfFB.html">XrRect3DfFB</a></p>
 </li>
 </ul>
 </div>
@@ -859,7 +868,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

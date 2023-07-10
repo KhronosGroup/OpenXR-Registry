@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR<sup>&#174;</sup>  Loader - Design and Operation (with all registered extensions)</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2023, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.27</span>
-<br><span id="revremark">from git ref release-1.0.27</span>
+<span id="revnumber">version 1.0.28</span>
+<br><span id="revremark">from git ref release-1.0.28</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -2028,7 +2028,7 @@ Implicit API layers will always be discovered using the standard paths.</p>
 <p>On Android the loader finds API layers by reading all
 <a href="#api-layer-manifest-file-format">Manifest files</a> with the extension
 .json. The following directories inside APK assets are used for explicit
-and implicit layers.</p>
+and implicit layers:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2041,6 +2041,57 @@ openxr/1/api_layers/explicit.d</pre>
 <div class="paragraph">
 <p>The loader accesses these using the Android AssetManager classes.</p>
 </div>
+</div>
+</div>
+<div class="paragraph">
+<p>The loader also looks for system installed API layers in a similar process
+as is used for active runtime discovery.
+The following system directories are searched for
+<a href="#api-layer-manifest-file-format">Manifest files</a> in the following priority
+order for implicit and explicit API layers:</p>
+</div>
+<div class="sect4">
+<h5 id="_implicit_api_layers">Implicit API Layers</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>/product/etc/openxr/1/api_layers/implicit.d</code></p>
+</li>
+<li>
+<p><code>/odm/etc/openxr/1/api_layers/implicit.d</code></p>
+</li>
+<li>
+<p><code>/oem/etc/openxr/1/api_layers/implicit.d</code></p>
+</li>
+<li>
+<p><code>/system/etc/openxr/1/api_layers/implicit.d</code></p>
+</li>
+<li>
+<p><code>/vendor/etc/openxr/1/api_layers/implicit.d</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_explicit_api_layers">Explicit API Layers</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>/product/etc/openxr/1/api_layers/explicit.d</code></p>
+</li>
+<li>
+<p><code>/oem/etc/openxr/1/api_layers/explicit.d</code></p>
+</li>
+<li>
+<p><code>/vendor/etc/openxr/1/api_layers/explicit.d</code></p>
+</li>
+<li>
+<p><code>/system/etc/openxr/1/api_layers/explicit.d</code></p>
+</li>
+<li>
+<p><code>/odm/etc/openxr/1/api_layers/explicit.d</code></p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -2378,7 +2429,7 @@ negotiation process.</p>
 <ul>
 <li>
 <p><code>structType</code> <strong class="purple">must</strong> be a valid value of
-<a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a>.
+<code><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></code>.
 In this case, it <strong class="purple">must</strong> specifically be
 <code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code>.</p>
 </li>
@@ -2463,7 +2514,7 @@ the negotiation process.</p>
 <ul>
 <li>
 <p><code>structType</code> <strong class="purple">must</strong> be a valid value of
-<a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a>.
+<code><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></code>.
 In this case, it <strong class="purple">must</strong> specifically be
 <code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST</code>.</p>
 </li>
@@ -2585,13 +2636,13 @@ The loader will then individually call each API layer&#8217;s
 <li>
 <p>Does the API layer support any <a href="#api-layer-interface-versions">loader/API
 layer interface version</a> between
-<code>loaderInfo</code>&#8594;<code>minInterfaceVersion</code> and
-<code>loaderInfo</code>&#8594;<code>maxInterfaceVersion</code>:</p>
+<code>loaderInfo-&gt;pname</code>:minInterfaceVersion and
+<code>loaderInfo-&gt;pname</code>:maxInterfaceVersion:</p>
 </li>
 <li>
 <p><strong>AND</strong> does the API layer support any OpenXR API version between
-<code>loaderInfo</code>&#8594;<code>minApiVersion</code> and
-<code>loaderInfo</code>&#8594;<code>maxApiVersion</code>:</p>
+<code>loaderInfo-&gt;pname</code>:minApiVersion and
+<code>loaderInfo-&gt;pname</code>:maxApiVersion:</p>
 </li>
 </ul>
 </div>
@@ -2601,20 +2652,20 @@ layer interface version</a> between
 <div class="ulist">
 <ul>
 <li>
-<p>Fill in <code>layerRequest</code>&#8594;<code>layerInterfaceVersion</code> with the API
+<p>Fill in <code>layerRequest-&gt;pname</code>:layerInterfaceVersion with the API
 layer interface version it desires to support.</p>
 </li>
 <li>
-<p>Fill in <code>layerRequest</code>&#8594;<code>layerApiVersion</code> with the API version of
+<p>Fill in <code>layerRequest-&gt;pname</code>:layerApiVersion with the API version of
 OpenXR it will execute under.</p>
 </li>
 <li>
-<p>Fill in <code>layerRequest</code>&#8594;<code>getInstanceProcAddr</code> with a valid
+<p>Fill in <code>layerRequest-&gt;pname</code>:getInstanceProcAddr with a valid
 function pointer so that the loader can query function pointers to the
 remaining OpenXR commands supported by the API layer.</p>
 </li>
 <li>
-<p>Fill in <code>layerRequest</code>&#8594;<code>createLayerInstance</code> with a valid
+<p>Fill in <code>layerRequest-&gt;pname</code>:createLayerInstance with a valid
 function pointer so that the loader can create the instance through the
 API layer call chain.</p>
 </li>
@@ -3326,6 +3377,7 @@ OpenXR, it is optional here as well.
 If the active runtime contains "true" in its "has_functions" column, then
 this table must exist and be queryable.
 No sort order is required to be honored by the content provider.
+<em>package</em> is the package name containing the active runtime.
 Available columns include:</p>
 <div class="ulist">
 <ul>
@@ -3345,47 +3397,6 @@ Available columns include:</p>
 construct an object corresponding to an equivalent JSON runtime manifest
 file as used on other platforms.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note</div>
-<div class="paragraph">
-<p>Use of a content provider does mean that OpenXR applications on Android will
-need the following in their manifest.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR_SYSTEM" /&gt;
-
-&lt;queries&gt;
-  &lt;provider android:authorities="org.khronos.openxr.runtime_broker;org.khronos.openxr.system_runtime_broker" /&gt;
-&lt;/queries&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Earlier versions of the installable broker also wanted the following permission,
-but this is no longer required. It is harmless to leave it in place, but the broker
-no longer requires it.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR" /&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Additionally, applications should <strong>not target API levels higher than 29</strong>
-for maximum compatibility, as runtimes may need to query and load classes
-from their own packages, which are necessarily not listed in the <code>&lt;queries&gt;</code>
-tag above.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>If no runtime is found this way, as a fall-back, a similar process as on
 Linux takes place, searching for <code>active_runtime.json</code> files in:</p>
@@ -3402,6 +3413,118 @@ Linux takes place, searching for <code>active_runtime.json</code> files in:</p>
 <p><code>/system/etc/openxr/1</code></p>
 </li>
 </ul>
+</div>
+<div class="sect5">
+<h6 id="android-ipc">Android IPC and Runtime Access</h6>
+<div class="paragraph">
+<p>As Android is a permission-limited environment, additional constraints are
+placed on runtimes and applications.
+In modern versions of Android, applications cannot query arbitrary packages
+for arbitrary services that are not pre-declared in the manifest.
+To avoid needing to update application manifests for each OpenXR runtime&#8217;s
+requirements, the intent service name
+<code>org.khronos.openxr.OpenXRRuntimeService</code> (same as used by installable
+runtime discovery) is reserved for use by OpenXR runtimes and their
+components.
+Similarly, the intent service name
+<code>org.khronos.openxr.OpenXRApiLayerService</code> is reserved for use by OpenXR API
+layers and their components.
+To target an API level higher than 29, applications <strong class="purple">must</strong> include provisions
+in their manifest to allow them to query for services with these intent
+names.
+In turn, runtimes and their components that need to locate their originating
+package <strong class="purple">should</strong> query first for packages providing a service for the
+relevant intent, then traverse the list of resolutions to find their own
+package.
+There is no set API provided by an intent service of this name: it exists
+solely as a marker of an OpenXR runtime and as a key for retrieving OpenXR
+runtime component packages without needing to perform arbitrary package
+queries.
+This does pose the risk that an application can view all OpenXR runtimes
+installed, rather than only the active one.
+However, the number of runtimes per device is likely to be very small, and
+this opens the smallest weakness possible to achieve the required
+functionality.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Applications will require the following <code>&lt;queries&gt;</code> statements in their
+manifest for the loader to locate and load the runtime correctly.
+(If building an application using the loader AAR provided by the working
+group, beginning with version 1.0.28, these items are included in the AAR
+manifest and will be merged into your application manifest automatically.)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR_SYSTEM" /&gt;
+
+&lt;queries&gt;
+  &lt;provider android:authorities="org.khronos.openxr.runtime_broker;org.khronos.openxr.system_runtime_broker" /&gt;
+  &lt;intent&gt;
+    &lt;action android:name="org.khronos.openxr.OpenXRRuntimeService" /&gt;
+    &lt;action android:name="org.khronos.openxr.OpenXRApiLayerService" /&gt;
+  &lt;/intent&gt;
+&lt;/queries&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The permission is needed to contact a system broker.
+The provider query is to be able to contact system and installable brokers.
+The intent query is for runtimes to look up their own package, which is
+required when targeting API levels higher than 29.
+It is also recommended to include the following, which could be needed for
+haptic feedback:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;uses-permission android:name="android.permission.VIBRATE" /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Earlier versions of the installable broker also wanted the following
+permission, but this is no longer required.
+It is harmless to leave it in place, but the broker no longer requires it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;uses-permission android:name="org.khronos.openxr.permission.OPENXR" /&gt;</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If no runtime is found this way, as a fall-back, a similar process as on
+Linux takes place, searching for <code>active_runtime.json</code> files in the
+following priority order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>/product/etc/openxr/1</code></p>
+</li>
+<li>
+<p><code>/odm/etc/openxr/1</code></p>
+</li>
+<li>
+<p><code>/oem/etc/openxr/1</code></p>
+</li>
+<li>
+<p><code>/vendor/etc/openxr/1</code></p>
+</li>
+<li>
+<p><code>/system/etc/openxr/1</code></p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -3747,8 +3870,8 @@ If more than one is found, user preferences are used to identify the
 </div>
 <div class="paragraph">
 <p>The path containing the dynamic library is computed from
-<code>ApplicationInfo.nativeLibraryDir</code> and the specified ABI, and the
-filename is returned using the filename found in the OpenXR metadata value.
+<code>ApplicationInfo.nativeLibraryDir</code> and the specified ABI, and the filename
+is returned using the filename found in the OpenXR metadata value.
 The "hasFunctions" column is dynamically generated based on the presence of
 any function metadata entries.</p>
 </div>
@@ -3917,7 +4040,7 @@ the negotiation process.</p>
 <ul>
 <li>
 <p><code>structType</code> <strong class="purple">must</strong> be a valid value of
-<a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a>.
+<code><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></code>.
 In this case, it must specifically be
 <code>XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST</code>.</p>
 </li>
@@ -4052,13 +4175,13 @@ The loader will then individually call each runtime&#8217;s
 <ul>
 <li>
 <p>Does the runtime support any <a href="#runtime-interface-versions">loader/runtime
-interface version</a> between <code>loaderInfo</code>&#8594;<code>minInterfaceVersion</code>
-and <code>loaderInfo</code>&#8594;<code>maxInterfaceVersion</code>:</p>
+interface version</a> between <code>loaderInfo-&gt;pname</code>:minInterfaceVersion
+and <code>loaderInfo-&gt;pname</code>:maxInterfaceVersion:</p>
 </li>
 <li>
 <p><strong>AND</strong> does the runtime support any OpenXR API version between
-<code>loaderInfo</code>&#8594;<code>minApiVersion</code> and
-<code>loaderInfo</code>&#8594;<code>maxApiVersion</code>:</p>
+<code>loaderInfo-&gt;pname</code>:minApiVersion and
+<code>loaderInfo-&gt;pname</code>:maxApiVersion:</p>
 </li>
 </ul>
 </div>
@@ -4068,15 +4191,15 @@ and <code>loaderInfo</code>&#8594;<code>maxInterfaceVersion</code>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Fill in <code>runtimeRequest</code>&#8594;<code>runtimeInterfaceVersion</code> with the
+<p>Fill in <code>runtimeRequest-&gt;pname</code>:runtimeInterfaceVersion with the
 runtime interface version it desires to support</p>
 </li>
 <li>
-<p>Fill in <code>runtimeRequest</code>&#8594;<code>runtimeApiVersion</code> with the API
+<p>Fill in <code>runtimeRequest-&gt;pname</code>:runtimeApiVersion with the API
 version of OpenXR it will execute under.</p>
 </li>
 <li>
-<p>Fill in <code>runtimeRequest</code>&#8594;<code>getInstanceProcAddr</code> with a valid
+<p>Fill in <code>runtimeRequest-&gt;pname</code>:getInstanceProcAddr with a valid
 function pointer so that the loader can query function pointers to the
 remaining OpenXR commands supported by the runtime.</p>
 </li>
@@ -6124,7 +6247,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

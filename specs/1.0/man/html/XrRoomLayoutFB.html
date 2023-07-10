@@ -813,12 +813,13 @@ ceiling</p>
 </li>
 <li>
 <p><code>wallUuidCapacityInput</code> is the capacity of the <code>wallUuids</code> array,
-in bytes, or 0 to indicate a request to retrieve the required capacity.</p>
+in number of UUIDs, or 0 to indicate a request to retrieve the required
+capacity.</p>
 </li>
 <li>
-<p><code>wallUuidCountOutput</code> is a pointer to the count of <a href="XrUuidEXT.html">XrUuidEXT</a>
-handles written, or a pointer to the required capacity in the case that
-<code>wallUuidCapacityInput</code> is insufficient.</p>
+<p><code>wallUuidCountOutput</code> is the count of <a href="XrUuidEXT.html">XrUuidEXT</a> handles written,
+or the required capacity in the case that <code>wallUuidCapacityInput</code> is
+insufficient.</p>
 </li>
 <li>
 <p><code>wallUuids</code> is a pointer to an array of <a href="XrUuidEXT.html">XrUuidEXT</a> handles, but
@@ -849,7 +850,7 @@ various surfaces of a room.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrRoomLayoutFB-extension-notenabled"></a> The <code><a href="#XR_FB_scene">[XR_FB_scene]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrRoomLayoutFB.html">XrRoomLayoutFB</a></p>
+<p><a id="VUID-XrRoomLayoutFB-extension-notenabled"></a> The <code><a href="XR_FB_scene.html">XR_FB_scene</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrRoomLayoutFB.html">XrRoomLayoutFB</a></p>
 </li>
 <li>
 <p><a id="VUID-XrRoomLayoutFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_ROOM_LAYOUT_FB</code></p>
@@ -902,7 +903,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

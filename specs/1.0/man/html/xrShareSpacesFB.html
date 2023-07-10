@@ -815,6 +815,7 @@ asynchronous request.</p>
 <p>This operation is asynchronous and the runtime <strong class="purple">must</strong> post an
 <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a> event when the operation completes
 successfully or encounters an error.
+If this function returns a failure code, no event is posted.
 The <code>requestId</code> <strong class="purple">can</strong> be used to later refer to the request, such as
 identifying which request has completed when an
 <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a> is posted to the event queue.</p>
@@ -825,7 +826,7 @@ identifying which request has completed when an
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrShareSpacesFB-extension-notenabled"></a> The <code><a href="#XR_FB_spatial_entity_sharing">[XR_FB_spatial_entity_sharing]</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrShareSpacesFB.html">xrShareSpacesFB</a></p>
+<p><a id="VUID-xrShareSpacesFB-extension-notenabled"></a> The <code><a href="XR_FB_spatial_entity_sharing.html">XR_FB_spatial_entity_sharing</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrShareSpacesFB.html">xrShareSpacesFB</a></p>
 </li>
 <li>
 <p><a id="VUID-xrShareSpacesFB-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
@@ -946,7 +947,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

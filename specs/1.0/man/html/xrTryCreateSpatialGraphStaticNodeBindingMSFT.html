@@ -767,8 +767,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="xrTryCreateSpatialGraphStaticNodeBindingMSFT.html">xrTryCreateSpatialGraphStaticNodeBindingMSFT</a> function tries to
-create a spatial graph static node binding nearest to the given location and
-returns an <a href="XrSpatialGraphNodeBindingMSFT.html">XrSpatialGraphNodeBindingMSFT</a> handle.</p>
+create a binding to the best spatial graph static node relative to the given
+location and returns an <a href="XrSpatialGraphNodeBindingMSFT.html">XrSpatialGraphNodeBindingMSFT</a> handle.</p>
 </div>
 <div id="xrTryCreateSpatialGraphStaticNodeBindingMSFT" class="paragraph">
 <p></p>
@@ -821,13 +821,18 @@ the moment.
 The application can retry creating the <a href="XrSpatialGraphNodeBindingMSFT.html">XrSpatialGraphNodeBindingMSFT</a>
 handle again after a reasonable period of time when tracking is regained.</p>
 </div>
+<div class="paragraph">
+<p>The <a href="xrTryCreateSpatialGraphStaticNodeBindingMSFT.html">xrTryCreateSpatialGraphStaticNodeBindingMSFT</a> function <strong class="purple">may</strong> be a
+slow operation and therefore <strong class="purple">should</strong> be invoked from a non-timing critical
+thread.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrTryCreateSpatialGraphStaticNodeBindingMSFT-extension-notenabled"></a> The <code><a href="#XR_MSFT_spatial_graph_bridge">[XR_MSFT_spatial_graph_bridge]</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrTryCreateSpatialGraphStaticNodeBindingMSFT.html">xrTryCreateSpatialGraphStaticNodeBindingMSFT</a></p>
+<p><a id="VUID-xrTryCreateSpatialGraphStaticNodeBindingMSFT-extension-notenabled"></a> The <code><a href="XR_MSFT_spatial_graph_bridge.html">XR_MSFT_spatial_graph_bridge</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrTryCreateSpatialGraphStaticNodeBindingMSFT.html">xrTryCreateSpatialGraphStaticNodeBindingMSFT</a></p>
 </li>
 <li>
 <p><a id="VUID-xrTryCreateSpatialGraphStaticNodeBindingMSFT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
@@ -939,7 +944,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

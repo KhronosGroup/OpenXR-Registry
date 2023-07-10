@@ -820,7 +820,8 @@ The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATIO
 <a href="XrSpaceSaveInfoFB.html">XrSpaceSaveInfoFB</a>::<code>persistenceMode</code> is invalid.
 This operation is asynchronous and the runtime <strong class="purple">must</strong> post an
 <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a> event when the operation completes
-successfully or encounters an error.</p>
+successfully or encounters an error.
+If this function returns a failure code, no event is posted.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -828,7 +829,7 @@ successfully or encounters an error.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrSaveSpaceFB-extension-notenabled"></a> The <code><a href="#XR_FB_spatial_entity_storage">[XR_FB_spatial_entity_storage]</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrSaveSpaceFB.html">xrSaveSpaceFB</a></p>
+<p><a id="VUID-xrSaveSpaceFB-extension-notenabled"></a> The <code><a href="XR_FB_spatial_entity_storage.html">XR_FB_spatial_entity_storage</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrSaveSpaceFB.html">xrSaveSpaceFB</a></p>
 </li>
 <li>
 <p><a id="VUID-xrSaveSpaceFB-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
@@ -934,7 +935,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

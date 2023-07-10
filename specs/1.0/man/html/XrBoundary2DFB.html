@@ -803,12 +803,13 @@ No such structures are defined in core OpenXR or this extension.</p>
 </li>
 <li>
 <p><code>vertexCapacityInput</code> is the capacity of the <code>vertices</code> array, in
-bytes, or 0 to indicate a request to retrieve the required capacity.</p>
+number of vertices, or 0 to indicate a request to retrieve the required
+capacity.</p>
 </li>
 <li>
-<p><code>vertexCountOutput</code> is a pointer to the count of <a href="XrVector2f.html">XrVector2f</a>
-written, or a pointer to the required capacity in the case that
-<code>vertexCapacityInput</code> is insufficient.</p>
+<p><code>vertexCountOutput</code> is the count of <a href="XrVector2f.html">XrVector2f</a> written, or the
+required capacity in the case that <code>vertexCapacityInput</code> is
+insufficient.</p>
 </li>
 <li>
 <p><code>vertices</code> is a pointer to an array of <a href="XrVector2f.html">XrVector2f</a>, but <strong class="purple">can</strong> be
@@ -838,7 +839,7 @@ a spatial entity with a boundary.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrBoundary2DFB-extension-notenabled"></a> The <code><a href="#XR_FB_scene">[XR_FB_scene]</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrBoundary2DFB.html">XrBoundary2DFB</a></p>
+<p><a id="VUID-XrBoundary2DFB-extension-notenabled"></a> The <code><a href="XR_FB_scene.html">XR_FB_scene</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrBoundary2DFB.html">XrBoundary2DFB</a></p>
 </li>
 <li>
 <p><a id="VUID-XrBoundary2DFB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_BOUNDARY_2D_FB</code></p>
@@ -891,7 +892,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.27<br>
+Version 1.0.28<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
