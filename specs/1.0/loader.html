@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Copyright (c) 2017-2023, The Khronos Group Inc.">
-<title>OpenXR&#174; Loader - Design and Operation (with all registered extensions)</title>
+<title>OpenXR&#8482;  Loader - Design and Operation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -440,11 +440,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>OpenXR<sup>&#174;</sup>  Loader - Design and Operation (with all registered extensions)</h1>
+<h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2023, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.28</span>
-<br><span id="revremark">from git ref release-1.0.28.2</span>
+<span id="revnumber">version 1.0.29</span>
+<br><span id="revremark">from git ref release-1.0.29</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -523,7 +523,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#loader-runtime-negotiation-process">5.2.1. Loader/Runtime Negotiation Process</a></li>
 <li><a href="#runtime-exporting-of-commands">5.2.2. Runtime Exporting of Commands</a></li>
 <li><a href="#runtime-interface-versions">5.2.3. Runtime Interface Versions</a></li>
-<li><a href="#android-runtime-negotiation">5.2.4. Android Runtime Negotiation</a></li>
 </ul>
 </li>
 <li><a href="#additional-loader-requirements">5.3. Additional Loader Requirements</a></li>
@@ -613,8 +612,18 @@ for learning general OpenXR loader behavior.</p>
 </div>
 <div class="paragraph">
 <p>In the event of any discrepancies between this document and the
-(<a href="https://www.khronos.org/registry/OpenXR">OpenXR specification</a>), that
+<a href="https://www.khronos.org/registry/OpenXR">OpenXR specification</a>, that
 document is authoritative.</p>
+</div>
+<div class="paragraph">
+<p>OpenXR&#8482; and the OpenXR logo are trademarks owned by The Khronos Group
+Inc.
+and are registered as a trademark in China, the European Union, Japan, and
+the United Kingdom.
+OpenGL and OpenGL ES are registered trademarks of Hewlett Packard
+Enterprise, all used under license by Khronos.
+All other product names, trademarks, and/or company names are used solely
+for identification and belong to their respective owners.</p>
 </div>
 </div>
 </div>
@@ -821,7 +830,7 @@ enabled API layers and into the appropriate runtime.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>Some OpenXR commands don&#8217;t actually take an object, such as
+<p>Some OpenXR commands do not take an object, such as
 <code>xrEnumerateApiLayerProperties</code> and
 <code>xrEnumerateInstanceExtensionProperties</code>.
 These commands typically only provide information for other commands which
@@ -2032,8 +2041,8 @@ and implicit layers:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>openxr/1/api_layers/implicit.d
-openxr/1/api_layers/explicit.d</pre>
+<pre>openxr/__major_ver__/api_layers/implicit.d
+openxr/__major_ver__/api_layers/explicit.d</pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -2055,19 +2064,19 @@ order for implicit and explicit API layers:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>/product/etc/openxr/1/api_layers/implicit.d</code></p>
+<p><code>/product/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 <li>
-<p><code>/odm/etc/openxr/1/api_layers/implicit.d</code></p>
+<p><code>/odm/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 <li>
-<p><code>/oem/etc/openxr/1/api_layers/implicit.d</code></p>
+<p><code>/oem/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 <li>
-<p><code>/system/etc/openxr/1/api_layers/implicit.d</code></p>
+<p><code>/system/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 <li>
-<p><code>/vendor/etc/openxr/1/api_layers/implicit.d</code></p>
+<p><code>/vendor/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 </ol>
 </div>
@@ -2077,19 +2086,19 @@ order for implicit and explicit API layers:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>/product/etc/openxr/1/api_layers/explicit.d</code></p>
+<p><code>/product/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
 <li>
-<p><code>/oem/etc/openxr/1/api_layers/explicit.d</code></p>
+<p><code>/oem/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
 <li>
-<p><code>/vendor/etc/openxr/1/api_layers/explicit.d</code></p>
+<p><code>/vendor/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
 <li>
-<p><code>/system/etc/openxr/1/api_layers/explicit.d</code></p>
+<p><code>/system/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
 <li>
-<p><code>/odm/etc/openxr/1/api_layers/explicit.d</code></p>
+<p><code>/odm/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
 </ol>
 </div>
@@ -3194,7 +3203,7 @@ This information is also important if the active runtime needs to be changed
 by an external entity (on those platforms that support updating).</p>
 </div>
 <div class="sect4">
-<h5 id="_linux_active_runtime_location">Linux Active Runtime Location</h5>
+<h5 id="linux-active-runtime-location">Linux Active Runtime Location</h5>
 <div class="paragraph">
 <p>On Linux, the active runtime information is contained inside a
 JSON-formatted file located in a standard
@@ -3208,36 +3217,58 @@ directory (typically <code>/etc</code>), under the relative path:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>&lt;major_api_version&gt; should be replaced with the integer value for the
+<p><code><em>&lt;major_api_version&gt;</em></code> should be replaced with the integer value for the
 corresponding OpenXR API version.</p>
 </div>
 <div class="paragraph">
-<p>The JSON file is named "active_runtime.json" and contains the necessary
-information on how OpenXR components can load the appropriate runtime
-library.</p>
+<p>Two JSON file names are checked in each directory.
+First, the loader looks for <code>active_runtime.<em>&lt;arch&gt;</em>.json</code>, where
+<code><em>&lt;arch&gt;</em></code> is an architecture and ABI specifier from the
+<a href="#architecture-identifiers">Architecture/ABI Identifiers</a> table.
+If no such file is found, <code>active_runtime.json</code> is then checked.
+The JSON file contains the necessary information on how OpenXR components
+can load the appropriate runtime library.</p>
 </div>
 <div class="paragraph">
-<p>For example, a globally-configured OpenXR 1.x active runtime file might be
-at:</p>
+<p>For example, a globally-configured OpenXR 1.x active runtime file on an
+x86_64 PC might be at:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>/etc/xdg/openxr/1/active_runtime.json</code></pre>
+<pre class="highlight"><code>/etc/xdg/openxr/1/active_runtime.x86_64.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>When multiple such files exist, <code>XDG_CONFIG_HOME</code> is preferred, followed by
 the elements of <code>XDG_CONFIG_DIRS</code> in order, followed by the system&#8217;s global
 configuration directory.
+Both filenames are tested in a given directory before moving on.
 This allows the user&#8217;s preference to easily override a global default.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">NOTE</div>
+<div class="paragraph">
+<p><code>active_runtime</code> filenames may be a symbolic link to a file with a
+runtime-specific name, for ease of runtime switching and enumeration by the
+user or system tools.
+See <a href="#linux-installed-runtimes-enumeration">Linux Installed Runtimes Enumeration</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_windows_active_runtime_location">Windows Active Runtime Location</h5>
+<h5 id="windows-active-runtime-location">Windows Active Runtime Location</h5>
 <div class="paragraph">
-<p>The Windows OpenXR active runtime information is actually located in the
-Windows Registry (not to be confused with the OpenXR registry) under the
-key:</p>
+<p>The Windows OpenXR active runtime information is located in the Windows
+Registry (not to be confused with the OpenXR registry) under the key:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3245,8 +3276,8 @@ key:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Where &lt;major_api_version&gt; should be replaced with the integer value for the
-corresponding OpenXR API major version.</p>
+<p>Where <code><em>&lt;major_api_version&gt;</em></code> should be replaced with the integer value
+for the corresponding OpenXR API version.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3258,7 +3289,7 @@ corresponding OpenXR API major version.</p>
 <div class="title">Important</div>
 <div class="paragraph">
 <p>If using a 32-bit application on a 64-bit Windows install, "WOW6432Node" is
-added before "SOFTWARE", in the above path like so:</p>
+added before "SOFTWARE" in the preceding path as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3399,20 +3430,33 @@ file as used on other platforms.</p>
 </div>
 <div class="paragraph">
 <p>If no runtime is found this way, as a fall-back, a similar process as on
-Linux takes place, searching for <code>active_runtime.json</code> files in:</p>
+Linux takes place, searching for <code>active_runtime.<em>&lt;arch&gt;</em>.json</code> and
+<code>active_runtime.json</code> files in the following locations in priority order:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>/oem/etc/openxr/1</code></p>
+<p><code>/product/etc/openxr/<em>major_ver</em></code></p>
 </li>
 <li>
-<p><code>/vendor/etc/openxr/1</code></p>
+<p><code>/odm/etc/openxr/<em>major_ver</em></code></p>
 </li>
 <li>
-<p><code>/system/etc/openxr/1</code></p>
+<p><code>/oem/etc/openxr/<em>major_ver</em></code></p>
 </li>
-</ul>
+<li>
+<p><code>/vendor/etc/openxr/<em>major_ver</em></code></p>
+</li>
+<li>
+<p><code>/system/etc/openxr/<em>major_ver</em></code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code><em>&lt;major_api_version&gt;</em></code> should be replaced with the integer value for the
+corresponding OpenXR API version, and <code><em>&lt;arch&gt;</em></code> is an architecture and
+ABI specifier from the <a href="#architecture-identifiers">Architecture/ABI Identifiers</a> table.
+Both filenames are checked in each directory before moving on to the next.</p>
 </div>
 <div class="sect5">
 <h6 id="android-ipc">Android IPC and Runtime Access</h6>
@@ -3503,30 +3547,142 @@ It is harmless to leave it in place, but the broker no longer requires it.</p>
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="architecture-identifiers">Architecture/ABI Identifiers</h5>
 <div class="paragraph">
-<p>If no runtime is found this way, as a fall-back, a similar process as on
-Linux takes place, searching for <code>active_runtime.json</code> files in the
-following priority order:</p>
+<p>On platforms such as <a href="#linux-active-runtime-location">Linux</a> and
+<a href="#android-active-runtime-location">Android</a> where the active runtime
+manifest may be found by filename, the following table of known
+architectures and ABIs is used.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>/product/etc/openxr/1</code></p>
-</li>
-<li>
-<p><code>/odm/etc/openxr/1</code></p>
-</li>
-<li>
-<p><code>/oem/etc/openxr/1</code></p>
-</li>
-<li>
-<p><code>/vendor/etc/openxr/1</code></p>
-</li>
-<li>
-<p><code>/system/etc/openxr/1</code></p>
-</li>
-</ol>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Architecture/ABI Identifier</th>
+<th class="tableblock halign-left valign-top"><a href="https://developer.android.com/ndk/guides/abis">Android NDK ABI</a> Name</th>
+<th class="tableblock halign-left valign-top"><a href="https://www.debian.org/ports/">Debian Port</a> Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x32</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit x86 instructions, using an ILP32 model (32-bit pointers)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x86_64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x86_64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x86_64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit x86</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>i686</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>x86</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>i386</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit x86</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aarch64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>arm64-v8a</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aarch64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit ARM architecture, little endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>armv7a-vfp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>armeabi-v7a</code> (See <a href="#android-arm32-note">note</a>.)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>armhf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit ARMv7-A architecture, little endian, with hardware floating point and VFP PCS ABI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>armv5te</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>armel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit ARMv5TE architecture or compatible, little endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mips64</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mips64el</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit MIPS architecture, little endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mips</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mipsel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit MIPS architecture, little endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ppc64</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ppc64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit PowerPC architecture, big endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ppc64el</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ppc64el</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit POWER8/POWER9 architecture, little endian (OpenPOWER ELF ABI v2)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s390x</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s390x</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit S390/z-Series architecture, big endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hppa</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hppa</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit HP PA-RISC architecture, big endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alpha</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alpha</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit Alpha architecture</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ia64</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ia64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit IA-64 architecture</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m68k</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m68k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit Motorola 68000-based architecture, big endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>riscv64</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>riscv64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit RISC-V architecture, little endian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sparc64</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sparc64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit SPARC architecture</p></td>
+</tr>
+</tbody>
+</table>
+<div id="android-arm32-note" class="paragraph">
+<p>Note: The preceding table defines <code>armv7a-vfp</code> as the architecture/ABI
+identifier for 32-bit ARM in Android.
+While the Android ABI called <code>armeabi-v7a</code> does not use VFP PCS as the
+<em>system</em> ABI, a definition in <code>openxr_platform_defines.h</code> enables the VFP
+PCS calling convention for all OpenXR API calls and function pointers.</p>
 </div>
 </div>
 </div>
@@ -3588,9 +3744,8 @@ hasn&#8217;t been run by the user yet).</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For instance, the OpenXR 1.x runtime used as an example in section <a href="#Windows
-Active Runtime Location">[Windows
-Active Runtime Location]</a> would add a <code>DWORD</code> value in:</p>
+<p>For instance, the OpenXR 1.x runtime used as an example in section
+<a href="#windows-active-runtime-location">Windows Active Runtime Location</a> would add a <code>DWORD</code> value in:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3609,18 +3764,17 @@ Active Runtime Location]</a> would add a <code>DWORD</code> value in:</p>
 <p>And set it to <code>0</code>.</p>
 </div>
 <div class="paragraph">
-<p>All considerations for 32 bit platforms mentioned in section <a href="#Windows
-Active Runtime Location">[Windows
-Active Runtime Location]</a> still apply.</p>
+<p>All considerations for 32 bit platforms mentioned in section
+<a href="#windows-active-runtime-location">Windows Active Runtime Location</a> still apply.</p>
 </div>
 <div class="paragraph">
 <p>Tools that want to change the currently <code>ActiveRuntime</code> should not modify
-the list of <code>AvailableRuntimes</code>, and just copy the path to the correct
+the list of <code>AvailableRuntimes</code>, but rather copy the path to the correct
 location.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_linux_installed_runtimes_enumeration">Linux Installed Runtimes Enumeration</h5>
+<h5 id="linux-installed-runtimes-enumeration">Linux Installed Runtimes Enumeration</h5>
 <div class="paragraph">
 <p>As previously defined, the OpenXR configuration on Linux is either stored in
 a standard XDG configuration directory, or the system-wide configuration
@@ -3629,17 +3783,17 @@ directory.</p>
 <div class="paragraph">
 <p>Aside from the currently active runtime, installed runtimes that make
 themselves available for enumeration should install their runtime manifest
-into this directory, using any name suitable.</p>
+into one of these directories, using any name suitable.</p>
 </div>
 <div class="paragraph">
 <p>Rules about precedence in different directories for runtime enumeration
-follow the same rules as in section <a href="#_linux_active_runtime_location">Linux Active Runtime Location</a> for
-selecting the folder containing an <code>active_runtime.json</code>.</p>
+follow the same rules as in section <a href="#linux-active-runtime-location">Linux Active Runtime Location</a> for
+selecting the folder containing the active runtime manifest.</p>
 </div>
 <div class="paragraph">
-<p>Tools that want to change the current <code>active_runtime.json</code> should only
-update the symlink to the active runtime, and not move, copy or delete any
-other files.</p>
+<p>Tools that want to change the current active runtime should only update the
+<code>active_runtime.<em>&lt;arch&gt;</em>.json</code> and/or <code>active_runtime.json</code> symlink to the
+active runtime, and not move, copy, or delete any other files.</p>
 </div>
 </div>
 </div>
@@ -4269,16 +4423,6 @@ The following sections detail the differences between the various versions.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="android-runtime-negotiation">5.2.4. Android Runtime Negotiation</h4>
-<div class="paragraph">
-<p>The Android loader uses the same protocol for initializing the dispatch
-table as described above.
-The only difference is that the Android loader queries API layer and
-extension information directly from the respective libraries and does not
-use the json manifest files used by the Windows and Linux loaders.</p>
 </div>
 </div>
 </div>
@@ -5524,6 +5668,10 @@ process:</p>
 <td class="tableblock halign-left valign-top"><div class="literal"><pre> xr_generated_dispatch_table.c</pre></div></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre> xr_generated_dispatch_table_core.h</pre></div></td>
+<td class="tableblock halign-left valign-top"><div class="literal"><pre> xr_generated_dispatch_table_core.c</pre></div></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">&lt;build&gt;/src/loader folder</p></td>
 <td class="tableblock halign-left valign-top"><div class="literal"><pre> xr_loader_generated.hpp</pre></div></td>
 </tr>
@@ -5540,8 +5688,9 @@ process:</p>
 This structure can be used to store function pointers for any OpenXR
 commands defined in the xr.xml at the time the loader was built.
 It includes slots for both core and extension function pointers.
-Currently, the loader uses this structure as well as the provided API
-Layers.</p>
+Currently, the provided API Layers use this structure and the loader
+uses a structure which has a subset of the function pointers (defined
+in <code>xr_generated_dispatch_table_core.h</code>).</p>
 </div>
 <div class="paragraph">
 <p>A partial listing from the generated table follows:</p>
@@ -6249,7 +6398,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.28<br>
+Version 1.0.29<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -775,12 +775,12 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_MNDX_egl_enable
 typedef struct XrGraphicsBindingEGLMNDX {
-    XrStructureType             type;
-    const void*                 next;
-    PFNEGLGETPROCADDRESSPROC    getProcAddress;
-    EGLDisplay                  display;
-    EGLConfig                   config;
-    EGLContext                  context;
+    XrStructureType                type;
+    const void*                    next;
+    PFN_xrEglGetProcAddressMNDX    getProcAddress;
+    EGLDisplay                     display;
+    EGLConfig                      config;
+    EGLContext                     context;
 } XrGraphicsBindingEGLMNDX;</code></pre>
 </div>
 </div>
@@ -848,7 +848,7 @@ type is <a href="XR_USE_PLATFORM_EGL.html">XR_USE_PLATFORM_EGL</a>.</p>
 <p><a id="VUID-XrGraphicsBindingEGLMNDX-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 <li>
-<p><a id="VUID-XrGraphicsBindingEGLMNDX-getProcAddress-parameter"></a> <code>getProcAddress</code> <strong class="purple">must</strong> be a valid <code>PFNEGLGETPROCADDRESSPROC</code> value</p>
+<p><a id="VUID-XrGraphicsBindingEGLMNDX-getProcAddress-parameter"></a> <code>getProcAddress</code> <strong class="purple">must</strong> be a valid <a href="PFN_xrEglGetProcAddressMNDX.html">PFN_xrEglGetProcAddressMNDX</a> value</p>
 </li>
 <li>
 <p><a id="VUID-XrGraphicsBindingEGLMNDX-display-parameter"></a> <code>display</code> <strong class="purple">must</strong> be a valid <code>EGLDisplay</code> value</p>
@@ -869,7 +869,7 @@ type is <a href="XR_USE_PLATFORM_EGL.html">XR_USE_PLATFORM_EGL</a>.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_MNDX_egl_enable.html">XR_MNDX_egl_enable</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrCreateSession.html">xrCreateSession</a></p>
+<p><a href="PFN_xrEglGetProcAddressMNDX.html">PFN_xrEglGetProcAddressMNDX</a>, <a href="XR_MNDX_egl_enable.html">XR_MNDX_egl_enable</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrCreateSession.html">xrCreateSession</a></p>
 </div>
 </div>
 </div>
@@ -901,7 +901,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.28<br>
+Version 1.0.29<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
