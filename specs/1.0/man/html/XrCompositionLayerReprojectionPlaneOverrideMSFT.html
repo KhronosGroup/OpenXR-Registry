@@ -806,8 +806,7 @@ typedef struct XrCompositionLayerReprojectionPlaneOverrideMSFT {
 <div class="ulist">
 <ul>
 <li>
-<p><code>position</code> describes the position of the focus plane represented in
-the corresponding <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>::<code>space</code>.</p>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
 </li>
 </ul>
 </div>
@@ -816,6 +815,14 @@ the corresponding <a href="XrCompositionLayerProjection.html">XrCompositionLayer
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>position</code> describes the position of the focus plane represented in
+the corresponding <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>::<code>space</code>.</p>
+</li>
 <li>
 <p><code>normal</code> is a unit vector describes the focus plane normal represented
 in the corresponding <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>::<code>space</code>.</p>
@@ -855,7 +862,7 @@ mode, the reprojection plane override <strong class="purple">may</strong> be ign
 <p><a id="VUID-XrCompositionLayerReprojectionPlaneOverrideMSFT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerReprojectionPlaneOverrideMSFT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrCompositionLayerReprojectionPlaneOverrideMSFT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 </ul>
 </div>
@@ -875,7 +882,7 @@ mode, the reprojection plane override <strong class="purple">may</strong> be ign
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrCompositionLayerReprojectionPlaneOverrideMSFT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XrCompositionLayerReprojectionPlaneOverrideMSFT" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -899,7 +906,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -794,9 +794,9 @@ if possible.</p>
 <p>Swapchain images <strong class="purple">can</strong> be 2D or 2D Array.</p>
 </div>
 <div class="paragraph">
-<p>Rendering operations involving composition of submitted layers should be
-assumed to be internally performed by the runtime in linear color space.
-Images submitted in sRGB color space must be created using an API-specific
+<p>Rendering operations involving composition of submitted layers are assumed
+to be internally performed by the runtime in linear color space.
+Images submitted in sRGB color space <strong class="purple">must</strong> be created using an API-specific
 sRGB format (e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM_SRGB</code>,
 <code>GL_SRGB8_ALPHA8</code>, <code>VK_FORMAT_R8G8B8A8_SRGB</code>) to apply automatic
 sRGB-to-linear conversion when read by the runtime.
@@ -811,8 +811,8 @@ All other formats will be treated as linear values.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>OpenXR applications should avoid submitting linear encoded 8 bit color data
-(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it may result
+<p>OpenXR applications <strong class="purple">should</strong> avoid submitting linear encoded 8 bit color data
+(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it <strong class="purple">may</strong> result
 in color banding.</p>
 </div>
 <div class="paragraph">
@@ -856,7 +856,7 @@ the runtime will use the application-specified format for reading the data.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrSwapchain" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XrSwapchain" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -880,7 +880,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

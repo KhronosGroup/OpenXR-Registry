@@ -444,8 +444,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR&#8482; Specification</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.0.29</span>
-<br><span id="revremark">from git ref release-1.0.29</span>
+<span id="revnumber">version 1.0.30</span>
+<br><span id="revremark">from git ref release-1.0.30</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -729,7 +729,7 @@ technologies, head mounted devices, and input modalities.</p>
 OpenXR Registry, located at URL</p>
 </div>
 <div class="paragraph">
-<p><a href="http://www.khronos.org/registry/openxr/" class="bare">http://www.khronos.org/registry/openxr/</a></p>
+<p><a href="https://registry.khronos.org/OpenXR" class="bare">https://registry.khronos.org/OpenXR</a></p>
 </div>
 <div class="sect2">
 <h3 id="_what_is_openxr"><a class="anchor" href="#_what_is_openxr"></a>1.1. What is OpenXR?</h3>
@@ -9737,14 +9737,15 @@ XrResult xrEnumerateViewConfigurations(
 be enumerated.</p>
 </li>
 <li>
-<p><code>viewConfigurationsTypeCapacityInput</code> is the capacity of the
-<code>viewConfigurations</code> array, or 0 to indicate a request to retrieve the
-required capacity.</p>
+<p><code>viewConfigurationTypeCapacityInput</code> is the capacity of the
+<code>viewConfigurationTypes</code> array, or 0 to indicate a request to retrieve
+the required capacity.</p>
 </li>
 <li>
-<p><code>viewConfigurationsTypeCountOutput</code> is a pointer to the count of
-<code>viewConfigurations</code> written, or a pointer to the required capacity in
-the case that <code>viewConfigurationsTypeCapacityInput</code> is insufficient.</p>
+<p><code>viewConfigurationTypeCountOutput</code> is a pointer to the count of
+<code>viewConfigurationTypes</code> written, or a pointer to the required
+capacity in the case that <code>viewConfigurationsTypeCapacityInput</code> is
+insufficient.</p>
 </li>
 <li>
 <p><code>viewConfigurationsTypes</code> is a pointer to an array of
@@ -10976,7 +10977,9 @@ given frame to determine whether that frame will be visible to the user.</p>
 <div class="paragraph">
 <p>Runtime session frame state <strong class="purple">must</strong> start in a reset state when a session
 transitions to <a href="#session_running">running</a> so that no state is carried over
-from when the same session was previously running.</p>
+from when the same session was previously running.
+Frame state in this context includes <a href="#xrWaitFrame">xrWaitFrame</a>, <a href="#xrBeginFrame">xrBeginFrame</a>,
+and <a href="#xrEndFrame">xrEndFrame</a> call order enforcement.</p>
 </div>
 <div class="paragraph">
 <p>If <code>primaryViewConfigurationType</code> in <code>beginInfo</code> is not supported by
@@ -11655,9 +11658,9 @@ if possible.</p>
 <p>Swapchain images <strong class="purple">can</strong> be 2D or 2D Array.</p>
 </div>
 <div class="paragraph">
-<p>Rendering operations involving composition of submitted layers should be
-assumed to be internally performed by the runtime in linear color space.
-Images submitted in sRGB color space must be created using an API-specific
+<p>Rendering operations involving composition of submitted layers are assumed
+to be internally performed by the runtime in linear color space.
+Images submitted in sRGB color space <strong class="purple">must</strong> be created using an API-specific
 sRGB format (e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM_SRGB</code>,
 <code>GL_SRGB8_ALPHA8</code>, <code>VK_FORMAT_R8G8B8A8_SRGB</code>) to apply automatic
 sRGB-to-linear conversion when read by the runtime.
@@ -11672,8 +11675,8 @@ All other formats will be treated as linear values.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>OpenXR applications should avoid submitting linear encoded 8 bit color data
-(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it may result
+<p>OpenXR applications <strong class="purple">should</strong> avoid submitting linear encoded 8 bit color data
+(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it <strong class="purple">may</strong> result
 in color banding.</p>
 </div>
 <div class="paragraph">
@@ -11773,7 +11776,7 @@ internal formats.</p>
 <div class="paragraph">
 <p>With a Direct3D-based graphics API, <a href="#xrEnumerateSwapchainFormats">xrEnumerateSwapchainFormats</a> never
 returns typeless formats (e.g. <code>DXGI_FORMAT_R8G8B8A8_TYPELESS</code>).
-Only concrete formats are returned, and only concrete formats may be
+Only concrete formats are returned, and only concrete formats <strong class="purple">may</strong> be
 specified by applications for swapchain creation.</p>
 </div>
 <div class="paragraph">
@@ -11887,7 +11890,7 @@ containing parameters to be used to create the image.</p>
 <div class="paragraph">
 <p>Creates an <a href="#XrSwapchain">XrSwapchain</a> handle.
 The returned swapchain handle <strong class="purple">may</strong> be subsequently used in API calls.
-Multiple <a href="#XrSwapchain">XrSwapchain</a> handles may exist simultaneously, up to some
+Multiple <a href="#XrSwapchain">XrSwapchain</a> handles <strong class="purple">may</strong> exist simultaneously, up to some
 limit imposed by the runtime.
 The <a href="#XrSwapchain">XrSwapchain</a> handle <strong class="purple">must</strong> be eventually freed via the
 <a href="#xrDestroySwapchain">xrDestroySwapchain</a> function.
@@ -12045,7 +12048,7 @@ the graphics API&#8217;s maximum limit.</p>
 the graphics API&#8217;s maximum limit.</p>
 </li>
 <li>
-<p><code>faceCount</code> is the number of faces, which can be either <code>6</code> (for
+<p><code>faceCount</code> is the number of faces, which <strong class="purple">must</strong> be either <code>6</code> (for
 cubemaps) or <code>1</code>.</p>
 </li>
 <li>
@@ -12253,9 +12256,7 @@ format specified by the application in the <a href="#XrSwapchainCreateInfo">XrSw
 </div>
 <div class="paragraph">
 <p>Swapchains will be created with graphics API-specific flags appropriate to
-the type of underlying image and its usage.
-Extensions may exist to further assist the runtime in choosing how to create
-swapchains.</p>
+the type of underlying image and its usage.</p>
 </div>
 <div class="paragraph">
 <p>Runtimes <strong class="purple">must</strong> honor underlying graphics API limits when creating resources.</p>
@@ -12263,7 +12264,7 @@ swapchains.</p>
 <div class="paragraph">
 <p><a href="#xrEnumerateSwapchainFormats">xrEnumerateSwapchainFormats</a> never returns typeless formats (e.g.
 <code>DXGI_FORMAT_R8G8B8A8_TYPELESS</code>).
-Only concrete formats are returned, and only concrete formats may be
+Only concrete formats are returned, and only concrete formats <strong class="purple">may</strong> be
 specified by applications for swapchain creation.</p>
 </div>
 <div class="openblock">
@@ -12359,7 +12360,7 @@ Runtimes <strong class="purple">may</strong> continue to utilize swapchain image
 number of images in a swapchain is implementation-defined.
 Additionally, rendering to images requires access to the underlying image
 primitive of the graphics API being used.
-Applications may query and cache the images at any time after swapchain
+Applications <strong class="purple">may</strong> query and cache the images at any time after swapchain
 creation.</p>
 </div>
 <div class="openblock">
@@ -12441,7 +12442,7 @@ match the expected value, the runtime <strong class="purple">must</strong> retur
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>Under a typical memory model, a runtime must treat the supplied pointer as
+<p>Under a typical memory model, a runtime <strong class="purple">must</strong> treat the supplied pointer as
 an opaque blob beginning with <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>, until after
 it has verified the <code>type</code>.</p>
 </div>
@@ -12551,9 +12552,8 @@ No such structures are defined in core OpenXR.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a> is a base structure that can be
-overridden by a graphics API-specific <code>XrSwapchainImage*</code> child
-structure.</p>
+<p>The <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a> is a base structure that is extended by
+graphics API-specific <code>XrSwapchainImage*</code> child structures.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -12573,15 +12573,14 @@ structure.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Before an application can start building graphics API command buffers that
-refer to an image in a swapchain, it must acquire the image from the
-swapchain.
-The acquire operation determines the index of the next image that will be
-used in the swapchain.
+<p>Before an application builds graphics API command buffers that refer to an
+image in a swapchain, it <strong class="purple">must</strong> acquire the image from the swapchain.
+The acquire operation determines the index of the next image to be used in
+the swapchain.
 The order in which images are acquired is undefined.
 The runtime <strong class="purple">must</strong> allow the application to acquire more than one image from
-a single swapchain at a time, for example if the application implements a
-multiple frame deep rendering pipeline.</p>
+a single (non-static) swapchain at a time, for example if the application
+implements a multiple frame deep rendering pipeline.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -12633,6 +12632,13 @@ The runtime <strong class="purple">must</strong> return <code>XR_ERROR_CALL_ORDE
 <code>swapchain</code> created with the <code>XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT</code>
 set in <a href="#XrSwapchainCreateInfo">XrSwapchainCreateInfo</a>::<code>createFlags</code> and this function has
 been successfully called previously for this swapchain.</p>
+</div>
+<div class="paragraph">
+<p>This function only provides the index of the swapchain image, for example
+for use in recording command buffers.
+It does not wait for the image to be usable by the application.
+The application <strong class="purple">must</strong> call <a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a> for each "acquire"
+call before submitting graphics commands that write to the image.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -12790,8 +12796,8 @@ structure.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Before an application can begin writing to a swapchain image, it must first
-wait on the image to avoid writing to it before the compositor has finished
+<p>Before an application begins writing to a swapchain image, it <strong class="purple">must</strong> first
+wait on the image, to avoid writing to it before the compositor has finished
 reading from it.
 <a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a> will implicitly wait on the oldest acquired
 swapchain image which has not yet been successfully waited on.
@@ -12799,7 +12805,7 @@ Once a swapchain image has been successfully waited on without timeout, the
 app <strong class="purple">must</strong> release before waiting on the next acquired swapchain image.</p>
 </div>
 <div class="paragraph">
-<p>This function may block for longer than the timeout specified in
+<p>This function <strong class="purple">may</strong> block for longer than the timeout specified in
 <a href="#XrSwapchainImageWaitInfo">XrSwapchainImageWaitInfo</a> due to scheduling or contention.</p>
 </div>
 <div class="paragraph">
@@ -12919,7 +12925,7 @@ chain.
 No such structures are defined in core OpenXR.</p>
 </li>
 <li>
-<p><code>timeout</code> indicates how many nanoseconds the call should block waiting
+<p><code>timeout</code> indicates how many nanoseconds the call <strong class="purple">may</strong> block waiting
 for the image to become available for writing.</p>
 </li>
 </ul>
@@ -12951,11 +12957,11 @@ image which has been acquired.
 The swapchain image <strong class="purple">must</strong> have been successfully waited on without timeout
 before it is released.
 <a href="#xrEndFrame">xrEndFrame</a> will use the most recently released swapchain image.
-In each frame submitted to the compositor only one image index from each
+In each frame submitted to the compositor, only one image index from each
 swapchain will be used.
 Note that in case the swapchain contains 2D image arrays, one array is
-referenced per swapchain index and thus the whole image array can be used in
-one frame.</p>
+referenced per swapchain index and thus the whole image array <strong class="purple">may</strong> be used
+in one frame.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -13199,9 +13205,9 @@ its pipeline to get the least amount of latency and prediction error.</p>
 view of the specified view configuration type, along with an
 <a href="#XrViewState">XrViewState</a> containing additional state data shared across all views.
 The eye each view corresponds to is statically defined in
-<a href="#view_configuration_type"><a href="#XrViewConfigurationType">XrViewConfigurationType</a></a> in case the
-application wants to apply eye-specific rendering traits.
-The <a href="#XrViewState">XrViewState</a> and <a href="#XrView">XrView</a> member data may change on subsequent
+<a href="#XrViewConfigurationType">XrViewConfigurationType</a> in case the application wants to apply
+eye-specific rendering traits.
+The <a href="#XrViewState">XrViewState</a> and <a href="#XrView">XrView</a> member data <strong class="purple">may</strong> change on subsequent
 calls to <a href="#xrLocateViews">xrLocateViews</a>, and so applications <strong class="purple">must</strong> not assume it to be
 constant.</p>
 </div>
@@ -13315,6 +13321,13 @@ extension, then the runtime <strong class="purple">must</strong> return <code>XR
 <div class="title">Member Descriptions</div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
 <li>
 <p><code>viewConfigurationType</code> is <a href="#XrViewConfigurationType">XrViewConfigurationType</a> to query for.</p>
 </li>
@@ -13625,12 +13638,14 @@ the runtime predicts a composited frame will be displayed.
 The runtime <strong class="purple">may</strong> affect this computation by changing the return values and
 throttling of <a href="#xrWaitFrame">xrWaitFrame</a> in response to feedback from frame
 submission and completion times in <a href="#xrEndFrame">xrEndFrame</a>.
-An application <strong class="purple">must</strong> eventually match each <a href="#xrWaitFrame">xrWaitFrame</a> call with one
-call to <a href="#xrBeginFrame">xrBeginFrame</a>.
 A subsequent <a href="#xrWaitFrame">xrWaitFrame</a> call <strong class="purple">must</strong> block until the previous frame has
 been begun with <a href="#xrBeginFrame">xrBeginFrame</a> and <strong class="purple">must</strong> unblock independently of the
 corresponding call to <a href="#xrEndFrame">xrEndFrame</a>.
-When less than one frame interval has passed since the previous return from
+Refer to <a href="#xrBeginSession">xrBeginSession</a> for details on how a transition to
+<a href="#session_running">session running</a> resets the frame function call order.</p>
+</div>
+<div class="paragraph">
+<p>When less than one frame interval has passed since the previous return from
 <a href="#xrWaitFrame">xrWaitFrame</a>, the runtime <strong class="purple">should</strong> block until the beginning of the next
 frame interval.
 If more than one frame interval has passed since the last return from
@@ -13675,13 +13690,13 @@ application, concurrent calls <strong class="purple">may</strong> result in unde
 <div class="title">Note</div>
 <div class="paragraph">
 <p>The engine simulation <strong class="purple">should</strong> advance based on the display time.
-Every stage in the engine pipeline should use the exact same display time
+Every stage in the engine pipeline <strong class="purple">should</strong> use the exact same display time
 for one particular application-generated frame.
 An accurate and consistent display time across all stages and threads in the
 engine pipeline is important to avoid object motion judder.
-If the application has multiple pipeline stages, the application should pass
-its computed display time through its pipeline, as <a href="#xrWaitFrame">xrWaitFrame</a> must be
-called only once per frame.</p>
+If the application has multiple pipeline stages, the application <strong class="purple">should</strong>
+pass its computed display time through its pipeline, as <a href="#xrWaitFrame">xrWaitFrame</a>
+<strong class="purple">must</strong> be called only once per frame.</p>
 </div>
 </td>
 </tr>
@@ -13984,12 +13999,12 @@ work for the frame if <a href="#XrFrameState">XrFrameState</a>::<code>shouldRend
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return the error code <code>XR_ERROR_CALL_ORDER_INVALID</code> if
-there was no corresponding successful call to <a href="#xrWaitFrame">xrWaitFrame</a>.</p>
-</div>
-<div class="paragraph">
-<p>The runtime <strong class="purple">must</strong> return the success code <code>XR_FRAME_DISCARDED</code> if a
+there was no corresponding successful call to <a href="#xrWaitFrame">xrWaitFrame</a>.
+The runtime <strong class="purple">must</strong> return the success code <code>XR_FRAME_DISCARDED</code> if a
 prior <a href="#xrBeginFrame">xrBeginFrame</a> has been called without an intervening call to
-<a href="#xrEndFrame">xrEndFrame</a>.</p>
+<a href="#xrEndFrame">xrEndFrame</a>.
+Refer to <a href="#xrBeginSession">xrBeginSession</a> for details on how a transition to
+<a href="#session_running">session running</a> resets the frame function call order.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SESSION_NOT_RUNNING</code> if the
@@ -14184,7 +14199,7 @@ synchronization guarantees.</p>
 <p>An accurate predicted display time is very important to avoid black pull-in
 by reprojection and to reduce motion judder in case the runtime does not
 implement a translational reprojection.
-Reprojection should never display images before the display refresh period
+Reprojection <strong class="purple">should</strong> never display images before the display refresh period
 they were predicted for, even if they are completed early, because this will
 cause motion judder just the same.
 In other words, the better the predicted display time, the less latency
@@ -14199,6 +14214,8 @@ experienced by the user.</p>
 <a href="#xrBeginFrame">xrBeginFrame</a>.
 Failure to do so <strong class="purple">must</strong> result in <code>XR_ERROR_CALL_ORDER_INVALID</code> being
 returned by <a href="#xrEndFrame">xrEndFrame</a>.
+Refer to <a href="#xrBeginSession">xrBeginSession</a> for details on how a transition to
+<a href="#session_running">session running</a> resets the frame function call order.
 <a href="#XrFrameEndInfo">XrFrameEndInfo</a> <strong class="purple">may</strong> reference swapchains into which the application
 has rendered for this frame.
 From each <a href="#XrSwapchain">XrSwapchain</a> only one image index is implicitly referenced
@@ -14206,7 +14223,7 @@ per frame, the one corresponding to the last call to
 <a href="#xrReleaseSwapchainImage">xrReleaseSwapchainImage</a>.
 However, a specific swapchain (and by extension a specific swapchain image
 index) <strong class="purple">may</strong> be referenced in <a href="#XrFrameEndInfo">XrFrameEndInfo</a> multiple times.
-This can be used for example to render a side by side image into a single
+This <strong class="purple">can</strong> be used for example to render a side by side image into a single
 swapchain image and referencing it twice with differing image rectangles in
 different layers.</p>
 </div>
@@ -27557,10 +27574,6 @@ instead of the app</p>
 </ul>
 </div>
 </dd>
-</dl>
-</div>
-<div class="dlist">
-<dl>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
 <p>2020-05-04</p>
@@ -27832,8 +27845,7 @@ patch version component.</p>
 <div class="paragraph">
 <p>Second, a compatible <code>VkInstance</code> <strong class="purple">must</strong> be created.
 The <a href="#xrCreateVulkanInstanceKHR">xrCreateVulkanInstanceKHR</a> entry point is a wrapper around
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a> intended for
-this purpose.
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html">vkCreateInstance</a> intended for this purpose.
 When called, the runtime <strong class="purple">must</strong> aggregate the requirements specified by the
 application with its own requirements and forward the <code>VkInstance</code>
 creation request to the <code>vkCreateInstance</code> function pointer returned by
@@ -28005,13 +28017,13 @@ be used to create a session.</p>
 </li>
 <li>
 <p><code>vulkanCreateInfo</code> is the
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html"><code>VkInstanceCreateInfo</code>
-as specified by Vulkan</a>.</p>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkInstanceCreateInfo.html"><code>VkInstanceCreateInfo</code> as specified by
+Vulkan</a>.</p>
 </li>
 <li>
 <p><code>vulkanAllocator</code> is the
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code>
-as specified by Vulkan</a>.</p>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code> as specified
+by Vulkan</a>.</p>
 </li>
 </ul>
 </div>
@@ -28227,6 +28239,13 @@ typedef struct XrVulkanGraphicsDeviceGetInfoKHR {
 <div class="ulist">
 <ul>
 <li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
 <p><code>systemId</code> is an <code><a href="#XrSystemId">XrSystemId</a></code> handle for the system which will
 be used to create a session.</p>
 </li>
@@ -28266,8 +28285,7 @@ be used to create a session.</p>
 <div class="paragraph">
 <p>Fourth, a compatible <code>VkDevice</code> <strong class="purple">must</strong> be created.
 The <a href="#xrCreateVulkanDeviceKHR">xrCreateVulkanDeviceKHR</a> entry point is a wrapper around
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDevice.html">vkCreateDevice</a> intended for this
-purpose.
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCreateDevice.html">vkCreateDevice</a> intended for this purpose.
 When called, the runtime <strong class="purple">must</strong> aggregate the requirements specified by the
 application with its own requirements and forward the <code>VkDevice</code>
 creation request to the <code>vkCreateDevice</code> function pointer returned by
@@ -28420,6 +28438,13 @@ typedef struct XrVulkanDeviceCreateInfoKHR {
 <div class="ulist">
 <ul>
 <li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
 <p><code>systemId</code> is an <code><a href="#XrSystemId">XrSystemId</a></code> handle for the system which will
 be used to create a session.</p>
 </li>
@@ -28435,13 +28460,13 @@ be used to create a session.</p>
 </li>
 <li>
 <p><code>vulkanCreateInfo</code> is the
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateInfo.html"><code>VkDeviceCreateInfo</code> as
-specified by Vulkan</a>.</p>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDeviceCreateInfo.html"><code>VkDeviceCreateInfo</code> as specified by
+Vulkan</a>.</p>
 </li>
 <li>
 <p><code>vulkanAllocator</code> is the
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code>
-as specified by Vulkan</a>.</p>
+<a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAllocationCallbacks.html"><code>VkAllocationCallbacks</code> as specified
+by Vulkan</a>.</p>
 </li>
 </ul>
 </div>
@@ -30760,7 +30785,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 29)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 30)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31731,7 +31756,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>

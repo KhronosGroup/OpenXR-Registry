@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.29</span>
-<br><span id="revremark">from git ref release-1.0.29</span>
+<span id="revnumber">version 1.0.30</span>
+<br><span id="revremark">from git ref release-1.0.30</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -859,7 +859,7 @@ was.</p>
 <div class="title">Example: Value</div>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 29)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 30)</code></pre>
 </div>
 </div>
 </div>
@@ -1383,9 +1383,9 @@ to the end of the name.</p>
 <div class="sect2">
 <h3 id="naming-abbreviations">2.8. Common Abbreviations</h3>
 <div class="paragraph">
-<p>Abbreviations and acronyms are sometimes used in the <a href="#openxr-spec">OpenXR
-API Specification</a> and the OpenXR API where they are considered clear and
-commonplace.
+<p>Abbreviations and acronyms are sometimes used in the
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a> and the OpenXR API
+where they are considered clear and commonplace.
 All such abbreviations used in the core API are defined here.
 Extensions should also use these abbreviations where appropriate.</p>
 </div>
@@ -1528,9 +1528,7 @@ It is concerned with mechanical processes and registration, while
 fine-grained naming conventions are included in the <a href="#naming">API Naming
 Conventions chapter</a>.
 The organizational processes behind extension creation are in a separate
-document, the
-<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/extprocess.html">OpenXR
-Working Group Extension Processes</a>.</p>
+document, the <a href="https://registry.khronos.org/OpenXR/specs/1.0/extprocess.html">OpenXR Working Group Extension Processes</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_introduction">3.1. Introduction</h3>
@@ -1845,7 +1843,7 @@ section above.</p>
 <p>The canonical definition of the OpenXR APIs is kept in an XML file known as
 the <strong>OpenXR registry</strong>.
 The registry is kept in <code>specification/registry/xr.xml</code> of the
-<a href="#openxr-docs">KhronosGroup/OpenXR-Docs</a> project.</p>
+<a href="https://github.com/KhronosGroup/OpenXR-Docs">KhronosGroup/OpenXR-Docs</a> project.</p>
 </div>
 <div class="paragraph">
 <p>The registry contains reserved author IDs, core and extension interface
@@ -1874,7 +1872,7 @@ provided.</p>
 <div class="paragraph">
 <p>Extension authors will be able to create an account on GitHub and register
 an author ID with Khronos through the
-<a href="#openxr-docs">KhronosGroup/OpenXR-Docs</a> project.
+<a href="https://github.com/KhronosGroup/OpenXR-Docs">KhronosGroup/OpenXR-Docs</a> project.
 The author ID must be used for any extensions that author registers.
 The same mechanism will be used to request registration of extensions or API
 layers with Khronos, as described below.</p>
@@ -1900,7 +1898,7 @@ faith.</p>
 <div class="paragraph">
 <p>OpenXR implementers must report a valid vendor ID for their implementation
 when queried by <code>xrGetSystemProperties</code>, as described in the
-<a href="#openxr-spec">OpenXR API Specification</a>.
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>.
 If there is no valid USB vendor ID defined for the physical device,
 implementations must obtain a Khronos vendor ID.</p>
 </div>
@@ -2118,8 +2116,9 @@ from the Vulkan 1.0 core Specification source.</p>
 </div>
 <div class="paragraph">
 <p>For example, the <code>XR_KHR_opengl_enable</code> extension is documented in the
-<code>main</code> branch of the GitHub <code><a href="#openxr-docs">KhronosGroup/OpenXR-Docs</a></code>
-project and internal GitLab.
+<code>main</code> branch of the GitHub
+<a href="https://github.com/KhronosGroup/OpenXR-Docs">KhronosGroup/OpenXR-Docs</a> project and internal
+GitLab.
 However, specifications generated from this branch will only include the
 extension when the Makefile is invoked appropriately.</p>
 </div>
@@ -2685,7 +2684,8 @@ The revision value indicates a patch version of the extension
 specification, and differences in this version number maintain full
 compatibility, as defined in the
 <a href="html/xrspec.html#fundamentals-versionnum">API Version Numbers and
-Semantics</a> section of the <a href="#openxr-spec">OpenXR API Specification</a>.</p>
+Semantics</a> section of the <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API
+Specification</a>.</p>
 </li>
 </ul>
 </div>
@@ -2799,8 +2799,8 @@ interfaces appear in <code>openxr_platform.h</code> and are protected by <code>#
 <div class="paragraph">
 <p><a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> can be used in order to obtain function pointer
 addresses for core and extension commands (per the description in the
-&#8220;Command Function Pointers&#8221; section of the <a href="#openxr-spec">OpenXR API
-Specification</a>).
+&#8220;Command Function Pointers&#8221; section of the
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>).
 Different OpenXR API loaders can choose to statically export functions for
 some or all of the core OpenXR API commands, and can statically export
 functions for some or all extension commands.
@@ -2837,8 +2837,8 @@ ways:</p>
 <p>Extensions modifying the behavior of existing commands should provide
 additional parameters by using the <code>next</code> field of an existing
 structure, pointing to a new structure defined by the extension, as
-described in the &#8220;Valid Usage&#8221; section of the <a href="#openxr-spec">OpenXR API
-Specification</a>.
+described in the &#8220;Valid Usage&#8221; section of the
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>.
 Extension structures defined by multiple extensions affecting the same
 structure can be chained together in this fashion.
 Any structure which can be chained in this fashion must begin with the
@@ -2876,8 +2876,7 @@ specification.</p>
 <div class="paragraph">
 <p>Validation of such extended structure chains is automatically generated from
 the registry, as described in the description of attr:structextends in
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2/registry.html">the
-registry schema document for Vulkan</a>.</p>
+<a href="https://registry.khronos.org/vulkan/specs/1.3/registry.html">the registry schema document for Vulkan</a>.</p>
 </div>
 <div class="paragraph">
 <p>Take the following XML structure example:</p>
@@ -3439,8 +3438,8 @@ In the &lt;&lt;fig-anchorname,Figure caption&gt;&gt; diagram, the diagram repres
 <div class="paragraph">
 <p>This section discusses Asciidoc macros used in the document.
 In addition to the macros defined by asciidoc itself, additional macros are
-defined by the <a href="#openxr-spec">OpenXR API Specification</a> and Reference Page
-configuration files.</p>
+defined by the <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a> and
+Reference Page configuration files.</p>
 </div>
 <div class="sect3">
 <h4 id="markup-macros-api">4.3.1. API Markup Macros</h4>
@@ -3570,7 +3569,7 @@ table:</p>
                      the OpenXR C macro in the macro argument. Example:
                      dlink&#x3a;XR_NULL_HANDLE &#8594; <a href="#XR_NULL_HANDLE">XR_NULL_HANDLE</a>. There are
                      only a few macros in the OpenXR API, described in the
-                     &#8220;e&#8221; appendix of the <a href="#openxr-spec">OpenXR
+                     &#8220;e&#8221; appendix of the <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR
                      API Specification</a></p></td>
 </tr>
 <tr>
@@ -3685,7 +3684,7 @@ code:NULL</code></pre>
 <div class="paragraph">
 <p>Glossary terms are currently marked up using underscore markup where they
 are defined in the documents, as well as being added to the formal Glossary
-appendix in the <a href="#openxr-spec">OpenXR API Specification</a>.
+appendix in the <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>.
 However, we will probably change to using custom macros soon, to enable
 linkage between the glossary and definitions in the spec body.</p>
 </div>
@@ -3701,15 +3700,15 @@ linkage between the glossary and definitions in the spec body.</p>
 <h4 id="_normative_terminology">4.3.2. Normative Terminology</h4>
 <div class="paragraph">
 <p>Normative terminology is precisely defined in section 1.6 of the
-<a href="#openxr-spec">OpenXR API Specification</a>, and is used to visually tag terms
-which express mandatory and optional behavior of OpenXR implementations, and
-of applications using OpenXR.</p>
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>, and is used to
+visually tag terms which express mandatory and optional behavior of OpenXR
+implementations, and of applications using OpenXR.</p>
 </div>
 <div class="paragraph">
-<p>Whenever one of these terms appears in the <a href="#openxr-spec">OpenXR API
-Specification</a>, it must be tagged using the macros, to indicate that its
-use has been carefully considered and is consistent with the definitions in
-section 1.6.
+<p>Whenever one of these terms appears in the
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>, it must be tagged
+using the macros, to indicate that its use has been carefully considered and
+is consistent with the definitions in section 1.6.
 This is extremely important for determining IP that is in and out of Scope
 during Ratification reviews.
 The normative terminology macros are defined in the following table:</p>
@@ -3808,7 +3807,7 @@ as</p>
 <div class="paragraph">
 <p>Implementations are not mandated to support functionality which is not
 required, but if they do, they must behave as described by the
-<a href="#openxr-spec">OpenXR API Specification</a>.
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>.
 The term <em>functionality</em> includes API features, extensions, and layers.</p>
 </div>
 </div>
@@ -3928,7 +3927,7 @@ endif::implementation-guide[]</code></pre>
 choices.
 Always use the words in the first column instead of the alternate terms.
 This list may not be comprehensive; when in doubt, be guided by the existing
-<a href="#openxr-spec">OpenXR API Specification</a>.</p>
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 5. Word Choices</caption>
@@ -4461,19 +4460,21 @@ This list is not intended to be complete.</p>
 <div class="sect2">
 <h3 id="writing-describing">5.2. Describing Commands and Parameters</h3>
 <div class="paragraph">
-<p>The <a href="#openxr-spec">OpenXR Specification</a> describes API commands followed by
-descriptions of their parameters, which are usually simple scalar types,
-handles or pointers to OpenXR objects or arrays of objects, enumerated types
-specifying values or bitmasks which affect the operation of a command; or
-structures containing combinations of scalar types and objects.
+<p>The <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a> describes API
+commands followed by descriptions of their parameters, which are usually
+simple scalar types, handles or pointers to OpenXR objects or arrays of
+objects, enumerated types specifying values or bitmasks which affect the
+operation of a command; or structures containing combinations of scalar
+types and objects.
 The templates and examples shown and annotated here are based on the
-<a href="#openxr-spec">OpenXR Specification</a>.
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>.
 Do not vary from them without compelling need.</p>
 </div>
 <div class="paragraph">
-<p>Normative parts of the <a href="#openxr-spec">OpenXR Specification</a> should describe
-<em>what</em> something does, rather than <em>how</em> or <em>why</em> an application would want
-to use it or <em>how</em> or <em>why</em> a runtime should implement it.</p>
+<p>Normative parts of the <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API
+Specification</a> should describe <em>what</em> something does, rather than <em>how</em> or
+<em>why</em> an application would want to use it or <em>how</em> or <em>why</em> a runtime should
+implement it.</p>
 </div>
 <div class="paragraph">
 <p>When explicitly allowed by the Specification, the reserved value <code>NULL</code>
@@ -4512,7 +4513,7 @@ objects, respectively.</p>
 <p>Explanations of <em>why</em> and <em>how</em> should largely be confined to reference
 documentation, sample code, tutorials, and other such documents.
 Occasional non-normative explanations can be included in the
-<a href="#openxr-spec">OpenXR API Specification</a> using
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a> using
 <a href="#markup-informative-notes">informative notes</a>.</p>
 </div>
 </div>
@@ -4656,8 +4657,9 @@ error.</p>
 <h3 id="writing-example">5.5. An Example Command Description</h3>
 <div class="paragraph">
 <p>The <a href="#sample-command">next section</a> is a sample based on the
-<a href="#openxr-spec">OpenXR API Specification</a>, and describes a command in enough
-detail to see the different usage patterns and layout / markup used.
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>, and describes a
+command in enough detail to see the different usage patterns and layout /
+markup used.
 Informative notes discussing markup and guidelines are interspersed with the
 example description to explain how and why it looks as it does.</p>
 </div>
@@ -5801,7 +5803,7 @@ equivalent.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

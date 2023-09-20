@@ -818,12 +818,14 @@ the runtime predicts a composited frame will be displayed.
 The runtime <strong class="purple">may</strong> affect this computation by changing the return values and
 throttling of <a href="xrWaitFrame.html">xrWaitFrame</a> in response to feedback from frame
 submission and completion times in <a href="xrEndFrame.html">xrEndFrame</a>.
-An application <strong class="purple">must</strong> eventually match each <a href="xrWaitFrame.html">xrWaitFrame</a> call with one
-call to <a href="xrBeginFrame.html">xrBeginFrame</a>.
 A subsequent <a href="xrWaitFrame.html">xrWaitFrame</a> call <strong class="purple">must</strong> block until the previous frame has
 been begun with <a href="xrBeginFrame.html">xrBeginFrame</a> and <strong class="purple">must</strong> unblock independently of the
 corresponding call to <a href="xrEndFrame.html">xrEndFrame</a>.
-When less than one frame interval has passed since the previous return from
+Refer to <a href="xrBeginSession.html">xrBeginSession</a> for details on how a transition to
+<a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">session running</a> resets the frame function call order.</p>
+</div>
+<div class="paragraph">
+<p>When less than one frame interval has passed since the previous return from
 <a href="xrWaitFrame.html">xrWaitFrame</a>, the runtime <strong class="purple">should</strong> block until the beginning of the next
 frame interval.
 If more than one frame interval has passed since the last return from
@@ -856,7 +858,7 @@ application, concurrent calls <strong class="purple">may</strong> result in unde
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SESSION_NOT_RUNNING</code> if the
-<code>session</code> <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>.</p>
+<code>session</code> <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -868,13 +870,13 @@ application, concurrent calls <strong class="purple">may</strong> result in unde
 <div class="title">Note</div>
 <div class="paragraph">
 <p>The engine simulation <strong class="purple">should</strong> advance based on the display time.
-Every stage in the engine pipeline should use the exact same display time
+Every stage in the engine pipeline <strong class="purple">should</strong> use the exact same display time
 for one particular application-generated frame.
 An accurate and consistent display time across all stages and threads in the
 engine pipeline is important to avoid object motion judder.
-If the application has multiple pipeline stages, the application should pass
-its computed display time through its pipeline, as <a href="xrWaitFrame.html">xrWaitFrame</a> must be
-called only once per frame.</p>
+If the application has multiple pipeline stages, the application <strong class="purple">should</strong>
+pass its computed display time through its pipeline, as <a href="xrWaitFrame.html">xrWaitFrame</a>
+<strong class="purple">must</strong> be called only once per frame.</p>
 </div>
 </td>
 </tr>
@@ -971,7 +973,7 @@ called only once per frame.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrWaitFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#xrWaitFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -995,7 +997,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

@@ -818,16 +818,16 @@ work for the frame if <a href="XrFrameState.html">XrFrameState</a>::<code>should
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return the error code <code>XR_ERROR_CALL_ORDER_INVALID</code> if
-there was no corresponding successful call to <a href="xrWaitFrame.html">xrWaitFrame</a>.</p>
-</div>
-<div class="paragraph">
-<p>The runtime <strong class="purple">must</strong> return the success code <code>XR_FRAME_DISCARDED</code> if a
+there was no corresponding successful call to <a href="xrWaitFrame.html">xrWaitFrame</a>.
+The runtime <strong class="purple">must</strong> return the success code <code>XR_FRAME_DISCARDED</code> if a
 prior <a href="xrBeginFrame.html">xrBeginFrame</a> has been called without an intervening call to
-<a href="xrEndFrame.html">xrEndFrame</a>.</p>
+<a href="xrEndFrame.html">xrEndFrame</a>.
+Refer to <a href="xrBeginSession.html">xrBeginSession</a> for details on how a transition to
+<a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">session running</a> resets the frame function call order.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SESSION_NOT_RUNNING</code> if the
-<code>session</code> <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>.</p>
+<code>session</code> <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -923,7 +923,7 @@ prior <a href="xrBeginFrame.html">xrBeginFrame</a> has been called without an in
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrBeginFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#xrBeginFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -947,7 +947,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

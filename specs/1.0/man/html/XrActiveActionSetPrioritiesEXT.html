@@ -801,8 +801,8 @@ chain.
 No such structures are defined in core OpenXR or this extension.</p>
 </li>
 <li>
-<p><code>countActionSetPriorities</code> is an integer specifying the number of
-valid elements in the actionSetPriorities array.</p>
+<p><code>actionSetPriorityCount</code> is an integer specifying the number of valid
+elements in the actionSetPriorities array.</p>
 </li>
 <li>
 <p><code>actionSetPriorities</code> is a pointer to an array that maps action sets
@@ -831,7 +831,7 @@ If an action set is specified multiple times, the runtime <strong class="purple"
 <p><a id="VUID-XrActiveActionSetPrioritiesEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_ACTIVE_ACTION_SET_PRIORITIES_EXT</code></p>
 </li>
 <li>
-<p><a id="VUID-XrActiveActionSetPrioritiesEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrActiveActionSetPrioritiesEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
 </li>
 <li>
 <p><a id="VUID-XrActiveActionSetPrioritiesEXT-actionSetPriorities-parameter"></a> <code>actionSetPriorities</code> <strong class="purple">must</strong> be a pointer to an array of <code>actionSetPriorityCount</code> valid <a href="XrActiveActionSetPriorityEXT.html">XrActiveActionSetPriorityEXT</a> structures</p>
@@ -875,7 +875,7 @@ action set <strong class="purple">must</strong> revert back to the priority numb
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrActiveActionSetPrioritiesEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XrActiveActionSetPrioritiesEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -899,7 +899,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

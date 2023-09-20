@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2023, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.29</span>
-<br><span id="revremark">from git ref release-1.0.29</span>
+<span id="revnumber">version 1.0.30</span>
+<br><span id="revremark">from git ref release-1.0.30</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -612,8 +612,8 @@ for learning general OpenXR loader behavior.</p>
 </div>
 <div class="paragraph">
 <p>In the event of any discrepancies between this document and the
-<a href="https://www.khronos.org/registry/OpenXR">OpenXR specification</a>, that
-document is authoritative.</p>
+<a href="https://registry.khronos.org/OpenXR">OpenXR specification</a>, that document is
+authoritative.</p>
 </div>
 <div class="paragraph">
 <p>OpenXR&#8482; and the OpenXR logo are trademarks owned by The Khronos Group
@@ -691,12 +691,13 @@ wishing to contribute to the OpenXR loader; the information contained in it
 may be useful to anyone wanting a better understanding of OpenXR.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#openxr-spec">OpenXR API Specification</a> should be used as the primary
-means of understanding the OpenXR API and all care has been made to not
-conflict with any element of that document.
-In any case where this document and the <a href="#openxr-spec">OpenXR API
-Specification</a> differ, behavior as defined by the OpenXR specification
-<strong class="purple">must</strong> be considered the correct standard.</p>
+<p>The <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a> should be used
+as the primary means of understanding the OpenXR API and all care has been
+made to not conflict with any element of that document.
+In any case where this document and the
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a> differ, behavior
+as defined by the OpenXR specification <strong class="purple">must</strong> be considered the correct
+standard.</p>
 </div>
 </div>
 <div class="sect2">
@@ -725,7 +726,7 @@ between the loader and:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition, this document also covers various <a href="#loader-internals">internal
+<p>In addition, this document also covers various <a href="#loader-design">internal
 design</a> elements of the OpenXR loader.</p>
 </div>
 <div class="sect3">
@@ -884,8 +885,8 @@ structure which, in turn, is passed into the <code>XrInstanceCreateInfo</code>
 structure.
 If either the loader or the active runtime do not support the requested
 version, they may return an error and fail instance creation.
-Refer to the <a href="#openxr-spec">OpenXR API Specification</a> documentation on
-<code>xrCreateInstance</code> for more information about this.</p>
+Refer to the <a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>
+documentation on <code>xrCreateInstance</code> for more information about this.</p>
 </div>
 <div class="sect2">
 <h3 id="interfacing-with-openxr-functions">3.1. Interfacing with OpenXR Functions</h3>
@@ -1437,7 +1438,8 @@ These extensions can be created by a runtime vendor to expose new runtime
 and/or XR hardware functionality, or by an API layer writer to expose some
 internal feature, or by the loader to add additional loader functionality.
 Information about various extensions can be found in the
-<a href="#openxr-spec">OpenXR API Specification</a>, and <code>openxr.h</code> header file.</p>
+<a href="https://registry.khronos.org/OpenXR/specs/1.0-khr/html/xrspec.html">OpenXR API Specification</a>, and <code>openxr.h</code>
+header file.</p>
 </div>
 <div class="paragraph">
 <p>To use extension functionality, the application <strong class="purple">should</strong> call
@@ -1462,9 +1464,9 @@ layer) then only extensions from that API layer are enumerated.</p>
 <div class="paragraph">
 <p>Duplicate extensions (e.g. an implicit API layer and runtime might report
 support for the same extension) are eliminated by the loader.
-For duplicates, the API layer version is reported and the runtime version
-is culled according to the loader ordering - an extension name is removed
-from the extension request list after loading the layer.</p>
+For duplicates, the API layer version is reported and the runtime version is
+culled according to the loader ordering - an extension name is removed from
+the extension request list after loading the layer.</p>
 </div>
 <div class="paragraph">
 <p>If an application fails to enable the extension using the
@@ -3077,13 +3079,13 @@ the application):</p>
 <code>xrCreateApiLayerInstance</code> address.</p>
 </li>
 <li>
-<p>Build a <code>XrApiLayerNextInfo</code> structure for the API layer recording the name and
-command addresses.</p>
+<p>Build a <code>XrApiLayerNextInfo</code> structure for the API layer recording the
+name and command addresses.</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
-<p>If this is the first API layer (the one closest to the runtime) we want it
-to enter the loader again when we&#8217;re done.
+<p>If this is the first API layer (the one closest to the runtime) we want
+it to enter the loader again when we&#8217;re done.
 So, the loader sets the following:</p>
 <div class="olist upperalpha">
 <ol class="upperalpha" type="A">
@@ -3107,12 +3109,12 @@ information:</p>
 <div class="olist upperalpha">
 <ol class="upperalpha" type="A">
 <li>
-<p><code>XrApiLayerNextInfo.nextGetInstanceProcAddr</code> =
-Previous <code>XrApiLayerNextInfo.loaderXrTermGetInstanceProcAddr</code></p>
+<p><code>XrApiLayerNextInfo.nextGetInstanceProcAddr</code> = Previous
+<code>XrApiLayerNextInfo.loaderXrTermGetInstanceProcAddr</code></p>
 </li>
 <li>
-<p><code>XrApiLayerNextInfo.nextCreateLayerInstance</code> =
-Previous <code>XrApiLayerNextInfo.loaderXrTermCreateLayerInstance</code></p>
+<p><code>XrApiLayerNextInfo.nextCreateLayerInstance</code> = Previous
+<code>XrApiLayerNextInfo.loaderXrTermCreateLayerInstance</code></p>
 </li>
 <li>
 <p><code>XrApiLayerNextInfo.next</code> = address to previous <code>XrApiLayerNextInfo</code></p>
@@ -3159,9 +3161,9 @@ that was passed in during its <code>xrCreateApiLayerInstance</code> command.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>If the call passes, this API layer may choose to setup its own dispatch table to
-the next API layer&#8217;s commands using the returned <code>XrInstance</code>, the next
-API layer&#8217;s <code>xrGetInstanceProcAddr</code> and the
+<p>If the call passes, this API layer may choose to setup its own dispatch
+table to the next API layer&#8217;s commands using the returned <code>XrInstance</code>,
+the next API layer&#8217;s <code>xrGetInstanceProcAddr</code> and the
 <code>GeneratedXrPopulateDispatchTable</code> utility command provided in the
 generated <code>xr_generated_dispatch_table.h</code> header.</p>
 </li>
@@ -3206,8 +3208,7 @@ by an external entity (on those platforms that support updating).</p>
 <h5 id="linux-active-runtime-location">Linux Active Runtime Location</h5>
 <div class="paragraph">
 <p>On Linux, the active runtime information is contained inside a
-JSON-formatted file located in a standard
-<a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG
+JSON-formatted file located in a standard <a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG
 configuration directory</a> or the system&#8217;s standard global configuration
 directory (typically <code>/etc</code>), under the relative path:</p>
 </div>
@@ -5688,9 +5689,9 @@ process:</p>
 This structure can be used to store function pointers for any OpenXR
 commands defined in the xr.xml at the time the loader was built.
 It includes slots for both core and extension function pointers.
-Currently, the provided API Layers use this structure and the loader
-uses a structure which has a subset of the function pointers (defined
-in <code>xr_generated_dispatch_table_core.h</code>).</p>
+Currently, the provided API Layers use this structure and the loader uses a
+structure which has a subset of the function pointers (defined in
+<code>xr_generated_dispatch_table_core.h</code>).</p>
 </div>
 <div class="paragraph">
 <p>A partial listing from the generated table follows:</p>
@@ -5983,8 +5984,8 @@ To determine what might have happened, the loader will call the
 <div class="ulist">
 <ul>
 <li>
-<p><code>path</code> <strong class="purple">must</strong> be a constant string containing the name of the
-entry point that was attempted to be queried during the previous
+<p><code>path</code> <strong class="purple">must</strong> be a constant string containing the name of the entry
+point that was attempted to be queried during the previous
 <code>LoaderPlatformLibraryGetProcAddr</code> call.</p>
 </li>
 </ul>
@@ -6398,7 +6399,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

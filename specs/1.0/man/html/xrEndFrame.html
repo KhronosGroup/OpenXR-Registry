@@ -825,7 +825,7 @@ synchronization guarantees.</p>
 <p>An accurate predicted display time is very important to avoid black pull-in
 by reprojection and to reduce motion judder in case the runtime does not
 implement a translational reprojection.
-Reprojection should never display images before the display refresh period
+Reprojection <strong class="purple">should</strong> never display images before the display refresh period
 they were predicted for, even if they are completed early, because this will
 cause motion judder just the same.
 In other words, the better the predicted display time, the less latency
@@ -840,6 +840,8 @@ experienced by the user.</p>
 <a href="xrBeginFrame.html">xrBeginFrame</a>.
 Failure to do so <strong class="purple">must</strong> result in <code>XR_ERROR_CALL_ORDER_INVALID</code> being
 returned by <a href="xrEndFrame.html">xrEndFrame</a>.
+Refer to <a href="xrBeginSession.html">xrBeginSession</a> for details on how a transition to
+<a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#session_running" target="_blank" rel="noopener">session running</a> resets the frame function call order.
 <a href="XrFrameEndInfo.html">XrFrameEndInfo</a> <strong class="purple">may</strong> reference swapchains into which the application
 has rendered for this frame.
 From each <a href="XrSwapchain.html">XrSwapchain</a> only one image index is implicitly referenced
@@ -847,7 +849,7 @@ per frame, the one corresponding to the last call to
 <a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a>.
 However, a specific swapchain (and by extension a specific swapchain image
 index) <strong class="purple">may</strong> be referenced in <a href="XrFrameEndInfo.html">XrFrameEndInfo</a> multiple times.
-This can be used for example to render a side by side image into a single
+This <strong class="purple">can</strong> be used for example to render a side by side image into a single
 swapchain image and referencing it twice with differing image rectangles in
 different layers.</p>
 </div>
@@ -880,7 +882,7 @@ pixels outside of the associated swapchain image or if negatively sized.</p>
 </div>
 <div class="paragraph">
 <p><code>XR_ERROR_SESSION_NOT_RUNNING</code> <strong class="purple">must</strong> be returned if the <code>session</code>
-<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>.</p>
+<a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#session_not_running" target="_blank" rel="noopener">is not running</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1009,7 +1011,7 @@ implementations.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#xrEndFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#xrEndFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -1033,7 +1035,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">

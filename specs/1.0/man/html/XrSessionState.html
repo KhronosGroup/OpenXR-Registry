@@ -811,7 +811,7 @@ calling <a href="xrEndSession.html">xrEndSession</a>.</p>
 <li>
 <p><code>XR_SESSION_STATE_READY</code>.
 The application is ready to call <a href="xrBeginSession.html">xrBeginSession</a> and
-<a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">sync its frame loop with the runtime.</a></p>
+<a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">sync its frame loop with the runtime.</a></p>
 </li>
 <li>
 <p><code>XR_SESSION_STATE_SYNCHRONIZED</code>.
@@ -820,12 +820,12 @@ visible to the user.</p>
 </li>
 <li>
 <p><code>XR_SESSION_STATE_VISIBLE</code>.
-The application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synced its frame loop with the
+The application has <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synced its frame loop with the
 runtime</a> and is visible to the user but cannot receive XR input.</p>
 </li>
 <li>
 <p><code>XR_SESSION_STATE_FOCUSED</code>.
-The application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synced its frame loop with the
+The application has <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synced its frame loop with the
 runtime</a>, is visible to the user and can receive XR input.</p>
 </li>
 <li>
@@ -879,7 +879,7 @@ device.</p>
 </div>
 <div id="session_synchronized" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_SYNCHRONIZED</code> state indicates that the
-application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
+application has <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
 runtime</a>, but its frames are not visible to the user.
 The application <strong class="purple">should</strong> continue running its frame loop by calling
 <a href="xrWaitFrame.html">xrWaitFrame</a>, <a href="xrBeginFrame.html">xrBeginFrame</a> and <a href="xrEndFrame.html">xrEndFrame</a>, although it
@@ -894,7 +894,7 @@ boundary.</p>
 </div>
 <div id="session_visible" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_VISIBLE</code> state indicates that the
-application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
+application has <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
 runtime</a>, and the session&#8217;s frames will be visible to the user, but the
 session is not eligible to receive XR input.
 An application may be visible but not have focus, for example when the
@@ -913,7 +913,7 @@ other tracked objects controlled by the user).</p>
 </div>
 <div id="session_focused" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_FOCUSED</code> state indicates that the
-application has <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
+application has <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#sync_frame_loop" target="_blank" rel="noopener">synchronized its frame loop with the
 runtime</a>, the session&#8217;s frames will be visible to the user, and the session
 is eligible to receive XR input.
 The runtime <strong class="purple">should</strong> only give one session XR input focus at any given time.
@@ -982,7 +982,7 @@ resources associated with those handles.</p>
 <h2 id="_document_notes">Document Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information, see the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XrSessionState" target="_blank" rel="noopener">OpenXR Specification</a></p>
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XrSessionState" target="_blank" rel="noopener">OpenXR Specification</a></p>
 </div>
 <div class="paragraph">
 <p>This page is extracted from the OpenXR Specification.
@@ -1006,7 +1006,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.29<br>
+Version 1.0.30<br>
 </div>
 </div>
 <script type="text/x-mathjax-config">
