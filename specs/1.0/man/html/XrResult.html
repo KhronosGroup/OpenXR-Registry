@@ -900,6 +900,30 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_MARKER_NOT_TRACKED_VARJO = -1000124000,
   // Provided by XR_VARJO_marker_tracking
     XR_ERROR_MARKER_ID_INVALID_VARJO = -1000124001,
+  // Provided by XR_ML_marker_understanding
+    XR_ERROR_MARKER_DETECTOR_PERMISSION_DENIED_ML = -1000138000,
+  // Provided by XR_ML_marker_understanding
+    XR_ERROR_MARKER_DETECTOR_LOCATE_FAILED_ML = -1000138001,
+  // Provided by XR_ML_marker_understanding
+    XR_ERROR_MARKER_DETECTOR_INVALID_DATA_QUERY_ML = -1000138002,
+  // Provided by XR_ML_marker_understanding
+    XR_ERROR_MARKER_DETECTOR_INVALID_CREATE_INFO_ML = -1000138003,
+  // Provided by XR_ML_marker_understanding
+    XR_ERROR_MARKER_INVALID_ML = -1000138004,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_INCOMPATIBLE_ML = -1000139000,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_UNAVAILABLE_ML = -1000139001,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_FAIL_ML = -1000139002,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_IMPORT_EXPORT_PERMISSION_DENIED_ML = -1000139003,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_PERMISSION_DENIED_ML = -1000139004,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_ALREADY_EXISTS_ML = -1000139005,
+  // Provided by XR_ML_localization_map
+    XR_ERROR_LOCALIZATION_MAP_CANNOT_EXPORT_CLOUD_MAP_ML = -1000139006,
   // Provided by XR_MSFT_spatial_anchor_persistence
     XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT = -1000142001,
   // Provided by XR_MSFT_spatial_anchor_persistence
@@ -920,6 +944,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
     XR_ERROR_PASSTHROUGH_COLOR_LUT_BUFFER_SIZE_MISMATCH_META = -1000266000,
   // Provided by XR_QCOM_tracking_optimization_settings
     XR_ERROR_HINT_ALREADY_SET_QCOM = -1000306000,
+  // Provided by XR_HTC_anchor
+    XR_ERROR_NOT_AN_ANCHOR_HTC = -1000319000,
   // Provided by XR_EXT_plane_detection
     XR_ERROR_SPACE_NOT_LOCATABLE_EXT = -1000429000,
   // Provided by XR_EXT_plane_detection
@@ -1326,6 +1352,54 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The specified marker ID is not valid. (Added by the <code><a href="XR_VARJO_marker_tracking.html">XR_VARJO_marker_tracking</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MARKER_DETECTOR_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The com.magicleap.permission.MARKER_TRACKING permission was denied. (Added by the <code><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MARKER_DETECTOR_LOCATE_FAILED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified marker could not be located spatially. (Added by the <code><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MARKER_DETECTOR_INVALID_DATA_QUERY_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The marker queried does not contain data of the requested type. (Added by the <code><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MARKER_DETECTOR_INVALID_CREATE_INFO_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createInfo</code> contains mutually exclusive parameters, such as setting <code>XR_MARKER_DETECTOR_CORNER_REFINE_METHOD_APRIL_TAG_ML</code> with <code>XR_MARKER_TYPE_ARUCO_ML</code>. (Added by the <code><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MARKER_INVALID_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The marker id passed to the function was invalid. (Added by the <code><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_INCOMPATIBLE_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The localization map being imported is not compatible with current OS or mode. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_UNAVAILABLE_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The localization map requested is not available. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_FAIL_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The map localization service failed to fulfill the request, retry later. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_IMPORT_EXPORT_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The com.magicleap.permission.SPACE_IMPORT_EXPORT permission was denied. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The com.magicleap.permission.SPACE_MANAGER permission was denied. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_ALREADY_EXISTS_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The map being imported already exists in the system. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_LOCALIZATION_MAP_CANNOT_EXPORT_CLOUD_MAP_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The map localization service cannot export cloud based maps. (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A spatial anchor was not found associated with the spatial anchor name provided (Added by the <code><a href="XR_MSFT_spatial_anchor_persistence.html">XR_MSFT_spatial_anchor_persistence</a></code> extension)</p></td>
 </tr>
@@ -1360,6 +1434,10 @@ supported by this function&#8217;s parent handle but not at this moment.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_HINT_ALREADY_SET_QCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tracking optimization hint is already set for the domain. (Added by the <code><a href="XR_QCOM_tracking_optimization_settings.html">XR_QCOM_tracking_optimization_settings</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_NOT_AN_ANCHOR_HTC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The provided space is valid but not an anchor. (Added by the <code><a href="XR_HTC_anchor.html">XR_HTC_anchor</a></code> extension)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_NOT_LOCATABLE_EXT</code></p></td>
@@ -1410,7 +1488,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

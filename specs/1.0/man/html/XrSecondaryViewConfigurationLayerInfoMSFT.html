@@ -864,11 +864,12 @@ for which the submitted layers will be rendered.</p>
 </div>
 <div class="paragraph">
 <p>The application <strong class="purple">should</strong> render its content for both the primary and
-secondary view configurations using the same <code>predictedDisplayTime</code>
-reported by <a href="xrWaitFrame.html">xrWaitFrame</a>.
+secondary view configurations using the same
+<a href="XrFrameState.html">XrFrameState</a>::<code>predictedDisplayTime</code> reported by
+<a href="xrWaitFrame.html">xrWaitFrame</a>.
 The runtime <strong class="purple">must</strong> treat both the primary views and secondary views as being
-submitted for the same <code>displayTime</code> specified in the call to
-<a href="xrEndFrame.html">xrEndFrame</a>.</p>
+submitted for the same <a href="XrViewLocateInfo.html">XrViewLocateInfo</a>::<code>displayTime</code> specified
+in the call to <a href="xrEndFrame.html">xrEndFrame</a>.</p>
 </div>
 <div class="paragraph">
 <p>For layers such as quad layers whose content is identical across view
@@ -952,7 +953,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

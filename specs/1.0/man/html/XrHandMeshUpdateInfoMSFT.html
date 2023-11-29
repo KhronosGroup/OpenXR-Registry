@@ -841,10 +841,10 @@ of hand pose of the hand mesh to update.</p>
 returned <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> might return data that&#8217;s not exactly
 corresponding to the <code>time</code> input.
 If the runtime cannot return any tracking data for the given <code>time</code> at
-all, it <strong class="purple">must</strong> set <code>isActive</code> to <code>XR_FALSE</code> for the call to
-<a href="xrUpdateHandMeshMSFT.html">xrUpdateHandMeshMSFT</a>.
-Otherwise, if the runtime returns <code>isActive</code> as <code>XR_TRUE</code>, the data
-in <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> must be valid to use.</p>
+all, it <strong class="purple">must</strong> set <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>::<code>isActive</code> to <code>XR_FALSE</code> for
+the call to <a href="xrUpdateHandMeshMSFT.html">xrUpdateHandMeshMSFT</a>.
+Otherwise, if the runtime returns <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>::<code>isActive</code> as
+<code>XR_TRUE</code>, the data in <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> must be valid to use.</p>
 </div>
 <div class="paragraph">
 <p>An application can choose different <code>handPoseType</code> values to query the
@@ -912,7 +912,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

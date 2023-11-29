@@ -859,9 +859,10 @@ hint to the reprojection mode to the corresponding projection layer.</p>
 </div>
 <div class="paragraph">
 <p>When the application chained this structure when calling <a href="xrEndFrame.html">xrEndFrame</a>,
-the <code>mode</code> <strong class="purple">must</strong> be one of the supported <a href="XrReprojectionModeMSFT.html">XrReprojectionModeMSFT</a>
-returned by <a href="xrEnumerateReprojectionModesMSFT.html">xrEnumerateReprojectionModesMSFT</a> function for the
-corresponding <a href="XrViewConfigurationType.html">XrViewConfigurationType</a>.
+the <code>reprojectionMode</code> <strong class="purple">must</strong> be one of the supported
+<a href="XrReprojectionModeMSFT.html">XrReprojectionModeMSFT</a> returned by
+<a href="xrEnumerateReprojectionModesMSFT.html">xrEnumerateReprojectionModesMSFT</a> function for the corresponding
+<a href="XrViewConfigurationType.html">XrViewConfigurationType</a>.
 Otherwise, the runtime <strong class="purple">must</strong> return error
 <code>XR_ERROR_REPROJECTION_MODE_UNSUPPORTED_MSFT</code> on the <a href="xrEndFrame.html">xrEndFrame</a>
 function.</p>
@@ -908,7 +909,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

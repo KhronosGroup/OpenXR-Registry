@@ -841,7 +841,7 @@ and normal vector in the hand mesh space.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>An application <strong class="purple">should</strong> preallocate the vertices array using the
-<code>maxHandMeshVertexCount</code> in <a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a>
+<a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a>::<code>maxHandMeshVertexCount</code>
 returned from <a href="xrGetSystemProperties.html">xrGetSystemProperties</a>.
 In this way, the application can avoid possible insufficient buffer sizes
 for each query, and therefore avoid reallocating memory each frame.</p>
@@ -861,7 +861,7 @@ on calls to the <a href="xrUpdateHandMeshMSFT.html">xrUpdateHandMeshMSFT</a>, do
 </div>
 <div class="paragraph">
 <p>If the input <code>vertexCapacityInput</code> is equal to or larger than the
-<code>maxHandMeshVertexCount</code> in <a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a>
+<a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a>::<code>maxHandMeshVertexCount</code>
 returned from <a href="xrGetSystemProperties.html">xrGetSystemProperties</a>, the runtime <strong class="purple">must</strong> not return
 <code>XR_ERROR_SIZE_INSUFFICIENT</code> on calls to the <a href="xrUpdateHandMeshMSFT.html">xrUpdateHandMeshMSFT</a>
 because of insufficient vertex buffer size.</p>
@@ -875,11 +875,12 @@ return the latest non-zero <code>vertexUpdateTime</code>, and fill in the
 <div class="paragraph">
 <p>If the input <code>vertexUpdateTime</code> is not 0, the runtime <strong class="purple">can</strong> either return
 without changing <code>vertexCountOutput</code> or the content in <code>vertices</code>,
-and return <code>XR_FALSE</code> for <code>vertexBufferChanged</code> indicating the
-vertices are not changed; or return a new non-zero <code>vertexUpdateTime</code>
-and fill in latest data in <code>vertexCountOutput</code> and <code>vertices</code> and
-return <code>XR_TRUE</code> for <code>vertexBufferChanged</code> indicating the vertices
-are updated to a newer version.</p>
+and return <code>XR_FALSE</code> for
+<a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>::<code>vertexBufferChanged</code> indicating the vertices are
+not changed; or return a new non-zero <code>vertexUpdateTime</code> and fill in
+latest data in <code>vertexCountOutput</code> and <code>vertices</code> and return
+<code>XR_TRUE</code> for <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>::<code>vertexBufferChanged</code> indicating
+the vertices are updated to a newer version.</p>
 </div>
 <div class="paragraph">
 <p>An application <strong class="purple">can</strong> keep the <a href="XrHandMeshVertexBufferMSFT.html">XrHandMeshVertexBufferMSFT</a> structure for
@@ -941,7 +942,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

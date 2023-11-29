@@ -837,10 +837,10 @@ the facial tracking type.</p>
 return <code>XR_ERROR_FEATURE_UNSUPPORTED</code> from
 <a href="xrCreateFacialTrackerHTC.html">xrCreateFacialTrackerHTC</a> according to the corresponding case.
 In this case, the runtime <strong class="purple">must</strong> return <code>XR_FALSE</code> for
-<code>supportEyeFacialTracking</code> or <code>supportLipFacialTracking</code> in
-<a href="XrSystemFacialTrackingPropertiesHTC.html">XrSystemFacialTrackingPropertiesHTC</a> when the function
-<a href="xrGetSystemProperties.html">xrGetSystemProperties</a> is called, so that the application <strong class="purple">may</strong> avoid
-creating a facial tracker.</p>
+<a href="XrSystemFacialTrackingPropertiesHTC.html">XrSystemFacialTrackingPropertiesHTC</a>::<code>supportEyeFacialTracking</code> or
+<a href="XrSystemFacialTrackingPropertiesHTC.html">XrSystemFacialTrackingPropertiesHTC</a>::<code>supportLipFacialTracking</code>
+when the function <a href="xrGetSystemProperties.html">xrGetSystemProperties</a> is called, so that the
+application <strong class="purple">may</strong> avoid creating a facial tracker.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -957,7 +957,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

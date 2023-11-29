@@ -444,8 +444,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR&#8482; Specification</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.0.31</span>
-<br><span id="revremark">from git ref release-1.0.31</span>
+<span id="revnumber">version 1.0.32</span>
+<br><span id="revremark">from git ref release-1.0.32</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -23912,7 +23912,7 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>1</p>
+<p>2</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -23926,7 +23926,7 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2020-05-07</p>
+<p>2023-05-08</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -23934,7 +23934,8 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </dd>
 <dt class="hdlist1"><strong>Contributors</strong></dt>
 <dd>
-<p>Cass Everitt, Facebook</p>
+<p>Cass Everitt, Facebook<br>
+Robert Blenkinsopp, Ultraleap</p>
 </dd>
 </dl>
 </div>
@@ -23943,15 +23944,31 @@ passes to <a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGrap
 </div>
 <div class="paragraph">
 <p>On some platforms, before loading can occur the loader must be initialized
-with platform-specific parameters.
-Unlike other extensions, the presence of this extension is signaled by a
+with platform-specific parameters.</p>
+</div>
+<div class="paragraph">
+<p>Unlike other extensions, the presence of this extension is signaled by a
 successful call to <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> to retrieve the function
-pointer for <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> using a null instance handle.
-If this extension is supported, its use may be required on some platforms
-and the use of the <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> function must precede other
-OpenXR calls except <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.
-This function exists as part of the loader library that the application is
-using.</p>
+pointer for <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> using <a href="#XR_NULL_HANDLE">XR_NULL_HANDLE</a> as the
+<code>instance</code> parameter.</p>
+</div>
+<div class="paragraph">
+<p>If this extension is supported, its use <strong class="purple">may</strong> be required on some platforms
+and the use of the <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> function <strong class="purple">must</strong> precede other
+OpenXR calls except <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+</div>
+<div class="paragraph">
+<p>This function exists as part of the loader library that the application is
+using and the loader <strong class="purple">must</strong> pass calls to <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> to the
+active runtime, and all enabled API layers that expose a
+<a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> function exposed either through their manifest,
+or through their implementation of <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+</div>
+<div class="paragraph">
+<p>If the <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> function is discovered through the
+manifest, <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> will be called before
+<code>xrNegotiateLoaderRuntimeInterface</code> or <code>xrNegotiateLoaderApiLayerInterface</code>
+has been called on the runtime or layer respectively.</p>
 </div>
 <div class="paragraph">
 <p><strong>New Object Types</strong></p>
@@ -24066,6 +24083,17 @@ defined by other platform- or implementation-specific extensions.</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>Revision 2, 2023-05-08 (Robert Blenkinsoppp)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Explicitly state that the call to <a href="#xrInitializeLoaderKHR">xrInitializeLoaderKHR</a> should be
+passed to the runtime and enabled API layers.</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Revision 1, 2020-05-07 (Cass Everitt)</p>
 <div class="ulist">
@@ -30817,7 +30845,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 31)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 32)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31788,7 +31816,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>

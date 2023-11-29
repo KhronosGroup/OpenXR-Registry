@@ -832,7 +832,9 @@ structure containing information about how to create the anchor.</p>
 <p>Creates an <a href="XrSpatialAnchorMSFT.html">XrSpatialAnchorMSFT</a> handle representing a spatial anchor
 that will track a fixed location in the physical world over time.
 That real-world location is specified by the position and orientation of the
-specified <code>pose</code> within <code>space</code> at <code>time</code>.</p>
+specified <a href="XrSpatialAnchorCreateInfoMSFT.html">XrSpatialAnchorCreateInfoMSFT</a>::<code>pose</code> within
+<a href="XrSpatialAnchorCreateInfoMSFT.html">XrSpatialAnchorCreateInfoMSFT</a>::<code>space</code> at
+<a href="XrSpatialAnchorCreateInfoMSFT.html">XrSpatialAnchorCreateInfoMSFT</a>::<code>time</code>.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> avoid long blocking operations such as networking or disk
@@ -844,15 +846,17 @@ For example, the corresponding anchor space <strong class="purple">may</strong> 
 or its location <strong class="purple">may</strong> not be successfully saved in anchor store.</p>
 </div>
 <div class="paragraph">
-<p>If <code>space</code> cannot be located relative to the environment at the moment
-of the call to <a href="xrCreateSpatialAnchorMSFT.html">xrCreateSpatialAnchorMSFT</a>, the runtime <strong class="purple">must</strong> return
+<p>If <a href="XrSpatialAnchorCreateInfoMSFT.html">XrSpatialAnchorCreateInfoMSFT</a>::<code>space</code> cannot be located
+relative to the environment at the moment of the call to
+<a href="xrCreateSpatialAnchorMSFT.html">xrCreateSpatialAnchorMSFT</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_CREATE_SPATIAL_ANCHOR_FAILED_MSFT</code>.</p>
 </div>
 <div class="paragraph">
 <p>After the anchor is created, the runtime <strong class="purple">should</strong> then adjust its position
 and orientation over time relative to other spaces so as to maintain maximum
 alignment to its original real-world location, even if that changes the
-anchor&#8217;s relationship to the original <code>space</code> used to initialize it.</p>
+anchor&#8217;s relationship to the original
+<a href="XrSpatialAnchorCreateInfoMSFT.html">XrSpatialAnchorCreateInfoMSFT</a>::<code>space</code> used to initialize it.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -972,7 +976,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

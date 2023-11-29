@@ -835,18 +835,21 @@ of hand mesh data.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The application <strong class="purple">should</strong> preallocate the index buffer and vertex buffer in
-<a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> using the <code>maxHandMeshIndexCount</code> and
-<code>maxHandMeshVertexCount</code> from the
-<a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a> returned from the
+<a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> using the
+<a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a>::<code>maxHandMeshIndexCount</code>
+and
+<a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a>::<code>maxHandMeshVertexCount</code>
+from the <a href="XrSystemHandTrackingMeshPropertiesMSFT.html">XrSystemHandTrackingMeshPropertiesMSFT</a> returned from the
 <a href="xrGetSystemProperties.html">xrGetSystemProperties</a> function.</p>
 </div>
 <div class="paragraph">
 <p>The application <strong class="purple">should</strong> preallocate the <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> structure and
 reuse it for each frame so as to reduce the copies of data when underlying
 tracking data is not changed.
-The application should use <code>indexBufferChanged</code> and
-<code>vertexBufferChanged</code> in <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a> to detect changes and
-avoid unnecessary data processing when there is no changes.</p>
+The application should use <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>::<code>indexBufferChanged</code>
+and <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>::<code>vertexBufferChanged</code> in <a href="XrHandMeshMSFT.html">XrHandMeshMSFT</a>
+to detect changes and avoid unnecessary data processing when there is no
+changes.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -963,7 +966,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

@@ -787,8 +787,10 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <p>The application <strong class="purple">can</strong> use the
 <a href="xrCreateSpatialAnchorFromPersistedNameMSFT.html">xrCreateSpatialAnchorFromPersistedNameMSFT</a> function to create a
 <a href="XrSpatialAnchorMSFT.html">XrSpatialAnchorMSFT</a> from the spatial anchor store.
-If the <code>spatialAnchorName</code> provided does not correspond to a currently
-stored anchor (i.e. the list of spatial anchor names returned from
+If the
+<a href="XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT.html">XrSpatialAnchorFromPersistedAnchorCreateInfoMSFT</a>::<code>spatialAnchorPersistenceName</code>
+provided does not correspond to a currently stored anchor (i.e. the list of
+spatial anchor names returned from
 <a href="xrEnumeratePersistedSpatialAnchorNamesMSFT.html">xrEnumeratePersistedSpatialAnchorNamesMSFT</a>), the function <strong class="purple">must</strong> return
 <code>XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT</code>.</p>
 </div>
@@ -950,7 +952,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

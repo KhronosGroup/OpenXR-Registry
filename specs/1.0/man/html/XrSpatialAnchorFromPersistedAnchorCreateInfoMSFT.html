@@ -840,12 +840,13 @@ spatial anchor persisted in the spatial anchor store.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>name</code> is a character array of maximum size
+<p>The <code>spatialAnchorPersistenceName</code> is a character array of maximum size
 <code>XR_MAX_SPATIAL_ANCHOR_NAME_SIZE_MSFT</code>, which <strong class="purple">must</strong> include a null
 terminator and <strong class="purple">must</strong> not be empty (i.e. the first element is the null
 terminator).
-If an empty <code>name</code> value is passed to any function as a parameter, that
-function <strong class="purple">must</strong> return <code>XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT</code>.</p>
+If an empty <code>spatialAnchorPersistenceName</code> value is passed to any
+function as a parameter, that function <strong class="purple">must</strong> return
+<code>XR_ERROR_SPATIAL_ANCHOR_NAME_INVALID_MSFT</code>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -909,7 +910,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>

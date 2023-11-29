@@ -786,9 +786,11 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <div class="paragraph">
 <p>The application <strong class="purple">can</strong> use the <a href="xrPersistSpatialAnchorMSFT.html">xrPersistSpatialAnchorMSFT</a> function to
 persist a spatial anchor in the spatial anchor store for this application.
-The given <code>spatialAnchorName</code> will be the string to retrieve the spatial
-anchor from the Spatial Anchor store or subsequently remove the record of
-this spatial anchor from the store.
+The given
+<a href="XrSpatialAnchorPersistenceInfoMSFT.html">XrSpatialAnchorPersistenceInfoMSFT</a>::<code>spatialAnchorPersistenceName</code>
+will be the string to retrieve the spatial anchor from the Spatial Anchor
+store or subsequently remove the record of this spatial anchor from the
+store.
 This name will uniquely identify the spatial anchor for the current
 application.
 If there is already a spatial anchor of the same name persisted in the
@@ -818,7 +820,8 @@ XrResult xrPersistSpatialAnchorMSFT(
 <ul>
 <li>
 <p><code>spatialAnchorStore</code> is the <a href="XrSpatialAnchorStoreConnectionMSFT.html">XrSpatialAnchorStoreConnectionMSFT</a>
-with which to persist the <code>spatialAnchor</code>.</p>
+with which to persist the
+<a href="XrSpatialAnchorPersistenceInfoMSFT.html">XrSpatialAnchorPersistenceInfoMSFT</a>::<code>spatialAnchor</code>.</p>
 </li>
 <li>
 <p><code>spatialAnchorPersistenceInfo</code> is a pointer to
@@ -940,7 +943,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.31<br>
+Version 1.0.32<br>
 </div>
 </div>
 </body>
