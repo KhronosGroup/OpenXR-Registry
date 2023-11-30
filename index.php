@@ -21,7 +21,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> <a href="#loader"> <b>OpenXR Loader Design Document</b> </a> </li>
     <li> <a href="#styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </a> </li>
     <li> <a href="#extprocess"> <b>OpenXR™ Working Group Extension Processes</b> </a> </li>
-    <li> <a href="#changelogs"> <b>Changelogs for the OpenXR API Specifications and SDK</b> </a> </li>
+    <li> <a href="#changelogs"> <b>Changelogs for the OpenXR API Specifications, SDK, and CTS</b> </a> </li>
     <li> <a href="#repos"> <b>OpenXR GitHub Repositories</b> </a>
         <ul>
         <li> <a href="#repo-docs"> <b>API and Extension Specification Repository</b> </a>
@@ -119,7 +119,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     this document as well as the Style Guide.</p>
 
 
-<h2 id="changelogs"> <b>Changelogs for the OpenXR API Specifications and SDK</b> </h2>
+<h2 id="changelogs"> <b>Changelogs for the OpenXR API Specifications, SDK, and CTS</b> </h2>
 <p> Changelogs are maintained for the Specification, SDK, and Conformance Test
     Suite (CTS). Some changelog items are shared between the Specification and SDK
     changelog documents, where applicable. Each <a href="#repos">repository</a>
@@ -192,6 +192,11 @@ include_once("../../assets/static_pages/khr_page_top.php");
          header generation, loader and API layer source generation,
          and loader documentation generation. Changes to the XML here
          affect all these generated files and libraries.</li>
+
+    <li> the <a href="#repo-cts">OpenXR-CTS</a> repository, for
+         header generation, loader (for CTS use) and API layer source
+         generation, and conformance source generation. Changes to the XML
+         here affect all these generated files and libraries.</li>
 </ul>
 
 <h3 id="repo-loader"> <b>Loader and Validation Layers Repositories</b> </h3>
@@ -206,7 +211,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <ul>
     <li> all OpenXR header files (generated and static) </li>
     <li> source code and CMake build system for the
-         OpenXR loader that is used for Linux and Windows </li>
+         OpenXR loader that is used for Linux, Windows, and Android </li>
     <li> all generated source files required to build the loader </li>
     <li> rendered HTML of the loader design doc (in <code>doc/loader/</code>) </li>
     <li> a copy of the XML registry, for optional custom code generation usage </li> </ul>
@@ -237,7 +242,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> the static OpenXR header file <code>openxr_platform_defines.h</code> </li>
     <li> source code and CMake build system for
         <ul>
-        <li> the OpenXR loader that is used for Linux and Windows </li>
+        <li> the OpenXR loader that is used for Linux, Windows, and Android </li>
         <li> two "beta" API layers, <code>XR_LUNARG_core_validation</code>
                 and <code>XR_LUNARG_api_dump</code> </li>
         <li> the <code>hello_xr</code> sample application </li>
@@ -265,7 +270,10 @@ include_once("../../assets/static_pages/khr_page_top.php");
     repository contains the source code for the OpenXR Conformance Tests.
     Note that while the CTS source code is freely available, you must be a
     Khronos Adopter and pay the Adopter Fee in order to use the OpenXR
-    trademark for your implementation. </p>
+    trademark for your implementation. See the
+    <a href="https://www.khronos.org/conformance/adopters">Khronos API Adopter Program</a>
+    page, as well as the formal <a href="https://www.khronos.org/files/conformance_procedures.pdf">
+    Conformance Process Document</a>, for more information. </p>
 
 
 <h3 id="repo-other"> <b>Other Repositories</b> </h3>
