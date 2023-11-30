@@ -128,10 +128,10 @@ include_once("../../assets/static_pages/khr_page_top.php");
 
 <ul>
 <li>
-    <a href="https://github.com/KhronosGroup/OpenXR-Docs/blob/master/CHANGELOG.Docs.md">Changelog for OpenXR Specifications</a>
+    <a href="https://github.com/KhronosGroup/OpenXR-Docs/blob/main/CHANGELOG.Docs.md">Changelog for OpenXR Specifications</a>
     - in <a href="#repo-docs">OpenXR-Docs</a> and OpenXR-Registry repos</li>
 <li>
-    <a href="https://github.com/KhronosGroup/OpenXR-SDK/blob/master/CHANGELOG.SDK.md">Changelog for OpenXR SDK</a>
+    <a href="https://github.com/KhronosGroup/OpenXR-SDK-Source/blob/main/CHANGELOG.SDK.md">Changelog for OpenXR SDK</a>
     - in <a href="#repo-sdk">OpenXR-SDK</a> and <a href="#repo-sdk-source">OpenXR-SDK-Source</a> repos</li>
 <li>
     <a href="https://github.com/KhronosGroup/OpenXR-CTS/blob/approved/CHANGELOG.CTS.md">Changelog for OpenXR CTS</a>
