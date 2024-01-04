@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<meta name="author" content="Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector">
+<meta name="author" content="Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector">
 <title>OpenXR™ Documentation and Extensions: Procedures and Conventions</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,9 +442,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header" style="max-width: 100;">
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
-<span id="author" class="author">Ryan Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.32</span>
-<br><span id="revremark">from git ref release-1.0.32</span>
+<span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
+<span id="revnumber">version 1.0.33</span>
+<br><span id="revremark">from git ref</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -615,7 +615,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p>Copyright 2014-2023 The Khronos Group Inc.</p>
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -859,7 +859,7 @@ was.</p>
 <div class="title">Example: Value</div>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 32)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 33)</code></pre>
 </div>
 </div>
 </div>
@@ -2055,7 +2055,7 @@ requesting an extension number reservation should look like:</p>
           &lt;/require&gt;
       &lt;/extension&gt;
 +     &lt;extension name="XR_KHR_extension_10" number="10"
-+                contact="Ryan Pavlik @rpavlik" supported="disabled"&gt;
++                contact="Rylie Pavlik @rpavlik" supported="disabled"&gt;
 +        &lt;require&gt;
 +           &lt;enum value="1" name="XR_KHR_extension_10_SPEC_VERSION"/&gt;
 +           &lt;enum value="&amp;quot;XR_KHR_extension_10&amp;quot;"
@@ -2310,11 +2310,11 @@ enum in the XML registry.</p>
 <div class="content">
 <pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">*Version History*
 
-* Revision 1, 2019-07-12 (Ryan Pavlik)
+* Revision 1, 2019-07-12 (Rylie Pavlik, Collabora, Ltd.)
 ** A brief revision description goes here.
    Mark up entity names with back-ticks instead of the normal macros
    in the version history to prevent errors in case future revisions rename things.
-* Revision 2, 2019-07-12 (Ryan Pavlik)
+* Revision 2, 2019-07-12 (Rylie Pavlik, Collabora, Ltd.)
 ** ... etc. ...</code></pre>
 </div>
 </div>
@@ -5803,7 +5803,7 @@ equivalent.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.32<br>
+Version 1.0.33<br>
 </div>
 </div>
 </body>

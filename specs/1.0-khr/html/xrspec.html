@@ -444,8 +444,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>The OpenXR&#8482; Specification</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.0.32</span>
-<br><span id="revremark">from git ref release-1.0.32</span>
+<span id="revnumber">version 1.0.33</span>
+<br><span id="revremark">from git ref</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -492,6 +492,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#exported-functions">3.1. Exported Functions</a></li>
 <li><a href="#function-pointers">3.2. Function Pointers</a></li>
+<li><a href="#runtime-interface-negotiation">3.3. Runtime Interface Negotiation</a></li>
+<li><a href="#api-layer-interface-negotiation">3.4. API Layer Interface Negotiation</a></li>
 </ul>
 </li>
 <li><a href="#instance">4. Instance</a>
@@ -627,7 +629,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="preamble"><a class="anchor" href="#preamble"></a>Preamble</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2023, The Khronos Group Inc.</p>
+<p>Copyright (c) 2017-2024, The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This Specification is protected by copyright laws and contains material
@@ -4201,6 +4203,1291 @@ first parameter) that is <code>instance</code> or a child of <code>instance</cod
 <div class="paragraph">
 <p><a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a> is a generic function pointer type returned by
 queries, specifically those to <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="PFN_xrGetInstanceProcAddr" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef XrResult (XRAPI_PTR *PFN_xrGetInstanceProcAddr)(XrInstance instance, const char* name, PFN_xrVoidFunction* function);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#PFN_xrGetInstanceProcAddr">PFN_xrGetInstanceProcAddr</a> is a function pointer type for
+<a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="PFN_xrCreateApiLayerInstance" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrApiLayerCreateInfo XrApiLayerCreateInfo;
+typedef XrResult (XRAPI_PTR *PFN_xrCreateApiLayerInstance)(
+            const XrInstanceCreateInfo* info,
+            const XrApiLayerCreateInfo* apiLayerInfo,
+            XrInstance* instance);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#PFN_xrCreateApiLayerInstance">PFN_xrCreateApiLayerInstance</a> is a function pointer type for
+<a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a>.</p>
+</div>
+<div class="paragraph">
+<p>Note: This function pointer type is only used by an OpenXR loader library,
+and never by an application.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="runtime-interface-negotiation"><a class="anchor" href="#runtime-interface-negotiation"></a>3.3. Runtime Interface Negotiation</h3>
+<div class="paragraph">
+<p>In order to negotiate the runtime interface version with the loader, the
+runtime <strong class="purple">must</strong> implement the <a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a>
+function.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>The API described in this section is solely intended for use between an
+OpenXR loader and a runtime (and/or an API layer, where noted).
+Applications use the appropriate loader library for their platform to load
+the active runtime and configured API layers, rather than making these calls
+directly.
+This section is included in the specification to ensure consistency between
+runtimes in their interactions with the loader.</p>
+</div>
+<div class="paragraph">
+<p>Be advised that as this is not application-facing API, some of the typical
+OpenXR API conventions are not followed in this section.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a> function is defined as:</p>
+</div>
+<div id="xrNegotiateLoaderRuntimeInterface" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+XrResult xrNegotiateLoaderRuntimeInterface(
+    const XrNegotiateLoaderInfo*                loaderInfo,
+    XrNegotiateRuntimeRequest*                  runtimeRequest);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loaderInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>
+structure.</p>
+</li>
+<li>
+<p><code>runtimeRequest</code> <strong class="purple">must</strong> be a valid pointer to an
+<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> structure, with minimal initialization, as
+subsequently described, to be fully populated by the called runtime.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a> <strong class="purple">should</strong> be directly exported by a
+runtime so that using e.g. <code>GetProcAddress</code> on Windows or <code>dlsym</code> on POSIX
+platforms returns a valid function pointer to it.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_INITIALIZATION_FAILED</code> if any of the
+following conditions on <code>loaderInfo</code> are true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structType</code> is not
+<code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code></p>
+</li>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structVersion</code> is not
+<a href="#XR_LOADER_INFO_STRUCT_VERSION">XR_LOADER_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structSize</code> is not
+<code>sizeof(<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> also return <code>XR_ERROR_INITIALIZATION_FAILED</code> if any of
+the following conditions on <code>runtimeRequest</code> are true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>structType</code> is not
+<code>XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST</code></p>
+</li>
+<li>
+<p><a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>structVersion</code> is not
+<a href="#XR_RUNTIME_INFO_STRUCT_VERSION">XR_RUNTIME_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>structSize</code> is not
+<code>sizeof(<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> determine if it supports the loader&#8217;s request.
+The runtime does not support the loader&#8217;s request if either of the following
+is true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the runtime does not support the interface versions supported by the
+loader as specified by the parameters
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code></p>
+</li>
+<li>
+<p>the runtime does not support the API versions supported by the loader as
+specified by the parameters
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_INITIALIZATION_FAILED</code> if it does not
+support the loader&#8217;s request.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> set the
+<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>runtimeInterfaceVersion</code> with the
+runtime interface version it desires to support.
+The <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>runtimeInterfaceVersion</code> set <strong class="purple">must</strong>
+be between <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> set the
+<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>runtimeApiVersion</code> with the API
+version of OpenXR it will execute under.
+The <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>runtimeApiVersion</code> set <strong class="purple">must</strong> be
+between <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> set the
+<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>getInstanceProcAddr</code> with a valid
+function pointer for the loader to use to query function pointers to the
+remaining OpenXR functions supported by the runtime.</p>
+</div>
+<div class="paragraph">
+<p>If the function succeeds, the runtime <strong class="purple">must</strong> return <code>XR_SUCCESS</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrNegotiateLoaderRuntimeInterface-extension-notenabled" href="#VUID-xrNegotiateLoaderRuntimeInterface-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a></p>
+</li>
+<li>
+<p><a id="VUID-xrNegotiateLoaderRuntimeInterface-loaderInfo-parameter" href="#VUID-xrNegotiateLoaderRuntimeInterface-loaderInfo-parameter"></a> <code>loaderInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrNegotiateLoaderRuntimeInterface-runtimeRequest-parameter" href="#VUID-xrNegotiateLoaderRuntimeInterface-runtimeRequest-parameter"></a> <code>runtimeRequest</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_INITIALIZATION_FAILED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure is used to pass information about
+the loader to a runtime or an API layer.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure is defined as:</p>
+</div>
+<div id="XrNegotiateLoaderInfo" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrNegotiateLoaderInfo {
+    XrLoaderInterfaceStructs    structType;
+    uint32_t                    structVersion;
+    size_t                      structSize;
+    uint32_t                    minInterfaceVersion;
+    uint32_t                    maxInterfaceVersion;
+    XrVersion                   minApiVersion;
+    XrVersion                   maxApiVersion;
+} XrNegotiateLoaderInfo;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>structType</code> <strong class="purple">must</strong> be <code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code>.</p>
+</li>
+<li>
+<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure.
+The value <a href="#XR_LOADER_INFO_STRUCT_VERSION">XR_LOADER_INFO_STRUCT_VERSION</a> describes the current latest
+version of this structure.</p>
+</li>
+<li>
+<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of the
+structure (i.e. <code>sizeof(<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>)</code>).</p>
+</li>
+<li>
+<p><code>minInterfaceVersion</code> is the minimum runtime or API layer interface
+version supported by the loader.</p>
+</li>
+<li>
+<p><code>maxInterfaceVersion</code> is the maximum valid version of the runtime or
+API layer interface version supported by the loader, currently defined
+using <a href="#XR_CURRENT_LOADER_RUNTIME_VERSION">XR_CURRENT_LOADER_RUNTIME_VERSION</a> or
+<a href="#XR_CURRENT_LOADER_API_LAYER_VERSION">XR_CURRENT_LOADER_API_LAYER_VERSION</a>.</p>
+</li>
+<li>
+<p><code>minApiVersion</code> is the minimum supported version of the OpenXR API by
+the loader as formatted by <a href="#XR_MAKE_VERSION">XR_MAKE_VERSION</a>.
+Patch is ignored.</p>
+</li>
+<li>
+<p><code>maxApiVersion</code> is the maximum supported version of the OpenXR API by
+the loader as formatted by <a href="#XR_MAKE_VERSION">XR_MAKE_VERSION</a>.
+Patch is ignored.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This structure is an input from the loader to the runtime in an
+<a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a> call, as well as from the loader to
+an API layer in an <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> call.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrNegotiateLoaderInfo-extension-notenabled" href="#VUID-XrNegotiateLoaderInfo-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a></p>
+</li>
+<li>
+<p><a id="VUID-XrNegotiateLoaderInfo-structType-parameter" href="#VUID-XrNegotiateLoaderInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> enumeration is defined as:</p>
+</div>
+<div id="XrLoaderInterfaceStructs" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef enum XrLoaderInterfaceStructs {
+    XR_LOADER_INTERFACE_STRUCT_UNINTIALIZED = 0,
+    XR_LOADER_INTERFACE_STRUCT_LOADER_INFO = 1,
+    XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST = 2,
+    XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST = 3,
+    XR_LOADER_INTERFACE_STRUCT_API_LAYER_CREATE_INFO = 4,
+    XR_LOADER_INTERFACE_STRUCT_API_LAYER_NEXT_INFO = 5,
+    XR_LOADER_INTERFACE_STRUCTS_MAX_ENUM = 0x7FFFFFFF
+} XrLoaderInterfaceStructs;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This enumeration serves a similar purpose in the runtime and API layer
+interface negotiation (loader) API as <a href="#XrStructureType">XrStructureType</a> serves in the
+application-facing API.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_LOADER_INFO_STRUCT_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_LOADER_INFO_STRUCT_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_LOADER_INFO_STRUCT_VERSION">XR_LOADER_INFO_STRUCT_VERSION</a> is the current version of the
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure.
+It is used to populate the <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structVersion</code>
+field.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_CURRENT_LOADER_RUNTIME_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_CURRENT_LOADER_RUNTIME_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_CURRENT_LOADER_RUNTIME_VERSION">XR_CURRENT_LOADER_RUNTIME_VERSION</a> is the current version of the
+overall OpenXR Loader Runtime interface.
+It is used to populate maximum and minimum interface version fields in
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> when loading a runtime.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_CURRENT_LOADER_API_LAYER_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_CURRENT_LOADER_API_LAYER_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_CURRENT_LOADER_API_LAYER_VERSION">XR_CURRENT_LOADER_API_LAYER_VERSION</a> is the current version of the
+overall OpenXR Loader API Layer interface.
+It is used to populate maximum and minimum interface version fields in
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> when loading an API layer.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> structure is used to pass information
+about the runtime back to the loader.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> structure is defined as:</p>
+</div>
+<div id="XrNegotiateRuntimeRequest" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrNegotiateRuntimeRequest {
+    XrLoaderInterfaceStructs     structType;
+    uint32_t                     structVersion;
+    size_t                       structSize;
+    uint32_t                     runtimeInterfaceVersion;
+    XrVersion                    runtimeApiVersion;
+    PFN_xrGetInstanceProcAddr    getInstanceProcAddr;
+} XrNegotiateRuntimeRequest;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>structType</code> <strong class="purple">must</strong> be
+<code>XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST</code>.</p>
+</li>
+<li>
+<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure.
+The value <a href="#XR_RUNTIME_INFO_STRUCT_VERSION">XR_RUNTIME_INFO_STRUCT_VERSION</a> is used to describe the
+current version of this structure.</p>
+</li>
+<li>
+<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of the
+structure (i.e. <code>sizeof(<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>)</code>)</p>
+</li>
+<li>
+<p><code>runtimeInterfaceVersion</code> is the version of the runtime interface
+version being requested by the runtime.
+Must: not be outside of the bounds of the
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code> values (inclusive).</p>
+</li>
+<li>
+<p><code>runtimeApiVersion</code> is the version of the OpenXR API supported by this
+runtime as formatted by <a href="#XR_MAKE_VERSION">XR_MAKE_VERSION</a>.
+Patch is ignored.</p>
+</li>
+<li>
+<p><code>getInstanceProcAddr</code> is a pointer to the runtime&#8217;s
+<a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> implementation that will be used by the loader
+to populate a dispatch table of OpenXR functions supported by the runtime.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This is an output structure from runtime negotiation.
+The loader <strong class="purple">must</strong> populate <code>structType</code>, <code>structVersion</code>, and
+<code>structSize</code> to ensure correct interpretation by the runtime, while the
+runtime populates the rest of the fields in a successful call to
+<a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrNegotiateRuntimeRequest-extension-notenabled" href="#VUID-XrNegotiateRuntimeRequest-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a></p>
+</li>
+<li>
+<p><a id="VUID-XrNegotiateRuntimeRequest-structType-parameter" href="#VUID-XrNegotiateRuntimeRequest-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrNegotiateRuntimeRequest-getInstanceProcAddr-parameter" href="#VUID-XrNegotiateRuntimeRequest-getInstanceProcAddr-parameter"></a> <code>getInstanceProcAddr</code> <strong class="purple">must</strong> be a valid <a href="#PFN_xrGetInstanceProcAddr">PFN_xrGetInstanceProcAddr</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_RUNTIME_INFO_STRUCT_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_RUNTIME_INFO_STRUCT_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_RUNTIME_INFO_STRUCT_VERSION">XR_RUNTIME_INFO_STRUCT_VERSION</a> is the current version of the
+<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a> structure.
+It is used to populate the
+<a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a>::<code>structVersion</code> field.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api-layer-interface-negotiation"><a class="anchor" href="#api-layer-interface-negotiation"></a>3.4. API Layer Interface Negotiation</h3>
+<div class="paragraph">
+<p>In order to negotiate the API layer interface version with the loader, an
+OpenXR API layer <strong class="purple">must</strong> implement the
+<a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> function.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>The API described in this section is solely intended for use between an
+OpenXR loader and an API layer.
+Applications use the appropriate loader library for their platform to load
+the active runtime and configured API layers, rather than making these calls
+directly.
+This section is included in the specification to ensure consistency between
+runtimes in their interactions with the loader.</p>
+</div>
+<div class="paragraph">
+<p>Be advised that as this is not application-facing API, some of the typical
+OpenXR API conventions are not followed in this section.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> function is defined as:</p>
+</div>
+<div id="xrNegotiateLoaderApiLayerInterface" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+XrResult xrNegotiateLoaderApiLayerInterface(
+    const XrNegotiateLoaderInfo*                loaderInfo,
+    const char*                                 layerName,
+    XrNegotiateApiLayerRequest*                 apiLayerRequest);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loaderInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>
+structure.</p>
+</li>
+<li>
+<p><code>layerName</code> <strong class="purple">must</strong> be NULL or a valid C-style NULL-terminated string
+listing the name of an API layer which the loader is attempting to
+negotiate with.</p>
+</li>
+<li>
+<p><code>apiLayerRequest</code> <strong class="purple">must</strong> be a valid pointer to an
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> structure, with minimal initialization,
+as subsequently described, to be fully populated by the called API layer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> <strong class="purple">should</strong> be directly exported by an
+API layer so that using e.g. <code>GetProcAddress</code> on Windows or <code>dlsym</code> on POSIX
+platforms returns a valid function pointer to it.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> return <code>XR_ERROR_INITIALIZATION_FAILED</code> if any of
+the following conditions on <code>loaderInfo</code> are true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structType</code> is not
+<code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code></p>
+</li>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structVersion</code> is not
+<a href="#XR_LOADER_INFO_STRUCT_VERSION">XR_LOADER_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>structSize</code> is not
+<code>sizeof(<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> also return <code>XR_ERROR_INITIALIZATION_FAILED</code> if any
+of the following conditions on <code>apiLayerRequest</code> are true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>structType</code> is not
+<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST</code></p>
+</li>
+<li>
+<p><a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>structVersion</code> is not
+<a href="#XR_API_LAYER_INFO_STRUCT_VERSION">XR_API_LAYER_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>structSize</code> is not
+<code>sizeof(<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>)</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> determine if it supports the loader&#8217;s request.
+The API layer does not support the loader&#8217;s request if either of the
+following is true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the API layer does not support the interface versions supported by the
+loader as specified by the parameters
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code></p>
+</li>
+<li>
+<p>the API layer does not support the API versions supported by the loader as
+specified by the parameters
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> return <code>XR_ERROR_INITIALIZATION_FAILED</code> if it does
+not support the loader&#8217;s request.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> set the
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>layerInterfaceVersion</code> with the API
+layer interface version it desires to support.
+The <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>layerInterfaceVersion</code> set <strong class="purple">must</strong>
+be between <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> set the
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>layerApiVersion</code> with the API version
+of OpenXR it will execute under.
+The <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>layerApiVersion</code> set <strong class="purple">must</strong> be
+between <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> set the
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>getInstanceProcAddr</code> with a valid
+function pointer for the loader to use to query function pointers to the
+remaining OpenXR functions supported by the API layer.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> set the
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>createApiLayerInstance</code> with a valid
+function pointer to an implementation of <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> for
+the loader to use to create the instance through the API layer call chain.</p>
+</div>
+<div class="paragraph">
+<p>If the function succeeds, the API layer <strong class="purple">must</strong> return <code>XR_SUCCESS</code>.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> not call into another API layer from its implementation
+of the <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a> function.
+The loader <strong class="purple">must</strong> handle all API layer negotiations with each API layer
+individually.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrNegotiateLoaderApiLayerInterface-extension-notenabled" href="#VUID-xrNegotiateLoaderApiLayerInterface-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a></p>
+</li>
+<li>
+<p><a id="VUID-xrNegotiateLoaderApiLayerInterface-loaderInfo-parameter" href="#VUID-xrNegotiateLoaderApiLayerInterface-loaderInfo-parameter"></a> <code>loaderInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrNegotiateLoaderApiLayerInterface-layerName-parameter" href="#VUID-xrNegotiateLoaderApiLayerInterface-layerName-parameter"></a> <code>layerName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string</p>
+</li>
+<li>
+<p><a id="VUID-xrNegotiateLoaderApiLayerInterface-apiLayerRequest-parameter" href="#VUID-xrNegotiateLoaderApiLayerInterface-apiLayerRequest-parameter"></a> <code>apiLayerRequest</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_INITIALIZATION_FAILED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> structure is used to pass information
+about the API layer back to the loader.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> structure is defined as:</p>
+</div>
+<div id="XrNegotiateApiLayerRequest" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrNegotiateApiLayerRequest {
+    XrLoaderInterfaceStructs        structType;
+    uint32_t                        structVersion;
+    size_t                          structSize;
+    uint32_t                        layerInterfaceVersion;
+    XrVersion                       layerApiVersion;
+    PFN_xrGetInstanceProcAddr       getInstanceProcAddr;
+    PFN_xrCreateApiLayerInstance    createApiLayerInstance;
+} XrNegotiateApiLayerRequest;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>structType</code> <strong class="purple">must</strong> be
+<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST</code>.</p>
+</li>
+<li>
+<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure.
+The value <a href="#XR_API_LAYER_INFO_STRUCT_VERSION">XR_API_LAYER_INFO_STRUCT_VERSION</a> is used to describe the
+current latest version of this structure.</p>
+</li>
+<li>
+<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of the
+structure (i.e. <code>sizeof(<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>)</code>).</p>
+</li>
+<li>
+<p><code>layerInterfaceVersion</code> is the version of the API layer interface
+version being requested by the API layer.
+Should not be outside of the bounds of the
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
+<a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code> values (inclusive).</p>
+</li>
+<li>
+<p><code>layerApiVersion</code> is the version of the OpenXR API supported by this
+API layer as formatted by <a href="#XR_MAKE_VERSION">XR_MAKE_VERSION</a>.
+Patch is ignored.</p>
+</li>
+<li>
+<p><code>getInstanceProcAddr</code> is a pointer to the API layer&#8217;s
+<a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> implementation that will be used by the loader
+to populate a dispatch table of OpenXR functions supported by the API
+layer.</p>
+</li>
+<li>
+<p><code>createApiLayerInstance</code> is a pointer to the API layer&#8217;s
+<a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> implementation that will be used by the
+loader during a call to <a href="#xrCreateInstance">xrCreateInstance</a> when an API layer is
+active.
+This is used because API layers need additional information at
+<a href="#xrCreateInstance">xrCreateInstance</a> time.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This is an output structure from API layer negotiation.
+The loader <strong class="purple">must</strong> populate <code>structType</code>, <code>structVersion</code>, and
+<code>structSize</code> before calling to ensure correct interpretation by the API
+layer, while the API layer populates the rest of the fields in a successful
+call to <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrNegotiateApiLayerRequest-extension-notenabled" href="#VUID-XrNegotiateApiLayerRequest-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a></p>
+</li>
+<li>
+<p><a id="VUID-XrNegotiateApiLayerRequest-structType-parameter" href="#VUID-XrNegotiateApiLayerRequest-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrNegotiateApiLayerRequest-getInstanceProcAddr-parameter" href="#VUID-XrNegotiateApiLayerRequest-getInstanceProcAddr-parameter"></a> <code>getInstanceProcAddr</code> <strong class="purple">must</strong> be a valid <a href="#PFN_xrGetInstanceProcAddr">PFN_xrGetInstanceProcAddr</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrNegotiateApiLayerRequest-createApiLayerInstance-parameter" href="#VUID-XrNegotiateApiLayerRequest-createApiLayerInstance-parameter"></a> <code>createApiLayerInstance</code> <strong class="purple">must</strong> be a valid <a href="#PFN_xrCreateApiLayerInstance">PFN_xrCreateApiLayerInstance</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_API_LAYER_INFO_STRUCT_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_API_LAYER_INFO_STRUCT_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_API_LAYER_INFO_STRUCT_VERSION">XR_API_LAYER_INFO_STRUCT_VERSION</a> is the current version of the
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a> structure.
+It is used to populate the
+<a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a>::<code>structVersion</code> field.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> function is defined as:</p>
+</div>
+<div id="xrCreateApiLayerInstance" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+XrResult xrCreateApiLayerInstance(
+    const XrInstanceCreateInfo*                 info,
+    const XrApiLayerCreateInfo*                 layerInfo,
+    XrInstance*                                 instance);</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>info</code> is a pointer to the <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> information
+passed by the application into the outer <a href="#xrCreateInstance">xrCreateInstance</a> function.</p>
+</li>
+<li>
+<p><code>layerInfo</code> is a pointer to an <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure
+that contains special information required by a API layer during its
+create instance process.
+This is generated by the loader.</p>
+</li>
+<li>
+<p><code>instance</code> is a pointer to store the returned instance in, just as in
+the standard <a href="#xrCreateInstance">xrCreateInstance</a> function.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>An API layer&#8217;s implementation of the <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> function
+is invoked during the loader&#8217;s implementation of <a href="#xrCreateInstance">xrCreateInstance</a>, if
+the layer in question is enabled.</p>
+</div>
+<div class="paragraph">
+<p>An API layer needs additional information during <a href="#xrCreateInstance">xrCreateInstance</a>
+calls, so each API layer <strong class="purple">must</strong> implement the <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a>
+function, which is a special API layer function.</p>
+</div>
+<div class="paragraph">
+<p>An API layer <strong class="purple">must</strong> not implement <a href="#xrCreateInstance">xrCreateInstance</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> <strong class="purple">must</strong> be called by the loader during its
+implementation of the <a href="#xrCreateInstance">xrCreateInstance</a> function.</p>
+</div>
+<div class="paragraph">
+<p>The loader <strong class="purple">must</strong> call the first API layer&#8217;s <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a>
+function passing in the pointer to the created <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<code>nextInfo</code> <strong class="purple">must</strong> be a linked-list of
+<a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structures with information about each of the API
+layers that are to be enabled.
+Note that this does not operate like a <code>next</code> chain in the OpenXR
+application API, but instead describes the enabled API layers from outermost
+to innermost.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">may</strong> validate that it is getting the correct next information
+by checking that the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a>::<code>layerName</code> matches the
+expected value.</p>
+</div>
+<div class="paragraph">
+<p>The API layer <strong class="purple">must</strong> use the information in its <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> to
+call down the call chain to the next <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The API layer <strong class="purple">must</strong> copy the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure into its
+own structure.</p>
+</li>
+<li>
+<p>The API layer <strong class="purple">must</strong> then update its copy of the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>
+structure, setting
+<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<code>nextInfo</code> to
+point to the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> for the next API layer (e.g.
+<code>layerInfoCopy&#8594;nextInfo = layerInfo&#8594;nextInfo&#8594;next;</code>).</p>
+</li>
+<li>
+<p>The API layer <strong class="purple">must</strong> then use the pointer to its <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>
+structure (instead of the one that was passed in) when it makes a call to
+the <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> function.</p>
+</li>
+<li>
+<p>If the nested <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> call succeeds, the API layer
+<strong class="purple">may</strong> choose to setup its own dispatch table to the next API layer&#8217;s
+functions using the returned <a href="#XrInstance">XrInstance</a> and the next API layer&#8217;s
+<a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+</li>
+<li>
+<p>The API layer <strong class="purple">must</strong> return the <a href="#XrResult">XrResult</a> returned from the next API
+layer.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrCreateApiLayerInstance-extension-notenabled" href="#VUID-xrCreateApiLayerInstance-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a></p>
+</li>
+<li>
+<p><a id="VUID-xrCreateApiLayerInstance-info-parameter" href="#VUID-xrCreateApiLayerInstance-info-parameter"></a> <code>info</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateApiLayerInstance-layerInfo-parameter" href="#VUID-xrCreateApiLayerInstance-layerInfo-parameter"></a> <code>layerInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateApiLayerInstance-instance-parameter" href="#VUID-xrCreateApiLayerInstance-instance-parameter"></a> <code>instance</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrInstance">XrInstance</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_INITIALIZATION_FAILED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure contains special information
+required by a API layer during its create instance process.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure is defined as:</p>
+</div>
+<div id="XrApiLayerCreateInfo" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrApiLayerCreateInfo {
+    XrLoaderInterfaceStructs    structType;
+    uint32_t                    structVersion;
+    size_t                      structSize;
+    void*                       loaderInstance;
+    char                        settings_file_location[XR_API_LAYER_MAX_SETTINGS_PATH_SIZE];
+    XrApiLayerNextInfo*         nextInfo;
+} XrApiLayerCreateInfo;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>structType</code> <strong class="purple">must</strong> be
+<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_CREATE_INFO</code>.</p>
+</li>
+<li>
+<p><code>structVersion</code> is the version of the structure being supplied by the
+loader (i.e. <a href="#XR_API_LAYER_CREATE_INFO_STRUCT_VERSION">XR_API_LAYER_CREATE_INFO_STRUCT_VERSION</a>)</p>
+</li>
+<li>
+<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of the
+structure (i.e. <code>sizeof(<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>)</code>)</p>
+</li>
+<li>
+<p><code>loaderInstance</code> is deprecated and <strong class="purple">must</strong> be ignored.</p>
+</li>
+<li>
+<p><code>settings_file_location</code> is the location of any usable API layer
+settings file.
+The size of <code>settings_file_location</code> is given by
+<a href="#XR_API_LAYER_MAX_SETTINGS_PATH_SIZE">XR_API_LAYER_MAX_SETTINGS_PATH_SIZE</a>.
+This is currently unused.</p>
+</li>
+<li>
+<p><code>nextInfo</code> is a pointer to the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure
+which contains information to work with the next API layer in the chain.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrApiLayerCreateInfo-extension-notenabled" href="#VUID-XrApiLayerCreateInfo-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a></p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerCreateInfo-structType-parameter" href="#VUID-XrApiLayerCreateInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerCreateInfo-loaderInstance-parameter" href="#VUID-XrApiLayerCreateInfo-loaderInstance-parameter"></a> <code>loaderInstance</code> <strong class="purple">must</strong> be a pointer value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerCreateInfo-settings_file_location-parameter" href="#VUID-XrApiLayerCreateInfo-settings_file_location-parameter"></a> <code>settings_file_location</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to XR_API_LAYER_MAX_SETTINGS_PATH_SIZE</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerCreateInfo-nextInfo-parameter" href="#VUID-XrApiLayerCreateInfo-nextInfo-parameter"></a> <code>nextInfo</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_API_LAYER_CREATE_INFO_STRUCT_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_API_LAYER_CREATE_INFO_STRUCT_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_API_LAYER_CREATE_INFO_STRUCT_VERSION">XR_API_LAYER_CREATE_INFO_STRUCT_VERSION</a> is the current version of the
+<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a> structure.
+It is used to populate the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<code>structVersion</code>
+field.</p>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_API_LAYER_MAX_SETTINGS_PATH_SIZE" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_API_LAYER_MAX_SETTINGS_PATH_SIZE 512</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_API_LAYER_MAX_SETTINGS_PATH_SIZE">XR_API_LAYER_MAX_SETTINGS_PATH_SIZE</a> is the size of the
+<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<code>settings_file_location</code> field.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure is defined as:</p>
+</div>
+<div id="XrApiLayerNextInfo" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">typedef struct XrApiLayerNextInfo {
+    XrLoaderInterfaceStructs        structType;
+    uint32_t                        structVersion;
+    size_t                          structSize;
+    char                            layerName[XR_MAX_API_LAYER_NAME_SIZE];
+    PFN_xrGetInstanceProcAddr       nextGetInstanceProcAddr;
+    PFN_xrCreateApiLayerInstance    nextCreateApiLayerInstance;
+    struct XrApiLayerNextInfo*      next;
+} XrApiLayerNextInfo;</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>structType</code> <strong class="purple">must</strong> be
+<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_NEXT_INFO</code></p>
+</li>
+<li>
+<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure and the
+version being supplied by the loader (i.e.
+<a href="#XR_API_LAYER_NEXT_INFO_STRUCT_VERSION">XR_API_LAYER_NEXT_INFO_STRUCT_VERSION</a>).</p>
+</li>
+<li>
+<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of the
+structure (i.e. <code>sizeof(<a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a>)</code>)</p>
+</li>
+<li>
+<p><code>layerName</code> is the name of the intended next API layer, used to verify
+and debug the API layer chain.</p>
+</li>
+<li>
+<p><code>nextGetInstanceProcAddr</code> is a pointer to the next API layer&#8217;s
+<a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.
+This is intended for use in populating a dispatch table to the next
+implementations in the chain.</p>
+</li>
+<li>
+<p><code>nextCreateApiLayerInstance</code> is a pointer to the
+<a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a> function implementation in the next API
+layer.
+This is to be called <strong>after</strong> the API layer has done any localized
+creation, but <strong>before</strong> the API layer records any function addresses from
+the next API layer using <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+</li>
+<li>
+<p><code>next</code> is a pointer to the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> for the next API
+layer.
+If no API layer is after this, it will be <code>NULL</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-extension-notenabled" href="#VUID-XrApiLayerNextInfo-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a></p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-structType-parameter" href="#VUID-XrApiLayerNextInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-layerName-parameter" href="#VUID-XrApiLayerNextInfo-layerName-parameter"></a> <code>layerName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to <code>XR_MAX_API_LAYER_NAME_SIZE</code></p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-nextGetInstanceProcAddr-parameter" href="#VUID-XrApiLayerNextInfo-nextGetInstanceProcAddr-parameter"></a> <code>nextGetInstanceProcAddr</code> <strong class="purple">must</strong> be a valid <a href="#PFN_xrGetInstanceProcAddr">PFN_xrGetInstanceProcAddr</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-nextCreateApiLayerInstance-parameter" href="#VUID-XrApiLayerNextInfo-nextCreateApiLayerInstance-parameter"></a> <code>nextCreateApiLayerInstance</code> <strong class="purple">must</strong> be a valid <a href="#PFN_xrCreateApiLayerInstance">PFN_xrCreateApiLayerInstance</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-next-parameter" href="#VUID-XrApiLayerNextInfo-next-parameter"></a> <code>next</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div id="XR_API_LAYER_NEXT_INFO_STRUCT_VERSION" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_LOADER_VERSION_1_0
+#define XR_API_LAYER_NEXT_INFO_STRUCT_VERSION 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XR_API_LAYER_NEXT_INFO_STRUCT_VERSION">XR_API_LAYER_NEXT_INFO_STRUCT_VERSION</a> is the current version of the
+<a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> structure.
+It is used to populate the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a>::<code>structVersion</code>
+field.</p>
 </div>
 </div>
 </div>
@@ -20021,7 +21308,7 @@ Added issue for Surfaces.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>5</p>
+<p>6</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -20035,7 +21322,7 @@ Added issue for Surfaces.</p>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2019-07-17</p>
+<p>2023-12-04</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -20046,7 +21333,8 @@ Added issue for Surfaces.</p>
 <p>Cass Everitt, Oculus<br>
 Johannes van Waveren, Oculus<br>
 Martin Renschler, Qualcomm<br>
-Krzysztof Kosiński, Google</p>
+Krzysztof Kosiński, Google<br>
+Xiang Wei, Meta</p>
 </dd>
 </dl>
 </div>
@@ -20113,21 +21401,21 @@ typedef enum XrAndroidThreadTypeKHR {
 <ul>
 <li>
 <p><code>XR_ANDROID_THREAD_TYPE_APPLICATION_MAIN_KHR</code><br>
-hints the XR runtime that the thread is doing background CPU tasks</p>
-</li>
-<li>
-<p><code>XR_ANDROID_THREAD_TYPE_APPLICATION_WORKER_KHR</code><br>
 hints the XR runtime that the thread is doing time critical CPU tasks</p>
 </li>
 <li>
+<p><code>XR_ANDROID_THREAD_TYPE_APPLICATION_WORKER_KHR</code><br>
+hints the XR runtime that the thread is doing background CPU tasks</p>
+</li>
+<li>
 <p><code>XR_ANDROID_THREAD_TYPE_RENDERER_MAIN_KHR</code><br>
-hints the XR runtime that the thread is doing background graphics device
-tasks</p>
+hints the XR runtime that the thread is doing time critical graphics
+device tasks</p>
 </li>
 <li>
 <p><code>XR_ANDROID_THREAD_TYPE_RENDERER_WORKER_KHR</code><br>
-hints the XR runtime that the thread is doing time critical graphics
-device tasks</p>
+hints the XR runtime that the thread is doing background graphics device
+tasks</p>
 </li>
 </ul>
 </div>
@@ -20312,6 +21600,16 @@ xrSetApplicationThreadKHR &#8594; <a href="#xrSetAndroidApplicationThreadKHR">xr
 <ul>
 <li>
 <p>Clarify the type of thread identifier used by the extension.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 6, 2023-12-04 (Xiang Wei)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Revise/fix the hints of enum specification</p>
 </li>
 </ul>
 </div>
@@ -25189,7 +26487,7 @@ on calls to <a href="#xrCreateSession">xrCreateSession</a> if
 </div>
 </li>
 <li>
-<p>Revision 7, 2019-07-08 (Ryan Pavlk)</p>
+<p>Revision 7, 2019-07-08 (Rylie Pavlik)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -25885,7 +27183,7 @@ on calls to <a href="#xrCreateSession">xrCreateSession</a> if
 <dt class="hdlist1"><strong>Contributors</strong></dt>
 <dd>
 <p>Jakob Bornecrantz, Collabora<br>
-Ryan Pavlik, Collabora<br></p>
+Rylie Pavlik, Collabora<br></p>
 </dd>
 </dl>
 </div>
@@ -25958,7 +27256,7 @@ image format <strong class="purple">may</strong> be used as an input attachment.
 </div>
 </li>
 <li>
-<p>Revision 3, 2021-05-11 (Ryan Pavlik)</p>
+<p>Revision 3, 2021-05-11 (Rylie Pavlik, Collabora, Ltd.)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -27592,7 +28890,7 @@ instead of the app</p>
 </div>
 </li>
 <li>
-<p>Revision 8, 2021-01-21 (Ryan Pavlik)</p>
+<p>Revision 8, 2021-01-21 (Rylie Pavlik, Collabora, Ltd.)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -29126,7 +30424,7 @@ captures the relevant information.</p>
 </div>
 </li>
 <li>
-<p>Revision 2, 2021-01-21 (Ryan Pavlik)</p>
+<p>Revision 2, 2021-01-21 (Rylie Pavlik, Collabora, Ltd.)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -29344,7 +30642,7 @@ No such structures are defined in core OpenXR or this extension.</p>
 </div>
 </li>
 <li>
-<p>Revision 4, 2021-01-21 (Ryan Pavlik)</p>
+<p>Revision 4, 2021-01-21 (Rylie Pavlik, Collabora, Ltd.)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -29718,7 +31016,25 @@ Windows function.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#XR_API_LAYER_CREATE_INFO_STRUCT_VERSION">XR_API_LAYER_CREATE_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XR_API_LAYER_INFO_STRUCT_VERSION">XR_API_LAYER_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XR_API_LAYER_MAX_SETTINGS_PATH_SIZE">XR_API_LAYER_MAX_SETTINGS_PATH_SIZE</a></p>
+</li>
+<li>
+<p><a href="#XR_API_LAYER_NEXT_INFO_STRUCT_VERSION">XR_API_LAYER_NEXT_INFO_STRUCT_VERSION</a></p>
+</li>
+<li>
 <p><a href="#XR_CURRENT_API_VERSION">XR_CURRENT_API_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XR_CURRENT_LOADER_API_LAYER_VERSION">XR_CURRENT_LOADER_API_LAYER_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XR_CURRENT_LOADER_RUNTIME_VERSION">XR_CURRENT_LOADER_RUNTIME_VERSION</a></p>
 </li>
 <li>
 <p><a href="#XR_DEFINE_ATOM">XR_DEFINE_ATOM</a></p>
@@ -29740,6 +31056,9 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#XR_INFINITE_DURATION">XR_INFINITE_DURATION</a></p>
+</li>
+<li>
+<p><a href="#XR_LOADER_INFO_STRUCT_VERSION">XR_LOADER_INFO_STRUCT_VERSION</a></p>
 </li>
 <li>
 <p><a href="#XR_MAKE_VERSION">XR_MAKE_VERSION</a></p>
@@ -29767,6 +31086,9 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#XR_NULL_SYSTEM_ID">XR_NULL_SYSTEM_ID</a></p>
+</li>
+<li>
+<p><a href="#XR_RUNTIME_INFO_STRUCT_VERSION">XR_RUNTIME_INFO_STRUCT_VERSION</a></p>
 </li>
 <li>
 <p><a href="#XR_SUCCEEDED">XR_SUCCEEDED</a></p>
@@ -29813,6 +31135,9 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#XrInstanceCreateFlagBits">XrInstanceCreateFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></p>
 </li>
 <li>
 <p><a href="#XrObjectType">XrObjectType</a></p>
@@ -29907,6 +31232,12 @@ Windows function.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#PFN_xrCreateApiLayerInstance">PFN_xrCreateApiLayerInstance</a></p>
+</li>
+<li>
+<p><a href="#PFN_xrGetInstanceProcAddr">PFN_xrGetInstanceProcAddr</a></p>
+</li>
+<li>
 <p><a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a></p>
 </li>
 </ul>
@@ -29951,6 +31282,9 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#xrCreateActionSpace">xrCreateActionSpace</a></p>
+</li>
+<li>
+<p><a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a></p>
 </li>
 <li>
 <p><a href="#xrCreateInstance">xrCreateInstance</a></p>
@@ -30100,6 +31434,12 @@ Windows function.</p>
 <p><a href="#xrLocateViews">xrLocateViews</a></p>
 </li>
 <li>
+<p><a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a></p>
+</li>
+<li>
+<p><a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a></p>
+</li>
+<li>
 <p><a href="#xrPathToString">xrPathToString</a></p>
 </li>
 <li>
@@ -30202,6 +31542,12 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#XrActiveActionSet">XrActiveActionSet</a></p>
+</li>
+<li>
+<p><a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a></p>
 </li>
 <li>
 <p><a href="#XrApiLayerProperties">XrApiLayerProperties</a></p>
@@ -30382,6 +31728,15 @@ Windows function.</p>
 </li>
 <li>
 <p><a href="#XrLoaderInitInfoBaseHeaderKHR">XrLoaderInitInfoBaseHeaderKHR</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a></p>
 </li>
 <li>
 <p><a href="#XrOffset2Df">XrOffset2Df</a></p>
@@ -30845,7 +32200,7 @@ Macros</a>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 32)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 33)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -31598,7 +32953,7 @@ the time of their most recent contribution, are listed below.</p>
 <p>Christine Perey, Perey Research &amp; Consulting</p>
 </li>
 <li>
-<p>Christoph Haag, Collabora</p>
+<p>Christoph Haag, Collabora, Ltd.</p>
 </li>
 <li>
 <p>Craig Donner, Google</p>
@@ -31637,7 +32992,7 @@ the time of their most recent contribution, are listed below.</p>
 <p>Jack Pritz, Unity Technologies</p>
 </li>
 <li>
-<p>Jakob Bornecrantz, Collabora</p>
+<p>Jakob Bornecrantz, Collabora, Ltd.</p>
 </li>
 <li>
 <p>Jared Cheshier, PlutoVR</p>
@@ -31682,7 +33037,7 @@ the time of their most recent contribution, are listed below.</p>
 <p>Lachlan Ford, Microsoft</p>
 </li>
 <li>
-<p>Lubosz Sarnecki, Collabora</p>
+<p>Lubosz Sarnecki, Collabora, Ltd.</p>
 </li>
 <li>
 <p>Mark Young, LunarG</p>
@@ -31763,7 +33118,7 @@ the time of their most recent contribution, are listed below.</p>
 <p>Robin Bourianes, Starbreeze</p>
 </li>
 <li>
-<p>Ryan A. Pavlik, Collabora</p>
+<p>Rylie Pavlik, Collabora, Ltd.</p>
 </li>
 <li>
 <p>Ryan Vance, Epic Games</p>
@@ -31816,7 +33171,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.32<br>
+Version 1.0.33<br>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>

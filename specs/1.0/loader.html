@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<meta name="author" content="Copyright (c) 2017-2023, The Khronos Group Inc.">
+<meta name="author" content="Copyright (c) 2017-2024, The Khronos Group Inc.">
 <title>OpenXR&#8482;  Loader - Design and Operation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -442,9 +442,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header" style="max-width: 100;">
 <h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
-<span id="author" class="author">Copyright (c) 2017-2023, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.32</span>
-<br><span id="revremark">from git ref release-1.0.32</span>
+<span id="author" class="author">Copyright (c) 2017-2024, The Khronos Group Inc.</span><br>
+<span id="revnumber">version 1.0.33</span>
+<br><span id="revremark">from git ref</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -498,8 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#loader-api-layer-interface-negotiation">4.3. Loader/API Layer Interface Negotiation</a>
 <ul class="sectlevel3">
-<li><a href="#loader-api-layer-negotiation-process">4.3.1. Loader/API Layer Negotiation Process</a></li>
-<li><a href="#api-layer-interface-versions">4.3.2. API Layer Interface Versions</a></li>
+<li><a href="#api-layer-interface-versions">4.3.1. API Layer Interface Versions</a></li>
 </ul>
 </li>
 <li><a href="#api-layer-intercept-requirements">4.4. API Layer Intercept Requirements</a></li>
@@ -520,9 +519,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#loader-runtime-interface-negotiation">5.2. Loader/Runtime Interface Negotiation</a>
 <ul class="sectlevel3">
-<li><a href="#loader-runtime-negotiation-process">5.2.1. Loader/Runtime Negotiation Process</a></li>
-<li><a href="#runtime-exporting-of-commands">5.2.2. Runtime Exporting of Commands</a></li>
-<li><a href="#runtime-interface-versions">5.2.3. Runtime Interface Versions</a></li>
+<li><a href="#runtime-exporting-of-commands">5.2.1. Runtime Exporting of Commands</a></li>
+<li><a href="#runtime-interface-versions">5.2.2. Runtime Interface Versions</a></li>
 </ul>
 </li>
 <li><a href="#additional-loader-requirements">5.3. Additional Loader Requirements</a></li>
@@ -580,7 +578,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_additional_debug_suggestions">8.2. Additional Debug Suggestions</a></li>
 </ul>
 </li>
-<li><a href="#Appendicies">9. Appendicies</a>
+<li><a href="#Appendices">9. Appendices</a>
 <ul class="sectlevel2">
 <li><a href="#_table_of_debug_environment_variables">9.1. Table of Debug Environment Variables</a></li>
 <li><a href="#_glossary_of_terms">9.2. Glossary of Terms</a></li>
@@ -595,7 +593,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2023, The Khronos Group Inc.
+<p>Copyright (c) 2017-2024, The Khronos Group Inc.
 All Rights reserved.</p>
 </div>
 <!-- toc disabled -->
@@ -2137,7 +2135,7 @@ The only requirement is that the filename extension is ".json".</p>
    "file_format_version" : "1.0.0",
    "api_layer": {
        "name": "XR_APILAYER_LUNARG_test",
-       "library_path": "xrTestLayer.dll"
+       "library_path": "xrTestLayer.dll",
        "api_version" : "1.0",
        "implementation_version" : "2",
        "description" : "LunarG test API layer"
@@ -2154,7 +2152,7 @@ The only requirement is that the filename extension is ".json".</p>
    "file_format_version" : "1.0.0",
    "api_layer": {
        "name": "XR_APILAYER_LUNARG_test",
-       "library_path": "xrTestLayer.dll"
+       "library_path": "xrTestLayer.dll",
        "api_version" : "1.0",
        "implementation_version" : "2",
        "description" : "LunarG test API layer",
@@ -2380,335 +2378,12 @@ When the loader attempts to load the API layer, the first thing it does is
 attempt to negotiate the version of the loader to API layer interface.
 In order to negotiate the loader/API layer interface version, the API layer
 must implement the <code>xrNegotiateLoaderApiLayerInterface</code> function (or a
-renamed version of this function identified in the manifest file).</p>
-</div>
-<div id="xrNegotiateLoaderApiLayerInterface" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrNegotiateLoaderApiLayerInterface(
-            const XrNegotiateLoaderInfo *loaderInfo,
-            const char *layerName,
-            XrNegotiateApiLayerRequest *apiLayerRequest);</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>loaderInfo</code> <strong class="purple">must</strong> be a valid pointer to a constant
-<code>XrNegotiateLoaderInfo</code> structure.</p>
-</li>
-<li>
-<p><code>layerName</code> <strong class="purple">must</strong> be NULL or a valid C-style NULL-terminated string
-listing the name of an API layer which the loader is attempting to
-negotiate with.</p>
-</li>
-<li>
-<p><code>layerRequest</code> must be a valid pointer to a
-<code>XrNegotiateApiLayerRequest</code> structure.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This function should be directly exported by an API layer so that using
-"GetProcAddress" on Windows or "dlsym" on Linux, should return a valid
-function pointer to it.
-If the function succeeds, the API layer <strong class="purple">must</strong> return <code>XR_SUCCESS</code>.
-If the function fails, the API layer <strong class="purple">must</strong> return
-<code>XR_ERROR_INITIALIZATION_FAILED</code>.
-The entire <a href="#loader-api-layer-negotiation-process">negotiation process</a> is
-defined in more detail below.</p>
-</div>
-<div class="paragraph">
-<p>The <code>XrNegotiateLoaderInfo</code> struct is defined in the
-<code>src/common/loader_interfaces.h</code> header.
-It is used to pass information about the loader to an API layer during the
-negotiation process.</p>
-</div>
-<div id="XrNegotiateLoaderInfo" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">struct XrNegotiateLoaderInfo {
-    XrLoaderInterfaceStructs structType;
-    uint32_t structVersion;
-    size_t structSize;
-    uint32_t minInterfaceVersion;
-    uint32_t maxInterfaceVersion;
-    XrVersion minApiVersion;
-    XrVersion maxApiVersion;
-};</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>structType</code> <strong class="purple">must</strong> be a valid value of
-<code><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></code>.
-In this case, it <strong class="purple">must</strong> specifically be
-<code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code>.</p>
-</li>
-<li>
-<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure.
-The <code>loader_interfaces.h</code> header uses the value
-<code>XR_LOADER_INFO_STRUCT_VERSION</code> to describe the current latest version
-of this structure.</p>
-</li>
-<li>
-<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of
-the structure (i.e. sizeof(XrNegotiateLoaderInfo)).</p>
-</li>
-<li>
-<p><code>minInterfaceVersion</code> is the minimum
-<a href="#api-layer-interface-versions">loader/API layer interface version</a>
-supported by the loader.</p>
-</li>
-<li>
-<p><code>maxInterfaceVersion</code> is the maximum valid version of the
-<a href="#api-layer-interface-versions">loader/API layer interface version</a>
-supported by the loader, currently defined using
-<code>XR_CURRENT_LOADER_API_LAYER_VERSION</code>.</p>
-</li>
-<li>
-<p><code>minApiVersion</code> is the minimum supported version of the OpenXR API
-by this loader as formatted by <code>XR_MAKE_VERSION</code> defined in <code>openxr.h</code>.
-Patch is ignored.</p>
-</li>
-<li>
-<p><code>maxApiVersion</code> is the maximum supported version of the OpenXR API
-by this loader as formatted by <code>XR_MAKE_VERSION</code> defined in <code>openxr.h</code>.
-Patch is ignored.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You&#8217;ll notice the structures are similar to other OpenXR structures.
-The "structType" field, in this case takes a new enum defined just for
-internal loader interfacing use.</p>
-</div>
-<div class="paragraph">
-<p>The <code>XrLoaderInterfaceStructs</code> enumeration is also defined in the
-<code>src/common/loader_interfaces.h</code> header and currently looks like:</p>
-</div>
-<div id="XrLoaderInterfaceStructs" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">enum XrLoaderInterfaceStructs {
-    XR_LOADER_INTERFACE_STRUCT_UNINTIALIZED = 0,
-    XR_LOADER_INTERFACE_STRUCT_LOADER_INFO,
-    XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST,
-    XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST,
-    XR_LOADER_INTERFACE_STRUCT_API_LAYER_CREATE_INFO,
-    XR_LOADER_INTERFACE_STRUCT_API_LAYER_NEXT_INFO,
-};</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Just like standard OpenXR structs, the <code>XrLoaderInterfaceStructs</code> enum
-defines the set of valid structures and can grow in the future.</p>
-</div>
-<div class="paragraph">
-<p>The <code>XrNegotiateApiLayerRequest</code> can also be found in the
-<code>src/common/loader_interfaces.h</code> header.
-It is used to pass information about the API layer back to the loader during
-the negotiation process.</p>
-</div>
-<div id="XrNegotiateApiLayerRequest" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">struct XrNegotiateApiLayerRequest {
-    XrLoaderInterfaceStructs structType;
-    uint32_t structVersion;
-    size_t structSize;
-    uint32_t layerInterfaceVersion;
-    XrVersion layerApiVersion;
-    PFN_xrGetInstanceProcAddr getInstanceProcAddr;
-    PFN_xrCreateApiLayerInstance createApiLayerInstance;
-};</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>structType</code> <strong class="purple">must</strong> be a valid value of
-<code><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></code>.
-In this case, it <strong class="purple">must</strong> specifically be
-<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST</code>.</p>
-</li>
-<li>
-<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure.
-The <code>loader_interfaces.h</code> header uses the value
-<code>XR_API_LAYER_INFO_STRUCT_VERSION</code> to describe the current latest
-version of this structure.</p>
-</li>
-<li>
-<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of
-the structure (i.e. sizeof(XrNegotiateApiLayerRequest)).</p>
-</li>
-<li>
-<p><code>layerInterfaceVersion</code> is the version of the
-<a href="#api-layer-interface-versions">loader/API layer interface version</a>
-being requested by the API layer.
-Should not be outside of the bounds of the
-<code>XrNegotiateLoaderInfo</code>::`minInterfaceVersion` and
-<code>XrNegotiateLoaderInfo</code>::`maxInterfaceVersion` values (inclusive).</p>
-</li>
-<li>
-<p><code>layerApiVersion</code> is the version of the OpenXR API supported by this
-API layer as formatted by <code>XR_MAKE_VERSION</code> defined in <code>openxr.h</code>.
-Patch is ignored.</p>
-</li>
-<li>
-<p><code>getInstanceProcAddr</code> is a pointer to the API layer&#8217;s
-<code>xrGetInstanceProcAddr</code> command that will be used by the loader to
-complete a dispatch table to all valid OpenXR commands supported by the
-API layer.</p>
-</li>
-<li>
-<p><code>createLayerInstance</code> is a pointer to the API layer&#8217;s
-<code>xrCreateApiLayerInstance</code> command that will be used by the loader when
-a <code>xrCreateInstance</code> command is triggered and an API layer exists.
-This is used because API layers need additional information at
-<code>xrCreateInstance</code> time.</p>
-</li>
-</ul>
+renamed version of this function identified in the manifest file).
+See the declaration of <code>xrNegotiateLoaderApiLayerInterface</code> in
+<code>openxr_loader_negotiation.h</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="loader-api-layer-negotiation-process">4.3.1. Loader/API Layer Negotiation Process</h4>
-<div class="paragraph">
-<p>Once the loader has obtained a valid address to the API layer&#8217;s
-<code>xrNegotiateLoaderApiLayerInterface</code> function, the loader will create a
-variable of type <code>XrNegotiateLoaderInfo</code> and initialize it in the
-following ways:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Set the structure "structType" to
-<code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code></p>
-</li>
-<li>
-<p>Set the structure "structVersion" to the current version,
-<code>XR_LOADER_INFO_STRUCT_VERSION</code></p>
-</li>
-<li>
-<p>Set the structure "structSize" to the current size of the
-<code>XrNegotiateLoaderInfo</code> structure</p>
-</li>
-<li>
-<p>Set "minInterfaceVersion" to the minimum
-<a href="#api-layer-interface-versions">loader/API layer interface version</a> that
-the loader supports</p>
-</li>
-<li>
-<p>Set "maxInterfaceVersion" to the current version of the
-<a href="#api-layer-interface-versions">loader/API layer interface version</a> at
-the time of loader compilation</p>
-</li>
-<li>
-<p>Set "minApiVersion" to the minimum version of OpenXR supported by the
-loader</p>
-</li>
-<li>
-<p>Set "maxApiVersion" to the maximum version of OpenXR supported by the
-loader (the current version at the time of loader compilation).</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The loader also creates and initializes a variable of type
-<code>XrNegotiateApiLayerRequest</code> to allow the API layer to properly respond
-to the request.
-The structure will be initialized by the loader in the following way:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Set the structure "structType" to
-<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST</code></p>
-</li>
-<li>
-<p>Set the structure "structVersion" to the current version,
-<code>XR_API_LAYER_INFO_STRUCT_VERSION</code></p>
-</li>
-<li>
-<p>Set the structure "structSize" to the current size of the
-<code>XrNegotiateApiLayerRequest</code> structure</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The loader will leave the remaining fields uninitialized to allow each API
-layer to fill in the appropriate information for itself.
-The loader will then individually call each API layer&#8217;s
-<code>xrNegotiateLoaderApiLayerInterface</code> function and each API layer then
-<strong class="purple">must</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Determine if it can support the loader&#8217;s request:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Does the API layer support any <a href="#api-layer-interface-versions">loader/API
-layer interface version</a> between
-<code>loaderInfo-&gt;pname</code>:minInterfaceVersion and
-<code>loaderInfo-&gt;pname</code>:maxInterfaceVersion:</p>
-</li>
-<li>
-<p><strong>AND</strong> does the API layer support any OpenXR API version between
-<code>loaderInfo-&gt;pname</code>:minApiVersion and
-<code>loaderInfo-&gt;pname</code>:maxApiVersion:</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>If it is able to support the request, it <strong class="purple">must</strong> return <code>XR_SUCCESS</code> and:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fill in <code>layerRequest-&gt;pname</code>:layerInterfaceVersion with the API
-layer interface version it desires to support.</p>
-</li>
-<li>
-<p>Fill in <code>layerRequest-&gt;pname</code>:layerApiVersion with the API version of
-OpenXR it will execute under.</p>
-</li>
-<li>
-<p>Fill in <code>layerRequest-&gt;pname</code>:getInstanceProcAddr with a valid
-function pointer so that the loader can query function pointers to the
-remaining OpenXR commands supported by the API layer.</p>
-</li>
-<li>
-<p>Fill in <code>layerRequest-&gt;pname</code>:createLayerInstance with a valid
-function pointer so that the loader can create the instance through the
-API layer call chain.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Otherwise, it <strong class="purple">must</strong> return <code>XR_ERROR_INITIALIZATION_FAILED</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note</div>
-<div class="paragraph">
-<p>The API layer <strong class="purple">must</strong> not call to another API layer while inside of the
-<code>xrNegotiateLoaderApiLayerInterface</code> function.
-The loader will handle all API layer negotiations with each API layer
-individually.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="api-layer-interface-versions">4.3.2. API Layer Interface Versions</h4>
+<h4 id="api-layer-interface-versions">4.3.1. API Layer Interface Versions</h4>
 <div class="paragraph">
 <p>The current API layer interface is at version 1.
 The following sections detail the differences between the various versions.</p>
@@ -2924,137 +2599,9 @@ The API layer is only involved if it is in the enabled API layer list (this
 includes implicit, environment variable enabled, and application enabled API
 layers).
 An API layer needs additional information during <code>xrCreateInstance</code> calls,
-so each API layer must implement the <code>xrCreateApiLayerInstance</code> command,
-which is a special API layer command.</p>
-</div>
-<div id="xrCreateApiLayerInstance" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrCreateApiLayerInstance(
-    const XrInstanceCreateInfo *info,
-    const struct XrApiLayerCreateInfo *layerInfo,
-    XrInstance *instance);</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>info</code> is a pointer to the <code>XrInstanceCreateInfo</code> information
-passed into the standard <code>xrCreateInstance</code> command.</p>
-</li>
-<li>
-<p><code>layerInfo</code> is a pointer to an <code>XrApiLayerCreateInfo</code> structure
-that contains special information required by a API layer during its
-create instance process.
-This is generated by the loader.</p>
-</li>
-<li>
-<p><code>instance</code> is a pointer to store the returned instance in, just as
-in the standard <code>xrCreateInstance</code> command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The <code>XrApiLayerCreateInfo</code> structure is defined in
-<code>src/common/loader_interfaces.h</code> and looks like:</p>
-</div>
-<div id="XrApiLayerCreateInfo" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">struct XrApiLayerCreateInfo {
-    XrLoaderInterfaceStructs structType;
-    uint32_t structVersion;
-    size_t structSize;
-    XrInstance loaderInstance;
-    char settings_file_location[XR_API_LAYER_MAX_SETTINGS_PATH_SIZE];
-    XrApiLayerNextInfo *nextInfo;
-};</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>structType</code> is the type of structure, or
-XR_LOADER_INTERFACE_STRUCT_API_LAYER_CREATE_INFO in this case.</p>
-</li>
-<li>
-<p><code>structVersion</code> is the version of the structure being supplied by
-the loader.</p>
-</li>
-<li>
-<p><code>structSize</code> is the size of the structure supplied by the loader.</p>
-</li>
-<li>
-<p><code>loaderInstance</code> is deprecated and must be ignored.</p>
-</li>
-<li>
-<p><code>settings_file_location</code> is the location of any API layer settings
-file that can be used.
-This is currently unused.</p>
-</li>
-<li>
-<p><code>nextInfo</code> is a pointer to the <code>XrApiLayerNextInfo</code> structure
-which contains information to work with the next API layer in the chain.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The <code>XrApiLayerNextInfo</code> structure is also defined in
-<code>src/common/loader_interfaces.h</code> and looks like:</p>
-</div>
-<div id="XrApiLayerNextInfo" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">struct XrApiLayerNextInfo {
-    XrLoaderInterfaceStructs structType;
-    uint32_t structVersion;
-    size_t structSize;
-    char layerName[XR_MAX_API_LAYER_NAME_SIZE];
-    PFN_xrGetInstanceProcAddr nextGetInstanceProcAddr;
-    PFN_xrCreateApiLayerInstance nextCreateApiLayerInstance;
-    XrApiLayerNextInfo *next;
-};</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>structType</code> is the type of structure, or
-XR_LOADER_INTERFACE_STRUCT_API_LAYER_NEXT_INFO in this case.</p>
-</li>
-<li>
-<p><code>structVersion</code> is the version of the structure being supplied by
-the loader.</p>
-</li>
-<li>
-<p><code>structSize</code> is the size of the structure supplied by the loader.</p>
-</li>
-<li>
-<p><code>layerName</code> is the name of the API layer which should be receiving
-this information.
-The intent is to make sure the API layer chain information is behaving
-properly.</p>
-</li>
-<li>
-<p><code>nextGetInstanceProcAddr</code> is a pointer to the next API layer&#8217;s
-<code>xrGetInstanceProcAddr</code>.
-This can be used to generate a dispatch table to the next commands in
-the chain.</p>
-</li>
-<li>
-<p><code>nextCreateLayerInstance</code> is a pointer to the next API layer&#8217;s
-<code>xrCreateApiLayerInstance</code> command.
-This is to be called after the API layer has done any localized
-creation, but before the API layer records any command addresses from
-the next API layer using <code>xrGetInstanceProcAddr</code>.</p>
-</li>
-<li>
-<p><code>next</code> is a pointer to the <code>XrApiLayerNextInfo</code> for the next API
-layer.
-If no API layer is after this, it will be NULL.
-However, the loader implements a <code>xrTerminatorCreateLayerInstance</code>
-command to re-direct the call-chain back to the runtime&#8217;s
-<code>xrCreateInstance</code> command, so this should be the last command to
-receive this information.</p>
-</li>
-</ul>
+so each API layer must implement the <code>xrCreateApiLayerInstance</code>
+function, which is a special API layer function (declared in
+<code>openxr_loader_negotiation.h</code>).</p>
 </div>
 <div class="paragraph">
 <p>During the <code>xrCreateInstance</code> call, the following happens:</p>
@@ -4132,104 +3679,15 @@ interface between the loader and runtimes for version 1 and higher
 interfaces.
 In order to negotiate the loader/runtime interface version, the runtime must
 implement the <code>xrNegotiateLoaderRuntimeInterface</code>` function (or a
-renamed version of this function identified in the manifest file).</p>
-</div>
-<div id="xrNegotiateLoaderRuntimeInterface" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult xrNegotiateLoaderRuntimeInterface(
-            const XrNegotiateLoaderInfo *loaderInfo,
-            XrNegotiateRuntimeRequest *runtimeRequest);</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>loaderInfo</code> <strong class="purple">must</strong> be a valid pointer to a constant
-<code>XrNegotiateLoaderInfo</code> structure.</p>
-</li>
-<li>
-<p><code>runtimeRequest</code> must be a valid pointer to a
-<code>XrNegotiateRuntimeRequest</code> structure.</p>
-</li>
-</ul>
+renamed version of this function identified in the manifest file).
+<code>xrNegotiateLoaderRuntimeInterface</code>` is defined in <code>openxr.h</code>.</p>
 </div>
 <div class="paragraph">
-<p>This function should be directly exported by a runtime so that using
-"GetProcAddress" on Windows or "dlsym" on Linux, should return a valid
-function pointer to it (see <a href="#runtime-exporting-of-commands">Runtime
-Exporting of Commands</a> for more information).</p>
-</div>
-<div class="paragraph">
-<p>If the function succeeds, the runtime should return <code>XR_SUCCESS</code>.
-If the function fails, the runtime should return
-<code>XR_ERROR_INITIALIZATION_FAILED</code>.
-The entire <a href="#loader-runtime-negotiation-process">negotiation process</a> is
-defined in more detail below.</p>
-</div>
-<div class="paragraph">
-<p>The <code>XrNegotiateLoaderInfo</code> struct is defined in the
-<code>src/common/loader_interfaces.h</code> header.
-It is used to pass information about the loader to a runtime during the
-negotiation process.
-See the definition of <code>XrNegotiateLoaderInfo</code> under the
-<a href="#loader-api-layer-interface-negotiation">layer negotiation</a> section for
-more information.</p>
-</div>
-<div class="paragraph">
-<p>The <code>XrNegotiateRuntimeRequest</code> can also be found in the
-<code>src/common/loader_interfaces.h</code> header.
-It is used to pass information about the runtime back to the loader during
-the negotiation process.</p>
-</div>
-<div id="XrNegotiateRuntimeRequest" class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">struct XrNegotiateRuntimeRequest {
-    XrLoaderInterfaceStructs structType;
-    uint32_t structVersion;
-    size_t structSize;
-    uint32_t runtimeInterfaceVersion;
-    uint32_t runtimeApiVersion;
-    PFN_xrGetInstanceProcAddr getInstanceProcAddr;
-};</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>structType</code> <strong class="purple">must</strong> be a valid value of
-<code><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></code>.
-In this case, it must specifically be
-<code>XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST</code>.</p>
-</li>
-<li>
-<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure.
-The <code>loader_interfaces.h</code> header uses the value
-<code>XR_RUNTIME_INFO_STRUCT_VERSION</code> to describe the current latest version
-of this structure.</p>
-</li>
-<li>
-<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of
-the structure (i.e. sizeof(XrNegotiateRuntimeRequest))</p>
-</li>
-<li>
-<p><code>runtimeInterfaceVersion</code> is the version of the
-<a href="#runtime-interface-versions">loader/runtime interface version</a> being
-requested by the runtime.
-Should not be outside of the bounds of the
-<code>XrNegotiateLoaderInfo</code>::`minInterfaceVersion` and
-<code>XrNegotiateLoaderInfo</code>::`maxInterfaceVersion` values (inclusive).</p>
-</li>
-<li>
-<p><code>runtimeApiVersion</code> is the version of the OpenXR API supported by
-this runtime as formatted by <code>XR_MAKE_VERSION</code> defined in <code>openxr.h</code>.
-Patch is ignored.</p>
-</li>
-<li>
-<p><code>getInstanceProcAddr</code> is a pointer to the runtime&#8217;s
-<code>xrGetInstanceProcAddr</code> call that will be used by the loader to complete
-a dispatch table to all valid OpenXR commands supported by the runtime.</p>
-</li>
-</ul>
+<p><code>xrNegotiateLoaderRuntimeInterface</code>` function should be directly
+exported by a runtime so that using "GetProcAddress" on Windows or "dlsym"
+on Linux, should return a valid function pointer to it (see
+<a href="#runtime-exporting-of-commands">Runtime Exporting of Commands</a> for more
+information).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4255,122 +3713,7 @@ the application is exiting, or some period of inactivity occurs.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="loader-runtime-negotiation-process">5.2.1. Loader/Runtime Negotiation Process</h4>
-<div class="paragraph">
-<p>Once the loader has obtained a valid address to the runtime&#8217;s
-<code>xrNegotiateLoaderRuntimeInterface</code> function, the loader will create a
-variable of type <code>XrNegotiateLoaderInfo</code> and initialize it in the
-following ways:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Set the structure "structType" to
-<code>XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</code></p>
-</li>
-<li>
-<p>Set the structure "structVersion" to the current version,
-<code>XR_LOADER_INFO_STRUCT_VERSION</code></p>
-</li>
-<li>
-<p>Set the structure "structSize" to the current size of the
-<code>XrNegotiateLoaderInfo</code> structure</p>
-</li>
-<li>
-<p>Set "minInterfaceVersion" to the minimum
-<a href="#runtime-interface-versions">loader/runtime interface version</a> that the
-loader supports</p>
-</li>
-<li>
-<p>Set "maxInterfaceVersion" to the current version of the
-<a href="#runtime-interface-versions">loader/runtime interface</a> at the time of
-loader compilation</p>
-</li>
-<li>
-<p>Set "minApiVersion" to the minimum version of OpenXR supported by the
-loader</p>
-</li>
-<li>
-<p>Set "maxApiVersion" to the maximum version of OpenXR supported by the
-loader (the current version at the time of loader compilation).</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The loader will also create an initialize a variable of type
-<code>XrNegotiateRuntimeRequest</code> to allow the runtime to properly respond to
-the request.
-The structure will be initialized by the loader in the following way:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Set the structure "structType" to
-<code>XR_LOADER_INTERFACE_STRUCT_RUNTIME_REQUEST</code></p>
-</li>
-<li>
-<p>Set the structure "structVersion" to the current version,
-<code>XR_RUNTIME_INFO_STRUCT_VERSION</code></p>
-</li>
-<li>
-<p>Set the structure "structSize" to the current size of the
-<code>XrNegotiateRuntimeRequest</code> structure</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The loader will leave the remaining fields uninitialized to allow each
-runtime to fill in the appropriate information for itself.
-The loader will then individually call each runtime&#8217;s
-<code>xrNegotiateLoaderRuntimeInterface</code> function and each runtime then <strong class="purple">must</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Determine if it can support the loader&#8217;s request:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Does the runtime support any <a href="#runtime-interface-versions">loader/runtime
-interface version</a> between <code>loaderInfo-&gt;pname</code>:minInterfaceVersion
-and <code>loaderInfo-&gt;pname</code>:maxInterfaceVersion:</p>
-</li>
-<li>
-<p><strong>AND</strong> does the runtime support any OpenXR API version between
-<code>loaderInfo-&gt;pname</code>:minApiVersion and
-<code>loaderInfo-&gt;pname</code>:maxApiVersion:</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>If it is able to support the request, it <strong class="purple">must</strong> return <code>XR_SUCCESS</code> and:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Fill in <code>runtimeRequest-&gt;pname</code>:runtimeInterfaceVersion with the
-runtime interface version it desires to support</p>
-</li>
-<li>
-<p>Fill in <code>runtimeRequest-&gt;pname</code>:runtimeApiVersion with the API
-version of OpenXR it will execute under.</p>
-</li>
-<li>
-<p>Fill in <code>runtimeRequest-&gt;pname</code>:getInstanceProcAddr with a valid
-function pointer so that the loader can query function pointers to the
-remaining OpenXR commands supported by the runtime.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Otherwise, it <strong class="purple">must</strong> return <code>XR_ERROR_INITIALIZATION_FAILED</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="runtime-exporting-of-commands">5.2.2. Runtime Exporting of Commands</h4>
+<h4 id="runtime-exporting-of-commands">5.2.1. Runtime Exporting of Commands</h4>
 <div class="paragraph">
 <p>The <code>xrNegotiateLoaderRuntimeInterface</code> should be directly exported by a
 runtime so that using "GetProcAddress" on Windows or "dlsym" on Linux,
@@ -4400,7 +3743,7 @@ with <code>-Bsymbolic</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="runtime-interface-versions">5.2.3. Runtime Interface Versions</h4>
+<h4 id="runtime-interface-versions">5.2.2. Runtime Interface Versions</h4>
 <div class="paragraph">
 <p>The current Runtime Interface is at version 1.
 The following sections detail the differences between the various versions.</p>
@@ -4791,8 +4134,7 @@ Python scripts, must be named with a .py suffix.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">loader_instance.hpp
-loader_instance.cpp
-loader_interfaces.h</code></pre>
+loader_instance.cpp</code></pre>
 </div>
 </div>
 </div>
@@ -6211,7 +5553,7 @@ It is recommended that you enable <code>LD_BIND_NOW</code> along with
 </div>
 </div>
 <div class="sect1">
-<h2 id="Appendicies">9. Appendicies</h2>
+<h2 id="Appendices">9. Appendices</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_table_of_debug_environment_variables">9.1. Table of Debug Environment Variables</h3>
@@ -6399,7 +5741,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.32<br>
+Version 1.0.33<br>
 </div>
 </div>
 </body>
