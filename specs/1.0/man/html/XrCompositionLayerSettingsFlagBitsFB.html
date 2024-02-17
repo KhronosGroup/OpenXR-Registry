@@ -792,7 +792,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_NORMAL_SUPER_SAMPLING_BIT_FB = 0x00000001;
 static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_QUALITY_SUPER_SAMPLING_BIT_FB = 0x00000002;
 static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_NORMAL_SHARPENING_BIT_FB = 0x00000004;
-static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_QUALITY_SHARPENING_BIT_FB = 0x00000008;</code></pre>
+static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_QUALITY_SHARPENING_BIT_FB = 0x00000008;
+static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_AUTO_LAYER_FILTER_BIT_META = 0x00000020;</code></pre>
 </div>
 </div>
 </div>
@@ -816,6 +817,9 @@ static const XrCompositionLayerSettingsFlagsFB XR_COMPOSITION_LAYER_SETTINGS_QUA
 </li>
 <li>
 <p><code>XR_COMPOSITION_LAYER_SETTINGS_QUALITY_SHARPENING_BIT_FB</code>&#8201;&#8212;&#8201;Indicates compositor <strong class="purple">may</strong> use high quality layer texture sharpening.</p>
+</li>
+<li>
+<p><code>XR_COMPOSITION_LAYER_SETTINGS_AUTO_LAYER_FILTER_BIT_META</code>&#8201;&#8212;&#8201;Indicates compositor <strong class="purple">may</strong> automatically toggle a texture filtering mechanism to improve visual quality of layer. This <strong class="purple">must</strong> not be the only bit set. (Added by <code><a href="XR_META_automatic_layer_filter.html">XR_META_automatic_layer_filter</a></code>)</p>
 </li>
 </ul>
 </div>
@@ -859,7 +863,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.33<br>
+Version 1.0.34<br>
 </div>
 </div>
 </body>

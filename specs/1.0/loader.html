@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2024, The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.0.33</span>
-<br><span id="revremark">from git ref</span>
+<span id="revnumber">version 1.0.34</span>
+<br><span id="revremark">from git ref release-1.0.34</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -4354,6 +4354,7 @@ it requires a list of available runtime manifest files.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult RuntimeManifestFile::FindManifestFiles(
+            const std::string &amp;openxr_command,
             std::vector&lt;std::unique_ptr&lt;RuntimeManifestFile&gt;&gt; &amp;manifest_files);</code></pre>
 </div>
 </div>
@@ -4411,7 +4412,7 @@ it requires a list of available API layer manifest files.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult ApiLayerManifestFile::FindManifestFiles(
-            ManifestFileType type,
+            const std::string &amp;openxr_command, ManifestFileType type,
             std::vector&lt;std::unique_ptr&lt;ApiLayerManifestFile&gt;&gt; &amp;manifest_files);</code></pre>
 </div>
 </div>
@@ -5391,8 +5392,21 @@ all, if the underlying platform distinguishes these cases, use
 <div class="paragraph">
 <div class="title">Reading a Secure Environment Variable</div>
 <p>Access to certain environment variables needs to be done in a way that
-maintains operational security of the program.
-To read a secure environment variable, the loader calls
+maintains operational security of the program.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Specifically, the loader will not use environment variables which control
+code loading for admin (high integrity) processes on Windows as
+the environment variables can be set by non-admin (medium integrity)
+processes.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To read a secure environment variable, the loader calls
 <code>PlatformUtilsGetSecureEnv</code>:</p>
 </div>
 <div id="PlatformUtilsGetSecureEnv" class="listingblock">
@@ -5741,7 +5755,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.33<br>
+Version 1.0.34<br>
 </div>
 </div>
 </body>

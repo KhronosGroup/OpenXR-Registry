@@ -891,9 +891,9 @@ immediately transition forward through the
 <code>XR_SESSION_STATE_STOPPING</code> state, to request that the application end
 this session.
 If the system supports a user engagement sensor and runtime is in
-<code>XR_SESSION_STATE_IDLE</code> state, the runtime <strong class="purple">should</strong> not transition to the
-<code>XR_SESSION_STATE_READY</code> state until the user starts engaging with the
-device.</p>
+<code>XR_SESSION_STATE_IDLE</code> state, the runtime <strong class="purple">may</strong> wait until the user
+starts engaging with the device before transitioning to the
+<code>XR_SESSION_STATE_READY</code> state.</p>
 </div>
 <div id="session_synchronized" class="paragraph">
 <p>Receiving the <code>XR_SESSION_STATE_SYNCHRONIZED</code> state indicates that the
@@ -951,7 +951,7 @@ when in this state.
 A possible reason for this would be to minimize contention between multiple
 applications.
 If the system supports a user engagement sensor and the session is running,
-the runtime <strong class="purple">should</strong> transition to the <code>XR_SESSION_STATE_STOPPING</code> state
+the runtime <strong class="purple">may</strong> transition to the <code>XR_SESSION_STATE_STOPPING</code> state
 when the user stops engaging with the device.</p>
 </div>
 <div id="session_exiting" class="paragraph">
@@ -1024,7 +1024,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.33<br>
+Version 1.0.34<br>
 </div>
 </div>
 </body>

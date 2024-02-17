@@ -443,8 +443,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.0.33</span>
-<br><span id="revremark">from git ref</span>
+<span id="revnumber">version 1.0.34</span>
+<br><span id="revremark">from git ref release-1.0.34</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -852,14 +852,16 @@ was.</p>
 <div class="listingblock">
 <div class="title">Example: Macro</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0#define XR_VERSION_MAJOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 48)&amp; 0xffffULL)</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+#define XR_VERSION_MAJOR(version) (uint16_t)(((uint64_t)(version) &gt;&gt; 48)&amp; 0xffffULL)</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example: Value</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0// OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 33)</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+// OpenXR current version number.
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 0, 34)</code></pre>
 </div>
 </div>
 </div>
@@ -2598,8 +2600,8 @@ being used for the extension.</p>
 </li>
 <li>
 <p>The <strong>direction</strong> may be specified to indicate a negative value
-(<code>dir="-"</code>) when needed for negative <code>VkResult</code> values indicating
-errors, like <code>VK_ERROR_SURFACE_LOST_KHR</code>.
+(<code>dir="-"</code>) when needed for negative <code>XrResult</code> values indicating
+errors, like <code>XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR</code>.
 The default direction is positive, if not specified.</p>
 </li>
 </ul>
@@ -2626,7 +2628,7 @@ Values are calculated as follows:</p>
 <p>Positive values: <span class="eq">enum_offset(<em>extension_number</em>, <em>offset</em>})</span></p>
 </li>
 <li>
-<p>Negative values: <span class="eq">enum_offset(<em>extension_number</em>, <em>offset</em>})</span></p>
+<p>Negative values: <span class="eq">-enum_offset(<em>extension_number</em>, <em>offset</em>})</span></p>
 </li>
 </ul>
 </div>
@@ -3945,12 +3947,6 @@ This list may not be comprehensive; when in doubt, be guided by the existing
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">allocate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">create</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When describing objects or memory resulting from
-                  <code>vkAllocate*</code> commands.</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">application</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">client</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -3958,19 +3954,19 @@ This list may not be comprehensive; when in doubt, be guided by the existing
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bitmask</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bit field</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Technically correct. Vulkan bitmasks are just integers and
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technically correct. OpenXR bitmasks are just integers and
                   are not logically addressable at the bit level.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">command</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">function</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Except when talking about function pointers returned by
-                  <code>vkGet*ProcAddr</code> commands.</p></td>
+                  <code>xrGet*ProcAddr</code> commands.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">create</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">allocate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When describing objects resulting from <code>vkCreate*</code>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When describing objects resulting from <code>xrCreate*</code>
                   commands.</p></td>
 </tr>
 <tr>
@@ -4034,12 +4030,12 @@ This list may not be comprehensive; when in doubt, be guided by the existing
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">begins / begun</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">starts / started</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For <code>vkBegin*</code> - also see &#8220;finish&#8221;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For <code>xrBegin*</code> - also see &#8220;finish&#8221;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">finishes / finished</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ends / ended</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For <code>vkEnd*</code> - also see &#8220;begins&#8221;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For <code>xrEnd*</code> - also see &#8220;begins&#8221;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">used</p></td>
@@ -5222,7 +5218,7 @@ This attribute is required.</p>
 <p><strong>xrefs</strong> - list of whitespace-separated names of other reference pages
 which should be added to the <code>See Also</code> section of this page.
 Most cross-references are automatically generated based on the immediate
-dependency information in <code>vk.xml</code>, but in some cases, such as referring
+dependency information in <code>xr.xml</code>, but in some cases, such as referring
 between <code>*FlagBits</code> and <code>*Flags</code> types, this additional tagging is
 useful.
 This attribute is optional.</p>
@@ -5803,7 +5799,7 @@ equivalent.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.0.33<br>
+Version 1.0.34<br>
 </div>
 </div>
 </body>

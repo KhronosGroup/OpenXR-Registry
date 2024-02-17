@@ -791,7 +791,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_FB_scene
 // Flag bits for XrSemanticLabelsSupportFlagsFB
 static const XrSemanticLabelsSupportFlagsFB XR_SEMANTIC_LABELS_SUPPORT_MULTIPLE_SEMANTIC_LABELS_BIT_FB = 0x00000001;
-static const XrSemanticLabelsSupportFlagsFB XR_SEMANTIC_LABELS_SUPPORT_ACCEPT_DESK_TO_TABLE_MIGRATION_BIT_FB = 0x00000002;</code></pre>
+static const XrSemanticLabelsSupportFlagsFB XR_SEMANTIC_LABELS_SUPPORT_ACCEPT_DESK_TO_TABLE_MIGRATION_BIT_FB = 0x00000002;
+static const XrSemanticLabelsSupportFlagsFB XR_SEMANTIC_LABELS_SUPPORT_ACCEPT_INVISIBLE_WALL_FACE_BIT_FB = 0x00000004;</code></pre>
 </div>
 </div>
 </div>
@@ -809,6 +810,9 @@ static const XrSemanticLabelsSupportFlagsFB XR_SEMANTIC_LABELS_SUPPORT_ACCEPT_DE
 </li>
 <li>
 <p><code>XR_SEMANTIC_LABELS_SUPPORT_ACCEPT_DESK_TO_TABLE_MIGRATION_BIT_FB</code>&#8201;&#8212;&#8201;If set, and the runtime reports the <code>extensionVersion</code> as 3 or greater, the runtime <strong class="purple">must</strong> return "TABLE" instead of "DESK" as a semantic label to the application. Otherwise, the runtime <strong class="purple">must</strong> return "DESK" instead of "TABLE" as a semantic label to the application, when applicable.</p>
+</li>
+<li>
+<p><code>XR_SEMANTIC_LABELS_SUPPORT_ACCEPT_INVISIBLE_WALL_FACE_BIT_FB</code>&#8201;&#8212;&#8201;If set, and the runtime reports the <code>extensionVersion</code> as 4 or greater, the runtime <strong class="purple">may</strong> return "INVISIBLE_WALL_FACE" instead of "WALL_FACE" as a semantic label to the application in order to represent an invisible wall used to conceptually separate a space (e.g., separate a living space from a kitchen space in an open floor plan house even though there is no real wall between the two spaces) instead of a real wall. Otherwise, the runtime <strong class="purple">must</strong> return "WALL_FACE" as a semantic label to the application in order to represent both an invisible and real wall, when applicable.</p>
 </li>
 </ul>
 </div>
@@ -852,7 +856,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.33<br>
+Version 1.0.34<br>
 </div>
 </div>
 </body>
