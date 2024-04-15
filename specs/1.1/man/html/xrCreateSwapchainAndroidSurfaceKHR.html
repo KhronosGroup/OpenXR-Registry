@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrCreateSwapchainAndroidSurfaceKHR(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrCreateSwapchainAndroidSurfaceKHR(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrCreateSwapchainAndroidSurfaceKHR - Creates a swapchain and an Android Surface</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an <a href="XrSwapchain.html">XrSwapchain</a> object and an Android Surface object call:</p>
+</div>
+<div id="xrCreateSwapchainAndroidSurfaceKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_android_surface_swapchain</span>
+<span class="n">XrResult</span> <span class="nf">xrCreateSwapchainAndroidSurfaceKHR</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrSwapchainCreateInfo</span><span class="o">*</span>                <span class="n">info</span><span class="p">,</span>
+    <span class="n">XrSwapchain</span><span class="o">*</span>                                <span class="n">swapchain</span><span class="p">,</span>
+    <span class="n">jobject</span><span class="o">*</span>                                    <span class="n">surface</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is an <a href="XrSession.html">XrSession</a> handle previously created with
+<a href="xrCreateSession.html">xrCreateSession</a>.</p>
+</li>
+<li>
+<p><code>info</code> is a pointer to an <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a> structure.</p>
+</li>
+<li>
+<p><code>swapchain</code> is a pointer to a handle in which the created
+<a href="XrSwapchain.html">XrSwapchain</a> is returned.</p>
+</li>
+<li>
+<p><code>surface</code> is a pointer to a <code>jobject</code> where the created Android
+Surface is returned.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="xrCreateSwapchainAndroidSurfaceKHR.html">xrCreateSwapchainAndroidSurfaceKHR</a> creates an <a href="XrSwapchain.html">XrSwapchain</a> object
+returned in <code>swapchain</code> and an Android Surface <code>jobject</code> returned in
+<code>surface</code>.
+The <code>jobject</code> <strong class="purple">must</strong> be valid to be passed back to Java code using JNI and
+<strong class="purple">must</strong> be valid to be used with ordinary Android APIs for submitting images
+to Surfaces.
+The returned <a href="XrSwapchain.html">XrSwapchain</a> <strong class="purple">must</strong> be valid to be referenced in
+<a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a> structures to show content on the screen.
+The width and height passed in <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a> <strong class="purple">may</strong> not be
+persistent throughout the life cycle of the created swapchain, since on
+Android, the size of the images is controlled by the producer and possibly
+changes at any time.</p>
+</div>
+<div class="paragraph">
+<p>The only function that is allowed to be called on the <a href="XrSwapchain.html">XrSwapchain</a>
+returned from this function is <a href="xrDestroySwapchain.html">xrDestroySwapchain</a>.
+For example, calling any of the functions <a href="xrEnumerateSwapchainImages.html">xrEnumerateSwapchainImages</a>,
+<a href="xrAcquireSwapchainImage.html">xrAcquireSwapchainImage</a>, <a href="xrWaitSwapchainImage.html">xrWaitSwapchainImage</a> or
+<a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a> is invalid.</p>
+</div>
+<div class="paragraph">
+<p>When the application receives the <a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a> event
+with the <code>XR_SESSION_STATE_STOPPING</code> state, it <strong class="purple">must</strong> ensure that no
+threads are writing to any of the Android surfaces created with this
+extension before calling <a href="xrEndSession.html">xrEndSession</a>.
+The effect of writing frames to the Surface when the session is in states
+other than <code>XR_SESSION_STATE_VISIBLE</code> or <code>XR_SESSION_STATE_FOCUSED</code>
+is undefined.</p>
+</div>
+<div class="paragraph">
+<p><a href="xrCreateSwapchainAndroidSurfaceKHR.html">xrCreateSwapchainAndroidSurfaceKHR</a> <strong class="purple">must</strong> return the same set of error
+codes as <a href="xrCreateSwapchain.html">xrCreateSwapchain</a> under the same circumstances, plus
+<code>XR_ERROR_FUNCTION_UNSUPPORTED</code> in case the function is not supported.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage of <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a> members</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>format</code>,<br>
+<a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>sampleCount</code>,<br>
+<a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>faceCount</code>,<br>
+<a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>arraySize</code> and<br>
+<a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>mipCount</code><br>
+members of the structure passed as the <code>info</code> parameter <strong class="purple">must</strong> be zero.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrCreateSwapchainAndroidSurfaceKHR-extension-notenabled" href="#VUID-xrCreateSwapchainAndroidSurfaceKHR-extension-notenabled"></a> The <code><a href="XR_KHR_android_surface_swapchain.html">XR_KHR_android_surface_swapchain</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrCreateSwapchainAndroidSurfaceKHR.html">xrCreateSwapchainAndroidSurfaceKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSwapchainAndroidSurfaceKHR-session-parameter" href="#VUID-xrCreateSwapchainAndroidSurfaceKHR-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSwapchainAndroidSurfaceKHR-info-parameter" href="#VUID-xrCreateSwapchainAndroidSurfaceKHR-info-parameter"></a> <code>info</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSwapchainAndroidSurfaceKHR-swapchain-parameter" href="#VUID-xrCreateSwapchainAndroidSurfaceKHR-swapchain-parameter"></a> <code>swapchain</code> <strong class="purple">must</strong> be a pointer to an <a href="XrSwapchain.html">XrSwapchain</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSwapchainAndroidSurfaceKHR-surface-parameter" href="#VUID-xrCreateSwapchainAndroidSurfaceKHR-surface-parameter"></a> <code>surface</code> <strong class="purple">must</strong> be a pointer to a <code>jobject</code> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_LIMIT_REACHED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_KHR_android_surface_swapchain.html">XR_KHR_android_surface_swapchain</a>, <a href="XrSession.html">XrSession</a>, <a href="XrSwapchain.html">XrSwapchain</a>, <a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>, <a href="xrDestroySwapchain.html">xrDestroySwapchain</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrCreateSwapchainAndroidSurfaceKHR" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

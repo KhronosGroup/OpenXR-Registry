@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XR_VERSION_1_1(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_VERSION_1_1(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_VERSION_1_1 - OpenXR version 1.1</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenXR version 1.1 promoted a number of key extensions into the core API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_KHR_locate_spaces</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_KHR_maintenance1</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_EXT_hp_mixed_reality_controller</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_EXT_local_floor</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_EXT_palm_pose</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_EXT_samsung_odyssey_controller</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_EXT_uuid</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_BD_controller_interaction</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_HTC_vive_cosmos_controller_interaction</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_HTC_vive_focus3_controller_interaction</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_ML_ml2_controller_interaction</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_VARJO_quad_views</code></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All differences in behavior between these extensions and the corresponding
+OpenXR 1.1 functionality are summarized in the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#versions-1.1-promotions" target="_blank" rel="noopener">OpenXR 1.1 specification appendix</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_new_commands">New Commands</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="xrLocateSpaces.html">xrLocateSpaces</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_structures">New Structures</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrBoxf.html">XrBoxf</a></p>
+</li>
+<li>
+<p><a href="XrColor3f.html">XrColor3f</a></p>
+</li>
+<li>
+<p><a href="XrExtent3Df.html">XrExtent3Df</a></p>
+</li>
+<li>
+<p><a href="XrFrustumf.html">XrFrustumf</a></p>
+</li>
+<li>
+<p><a href="XrSpaceLocationData.html">XrSpaceLocationData</a></p>
+</li>
+<li>
+<p><a href="XrSpaceLocations.html">XrSpaceLocations</a></p>
+</li>
+<li>
+<p><a href="XrSpaceVelocityData.html">XrSpaceVelocityData</a></p>
+</li>
+<li>
+<p><a href="XrSpacesLocateInfo.html">XrSpacesLocateInfo</a></p>
+</li>
+<li>
+<p><a href="XrSpheref.html">XrSpheref</a></p>
+</li>
+<li>
+<p><a href="XrUuid.html">XrUuid</a></p>
+</li>
+<li>
+<p>Extending <a href="XrSpaceLocations.html">XrSpaceLocations</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrSpaceVelocities.html">XrSpaceVelocities</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_enum_constants">New Enum Constants</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_UUID_SIZE</code></p>
+</li>
+<li>
+<p>Extending <a href="XrReferenceSpaceType.html">XrReferenceSpaceType</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extending <a href="XrResult.html">XrResult</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PERMISSION_INSUFFICIENT</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extending <a href="XrStructureType.html">XrStructureType</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_TYPE_SPACES_LOCATE_INFO</code></p>
+</li>
+<li>
+<p><code>XR_TYPE_SPACE_LOCATIONS</code></p>
+</li>
+<li>
+<p><code>XR_TYPE_SPACE_VELOCITIES</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extending <a href="XrViewConfigurationType.html">XrViewConfigurationType</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>No cross-references are available</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#versions-1.1" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrPlaneDetectorLocationEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrPlaneDetectorLocationEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrPlaneDetectorLocationEXT - Describes the location of a plane</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrPlaneDetectorLocationEXT.html">XrPlaneDetectorLocationEXT</a> structure describes the position and
+orientation of a plane.</p>
+</div>
+<div id="XrPlaneDetectorLocationEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_plane_detection</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrPlaneDetectorLocationEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>                   <span class="n">type</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>                             <span class="n">next</span><span class="p">;</span>
+    <span class="kt">uint64_t</span>                          <span class="n">planeId</span><span class="p">;</span>
+    <span class="n">XrSpaceLocationFlags</span>              <span class="n">locationFlags</span><span class="p">;</span>
+    <span class="n">XrPosef</span>                           <span class="n">pose</span><span class="p">;</span>
+    <span class="n">XrExtent2Df</span>                       <span class="n">extents</span><span class="p">;</span>
+    <span class="n">XrPlaneDetectorOrientationEXT</span>     <span class="n">orientation</span><span class="p">;</span>
+    <span class="n">XrPlaneDetectorSemanticTypeEXT</span>    <span class="n">semanticType</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                          <span class="n">polygonBufferCount</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrPlaneDetectorLocationEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>planeId</code> is a <code>uint64_t</code> unique identifier of the plane.
+The planeId <strong class="purple">should</strong> remain the same for the duration of the
+<a href="XrPlaneDetectorEXT.html">XrPlaneDetectorEXT</a> handle for a physical plane.
+A runtime on occasion <strong class="purple">may</strong> assign a different id to the same physical
+plane, for example when several planes merge into one plane.
+<code>planeId</code> <strong class="purple">must</strong> remain valid until the next call to
+<a href="xrBeginPlaneDetectionEXT.html">xrBeginPlaneDetectionEXT</a> or <a href="xrDestroyPlaneDetectorEXT.html">xrDestroyPlaneDetectorEXT</a>.
+This id is used by <a href="xrGetPlanePolygonBufferEXT.html">xrGetPlanePolygonBufferEXT</a>.</p>
+</li>
+<li>
+<p><code>locationFlags</code> is a bitfield, with bit masks defined in
+<a href="XrSpaceLocationFlagBits.html">XrSpaceLocationFlagBits</a>, to indicate which members contain valid
+data.
+If none of the bits are set, no other fields in this structure <strong class="purple">should</strong> be
+considered to be valid or meaningful.</p>
+</li>
+<li>
+<p><code>pose</code> is an <a href="XrPosef.html">XrPosef</a> defining the position and orientation of
+the origin of a plane within the reference frame of the corresponding
+<a href="XrPlaneDetectorGetInfoEXT.html">XrPlaneDetectorGetInfoEXT</a>::<code>baseSpace</code>.</p>
+</li>
+<li>
+<p><code>extents</code> is the extent of the plane along the x-axis (width) and
+z-axis (height) centered on the <code>pose</code>.</p>
+</li>
+<li>
+<p><code>orientation</code> is the detected orientation of the plane.</p>
+</li>
+<li>
+<p><code>semanticType</code> <a href="XrPlaneDetectorSemanticTypeEXT.html">XrPlaneDetectorSemanticTypeEXT</a> type of the plane.</p>
+</li>
+<li>
+<p><code>polygonBufferCount</code> is the number of polygon buffers associated with
+this plane.
+If this is zero no polygon buffer was generated.
+The first polygon buffer is always the outside contour.
+If contours are requested with
+<code>XR_PLANE_DETECTOR_ENABLE_CONTOUR_BIT_EXT</code> this value <strong class="purple">must</strong> always be
+at least 1.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrPlaneDetectorLocationEXT-extension-notenabled" href="#VUID-XrPlaneDetectorLocationEXT-extension-notenabled"></a> The <code><a href="XR_EXT_plane_detection.html">XR_EXT_plane_detection</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrPlaneDetectorLocationEXT.html">XrPlaneDetectorLocationEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrPlaneDetectorLocationEXT-type-type" href="#VUID-XrPlaneDetectorLocationEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_PLANE_DETECTOR_LOCATION_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrPlaneDetectorLocationEXT-next-next" href="#VUID-XrPlaneDetectorLocationEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrPlaneDetectorLocationEXT-locationFlags-parameter" href="#VUID-XrPlaneDetectorLocationEXT-locationFlags-parameter"></a> <code>locationFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="XrSpaceLocationFlagBits.html">XrSpaceLocationFlagBits</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrPlaneDetectorLocationEXT-orientation-parameter" href="#VUID-XrPlaneDetectorLocationEXT-orientation-parameter"></a> If <code>orientation</code> is not <code>0</code>, <code>orientation</code> <strong class="purple">must</strong> be a valid <a href="XrPlaneDetectorOrientationEXT.html">XrPlaneDetectorOrientationEXT</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrPlaneDetectorLocationEXT-semanticType-parameter" href="#VUID-XrPlaneDetectorLocationEXT-semanticType-parameter"></a> If <code>semanticType</code> is not <code>0</code>, <code>semanticType</code> <strong class="purple">must</strong> be a valid <a href="XrPlaneDetectorSemanticTypeEXT.html">XrPlaneDetectorSemanticTypeEXT</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_plane_detection.html">XR_EXT_plane_detection</a>, <a href="XrExtent2Df.html">XrExtent2Df</a>, <a href="XrPlaneDetectorLocationsEXT.html">XrPlaneDetectorLocationsEXT</a>, <a href="XrPlaneDetectorOrientationEXT.html">XrPlaneDetectorOrientationEXT</a>, <a href="XrPlaneDetectorSemanticTypeEXT.html">XrPlaneDetectorSemanticTypeEXT</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrSpaceLocationFlags.html">XrSpaceLocationFlags</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetPlaneDetectionsEXT.html">xrGetPlaneDetectionsEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrPlaneDetectorLocationEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

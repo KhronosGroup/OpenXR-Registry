@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrActiveActionSet(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrActiveActionSet(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrActiveActionSet - Describes an active action set</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrActiveActionSet.html">XrActiveActionSet</a> structure is defined as:</p>
+</div>
+<div id="XrActiveActionSet" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActiveActionSet</span> <span class="p">{</span>
+    <span class="n">XrActionSet</span>    <span class="n">actionSet</span><span class="p">;</span>
+    <span class="n">XrPath</span>         <span class="n">subactionPath</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrActiveActionSet</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>actionSet</code> is the handle of the action set to activate.</p>
+</li>
+<li>
+<p><code>subactionPath</code> is a subaction path that was declared when one or more
+actions in the action set was created or <a href="XR_NULL_PATH.html">XR_NULL_PATH</a>.
+If the application wants to activate the action set on more than one
+subaction path, it <strong class="purple">can</strong> include additional <a href="XrActiveActionSet.html">XrActiveActionSet</a> structs
+with the other <code>subactionPath</code> values.
+Using <a href="XR_NULL_PATH.html">XR_NULL_PATH</a> as the value for <code>subactionPath</code>, acts as a
+wildcard for all subaction paths on the actions in the action set.
+If the subaction path was not specified on any of the actions in the
+actionSet when that action was created, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This structure defines a single active action set and subaction path
+combination.
+Applications <strong class="purple">can</strong> provide a list of these structures to the
+<a href="xrSyncActions.html">xrSyncActions</a> function.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrActiveActionSet-actionSet-parameter" href="#VUID-XrActiveActionSet-actionSet-parameter"></a> <code>actionSet</code> <strong class="purple">must</strong> be a valid <a href="XrActionSet.html">XrActionSet</a> handle</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrActionSet.html">XrActionSet</a>, <a href="XrActionsSyncInfo.html">XrActionsSyncInfo</a>, <a href="XrPath.html">XrPath</a>, <a href="xrSyncActions.html">xrSyncActions</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrActiveActionSet" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XR_REFERENCE_SPACE_TYPE_VIEW(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_REFERENCE_SPACE_TYPE_VIEW(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_REFERENCE_SPACE_TYPE_VIEW - View reference space</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div id="XR_REFERENCE_SPACE_TYPE_VIEW" class="paragraph">
+<p>The <code>XR_REFERENCE_SPACE_TYPE_VIEW</code> or <code>VIEW</code> reference space tracks the
+view origin used to generate view transforms for the primary viewer (or
+centroid of view origins if stereo), with +Y up, +X to the right, and -Z
+forward.
+This space points in the forward direction for the viewer without
+incorporating the user&#8217;s eye orientation, and is not gravity-aligned.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_VIEW"><code>VIEW</code> space</a> is primarily useful when projecting from the user&#8217;s
+perspective into another space to obtain a targeting ray, or when rendering
+small head-locked content such as a reticle.
+Content rendered in the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_VIEW"><code>VIEW</code> space</a> will stay at a fixed point on
+head-mounted displays and may be uncomfortable to view if too large.
+To obtain the ideal view and projection transforms to use each frame for
+rendering world content, applications should call <a href="xrLocateViews.html">xrLocateViews</a>
+instead of using this space.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrReferenceSpaceType.html">XrReferenceSpaceType</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_REFERENCE_SPACE_TYPE_VIEW" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

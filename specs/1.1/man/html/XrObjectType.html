@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrObjectType(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrObjectType(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrObjectType - Specify an enumeration to track object handle types</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div id="XrObjectType" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrObjectType</span> <span class="p">{</span>
+    <span class="n">XR_OBJECT_TYPE_UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_INSTANCE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_SESSION</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_SWAPCHAIN</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_SPACE</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_ACTION_SET</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_ACTION</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_EXT_debug_utils</span>
+    <span class="n">XR_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT</span> <span class="o">=</span> <span class="mi">1000019000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_spatial_anchor</span>
+    <span class="n">XR_OBJECT_TYPE_SPATIAL_ANCHOR_MSFT</span> <span class="o">=</span> <span class="mi">1000039000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_spatial_graph_bridge</span>
+    <span class="n">XR_OBJECT_TYPE_SPATIAL_GRAPH_NODE_BINDING_MSFT</span> <span class="o">=</span> <span class="mi">1000049000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_EXT_hand_tracking</span>
+    <span class="n">XR_OBJECT_TYPE_HAND_TRACKER_EXT</span> <span class="o">=</span> <span class="mi">1000051000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_body_tracking</span>
+    <span class="n">XR_OBJECT_TYPE_BODY_TRACKER_FB</span> <span class="o">=</span> <span class="mi">1000076000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_scene_understanding</span>
+    <span class="n">XR_OBJECT_TYPE_SCENE_OBSERVER_MSFT</span> <span class="o">=</span> <span class="mi">1000097000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_scene_understanding</span>
+    <span class="n">XR_OBJECT_TYPE_SCENE_MSFT</span> <span class="o">=</span> <span class="mi">1000097001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_HTC_facial_tracking</span>
+    <span class="n">XR_OBJECT_TYPE_FACIAL_TRACKER_HTC</span> <span class="o">=</span> <span class="mi">1000104000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_foveation</span>
+    <span class="n">XR_OBJECT_TYPE_FOVEATION_PROFILE_FB</span> <span class="o">=</span> <span class="mi">1000114000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_triangle_mesh</span>
+    <span class="n">XR_OBJECT_TYPE_TRIANGLE_MESH_FB</span> <span class="o">=</span> <span class="mi">1000117000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_passthrough</span>
+    <span class="n">XR_OBJECT_TYPE_PASSTHROUGH_FB</span> <span class="o">=</span> <span class="mi">1000118000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_passthrough</span>
+    <span class="n">XR_OBJECT_TYPE_PASSTHROUGH_LAYER_FB</span> <span class="o">=</span> <span class="mi">1000118002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_passthrough</span>
+    <span class="n">XR_OBJECT_TYPE_GEOMETRY_INSTANCE_FB</span> <span class="o">=</span> <span class="mi">1000118004</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_marker_understanding</span>
+    <span class="n">XR_OBJECT_TYPE_MARKER_DETECTOR_ML</span> <span class="o">=</span> <span class="mi">1000138000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_localization_map</span>
+    <span class="n">XR_OBJECT_TYPE_EXPORTED_LOCALIZATION_MAP_ML</span> <span class="o">=</span> <span class="mi">1000139000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_spatial_anchor_persistence</span>
+    <span class="n">XR_OBJECT_TYPE_SPATIAL_ANCHOR_STORE_CONNECTION_MSFT</span> <span class="o">=</span> <span class="mi">1000142000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_face_tracking</span>
+    <span class="n">XR_OBJECT_TYPE_FACE_TRACKER_FB</span> <span class="o">=</span> <span class="mi">1000201000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_eye_tracking_social</span>
+    <span class="n">XR_OBJECT_TYPE_EYE_TRACKER_FB</span> <span class="o">=</span> <span class="mi">1000202000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_virtual_keyboard</span>
+    <span class="n">XR_OBJECT_TYPE_VIRTUAL_KEYBOARD_META</span> <span class="o">=</span> <span class="mi">1000219000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_spatial_entity_user</span>
+    <span class="n">XR_OBJECT_TYPE_SPACE_USER_FB</span> <span class="o">=</span> <span class="mi">1000241000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_passthrough_color_lut</span>
+    <span class="n">XR_OBJECT_TYPE_PASSTHROUGH_COLOR_LUT_META</span> <span class="o">=</span> <span class="mi">1000266000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_FB_face_tracking2</span>
+    <span class="n">XR_OBJECT_TYPE_FACE_TRACKER2_FB</span> <span class="o">=</span> <span class="mi">1000287012</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_environment_depth</span>
+    <span class="n">XR_OBJECT_TYPE_ENVIRONMENT_DEPTH_PROVIDER_META</span> <span class="o">=</span> <span class="mi">1000291000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_environment_depth</span>
+    <span class="n">XR_OBJECT_TYPE_ENVIRONMENT_DEPTH_SWAPCHAIN_META</span> <span class="o">=</span> <span class="mi">1000291001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_HTC_passthrough</span>
+    <span class="n">XR_OBJECT_TYPE_PASSTHROUGH_HTC</span> <span class="o">=</span> <span class="mi">1000317000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_EXT_plane_detection</span>
+    <span class="n">XR_OBJECT_TYPE_PLANE_DETECTOR_EXT</span> <span class="o">=</span> <span class="mi">1000429000</span><span class="p">,</span>
+    <span class="n">XR_OBJECT_TYPE_MAX_ENUM</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrObjectType</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrObjectType.html">XrObjectType</a> enumeration defines values, each of which corresponds
+to a specific OpenXR handle type.
+These values <strong class="purple">can</strong> be used to associate debug information with a particular
+type of object through one or more extensions.</p>
+</div>
+<div class="paragraph">
+<p>The following table defines <a href="XrObjectType.html">XrObjectType</a> and OpenXR Handle
+relationships in the core specification:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 60.3448%;">
+<col style="width: 39.6552%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><a href="XrObjectType.html">XrObjectType</a></th>
+<th class="tableblock halign-left valign-top">OpenXR Handle Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_UNKNOWN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unknown/Undefined Handle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_INSTANCE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="XrInstance.html">XrInstance</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_SESSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="XrSession.html">XrSession</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_SWAPCHAIN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="XrSwapchain.html">XrSwapchain</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_SPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="XrSpace.html">XrSpace</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_ACTION_SET</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="XrActionSet.html">XrActionSet</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_OBJECT_TYPE_ACTION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="XrAction.html">XrAction</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrDebugUtilsObjectNameInfoEXT.html">XrDebugUtilsObjectNameInfoEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrObjectType" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

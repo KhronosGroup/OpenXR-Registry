@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrGetMarkerNumberML(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrGetMarkerNumberML(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrGetMarkerNumberML - Get the number of a marker, such as the ArUco ID.</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetMarkerNumberML.html">xrGetMarkerNumberML</a> function is defined as:</p>
+</div>
+<div id="xrGetMarkerNumberML" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_ML_marker_understanding</span>
+<span class="n">XrResult</span> <span class="nf">xrGetMarkerNumberML</span><span class="p">(</span>
+    <span class="n">XrMarkerDetectorML</span>                          <span class="n">markerDetector</span><span class="p">,</span>
+    <span class="n">XrMarkerML</span>                                  <span class="n">marker</span><span class="p">,</span>
+    <span class="kt">uint64_t</span><span class="o">*</span>                                   <span class="n">number</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>markerDetector</code> is the detector object to retrieve marker information
+from.</p>
+</li>
+<li>
+<p><code>marker</code> is the marker atom to be examined.</p>
+</li>
+<li>
+<p><code>number</code> points to a <code>float</code> in which the numerical value
+associated with the marker is returned.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Get the numerical value of a marker, such as the ArUco ID.
+<a href="xrGetMarkerNumberML.html">xrGetMarkerNumberML</a> <strong class="purple">must</strong> only be called when the state of the
+detector is <code>XR_MARKER_DETECTOR_STATUS_READY_ML</code>.
+If the marker does not have an associated numerical value, the runtime <strong class="purple">must</strong>
+return <code>XR_ERROR_MARKER_DETECTOR_INVALID_DATA_QUERY_ML</code>.</p>
+</div>
+<div class="paragraph">
+<p>If <a href="xrGetMarkerDetectorStateML.html">xrGetMarkerDetectorStateML</a> has not been called and returned
+<code>XR_MARKER_DETECTOR_STATUS_READY_ML</code> since the last invocation of
+<a href="xrSnapshotMarkerDetectorML.html">xrSnapshotMarkerDetectorML</a>, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_CALL_ORDER_INVALID</code>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_MARKER_INVALID_ML</code> if the marker atom
+is invalid.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrGetMarkerNumberML-extension-notenabled" href="#VUID-xrGetMarkerNumberML-extension-notenabled"></a> The <code><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetMarkerNumberML.html">xrGetMarkerNumberML</a></p>
+</li>
+<li>
+<p><a id="VUID-xrGetMarkerNumberML-markerDetector-parameter" href="#VUID-xrGetMarkerNumberML-markerDetector-parameter"></a> <code>markerDetector</code> <strong class="purple">must</strong> be a valid <a href="XrMarkerDetectorML.html">XrMarkerDetectorML</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrGetMarkerNumberML-number-parameter" href="#VUID-xrGetMarkerNumberML-number-parameter"></a> <code>number</code> <strong class="purple">must</strong> be a pointer to a <code>uint64_t</code> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_MARKER_INVALID_ML</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_MARKER_DETECTOR_INVALID_DATA_QUERY_ML</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_ML_marker_understanding.html">XR_ML_marker_understanding</a>, <a href="XrMarkerDetectorML.html">XrMarkerDetectorML</a>, <a href="XrMarkerML.html">XrMarkerML</a>, <a href="xrGetMarkersML.html">xrGetMarkersML</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrGetMarkerNumberML" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

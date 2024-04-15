@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XR_VERSION_1_0(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_VERSION_1_0(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_VERSION_1_0 - OpenXR version 1.0</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenXR version 1.0 defined the initial core API.</p>
+</div>
+<div class="sect2">
+<h3 id="_new_macros">New Macros</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XR_CURRENT_API_VERSION.html">XR_CURRENT_API_VERSION</a></p>
+</li>
+<li>
+<p><a href="XR_DEFINE_HANDLE.html">XR_DEFINE_HANDLE</a></p>
+</li>
+<li>
+<p><a href="XR_DEFINE_OPAQUE_64.html">XR_DEFINE_OPAQUE_64</a></p>
+</li>
+<li>
+<p><a href="XR_EXTENSION_ENUM_BASE.html">XR_EXTENSION_ENUM_BASE</a></p>
+</li>
+<li>
+<p><a href="XR_EXTENSION_ENUM_STRIDE.html">XR_EXTENSION_ENUM_STRIDE</a></p>
+</li>
+<li>
+<p><a href="XR_FAILED.html">XR_FAILED</a></p>
+</li>
+<li>
+<p><a href="XR_FREQUENCY_UNSPECIFIED.html">XR_FREQUENCY_UNSPECIFIED</a></p>
+</li>
+<li>
+<p><a href="XR_INFINITE_DURATION.html">XR_INFINITE_DURATION</a></p>
+</li>
+<li>
+<p><a href="XR_MAX_EVENT_DATA_SIZE.html">XR_MAX_EVENT_DATA_SIZE</a></p>
+</li>
+<li>
+<p><a href="XR_MAY_ALIAS.html">XR_MAY_ALIAS</a></p>
+</li>
+<li>
+<p><a href="XR_MIN_COMPOSITION_LAYERS_SUPPORTED.html">XR_MIN_COMPOSITION_LAYERS_SUPPORTED</a></p>
+</li>
+<li>
+<p><a href="XR_MIN_HAPTIC_DURATION.html">XR_MIN_HAPTIC_DURATION</a></p>
+</li>
+<li>
+<p><a href="XR_NO_DURATION.html">XR_NO_DURATION</a></p>
+</li>
+<li>
+<p><a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a></p>
+</li>
+<li>
+<p><a href="XR_NULL_PATH.html">XR_NULL_PATH</a></p>
+</li>
+<li>
+<p><a href="XR_NULL_SYSTEM_ID.html">XR_NULL_SYSTEM_ID</a></p>
+</li>
+<li>
+<p><a href="XR_SUCCEEDED.html">XR_SUCCEEDED</a></p>
+</li>
+<li>
+<p><a href="XR_UNQUALIFIED_SUCCESS.html">XR_UNQUALIFIED_SUCCESS</a></p>
+</li>
+<li>
+<p><a href="XR_VERSION_MAJOR.html">XR_VERSION_MAJOR</a></p>
+</li>
+<li>
+<p><a href="XR_VERSION_MINOR.html">XR_VERSION_MINOR</a></p>
+</li>
+<li>
+<p><a href="XR_VERSION_PATCH.html">XR_VERSION_PATCH</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_base_types">New Base Types</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrVersion.html">XrVersion</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_commands">New Commands</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="xrAcquireSwapchainImage.html">xrAcquireSwapchainImage</a></p>
+</li>
+<li>
+<p><a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a></p>
+</li>
+<li>
+<p><a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a></p>
+</li>
+<li>
+<p><a href="xrBeginFrame.html">xrBeginFrame</a></p>
+</li>
+<li>
+<p><a href="xrBeginSession.html">xrBeginSession</a></p>
+</li>
+<li>
+<p><a href="xrCreateAction.html">xrCreateAction</a></p>
+</li>
+<li>
+<p><a href="xrCreateActionSet.html">xrCreateActionSet</a></p>
+</li>
+<li>
+<p><a href="xrCreateActionSpace.html">xrCreateActionSpace</a></p>
+</li>
+<li>
+<p><a href="xrCreateInstance.html">xrCreateInstance</a></p>
+</li>
+<li>
+<p><a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a></p>
+</li>
+<li>
+<p><a href="xrCreateSession.html">xrCreateSession</a></p>
+</li>
+<li>
+<p><a href="xrCreateSwapchain.html">xrCreateSwapchain</a></p>
+</li>
+<li>
+<p><a href="xrDestroyAction.html">xrDestroyAction</a></p>
+</li>
+<li>
+<p><a href="xrDestroyActionSet.html">xrDestroyActionSet</a></p>
+</li>
+<li>
+<p><a href="xrDestroyInstance.html">xrDestroyInstance</a></p>
+</li>
+<li>
+<p><a href="xrDestroySession.html">xrDestroySession</a></p>
+</li>
+<li>
+<p><a href="xrDestroySpace.html">xrDestroySpace</a></p>
+</li>
+<li>
+<p><a href="xrDestroySwapchain.html">xrDestroySwapchain</a></p>
+</li>
+<li>
+<p><a href="xrEndFrame.html">xrEndFrame</a></p>
+</li>
+<li>
+<p><a href="xrEndSession.html">xrEndSession</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateApiLayerProperties.html">xrEnumerateApiLayerProperties</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateBoundSourcesForAction.html">xrEnumerateBoundSourcesForAction</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateEnvironmentBlendModes.html">xrEnumerateEnvironmentBlendModes</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateInstanceExtensionProperties.html">xrEnumerateInstanceExtensionProperties</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateReferenceSpaces.html">xrEnumerateReferenceSpaces</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateSwapchainFormats.html">xrEnumerateSwapchainFormats</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateSwapchainImages.html">xrEnumerateSwapchainImages</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateViewConfigurationViews.html">xrEnumerateViewConfigurationViews</a></p>
+</li>
+<li>
+<p><a href="xrEnumerateViewConfigurations.html">xrEnumerateViewConfigurations</a></p>
+</li>
+<li>
+<p><a href="xrGetActionStateBoolean.html">xrGetActionStateBoolean</a></p>
+</li>
+<li>
+<p><a href="xrGetActionStateFloat.html">xrGetActionStateFloat</a></p>
+</li>
+<li>
+<p><a href="xrGetActionStatePose.html">xrGetActionStatePose</a></p>
+</li>
+<li>
+<p><a href="xrGetActionStateVector2f.html">xrGetActionStateVector2f</a></p>
+</li>
+<li>
+<p><a href="xrGetCurrentInteractionProfile.html">xrGetCurrentInteractionProfile</a></p>
+</li>
+<li>
+<p><a href="xrGetInputSourceLocalizedName.html">xrGetInputSourceLocalizedName</a></p>
+</li>
+<li>
+<p><a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a></p>
+</li>
+<li>
+<p><a href="xrGetInstanceProperties.html">xrGetInstanceProperties</a></p>
+</li>
+<li>
+<p><a href="xrGetReferenceSpaceBoundsRect.html">xrGetReferenceSpaceBoundsRect</a></p>
+</li>
+<li>
+<p><a href="xrGetSystem.html">xrGetSystem</a></p>
+</li>
+<li>
+<p><a href="xrGetSystemProperties.html">xrGetSystemProperties</a></p>
+</li>
+<li>
+<p><a href="xrGetViewConfigurationProperties.html">xrGetViewConfigurationProperties</a></p>
+</li>
+<li>
+<p><a href="xrLocateSpace.html">xrLocateSpace</a></p>
+</li>
+<li>
+<p><a href="xrLocateViews.html">xrLocateViews</a></p>
+</li>
+<li>
+<p><a href="xrPathToString.html">xrPathToString</a></p>
+</li>
+<li>
+<p><a href="xrPollEvent.html">xrPollEvent</a></p>
+</li>
+<li>
+<p><a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a></p>
+</li>
+<li>
+<p><a href="xrRequestExitSession.html">xrRequestExitSession</a></p>
+</li>
+<li>
+<p><a href="xrResultToString.html">xrResultToString</a></p>
+</li>
+<li>
+<p><a href="xrStopHapticFeedback.html">xrStopHapticFeedback</a></p>
+</li>
+<li>
+<p><a href="xrStringToPath.html">xrStringToPath</a></p>
+</li>
+<li>
+<p><a href="xrStructureTypeToString.html">xrStructureTypeToString</a></p>
+</li>
+<li>
+<p><a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a></p>
+</li>
+<li>
+<p><a href="xrSyncActions.html">xrSyncActions</a></p>
+</li>
+<li>
+<p><a href="xrWaitFrame.html">xrWaitFrame</a></p>
+</li>
+<li>
+<p><a href="xrWaitSwapchainImage.html">xrWaitSwapchainImage</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_structures">New Structures</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrBaseInStructure.html">XrBaseInStructure</a></p>
+</li>
+<li>
+<p><a href="XrBaseOutStructure.html">XrBaseOutStructure</a></p>
+</li>
+<li>
+<p><a href="XrColor4f.html">XrColor4f</a></p>
+</li>
+<li>
+<p><a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a></p>
+</li>
+<li>
+<p><a href="XrCompositionLayerQuad.html">XrCompositionLayerQuad</a></p>
+</li>
+<li>
+<p><a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a></p>
+</li>
+<li>
+<p><a href="XrEventDataEventsLost.html">XrEventDataEventsLost</a></p>
+</li>
+<li>
+<p><a href="XrEventDataInstanceLossPending.html">XrEventDataInstanceLossPending</a></p>
+</li>
+<li>
+<p><a href="XrEventDataInteractionProfileChanged.html">XrEventDataInteractionProfileChanged</a></p>
+</li>
+<li>
+<p><a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a></p>
+</li>
+<li>
+<p><a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a></p>
+</li>
+<li>
+<p><a href="XrExtent2Df.html">XrExtent2Df</a></p>
+</li>
+<li>
+<p><a href="XrHapticVibration.html">XrHapticVibration</a></p>
+</li>
+<li>
+<p><a href="XrOffset2Df.html">XrOffset2Df</a></p>
+</li>
+<li>
+<p><a href="XrRect2Df.html">XrRect2Df</a></p>
+</li>
+<li>
+<p><a href="XrVector4f.html">XrVector4f</a></p>
+</li>
+<li>
+<p>Extending <a href="XrSpaceLocation.html">XrSpaceLocation</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrSpaceVelocity.html">XrSpaceVelocity</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_enums">New Enums</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrObjectType.html">XrObjectType</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_headers">New Headers</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>openxr_platform_defines</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_enum_constants">New Enum Constants</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_FALSE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_API_LAYER_DESCRIPTION_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_API_LAYER_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_APPLICATION_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_ENGINE_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_EXTENSION_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_PATH_LENGTH</code></p>
+</li>
+<li>
+<p><code>XR_MAX_RESULT_STRING_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_RUNTIME_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_STRUCTURE_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_MAX_SYSTEM_NAME_SIZE</code></p>
+</li>
+<li>
+<p><code>XR_TRUE</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>No cross-references are available</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#versions-1.0" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

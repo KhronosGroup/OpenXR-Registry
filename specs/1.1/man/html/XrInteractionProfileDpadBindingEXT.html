@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrInteractionProfileDpadBindingEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrInteractionProfileDpadBindingEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrInteractionProfileDpadBindingEXT - Interaction profile dpad binding</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrInteractionProfileDpadBindingEXT.html">XrInteractionProfileDpadBindingEXT</a> structure is defined as:</p>
+</div>
+<div id="XrInteractionProfileDpadBindingEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_dpad_binding</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInteractionProfileDpadBindingEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>              <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                  <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrPath</span>                       <span class="n">binding</span><span class="p">;</span>
+    <span class="n">XrActionSet</span>                  <span class="n">actionSet</span><span class="p">;</span>
+    <span class="kt">float</span>                        <span class="n">forceThreshold</span><span class="p">;</span>
+    <span class="kt">float</span>                        <span class="n">forceThresholdReleased</span><span class="p">;</span>
+    <span class="kt">float</span>                        <span class="n">centerRegion</span><span class="p">;</span>
+    <span class="kt">float</span>                        <span class="n">wedgeAngle</span><span class="p">;</span>
+    <span class="n">XrBool32</span>                     <span class="n">isSticky</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrHapticBaseHeader</span><span class="o">*</span>    <span class="n">onHaptic</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrHapticBaseHeader</span><span class="o">*</span>    <span class="n">offHaptic</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrInteractionProfileDpadBindingEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>binding</code> is the input path used for the specified actions in the
+suggested binding list to be used as a dpad.
+E.g. path:/user/hand/right/input/thumbstick</p>
+</li>
+<li>
+<p><code>actionSet</code> is the action set for which this dpad will be active.
+The implementation <strong class="purple">must</strong> use the parameters from this structure for any
+actions from this action set that are bound to one of the dpad subpaths
+for this input path.</p>
+</li>
+<li>
+<p><code>forceThreshold</code> a number in the half-open range <span class="eq">(0, 1]</span>
+representing the force value threshold at or above which (≥) a dpad
+input will transition from inactive to active.</p>
+</li>
+<li>
+<p><code>forceThresholdReleased</code> a number in the half-open range <span class="eq">(0, 1]</span>
+representing the force value threshold strictly below which (&lt;) a dpad
+input will transition from active to inactive.</p>
+</li>
+<li>
+<p><code>centerRegion</code> defines the center region of the thumbstick or
+trackpad.
+This is the radius, in the input value space, of a logically circular
+region in the center of the input, in the range <span class="eq">(0, 1)</span>.</p>
+</li>
+<li>
+<p><code>wedgeAngle</code> indicates the angle in radians of each direction region
+and is a value in the half-open range <span class="eq">[0, π)</span>.</p>
+</li>
+<li>
+<p><code>isSticky</code> indicates that the implementation will latch the first
+region that is activated and continue to indicate that the binding for
+that region is true until the user releases the input underlying the
+virtual dpad.</p>
+</li>
+<li>
+<p><code>onHaptic</code> is the haptic output that the runtime <strong class="purple">must</strong> trigger when
+the binding changes from false to true.
+If this field is <code>NULL</code>, the runtime <strong class="purple">must</strong> not trigger any haptic
+output on the threshold.
+This field <strong class="purple">can</strong> point to any supported sub-type of
+<a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>.</p>
+</li>
+<li>
+<p><code>offHaptic</code> is the haptic output that the runtime <strong class="purple">must</strong> trigger when
+the binding changes from true to false.
+If this field is NULL, the runtime <strong class="purple">must</strong> not trigger any haptic output on
+the threshold.
+This field <strong class="purple">can</strong> point to any supported sub-type of
+<a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrInteractionProfileDpadBindingEXT.html">XrInteractionProfileDpadBindingEXT</a> structure is an input struct
+that defines how to use any two-axis input to provide dpad-like
+functionality to the application.
+The struct <strong class="purple">must</strong> be added for each input that should be treated as a dpad to
+the <a href="XrBindingModificationsKHR.html">XrBindingModificationsKHR</a>::<code>bindingModifications</code> array in the
+<a href="XrBindingModificationsKHR.html">XrBindingModificationsKHR</a> structure (See
+<code><a href="XR_KHR_binding_modification.html">XR_KHR_binding_modification</a></code> extension).</p>
+</div>
+<div class="paragraph">
+<p>Runtimes are free to ignore any of the fields when not obeying the bindings,
+but <strong class="purple">may</strong> use it for automatic rebindings of actions.</p>
+</div>
+<div class="paragraph">
+<p>The implementation <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> from
+<a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a> if any of the following are true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>forceThreshold</code> or <code>forceThresholdReleased</code> are outside the
+half-open range <span class="eq">(0, 1]</span></p>
+</li>
+<li>
+<p><span class="eq"><code>forceThreshold</code> &lt; <code>forceThresholdReleased</code></span></p>
+</li>
+<li>
+<p><code>centerRegion</code> is outside the exclusive range <span class="eq">(0, 1)</span></p>
+</li>
+<li>
+<p><code>wedgeAngle</code> outside the half-open range <span class="eq">[0, π)</span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If more than one <a href="XrInteractionProfileDpadBindingEXT.html">XrInteractionProfileDpadBindingEXT</a> is provided for
+the same input identifier, including top level path (e.g.
+<em>/user/hand/left/input/thumbstick</em>), and two or more of them specify
+the same actionset, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_VALIDATION_FAILURE</code>.
+If the same input identifier, including top level path, is used for more
+than one action set, in addition to inputs being <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#input-action-sets" target="_blank" rel="noopener">suppressed by higher priority action sets</a>, haptic events from dpads are
+also suppressed.</p>
+</div>
+<div class="paragraph">
+<p>For example, a Valve Index controller binding with a "Walking" action set
+can have a dpad on each of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>left thumbstick</p>
+</li>
+<li>
+<p>right thumbstick</p>
+</li>
+<li>
+<p>left trackpad</p>
+</li>
+<li>
+<p>right trackpad</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Another action set can also have a dpad active on each of those inputs, and
+they can have different settings.
+If both action sets are active, the higher priority one trumps the lower
+priority one, and the lower priority one is suppressed.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrInteractionProfileDpadBindingEXT-extension-notenabled" href="#VUID-XrInteractionProfileDpadBindingEXT-extension-notenabled"></a> The <code><a href="XR_EXT_dpad_binding.html">XR_EXT_dpad_binding</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrInteractionProfileDpadBindingEXT.html">XrInteractionProfileDpadBindingEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrInteractionProfileDpadBindingEXT-type-type" href="#VUID-XrInteractionProfileDpadBindingEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_INTERACTION_PROFILE_DPAD_BINDING_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrInteractionProfileDpadBindingEXT-next-next" href="#VUID-XrInteractionProfileDpadBindingEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrInteractionProfileDpadBindingEXT-actionSet-parameter" href="#VUID-XrInteractionProfileDpadBindingEXT-actionSet-parameter"></a> <code>actionSet</code> <strong class="purple">must</strong> be a valid <a href="XrActionSet.html">XrActionSet</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-XrInteractionProfileDpadBindingEXT-onHaptic-parameter" href="#VUID-XrInteractionProfileDpadBindingEXT-onHaptic-parameter"></a> If <code>onHaptic</code> is not <code>NULL</code>, <code>onHaptic</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>-based structure. See also: <a href="XrHapticAmplitudeEnvelopeVibrationFB.html">XrHapticAmplitudeEnvelopeVibrationFB</a>, <a href="XrHapticPcmVibrationFB.html">XrHapticPcmVibrationFB</a>, <a href="XrHapticVibration.html">XrHapticVibration</a></p>
+</li>
+<li>
+<p><a id="VUID-XrInteractionProfileDpadBindingEXT-offHaptic-parameter" href="#VUID-XrInteractionProfileDpadBindingEXT-offHaptic-parameter"></a> If <code>offHaptic</code> is not <code>NULL</code>, <code>offHaptic</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>-based structure. See also: <a href="XrHapticAmplitudeEnvelopeVibrationFB.html">XrHapticAmplitudeEnvelopeVibrationFB</a>, <a href="XrHapticPcmVibrationFB.html">XrHapticPcmVibrationFB</a>, <a href="XrHapticVibration.html">XrHapticVibration</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_dpad_binding.html">XR_EXT_dpad_binding</a>, <a href="XrActionSet.html">XrActionSet</a>, <a href="XrBindingModificationBaseHeaderKHR.html">XrBindingModificationBaseHeaderKHR</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>, <a href="XrPath.html">XrPath</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrInteractionProfileDpadBindingEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

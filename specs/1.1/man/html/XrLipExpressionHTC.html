@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrLipExpressionHTC(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrLipExpressionHTC(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrLipExpressionHTC - The blend shapes of lip expression</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div id="XrLipExpressionHTC" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_HTC_facial_tracking</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrLipExpressionHTC</span> <span class="p">{</span>
+    <span class="n">XR_LIP_EXPRESSION_JAW_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_JAW_LEFT_HTC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_JAW_FORWARD_HTC</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_JAW_OPEN_HTC</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_APE_SHAPE_HTC</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_UPPER_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_UPPER_LEFT_HTC</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_LEFT_HTC</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_UPPER_OVERTURN_HTC</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_OVERTURN_HTC</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_POUT_HTC</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_SMILE_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_SMILE_LEFT_HTC</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_SAD_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_SAD_LEFT_HTC</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_CHEEK_PUFF_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_CHEEK_PUFF_LEFT_HTC</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_CHEEK_SUCK_HTC</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_UPPER_UPRIGHT_HTC</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_UPPER_UPLEFT_HTC</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_DOWNRIGHT_HTC</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_DOWNLEFT_HTC</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_UPPER_INSIDE_HTC</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_INSIDE_HTC</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MOUTH_LOWER_OVERLAY_HTC</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_LONGSTEP1_HTC</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_LEFT_HTC</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_RIGHT_HTC</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_UP_HTC</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_DOWN_HTC</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_ROLL_HTC</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_LONGSTEP2_HTC</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_UPRIGHT_MORPH_HTC</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_UPLEFT_MORPH_HTC</span> <span class="o">=</span> <span class="mi">34</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_DOWNRIGHT_MORPH_HTC</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_TONGUE_DOWNLEFT_MORPH_HTC</span> <span class="o">=</span> <span class="mi">36</span><span class="p">,</span>
+    <span class="n">XR_LIP_EXPRESSION_MAX_ENUM_HTC</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrLipExpressionHTC</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_HTC_facial_tracking.html">XR_HTC_facial_tracking</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrLipExpressionHTC" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

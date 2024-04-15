@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrLocateViews(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrLocateViews(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrLocateViews - Gets view and projection info</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrLocateViews.html">xrLocateViews</a> function is defined as:</p>
+</div>
+<div id="xrLocateViews" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XrResult</span> <span class="nf">xrLocateViews</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrViewLocateInfo</span><span class="o">*</span>                     <span class="n">viewLocateInfo</span><span class="p">,</span>
+    <span class="n">XrViewState</span><span class="o">*</span>                                <span class="n">viewState</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                                    <span class="n">viewCapacityInput</span><span class="p">,</span>
+    <span class="kt">uint32_t</span><span class="o">*</span>                                   <span class="n">viewCountOutput</span><span class="p">,</span>
+    <span class="n">XrView</span><span class="o">*</span>                                     <span class="n">views</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is a handle to the provided <a href="XrSession.html">XrSession</a>.</p>
+</li>
+<li>
+<p><code>viewLocateInfo</code> is a pointer to a valid <a href="XrViewLocateInfo.html">XrViewLocateInfo</a>
+structure.</p>
+</li>
+<li>
+<p><code>viewState</code> is the output structure with the viewer state information.</p>
+</li>
+<li>
+<p><code>viewCapacityInput</code> is an input parameter which specifies the capacity
+of the <code>views</code> array.
+The required capacity <strong class="purple">must</strong> be same as defined by the corresponding
+<a href="XrViewConfigurationType.html">XrViewConfigurationType</a>.</p>
+</li>
+<li>
+<p><code>viewCountOutput</code> is an output parameter which identifies the valid
+count of <code>views</code>.</p>
+</li>
+<li>
+<p><code>views</code> is an array of <a href="XrView.html">XrView</a>.</p>
+</li>
+<li>
+<p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters</a> section for a detailed
+description of retrieving the required <code>views</code> size.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrLocateViews.html">xrLocateViews</a> function returns the view and projection info for a
+particular display time.
+This time is typically the target display time for a given frame.
+Repeatedly calling <a href="xrLocateViews.html">xrLocateViews</a> with the same time <strong class="purple">may</strong> not
+necessarily return the same result.
+Instead the prediction gets increasingly accurate as the function is called
+closer to the given time for which a prediction is made.
+This allows an application to get the predicted views as late as possible in
+its pipeline to get the least amount of latency and prediction error.</p>
+</div>
+<div class="paragraph">
+<p><a href="xrLocateViews.html">xrLocateViews</a> returns an array of <a href="XrView.html">XrView</a> elements, one for each
+view of the specified view configuration type, along with an
+<a href="XrViewState.html">XrViewState</a> containing additional state data shared across all views.
+The eye each view corresponds to is statically defined in
+<a href="XrViewConfigurationType.html">XrViewConfigurationType</a> in case the application wants to apply
+eye-specific rendering traits.
+The <a href="XrViewState.html">XrViewState</a> and <a href="XrView.html">XrView</a> member data <strong class="purple">may</strong> change on subsequent
+calls to <a href="xrLocateViews.html">xrLocateViews</a>, and so applications <strong class="purple">must</strong> not assume it to be
+constant.</p>
+</div>
+<div class="paragraph">
+<p>If an application gives a <code>viewLocateInfo</code> with a
+<a href="XrViewLocateInfo.html">XrViewLocateInfo</a>::<code>viewConfigurationType</code> that was not passed in
+the session&#8217;s call to <a href="xrBeginSession.html">xrBeginSession</a> via the
+<a href="XrSessionBeginInfo.html">XrSessionBeginInfo</a>::<code>primaryViewConfigurationType</code>, or enabled
+though an extension, then the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrLocateViews-session-parameter" href="#VUID-xrLocateViews-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateViews-viewLocateInfo-parameter" href="#VUID-xrLocateViews-viewLocateInfo-parameter"></a> <code>viewLocateInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrViewLocateInfo.html">XrViewLocateInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateViews-viewState-parameter" href="#VUID-xrLocateViews-viewState-parameter"></a> <code>viewState</code> <strong class="purple">must</strong> be a pointer to an <a href="XrViewState.html">XrViewState</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateViews-viewCountOutput-parameter" href="#VUID-xrLocateViews-viewCountOutput-parameter"></a> <code>viewCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateViews-views-parameter" href="#VUID-xrLocateViews-views-parameter"></a> If <code>viewCapacityInput</code> is not <code>0</code>, <code>views</code> <strong class="purple">must</strong> be a pointer to an array of <code>viewCapacityInput</code> <a href="XrView.html">XrView</a> structures</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VIEW_CONFIGURATION_TYPE_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_TIME_INVALID</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrSession.html">XrSession</a>, <a href="XrView.html">XrView</a>, <a href="XrViewLocateInfo.html">XrViewLocateInfo</a>, <a href="XrViewState.html">XrViewState</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrLocateViews" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

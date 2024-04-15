@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrGetRecommendedLayerResolutionMETA(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrGetRecommendedLayerResolutionMETA(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrGetRecommendedLayerResolutionMETA - Get the recommended layer resolution for a layer from the runtime</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetRecommendedLayerResolutionMETA.html">xrGetRecommendedLayerResolutionMETA</a> function is defined as:</p>
+</div>
+<div id="xrGetRecommendedLayerResolutionMETA" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_META_recommended_layer_resolution</span>
+<span class="n">XrResult</span> <span class="nf">xrGetRecommendedLayerResolutionMETA</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrRecommendedLayerResolutionGetInfoMETA</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
+    <span class="n">XrRecommendedLayerResolutionMETA</span><span class="o">*</span>           <span class="n">resolution</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="XrSession.html">XrSession</a> in which the recommendation is made.</p>
+</li>
+<li>
+<p><code>info</code> is a pointer to an
+<a href="XrRecommendedLayerResolutionGetInfoMETA.html">XrRecommendedLayerResolutionGetInfoMETA</a> structure containing the
+details of the layer for which the application is requesting a
+recommendation.</p>
+</li>
+<li>
+<p><code>resolution</code> is a pointer to an <a href="XrRecommendedLayerResolutionMETA.html">XrRecommendedLayerResolutionMETA</a>
+that the runtime will populate.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetRecommendedLayerResolutionMETA.html">xrGetRecommendedLayerResolutionMETA</a> function returns the
+recommendation that the runtime wishes to make to the application for the
+layer provided in the <a href="XrRecommendedLayerResolutionGetInfoMETA.html">XrRecommendedLayerResolutionGetInfoMETA</a>
+structure.
+Application <strong class="purple">may</strong> choose to reallocate their swapchain or scale view
+resolution accordingly.
+Applications rendering multiple views into the swapchain <strong class="purple">may</strong> scale
+individual views to match the recommended swapchain resolution.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">may</strong> not wish to make any recommendation, in which case it <strong class="purple">must</strong>
+return an <a href="XrRecommendedLayerResolutionMETA.html">XrRecommendedLayerResolutionMETA</a>::<code>isValid</code> value of
+<code>XR_FALSE</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the <a href="XrRecommendedLayerResolutionGetInfoMETA.html">XrRecommendedLayerResolutionGetInfoMETA</a>::<code>layer</code> attribute
+of the <code>info</code> argument of the function contains valid swapchain handles
+in all fields where required, the runtime <strong class="purple">must</strong> return a resolution
+recommendation which is less than or equal to the size of that swapchain, so
+that the application <strong class="purple">may</strong> render into an existing swapchain or swapchains
+without reallocation.
+As an exception to valid usage, an otherwise-valid structure passed as
+<a href="XrRecommendedLayerResolutionGetInfoMETA.html">XrRecommendedLayerResolutionGetInfoMETA</a>::<code>layer</code> <strong class="purple">may</strong> contain
+<a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a> in place of valid <a href="XrSwapchain.html">XrSwapchain</a> handle(s) for this
+function only, to obtain a recommended resolution resolution for the purpose
+of allocating a swapchain.
+If at least one otherwise-required <a href="XrSwapchain.html">XrSwapchain</a> handle within
+<a href="XrRecommendedLayerResolutionGetInfoMETA.html">XrRecommendedLayerResolutionGetInfoMETA</a>::<code>layer</code> is
+<a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a>, the runtime <strong class="purple">must</strong> interpret this as a request for
+recommended resolution without limitation to the allocated size of any
+existing swapchain.</p>
+</div>
+<div class="paragraph">
+<p>If the runtime makes a recommendation, it <strong class="purple">should</strong> make a recommendation that
+is directly usable by the application to render its frames without creating
+adverse visual effects for the user.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_META_recommended_layer_resolution.html">XR_META_recommended_layer_resolution</a>, <a href="XrRecommendedLayerResolutionGetInfoMETA.html">XrRecommendedLayerResolutionGetInfoMETA</a>, <a href="XrRecommendedLayerResolutionMETA.html">XrRecommendedLayerResolutionMETA</a>, <a href="XrSession.html">XrSession</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrGetRecommendedLayerResolutionMETA" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

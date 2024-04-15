@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrWaitFrame(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrWaitFrame(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrWaitFrame - Frame timing function</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrWaitFrame.html">xrWaitFrame</a> function is defined as:</p>
+</div>
+<div id="xrWaitFrame" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XrResult</span> <span class="nf">xrWaitFrame</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrFrameWaitInfo</span><span class="o">*</span>                      <span class="n">frameWaitInfo</span><span class="p">,</span>
+    <span class="n">XrFrameState</span><span class="o">*</span>                               <span class="n">frameState</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is a valid <a href="XrSession.html">XrSession</a> handle.</p>
+</li>
+<li>
+<p><code>frameWaitInfo</code> exists for extensibility purposes, it is <code>NULL</code> or
+a pointer to a valid <a href="XrFrameWaitInfo.html">XrFrameWaitInfo</a>.</p>
+</li>
+<li>
+<p><code>frameState</code> is a pointer to a valid <a href="XrFrameState.html">XrFrameState</a>, an output
+parameter.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="xrWaitFrame.html">xrWaitFrame</a> throttles the application frame loop in order to
+synchronize application frame submissions with the display.
+<a href="xrWaitFrame.html">xrWaitFrame</a> returns a predicted display time for the next time that
+the runtime predicts a composited frame will be displayed.
+The runtime <strong class="purple">may</strong> affect this computation by changing the return values and
+throttling of <a href="xrWaitFrame.html">xrWaitFrame</a> in response to feedback from frame
+submission and completion times in <a href="xrEndFrame.html">xrEndFrame</a>.
+A subsequent <a href="xrWaitFrame.html">xrWaitFrame</a> call <strong class="purple">must</strong> block until the previous frame has
+been begun with <a href="xrBeginFrame.html">xrBeginFrame</a> and <strong class="purple">must</strong> unblock independently of the
+corresponding call to <a href="xrEndFrame.html">xrEndFrame</a>.
+Refer to <a href="xrBeginSession.html">xrBeginSession</a> for details on how a transition to
+<a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#session-running" target="_blank" rel="noopener">session running</a> resets the frame function call order.</p>
+</div>
+<div class="paragraph">
+<p>When less than one frame interval has passed since the previous return from
+<a href="xrWaitFrame.html">xrWaitFrame</a>, the runtime <strong class="purple">should</strong> block until the beginning of the next
+frame interval.
+If more than one frame interval has passed since the last return from
+<a href="xrWaitFrame.html">xrWaitFrame</a>, the runtime <strong class="purple">may</strong> return immediately or block until the
+beginning of the next frame interval.</p>
+</div>
+<div class="paragraph">
+<p>In the case that an application has pipelined frame submissions, the
+application <strong class="purple">should</strong> compute the appropriate target display time using both
+the predicted display time and predicted display interval.
+The application <strong class="purple">should</strong> use the computed target display time when requesting
+space and view locations for rendering.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="XrFrameState.html">XrFrameState</a>::<code>predictedDisplayTime</code> returned by
+<a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be monotonically increasing.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">may</strong> dynamically adjust the start time of the frame interval
+relative to the display hardware&#8217;s refresh cycle to minimize graphics
+processor contention between the application and the compositor.</p>
+</div>
+<div class="paragraph">
+<p><a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be callable from any thread, including a different
+thread than <a href="xrBeginFrame.html">xrBeginFrame</a>/<a href="xrEndFrame.html">xrEndFrame</a> are being called from.</p>
+</div>
+<div class="paragraph">
+<p>Calling <a href="xrWaitFrame.html">xrWaitFrame</a> <strong class="purple">must</strong> be externally synchronized by the
+application, concurrent calls <strong class="purple">may</strong> result in undefined behavior.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SESSION_NOT_RUNNING</code> if the
+<code>session</code> <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#session-not-running" target="_blank" rel="noopener">is not running</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>The engine simulation <strong class="purple">should</strong> advance based on the display time.
+Every stage in the engine pipeline <strong class="purple">should</strong> use the exact same display time
+for one particular application-generated frame.
+An accurate and consistent display time across all stages and threads in the
+engine pipeline is important to avoid object motion judder.
+If the application has multiple pipeline stages, the application <strong class="purple">should</strong>
+pass its computed display time through its pipeline, as <a href="xrWaitFrame.html">xrWaitFrame</a>
+<strong class="purple">must</strong> be called only once per frame.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrWaitFrame-session-parameter" href="#VUID-xrWaitFrame-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrWaitFrame-frameWaitInfo-parameter" href="#VUID-xrWaitFrame-frameWaitInfo-parameter"></a> If <code>frameWaitInfo</code> is not <code>NULL</code>, <code>frameWaitInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrFrameWaitInfo.html">XrFrameWaitInfo</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrWaitFrame-frameState-parameter" href="#VUID-xrWaitFrame-frameState-parameter"></a> <code>frameState</code> <strong class="purple">must</strong> be a pointer to an <a href="XrFrameState.html">XrFrameState</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Thread Safety</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access to the <code>session</code> parameter by any other <a href="xrWaitFrame.html">xrWaitFrame</a> call <strong class="purple">must</strong> be externally synchronized</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_NOT_RUNNING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrFrameState.html">XrFrameState</a>, <a href="XrFrameWaitInfo.html">XrFrameWaitInfo</a>, <a href="XrSession.html">XrSession</a>, <a href="xrBeginFrame.html">xrBeginFrame</a>, <a href="xrEndFrame.html">xrEndFrame</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrWaitFrame" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

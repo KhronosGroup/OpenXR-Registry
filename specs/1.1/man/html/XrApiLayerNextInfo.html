@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrApiLayerNextInfo(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrApiLayerNextInfo(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrApiLayerNextInfo - Chained into a list of api layer description structures</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrApiLayerNextInfo.html">XrApiLayerNextInfo</a> structure is defined as:</p>
+</div>
+<div id="XrApiLayerNextInfo" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerNextInfo</span> <span class="p">{</span>
+    <span class="n">XrLoaderInterfaceStructs</span>        <span class="n">structType</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                        <span class="n">structVersion</span><span class="p">;</span>
+    <span class="kt">size_t</span>                          <span class="n">structSize</span><span class="p">;</span>
+    <span class="kt">char</span>                            <span class="n">layerName</span><span class="p">[</span><span class="n">XR_MAX_API_LAYER_NAME_SIZE</span><span class="p">];</span>
+    <span class="n">PFN_xrGetInstanceProcAddr</span>       <span class="n">nextGetInstanceProcAddr</span><span class="p">;</span>
+    <span class="n">PFN_xrCreateApiLayerInstance</span>    <span class="n">nextCreateApiLayerInstance</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">XrApiLayerNextInfo</span><span class="o">*</span>      <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrApiLayerNextInfo</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>structType</code> <strong class="purple">must</strong> be
+<code>XR_LOADER_INTERFACE_STRUCT_API_LAYER_NEXT_INFO</code></p>
+</li>
+<li>
+<p><code>structVersion</code> <strong class="purple">must</strong> be a valid version of the structure and the
+version being supplied by the loader (i.e.
+<a href="XR_API_LAYER_NEXT_INFO_STRUCT_VERSION.html">XR_API_LAYER_NEXT_INFO_STRUCT_VERSION</a>).</p>
+</li>
+<li>
+<p><code>structSize</code> <strong class="purple">must</strong> be the size in bytes of the current version of the
+structure (i.e. <code>sizeof(<a href="XrApiLayerNextInfo.html">XrApiLayerNextInfo</a>)</code>)</p>
+</li>
+<li>
+<p><code>layerName</code> is the name of the intended next API layer, used to verify
+and debug the API layer chain.</p>
+</li>
+<li>
+<p><code>nextGetInstanceProcAddr</code> is a pointer to the next API layer&#8217;s
+<a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a>.
+This is intended for use in populating a dispatch table to the next
+implementations in the chain.</p>
+</li>
+<li>
+<p><code>nextCreateApiLayerInstance</code> is a pointer to the
+<a href="xrCreateApiLayerInstance.html">xrCreateApiLayerInstance</a> function implementation in the next API
+layer.
+This is to be called <strong>after</strong> the API layer has done any localized
+creation, but <strong>before</strong> the API layer records any function addresses from
+the next API layer using <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a>.</p>
+</li>
+<li>
+<p><code>next</code> is a pointer to the <a href="XrApiLayerNextInfo.html">XrApiLayerNextInfo</a> for the next API
+layer.
+If no API layer is after this, it will be <code>NULL</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-extension-notenabled" href="#VUID-XrApiLayerNextInfo-extension-notenabled"></a> The <code><a href="XR_LOADER_VERSION_1_0.html">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrApiLayerNextInfo.html">XrApiLayerNextInfo</a></p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-structType-parameter" href="#VUID-XrApiLayerNextInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="XrLoaderInterfaceStructs.html">XrLoaderInterfaceStructs</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-layerName-parameter" href="#VUID-XrApiLayerNextInfo-layerName-parameter"></a> <code>layerName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to <code>XR_MAX_API_LAYER_NAME_SIZE</code></p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-nextGetInstanceProcAddr-parameter" href="#VUID-XrApiLayerNextInfo-nextGetInstanceProcAddr-parameter"></a> <code>nextGetInstanceProcAddr</code> <strong class="purple">must</strong> be a valid <a href="PFN_xrGetInstanceProcAddr.html">PFN_xrGetInstanceProcAddr</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-nextCreateApiLayerInstance-parameter" href="#VUID-XrApiLayerNextInfo-nextCreateApiLayerInstance-parameter"></a> <code>nextCreateApiLayerInstance</code> <strong class="purple">must</strong> be a valid <a href="PFN_xrCreateApiLayerInstance.html">PFN_xrCreateApiLayerInstance</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrApiLayerNextInfo-next-parameter" href="#VUID-XrApiLayerNextInfo-next-parameter"></a> <code>next</code> <strong class="purple">must</strong> be a pointer to an <a href="XrApiLayerNextInfo.html">XrApiLayerNextInfo</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="PFN_xrCreateApiLayerInstance.html">PFN_xrCreateApiLayerInstance</a>, <a href="PFN_xrGetInstanceProcAddr.html">PFN_xrGetInstanceProcAddr</a>, <a href="XrApiLayerCreateInfo.html">XrApiLayerCreateInfo</a>, <a href="XrApiLayerNextInfo.html">XrApiLayerNextInfo</a>, <a href="XrLoaderInterfaceStructs.html">XrLoaderInterfaceStructs</a>, <a href="xrCreateApiLayerInstance.html">xrCreateApiLayerInstance</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrApiLayerNextInfo" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

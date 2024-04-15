@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrPosef(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrPosef(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrPosef - Location and orientation in a space.</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A pose is defined by the <a href="XrPosef.html">XrPosef</a> structure:</p>
+</div>
+<div id="XrPosef" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrPosef</span> <span class="p">{</span>
+    <span class="n">XrQuaternionf</span>    <span class="n">orientation</span><span class="p">;</span>
+    <span class="n">XrVector3f</span>       <span class="n">position</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrPosef</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>orientation</code> is an <a href="XrQuaternionf.html">XrQuaternionf</a> representing the orientation
+within a space.</p>
+</li>
+<li>
+<p><code>position</code> is an <a href="XrVector3f.html">XrVector3f</a> representing position within a
+space.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>A construct representing a position and orientation within a space, with
+position expressed in meters, and orientation represented as a unit
+quaternion.
+When using <a href="XrPosef.html">XrPosef</a> the rotation described by <code>orientation</code> is
+always applied before the translation described by <code>position</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A runtime <strong class="purple">must</strong> return <code>XR_ERROR_POSE_INVALID</code> if the <code>orientation</code>
+norm deviates by more than 1% from unit length.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrActionSpaceCreateInfo.html">XrActionSpaceCreateInfo</a>, <a href="XrBodyJointLocationFB.html">XrBodyJointLocationFB</a>, <a href="XrBodySkeletonJointFB.html">XrBodySkeletonJointFB</a>, <a href="XrBoxf.html">XrBoxf</a>, <a href="XrCompositionLayerCylinderKHR.html">XrCompositionLayerCylinderKHR</a>, <a href="XrCompositionLayerEquirect2KHR.html">XrCompositionLayerEquirect2KHR</a>, <a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a>, <a href="XrCompositionLayerProjectionView.html">XrCompositionLayerProjectionView</a>, <a href="XrCompositionLayerQuad.html">XrCompositionLayerQuad</a>, <a href="XrCompositionLayerSpaceWarpInfoFB.html">XrCompositionLayerSpaceWarpInfoFB</a>, <a href="XrControllerModelNodeStateMSFT.html">XrControllerModelNodeStateMSFT</a>, <a href="XrCoordinateSpaceCreateInfoML.html">XrCoordinateSpaceCreateInfoML</a>, <a href="XrEnvironmentDepthImageViewMETA.html">XrEnvironmentDepthImageViewMETA</a>, <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>, <a href="XrExternalCameraExtrinsicsOCULUS.html">XrExternalCameraExtrinsicsOCULUS</a>, <a href="XrEyeGazeFB.html">XrEyeGazeFB</a>, <a href="XrFrustumf.html">XrFrustumf</a>, <a href="XrGeometryInstanceCreateInfoFB.html">XrGeometryInstanceCreateInfoFB</a>, <a href="XrGeometryInstanceTransformFB.html">XrGeometryInstanceTransformFB</a>, <a href="XrHandJointLocationEXT.html">XrHandJointLocationEXT</a>, <a href="XrHandMeshSpaceCreateInfoMSFT.html">XrHandMeshSpaceCreateInfoMSFT</a>, <a href="XrHandTrackingAimStateFB.html">XrHandTrackingAimStateFB</a>, <a href="XrHandTrackingMeshFB.html">XrHandTrackingMeshFB</a>, <a href="XrMarkerSpaceCreateInfoML.html">XrMarkerSpaceCreateInfoML</a>, <a href="XrMarkerSpaceCreateInfoVARJO.html">XrMarkerSpaceCreateInfoVARJO</a>, <a href="XrPassthroughMeshTransformInfoHTC.html">XrPassthroughMeshTransformInfoHTC</a>, <a href="XrPlaneDetectorBeginInfoEXT.html">XrPlaneDetectorBeginInfoEXT</a>, <a href="XrPlaneDetectorLocationEXT.html">XrPlaneDetectorLocationEXT</a>, <a href="XrQuaternionf.html">XrQuaternionf</a>, <a href="XrReferenceSpaceCreateInfo.html">XrReferenceSpaceCreateInfo</a>, <a href="XrSceneComponentLocationMSFT.html">XrSceneComponentLocationMSFT</a>, <a href="XrSceneFrustumBoundMSFT.html">XrSceneFrustumBoundMSFT</a>, <a href="XrSceneOrientedBoxBoundMSFT.html">XrSceneOrientedBoxBoundMSFT</a>, <a href="XrSpaceLocation.html">XrSpaceLocation</a>, <a href="XrSpaceLocationData.html">XrSpaceLocationData</a>, <a href="XrSpatialAnchorCreateInfoFB.html">XrSpatialAnchorCreateInfoFB</a>, <a href="XrSpatialAnchorCreateInfoHTC.html">XrSpatialAnchorCreateInfoHTC</a>, <a href="XrSpatialAnchorCreateInfoMSFT.html">XrSpatialAnchorCreateInfoMSFT</a>, <a href="XrSpatialAnchorSpaceCreateInfoMSFT.html">XrSpatialAnchorSpaceCreateInfoMSFT</a>, <a href="XrSpatialGraphNodeBindingPropertiesMSFT.html">XrSpatialGraphNodeBindingPropertiesMSFT</a>, <a href="XrSpatialGraphNodeSpaceCreateInfoMSFT.html">XrSpatialGraphNodeSpaceCreateInfoMSFT</a>, <a href="XrSpatialGraphStaticNodeBindingCreateInfoMSFT.html">XrSpatialGraphStaticNodeBindingCreateInfoMSFT</a>, <a href="XrSpheref.html">XrSpheref</a>, <a href="XrVector2f.html">XrVector2f</a>, <a href="XrVector3f.html">XrVector3f</a>, <a href="XrVector4f.html">XrVector4f</a>, <a href="XrView.html">XrView</a>, <a href="XrVirtualKeyboardInputInfoMETA.html">XrVirtualKeyboardInputInfoMETA</a>, <a href="XrVirtualKeyboardLocationInfoMETA.html">XrVirtualKeyboardLocationInfoMETA</a>, <a href="XrVirtualKeyboardSpaceCreateInfoMETA.html">XrVirtualKeyboardSpaceCreateInfoMETA</a>, <a href="xrSendVirtualKeyboardInputMETA.html">xrSendVirtualKeyboardInputMETA</a>, <a href="xrSetInputDeviceLocationEXT.html">xrSetInputDeviceLocationEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrPosef" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

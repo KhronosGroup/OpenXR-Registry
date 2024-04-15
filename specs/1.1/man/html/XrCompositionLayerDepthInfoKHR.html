@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrCompositionLayerDepthInfoKHR(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrCompositionLayerDepthInfoKHR(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrCompositionLayerDepthInfoKHR - Depth map layer info</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When submitting depth images along with projection layers, add the
+<a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> to the <code>next</code> chain for all
+<a href="XrCompositionLayerProjectionView.html">XrCompositionLayerProjectionView</a> structures in the given layer.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> structure is defined as:</p>
+</div>
+<div id="XrCompositionLayerDepthInfoKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_composition_layer_depth</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerDepthInfoKHR</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>        <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>            <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrSwapchainSubImage</span>    <span class="n">subImage</span><span class="p">;</span>
+    <span class="kt">float</span>                  <span class="n">minDepth</span><span class="p">;</span>
+    <span class="kt">float</span>                  <span class="n">maxDepth</span><span class="p">;</span>
+    <span class="kt">float</span>                  <span class="n">nearZ</span><span class="p">;</span>
+    <span class="kt">float</span>                  <span class="n">farZ</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrCompositionLayerDepthInfoKHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>subImage</code> identifies the depth image <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a> to be
+associated with the color swapchain.
+The swapchain <strong class="purple">must</strong> have been created with a
+<a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>faceCount</code> of 1.</p>
+</li>
+<li>
+<p><code>minDepth</code> and <code>maxDepth</code> are the window space depths that
+correspond to the near and far frustum planes, respectively.
+<code>minDepth</code> must be less than <code>maxDepth</code>.
+<code>minDepth</code> and <code>maxDepth</code> must be in the range [0, 1].</p>
+</li>
+<li>
+<p><code>nearZ</code> and <code>farZ</code> are the positive distances in meters to the
+near and far frustum planes, respectively.
+<code>nearZ</code> and <code>farZ</code> <strong class="purple">must</strong> not be equal.
+<code>nearZ</code> and <code>farZ</code> <strong class="purple">must</strong> be in the range (0, +infinity].</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>The window space depth values <code>minDepth</code> and <code>maxDepth</code> are akin to
+the parameters of <code>glDepthRange</code> that specify the mapping from
+normalized device coordinates into window space.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>A reversed mapping of depth, such that points closer to the view have a
+window space depth that is greater than points further away can be achieved
+by making nearZ &gt; farZ.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> contains the information needed to
+associate depth with the color information in a projection layer.
+When submitting depth images along with projection layers, add the
+<a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a> to the <code>next</code> chain for all
+<a href="XrCompositionLayerProjectionView.html">XrCompositionLayerProjectionView</a> structures in the given layer.</p>
+</div>
+<div class="paragraph">
+<p>The homogeneous transform from view space z to window space depth is given
+by the following matrix, where a = minDepth, b = maxDepth, n = nearZ, and f
+= farZ.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxUAAAE9CAAAAABYFhCkAAAwgUlEQVR42u2deUBUVfvHvyzDJjAsgnuKu4KYgPuae7lvmVZabplLviW2uGS596qZWplpamVWltpi1pua+brlT19FwNREcVcWFzYBgfn+/rgDzAwMDDADAzyffxzv3HPuuc9zP3PPufdyLigIgj6QEAiCWCEIYoUgiBWCIFYIglghCGKFIIgVgiBWCIJYIQhihSCIFUIFRmNtDXr06gOTGvZoaqJYYUFWBXb903K1p417vP9N69zxa8H13HaXWiBMjMzk5Xkbli9be2eIFfnxJrRMKEElP9n84DLAcm18rdHHWFnYSg2zd+S30o1GR9sHpRYI0yKzoa8mT8OMMH6a/v9vZO8/0sSKklrRo+HXdp9a7gexyoSX3E5bqRUaz5BSC4RpkYlxOpG3YUa44RghVuR7HPSPjIyMjIwsQRcl2WEEH1iuib/jo6ykQtf6R9mNaiW0oqjROINZpRYI0yKzsEvehhnluSF6/81Q9n6PWPFcies4iMWWbOK7OGL6yrVLaEVRo7EWv5RaIEyKzKOaa/M2zCg/2t7NZ2mUWFFyK9bgZ0s2cahNAsn0kQ2mZn3bv2nLw1ZlxQibNZ2qT00vJBB/D27Tbv+Cy+SVLvU3ZL77ZO0+tywVmf04mbdh+vzSuW3fv95+RJKx2C5WWMKKAa72cHKdZaH2pftWsUEVtx/54fpv8eTLD7JCGlqVFdUx7WGc26sFB+IPlw95xR07yJHnXlb1XZ95z26CpSKzxDHDsGEGLHM5zp1APEnS7yWxwjLnitaulrxkn2TbjyQ7JK9HXw053CbLiqz4B0NJdnIvMBC3vTuTfBI3eLc7R2EpyapdLBWZ0bXzaZgu/8E8UuOi/XHp0FessIgVWc7tLdnCo3iLZOYivoArJJvXsaZzxUZsJ9kSiQUFYjJ+JdmgHnn2O9arryFj8LylIvNUQN6G6aJp7vCAvI4XlP8+FSxWWMSKC5hkyRauxzblQ0M/knfwrDVZMQY3yTSVj14gfgnQ4RrTXJzSyFil4TfwIslvscFSkenU0aBh/XQa8yb5X3Qj+V12A0Y/VqZWDNZeCN5dRoe/ke2bwYrv8ZElGz4NZ0mSd/AcyfX4xpqsCKhL8iB6FxSIo+hE8kd8QpLfYCPJUTa3LBWZ3q3zNkyXJZhL8lWcV/47rEEZW+HXtGnTpk0PlJEVU5s2bdq0qZcFrJiPw5ZseFenTO0x9zHJXk5Jl3dZjxWPPUVytvZCjpFA7MEMkqGIuLyDnIa/yTS3Tvw9wjKRebZR3obp8jp2kQypyv+Ek2SPoDK24rwVdJhCLWDFUJtESzbZS3uP9lVEkvftB/FfP1iPFU89TT6o2bXAQETgbfJhQ9esJV+RraqS/Bmr2PaOZSIzo2rehumyFn+Q5+yeYp/rJBnUz/qsyKoIVjRoYMkWX8d45UNbbw15V7X0Urss67FiZZ3E9KeDbxUciMDuTBzgXS+zfQKT7YaS/BnHdkyyUGS+QGyehulyy3EBL7ZyfOFqb5LMdH3XqqxY3yuortsHFcCKRJuRlmzxz1infGgeSpLLWvW6ZUXjioxXmj4+I6WQQFzt06bz7jOBzbeS11x3kcwYHTT+kYUicws/GjZMn33t2vW7sLVh63CSDMNBq7IibEM34FQFsOIw1lqyxYtQpA54ad/FK71AmBqZoNeKUMdqf1pZD2o2PMp/DyqZa3DOcu1N4tDqmnJhhYUDYXpkvvNOMbkSTbP11mZFewwq96PtAy5vPxtkueYus91f6zWWByssHIgiREbTyvQL5bvrp1iZFUn2+KDcWxFqs9HXgtdlQ9y/rHavXFhh4UAUJTLn6kebWMld/3BamRV7gDPl3orTnVutsWBzt7Zuc4DlwgoLB6JIkTnQxbShvGbg97Q2K0JRVVPurbA6ynC0bT1EpZu0WuZZWp0VwRj+dRtVg+VFHXH/2r+W38z0YweKtZ5YURmsKLFVZWbFfVu4N9p4/nUU7Wp/8mC8dOrg461sHDKLs55YIVZYsxU/AG3vkymqIqXxYVvMIBllg2bFWk+sECus2YpXUC2BJJtjchFqGY8aiSRZDS8Va70SWgHTKX6kUJKtlKIVKCmlEqHitKTsrGihTUC1fJ72NcoxKPdPryPfv7ctfL3Crbhlbxiy5y1gxfY8639mlVYUFA3LWmGuCJUrK2JtsIkkbwDDdBZPMWyv7T+6pQYAN0lyK2xiC9qY0fVMOFdEhhkQY4FopBluJCzFPBWb+1xRKtEo1QhZcw/qe+CKctxins7ieMNQ6N1mSXOE8veHExBYYESNrifjChlXWLEVi+FHknwe+F9ROlDKFIj1MaN464kVYoUVWzFTeQgqzasoV2YPAl+SZDTwA39dVIz1xAqxwoqtWI5RJLkOnkX4m6xo4HeSXAqbuxywpBjrmcmKfUFtP7J8coozwXfZWlH2s6ebJTNlZkUkgkmeq2K3vSiVtMQSkj+oUJt3nS8XYz3zWHFNvb6+m8UTXKwJvsvWCpNmT7ck5slM2V2ZnYhZkZt9vX8sUiV/ODf634VZvkscnE6OGluc9cxjxUL8Zfe8xTNcrAm+y9QK02ZPtyTmyUxhVpzM5+JuHbNYkbky2KXpnNgi1vLXEJ8q46/zp3aqgQnFWc88VnTwKYWpt4s3wXeZWmHa7OmWxDyZKcyKPQDgXr9JVQDwa1xXBcDRLFaUDWax4pFDr1JoavEm+C5TK4o0e7olMFNmCrNiCxC0T0MuAoBIMuVTNyChklsRjpn5LTZx1nBTMTLB968tA47fHdez2uRM67NCmSM8D0sa9YoLG9yuznqLp9dMmSnMin+j2n0y1wpyD/BPpbbiPVdHqFzb5f3CxFnDTcPYBN+ZHdKaNen8B3/CViuzImeOcEMiR8ega9+LfM32mmWTa7bMFGZFqPaNMblWsGHxTpMV6FwxCyfy7dOaNmu4qeQ/wffPc1jD/hAZibet7lyhnSPckJl7L6BWHPkh/rB0es2UmcKsGKM9inSsGIddldyK3rYP81lq6qzhJmJkgu8d4VfwIsntOg/LWYsVyhzheViWugWfk5yCS5ZOr5kyU5gVfXDB0IqlyjS6ldiKGo2Vfw1muzZx1nATMTLBN7kVn5N8GRetzorsOcLf0WlxD5KcgKskm9WyeHq1mYnRjdmOomemMCuWTX5oaMXRyb9VbiviMSL/L0ybNdxEjM50PhlRpKZWE+u7BpU9R3gemtYieaFIf0hTLMyVGVPv4ulYUUwqjhUHsMjYgWzKrOEmYnSm84BqJI9gLj9JtjIrsucINyQOT5NcjH2ZFp7qyFyZKbkVmTXz3udbVqGtWGPsHRymzRpuIsZmOr9vM5zkTJyOaWP6uWJd3hx5pprdCi8jb7j+ER+SDPbO+OFfls2uuTJjhnPFZd0/hzhzJjw8IiKxQlsxHtfz/8K0WcNNxNgE379iDcmZjpy+zXQrHurn6Ex4eESU2c8VOXOEG/IGwkkG90ntGmXZ7JorM9KDKvpxEFzNyBemzRpuGkYn+P7G5wrJqG5t11jbuCJnjnBDXm6jIflLSPtDFs6uuTIjVhT5OMh0GlYKDS3uBN9laEURZ083P2bLjFhRxOMg/VG4sZ9EM1L8Cb7LzIoiz55ubsyYGTNYcTUyDxV3XHGvVpcNTrGWbmUJJvjO34rUvDky87ii6LOnmxlzZsYy16CWVlgrduPlJ5dYvpXFn+Db5GtQHua9BlX02dPNjDkzIz2ooh0HCQNDXsyweCtLMMF3WfWgij57upkxZ2bECpnNoAJHw3JWpAcEBAT4AkDDgICAKWKFWCFWMM3W2c3D08vb28tT7erYX6wQK8QKcyFWiBVihVghVogVYoVYIVZY1op7rzdy9h8XXaItps16SawQKyqOFTcDPD4++0srl8+Kvblb/53ri/5ihVhRYaxIqqc6TTK5se2fxdxaCOBnL1aIFRXIioXa43kN2hZza7v/+4AeYoVYUYGseAzzSZJHgBvF36JYIVZUICsiAGWauWjgU7FCrBArSG6DdgqVu8BosUKsECtILgR2kCRTgE5ihVghVpCcBewkSaahkJfNixViRWWxYhqgTFCSAe07Ja3ZiluDNlkgXFlrgl3rDj4oVogVWqZCO5XtI6BeSazoZ2krMi79Os4JK8wfrfSRdrNOHR5lMzlLrBArSJIzzdWDesrCViQD9n6whBXD8SFJPosF5daK/B64sTR7elX17rlBUyGteBf4jiSZhGLfxiPpgSctbEXGV/9LC7OEFYfh+Ygkw+Fyt1xaYeSBGwuzymbAn2Hv2HeMr4hWbIb2lSVxKMrbuPNa0bcUxhUWsWIMuiqjCyd8VR6tMPbAjWX5EMNJcgN6VEQrzgGrSZLngVUlsaJPebXCW3kbOVm3qDdsrMMKYw/cWJQEL5wkyUxf/FoBrWCg9g1L+2BToic+epdTK25B+/IKtkDN8jquKHUrNsH+EUmyFyZWRCsWQ3nPz3x0ZmW04hAwXfnUGjaPxArTGIYayoexRf0pKR9WPKiFH0nGuNsdKVFaepVTK34BXlE+tQNixArTaAztO6imF/OFplZuBU/6eqyP+CXQ4aPibu3IFxtetYPnos+3/lMOrfge0L7poSNwVawwCY0KLZRPs4B9FdEK3p7Z1LnGc2eKvbXnnNWeXt5enu6On1jeiuXmjtV3wAzlUwfgilhhEilAYPZe4NsKaYWlsIgV/zZ3K3+WHlTRiQceVz7NAT4XKyxsxRTDiYtt/9G34j1zt/IgMFX5FAykllsr+pVqauOAlsqn2cAWscLCVsSHGRBucK5YZu5WRgMTlE/+qMZya8VTpZrapPLZg2oUEBAQEHCwjHx4JSAgICDA2xI9qKXmbmtWDQxRPlXHIKu14pa94Un0eX0rnizVBGfZw1/5NBMlvI1XmlYo7C4jK4xs3xxWmP+FFq+gNUkyzQ7brPdcEWl4Eo3Rt6Jv6Wa4LhoqH6aimC+KKn0rrBTrtOIInO+T5AG4JJXfHlSf0k3lSHgqH56Bd4ZYUdZWLDZ/s/rjVZKadkUeyVuTFb1LN5U7YZNMkuyU/byMWFEmx8HOz9cNBpqt+WJrgnmbFd/W9s2Th0ZgTJZYYSqp7vgPSSa6Yb9YUYZW1Kni4enl7eXhZm/uC2ypq4PdPXv/WORy1mRFr1LO5QoEZZF8o8TDfLFCZjOwQDSMPXBjWbImYtDBU2/bhdwWK8QK67PC2AM3luaHHtVcgj8o8UsjxQoMOH/+/Pnz52+X8x25pOxGtRJaUUGiUUwylL3/j1ihZUI535GG2Tvym0Sj2NzIuSEpVogVYoVYIQhFRqwQBLFCEMQKQRArBEGsEASxQhDECkEQKwRBrBAEsUIQxApBECsEQawQBLFCEMQKQRArBEGsEARBrBAEsUIQxApBECsEQawQBLFCEMQKQRArBEGsEASxQhDECkEQKwRBrBAEsUIQxApBECsEQRArBEGsEASxQhCs1oqTyEsdiblQqa3YAwDu9ZtUBQC/xnVVABwl5kKltmILELRPQy4CgEgy5VM3IEGCLlRmK/6NavfJXCvIPcA/EnShMlsRilnUt4INcUSCLlRmK8Zgt6EV47BLgi5UZiv64IKhFUvxiQRdKD9WXG8f6OfrEho+o10N17aTTpih8mWTHxpacXTyb/y5rf9j3o4//T76ca+qPUJvSxIE67UiCgDgBueQgdUBu7cyzLYRHStIcqN2Q15d+1QBvL6SLAjW24PK2AXAPjSJTOoGYGlhZUfmvUfX1xQrmDoTgPcGDXnZF7CR8bdgxeOKGwD6kCTPqwDnS4WUjQ3T4cyZ8PDwiNsmWcGtOdJtAuCfIXkQrNaKW7m/9j0ArLBQD4rcBmAZSTLTAcBJyYNQHqyYDGBsKVjBpgA2Sx4Eq7Xidq4VCwB0spgVX+da0R3AXMmDUB6smARgUCFl4yPzcLvIVjQGsEryIJQHK7oDWF5I2XyuQfUpqhWZDgBOSB4Eq7aiJ0nyrD1QNUZ/VY15e1CLSJLrAXTRSB4Eq7XiDgCbeVlkUhcAO0imTw/olELeHhjGQ75fm82KbwC47yB5qSrgFk0yY1qHofeZFjJQUiJYnxUOaDB+Ym3A+wuSnLP+HLaSK7CfqzCyGPWnBwQEBPgCQMOAgIApOlY4oM0rz1QBAv4iydAN4VjHSzYOct4QrM+KvkdHNnZSB4bGkeS9YH6BreRAuySm+b9YjPrTbJ3dPDy9vL29PNWujv11rFj0ba/HVFU7r3pEkg/8szbhGzJULSkRrNAK3QXndrKfwz1qvIJJvva+2bb6Te41KO2GdrCvUxJ5qKukRLByK8gHDv3Is3iV5JhjlrOCjLcfQvK72ZISweqt2IH15KfYQbJFpiWt2IZNJCcclJQIVm/FbJwmJ+MKGfYsLWnFDJwhU0OyJCWCNVkRpb0T10nfinPkENwlp5rtGb6N2g3pPegxHXfINWslI4JVWXE1sE2Hjh3ahzyn+/3veI/HqmE3D44x2za/a9W2Q8cO7YJW6y7cjm/51xOPJCOClfWg8uPjxm373VoeGDwmycItWVA3eNgdSYhQHqwQBLFCEMQKCYEgiBWCIFYIglghCGKFIIgVgiBWCIJYIQhihSCIFYIgVgiCWCEIYoUgiBWCIFYIglghCGKFIAhihSCIFYIgVgiCWCEIYoUgiBWCIFYIglghCGKFIIgVgiBWCIJYIQhihfWjkTeJCWKFPlnFeje4IFRkK/5P/517giBW8D38LqkVxAo9+jmkSGoFa7UiNjIy8nZp7cvNyMjIePJPZxVsnVwTJbmCdVrxDoB/lda+TACwgiSPY75kVrBeK4aX7u70XEGSS/CnZFYQK/Ss6OWUJpkVxApdK9Kdexr5emmwCssrWAZntHbC1DLa9tE+jwFxJqy4u4s7+okVZWnFn1hMHsl/hZbl04p/uS4x/mW/MrOCPGGaFeQMsaJsrXgHR3hqWEWyQqNCbbFCrCiJFYtwLbrDlQp1rphf+8PyasWWPmKFNViRPKhl7/O0sBVZqVaTw/5laMXJwqzQBIgVVmFFQbTESrM4sa3ZBqvJ4ZAytOJMYVbsRrYVA8qlFdfbB/r5uoSGz2hXw7XtpBMV1Yq1YTMDnPzeTCdJRr3c2MW50eQoktsdgZVr+tRQ1ZyRnPj58JrOLXcpRQ6MqOXgHvTuA+V/P/b1sfcIbqQ9EL/q6qGq88JFMtYLeP7bEX4O1Z9TjpJrU+o7urVbrzGsYlx1IJX8MtgJz5Lk7id8Haq1z1H1h+aAc9Da7P+e7lEDTT891c4FwSQ7AfWOTAqoon4ijCSZubGbl706oKbSmMzNPaqqvLtvyjRSS+6Bmr3J6YD9D/18VDXHXiJJLutW20Xl96ryVEDc3Mfd7T2bDrpAMmVxyypOzWYn6Eby4qQGTk41W2utODasmqrqU/tJtgA6r+7g7th4diJ5fYAjAAwjZ2DYrWUdXX1H3i5fVkQBANzgHDKwOmD3VoaVWpFVMiuatxk1sT0whyT3uPh+fjVqVRWXPSRTW8LGr9fgRkCwj3/ffl6wjSDJdxC890bYdNSPJsk30PqvhLAnUDOLJMdj0KlL79u7R5BZL8Def9jEPjboS5Jh3u5brh1ugxfzVHEISFXKPkvyfQwKu7avg07vogsGK8INziLJTZ7pJJcimCQ/A+r1G/90Ffgkkkzrg457r10+3hpTlf+NPnHzYE/0TTdWi4LOJvcB3eetnt8YHqdIsu3Qw3HR/TCCJE9WU83/+9qR13CATAjCnIvh49AiObeZvzg7Lj1//e+PFSu22DXfe22nr81mUvM2HEcsWvOqJwIfMO3ieHS+ePE2OQN1goZNHGCHjuWsB5WxC4B9aBKZ1A3A0sLKjkQe+prfirT3vHymZ5DkybGnyVs9aoWXyIrlJDkF1UjGeOAgSX4NjxiSbbGAZNYz8HlEMsYHb5L8D7zukeRLaE/yNGyvk7zniJ9IbkfdDJKvoFdux3kNcIvU+ONTkjEqHDGsQs+KLE/bRJKn++e28DM43CPJVthLkn0nMdeKXahCkqftsI3kG2iSkjvafgvdNSTTA/GWsVqUHxWdTUYox3Rqe7TQkHziEsnTQCKZUBurSZL1DpBTMFqJ3eKcWm6r8VnuaPuqs815kjvhkUyuhT9JXvLCVJIzoTeu2A6cK2fjihuAdh/OqwDnS4WUjQ3T4cyZ8PDwiNsFW/FwVo36W0hNryWmt/D5nmE9sZYkm+AdchHwasmt2A8kk4vRWBkR1sQikm2xkCR/B1JI8lk8Q7IXlAPqAnCYXIBGVA62OSS7KWec3bBLykn7PeAI+SfsUkkyBG8YVqFnxV3YJpBkbG4LE52xnmQ48DzJu6qDea1Qjs9kN6zLvQb10B3bSJLr4f7QSC0k9TeptYIHkfuMTCxwmlwFL6Wv8MZfTKmiqBWKtjm1vKs9WypWvKOcAZKAX3Os4LuokpLHikd2+KWcWXEr99e+R/aTdubsQaV3AoA5ifMbJZtcwzd+CeyDcSQvAb+Q4a7KGb5kVijJfAIjlaVD0T3XiuyLjVMxiHzkqD306IUF5HS01nZzxpEZTthIkqeAv3MvsgB7yYXa+wsD8bRhFXpWZKrR/6ZBE0ehC8mZalRJIjfW0eRjRVfMIfcCF3KtOJj9IxwO/NdILcpgRGeT2VZkuWBR9vdxwAmyNwbmlDgERCldL9+cZR0xSufKbA88R5J0x8e5VvwFHM5jBavgu/JrxWQAY81txUr7Zxe/1kkF13DTa2ixjg+csJrketgnktyCGeay4rHsqqajrhErLgPaQXcLjCXna88uzfE6eQNwUavVajfgpIEVE2CrVqvVahX6G1ahP65YBtg/+eVD3Sb+CpurzKz+lSO2kL3foDErPgIe5VqxCbivPRdgs5FaFHQ2mW0Fm2Iiyd3D/LzU7sAJsi6m5xTYCrir1Wq1M1xzlvlgto4VDeGgVqvVahusyLXiDvBVRbDidq4VCwB0MrcVy3aR5H89DppeQeLgB/wEqliSI9CeJGPwpbms8MYsZeksVDViRQSyz/itMZzcD7s7JO84YC95EVgXrZBuYMWzaKL9JsawCn0r+FVLAL66vYrMGljG3dUzR6I74+3PGLViKVTMtWKttt/HFOBDI7Voyd1kjhWP4zlyKYJPZWrPFTmhIbkBOK3szNWcZY7aMYYSrFoYq93dhFwrHgAbK5gVkwAMKqRsfGQebhc+2v6j1oEitrEdhpDU+Ch/jH0T18xlRV28oiydhnpGrIgGdirrBOAFUtMbPW8wZgCGkLyp/Cpr0bNiIurmfGFQhYEV5N/vVoPDWZ02hqIFR4TyN9he+zSARq1YBWTmWrEZuKdkBdhipJYcsjeZY0VjTGGiCw7l9KDqYXKuRUC0YRzVmKdjRSPdfkW2FbeA7RXMiu5AoXeB87kG1adQK7bWO1XEJl4Gvld+1w6Q5FcBNJcVPbKHKIPR09i4wgkfKet4YBHJlC6udq42TZdnkMxwwttGrFgIh5x73wZV5LGCjK2n92dSEcBBxwhm1cKSHkuNW/EdcCnXikOAYlYYcNhILbpXSuphvs64whmreRxIzLGiJ7rpjiv+MCzvj+f1xhVd8lpxDDhTUaxQHsI+aw9UjdFfVWOO+xULA68VtY5PYJdMci0cU0ly5GyzWbEUDZQ9q4ElRqxgH4wnSZ4DjpLc4H4jKz77gO+EECNW7AN+zvlGv4qTQGyOFYnLSJJvYYJuI1uhbjDJt1BXdcW4FddstLb1w1QyVa3tWa6DOtVILUqfVGeT2VYcB/7mcSAhx4p/Q3Uru0SyE2YaxnE8ambkBmsunOLyWPEeamZWBCvuALCZl0UmdQGwg2T69IBOKeTtgWE85Pt1ia14NLZ3Qj5rFezbeLQgybFoQ5JJrpEFFM5rRWyQ+2JjVsR4Yj9Jbsu+X5GPFb/DI17pUnYg+QVCjlyOjo6+lUGSnwOr8rciqyGa3Mn+Rr+KOGBDjhVxVRKVfdN7DmUVsEa5ktuZxq1gb9S+nXu/Yg66aEimt9COg/OpRbnGpLPJbCtGYAAZo6Q8EjhB3vVBz6TsIi/C+ahBWI9CN1gXVRieYWBFcj2sJLkAzSuAFQ5oMH5ibcD7C5Kcs/4ctpIrsJ+rsi9jFt+KlD4vZJDkkZfIa0MbTSP554CH/KD6+YLqGKv82vRXOncfDClI1rxW7AJsrhuxgnucfb68eWWNcm87fys4H0H7Y86+gvqXSe7M7io6jY4jNSOBJ5Z88t7Lcw2t4DE1vKevXTtnxDnDKtgXdoOnjA7xwTAN4xDy05VLH9jXf6Db5hh7VRxJdsAnBVkRVR2+b3y8ZLgLXtSQab0xKiz2SC/l3na+tWivvOZuMgL46e+Ys5PQ7DbJ/nCdPvupx51wgORBD/hOWfPx0vGryfjmcBi9ct2Csd/kVjML6Ltqdai/Mub40AZN5q5bNXMYybWoe/Ri7OHOGJ5Jci8w7uO598u5FX2PjmzspA4MjSPJe8H8AlvJgXZJTCvOfHx6VqR0f1FDkreahVLT68w6m2tkf1UaB2Vfz8+fVXgsizzvCn+SN2tdLkjWvFYkdAVynunaE2wHj+5XOaY20PhDkhcm1Xd0bjwliuS+1vZw77Q/4clagN9Aft/OBY7tj5HcN6S6yj1koXLcbnbJ9qIrSc2XPb3t1W3m3eS9Hq5waPMrlzQDak4jGT2tibPDYyN2aWhYRcwzPi7Bb0bMBaqeSJvVuY6TU5PXYvUb3V95XGOD6i5J8v1WLrBt2J+TqgPN3+Pu1iq490oib07xc/Bpt2oy4HuVzNjY1dO+ao8tmUZq0aK7yQigbVWVS+CCRJKMH+3rHLgkJRA2Q0nefL2lm513x0X3SCYuCXG39+n1ke58Qt90VTs1em6fDexmkjz8dG0H5+aTT5JcC88WajuPLluUR3PmVXMLnPlPNyU8q/yBauPKoRW6C87tZD+He9R4BZN87f0SWjEQcOv+1vIJ7jXucM9UjsN1Znm0JaMcPy+ojvsNMfnsz00neOHNyF8aryxQ1nzGFZr+tvfNFq7M8T0zSDLp38AVlnsigGSzV7pWd7RVPinYCvKBQz/yLF4lOeZYyaxYU/1A4usA4HOM/DHykWdr8gxmkgwq+LLU7X81dq69lFEvBTsFbCtY1vxG212fMV+4ZmY/xaNxRkSFsCLeAlYEVHQrdmA9+Sl2kGyRWSIrYjyOkPy4lnqi0s3fg+XkR/iRpP+jotZrTNa8Vlwa3c58ic9y8sk+gdk6plQIK+IsYIV/RbdiNk6Tk3GFDHvWHFdmc5mOC+RoxJOX+he5XmOy5rXCf6EZZ8HRuNtqj6IpeI1iRSWwIko7jOykb8U5cgjuklNPmteKDmqSTeuR/KDof9ZmTNa8Vpj3RRarELLznzvnt3XFCxliRWWw4mpgmw4dO7QPeU73+9/xHo9Vw24eHEMzW1Gd1Hi1IDW9UophRf6y9lxh4Xj98Ux9J/uqj08/UQGc4EQ3wCXoiFnrTG2tArw7JVYUK/Ln48Zt+91aHhg8JqlYVhifZ3YOjnO5l+sdLl5f9HrzlXWCeZ5+Fyo9Fp7N4E5YWNjN/L9Km9ag/eTE8c3aLCxOxfnJei0sLCxWUipYuxWCIFYIglghCGKFIIgVgiBWCIIgVgiCWCEIYoUgiBWCIFYIglghCGKFIIgVgiBWCIJYIQhihSCIFYIgVgiCWCEIYoUgiBWCIFZICARBrBAEsUIQxApBECsEQawQBLFCEMQKQRArBEGssAyaLEmmIFbokaX32m1BECvI/8NcSaYgVujxHn6XZApihR79HFIkmYLVWxEdGRlp6ffL3oyMjIwn/3RWwdbJNVHSKVi5Fd0A/GDh1ue8S/g45ksuhXJgxYelsgPKe+eX4E/JpSBW6FnRyylNcimIFbpWpDv3zOerpcEqLJcUm8TRPo8BcSasuLuLO/qJFeXBij+xmDyS98uW5cyKh12q7i2rbZ8wzQpyhlhRPqx4B0d4alj5t+Iw8JxYIVaYx4pFuBbd4Ur5tyJ9YMPD1mvFlj5iRXmyInlQy97naUErslIr/MjiZGFWaALEinJlhTFaYqVZnNjWbEOFt+JMYVbsRrYVAyqRFdfbB/r5uoSGz2hXw7XtpBMVw4q1YTMDnPzeTCdJRr3c2MW50eQoktsdgZVr+tRQ1ZyRnPj58JrOLXcpRQ6MqOXgHvTuA+V/P/b1sfcIboSpJMmvunqo6rxwkdztCKz5oFcNhwbvZJAkjw2rpqr61H6SZObmHlVV3t03ZZLxT7ihLcnQprbYQDJ9bSt3l8d6/pbdvm/rAi5tdpHnuvui4fbPA+wxkyR5bUp9R7d26zX8oTngHLQ2u8DpHjXQ9NPcA/UJX4dq7VeS0wH7H/r5qGqOvUSSXNattovK71Xlbn/6um7e9u5+vX4kmbK4ZRWnZrMTdKN0cVIDJ6earbVW5O5KC6Dz6g7ujo1nJ5LXBzgCwDByBobdWtbR1Xfk7cpgRRQAwA3OIQOrA3ZvZViVFVnFs6J5m1ET2wNzSHKPi+/nV6NWVXHZQzK1JWz8eg1uBAT7+Pft5wXbCJJ8B8F7b4RNR/1oknwDrf9KCHsCNbNIcjwGnbr0vr17BJnSBFXajJoQBCwjyS12zfde2+lrs5lkWh+MPnHzYE/0TSe5EG1Jkg2wgeRAzLt48etaud26VB8MVT6975pAso9iRZi3+5Zrh9vgRZJdMFhRcnAWSW7yTM8p/T4GhV3b16EfyX1A93mr5zeGxymSbDv0cFx0P4wgyfg2GHX85ukVHvPJhCDMuRg+Di2Sc4P0i7Pj0vPX//5YsUJnVzRvw3HEojWveiLwAdMujkfnixdvkzNQJ2jYxAF26FgpelAZuwDYhyaRSd0ALDVeKrMm8rCsECuujnQLOUHG1jhqUsN2NHYbcJMk4yd9S2ZOdP+qWFYsJ8kpqEYyxgMHSfJreMSQbIsFJLOegc8jkjE+eJPkf+B1jyRfQnuSp2F7neQ9R/xEcjvqZpB8Bb1yatYMR2OSV51tzpPcCY9k8i1015BMD8RbhlacRmuSXKUz2JkHu6skySZTmWOFxh+fkoxR4Qj5GRzukWQr7CXJvpNyfyg8bRNJnu5PMkI5plPbo4WG5BOXSJ4GEkkO0Io3dj45BaOVuCzOqeW2Gp/ljrb1dmUt/EnykhemkpwJvXHFduBcpRhX3AC0e35eBThfMl7scpgOZ86Eh0dEJBZsRbQvANdvH/QZZVK7Pqu3dx6GKQdoN/Iw0Kr4VuwHksnFaKyMGmtiEcm2WEiSvwMpJPksniHZC8pBdwE4TC5AIyoH5ByS3ZQzzm7YJeXUvAsOGvId5WczCfiVD92xjSS5Hu4PDazYgRCSTNfpv9x2wJsk+YfNuVwr/oRdKkmG4A0y0RnrSYYDz5O8qzqYU/YubBNIMjbXCh5E7rMvscBp8jRwiiS5czVTqihqhWpbRZLvas+EihW6u5JtBd9FlZQ8Vjyywy+VwopbAPoqH3tkP3dnrh7UAJ/JSycFAP5JphSO8jzFpahPknUwi0zyh0/xrVAS/gRGKkuHonuuFdkXJKdiEPnIEeuUdbywgJyu/LazC8aRGU7YSJKngL9zaj4AZJA9tHcZ3PExD2b/hIYD/zWw4iQw1/CB9zHwTiX5dC/mWrEQtUmSA/E0yVHoQnKmGlWSyI11NLlnbDX639R+zrYiywWLsr+PA06QS+CeU+IQEKV0vXxzlnXEKJ0rs7q7kmPFX8DhPFawCr6rbFZMBjDWnFa8eI4klzW6ZVLhaSPJdhii/Gr/SvKybcuSWvEYZihLp6OuESsuA9pBdwuMJedrzy7N8Tp5A3BRq9VqN+CkgRUN4aBWq9VqG6zgJuC+9pccmw3HFX0B9xf2anSbeBr4jIxx+EnHigmwVavVarUK/Un+CpurzKz+lSO2kL3f0Cm7DLB/8suHulawKSaS3D3Mz0vtDpwgx6JFToGtgLtarVY7wzVnmQ9m61ihuys5VtwBvqq8VtzOtWIBgE5mH20vb3bDtMLTjvKccoR+BFUSSTYbX1IrvDFLWToLVY1YEYHsXkFrDCf3w+4OyTsO2EteBNZFK6QbWFELY7XfJHCttkfGFOBDQytSF9QEEHRBt41d8Ti5xC9Lx4pn0URbXwzJzBpYxt3VM0eiO+Ptz+iW/aolAN9fdK14HM+RSxF8KlN7rhimPeGR5AbgtFLx1ZxljtoxhhII3V3JseIBsFGsIDkJwCDjxa5G5iGxUCuypne8a3rL3oTvI5LDtXI2+qKkVtTFK1rlUM+IFdHATmWdALxAanqj5w3GDMAQkjeBzXlqVqxopHNa3QzcI0nGA1sMrSCzDr7kiEa69wR/AA5l+Wn3QrFiIurq7kUoWnBEKH+D7bVPAwz28O93q8HhrI4VjTGFiS44lNODegFNcy0Cog1jpMY8HSt0dyXHilvAdrGCZHeggPvC+V2DWlqYFckDnynK4971MI2kxkf5e6KbtrEltaKHcqGSHIyexsYVTvhIWccDi0imdHG1c7VpujyDZIYT3jZiRQ900e26nyVJhgGH81pB8qg9Duj+VjTA03tc7lFvXOGg600EcNAxglm1sKRH3guDsfUwX2dc4YzVPK5cfFKsWASHdJ3G/WFY3h/P640ruuS14hhwpnJboTySfdYeqBpj1h7U7eC3NEUofh74TTkiDpDkug4sqRVL0UC5BlUDS4xYwT5QOmrngKMkN7jfyIrPPkA7KVeQ8rFiLpxybgunqvElSXId1KnkCjTPteLobpJke2zVbeRq2LfPvtyqWLEP+Fl3jVaoG0zyLdRV6T7slahcDH8LE3KtOA78zeNAQo4V/4fcozfZSXuXUIfxqJmRGwjdXcmx4j3UzKy8VtwBYDMvi0zqAmAHyYxpHYbeZ1rIwBJbcbHBeuVg+Yhc17PTSXJqreQCin8JxJPcDJvknNryK6dvRWyQ+2JjVsR4Yj9Jbsu+X5GPFb/DI17pQHYg+QVCjlyOjo6+lUGSnwOr8rfiogrDc+55zkEXDcn0FphN8jvYn8ux4rvOJKnxw/9025ykBsL1rMhqiCZ3dNZYBaxRLjx01i0YVyWRJMdiZa4VIzCAjFGSFwmcINkDdf7JueYBZ8PbRUehGwi9XdFakVwPK0ku0ApeGa1wQIPxE2sD3l+QZOiGcKzjJRsHTQmtuPjYJpLkEefd3P28xmskWRcFPR+6GY4kuQJOJBlWO5n5l9O3Yhdgc92IFdzj7PPlzStrlHvb+VvB+QjaH3P2FdS/THJndu/QaXQcqRkJPLHkk/denmtoBT+0QZO561bNHEYyrTdGhcUe6aXc207ygcfzLw1v4YLV5HcYeehWxPjs29nZvIZu1LOCx9Twnr527ZwRykXeGHtVHEl2wCd6ViDkpyuXPrCv/4CMAH76O+bsJDS7TbI/XKfPfupxJxwgeTMAjqNWfLL8XxPJ+OZwGL1y3YKx3+RWMwvou2p1qL8y5tDdlbWoe/Ri7OHOGJ5Jci8w7uO59yulFX2PjmzspA4MjSPJB/5Zm/ANGaou4bniXl2gxpCFSwbb99Cw46VLmEzuxukCip8GLpIPA4E4MrPT12T+5fStSOiq/D6SJPcE28Gj+1WOqQ00/pDkhUn1HZ0bT4kiua+1Pdw77U94shbgN5Dft3OBY/tjJPcNqa5yD1moPAe12SXbi64kNV/29LZXt5l3k4db28Oj+1UOrwE020jy8NO1HZybTz5Jkhkbu3raV+2xJZMk+b/Obp7dV97pBDTIipoYVN3erfWqR/q7Gm23Q3vvookdHAPnkYye1sTZ4bERu7Q/Rv2Vhz42qPSuVqTN6lzHyanJa9q7eG2rqlwCFySSZPxoX+fAJSmBsBlKMuWDzl52bi1fOU8ycUmIu71Pr490b5t801Xt1Oi5fTawm6m/K2vh2UJt59Fli3KBbF41t8CZ/3RzhUObX7nKH6g2rtJYobvg3A72dUoiD3UtoRXDOl681RMAgmKZuYzLsJfMqlLg4HsEOh4/1r9LOwz46/hTA0kj5QzGFZr+tvfNFpzM8T0zSDLp38AV685jBJBs9krX6o6kKhMFW0HG2w8h+d3sklnxo18cmf6yuu67ytC1VdVMMq5DgeVTVz3u7jk2OXFeN3X1+dqubj7lDEfbXZ8xX3BmZj/po3FGhNVbEW8BKwLEivys2IZNJCccLPk1KB1uYgzJre8Wtcr8yulbcWl0O/MdHFlO2U+Z3Ld1TLF6K+IsYIW/WJGfFTNwhkwNyTKrFbuwmmT/qKJWmV85fSv8F5pxBhyNu632SJuC1yhWVEororQDS70HPabjDrlmLc1qxQ58Q4aNKHKV+ZXTt8K8L7FYhZCd/9w5v60rXsgQKyqnFVcD23To2KF9iN4sE9vxLf964pF5rbju+DJjulwqcpX5leu5woLR+eOZ+k72VR+ffsLa0zjRDXAJOmLWOlNbqwDvTomV24r8WVA3eNid4tRc0DyzP/i36Px/xajTsNyEEj/vLgjFsKLYRIWFhSVYuPXXwsLCYiWJQrmxQhDECkEQKwRBrBAEsUIQxApBEMQKQRArBEGsEASxQhDECkEQKwRBrBAEsUIQxApBECsEoXzw/zi0Dd3+Ag7nAAAAAElFTkSuQmCC" alt="windowFromView">
+</div>
+<div class="title">Figure 1. Homogeneous transform from view space to window space depth</div>
+</div>
+<div class="paragraph">
+<p>Homogeneous values are constructed from real values by appending a w
+component with value 1.0.</p>
+</div>
+<div class="paragraph">
+<p>General homogeneous values are projected back to real space by dividing by
+the w component.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrCompositionLayerDepthInfoKHR-extension-notenabled" href="#VUID-XrCompositionLayerDepthInfoKHR-extension-notenabled"></a> The <code><a href="XR_KHR_composition_layer_depth.html">XR_KHR_composition_layer_depth</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrCompositionLayerDepthInfoKHR.html">XrCompositionLayerDepthInfoKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerDepthInfoKHR-type-type" href="#VUID-XrCompositionLayerDepthInfoKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_COMPOSITION_LAYER_DEPTH_INFO_KHR</code></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerDepthInfoKHR-next-next" href="#VUID-XrCompositionLayerDepthInfoKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerDepthInfoKHR-subImage-parameter" href="#VUID-XrCompositionLayerDepthInfoKHR-subImage-parameter"></a> <code>subImage</code> <strong class="purple">must</strong> be a valid <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_KHR_composition_layer_depth.html">XR_KHR_composition_layer_depth</a>, <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>, <a href="XrCompositionLayerProjectionView.html">XrCompositionLayerProjectionView</a>, <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a>, <a href="xrEndFrame.html">xrEndFrame</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrCompositionLayerDepthInfoKHR" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

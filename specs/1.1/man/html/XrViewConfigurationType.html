@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrViewConfigurationType(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrViewConfigurationType(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrViewConfigurationType - Supported view configuration type</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div id="XrViewConfigurationType" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrViewConfigurationType</span> <span class="p">{</span>
+    <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_MONO</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_VERSION_1_1</span>
+    <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</span> <span class="o">=</span> <span class="mi">1000037000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_first_person_observer</span>
+    <span class="n">XR_VIEW_CONFIGURATION_TYPE_SECONDARY_MONO_FIRST_PERSON_OBSERVER_MSFT</span> <span class="o">=</span> <span class="mi">1000054000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_VARJO_quad_views</span>
+    <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_QUAD_VARJO</span> <span class="o">=</span> <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</span><span class="p">,</span>
+    <span class="n">XR_VIEW_CONFIGURATION_TYPE_MAX_ENUM</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrViewConfigurationType</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application selects its primary view configuration type when calling
+<a href="xrBeginSession.html">xrBeginSession</a>, and that configuration remains constant for the
+lifetime of the session, until <a href="xrEndSession.html">xrEndSession</a> is called.</p>
+</div>
+<div class="paragraph">
+<p>The number of views and the semantic meaning of each view index within a
+given view configuration is well-defined, specified below for all core view
+configurations.
+The predefined primary view configuration types are:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Enumerant Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_MONO</code>.
+One view representing the form factor&#8217;s one primary display.
+For example, an AR phone&#8217;s screen.
+This configuration requires one element in
+<a href="XrViewConfigurationProperties.html">XrViewConfigurationProperties</a> and one projection in each
+<a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a> layer.</p>
+</li>
+<li>
+<p><code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</code>.
+Two views representing the form factor&#8217;s two primary displays, which map
+to a left-eye and right-eye view.
+This configuration requires two views in
+<a href="XrViewConfigurationProperties.html">XrViewConfigurationProperties</a> and two views in each
+<a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a> layer.
+View index 0 <strong class="purple">must</strong> represent the left eye and view index 1 <strong class="purple">must</strong> represent
+the right eye.</p>
+</li>
+<li>
+<p><code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</code>.
+Four views representing the form factor&#8217;s primary stereo displays.
+This view configuration type represents a hardware independent way of
+providing foveated rendering.
+The view configuration adds two foveated inset views for the left and
+right eye separately to the already defined two views specified in the
+<code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</code> view configuration.
+View index 0 <strong class="purple">must</strong> represent the left eye and view index 1 <strong class="purple">must</strong> represent
+the right eye as specified in
+<code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</code> view configuration, and
+view index 2 <strong class="purple">must</strong> represent the left eye inset view and view index 3
+<strong class="purple">must</strong> represent the right eye inset view.
+The new inset view 2 and view 3 <strong class="purple">must</strong>, after applying the pose and FoV
+projection to same plane, be contained within view 0 and 1 respectively.
+The inset views <strong class="purple">may</strong> have a higher resolution with respect to the same
+field of view as the corresponding wide FoV view for each eye.
+The runtime <strong class="purple">may</strong> blend between the views at the edges, so the application
+<strong class="purple">must</strong> not omit the inner field of view from being rendered in the outer
+view.
+The <code>fov</code> returned by <a href="xrLocateViews.html">xrLocateViews</a> for each inset view relative
+to the corresponding outer stereo view <strong class="purple">may</strong> change at run-time, the
+<code>pose</code> for inset view and stereo view for each eye respectively <strong class="purple">must</strong>
+have the same values.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The benefits of the
+<code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</code> view
+configuration type can be demonstrated by looking at the rendered pixel
+count.
+For example, a Varjo Aero requires a pair of stereo views rendered at 4148 x
+3556 (14.7 million pixels) to achieve a pixel density of 35 pixels per
+degree.
+By using four views, with an eye-tracked foveated inset covering about 1/9th
+of the full FoV and rendered with the same 35 pixels per degree and while
+the remaining views are dropped to 14 pixels per degree, the resolution of
+the inset is 1076 x 1076 (1.1 million pixels) and the resolution of the
+stereo views is 1660 x 1420 (2.3 million pixels).
+The total pixel count is 75% less with
+<code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</code> over the
+<code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</code> view configuration type.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrEventDataVisibilityMaskChangedKHR.html">XrEventDataVisibilityMaskChangedKHR</a>, <a href="XrSecondaryViewConfigurationLayerInfoMSFT.html">XrSecondaryViewConfigurationLayerInfoMSFT</a>, <a href="XrSecondaryViewConfigurationSessionBeginInfoMSFT.html">XrSecondaryViewConfigurationSessionBeginInfoMSFT</a>, <a href="XrSecondaryViewConfigurationStateMSFT.html">XrSecondaryViewConfigurationStateMSFT</a>, <a href="XrSecondaryViewConfigurationSwapchainCreateInfoMSFT.html">XrSecondaryViewConfigurationSwapchainCreateInfoMSFT</a>, <a href="XrSessionBeginInfo.html">XrSessionBeginInfo</a>, <a href="XrViewConfigurationProperties.html">XrViewConfigurationProperties</a>, <a href="XrViewLocateInfo.html">XrViewLocateInfo</a>, <a href="xrEnumerateEnvironmentBlendModes.html">xrEnumerateEnvironmentBlendModes</a>, <a href="xrEnumerateReprojectionModesMSFT.html">xrEnumerateReprojectionModesMSFT</a>, <a href="xrEnumerateViewConfigurationViews.html">xrEnumerateViewConfigurationViews</a>, <a href="xrEnumerateViewConfigurations.html">xrEnumerateViewConfigurations</a>, <a href="xrGetViewConfigurationProperties.html">xrGetViewConfigurationProperties</a>, <a href="xrGetVisibilityMaskKHR.html">xrGetVisibilityMaskKHR</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrViewConfigurationType" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrGetSceneMeshBuffersMSFT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrGetSceneMeshBuffersMSFT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrGetSceneMeshBuffersMSFT - Get scene mesh buffers</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetSceneMeshBuffersMSFT.html">xrGetSceneMeshBuffersMSFT</a> function retrieves the scene mesh vertex
+buffer and index buffer for the given scene mesh buffer identifier.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Applications may use the scene mesh buffer identifier as a key to cache the
+vertices and indices of a mesh for reuse within an <a href="XrSceneMSFT.html">XrSceneMSFT</a> or
+across multiple <a href="XrSceneMSFT.html">XrSceneMSFT</a> for the same <a href="XrSession.html">XrSession</a>.</p>
+</div>
+<div class="paragraph">
+<p>Applications can avoid unnecessarily calling <a href="xrGetSceneMeshBuffersMSFT.html">xrGetSceneMeshBuffersMSFT</a>
+for a scene component if <a href="XrSceneComponentMSFT.html">XrSceneComponentMSFT</a>::<code>updateTime</code> is
+equal to the <a href="XrSceneComponentMSFT.html">XrSceneComponentMSFT</a>::<code>updateTime</code> value in the
+previous <a href="XrSceneMSFT.html">XrSceneMSFT</a>.
+A scene component is uniquely identified by <a href="XrUuidMSFT.html">XrUuidMSFT</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This function follows the two-call idiom for filling multiple buffers in a
+struct.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="xrGetSceneMeshBuffersMSFT.html">xrGetSceneMeshBuffersMSFT</a> function is defined as:</p>
+</div>
+<div id="xrGetSceneMeshBuffersMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_MSFT_scene_understanding</span>
+<span class="n">XrResult</span> <span class="nf">xrGetSceneMeshBuffersMSFT</span><span class="p">(</span>
+    <span class="n">XrSceneMSFT</span>                                 <span class="n">scene</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrSceneMeshBuffersGetInfoMSFT</span><span class="o">*</span>        <span class="n">getInfo</span><span class="p">,</span>
+    <span class="n">XrSceneMeshBuffersMSFT</span><span class="o">*</span>                     <span class="n">buffers</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>scene</code> is an <a href="XrSceneMSFT.html">XrSceneMSFT</a> previously created by
+<a href="xrCreateSceneMSFT.html">xrCreateSceneMSFT</a>.</p>
+</li>
+<li>
+<p><code>getInfo</code> is a pointer to an <a href="XrSceneMeshBuffersGetInfoMSFT.html">XrSceneMeshBuffersGetInfoMSFT</a>
+structure.</p>
+</li>
+<li>
+<p><code>buffers</code> is a pointer to an <a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a> structure
+for reading a scene mesh buffer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Applications <strong class="purple">can</strong> request the vertex buffer of the mesh by including
+<a href="XrSceneMeshVertexBufferMSFT.html">XrSceneMeshVertexBufferMSFT</a> in the
+<a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a>::<code>next</code> chain.
+Runtimes <strong class="purple">must</strong> support requesting a 32-bit index buffer and <strong class="purple">may</strong> support
+requesting a 16-bit index buffer.
+Applications <strong class="purple">can</strong> request a 32-bit index buffer by including
+<a href="XrSceneMeshIndicesUint32MSFT.html">XrSceneMeshIndicesUint32MSFT</a> in the
+<a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a>::<code>next</code> chain.
+Applications <strong class="purple">can</strong> request a 16-bit index buffer by including
+<a href="XrSceneMeshIndicesUint16MSFT.html">XrSceneMeshIndicesUint16MSFT</a> in the
+<a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a>::<code>next</code> chain.
+If the runtime for the given scene mesh buffer does not support requesting a
+16-bit index buffer then <code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">must</strong> be
+returned.
+The runtime <strong class="purple">must</strong> support reading a 16-bit index buffer for the given scene
+mesh buffer if <a href="XrScenePlaneMSFT.html">XrScenePlaneMSFT</a>:supportsIndicesUint16 or
+<a href="XrSceneMeshMSFT.html">XrSceneMeshMSFT</a>:supportsIndicesUint16 are <code>XR_TRUE</code> for the scene
+component that contained that scene mesh buffer identifier.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SCENE_MESH_BUFFER_ID_INVALID_MSFT</code> if
+none of the scene components in the given <a href="XrSceneMSFT.html">XrSceneMSFT</a> contain
+<a href="XrSceneMeshBuffersGetInfoMSFT.html">XrSceneMeshBuffersGetInfoMSFT</a>::<code>meshBufferId</code>.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SCENE_MESH_BUFFER_ID_INVALID_MSFT</code> if
+<a href="XrSceneMeshBuffersGetInfoMSFT.html">XrSceneMeshBuffersGetInfoMSFT</a>::<code>meshBufferId</code> is zero.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if both
+<a href="XrSceneMeshIndicesUint32MSFT.html">XrSceneMeshIndicesUint32MSFT</a> and <a href="XrSceneMeshIndicesUint16MSFT.html">XrSceneMeshIndicesUint16MSFT</a>
+are included in the <a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a>::<code>next</code> chain.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> if the
+<a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a>::<code>next</code> does not contain at least one of
+<a href="XrSceneMeshVertexBufferMSFT.html">XrSceneMeshVertexBufferMSFT</a>, <a href="XrSceneMeshIndicesUint32MSFT.html">XrSceneMeshIndicesUint32MSFT</a> or
+<a href="XrSceneMeshIndicesUint16MSFT.html">XrSceneMeshIndicesUint16MSFT</a>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return the same vertices and indices for a given scene
+mesh buffer identifier and <a href="XrSession.html">XrSession</a>.
+A runtime <strong class="purple">may</strong> return zero vertices and indices if the underlying mesh data
+is no longer available.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrGetSceneMeshBuffersMSFT-extension-notenabled" href="#VUID-xrGetSceneMeshBuffersMSFT-extension-notenabled"></a> The <code><a href="XR_MSFT_scene_understanding.html">XR_MSFT_scene_understanding</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetSceneMeshBuffersMSFT.html">xrGetSceneMeshBuffersMSFT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrGetSceneMeshBuffersMSFT-scene-parameter" href="#VUID-xrGetSceneMeshBuffersMSFT-scene-parameter"></a> <code>scene</code> <strong class="purple">must</strong> be a valid <a href="XrSceneMSFT.html">XrSceneMSFT</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrGetSceneMeshBuffersMSFT-getInfo-parameter" href="#VUID-xrGetSceneMeshBuffersMSFT-getInfo-parameter"></a> <code>getInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSceneMeshBuffersGetInfoMSFT.html">XrSceneMeshBuffersGetInfoMSFT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrGetSceneMeshBuffersMSFT-buffers-parameter" href="#VUID-xrGetSceneMeshBuffersMSFT-buffers-parameter"></a> <code>buffers</code> <strong class="purple">must</strong> be a pointer to an <a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SCENE_MESH_BUFFER_ID_INVALID_MSFT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SCENE_COMPONENT_ID_INVALID_MSFT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_MSFT_scene_understanding.html">XR_MSFT_scene_understanding</a>, <a href="XrSceneMSFT.html">XrSceneMSFT</a>, <a href="XrSceneMeshBuffersGetInfoMSFT.html">XrSceneMeshBuffersGetInfoMSFT</a>, <a href="XrSceneMeshBuffersMSFT.html">XrSceneMeshBuffersMSFT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrGetSceneMeshBuffersMSFT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

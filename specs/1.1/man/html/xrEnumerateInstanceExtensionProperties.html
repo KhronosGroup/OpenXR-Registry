@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>xrEnumerateInstanceExtensionProperties(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrEnumerateInstanceExtensionProperties(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrEnumerateInstanceExtensionProperties - Returns properties of available instance extensions</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application can determine the available instance extensions by calling
+<a href="xrEnumerateInstanceExtensionProperties.html">xrEnumerateInstanceExtensionProperties</a>:</p>
+</div>
+<div id="xrEnumerateInstanceExtensionProperties" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XrResult</span> <span class="nf">xrEnumerateInstanceExtensionProperties</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span>                                 <span class="n">layerName</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                                    <span class="n">propertyCapacityInput</span><span class="p">,</span>
+    <span class="kt">uint32_t</span><span class="o">*</span>                                   <span class="n">propertyCountOutput</span><span class="p">,</span>
+    <span class="n">XrExtensionProperties</span><span class="o">*</span>                      <span class="n">properties</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>layerName</code> is either <code>NULL</code> or a pointer to a string naming the
+API layer to retrieve extensions from, as returned by
+<a href="xrEnumerateApiLayerProperties.html">xrEnumerateApiLayerProperties</a>.</p>
+</li>
+<li>
+<p><code>propertyCapacityInput</code> is the capacity of the <code>properties</code> array,
+or <code>0</code> to indicate a request to retrieve the required capacity.</p>
+</li>
+<li>
+<p><code>propertyCountOutput</code> is a pointer to the count of <code>properties</code>
+written, or a pointer to the required capacity in the case that
+<code>propertyCapacityInput</code> is insufficient.</p>
+</li>
+<li>
+<p><code>properties</code> is a pointer to an array of <a href="XrExtensionProperties.html">XrExtensionProperties</a>
+structures, but <strong class="purple">can</strong> be <code>NULL</code> if <code>propertyCapacityInput</code> is <code>0</code>.</p>
+</li>
+<li>
+<p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters</a> section for a detailed
+description of retrieving the required <code>properties</code> size.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Because the list of available layers may change externally between calls to
+<a href="xrEnumerateInstanceExtensionProperties.html">xrEnumerateInstanceExtensionProperties</a>, two calls <strong class="purple">may</strong> retrieve
+different results if a <code>layerName</code> is available in one call but not in
+another.
+The extensions supported by a layer may also change between two calls, e.g.
+if the layer implementation is replaced by a different version between those
+calls.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrEnumerateInstanceExtensionProperties-layerName-parameter" href="#VUID-xrEnumerateInstanceExtensionProperties-layerName-parameter"></a> If <code>layerName</code> is not <code>NULL</code>, <code>layerName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateInstanceExtensionProperties-propertyCountOutput-parameter" href="#VUID-xrEnumerateInstanceExtensionProperties-propertyCountOutput-parameter"></a> <code>propertyCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateInstanceExtensionProperties-properties-parameter" href="#VUID-xrEnumerateInstanceExtensionProperties-properties-parameter"></a> If <code>propertyCapacityInput</code> is not <code>0</code>, <code>properties</code> <strong class="purple">must</strong> be a pointer to an array of <code>propertyCapacityInput</code> <a href="XrExtensionProperties.html">XrExtensionProperties</a> structures</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_API_LAYER_NOT_PRESENT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrExtensionProperties.html">XrExtensionProperties</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrEnumerateInstanceExtensionProperties" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrCompositionLayerPassthroughHTC(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrCompositionLayerPassthroughHTC(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrCompositionLayerPassthroughHTC - A composition layer for passthrough</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrCompositionLayerPassthroughHTC.html">XrCompositionLayerPassthroughHTC</a> structure is defined as:</p>
+</div>
+<div id="XrCompositionLayerPassthroughHTC" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_HTC_passthrough</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerPassthroughHTC</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrCompositionLayerFlags</span>    <span class="n">layerFlags</span><span class="p">;</span>
+    <span class="n">XrSpace</span>                    <span class="n">space</span><span class="p">;</span>
+    <span class="n">XrPassthroughHTC</span>           <span class="n">passthrough</span><span class="p">;</span>
+    <span class="n">XrPassthroughColorHTC</span>      <span class="n">color</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrCompositionLayerPassthroughHTC</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain, such as <a href="XrPassthroughMeshTransformInfoHTC.html">XrPassthroughMeshTransformInfoHTC</a>.</p>
+</li>
+<li>
+<p><code>layerFlags</code> is a bitmask of <a href="XrCompositionLayerFlagBits.html">XrCompositionLayerFlagBits</a>
+describing flags to apply to the layer.</p>
+</li>
+<li>
+<p><code>space</code> is the <a href="XrSpace.html">XrSpace</a> that specifies the layer&#8217;s space - <strong class="purple">must</strong>
+be <a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a>.</p>
+</li>
+<li>
+<p><code>passthrough</code> is the <a href="XrPassthroughHTC.html">XrPassthroughHTC</a> previously created by
+<a href="xrCreatePassthroughHTC.html">xrCreatePassthroughHTC</a>.</p>
+</li>
+<li>
+<p><code>color</code> is the <a href="XrPassthroughColorHTC.html">XrPassthroughColorHTC</a> describing the color
+information with the alpha value of the passthrough layer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> create an <a href="XrCompositionLayerPassthroughHTC.html">XrCompositionLayerPassthroughHTC</a>
+structure with the created <code>passthrough</code> and the corresponding
+information.
+A pointer to <a href="XrCompositionLayerPassthroughHTC.html">XrCompositionLayerPassthroughHTC</a> <strong class="purple">may</strong> be submitted in
+<a href="xrEndFrame.html">xrEndFrame</a> as a pointer to the base structure
+<a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, in the desired layer order, to request
+the runtime to composite a passthrough layer into the final frame output.</p>
+</div>
+<div class="paragraph">
+<p>If the passthrough form specified to <a href="xrCreatePassthroughHTC.html">xrCreatePassthroughHTC</a> is
+<code>XR_PASSTHROUGH_FORM_PROJECTED_HTC</code>,
+<a href="XrPassthroughMeshTransformInfoHTC.html">XrPassthroughMeshTransformInfoHTC</a> <strong class="purple">must</strong> appear in the <code>next</code>
+chain.
+If they are absent, the runtime <strong class="purple">must</strong> return error
+<code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-extension-notenabled" href="#VUID-XrCompositionLayerPassthroughHTC-extension-notenabled"></a> The <code><a href="XR_HTC_passthrough.html">XR_HTC_passthrough</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrCompositionLayerPassthroughHTC.html">XrCompositionLayerPassthroughHTC</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-type-type" href="#VUID-XrCompositionLayerPassthroughHTC-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_COMPOSITION_LAYER_PASSTHROUGH_HTC</code></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-next-next" href="#VUID-XrCompositionLayerPassthroughHTC-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrPassthroughMeshTransformInfoHTC.html">XrPassthroughMeshTransformInfoHTC</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-layerFlags-parameter" href="#VUID-XrCompositionLayerPassthroughHTC-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be a valid combination of <a href="XrCompositionLayerFlagBits.html">XrCompositionLayerFlagBits</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-layerFlags-requiredbitmask" href="#VUID-XrCompositionLayerPassthroughHTC-layerFlags-requiredbitmask"></a> <code>layerFlags</code> <strong class="purple">must</strong> not be <code>0</code></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-space-parameter" href="#VUID-XrCompositionLayerPassthroughHTC-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="XrSpace.html">XrSpace</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-passthrough-parameter" href="#VUID-XrCompositionLayerPassthroughHTC-passthrough-parameter"></a> <code>passthrough</code> <strong class="purple">must</strong> be a valid <a href="XrPassthroughHTC.html">XrPassthroughHTC</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-color-parameter" href="#VUID-XrCompositionLayerPassthroughHTC-color-parameter"></a> <code>color</code> <strong class="purple">must</strong> be a valid <a href="XrPassthroughColorHTC.html">XrPassthroughColorHTC</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerPassthroughHTC-commonparent" href="#VUID-XrCompositionLayerPassthroughHTC-commonparent"></a> Both of <code>passthrough</code> and <code>space</code> <strong class="purple">must</strong> have been created, allocated, or retrieved from the same <a href="XrSession.html">XrSession</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_HTC_passthrough.html">XR_HTC_passthrough</a>, <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, <a href="XrCompositionLayerFlags.html">XrCompositionLayerFlags</a>, <a href="XrPassthroughColorHTC.html">XrPassthroughColorHTC</a>, <a href="XrPassthroughHTC.html">XrPassthroughHTC</a>, <a href="XrSpace.html">XrSpace</a>, <a href="XrStructureType.html">XrStructureType</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrCompositionLayerPassthroughHTC" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

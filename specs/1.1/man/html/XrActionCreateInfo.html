@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrActionCreateInfo(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrActionCreateInfo(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrActionCreateInfo - XrAction creation info</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrActionCreateInfo.html">XrActionCreateInfo</a> structure is defined as:</p>
+</div>
+<div id="XrActionCreateInfo" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionCreateInfo</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
+    <span class="kt">char</span>               <span class="n">actionName</span><span class="p">[</span><span class="n">XR_MAX_ACTION_NAME_SIZE</span><span class="p">];</span>
+    <span class="n">XrActionType</span>       <span class="n">actionType</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">countSubactionPaths</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrPath</span><span class="o">*</span>      <span class="n">subactionPaths</span><span class="p">;</span>
+    <span class="kt">char</span>               <span class="n">localizedActionName</span><span class="p">[</span><span class="n">XR_MAX_LOCALIZED_ACTION_NAME_SIZE</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">XrActionCreateInfo</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR.</p>
+</li>
+<li>
+<p><code>actionName</code> is an array containing a <code>NULL</code> terminated string with
+the name of this action.</p>
+</li>
+<li>
+<p><code>actionType</code> is the <a href="XrActionType.html">XrActionType</a> of the action to be created.</p>
+</li>
+<li>
+<p><code>countSubactionPaths</code> is the number of elements in the
+<code>subactionPaths</code> array.
+If <code>subactionPaths</code> is NULL, this parameter must be 0.</p>
+</li>
+<li>
+<p><code>subactionPaths</code> is an array of <a href="XrPath.html">XrPath</a> or <code>NULL</code>.
+If this array is specified, it contains one or more subaction paths that
+the application intends to query action state for.</p>
+</li>
+<li>
+<p><code>localizedActionName</code> is an array containing a <code>NULL</code> terminated
+<code>UTF</code>-8 string that can be presented to the user as a description of
+the action.
+This string should be in the system&#8217;s current active locale.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Subaction paths are a mechanism that enables applications to use the same
+action name and handle on multiple devices.
+Applications can query action state using subaction paths that differentiate
+data coming from each device.
+This allows the runtime to group logically equivalent actions together in
+system UI.
+For instance, an application could create a single <code>pick_up</code> action
+with the <em>/user/hand/left</em> and <em>/user/hand/right</em> subaction
+paths and use the subaction paths to independently query the state of
+<code>pick_up_with_left_hand</code> and <code>pick_up_with_right_hand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Applications <strong class="purple">can</strong> create actions with or without the <code>subactionPaths</code>
+set to a list of paths.
+If this list of paths is omitted (i.e. <code>subactionPaths</code> is set to
+<code>NULL</code>, and <code>countSubactionPaths</code> is set to <code>0</code>), the application is
+opting out of filtering action results by subaction paths and any call to
+get action data must also omit subaction paths.</p>
+</div>
+<div class="paragraph">
+<p>If <code>subactionPaths</code> is specified and any of the following conditions are
+not satisfied, the runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each path provided is one of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>/user/head</em></p>
+</li>
+<li>
+<p><em>/user/hand/left</em></p>
+</li>
+<li>
+<p><em>/user/hand/right</em></p>
+</li>
+<li>
+<p><em>/user/gamepad</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>No path appears in the list more than once</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Extensions <strong class="purple">may</strong> append additional top level user paths to the above list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Earlier revisions of the spec mentioned <em>/user</em> but it could not be
+implemented as specified and was removed as errata.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code> in the following
+circumstances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The application specified subaction paths at action creation and the
+application called <code>xrGetActionState*</code> or a haptic function with an
+empty subaction path array.</p>
+</li>
+<li>
+<p>The application called <code>xrGetActionState*</code> or a haptic function with a
+subaction path that was not specified when the action was created.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If <code>actionName</code> or <code>localizedActionName</code> are empty strings, the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_NAME_INVALID</code> or
+<code>XR_ERROR_LOCALIZED_NAME_INVALID</code> respectively.
+If <code>actionName</code> or <code>localizedActionName</code> are duplicates of the
+corresponding field for any existing action in the specified action set, the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_NAME_DUPLICATED</code> or
+<code>XR_ERROR_LOCALIZED_NAME_DUPLICATED</code> respectively.
+If the conflicting action is destroyed, the conflicting field is no longer
+considered duplicated.
+If <code>actionName</code> contains characters which are not allowed in a single
+level of a <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#semantic-paths-well-formed" target="_blank" rel="noopener">well-formed path string</a>, the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_FORMAT_INVALID</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrActionCreateInfo-type-type" href="#VUID-XrActionCreateInfo-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_ACTION_CREATE_INFO</code></p>
+</li>
+<li>
+<p><a id="VUID-XrActionCreateInfo-next-next" href="#VUID-XrActionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrActionCreateInfo-actionName-parameter" href="#VUID-XrActionCreateInfo-actionName-parameter"></a> <code>actionName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to <code>XR_MAX_ACTION_NAME_SIZE</code></p>
+</li>
+<li>
+<p><a id="VUID-XrActionCreateInfo-actionType-parameter" href="#VUID-XrActionCreateInfo-actionType-parameter"></a> <code>actionType</code> <strong class="purple">must</strong> be a valid <a href="XrActionType.html">XrActionType</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrActionCreateInfo-subactionPaths-parameter" href="#VUID-XrActionCreateInfo-subactionPaths-parameter"></a> If <code>countSubactionPaths</code> is not <code>0</code>, <code>subactionPaths</code> <strong class="purple">must</strong> be a pointer to an array of <code>countSubactionPaths</code> valid <a href="XrPath.html">XrPath</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrActionCreateInfo-localizedActionName-parameter" href="#VUID-XrActionCreateInfo-localizedActionName-parameter"></a> <code>localizedActionName</code> <strong class="purple">must</strong> be a null-terminated UTF-8 string whose length is less than or equal to <code>XR_MAX_LOCALIZED_ACTION_NAME_SIZE</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrAction.html">XrAction</a>, <a href="XrActionType.html">XrActionType</a>, <a href="XrPath.html">XrPath</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrCreateAction.html">xrCreateAction</a>, <a href="xrCreateActionSet.html">xrCreateActionSet</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrActionCreateInfo" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrInstance(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrInstance(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrInstance - Opaque handle to an instance object</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div id="XrInstance" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrInstance</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An OpenXR instance is an object that allows an OpenXR application to
+communicate with an OpenXR runtime.
+The application accomplishes this communication by calling
+<a href="xrCreateInstance.html">xrCreateInstance</a> and receiving a handle to the resulting
+<a href="XrInstance.html">XrInstance</a> object.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="XrInstance.html">XrInstance</a> object stores and tracks OpenXR-related application
+state, without storing any such state in the application&#8217;s global address
+space.
+This allows the application to create multiple instances as well as safely
+encapsulate the application&#8217;s OpenXR state since this object is opaque to
+the application.
+OpenXR runtimes <strong class="purple">may</strong> limit the number of simultaneous <a href="XrInstance.html">XrInstance</a>
+objects that may be created and used, but they <strong class="purple">must</strong> support the creation
+and usage of at least one <a href="XrInstance.html">XrInstance</a> object per process.</p>
+</div>
+<div class="paragraph">
+<p>Physically, this state <strong class="purple">may</strong> be stored in any of the OpenXR loader, OpenXR
+API layers or the OpenXR runtime components.
+The exact storage and distribution of this saved state is
+implementation-dependent, except where indicated by this specification.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrInstanceCreateInfo.html">XrInstanceCreateInfo</a>, <a href="XrInstanceProperties.html">XrInstanceProperties</a>, <a href="xrCancelFutureEXT.html">xrCancelFutureEXT</a>, <a href="xrConvertTimeToTimespecTimeKHR.html">xrConvertTimeToTimespecTimeKHR</a>, <a href="xrConvertTimeToWin32PerformanceCounterKHR.html">xrConvertTimeToWin32PerformanceCounterKHR</a>, <a href="xrConvertTimespecTimeToTimeKHR.html">xrConvertTimespecTimeToTimeKHR</a>, <a href="xrConvertWin32PerformanceCounterToTimeKHR.html">xrConvertWin32PerformanceCounterToTimeKHR</a>, <a href="xrCreateActionSet.html">xrCreateActionSet</a>, <a href="xrCreateApiLayerInstance.html">xrCreateApiLayerInstance</a>, <a href="xrCreateDebugUtilsMessengerEXT.html">xrCreateDebugUtilsMessengerEXT</a>, <a href="xrCreateInstance.html">xrCreateInstance</a>, <a href="xrCreateSession.html">xrCreateSession</a>, <a href="xrCreateVulkanDeviceKHR.html">xrCreateVulkanDeviceKHR</a>, <a href="xrCreateVulkanInstanceKHR.html">xrCreateVulkanInstanceKHR</a>, <a href="xrDestroyInstance.html">xrDestroyInstance</a>, <a href="xrEnableUserCalibrationEventsML.html">xrEnableUserCalibrationEventsML</a>, <a href="xrEnumerateEnvironmentBlendModes.html">xrEnumerateEnvironmentBlendModes</a>, <a href="xrEnumeratePerformanceMetricsCounterPathsMETA.html">xrEnumeratePerformanceMetricsCounterPathsMETA</a>, <a href="xrEnumerateReprojectionModesMSFT.html">xrEnumerateReprojectionModesMSFT</a>, <a href="xrEnumerateSceneComputeFeaturesMSFT.html">xrEnumerateSceneComputeFeaturesMSFT</a>, <a href="xrEnumerateViewConfigurationViews.html">xrEnumerateViewConfigurationViews</a>, <a href="xrEnumerateViewConfigurations.html">xrEnumerateViewConfigurations</a>, <a href="xrEnumerateViveTrackerPathsHTCX.html">xrEnumerateViveTrackerPathsHTCX</a>, <a href="xrGetAudioInputDeviceGuidOculus.html">xrGetAudioInputDeviceGuidOculus</a>, <a href="xrGetAudioOutputDeviceGuidOculus.html">xrGetAudioOutputDeviceGuidOculus</a>, <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a>, <a href="xrGetD3D12GraphicsRequirementsKHR.html">xrGetD3D12GraphicsRequirementsKHR</a>, <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a>, <a href="xrGetInstanceProperties.html">xrGetInstanceProperties</a>, <a href="xrGetOpenGLESGraphicsRequirementsKHR.html">xrGetOpenGLESGraphicsRequirementsKHR</a>, <a href="xrGetOpenGLGraphicsRequirementsKHR.html">xrGetOpenGLGraphicsRequirementsKHR</a>, <a href="xrGetSystem.html">xrGetSystem</a>, <a href="xrGetSystemProperties.html">xrGetSystemProperties</a>, <a href="xrGetViewConfigurationProperties.html">xrGetViewConfigurationProperties</a>, <a href="xrGetVulkanDeviceExtensionsKHR.html">xrGetVulkanDeviceExtensionsKHR</a>, <a href="xrGetVulkanGraphicsDevice2KHR.html">xrGetVulkanGraphicsDevice2KHR</a>, <a href="xrGetVulkanGraphicsDeviceKHR.html">xrGetVulkanGraphicsDeviceKHR</a>, <a href="xrGetVulkanGraphicsRequirements2KHR.html">xrGetVulkanGraphicsRequirements2KHR</a>, <a href="xrGetVulkanGraphicsRequirementsKHR.html">xrGetVulkanGraphicsRequirementsKHR</a>, <a href="xrGetVulkanInstanceExtensionsKHR.html">xrGetVulkanInstanceExtensionsKHR</a>, <a href="xrPathToString.html">xrPathToString</a>, <a href="xrPollEvent.html">xrPollEvent</a>, <a href="xrPollFutureEXT.html">xrPollFutureEXT</a>, <a href="xrResultToString.html">xrResultToString</a>, <a href="xrSetDebugUtilsObjectNameEXT.html">xrSetDebugUtilsObjectNameEXT</a>, <a href="xrStringToPath.html">xrStringToPath</a>, <a href="xrStructureTypeToString.html">xrStructureTypeToString</a>, <a href="xrSubmitDebugUtilsMessageEXT.html">xrSubmitDebugUtilsMessageEXT</a>, <a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrInstance" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

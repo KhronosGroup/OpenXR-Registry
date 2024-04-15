@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR - Local floor reference space</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div id="XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR" class="paragraph">
+<p>Local floor reference space, indicated by
+<code>XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR</code>, is closely related to the <code>LOCAL</code>
+reference space.
+It always aligns with the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_LOCAL"><code>LOCAL</code> space</a>, and matches it in X and Z position.
+However, unlike the <code>LOCAL</code> space, the <code>LOCAL_FLOOR</code> space has its Y axis
+origin on the runtime&#8217;s best estimate of the floor level under the origin of
+the <code>LOCAL</code> space.</p>
+</div>
+<div class="paragraph">
+<p>The location of the origin of the <code>LOCAL_FLOOR</code> space <strong class="purple">must</strong> match the
+<a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_LOCAL"><code>LOCAL</code> space</a> in the X and Z coordinates but not in the Y coordinate.</p>
+</div>
+<div class="paragraph">
+<p>The orientation of the <code>LOCAL_FLOOR</code> space <strong class="purple">must</strong> match the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_LOCAL"><code>LOCAL</code> space</a>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> establish the Y axis origin at its best estimate of the
+floor level under the origin of the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_LOCAL"><code>LOCAL</code> space</a> space, subject to
+requirements under the following conditions to match the floor level of the
+<a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_STAGE"><code>STAGE</code> space</a>.</p>
+</div>
+<div class="paragraph">
+<p>If all of the following conditions are true, the Y axis origin of the
+<a href="XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR.html"><code>LOCAL_FLOOR</code> space</a> <strong class="purple">must</strong> match the Y axis origin of the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_STAGE"><code>STAGE</code> space</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_STAGE"><code>STAGE</code> space</a> is supported</p>
+</li>
+<li>
+<p>the location of the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_LOCAL"><code>LOCAL</code> space</a> relative to the <code>STAGE</code> space has valid
+position (<code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> is set)</p>
+</li>
+<li>
+<p>bounds are available from <a href="xrGetReferenceSpaceBoundsRect.html">xrGetReferenceSpaceBoundsRect</a> for the
+<code>STAGE</code> space</p>
+</li>
+<li>
+<p>the position of the <code>LOCAL</code> space relative to the <code>STAGE</code> space is within
+the <code>STAGE</code> space XZ bounds</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>That is, if there is a stage with bounds, and if the local space and thus
+the local floor is logically within the stage, the local floor and the stage
+share the same floor level.</p>
+</div>
+<div class="paragraph">
+<p>When the origin of the <a href="XrReferenceSpaceType.html#XR_REFERENCE_SPACE_TYPE_LOCAL"><code>LOCAL</code> space</a> is changed in orientation or XZ
+position, the origin of the <a href="XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR.html"><code>LOCAL_FLOOR</code> space</a> <strong class="purple">must</strong> also change
+accordingly.</p>
+</div>
+<div class="paragraph">
+<p>When a change in origin of the <a href="XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR.html"><code>LOCAL_FLOOR</code> space</a> occurs, the runtime <strong class="purple">must</strong>
+queue the <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a> event, with the
+changed <code>LOCAL_FLOOR</code> space origin only taking effect for
+<a href="xrLocateSpace.html">xrLocateSpace</a> or <a href="xrLocateViews.html">xrLocateViews</a> calls whose <a href="XrTime.html">XrTime</a>
+parameter is greater than or equal to the
+<a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>::<code>changeTime</code> in that
+event.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_VERSION_1_1.html">XR_VERSION_1_1</a>, <a href="XrReferenceSpaceType.html">XrReferenceSpaceType</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_REFERENCE_SPACE_TYPE_LOCAL_FLOOR" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

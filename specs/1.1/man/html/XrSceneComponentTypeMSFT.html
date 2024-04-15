@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrSceneComponentTypeMSFT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSceneComponentTypeMSFT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSceneComponentTypeMSFT - Scene component type</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrSceneComponentTypeMSFT.html">XrSceneComponentTypeMSFT</a> enumeration identifies the scene
+component type.</p>
+</div>
+<div id="XrSceneComponentTypeMSFT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_MSFT_scene_understanding</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrSceneComponentTypeMSFT</span> <span class="p">{</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_INVALID_MSFT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_OBJECT_MSFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_PLANE_MSFT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_VISUAL_MESH_MSFT</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_COLLIDER_MESH_MSFT</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_scene_understanding_serialization</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_SERIALIZED_SCENE_FRAGMENT_MSFT</span> <span class="o">=</span> <span class="mi">1000098000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_MSFT_scene_marker</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_MARKER_MSFT</span> <span class="o">=</span> <span class="mi">1000147000</span><span class="p">,</span>
+    <span class="n">XR_SCENE_COMPONENT_TYPE_MAX_ENUM_MSFT</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrSceneComponentTypeMSFT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Enumerant Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SCENE_COMPONENT_TYPE_INVALID_MSFT</code> indicates an invalid scene
+component type.</p>
+</li>
+<li>
+<p><code>XR_SCENE_COMPONENT_TYPE_OBJECT_MSFT</code> indicates a discrete object
+detected in the world, such as a wall, floor, ceiling or table.
+Scene objects then provide their geometric representations such as planes
+and meshes as child scene components with the types below.</p>
+</li>
+<li>
+<p><code>XR_SCENE_COMPONENT_TYPE_PLANE_MSFT</code> indicates a flat 2D
+representation of a surface in the world, such as a wall, floor, ceiling
+or table.</p>
+</li>
+<li>
+<p><code>XR_SCENE_COMPONENT_TYPE_VISUAL_MESH_MSFT</code> indicates a visual mesh
+representation of an object in the world, optimized for visual quality
+when directly rendering a wireframe or other mesh visualization to the
+user.
+Visual mesh can also be used for rendering the silhouettes of objects.
+Applications can request varying levels of detail for visual meshes when
+calling <a href="xrComputeNewSceneMSFT.html">xrComputeNewSceneMSFT</a> using
+<a href="XrVisualMeshComputeLodInfoMSFT.html">XrVisualMeshComputeLodInfoMSFT</a>.</p>
+</li>
+<li>
+<p><code>XR_SCENE_COMPONENT_TYPE_COLLIDER_MESH_MSFT</code> indicates a collider mesh
+representation of an object in the world, optimized to maintain the
+silhouette of an object while reducing detail on mostly-flat surfaces.
+Collider mesh is useful when calculating physics collisions or when
+rendering silhouettes of objects for occlusion.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_MSFT_scene_understanding.html">XR_MSFT_scene_understanding</a>, <a href="XrSceneComponentMSFT.html">XrSceneComponentMSFT</a>, <a href="XrSceneComponentsGetInfoMSFT.html">XrSceneComponentsGetInfoMSFT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSceneComponentTypeMSFT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

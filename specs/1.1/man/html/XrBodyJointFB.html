@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrBodyJointFB(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrBodyJointFB(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrBodyJointFB - Trackable body joints</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This extension defines 70 joints for body tracking: 18 core body joints + 52
+hand joints.</p>
+</div>
+<div id="XrBodyJointFB" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_FB_body_tracking</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrBodyJointFB</span> <span class="p">{</span>
+    <span class="n">XR_BODY_JOINT_ROOT_FB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_HIPS_FB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_SPINE_LOWER_FB</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_SPINE_MIDDLE_FB</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_SPINE_UPPER_FB</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_CHEST_FB</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_NECK_FB</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_HEAD_FB</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_SHOULDER_FB</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_SCAPULA_FB</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_ARM_UPPER_FB</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_ARM_LOWER_FB</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_WRIST_TWIST_FB</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_SHOULDER_FB</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_SCAPULA_FB</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_ARM_UPPER_FB</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_ARM_LOWER_FB</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_WRIST_TWIST_FB</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_PALM_FB</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_WRIST_FB</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_THUMB_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_THUMB_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_THUMB_DISTAL_FB</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_THUMB_TIP_FB</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_INDEX_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_INDEX_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_INDEX_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_INDEX_DISTAL_FB</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_INDEX_TIP_FB</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_MIDDLE_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_MIDDLE_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_MIDDLE_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_MIDDLE_DISTAL_FB</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_MIDDLE_TIP_FB</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_RING_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">34</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_RING_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_RING_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">36</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_RING_DISTAL_FB</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_RING_TIP_FB</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_LITTLE_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_LITTLE_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_LITTLE_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_LITTLE_DISTAL_FB</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_LEFT_HAND_LITTLE_TIP_FB</span> <span class="o">=</span> <span class="mi">43</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_PALM_FB</span> <span class="o">=</span> <span class="mi">44</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_WRIST_FB</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_THUMB_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_THUMB_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">47</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_THUMB_DISTAL_FB</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_THUMB_TIP_FB</span> <span class="o">=</span> <span class="mi">49</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_INDEX_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_INDEX_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">51</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_INDEX_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">52</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_INDEX_DISTAL_FB</span> <span class="o">=</span> <span class="mi">53</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_INDEX_TIP_FB</span> <span class="o">=</span> <span class="mi">54</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_MIDDLE_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">55</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_MIDDLE_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">56</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_MIDDLE_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">57</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_MIDDLE_DISTAL_FB</span> <span class="o">=</span> <span class="mi">58</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_MIDDLE_TIP_FB</span> <span class="o">=</span> <span class="mi">59</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_RING_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_RING_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">61</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_RING_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">62</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_RING_DISTAL_FB</span> <span class="o">=</span> <span class="mi">63</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_RING_TIP_FB</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_LITTLE_METACARPAL_FB</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_LITTLE_PROXIMAL_FB</span> <span class="o">=</span> <span class="mi">66</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_LITTLE_INTERMEDIATE_FB</span> <span class="o">=</span> <span class="mi">67</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_LITTLE_DISTAL_FB</span> <span class="o">=</span> <span class="mi">68</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_RIGHT_HAND_LITTLE_TIP_FB</span> <span class="o">=</span> <span class="mi">69</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_COUNT_FB</span> <span class="o">=</span> <span class="mi">70</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_NONE_FB</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_BODY_JOINT_MAX_ENUM_FB</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrBodyJointFB</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The backward (+Z) direction is parallel to the corresponding bone and points
+away from the finger tip.
+The up (+Y) direction is pointing out of the back of and perpendicular to
+the corresponding finger nail at the fully opened hand pose.
+The X direction is perpendicular to Y and Z and follows the right hand rule.</p>
+</div>
+<div class="paragraph">
+<p>The wrist joint is located at the pivot point of the wrist, which is
+location invariant when twisting the hand without moving the forearm.
+The backward (+Z) direction is parallel to the line from wrist joint to
+middle finger metacarpal joint, and points away from the finger tips.
+The up (+Y) direction points out towards back of the hand and perpendicular
+to the skin at wrist.
+The X direction is perpendicular to the Y and Z directions and follows the
+right hand rule.</p>
+</div>
+<div class="paragraph">
+<p>The palm joint is located at the center of the middle finger&#8217;s metacarpal
+bone.
+The backward (+Z) direction is parallel to the middle finger&#8217;s metacarpal
+bone, and points away from the finger tips.
+The up (+Y) direction is perpendicular to palm surface and pointing towards
+the back of the hand.
+The X direction is perpendicular to the Y and Z directions and follows the
+right hand rule.</p>
+</div>
+<div class="paragraph">
+<p>Body skeleton has the full set of body joints (e.g. defined by
+<a href="XrBodyJointFB.html">XrBodyJointFB</a>), organized in a hierarchy with a default T-shape body
+pose.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of the skeleton is to provide data about the body size.
+Coordinates are relative to each other, so there is no any relation to any
+space.</p>
+</div>
+<div class="paragraph">
+<p>The calculation of the body size <strong class="purple">may</strong> be updated during a session.
+Each time the calculation of the size is changed, <code>skeletonChangedCount</code>
+of <a href="XrBodyJointLocationsFB.html">XrBodyJointLocationsFB</a> is changed to indicate that a new skeleton
+<strong class="purple">may</strong> be retrieved.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_FB_body_tracking.html">XR_FB_body_tracking</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrBodyJointFB" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>

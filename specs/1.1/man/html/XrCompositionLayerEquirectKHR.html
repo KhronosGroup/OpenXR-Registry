@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<title>XrCompositionLayerEquirectKHR(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrCompositionLayerEquirectKHR(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrCompositionLayerEquirectKHR - Equirectangular layer composition info</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a> structure is defined as:</p>
+</div>
+<div id="XrCompositionLayerEquirectKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_composition_layer_equirect</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerEquirectKHR</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrCompositionLayerFlags</span>    <span class="n">layerFlags</span><span class="p">;</span>
+    <span class="n">XrSpace</span>                    <span class="n">space</span><span class="p">;</span>
+    <span class="n">XrEyeVisibility</span>            <span class="n">eyeVisibility</span><span class="p">;</span>
+    <span class="n">XrSwapchainSubImage</span>        <span class="n">subImage</span><span class="p">;</span>
+    <span class="n">XrPosef</span>                    <span class="n">pose</span><span class="p">;</span>
+    <span class="kt">float</span>                      <span class="n">radius</span><span class="p">;</span>
+    <span class="n">XrVector2f</span>                 <span class="n">scale</span><span class="p">;</span>
+    <span class="n">XrVector2f</span>                 <span class="n">bias</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrCompositionLayerEquirectKHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>layerFlags</code> specifies options for the layer.</p>
+</li>
+<li>
+<p><code>space</code> is the <a href="XrSpace.html">XrSpace</a> in which the <code>pose</code> of the equirect
+layer is evaluated over time.</p>
+</li>
+<li>
+<p><code>eyeVisibility</code> is the eye represented by this layer.</p>
+</li>
+<li>
+<p><code>subImage</code> identifies the image <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a> to use.
+The swapchain <strong class="purple">must</strong> have been created with a
+<a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a>::<code>faceCount</code> of 1.</p>
+</li>
+<li>
+<p><code>pose</code> is an <a href="XrPosef.html">XrPosef</a> defining the position and orientation of
+the center point of the sphere onto which the equirect image data is mapped,
+relative to the reference frame of the <code>space</code>.</p>
+</li>
+<li>
+<p><code>radius</code> is the non-negative radius of the sphere onto which the
+equirect image data is mapped.
+Values of zero or floating point positive infinity are treated as an
+infinite sphere.</p>
+</li>
+<li>
+<p><code>scale</code> is an <a href="XrVector2f.html">XrVector2f</a> indicating a scale of the texture
+coordinates after the mapping to 2D.</p>
+</li>
+<li>
+<p><code>bias</code> is an <a href="XrVector2f.html">XrVector2f</a> indicating a bias of the texture
+coordinates after the mapping to 2D.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a> contains the information needed to
+render an equirectangular image onto a sphere when calling <a href="xrEndFrame.html">xrEndFrame</a>.
+<a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a> is an alias type for the base struct
+<a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a> used in <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-extension-notenabled" href="#VUID-XrCompositionLayerEquirectKHR-extension-notenabled"></a> The <code><a href="XR_KHR_composition_layer_equirect.html">XR_KHR_composition_layer_equirect</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-type-type" href="#VUID-XrCompositionLayerEquirectKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_COMPOSITION_LAYER_EQUIRECT_KHR</code></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-next-next" href="#VUID-XrCompositionLayerEquirectKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-layerFlags-parameter" href="#VUID-XrCompositionLayerEquirectKHR-layerFlags-parameter"></a> <code>layerFlags</code> <strong class="purple">must</strong> be <code>0</code> or a valid combination of <a href="XrCompositionLayerFlagBits.html">XrCompositionLayerFlagBits</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-space-parameter" href="#VUID-XrCompositionLayerEquirectKHR-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="XrSpace.html">XrSpace</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-eyeVisibility-parameter" href="#VUID-XrCompositionLayerEquirectKHR-eyeVisibility-parameter"></a> <code>eyeVisibility</code> <strong class="purple">must</strong> be a valid <a href="XrEyeVisibility.html">XrEyeVisibility</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrCompositionLayerEquirectKHR-subImage-parameter" href="#VUID-XrCompositionLayerEquirectKHR-subImage-parameter"></a> <code>subImage</code> <strong class="purple">must</strong> be a valid <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_KHR_composition_layer_equirect.html">XR_KHR_composition_layer_equirect</a>, <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, <a href="XrCompositionLayerFlags.html">XrCompositionLayerFlags</a>, <a href="XrEyeVisibility.html">XrEyeVisibility</a>, <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrSpace.html">XrSpace</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a>, <a href="XrVector2f.html">XrVector2f</a>, <a href="xrEndFrame.html">xrEndFrame</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrCompositionLayerEquirectKHR" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.36<br>
+</div>
+</div>
+</body>
+</html>
