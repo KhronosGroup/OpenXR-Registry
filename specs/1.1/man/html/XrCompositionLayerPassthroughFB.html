@@ -84,16 +84,6 @@ pre.rouge .w {
 <div class="sect1">
 <h2 id="_members">Members</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>It is a composition layer type that may be submitted in <a href="xrEndFrame.html">xrEndFrame</a>
-where an <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a> is specified, as a stand-in for
-the actual passthrough contents.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Member Descriptions</div>
@@ -122,6 +112,21 @@ layer&#8217;s behavior.</p>
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is a composition layer type that may be submitted in <a href="xrEndFrame.html">xrEndFrame</a>
+where an <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a> is specified, as a stand-in for
+the actual passthrough contents.</p>
+</div>
+<div class="paragraph">
+<p>Errata: the third field of this structure is named <code>flags</code> rather than
+<code>layerFlags</code> as expected and as documented for for the parent type
+<a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -194,7 +199,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.37<br>
+Version 1.1.38<br>
 </div>
 </div>
 </body>

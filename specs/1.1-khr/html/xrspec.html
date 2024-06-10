@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.22">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.37 Specification (with all KHR extensions)</title>
+<title>The OpenXR™ 1.1.38 Specification (with all KHR extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -914,11 +914,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.37 Specification (with all KHR extensions)</h1>
+<h1>The OpenXR™ 1.1.38 Specification (with all KHR extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.37</span>
-<br><span id="revremark">from git ref release-1.1.37</span>
+<span id="revnumber">version 1.1.38</span>
+<br><span id="revremark">from git ref release-1.1.38</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -19867,7 +19867,8 @@ layers, and contains a bitwise-OR of zero or more of the bits defined in
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrCompositionLayerFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
-<span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span></code></pre>
+<span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_INVERTED_ALPHA_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000008</span><span class="p">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -38164,7 +38165,7 @@ Macros</a>.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 37)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 38)
 </span></code></pre>
 </div>
 </div>
@@ -39320,7 +39321,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.37<br>
+Version 1.1.38<br>
 </div>
 </div>
 </body>

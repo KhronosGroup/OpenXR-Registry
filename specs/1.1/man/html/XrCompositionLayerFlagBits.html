@@ -73,7 +73,8 @@ pre.rouge .w {
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrCompositionLayerFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
-<span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span></code></pre>
+<span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_INVERTED_ALPHA_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000008</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -97,6 +98,9 @@ pre.rouge .w {
 </li>
 <li>
 <p><code>XR_COMPOSITION_LAYER_UNPREMULTIPLIED_ALPHA_BIT</code> &#8201;&#8212;&#8201;Indicates the texture color channels have not been premultiplied by the texture alpha channel.</p>
+</li>
+<li>
+<p><code>XR_COMPOSITION_LAYER_INVERTED_ALPHA_BIT_EXT</code> &#8201;&#8212;&#8201;Indicates that the texture alpha channel stores transparency instead of opacity, and is to be inverted before layer blending.  (Added by the <code><a href="XR_EXT_composition_layer_inverted_alpha.html">XR_EXT_composition_layer_inverted_alpha</a></code> extension)</p>
 </li>
 </ul>
 </div>
@@ -140,7 +144,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.37<br>
+Version 1.1.38<br>
 </div>
 </div>
 </body>
