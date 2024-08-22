@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.38 Specification (with all KHR extensions)</title>
+<title>The OpenXR™ 1.1.40 Specification (with all KHR extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -800,6 +800,10 @@ pre.rouge .gi {
   color: #116329;
   background-color: #dafbe1;
 }
+pre.rouge .ges {
+  font-weight: bold;
+  font-style: italic;
+}
 pre.rouge .kc {
   color: #0550ae;
 }
@@ -914,11 +918,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.38 Specification (with all KHR extensions)</h1>
+<h1>The OpenXR™ 1.1.40 Specification (with all KHR extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.38</span>
-<br><span id="revremark">from git ref release-1.1.38</span>
+<span id="revnumber">version 1.1.40</span>
+<br><span id="revremark">from git ref release-1.1.40</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1056,14 +1060,15 @@ pre.rouge .w {
 <li><a href="#XR_KHR_D3D12_enable">12.13.&nbsp;XR_KHR_D3D12_enable</a></li>
 <li><a href="#XR_KHR_loader_init">12.14.&nbsp;XR_KHR_loader_init</a></li>
 <li><a href="#XR_KHR_loader_init_android">12.15.&nbsp;XR_KHR_loader_init_android</a></li>
-<li><a href="#XR_KHR_opengl_enable">12.16.&nbsp;XR_KHR_opengl_enable</a></li>
-<li><a href="#XR_KHR_opengl_es_enable">12.17.&nbsp;XR_KHR_opengl_es_enable</a></li>
-<li><a href="#XR_KHR_swapchain_usage_input_attachment_bit">12.18.&nbsp;XR_KHR_swapchain_usage_input_attachment_bit</a></li>
-<li><a href="#XR_KHR_visibility_mask">12.19.&nbsp;XR_KHR_visibility_mask</a></li>
-<li><a href="#XR_KHR_vulkan_enable">12.20.&nbsp;XR_KHR_vulkan_enable</a></li>
-<li><a href="#XR_KHR_vulkan_enable2">12.21.&nbsp;XR_KHR_vulkan_enable2</a></li>
-<li><a href="#XR_KHR_vulkan_swapchain_format_list">12.22.&nbsp;XR_KHR_vulkan_swapchain_format_list</a></li>
-<li><a href="#XR_KHR_win32_convert_performance_counter_time">12.23.&nbsp;XR_KHR_win32_convert_performance_counter_time</a></li>
+<li><a href="#XR_KHR_metal_enable">12.16.&nbsp;XR_KHR_metal_enable</a></li>
+<li><a href="#XR_KHR_opengl_enable">12.17.&nbsp;XR_KHR_opengl_enable</a></li>
+<li><a href="#XR_KHR_opengl_es_enable">12.18.&nbsp;XR_KHR_opengl_es_enable</a></li>
+<li><a href="#XR_KHR_swapchain_usage_input_attachment_bit">12.19.&nbsp;XR_KHR_swapchain_usage_input_attachment_bit</a></li>
+<li><a href="#XR_KHR_visibility_mask">12.20.&nbsp;XR_KHR_visibility_mask</a></li>
+<li><a href="#XR_KHR_vulkan_enable">12.21.&nbsp;XR_KHR_vulkan_enable</a></li>
+<li><a href="#XR_KHR_vulkan_enable2">12.22.&nbsp;XR_KHR_vulkan_enable2</a></li>
+<li><a href="#XR_KHR_vulkan_swapchain_format_list">12.23.&nbsp;XR_KHR_vulkan_swapchain_format_list</a></li>
+<li><a href="#XR_KHR_win32_convert_performance_counter_time">12.24.&nbsp;XR_KHR_win32_convert_performance_counter_time</a></li>
 </ul>
 </li>
 <li><a href="#deprecated-extension-appendices-list">13. List of Deprecated Extensions</a>
@@ -5276,9 +5281,6 @@ remaining OpenXR functions supported by the runtime.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrNegotiateLoaderRuntimeInterface-extension-notenabled" href="#VUID-xrNegotiateLoaderRuntimeInterface-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrNegotiateLoaderRuntimeInterface">xrNegotiateLoaderRuntimeInterface</a></p>
-</li>
-<li>
 <p><a id="VUID-xrNegotiateLoaderRuntimeInterface-loaderInfo-parameter" href="#VUID-xrNegotiateLoaderRuntimeInterface-loaderInfo-parameter"></a> <code>loaderInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure</p>
 </li>
 <li>
@@ -5395,9 +5397,6 @@ an API layer in an <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoad
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
-<li>
-<p><a id="VUID-XrNegotiateLoaderInfo-extension-notenabled" href="#VUID-XrNegotiateLoaderInfo-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a></p>
-</li>
 <li>
 <p><a id="VUID-XrNegotiateLoaderInfo-structType-parameter" href="#VUID-XrNegotiateLoaderInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
 </li>
@@ -5570,9 +5569,6 @@ runtime populates the rest of the fields in a successful call to
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
-<li>
-<p><a id="VUID-XrNegotiateRuntimeRequest-extension-notenabled" href="#VUID-XrNegotiateRuntimeRequest-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a></p>
-</li>
 <li>
 <p><a id="VUID-XrNegotiateRuntimeRequest-structType-parameter" href="#VUID-XrNegotiateRuntimeRequest-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
 </li>
@@ -5791,9 +5787,6 @@ individually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-xrNegotiateLoaderApiLayerInterface-extension-notenabled" href="#VUID-xrNegotiateLoaderApiLayerInterface-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerInterface</a></p>
-</li>
-<li>
 <p><a id="VUID-xrNegotiateLoaderApiLayerInterface-loaderInfo-parameter" href="#VUID-xrNegotiateLoaderApiLayerInterface-loaderInfo-parameter"></a> <code>loaderInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a> structure</p>
 </li>
 <li>
@@ -5923,9 +5916,6 @@ call to <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoaderApiLayerI
 <div class="ulist">
 <ul>
 <li>
-<p><a id="VUID-XrNegotiateApiLayerRequest-extension-notenabled" href="#VUID-XrNegotiateApiLayerRequest-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a></p>
-</li>
-<li>
 <p><a id="VUID-XrNegotiateApiLayerRequest-structType-parameter" href="#VUID-XrNegotiateApiLayerRequest-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
 </li>
 <li>
@@ -6046,9 +6036,8 @@ own structure.</p>
 </li>
 <li>
 <p>The API layer <strong class="purple">must</strong> then update its copy of the <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>
-structure, setting
-<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<code>nextInfo</code> to
-point to the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> for the next API layer (e.g.
+structure, setting <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a>::<code>nextInfo</code> to point to
+the <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a> for the next API layer (e.g.
 <code>layerInfoCopy&#8594;nextInfo = layerInfo&#8594;nextInfo&#8594;next;</code>).</p>
 </li>
 <li>
@@ -6073,9 +6062,6 @@ layer.</p>
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
-<li>
-<p><a id="VUID-xrCreateApiLayerInstance-extension-notenabled" href="#VUID-xrCreateApiLayerInstance-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrCreateApiLayerInstance">xrCreateApiLayerInstance</a></p>
-</li>
 <li>
 <p><a id="VUID-xrCreateApiLayerInstance-info-parameter" href="#VUID-xrCreateApiLayerInstance-info-parameter"></a> <code>info</code> <strong class="purple">must</strong> be a pointer to a valid <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> structure</p>
 </li>
@@ -6184,9 +6170,6 @@ which contains information to work with the next API layer in the chain.</p>
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
-<li>
-<p><a id="VUID-XrApiLayerCreateInfo-extension-notenabled" href="#VUID-XrApiLayerCreateInfo-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a></p>
-</li>
 <li>
 <p><a id="VUID-XrApiLayerCreateInfo-structType-parameter" href="#VUID-XrApiLayerCreateInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
 </li>
@@ -6317,9 +6300,6 @@ If no API layer is after this, it will be <code>NULL</code>.</p>
 <div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
-<li>
-<p><a id="VUID-XrApiLayerNextInfo-extension-notenabled" href="#VUID-XrApiLayerNextInfo-extension-notenabled"></a> The <code><a href="#XR_LOADER_VERSION_1_0">XR_LOADER_VERSION_1_0</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a></p>
-</li>
 <li>
 <p><a id="VUID-XrApiLayerNextInfo-structType-parameter" href="#VUID-XrApiLayerNextInfo-structType-parameter"></a> <code>structType</code> <strong class="purple">must</strong> be a valid <a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a> value</p>
 </li>
@@ -16106,7 +16086,7 @@ with &#8220;XrGraphicsBinding&#8221;) or <code>XR_ERROR_GRAPHICS_DEVICE_INVALID<
 <p><a id="VUID-XrSessionCreateInfo-type-type" href="#VUID-XrSessionCreateInfo-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SESSION_CREATE_INFO</code></p>
 </li>
 <li>
-<p><a id="VUID-XrSessionCreateInfo-next-next" href="#VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrGraphicsBindingD3D11KHR">XrGraphicsBindingD3D11KHR</a>, <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, <a href="#XrGraphicsBindingOpenGLESAndroidKHR">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="#XrGraphicsBindingOpenGLWaylandKHR">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="#XrGraphicsBindingOpenGLWin32KHR">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="#XrGraphicsBindingOpenGLXcbKHR">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="#XrGraphicsBindingOpenGLXlibKHR">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="#XrGraphicsBindingVulkanKHR">XrGraphicsBindingVulkanKHR</a></p>
+<p><a id="VUID-XrSessionCreateInfo-next-next" href="#VUID-XrSessionCreateInfo-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="#XrGraphicsBindingD3D11KHR">XrGraphicsBindingD3D11KHR</a>, <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a>, <a href="#XrGraphicsBindingOpenGLESAndroidKHR">XrGraphicsBindingOpenGLESAndroidKHR</a>, <a href="#XrGraphicsBindingOpenGLWaylandKHR">XrGraphicsBindingOpenGLWaylandKHR</a>, <a href="#XrGraphicsBindingOpenGLWin32KHR">XrGraphicsBindingOpenGLWin32KHR</a>, <a href="#XrGraphicsBindingOpenGLXcbKHR">XrGraphicsBindingOpenGLXcbKHR</a>, <a href="#XrGraphicsBindingOpenGLXlibKHR">XrGraphicsBindingOpenGLXlibKHR</a>, <a href="#XrGraphicsBindingVulkanKHR">XrGraphicsBindingVulkanKHR</a></p>
 </li>
 <li>
 <p><a id="VUID-XrSessionCreateInfo-createFlags-zerobitmask" href="#VUID-XrSessionCreateInfo-createFlags-zerobitmask"></a> <code>createFlags</code> <strong class="purple">must</strong> be <code>0</code></p>
@@ -20474,13 +20454,19 @@ right eye.</p>
 <p>After the compositor has blended and flattened all layers (including any
 layers added by the runtime itself), it will then present this image to the
 system&#8217;s display.
-The composited image will then blend with the user&#8217;s view of the physical
-world behind the displays in one of three modes, based on the application&#8217;s
-chosen <strong>environment blend mode</strong>.
+The composited image will then blend with the environment in one of three
+modes, based on the application&#8217;s chosen <strong>environment blend mode</strong>.
 VR applications will generally choose the
 <code>XR_ENVIRONMENT_BLEND_MODE_OPAQUE</code> blend mode, while AR applications
 will generally choose either the <code>XR_ENVIRONMENT_BLEND_MODE_ADDITIVE</code> or
 <code>XR_ENVIRONMENT_BLEND_MODE_ALPHA_BLEND</code> mode.</p>
+</div>
+<div class="paragraph">
+<p>The environment <strong class="purple">may</strong> be perceived in two ways.
+It could be the user&#8217;s view of the physical world that exists beyond the
+displays, or it could be a synthetic environment including virtual
+components generated externally from the application.
+Alternatively, it could be a combination of both these elements.</p>
 </div>
 <div class="paragraph">
 <p>Applications select their environment blend mode each frame as part of their
@@ -20509,6 +20495,13 @@ For example, a VR headset may not support the
 passthrough, while an AR headset with an additive display may not support
 the <code>XR_ENVIRONMENT_BLEND_MODE_OPAQUE</code> or
 <code>XR_ENVIRONMENT_BLEND_MODE_ALPHA_BLEND</code> modes.</p>
+</div>
+<div class="paragraph">
+<p>For devices that support video/optical passthrough or synthetic
+environments, they <strong class="purple">may</strong> support the <code>XR_ENVIRONMENT_BLEND_MODE_ADDITIVE</code>
+or <code>XR_ENVIRONMENT_BLEND_MODE_ALPHA_BLEND</code> modes.
+Selecting one of these modes would display the environment in the
+background, contingent upon the capability and status of the headsets.</p>
 </div>
 <div class="paragraph">
 <p>For devices that can support multiple environment blend modes, such as AR
@@ -24788,6 +24781,9 @@ E.g. <code>Trigger</code>.</p>
 </li>
 <li>
 <p><code><a href="#XR_KHR_loader_init_android">XR_KHR_loader_init_android</a></code></p>
+</li>
+<li>
+<p><code><a href="#XR_KHR_metal_enable">XR_KHR_metal_enable</a></code></p>
 </li>
 <li>
 <p><code><a href="#XR_KHR_opengl_enable">XR_KHR_opengl_enable</a></code></p>
@@ -29632,7 +29628,586 @@ pointer.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_opengl_enable"><a class="anchor" href="#XR_KHR_opengl_enable"></a>12.16.&nbsp;XR_KHR_opengl_enable</h3>
+<h3 id="XR_KHR_metal_enable"><a class="anchor" href="#XR_KHR_metal_enable"></a>12.16.&nbsp;XR_KHR_metal_enable</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Name String</strong></dt>
+<dd>
+<p><code>XR_KHR_metal_enable</code></p>
+</dd>
+<dt class="hdlist1"><strong>Extension Type</strong></dt>
+<dd>
+<p>Instance extension</p>
+</dd>
+<dt class="hdlist1"><strong>Registered Extension Number</strong></dt>
+<dd>
+<p>30</p>
+</dd>
+<dt class="hdlist1"><strong>Revision</strong></dt>
+<dd>
+<p>1</p>
+</dd>
+<dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="#versions-1.0">OpenXR 1.0</a><br></p>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1"><strong>Last Modified Date</strong></dt>
+<dd>
+<p>2023-10-11</p>
+</dd>
+<dt class="hdlist1"><strong>IP Status</strong></dt>
+<dd>
+<p>No known IP claims.</p>
+</dd>
+<dt class="hdlist1"><strong>Contributors</strong></dt>
+<dd>
+<p>Xiang Wei, Meta<br>
+Peter Kuhn, Unity<br>
+John Kearney, Meta<br>
+Andreas Selvik, Meta<br>
+Jakob Bornecrantz, Collabora<br>
+Rylie Pavlik, Collabora</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>This extension enables the use of the Metal&#174; graphics API in an OpenXR
+runtime.
+Without this extension, the OpenXR runtime <strong class="purple">may</strong> not be able to provide any
+Metal swapchain images.</p>
+</div>
+<div class="paragraph">
+<p>This extension provides the mechanisms necessary for an application to
+generate a valid <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a> structure in order to
+create a Metal-based <a href="#XrSession">XrSession</a>.
+Note that during this process, the runtime is responsible for creating the
+Metal device for the application&#8217;s drawing operations, and the application
+is responsible for creating all the required Metal objects from that,
+including a Metal command queue to be used for rendering.
+The runtime however will provide the Metal textures to render into in the
+form of a swapchain.</p>
+</div>
+<div class="paragraph">
+<p>This extension also provides mechanisms for the application to interact with
+images acquired by calling <a href="#xrEnumerateSwapchainImages">xrEnumerateSwapchainImages</a>.</p>
+</div>
+<div class="paragraph">
+<p>In order to expose the structures, types, and functions of this extension,
+you <strong class="purple">must</strong> define <a href="#XR_USE_GRAPHICS_API_METAL">XR_USE_GRAPHICS_API_METAL</a> before including the OpenXR
+platform header <code>openxr_platform.h</code>, in all portions of your library or
+application that include it.</p>
+</div>
+<div class="paragraph">
+<p><strong>Swapchain Flag Bits</strong></p>
+</div>
+<div class="paragraph">
+<p>All <a href="#XrSwapchainUsageFlags">XrSwapchainUsageFlags</a> values passed in a session created using
+<a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a> <strong class="purple">must</strong> be interpreted as follows by the
+runtime, so that the returned swapchain images used by the application <strong class="purple">may</strong>
+be used as if they were created with the corresponding <code>MTLTextureUsage</code>
+flags.
+The runtime <strong class="purple">may</strong> set additional bind flags but <strong class="purple">must</strong> not restrict usage.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: white;"><a href="#XrSwapchainUsageFlagBits">XrSwapchainUsageFlagBits</a></th>
+<th class="tableblock halign-left valign-top" style="background-color: white;">Corresponding <code>MTLTextureUsage</code> bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>MTLTextureUsageRenderTarget</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>MTLTextureUsageRenderTarget</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>MTLTextureUsageShaderRead | MTLTextureUsageShaderWrite</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_TRANSFER_DST_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_SAMPLED_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>MTLTextureUsageShaderRead</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>MTLTextureUsagePixelFormatView</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_KHR</code>
+  (Added by <code><a href="#XR_KHR_swapchain_usage_input_attachment_bit">XR_KHR_swapchain_usage_input_attachment_bit</a></code> and only available when that extension is enabled)</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All Metal swapchain textures are created with
+<code>MTLResourceStorageModePrivate</code> resource option, and can be accessed only by
+the GPU.</p>
+</div>
+<div class="paragraph">
+<p><strong>New Object Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Flag Types</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Enum Constants</strong></p>
+</div>
+<div class="paragraph">
+<p><a href="#XrStructureType">XrStructureType</a> enumeration is extended with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR</code></p>
+</li>
+<li>
+<p><code>XR_TYPE_GRAPHICS_BINDING_METAL_KHR</code></p>
+</li>
+<li>
+<p><code>XR_TYPE_SWAPCHAIN_IMAGE_METAL_KHR</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>New Enums</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>New Structures</strong></p>
+</div>
+<div class="paragraph">
+<p>The following structures are provided to supply supporting runtimes the
+necessary information required to work with the Metal API.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a> structure is defined as:</p>
+</div>
+<div id="XrGraphicsBindingMetalKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_metal_enable</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrGraphicsBindingMetalKHR</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">commandQueue</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrGraphicsBindingMetalKHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>commandQueue</code> is a valid Metal command queue, which <strong class="purple">must</strong> be bridged
+casted from an Objective-C object that conforms to the
+<code>MTLCommandQueue</code> protocol.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When creating a Metal-backed <a href="#XrSession">XrSession</a>, the application will provide a
+pointer to an <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a> in the
+<a href="#XrSessionCreateInfo">XrSessionCreateInfo</a>::<code>next</code> field of structure passed to
+<a href="#xrCreateSession">xrCreateSession</a>.
+The Metal command queue specified in
+<a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a>::<code>commandQueue</code> <strong class="purple">must</strong> be created on the
+Metal device retrieved through
+<a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a>::<code>metalDevice</code>, otherwise
+<a href="#xrCreateSession">xrCreateSession</a> <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrGraphicsBindingMetalKHR-extension-notenabled" href="#VUID-XrGraphicsBindingMetalKHR-extension-notenabled"></a> The <code><a href="#XR_KHR_metal_enable">XR_KHR_metal_enable</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-XrGraphicsBindingMetalKHR-type-type" href="#VUID-XrGraphicsBindingMetalKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_GRAPHICS_BINDING_METAL_KHR</code></p>
+</li>
+<li>
+<p><a id="VUID-XrGraphicsBindingMetalKHR-next-next" href="#VUID-XrGraphicsBindingMetalKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrGraphicsBindingMetalKHR-commandQueue-parameter" href="#VUID-XrGraphicsBindingMetalKHR-commandQueue-parameter"></a> <code>commandQueue</code> <strong class="purple">must</strong> be a pointer value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrSwapchainImageMetalKHR">XrSwapchainImageMetalKHR</a> structure is defined as:</p>
+</div>
+<div id="XrSwapchainImageMetalKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_metal_enable</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageMetalKHR</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">texture</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSwapchainImageMetalKHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>texture</code> is populated with a valid Metal texture to use, which <strong class="purple">must</strong>
+be able to be bridged casted to an Objective-C object that conforms to the
+<code>MTLTexture</code> protocol.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If a given session was created with <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a>, the
+following conditions <strong class="purple">must</strong> apply.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Calls to <a href="#xrEnumerateSwapchainImages">xrEnumerateSwapchainImages</a> on an <a href="#XrSwapchain">XrSwapchain</a> in that
+session <strong class="purple">must</strong> return an array of <a href="#XrSwapchainImageMetalKHR">XrSwapchainImageMetalKHR</a>
+structures.</p>
+</li>
+<li>
+<p>Whenever an OpenXR function accepts an <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a>
+pointer as a parameter in that session, the runtime <strong class="purple">must</strong> also accept a
+pointer to an <a href="#XrSwapchainImageMetalKHR">XrSwapchainImageMetalKHR</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The OpenXR runtime <strong class="purple">must</strong> interpret the top-left corner of the swapchain
+image as the coordinate origin unless specified otherwise by extension
+functionality.</p>
+</div>
+<div class="paragraph">
+<p>The OpenXR runtime <strong class="purple">must</strong> interpret the swapchain images in a clip space of
+positive Y pointing up, near Z plane at 0, and far Z plane at 1.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSwapchainImageMetalKHR-extension-notenabled" href="#VUID-XrSwapchainImageMetalKHR-extension-notenabled"></a> The <code><a href="#XR_KHR_metal_enable">XR_KHR_metal_enable</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrSwapchainImageMetalKHR">XrSwapchainImageMetalKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainImageMetalKHR-type-type" href="#VUID-XrSwapchainImageMetalKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SWAPCHAIN_IMAGE_METAL_KHR</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainImageMetalKHR-next-next" href="#VUID-XrSwapchainImageMetalKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSwapchainImageMetalKHR-texture-parameter" href="#VUID-XrSwapchainImageMetalKHR-texture-parameter"></a> <code>texture</code> <strong class="purple">must</strong> be a pointer value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a> structure is defined as:</p>
+</div>
+<div id="XrGraphicsRequirementsMetalKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_metal_enable</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrGraphicsRequirementsMetalKHR</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">metalDevice</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrGraphicsRequirementsMetalKHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="#XrStructureType">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>metalDevice</code> is the Metal device that the application <strong class="purple">must</strong> use for
+drawing operations, which <strong class="purple">may</strong> be bridged casted to an Objective-C object
+that conforms to the <code>MTLDevice</code> protocol.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a> is populated by
+<a href="#xrGetMetalGraphicsRequirementsKHR">xrGetMetalGraphicsRequirementsKHR</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrGraphicsRequirementsMetalKHR-extension-notenabled" href="#VUID-XrGraphicsRequirementsMetalKHR-extension-notenabled"></a> The <code><a href="#XR_KHR_metal_enable">XR_KHR_metal_enable</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-XrGraphicsRequirementsMetalKHR-type-type" href="#VUID-XrGraphicsRequirementsMetalKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR</code></p>
+</li>
+<li>
+<p><a id="VUID-XrGraphicsRequirementsMetalKHR-next-next" href="#VUID-XrGraphicsRequirementsMetalKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrGraphicsRequirementsMetalKHR-metalDevice-parameter" href="#VUID-XrGraphicsRequirementsMetalKHR-metalDevice-parameter"></a> <code>metalDevice</code> <strong class="purple">must</strong> be a pointer value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>New Functions</strong></p>
+</div>
+<div class="paragraph">
+<p>Some computer systems may have multiple graphics devices, each of which may
+have independent external display outputs.
+XR systems that connect to such graphics devices are typically connected to
+a single device.
+Applications need to know what graphics device the XR system is connected to
+so that they can use that graphics device to generate XR images.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To retrieve the Metal device that <strong class="purple">can</strong> be used in drawing operations, call:</p>
+</div>
+<div id="xrGetMetalGraphicsRequirementsKHR" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_metal_enable</span>
+<span class="n">XrResult</span> <span class="nf">xrGetMetalGraphicsRequirementsKHR</span><span class="p">(</span>
+    <span class="n">XrInstance</span>                                  <span class="n">instance</span><span class="p">,</span>
+    <span class="n">XrSystemId</span>                                  <span class="n">systemId</span><span class="p">,</span>
+    <span class="n">XrGraphicsRequirementsMetalKHR</span><span class="o">*</span>             <span class="n">graphicsRequirements</span><span class="p">);</span></code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>instance</code> is an <a href="#XrInstance">XrInstance</a> handle previously created with
+<a href="#xrCreateInstance">xrCreateInstance</a>.</p>
+</li>
+<li>
+<p><code>systemId</code> is an <code><a href="#XrSystemId">XrSystemId</a></code> handle for the system which will
+be used to create a session.</p>
+</li>
+<li>
+<p><code>graphicsRequirements</code> is the <a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a>
+output structure.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="#xrGetMetalGraphicsRequirementsKHR">xrGetMetalGraphicsRequirementsKHR</a> function identifies to the
+application the Metal device to be used in drawing operations.
+The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
+on calls to <a href="#xrCreateSession">xrCreateSession</a> if <a href="#xrGetMetalGraphicsRequirementsKHR">xrGetMetalGraphicsRequirementsKHR</a>
+has not been called for the same <code>instance</code> and <code>systemId</code>.</p>
+</div>
+<div class="paragraph">
+<p>The Metal device that <a href="#xrGetMetalGraphicsRequirementsKHR">xrGetMetalGraphicsRequirementsKHR</a> returns <strong class="purple">must</strong>
+be used to create the Metal command queue that the application passes to
+<a href="#xrCreateSession">xrCreateSession</a> in the <a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrGetMetalGraphicsRequirementsKHR-extension-notenabled" href="#VUID-xrGetMetalGraphicsRequirementsKHR-extension-notenabled"></a> The <code><a href="#XR_KHR_metal_enable">XR_KHR_metal_enable</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="#xrGetMetalGraphicsRequirementsKHR">xrGetMetalGraphicsRequirementsKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-xrGetMetalGraphicsRequirementsKHR-instance-parameter" href="#VUID-xrGetMetalGraphicsRequirementsKHR-instance-parameter"></a> <code>instance</code> <strong class="purple">must</strong> be a valid <a href="#XrInstance">XrInstance</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrGetMetalGraphicsRequirementsKHR-graphicsRequirements-parameter" href="#VUID-xrGetMetalGraphicsRequirementsKHR-graphicsRequirements-parameter"></a> <code>graphicsRequirements</code> <strong class="purple">must</strong> be a pointer to an <a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="#fundamentals-successcodes">Success</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1"><a href="#fundamentals-errorcodes">Failure</a></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SYSTEM_INVALID</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Issues</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Questions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How to manage the resource state of the Swapchain textures, etc?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The application uses the Metal device that is created by the runtime for
+the drawing operations.
+The runtime uses the same Metal device to create the swapchain images,
+and also create the synchronization events when necessary.
+On top of that, Metal tracks the write hazards and synchronizes the
+resources which are created from the same Metal device and directly bind
+to a pipeline.
+Please check this Apple documentation for more details:
+<a href="https://developer.apple.com/documentation/metal/resource_synchronization?language=objc" class="bare">https://developer.apple.com/documentation/metal/resource_synchronization?language=objc</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Version History</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Revision 1, 2023-05-08 (Xiang Wei)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initial draft</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="XR_KHR_opengl_enable"><a class="anchor" href="#XR_KHR_opengl_enable"></a>12.17.&nbsp;XR_KHR_opengl_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -30566,7 +31141,7 @@ on calls to <a href="#xrCreateSession">xrCreateSession</a> if
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_opengl_es_enable"><a class="anchor" href="#XR_KHR_opengl_es_enable"></a>12.17.&nbsp;XR_KHR_opengl_es_enable</h3>
+<h3 id="XR_KHR_opengl_es_enable"><a class="anchor" href="#XR_KHR_opengl_es_enable"></a>12.18.&nbsp;XR_KHR_opengl_es_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -31179,7 +31754,7 @@ on calls to <a href="#xrCreateSession">xrCreateSession</a> if
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_swapchain_usage_input_attachment_bit"><a class="anchor" href="#XR_KHR_swapchain_usage_input_attachment_bit"></a>12.18.&nbsp;XR_KHR_swapchain_usage_input_attachment_bit</h3>
+<h3 id="XR_KHR_swapchain_usage_input_attachment_bit"><a class="anchor" href="#XR_KHR_swapchain_usage_input_attachment_bit"></a>12.19.&nbsp;XR_KHR_swapchain_usage_input_attachment_bit</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -31305,7 +31880,7 @@ image format <strong class="purple">may</strong> be used as an input attachment.
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_visibility_mask"><a class="anchor" href="#XR_KHR_visibility_mask"></a>12.19.&nbsp;XR_KHR_visibility_mask</h3>
+<h3 id="XR_KHR_visibility_mask"><a class="anchor" href="#XR_KHR_visibility_mask"></a>12.20.&nbsp;XR_KHR_visibility_mask</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -31793,7 +32368,7 @@ and index counts <strong class="purple">must</strong> be <code>0</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_vulkan_enable"><a class="anchor" href="#XR_KHR_vulkan_enable"></a>12.20.&nbsp;XR_KHR_vulkan_enable</h3>
+<h3 id="XR_KHR_vulkan_enable"><a class="anchor" href="#XR_KHR_vulkan_enable"></a>12.21.&nbsp;XR_KHR_vulkan_enable</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -32939,7 +33514,7 @@ instead of the app</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_vulkan_enable2"><a class="anchor" href="#XR_KHR_vulkan_enable2"></a>12.21.&nbsp;XR_KHR_vulkan_enable2</h3>
+<h3 id="XR_KHR_vulkan_enable2"><a class="anchor" href="#XR_KHR_vulkan_enable2"></a>12.22.&nbsp;XR_KHR_vulkan_enable2</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -32991,7 +33566,7 @@ Paulo Gomes, Samsung Electronics<br></p>
 </dl>
 </div>
 <div class="sect3">
-<h4 id="_overview"><a class="anchor" href="#_overview"></a>12.21.1. Overview</h4>
+<h4 id="_overview"><a class="anchor" href="#_overview"></a>12.22.1. Overview</h4>
 <div class="paragraph">
 <p>This extension enables the use of the Vulkan graphics API in an OpenXR
 runtime.
@@ -33031,7 +33606,7 @@ and does not depend on it.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_initialization"><a class="anchor" href="#_initialization"></a>12.21.2. Initialization</h4>
+<h4 id="_initialization"><a class="anchor" href="#_initialization"></a>12.22.2. Initialization</h4>
 <div class="paragraph">
 <p>When operating in Vulkan mode, the OpenXR runtime and the application will
 share the Vulkan queue described in the <a href="#XrGraphicsBindingVulkan2KHR">XrGraphicsBindingVulkan2KHR</a>
@@ -34103,7 +34678,7 @@ objects which the application wishes to associate with an
 </div>
 </div>
 <div class="sect3">
-<h4 id="_concurrency"><a class="anchor" href="#_concurrency"></a>12.21.3. Concurrency</h4>
+<h4 id="_concurrency"><a class="anchor" href="#_concurrency"></a>12.22.3. Concurrency</h4>
 <div class="paragraph">
 <p>Vulkan requires that concurrent access to a <code>VkQueue</code> from multiple
 threads be externally synchronized.
@@ -34141,7 +34716,7 @@ result in undefined behavior in the OpenXR runtime.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_swapchain_interactions"><a class="anchor" href="#_swapchain_interactions"></a>12.21.4. Swapchain Interactions</h4>
+<h4 id="_swapchain_interactions"><a class="anchor" href="#_swapchain_interactions"></a>12.22.4. Swapchain Interactions</h4>
 <div class="sect4">
 <h5 id="_swapchain_images"><a class="anchor" href="#_swapchain_images"></a>Swapchain Images</h5>
 <div class="paragraph">
@@ -34349,7 +34924,7 @@ be used as if they were created with at least the specified
 </div>
 </div>
 <div class="sect3">
-<h4 id="_appendix"><a class="anchor" href="#_appendix"></a>12.21.5. Appendix</h4>
+<h4 id="_appendix"><a class="anchor" href="#_appendix"></a>12.22.5. Appendix</h4>
 <div class="sect4">
 <h5 id="_questions"><a class="anchor" href="#_questions"></a>Questions</h5>
 <div class="olist arabic">
@@ -34475,7 +35050,7 @@ captures the relevant information.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_vulkan_swapchain_format_list"><a class="anchor" href="#XR_KHR_vulkan_swapchain_format_list"></a>12.22.&nbsp;XR_KHR_vulkan_swapchain_format_list</h3>
+<h3 id="XR_KHR_vulkan_swapchain_format_list"><a class="anchor" href="#XR_KHR_vulkan_swapchain_format_list"></a>12.23.&nbsp;XR_KHR_vulkan_swapchain_format_list</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -34690,7 +35265,7 @@ No such structures are defined in core OpenXR or this extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_KHR_win32_convert_performance_counter_time"><a class="anchor" href="#XR_KHR_win32_convert_performance_counter_time"></a>12.23.&nbsp;XR_KHR_win32_convert_performance_counter_time</h3>
+<h3 id="XR_KHR_win32_convert_performance_counter_time"><a class="anchor" href="#XR_KHR_win32_convert_performance_counter_time"></a>12.24.&nbsp;XR_KHR_win32_convert_performance_counter_time</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><strong>Name String</strong></dt>
@@ -37265,6 +37840,9 @@ API layers, and is not typically directly used by an application.</p>
 <p><a href="#xrGetInstanceProperties">xrGetInstanceProperties</a></p>
 </li>
 <li>
+<p><a href="#xrGetMetalGraphicsRequirementsKHR">xrGetMetalGraphicsRequirementsKHR</a></p>
+</li>
+<li>
 <p><a href="#xrGetOpenGLESGraphicsRequirementsKHR">xrGetOpenGLESGraphicsRequirementsKHR</a></p>
 </li>
 <li>
@@ -37561,6 +38139,9 @@ API layers, and is not typically directly used by an application.</p>
 <p><a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a></p>
 </li>
 <li>
+<p><a href="#XrGraphicsBindingMetalKHR">XrGraphicsBindingMetalKHR</a></p>
+</li>
+<li>
 <p><a href="#XrGraphicsBindingOpenGLESAndroidKHR">XrGraphicsBindingOpenGLESAndroidKHR</a></p>
 </li>
 <li>
@@ -37586,6 +38167,9 @@ API layers, and is not typically directly used by an application.</p>
 </li>
 <li>
 <p><a href="#XrGraphicsRequirementsD3D12KHR">XrGraphicsRequirementsD3D12KHR</a></p>
+</li>
+<li>
+<p><a href="#XrGraphicsRequirementsMetalKHR">XrGraphicsRequirementsMetalKHR</a></p>
 </li>
 <li>
 <p><a href="#XrGraphicsRequirementsOpenGLESKHR">XrGraphicsRequirementsOpenGLESKHR</a></p>
@@ -37727,6 +38311,9 @@ API layers, and is not typically directly used by an application.</p>
 </li>
 <li>
 <p><a href="#XrSwapchainImageD3D12KHR">XrSwapchainImageD3D12KHR</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainImageMetalKHR">XrSwapchainImageMetalKHR</a></p>
 </li>
 <li>
 <p><a href="#XrSwapchainImageOpenGLESKHR">XrSwapchainImageOpenGLESKHR</a></p>
@@ -38008,6 +38595,12 @@ the application binary interface.</p>
     <span class="n">XR_TYPE_SWAPCHAIN_IMAGE_D3D12_KHR</span> <span class="o">=</span> <span class="mi">1000028001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_D3D12_enable</span>
     <span class="n">XR_TYPE_GRAPHICS_REQUIREMENTS_D3D12_KHR</span> <span class="o">=</span> <span class="mi">1000028002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_KHR_metal_enable</span>
+    <span class="n">XR_TYPE_GRAPHICS_BINDING_METAL_KHR</span> <span class="o">=</span> <span class="mi">1000029000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_KHR_metal_enable</span>
+    <span class="n">XR_TYPE_SWAPCHAIN_IMAGE_METAL_KHR</span> <span class="o">=</span> <span class="mi">1000029001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_KHR_metal_enable</span>
+    <span class="n">XR_TYPE_GRAPHICS_REQUIREMENTS_METAL_KHR</span> <span class="o">=</span> <span class="mi">1000029002</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_visibility_mask</span>
     <span class="n">XR_TYPE_VISIBILITY_MASK_KHR</span> <span class="o">=</span> <span class="mi">1000031000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_visibility_mask</span>
@@ -38096,7 +38689,7 @@ final enum is computed by:</p>
 </div>
 <div class="paragraph">
 <p>The maximum allowed enum value in an extension is 2,147,482,999, which
-belongs to extension number 2147483.</p>
+belongs to extension number 1147483.</p>
 </div>
 </div>
 <div class="sect3">
@@ -38165,7 +38758,7 @@ Macros</a>.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 38)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 40)
 </span></code></pre>
 </div>
 </div>
@@ -39321,7 +39914,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.38<br>
+Version 1.1.40<br>
 </div>
 </div>
 </body>
