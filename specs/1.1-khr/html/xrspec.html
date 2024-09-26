@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.40 Specification (with all KHR extensions)</title>
+<title>The OpenXR™ 1.1.41 Specification (with all KHR extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -918,11 +918,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.40 Specification (with all KHR extensions)</h1>
+<h1>The OpenXR™ 1.1.41 Specification (with all KHR extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.40</span>
-<br><span id="revremark">from git ref release-1.1.40</span>
+<span id="revnumber">version 1.1.41</span>
+<br><span id="revremark">from git ref release-1.1.41</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1079,9 +1079,9 @@ pre.rouge .w {
 </li>
 <li><a href="#versions">14. Core Revisions (Informative)</a>
 <ul class="sectlevel2">
-<li><a href="#XR_VERSION_1_1">14.1. Version 1.1</a></li>
-<li><a href="#XR_LOADER_VERSION_1_0">14.2. Loader Runtime and API Layer Negotiation Version 1.0</a></li>
-<li><a href="#XR_VERSION_1_0">14.3. Version 1.0</a></li>
+<li><a href="#versions-1.1">14.1. Version 1.1</a></li>
+<li><a href="#versions-loader-1.0">14.2. Loader Runtime and API Layer Negotiation Version 1.0</a></li>
+<li><a href="#versions-1.0">14.3. Version 1.0</a></li>
 </ul>
 </li>
 <li><a href="#index">Index</a>
@@ -28615,9 +28615,11 @@ application that include it.</p>
 <p><strong>Swapchain Image Resource State</strong></p>
 </div>
 <div class="paragraph">
-<p>When an application acquires a swapchain image by calling
-<a href="#xrAcquireSwapchainImage">xrAcquireSwapchainImage</a> in a session create using
-<a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, the OpenXR runtime <strong class="purple">must</strong> guarantee that:</p>
+<p>If an application waits on a swapchain image by calling
+<a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a> in a session created using
+<a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, and that call returns <code>XR_SUCCESS</code> or
+<code>XR_SESSION_LOSS_PENDING</code>, then the OpenXR runtime <strong class="purple">must</strong> guarantee that
+the following conditions are true:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -28637,7 +28639,7 @@ can write to the image.</p>
 </div>
 <div class="paragraph">
 <p>When an application releases a swapchain image by calling
-<a href="#xrReleaseSwapchainImage">xrReleaseSwapchainImage</a>, in a session create using
+<a href="#xrReleaseSwapchainImage">xrReleaseSwapchainImage</a>, in a session created using
 <a href="#XrGraphicsBindingD3D12KHR">XrGraphicsBindingD3D12KHR</a>, the OpenXR runtime <strong class="purple">must</strong> interpret the
 image as:</p>
 </div>
@@ -32521,9 +32523,12 @@ is not listed above or in an extension definition.</p>
 <p><strong>Swapchain Image Layout</strong></p>
 </div>
 <div class="paragraph">
-<p>When an application acquires a swapchain image by calling
-<a href="#xrAcquireSwapchainImage">xrAcquireSwapchainImage</a> in a session created using
-<a href="#XrGraphicsBindingVulkanKHR">XrGraphicsBindingVulkanKHR</a>, the OpenXR runtime <strong class="purple">must</strong> guarantee that:</p>
+<p>If an application waits on a swapchain image by calling
+<a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a> in a session created using
+<a href="#XrGraphicsBindingVulkanKHR">XrGraphicsBindingVulkanKHR</a>, and that call returns <code>XR_SUCCESS</code> or
+<code>XR_SESSION_LOSS_PENDING</code>, then the OpenXR runtime <strong class="purple">must</strong> guarantee that
+the following conditions are true, keeping in mind that the runtime <strong class="purple">must</strong>
+not access the <code>VkQueue</code> in <a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -34817,9 +34822,12 @@ positive Y pointing down, near Z plane at 0, and far Z plane at 1.</p>
 <div class="sect4">
 <h5 id="_swapchain_image_layout"><a class="anchor" href="#_swapchain_image_layout"></a>Swapchain Image Layout</h5>
 <div class="paragraph">
-<p>When an application acquires a swapchain image by calling
-<a href="#xrAcquireSwapchainImage">xrAcquireSwapchainImage</a> in a session created using
-<a href="#XrGraphicsBindingVulkan2KHR">XrGraphicsBindingVulkan2KHR</a>, the OpenXR runtime <strong class="purple">must</strong> guarantee that:</p>
+<p>If an application waits on a swapchain image by calling
+<a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a> in a session created using
+<a href="#XrGraphicsBindingVulkan2KHR">XrGraphicsBindingVulkan2KHR</a>, and that call returns <code>XR_SUCCESS</code> or
+<code>XR_SESSION_LOSS_PENDING</code>, then the OpenXR runtime <strong class="purple">must</strong> guarantee that
+the following conditions are true, keeping in mind that the runtime <strong class="purple">must</strong>
+not access the <code>VkQueue</code> in <a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -36684,7 +36692,7 @@ API, potentially including both new functionality and functionality promoted
 from extensions.</p>
 </div>
 <div class="sect2">
-<h3 id="XR_VERSION_1_1"><a class="anchor" href="#XR_VERSION_1_1"></a>14.1. Version 1.1</h3>
+<h3 id="versions-1.1"><a class="anchor" href="#versions-1.1"></a>14.1. Version 1.1</h3>
 <div class="sect3">
 <h4 id="_openxr_1_1_promotions"><a class="anchor" href="#_openxr_1_1_promotions"></a>14.1.1. OpenXR 1.1 Promotions</h4>
 <div id="versions-1.1-promotions" class="paragraph">
@@ -36974,7 +36982,7 @@ grouped into a single <a href="#semantic-paths-oculus-touch-controller-profile">
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_LOADER_VERSION_1_0"><a class="anchor" href="#XR_LOADER_VERSION_1_0"></a>14.2. Loader Runtime and API Layer Negotiation Version 1.0</h3>
+<h3 id="versions-loader-1.0"><a class="anchor" href="#versions-loader-1.0"></a>14.2. Loader Runtime and API Layer Negotiation Version 1.0</h3>
 <div class="paragraph">
 <p>The OpenXR version 1.0.33 patch release included ratification of the runtime
 and API layer negotiation API, associated with the identifier
@@ -37032,7 +37040,7 @@ API layers, and is not typically directly used by an application.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="XR_VERSION_1_0"><a class="anchor" href="#XR_VERSION_1_0"></a>14.3. Version 1.0</h3>
+<h3 id="versions-1.0"><a class="anchor" href="#versions-1.0"></a>14.3. Version 1.0</h3>
 <div class="paragraph">
 <p>OpenXR version 1.0 defined the initial core API.</p>
 </div>
@@ -38758,7 +38766,7 @@ Macros</a>.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 40)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 41)
 </span></code></pre>
 </div>
 </div>
@@ -39914,7 +39922,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.40<br>
+Version 1.1.41<br>
 </div>
 </div>
 </body>

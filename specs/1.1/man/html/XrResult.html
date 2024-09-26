@@ -206,6 +206,16 @@ pre.rouge .w {
     <span class="n">XR_ERROR_LOCALIZATION_MAP_ALREADY_EXISTS_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000139005</span><span class="p">,</span>
   <span class="c1">// Provided by XR_ML_localization_map</span>
     <span class="n">XR_ERROR_LOCALIZATION_MAP_CANNOT_EXPORT_CLOUD_MAP_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000139006</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_spatial_anchors</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHORS_PERMISSION_DENIED_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000140000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_spatial_anchors</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHORS_NOT_LOCALIZED_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000140001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_spatial_anchors</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHORS_OUT_OF_MAP_BOUNDS_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000140002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_spatial_anchors</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHORS_SPACE_NOT_LOCATABLE_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000140003</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_spatial_anchors_storage</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHORS_ANCHOR_NOT_FOUND_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000141000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_MSFT_spatial_anchor_persistence</span>
     <span class="n">XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000142001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_MSFT_spatial_anchor_persistence</span>
@@ -238,6 +248,14 @@ pre.rouge .w {
     <span class="n">XR_ERROR_FUTURE_PENDING_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000469001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_future</span>
     <span class="n">XR_ERROR_FUTURE_INVALID_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000469002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_system_notifications</span>
+    <span class="n">XR_ERROR_SYSTEM_NOTIFICATION_PERMISSION_DENIED_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000473000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_system_notifications</span>
+    <span class="n">XR_ERROR_SYSTEM_NOTIFICATION_INCOMPATIBLE_SKU_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000473001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_world_mesh_detection</span>
+    <span class="n">XR_ERROR_WORLD_MESH_DETECTOR_PERMISSION_DENIED_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000474000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_world_mesh_detection</span>
+    <span class="n">XR_ERROR_WORLD_MESH_DETECTOR_SPACE_NOT_LOCATABLE_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000474001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_maintenance1</span>
     <span class="n">XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED_KHR</span> <span class="o">=</span> <span class="n">XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_maintenance1</span>
@@ -704,6 +722,26 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The map localization service cannot export cloud based maps.  (Added by the <code><a href="XR_ML_localization_map.html">XR_ML_localization_map</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHORS_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The com.magicleap.permission.SPATIAL_ANCHOR permission was not granted.  (Added by the <code><a href="XR_ML_spatial_anchors.html">XR_ML_spatial_anchors</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHORS_NOT_LOCALIZED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation failed because the system is not localized into a localization map.  (Added by the <code><a href="XR_ML_spatial_anchors.html">XR_ML_spatial_anchors</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHORS_OUT_OF_MAP_BOUNDS_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation failed because it is performed outside of the localization map.  (Added by the <code><a href="XR_ML_spatial_anchors.html">XR_ML_spatial_anchors</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHORS_SPACE_NOT_LOCATABLE_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operation failed because the space referenced cannot be located.  (Added by the <code><a href="XR_ML_spatial_anchors.html">XR_ML_spatial_anchors</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHORS_ANCHOR_NOT_FOUND_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The anchor references was not found.  (Added by the <code><a href="XR_ML_spatial_anchors_storage.html">XR_ML_spatial_anchors_storage</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A spatial anchor was not found associated with the spatial anchor name provided  (Added by the <code><a href="XR_MSFT_spatial_anchor_persistence.html">XR_MSFT_spatial_anchor_persistence</a></code> extension)</p></td>
 </tr>
@@ -759,6 +797,22 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FUTURE_INVALID_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returned by completion function to indicate future is not valid.  (Added by the <code><a href="XR_EXT_future.html">XR_EXT_future</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SYSTEM_NOTIFICATION_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The com.magicleap.permission.SYSTEM_NOTIFICATION permission was not granted.  (Added by the <code><a href="XR_ML_system_notifications.html">XR_ML_system_notifications</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SYSTEM_NOTIFICATION_INCOMPATIBLE_SKU_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incompatible SKU detected.  (Added by the <code><a href="XR_ML_system_notifications.html">XR_ML_system_notifications</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_WORLD_MESH_DETECTOR_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The world mesh detector permission was not granted.  (Added by the <code><a href="XR_ML_world_mesh_detection.html">XR_ML_world_mesh_detection</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_WORLD_MESH_DETECTOR_SPACE_NOT_LOCATABLE_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">At the time of the call the runtime was unable to locate the space and cannot fulfill your request.  (Added by the <code><a href="XR_ML_world_mesh_detection.html">XR_ML_world_mesh_detection</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -768,7 +822,7 @@ moment.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="xrResultToString.html">xrResultToString</a></p>
+<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
 </div>
 </div>
 </div>
@@ -800,7 +854,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.40<br>
+Version 1.1.41<br>
 </div>
 </div>
 </body>
