@@ -129,7 +129,8 @@ include_once("../../assets/static_pages/khr_page_top.php");
 </ul>
 <p> The OpenXR-CTS Usage Guide provides instructions on the usage of the CTS as part
     of a conformance submission, as well as additional information on the design and
-    usage of the test suite.</p>
+    usage of the test suite. For more information on conformance and the Adopter
+    program, see the <a href="#repo-cts">information on the OpenXR-CTS repo</a>.</p>
 
 <p><em>Note</em> that this is updated at a different cadence than the other documents here:
     it is updated upon release of a new approved revision of the OpenXR-CTS, rather than upon
@@ -279,6 +280,8 @@ include_once("../../assets/static_pages/khr_page_top.php");
 
 <p> The <a href="https://github.com/KhronosGroup/OpenXR-CTS">OpenXR-CTS</a>
     repository contains the source code for the OpenXR Conformance Tests.
+    See the <a href="#ctsusage">OpenXR-CTS Usage Guide</a> for instructions
+    on using the test suite.
     Note that while the CTS source code is freely available, you must be a
     Khronos Adopter and pay the Adopter Fee in order to use the OpenXR
     trademark for your implementation. See the
