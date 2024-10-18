@@ -15,7 +15,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <p> Index to the OpenXR Registry page content: </p>
 
 <ul>
-    <li> <a href="#apispecs"> <b>OpenXR 1.1 API Specifications</b> </a> </li>
+    <li> <a href="#apispecs"> <b>OpenXR 1.1 API Specifications</b> </a> (also applies to 1.0 development) </li>
     <li> <a href="#refguide"> <b>OpenXR 1.0 Reference Guide</b> </a> </li>
     <li> <a href="#refpages"> <b>OpenXR API Reference Pages</b> </a> </li>
     <li> <a href="#loader"> <b>OpenXR Loader Design Document</b> </a> </li>
