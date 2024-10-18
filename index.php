@@ -73,7 +73,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     OpenXR 1.0 Reference Guide (PDF)</a> is a compact document summarizing
     the OpenXR 1.0 functions, structures, and enumerants, as well as
     providing an overview of the input system and a typical OpenXR application's flow.
-    It remains applicable to OpenXR 1.1.
+    It remains applicable to OpenXR 1.1.</p>
 
 <h2 id="refpages"> <b>API Reference Pages</b> </h2>
 
