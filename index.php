@@ -21,6 +21,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> <a href="#loader"> <b>OpenXR Loader Design Document</b> </a> </li>
     <li> <a href="#styleguide"> <b>OpenXR™ Documentation and Extensions: Procedures and Conventions</b> </a> </li>
     <li> <a href="#extprocess"> <b>OpenXR™ Working Group Extension Processes</b> </a> </li>
+    <li> <a href="#ctsusage"> <b>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</b> </a> </li>
     <li> <a href="#changelogs"> <b>Changelogs for the OpenXR API Specifications, SDK, and CTS</b> </a> </li>
     <li> <a href="#repos"> <b>OpenXR GitHub Repositories</b> </a>
         <ul>
@@ -120,6 +121,19 @@ include_once("../../assets/static_pages/khr_page_top.php");
     Authors wishing to write OpenXR extension specifications must follow both
     this document as well as the Style Guide.</p>
 
+
+<h2 id="extprocess"> <b>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</b> </h2>
+<ul>
+    <li><a href="conformance/cts_usage.pdf">OpenXR-CTS Usage Guide in PDF format</a></li>
+    <li><a href="conformance/cts_usage.html">OpenXR-CTS Usage Guide in HTML format</a></li>
+</ul>
+<p> The OpenXR-CTS Usage Guide provides instructions on the usage of the CTS as part
+    of a conformance submission, as well as additional information on the design and
+    usage of the test suite.</p>
+
+<p><em>Note</em> that this is updated at a different cadence than the other documents here:
+    it is updated upon release of a new approved revision of the OpenXR-CTS, rather than upon
+    release of a new version of the OpenXR spec.</p>
 
 <h2 id="changelogs"> <b>Changelogs for the OpenXR API Specifications, SDK, and CTS</b> </h2>
 <p> Changelogs are maintained for the Specification, SDK, and Conformance Test
