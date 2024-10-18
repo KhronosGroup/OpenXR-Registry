@@ -262,7 +262,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> a copy of the XML registry, for required code generation usage </li>
     <li> code generation scripts (in Python 3) required for the loader,
          API layers, and tests </li>
-    <li> the loader design document source (in Asciidoctor) and the scripts
+    <li> the loader design document source (in AsciiDoc) and the scripts
          required to build it </li>
 </ul>
 
