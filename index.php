@@ -122,7 +122,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     this document as well as the Style Guide.</p>
 
 
-<h2 id="extprocess"> <b>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</b> </h2>
+<h2 id="ctsusage"> <b>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</b> </h2>
 <ul>
     <li><a href="conformance/cts_usage.pdf">OpenXR-CTS Usage Guide in PDF format</a></li>
     <li><a href="conformance/cts_usage.html">OpenXR-CTS Usage Guide in HTML format</a></li>
