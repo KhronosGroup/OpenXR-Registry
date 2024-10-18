@@ -227,7 +227,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
 <ul>
     <li> all OpenXR header files (generated and static) </li>
     <li> source code and CMake build system for the
-         OpenXR loader that is used for Linux, Windows, and Android </li>
+         OpenXR loader that is used for Linux, Windows, macOS, and Android </li>
     <li> all generated source files required to build the loader </li>
     <li> rendered HTML of the loader design doc (in <code>doc/loader/</code>) </li>
     <li> a copy of the XML registry, for optional custom code generation usage </li> </ul>
@@ -253,7 +253,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     <li> the static OpenXR header file <code>openxr_platform_defines.h</code> </li>
     <li> source code and CMake build system for
         <ul>
-        <li> the OpenXR loader that is used for Linux, Windows, and Android </li>
+        <li> the OpenXR loader that is used for Linux, Windows, macOS, and Android </li>
         <li> two "beta" API layers, <code>XR_LUNARG_core_validation</code>
                 and <code>XR_LUNARG_api_dump</code> </li>
         <li> the <code>hello_xr</code> sample application </li>
