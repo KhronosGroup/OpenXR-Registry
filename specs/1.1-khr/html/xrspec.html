@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.41 Specification (with all KHR extensions)</title>
+<title>The OpenXR™ 1.1.42 Specification (with all KHR extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -918,11 +918,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.41 Specification (with all KHR extensions)</h1>
+<h1>The OpenXR™ 1.1.42 Specification (with all KHR extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.41</span>
-<br><span id="revremark">from git ref release-1.1.41</span>
+<span id="revnumber">version 1.1.42</span>
+<br><span id="revremark">from git ref release-1.1.42</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1150,11 +1150,15 @@ indirect, special or consequential damages for lost revenues, lost profits,
 or otherwise, arising from or in connection with these materials.</p>
 </div>
 <div class="paragraph">
-<p>This document contains extensions which are not ratified by Khronos, and as
-such is not a ratified Specification, though it contains text from (and is a
-superset of) the ratified OpenXR Specification that can be found at
-<a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html" class="bare">https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html</a> (core
-with KHR extensions).</p>
+<p>This Specification has been created under the Khronos Intellectual Property
+Rights Policy, which is Attachment A of the Khronos Group Membership
+Agreement available at <a href="https://www.khronos.org/files/member_agreement.pdf" class="bare">https://www.khronos.org/files/member_agreement.pdf</a>.
+Parties desiring to implement the Specification and make use of Khronos
+trademarks in relation to that implementation, and receive reciprocal patent
+license protection under the Khronos Intellectual Property Rights Policy
+must become Adopters and confirm the implementation as conformant under the
+process defined by Khronos for this Specification; see
+<a href="https://www.khronos.org/adopters" class="bare">https://www.khronos.org/adopters</a> .</p>
 </div>
 <div class="paragraph">
 <p>The Khronos Intellectual Property Rights Policy defines the terms 'Scope',
@@ -2749,6 +2753,14 @@ moment.</p>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_ANDROID_THREAD_SETTINGS_FAILURE_KHR</code></p></td>
 <td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">xrSetAndroidApplicationThreadKHR failed setting the thread attributes/priority.  (Added by the <code><a href="#XR_KHR_android_thread_settings">XR_KHR_android_thread_settings</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED_KHR</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">Alias for <code>XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED</code>  (Added by the <code><a href="#XR_KHR_maintenance1">XR_KHR_maintenance1</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock"><code>XR_ERROR_PERMISSION_INSUFFICIENT_KHR</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: white;"><p class="tableblock">Alias for <code>XR_ERROR_PERMISSION_INSUFFICIENT</code>  (Added by the <code><a href="#XR_KHR_maintenance1">XR_KHR_maintenance1</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3310,21 +3322,26 @@ that the timeout never occurs.</p>
 <div class="sect2">
 <h3 id="fundamentals-prediction-time-limits"><a class="anchor" href="#fundamentals-prediction-time-limits"></a>2.16. Prediction Time Limits</h3>
 <div class="paragraph">
-<p>Some functions involve prediction.
+<p>Some functions involve prediction or history retrieval for a supplied
+<code><a href="#XrTime">XrTime</a></code> timepoint.
 For example, <a href="#xrLocateViews">xrLocateViews</a> accepts a display time for which to return
 the resulting data.
-Prediction times provided by applications may refer to time in the past or
-the future.
+Timepoints provided by applications <strong class="purple">may</strong> refer to time in the past or the
+future.
 Times in the past <strong class="purple">may</strong> be interpolated historical data.
-Runtimes have different practical limits with respect to how far forward or
-backward prediction times can be accurate.
-There is no prescribed forward limit the application can successfully
-request predictions for, though predictions may become less accurate as they
-get farther into the future.
-With respect to backward prediction, the application can pass a prediction
+Runtimes have different practical limits with respect to the accuracy
+possible at varying past (historical or backwards prediction) and future
+timepoints.
+The runtime <strong class="purple">must</strong> treat as valid any future time requested by an
+application, except when disqualified by size limitations of the underlying
+types, though predictions <strong class="purple">may</strong> become less accurate as they get farther into
+the future.
+With respect to backward prediction, the application <strong class="purple">can</strong> pass a prediction
 time equivalent to the timestamp of the most recently received pose plus as
 much as <code>50</code> milliseconds in the past to retrieve accurate historical
 data.
+The runtime <strong class="purple">must</strong> retain and return at least 50 milliseconds of historical
+data, interpolating as required, preceding the most recently received pose.
 Requested times predating this time window, or requested times predating the
 earliest received pose, <strong class="purple">may</strong> result in a best effort data whose accuracy
 reduced or unspecified.</p>
@@ -4795,9 +4812,8 @@ layers and extensions installed on the system and creating the instance.</p>
 <div class="paragraph">
 <p>A dynamically linked library (<code>.dll</code> or <code>.so</code>) that implements the API
 loader <strong class="purple">must</strong> export all core OpenXR API functions.
-However, the application <strong class="purple">can</strong> gain access to extension functions by
-obtaining pointers to these functions through the use of
-<a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
+The application <strong class="purple">can</strong> gain access to extension functions by obtaining
+pointers to these functions through the use of <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4851,9 +4867,9 @@ no need to use <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a>.</p>
 </div>
 <div class="paragraph">
 <p>Because an application <strong class="purple">can</strong> call <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> before creating
-an instance, <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> returns a valid function pointer
-when the <code>instance</code> parameter is <a href="#XR_NULL_HANDLE">XR_NULL_HANDLE</a> and the <code>name</code>
-parameter is one of the following strings:</p>
+an instance, <a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> <strong class="purple">must</strong> return a valid function
+pointer when the <code>instance</code> parameter is <a href="#XR_NULL_HANDLE">XR_NULL_HANDLE</a> and the
+<code>name</code> parameter is one of the following strings:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -4902,8 +4918,8 @@ using one <a href="#XrInstance">XrInstance</a> may not be valid when used with o
 to a different <a href="#XrInstance">XrInstance</a>.</p>
 </div>
 <div class="paragraph">
-<p>The returned function pointer is of type <a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a>, and must
-be cast to the type of the function being queried.</p>
+<p>The returned function pointer is of type <a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a>, and <strong class="purple">must</strong>
+be cast by the application to the type of the function being queried.</p>
 </div>
 <div class="paragraph">
 <p>The table below defines the various use cases for
@@ -24224,7 +24240,7 @@ Applications <strong class="purple">can</strong> provide a list of these structu
 <p>An application <strong class="purple">can</strong> use the <a href="#xrEnumerateBoundSourcesForAction">xrEnumerateBoundSourcesForAction</a> and
 <a href="#xrGetInputSourceLocalizedName">xrGetInputSourceLocalizedName</a> calls to prompt the user which physical
 inputs to use in order to perform an action.
-The bound <code>sources</code> are <code><a href="#XrPath">XrPath</a></code> semantic paths representing the
+The bound <code>sources</code> are opaque <code><a href="#XrPath">XrPath</a></code> values representing the
 physical controls that an action is bound to.
 An action <strong class="purple">may</strong> be bound to multiple sources at one time, for example an
 action named <code>hold</code> could be bound to both the X and A buttons.</p>
@@ -36469,6 +36485,9 @@ while (1) {
 <p>Interacts with <code><code>XR_OPPO_controller_interaction</code></code></p>
 </li>
 <li>
+<p>Interacts with <code><code>XR_VARJO_xr4_controller_interaction</code></code></p>
+</li>
+<li>
 <p>Interacts with <code><code>XR_YVR_controller_interaction</code></code></p>
 </li>
 </ul>
@@ -38766,7 +38785,7 @@ Macros</a>.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 41)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 42)
 </span></code></pre>
 </div>
 </div>
@@ -39922,7 +39941,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.41<br>
+Version 1.1.42<br>
 </div>
 </div>
 </body>

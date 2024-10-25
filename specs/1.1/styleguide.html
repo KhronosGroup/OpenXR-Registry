@@ -764,8 +764,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.1.41</span>
-<br><span id="revremark">from git ref release-1.1.41</span>
+<span id="revnumber">version 1.1.42</span>
+<br><span id="revremark">from git ref release-1.1.42</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -916,7 +916,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <li><a href="#_machine_readable_schema_definitions">6.1. Machine Readable Schema Definitions</a></li>
 <li><a href="#_xml_format_details">6.2. XML Format Details</a>
 <ul class="sectlevel3">
-<li><a href="#xml-interaction-profiles">6.2.1. Interaction Profile Blocks (<code>interaction_profiles</code> tag)</a></li>
+<li><a href="#xml-interaction-profiles">6.2.1. Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</a></li>
 <li><a href="#xml-interaction-profile">6.2.2. Interaction Profiles (<code>interaction_profile</code> tag)</a></li>
 <li><a href="#xml-interaction-profile-user-path">6.2.3. Interaction Profile User Paths (<code>user_path</code> tag)</a></li>
 <li><a href="#xml-interaction-profile-component">6.2.4. Interaction Profile Component (<code>component</code> tag)</a></li>
@@ -1182,7 +1182,7 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 41)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 42)</code></pre>
 </div>
 </div>
 </div>
@@ -5602,6 +5602,22 @@ As of the OpenXR 1.1 release, the intentional breaking change introduced in
 Vulkan&#8217;s dependency notation with Vulkan 1.3.241 has also been applied to
 the OpenXR schema.</p>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Changes to the Vulkan schema documentation as of its <strong>2024-01-31
+changelog</strong> entry have been reviewed and confirmed to apply to OpenXR.
+More recent changes have <strong>not</strong> been reviewed and may not apply to OpenXR.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_machine_readable_schema_definitions">6.1. Machine Readable Schema Definitions</h3>
 <div class="paragraph">
@@ -5741,7 +5757,7 @@ and which may be used by other tools operating on the XML.</p>
 <li>
 <p>In "Contents of <code>require</code> and <code>remove</code> tags", add:
 <a href="#xml-require-extend-interaction-profile"><code>extend</code> Tags for interaction
-profile paths</a></p>
+profiles</a></p>
 </li>
 </ul>
 </div>
@@ -5786,7 +5802,7 @@ profiles:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#xml-interaction-profiles">Interaction Profile Blocks (<code>interaction_profiles</code> tag)</a></p>
+<p><a href="#xml-interaction-profiles">Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</a></p>
 </li>
 <li>
 <p><a href="#xml-interaction-profile">Interaction Profiles (<code>interaction_profile</code> tag)</a></p>
@@ -5802,20 +5818,14 @@ profiles:</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>OpenXR also defines interaction profile elements and adaptations of existing
-elements, which are currently not documented but which may be understood by
-looking at the existing usages and schemas.</p>
-</div>
-<div class="paragraph">
-<p>Changes to the Vulkan schema documentation as of its 2024-01-31 changelog
-entry have been reviewed and confirmed to apply to OpenXR.</p>
-</div>
 <div class="sect3">
-<h4 id="xml-interaction-profiles">6.2.1. Interaction Profile Blocks (<code>interaction_profiles</code> tag)</h4>
+<h4 id="xml-interaction-profiles">6.2.1. Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</h4>
 <div class="paragraph">
 <p>An <code>interaction_profiles</code> tag contains definitions of interaction profile
 paths and their associated valid component paths exposed through the API.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>InteractionProfiles</code> in the Relax-NG schema.</p>
 </div>
 <div class="sect4">
 <h5 id="_attributes_of_interaction_profiles_tags">Attributes of <code>interaction_profiles</code> tags</h5>
@@ -5826,7 +5836,8 @@ paths and their associated valid component paths exposed through the API.</p>
 <div class="sect4">
 <h5 id="_contents_of_interaction_profiles">Contents of <code>interaction_profiles</code></h5>
 <div class="paragraph">
-<p>Zero or more <code>interaction_profile</code> tags, in arbitrary order.</p>
+<p>Zero or more <a href="#xml-interaction-profile"><code>interaction_profile</code></a> tags, in
+arbitrary order.</p>
 </div>
 </div>
 </div>
@@ -5836,6 +5847,9 @@ paths and their associated valid component paths exposed through the API.</p>
 <p>An <code>interaction_profile</code> tag defines an interaction profile path, the user
 paths it is valid for, and the valid component subpaths and their action
 types.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>InteractionProfileElt</code> in the Relax-NG schema.</p>
 </div>
 <div class="sect4">
 <h5 id="_attributes_of_interaction_profile_tags">Attributes of <code>interaction_profile</code> tags</h5>
@@ -5855,11 +5869,12 @@ interaction profile corresponds to, if applicable.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_contents_of_interaction_profiles_tags">Contents of <code>interaction_profiles</code> tags</h5>
+<h5 id="_contents_of_interaction_profile_tags">Contents of <code>interaction_profile</code> tags</h5>
 <div class="paragraph">
-<p>One or more <code>user_path</code> tags, and zero or more <code>component</code> tags, in
-arbitrary order.
-The <code>user_path</code> tag or tags are typically placed before all components.</p>
+<p>One or more <a href="#xml-interaction-profile-user-path"><code>user_path</code></a> tags, followed
+by one or more <a href="#xml-interaction-profile-component"><code>component</code></a> tags.
+Order within the <code>user_path</code> tags and within the <code>component</code> tags is not
+meaningful, though all <code>user_path</code> tags must precede all <code>component</code> tags.</p>
 </div>
 </div>
 </div>
@@ -5869,13 +5884,16 @@ The <code>user_path</code> tag or tags are typically placed before all component
 <p>A <code>user_path</code> tag denotes a top-level user path, also known as a sub-action
 path, for which the enclosing interaction profile is accepted.</p>
 </div>
+<div class="paragraph">
+<p>Identified as <code>InteractionProfileUserPathElt</code> in the Relax-NG schema.</p>
+</div>
 <div class="sect4">
 <h5 id="_attributes_of_user_path_tags">Attributes of <code>user_path</code> tags</h5>
 <div class="ulist">
 <ul>
 <li>
 <p><code>path</code> - required.
-Full top-level user path (starting with <em>/user/</em>)</p>
+Full top-level <em>/user</em> path (starting with <em>/user/</em>)</p>
 </li>
 </ul>
 </div>
@@ -5892,6 +5910,9 @@ Full top-level user path (starting with <em>/user/</em>)</p>
 <div class="paragraph">
 <p>A <code>component</code> tag denotes a component subpath for the enclosing interaction
 profile that is valid on at least one of its user paths.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>InteractionProfileComponentElt</code> in the Relax-NG schema.</p>
 </div>
 <div class="sect4">
 <h5 id="_attributes_of_component_tags">Attributes of <code>component</code> tags</h5>
@@ -5919,17 +5940,18 @@ not be available for normal application use.</p>
 <li>
 <p><code>user_path</code> - optional.
 If present, must correspond to one of the paths in the
-<a href="#xml-interaction-profile-user-path"><code>user_path</code> tags</a> for this
+<a href="#xml-interaction-profile-user-path"><code>user_path</code></a> tags for this
 interaction profile.
-Indicates that the component path is only available when suggesting
-bindings for this particular user path, rather than all indicated user
-paths as default.</p>
+Indicates that the component sub-path is <strong>only</strong> available when
+suggesting bindings for this particular user path.
+If not present, the component sub-path is available on all indicated top
+level <em>/user</em> paths defined in this interaction profile.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_contents_of_user_path_tags_2">Contents of <code>user_path</code> tags</h5>
+<h5 id="_contents_of_component_tags">Contents of <code>component</code> tags</h5>
 <div class="paragraph">
 <p>None.</p>
 </div>
@@ -5938,29 +5960,26 @@ paths as default.</p>
 <div class="sect3">
 <h4 id="xml-require-interaction-profile">6.2.5. Contents of <code>require</code>: <code>interaction_profile</code> Tags</h4>
 <div class="paragraph">
-<p>Specifies a required interaction profile, by path, defined by an
-<code>interaction_profile</code> block within an <code>interaction_profiles</code> block.
+<p>Specifies a required interaction profile, by path, defined in an
+&lt;&lt;`interaction_profile`,xml-interaction-profile&gt;&gt; block within an
+&lt;&lt;`interaction_profiles`,xml-interaction-profiles&gt;&gt; block.
 Valid only in <code>require</code> blocks.</p>
 </div>
-<div class="sect4">
-<h5 id="_attributes_of_interaction_profile_tags_in_require_blocks">Attributes of <code>interaction_profile</code> tags in <code>require</code> blocks</h5>
+<div class="paragraph">
+<p>This is one of the cases in <code>InterfaceElement</code> in the Relax-NG schema.
+. The tag has no content, but contains an attribute:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>name</code> - required.
 Full interaction profile path (starting with
 <em>/interaction_profiles/</em>).
-Must match the <code>name</code> attribute of an <code>interaction_profile</code> block within
-an <code>interaction_profiles</code> block.</p>
+Must match the <code>name</code> attribute of an
+<a href="#xml-interaction-profile"><code>interaction_profile</code></a> tag within an
+<a href="#xml-interaction-profiles"><code>interaction_profiles</code></a> block.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_contents_of_interaction_profile_tags_in_require_blocks">Contents of <code>interaction_profile</code> tags in <code>require</code> blocks</h5>
-<div class="paragraph">
-<p>None.</p>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -5970,6 +5989,9 @@ an <code>interaction_profiles</code> block.</p>
 previously included in the specification by a dependency of this block&#8217;s
 parent.
 Valid only in <code>require</code> blocks.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>ExtendInteractionProfileElt</code> in the Relax-NG schema.</p>
 </div>
 <div class="sect4">
 <h5 id="_attributes_of_interaction_profile_extend_tags_in_require_blocks">Attributes of interaction profile <code>extend</code> tags in <code>require</code> blocks</h5>
@@ -5986,9 +6008,9 @@ an <code>interaction_profiles</code> block.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_contents_of_interaction_profile_tags_in_require_blocks_2">Contents of <code>interaction_profile</code> tags in <code>require</code> blocks</h5>
+<h5 id="_contents_of_interaction_profile_extend_tags_in_require_blocks">Contents of interaction profile <code>extend</code> tags in <code>require</code> blocks</h5>
 <div class="paragraph">
-<p>One or more <a href="#xml-interaction-profile-component"><code>component</code> tags</a>, in the
+<p>One or more <a href="#xml-interaction-profile-component"><code>component</code></a> tags, in the
 same schema used directly within an <code>interaction_profile</code> block.</p>
 </div>
 </div>
@@ -6062,6 +6084,10 @@ released with the OpenXR 1.1 specification, bringing our schema back into
 synchronization with the Vulkan specification by removing an outdated
 convention no longer used by Vulkan.</p>
 </li>
+<li>
+<p>2024-09-27 - Correct some errors in the text schema related to interaction
+profiles, and make other improvements in the schema chapter.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -6069,7 +6095,7 @@ convention no longer used by Vulkan.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.41<br>
+Version 1.1.42<br>
 </div>
 </div>
 </body>

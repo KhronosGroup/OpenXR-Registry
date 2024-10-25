@@ -118,9 +118,9 @@ no need to use <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a>.</
 </div>
 <div class="paragraph">
 <p>Because an application <strong class="purple">can</strong> call <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a> before creating
-an instance, <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a> returns a valid function pointer
-when the <code>instance</code> parameter is <a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a> and the <code>name</code>
-parameter is one of the following strings:</p>
+an instance, <a href="xrGetInstanceProcAddr.html">xrGetInstanceProcAddr</a> <strong class="purple">must</strong> return a valid function
+pointer when the <code>instance</code> parameter is <a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a> and the
+<code>name</code> parameter is one of the following strings:</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -169,8 +169,8 @@ using one <a href="XrInstance.html">XrInstance</a> may not be valid when used wi
 to a different <a href="XrInstance.html">XrInstance</a>.</p>
 </div>
 <div class="paragraph">
-<p>The returned function pointer is of type <a href="PFN_xrVoidFunction.html">PFN_xrVoidFunction</a>, and must
-be cast to the type of the function being queried.</p>
+<p>The returned function pointer is of type <a href="PFN_xrVoidFunction.html">PFN_xrVoidFunction</a>, and <strong class="purple">must</strong>
+be cast by the application to the type of the function being queried.</p>
 </div>
 <div class="paragraph">
 <p>The table below defines the various use cases for
@@ -348,7 +348,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.41<br>
+Version 1.1.42<br>
 </div>
 </div>
 </body>
