@@ -890,8 +890,8 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <h1>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.41</span>
-<br><span id="revremark">from git ref cts-1.1.41.0-20241010</span>
+<span id="revnumber">version 1.1.42</span>
+<br><span id="revremark">from git ref cts-1.1.42.0-20241107</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -930,7 +930,7 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <ul class="sectlevel3">
 <li><a href="#submissions-package-xml">3.3.1. XML files produced from test runs</a></li>
 <li><a href="#_the_console_output_produced_by_the_cts_runs">3.3.2. The console output produced by the CTS runs</a></li>
-<li><a href="#submissions-package-build-info">3.3.3. Information on the build of conformance used in generating the</a></li>
+<li><a href="#submissions-package-build-info">3.3.3. Information on the build of conformance used in generating the results</a></li>
 <li><a href="#submissions-package-conformance-statement">3.3.4. Conformance Statement</a></li>
 <li><a href="#_waivers">3.3.5. Waivers</a></li>
 </ul>
@@ -1732,6 +1732,23 @@ not marked as "system") for an interaction profile.</p>
 rather than <code>/user/hand/left</code> and <code>/user/hand/right</code>, further filter the
 tests by specifying the tag <code>[gamepad]</code>.</p>
 </div>
+<div class="paragraph">
+<p>To clarify, if you support providing input for all components of one of the
+following interaction profiles, specify them as well.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/interaction_profiles/khr/simple_controller</code></p>
+</li>
+<li>
+<p><code>/interaction_profiles/ext/hand_interaction_ext</code></p>
+</li>
+<li>
+<p><code>/interaction_profiles/ext/eye_gaze_interaction</code></p>
+</li>
+</ul>
+</div>
 <details>
 <summary class="title">Example command lines for OpenXR 1.0</summary>
 <div class="content">
@@ -1740,9 +1757,14 @@ tests by specifying the tag <code>[gamepad]</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"><span class="c"># Generic profile</span>
+<pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic: Simple controller</span>
 conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"khr/simple_controller"</span> <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_simple_controller_1_0.xml
 
+<span class="c">## Generic: Hand interaction (whether via hand tracking or controller)</span>
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/hand_interaction_ext"</span> <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_hand_interaction_interaction_1_0.xml
+
+<span class="c">## Generic: Eye gaze</span>
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/eye_gaze_interaction"</span> <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_eye_gaze_interaction_1_0.xml
 
 <span class="c"># Sample device-associated profiles</span>
 conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"microsoft/motion_controller"</span> <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_microsoft_motion_controller_1_0.xml
@@ -1762,9 +1784,14 @@ conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"><span class="c"># Generic profile</span>
+<pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic: Simple controller</span>
 conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"khr/simple_controller"</span> <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_simple_controller_1_1.xml
 
+<span class="c">## Generic: Hand interaction (whether via hand tracking or controller)</span>
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/hand_interaction_ext"</span> <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_hand_interaction_interaction_1_1.xml
+
+<span class="c">## Generic: Eye gaze</span>
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/eye_gaze_interaction"</span> <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_eye_gaze_interaction_1_1.xml
 
 <span class="c"># Sample device-associated profiles</span>
 conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"microsoft/motion_controller"</span> <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_microsoft_motion_controller_1_1.xml
@@ -1804,11 +1831,25 @@ conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic profile</span>
+<pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic: Simple controller</span>
 adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,khr/simple_controller"</span> <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_action_simple_controller_1_0.xml
 
 <span class="c"># Wait until tests complete, then retrieve results with</span>
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_simple_controller_1_0.xml
+
+
+<span class="c">## Generic: Hand interaction (whether via hand tracking or controller)</span>
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,ext/hand_interaction_ext"</span> <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_action_ext_hand_interaction_1_0.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_ext_hand_interaction_1_0.xml
+
+
+<span class="c">## Generic: Eye gaze interaction</span>
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,ext/eye_gaze_interaction"</span> <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_action_ext_eye_gaze_interaction_1_0.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_ext_eye_gaze_interaction_1_0.xml
 
 
 <span class="c">## Sample device-associated profile</span>
@@ -1832,11 +1873,25 @@ adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_mi
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic profile</span>
+<pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic: Simple controller</span>
 adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,khr/simple_controller"</span> <span class="nt">-e</span> apiVersion 1.1 <span class="nt">-e</span> xmlFilename interactive_action_simple_controller_1_1.xml
 
 <span class="c"># Wait until tests complete, then retrieve results with</span>
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_simple_controller_1_1.xml
+
+
+<span class="c">## Generic: Hand interaction (whether via hand tracking or controller)</span>
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,ext/hand_interaction_ext"</span> <span class="nt">-e</span> apiVersion 1.1 <span class="nt">-e</span> xmlFilename interactive_action_ext_hand_interaction_1_1.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_ext_hand_interaction_1_1.xml
+
+
+<span class="c">## Generic: Eye gaze interaction</span>
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,ext/eye_gaze_interaction"</span> <span class="nt">-e</span> apiVersion 1.1 <span class="nt">-e</span> xmlFilename interactive_action_ext_eye_gaze_interaction_1_1.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_ext_eye_gaze_interaction_1_1.xml
 
 
 <span class="c">## Sample device-associated profile</span>
@@ -1865,16 +1920,16 @@ adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_mi
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="#submission-package-xml">[submission-package-xml]</a></p>
+<p><a href="#submissions-package-xml">XML files produced from test runs</a></p>
 </li>
 <li>
 <p>The console output produced by the CTS runs above.</p>
 </li>
 <li>
-<p><a href="#submission-package-build-info">[submission-package-build-info]</a></p>
+<p><a href="#submissions-package-build-info">Information on the build of conformance used in generating the results</a></p>
 </li>
 <li>
-<p><a href="#submission-package-conformance-statement">[submission-package-conformance-statement]</a></p>
+<p><a href="#submissions-package-conformance-statement">Conformance Statement</a></p>
 </li>
 </ol>
 </div>
@@ -2060,7 +2115,7 @@ minimum.</p>
 </div>
 <div class="paragraph">
 <p>Each test suite run starts by printing test configuration data, and ends by
-printing a ``Report'' showing details of the runtime and environment
+printing a "Report" showing details of the runtime and environment
 (extensions, etc) used in that run.
 A few tests produce console output in-between that does not show up in the
 result XML.
@@ -2068,10 +2123,7 @@ It is important to have this data for the interpretation of the results.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="submissions-package-build-info">3.3.3. Information on the build of conformance used in generating the</h4>
-<div class="paragraph">
-<p>results</p>
-</div>
+<h4 id="submissions-package-build-info">3.3.3. Information on the build of conformance used in generating the results</h4>
 <div class="paragraph">
 <p>Files containing the result of the commands <code>git status</code> and <code>git log</code> from
 the CTS directory:</p>
@@ -2191,7 +2243,7 @@ However, <code>testcase</code> tags can contain a warning, failure, or error:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;failure</span> <span class="na">message=</span><span class="s">""</span> <span class="na">type=</span><span class="s">""</span><span class="nt">&gt;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;failure</span> <span class="na">message=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"..."</span><span class="nt">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2199,7 +2251,7 @@ However, <code>testcase</code> tags can contain a warning, failure, or error:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;error</span> <span class="na">message=</span><span class="s">""</span> <span class="na">type=</span><span class="s">""</span><span class="nt">&gt;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;error</span> <span class="na">message=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"..."</span><span class="nt">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2220,13 +2272,24 @@ the number of top level test cases):</p>
 <pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;cts:results</span> <span class="na">testSuccessCount=</span><span class="s">"1"</span> <span class="na">testFailureCount=</span><span class="s">"0"</span><span class="nt">/&gt;</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p><strong>Any error or failure when testing core or KHR extension functionality
-means your runtime is not conformant.</strong></p>
+<p>Any error or failure when testing <strong>core or KHR extension</strong> functionality
+means your runtime is <strong>not conformant</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Any warnings <strong>may</strong> indicate non-conformance and <strong>must</strong> be explained in
 the submission package.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -2415,8 +2478,8 @@ with tests that build on them, submission of a CTS results package does not
 require them.
 Currently, the only self-tests tagged in this way are for the PBR/glTF
 rendering subsystem.
-They synchronously load very large, artificial test assets, originally from
-the "glTF-Sample-Models" repository, to test specific details of the
+They (asynchronously) load very large, artificial test assets, originally
+from the "glTF-Sample-Models" repository, to test specific details of the
 renderer.</p>
 </div>
 <div class="paragraph">
@@ -2452,6 +2515,66 @@ conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="
 conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_vulkan_1_1.xml
 conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_vulkan2_1_1.xml
 conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--apiVersion</span> 1.1 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_opengl_1_1.xml</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Corresponding ADB commands to launch on Android for OpenXR 1.0</summary>
+<div class="content">
+<div class="paragraph">
+<p>Omit any graphics API binding extensions your runtime does not support.
+These commands do not match one-to-one with the desktop examples due to
+different graphics API availability on Android.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[self_test][interactive]"</span> <span class="nt">-e</span> graphicsPlugin vulkan <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_self_test_vulkan_1_0.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test_vulkan_1_0.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[self_test][interactive]"</span> <span class="nt">-e</span> graphicsPlugin vulkan2 <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_self_test_vulkan2_1_0.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test_vulkan2_1_0.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[self_test][interactive]"</span> <span class="nt">-e</span> graphicsPlugin opengles <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_self_test_opengles_1_0.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test_opengles_1_0.xml</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Corresponding ADB commands to launch on Android for OpenXR 1.1</summary>
+<div class="content">
+<div class="paragraph">
+<p>Omit any graphics API binding extensions your runtime does not support.
+These commands do not match one-to-one with the desktop examples due to
+different graphics API availability on Android.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[self_test][interactive]"</span> <span class="nt">-e</span> graphicsPlugin vulkan <span class="nt">-e</span> apiVersion 1.1 <span class="nt">-e</span> xmlFilename interactive_self_test_vulkan_1_1.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test_vulkan_1_1.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[self_test][interactive]"</span> <span class="nt">-e</span> graphicsPlugin vulkan2 <span class="nt">-e</span> apiVersion 1.1 <span class="nt">-e</span> xmlFilename interactive_self_test_vulkan2_1_1.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test_vulkan2_1_1.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[self_test][interactive]"</span> <span class="nt">-e</span> graphicsPlugin opengles <span class="nt">-e</span> apiVersion 1.1 <span class="nt">-e</span> xmlFilename interactive_self_test_opengles_1_1.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test_opengles_1_1.xml</code></pre>
 </div>
 </div>
 </div>
@@ -2638,7 +2761,7 @@ assertion documentation</a></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.41<br>
+Version 1.1.42<br>
 </div>
 </div>
 </body>
