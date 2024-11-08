@@ -132,7 +132,7 @@ include_once("../../assets/static_pages/khr_page_top.php");
     usage of the test suite. For more information on conformance and the Adopter
     program, see the <a href="#repo-cts">information on the OpenXR-CTS repo</a>.</p>
 
-<p><em>Note</em> that this is updated at a different cadence than the other documents here:
+<p><strong>Note</strong> that this is updated at a different cadence than the other documents here:
     it is updated upon release of a new approved revision of the OpenXR-CTS, rather than upon
     release of a new version of the OpenXR spec.</p>
 
