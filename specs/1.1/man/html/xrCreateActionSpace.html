@@ -115,8 +115,9 @@ the action space.</p>
 <p>Multiple <a href="XrSpace.html">XrSpace</a> handles may exist simultaneously, up to some limit
 imposed by the runtime.
 The <a href="XrSpace.html">XrSpace</a> handle must be eventually freed via the
-<a href="xrDestroySpace.html">xrDestroySpace</a> function or by destroying the parent <a href="XrAction.html">XrAction</a>
-handle.</p>
+<a href="xrDestroySpace.html">xrDestroySpace</a> function or by destroying the parent <a href="XrSession.html">XrSession</a>
+handle.
+See <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#spaces-action-spaces-lifetime" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#spaces-action-spaces-lifetime</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTION_TYPE_MISMATCH</code> if the action
@@ -241,7 +242,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.42<br>
+Version 1.1.43<br>
 </div>
 </div>
 </body>

@@ -256,6 +256,18 @@ pre.rouge .w {
     <span class="n">XR_ERROR_WORLD_MESH_DETECTOR_PERMISSION_DENIED_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000474000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_ML_world_mesh_detection</span>
     <span class="n">XR_ERROR_WORLD_MESH_DETECTOR_SPACE_NOT_LOCATABLE_ML</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000474001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ML_facial_expression</span>
+    <span class="n">XR_ERROR_FACIAL_EXPRESSION_PERMISSION_DENIED_ML</span> <span class="o">=</span> <span class="mi">1000482000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_colocation_discovery</span>
+    <span class="n">XR_ERROR_COLOCATION_DISCOVERY_NETWORK_FAILED_META</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000571001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_colocation_discovery</span>
+    <span class="n">XR_ERROR_COLOCATION_DISCOVERY_NO_DISCOVERY_METHOD_META</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000571002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_colocation_discovery</span>
+    <span class="n">XR_COLOCATION_DISCOVERY_ALREADY_ADVERTISING_META</span> <span class="o">=</span> <span class="mi">1000571003</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_colocation_discovery</span>
+    <span class="n">XR_COLOCATION_DISCOVERY_ALREADY_DISCOVERING_META</span> <span class="o">=</span> <span class="mi">1000571004</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_spatial_entity_group_sharing</span>
+    <span class="n">XR_ERROR_SPACE_GROUP_NOT_FOUND_META</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000572002</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_maintenance1</span>
     <span class="n">XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED_KHR</span> <span class="o">=</span> <span class="n">XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_maintenance1</span>
@@ -347,6 +359,18 @@ moment.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ENVIRONMENT_DEPTH_NOT_AVAILABLE_META</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Warning: The requested depth image is not yet available.  (Added by the <code><a href="XR_META_environment_depth.html">XR_META_environment_depth</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FACIAL_EXPRESSION_PERMISSION_DENIED_ML</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permission to track facial expressions was not granted  (Added by the <code><a href="XR_ML_facial_expression.html">XR_ML_facial_expression</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_COLOCATION_DISCOVERY_ALREADY_ADVERTISING_META</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Colocation advertisement has already been enabled  (Added by the <code><a href="XR_META_colocation_discovery.html">XR_META_colocation_discovery</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_COLOCATION_DISCOVERY_ALREADY_DISCOVERING_META</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Colocation discovery has already been enabled  (Added by the <code><a href="XR_META_colocation_discovery.html">XR_META_colocation_discovery</a></code> extension)</p></td>
 </tr>
 </tbody>
 </table>
@@ -814,6 +838,18 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">At the time of the call the runtime was unable to locate the space and cannot fulfill your request.  (Added by the <code><a href="XR_ML_world_mesh_detection.html">XR_ML_world_mesh_detection</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_COLOCATION_DISCOVERY_NETWORK_FAILED_META</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The network request failed.  (Added by the <code><a href="XR_META_colocation_discovery.html">XR_META_colocation_discovery</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_COLOCATION_DISCOVERY_NO_DISCOVERY_METHOD_META</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime does not have any methods available to perform discovery.  (Added by the <code><a href="XR_META_colocation_discovery.html">XR_META_colocation_discovery</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_GROUP_NOT_FOUND_META</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The group UUID was not be found within the runtime  (Added by the <code><a href="XR_META_spatial_entity_group_sharing.html">XR_META_spatial_entity_group_sharing</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED_KHR</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Alias for <code>XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED</code>  (Added by the <code><a href="XR_KHR_maintenance1.html">XR_KHR_maintenance1</a></code> extension)</p></td>
 </tr>
@@ -830,7 +866,7 @@ moment.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
+<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrEventDataColocationAdvertisementCompleteMETA.html">XrEventDataColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataColocationDiscoveryCompleteMETA.html">XrEventDataColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataShareSpacesCompleteMETA.html">XrEventDataShareSpacesCompleteMETA</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrEventDataStartColocationAdvertisementCompleteMETA.html">XrEventDataStartColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStartColocationDiscoveryCompleteMETA.html">XrEventDataStartColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataStopColocationAdvertisementCompleteMETA.html">XrEventDataStopColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
 </div>
 </div>
 </div>
@@ -862,7 +898,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.42<br>
+Version 1.1.43<br>
 </div>
 </div>
 </body>

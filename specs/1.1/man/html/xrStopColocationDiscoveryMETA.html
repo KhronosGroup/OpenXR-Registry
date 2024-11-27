@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrStopColocationDiscoveryMETA(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrStopColocationDiscoveryMETA(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrStopColocationDiscoveryMETA - Stop ongoing discovery process</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrStopColocationDiscoveryMETA.html">xrStopColocationDiscoveryMETA</a> function is defined as:</p>
+</div>
+<div id="xrStopColocationDiscoveryMETA" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_META_colocation_discovery</span>
+<span class="n">XrResult</span> <span class="nf">xrStopColocationDiscoveryMETA</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrColocationDiscoveryStopInfoMETA</span><span class="o">*</span>    <span class="n">info</span><span class="p">,</span>
+    <span class="n">XrAsyncRequestIdFB</span><span class="o">*</span>                         <span class="n">requestId</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is an <a href="XrSession.html">XrSession</a> in which the colocation discovery will
+be active.</p>
+</li>
+<li>
+<p><code>info</code> is a pointer to <a href="XrColocationDiscoveryStopInfoMETA.html">XrColocationDiscoveryStopInfoMETA</a>
+structure to specify the stop discovery request information.</p>
+</li>
+<li>
+<p><code>requestId</code> is an output parameter, and the variable it points to will
+be populated with the ID of this asynchronous request.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> call <a href="xrStopColocationDiscoveryMETA.html">xrStopColocationDiscoveryMETA</a> to stop an
+ongoing discovery process that was started by
+<a href="xrStartColocationDiscoveryMETA.html">xrStartColocationDiscoveryMETA</a>.</p>
+</div>
+<div class="paragraph">
+<p>If the system does not support colocation advertisement and discovery, the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_FEATURE_UNSUPPORTED</code> from
+<a href="xrStopColocationDiscoveryMETA.html">xrStopColocationDiscoveryMETA</a>.
+In this case, the runtime <strong class="purple">must</strong> return <code>XR_FALSE</code> for
+<a href="XrSystemColocationDiscoveryPropertiesMETA.html">XrSystemColocationDiscoveryPropertiesMETA</a>::<code>supportsColocationDiscovery</code>
+when the function <a href="xrGetSystemProperties.html">xrGetSystemProperties</a> is called, so that the
+application knows to not use this functionality.</p>
+</div>
+<div class="paragraph">
+<p>This is an asynchronous operation.
+Completion results are conveyed in the event
+<a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>.</p>
+</div>
+<div class="paragraph">
+<p>If the asynchronous operation is scheduled successfully, the runtime <strong class="purple">must</strong>
+return <code>XR_SUCCESS</code>.</p>
+</div>
+<div class="paragraph">
+<p>If and only if the runtime returns <code>XR_SUCCESS</code>, the runtime <strong class="purple">must</strong> queue
+a single <a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a> event
+identified with a <code>requestId</code> matching the <code>requestId</code> value output by
+this function, referred to as the "corresponding completion event."</p>
+</div>
+<div class="paragraph">
+<p>(This implies that if the runtime returns anything other than
+<code>XR_SUCCESS</code>, the runtime <strong class="purple">must</strong> not queue any
+<a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a> events with <code>requestId</code>
+field matching the <code>requestId</code> populated by this function.)</p>
+</div>
+<div class="paragraph">
+<p>If the asynchronous operation is successful, in the corresponding completion
+event, the runtime <strong class="purple">must</strong> set the
+<a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>::<code>result</code> field to
+<code>XR_SUCCESS</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the asynchronous operation is scheduled but not successful, in the
+corresponding completion event, the runtime <strong class="purple">must</strong> set the
+<a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>::<code>result</code> field to
+an appropriate error code instead of <code>XR_SUCCESS</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrStopColocationDiscoveryMETA-extension-notenabled" href="#VUID-xrStopColocationDiscoveryMETA-extension-notenabled"></a> The <code><a href="XR_META_colocation_discovery.html">XR_META_colocation_discovery</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrStopColocationDiscoveryMETA.html">xrStopColocationDiscoveryMETA</a></p>
+</li>
+<li>
+<p><a id="VUID-xrStopColocationDiscoveryMETA-session-parameter" href="#VUID-xrStopColocationDiscoveryMETA-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrStopColocationDiscoveryMETA-info-parameter" href="#VUID-xrStopColocationDiscoveryMETA-info-parameter"></a> <code>info</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrColocationDiscoveryStopInfoMETA.html">XrColocationDiscoveryStopInfoMETA</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrStopColocationDiscoveryMETA-requestId-parameter" href="#VUID-xrStopColocationDiscoveryMETA-requestId-parameter"></a> <code>requestId</code> <strong class="purple">must</strong> be a pointer to an <a href="XrAsyncRequestIdFB.html">XrAsyncRequestIdFB</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_UNAVAILABLE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_FEATURE_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_EXTENSION_NOT_PRESENT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_META_colocation_discovery.html">XR_META_colocation_discovery</a>, <a href="XrAsyncRequestIdFB.html">XrAsyncRequestIdFB</a>, <a href="XrColocationDiscoveryStopInfoMETA.html">XrColocationDiscoveryStopInfoMETA</a>, <a href="XrSession.html">XrSession</a>, <a href="xrStartColocationDiscoveryMETA.html">xrStartColocationDiscoveryMETA</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrStopColocationDiscoveryMETA" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.43<br>
+</div>
+</div>
+</body>
+</html>

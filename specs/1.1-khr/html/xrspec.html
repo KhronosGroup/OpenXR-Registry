@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.42 Specification (with all KHR extensions)</title>
+<title>The OpenXR™ 1.1.43 Specification (with all KHR extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -918,11 +918,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.42 Specification (with all KHR extensions)</h1>
+<h1>The OpenXR™ 1.1.43 Specification (with all KHR extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.42</span>
-<br><span id="revremark">from git ref release-1.1.42</span>
+<span id="revnumber">version 1.1.43</span>
+<br><span id="revremark">from git ref release-1.1.43</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -8982,7 +8982,7 @@ usage.
 Those paths are as follows.</p>
 </div>
 <div class="sect3">
-<h4 id="semantic-paths-user"><a class="anchor" href="#semantic-paths-user"></a>6.3.1. /user paths</h4>
+<h4 id="semantic-paths-user"><a class="anchor" href="#semantic-paths-user"></a>6.3.1. Top level /user paths</h4>
 <div class="paragraph">
 <p>Some paths are used to refer to entities that are filling semantic roles in
 the system.
@@ -9043,15 +9043,21 @@ and <em>/user/hand/right</em> at any time.</p>
 <div class="sect3">
 <h4 id="semantic-paths-input"><a class="anchor" href="#semantic-paths-input"></a>6.3.2. Input subpaths</h4>
 <div class="paragraph">
-<p>Devices on the source side of the input system need to define paths for each
-component that can be bound to an action.
+<p>Interaction profiles define paths for each component that can be bound to an
+action.
 This section describes the naming conventions for those input components.
-Runtimes <strong class="purple">must</strong> ignore input source paths that use identifiers and component
+Runtimes <strong class="purple">must</strong> ignore input subpaths that use identifiers and component
 names that do not appear in this specification or otherwise do not follow
-the pattern specified below.</p>
+the pattern specified below.
+Input subpaths further qualify top-level <em>/user</em> paths to form
+binding paths.
+For this reason, they are often shown starting with &#8230;&#8203;
+or omitting path components before <code>/input</code> or <code>/output</code> entirely.
+The input subpaths considered valid when combined with any given top-level
+<em>/user</em> path vary by interaction profile.</p>
 </div>
 <div class="paragraph">
-<p>Each input source path <strong class="purple">must</strong> match the following pattern:</p>
+<p>Each input subpath <strong class="purple">must</strong> match the following pattern:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -13530,8 +13536,9 @@ the action space.</p>
 <p>Multiple <a href="#XrSpace">XrSpace</a> handles may exist simultaneously, up to some limit
 imposed by the runtime.
 The <a href="#XrSpace">XrSpace</a> handle must be eventually freed via the
-<a href="#xrDestroySpace">xrDestroySpace</a> function or by destroying the parent <a href="#XrAction">XrAction</a>
-handle.</p>
+<a href="#xrDestroySpace">xrDestroySpace</a> function or by destroying the parent <a href="#XrSession">XrSession</a>
+handle.
+See <a href="#spaces-action-spaces-lifetime">Action Spaces Lifetime</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTION_TYPE_MISMATCH</code> if the action
@@ -22039,9 +22046,10 @@ application&#8217;s suggested bindings for the specified interaction profile.</p
 <li>
 <p><code>binding</code> is the <code><a href="#XrPath">XrPath</a></code> of a binding for the action specified
 in <code>action</code>.
-This path is any top level user path plus input source path, for example
+This "binding path" is any top level <em>/user</em> path plus an
+applicable <a href="#semantic-paths-input">input subpath</a>, for example
 <em>/user/hand/right/input/trigger/click.</em>
-See <a href="#input-suggested-bindings">suggested bindings</a> for more details.</p>
+See <a href="#input-suggested-bindings">Suggested Bindings</a> for more details.</p>
 </li>
 </ul>
 </div>
@@ -22307,7 +22315,7 @@ no controllers are active.</p>
 <code>session</code>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_ACTIONSET_NOT_ATTACHED</code>.
 If <code>topLevelUserPath</code> is not one of the top level user paths described
-in <a href="#semantic-paths-user">/user paths</a>, the runtime <strong class="purple">must</strong> return
+in <a href="#semantic-paths-user">Top level /user paths</a>, the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.</p>
 </div>
 <div class="sidebarblock">
@@ -35091,7 +35099,7 @@ captures the relevant information.</p>
 </dd>
 <dt class="hdlist1"><strong>Revision</strong></dt>
 <dd>
-<p>4</p>
+<p>5</p>
 </dd>
 <dt class="hdlist1"><strong>Extension and Version Dependencies</strong></dt>
 <dd>
@@ -35100,14 +35108,18 @@ captures the relevant information.</p>
 <div class="paragraph">
 <p><a href="#versions-1.0">OpenXR 1.0</a><br>
 and<br>
-<code><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></code><br></p>
+<code><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></code><br>
+or<br>
+<a href="#versions-1.0">OpenXR 1.0</a><br>
+and<br>
+<code><a href="#XR_KHR_vulkan_enable2">XR_KHR_vulkan_enable2</a></code><br></p>
 </div>
 </div>
 </div>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2020-01-01</p>
+<p>2024-11-13</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -35116,7 +35128,8 @@ and<br>
 <dt class="hdlist1"><strong>Contributors</strong></dt>
 <dd>
 <p>Paul Pedriana, Oculus<br>
-Dan Ginsburg, Valve</p>
+Dan Ginsburg, Valve<br>
+Jakob Bornecrantz, NVIDIA<br></p>
 </dd>
 </dl>
 </div>
@@ -35143,7 +35156,8 @@ must create OpenXR swapchains with the
 <div class="paragraph">
 <p>Runtimes implementing this extension <strong class="purple">must</strong> support the
 <code><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></code> or the <code><a href="#XR_KHR_vulkan_enable2">XR_KHR_vulkan_enable2</a></code> extension.
-When <code><a href="#XR_KHR_vulkan_enable">XR_KHR_vulkan_enable</a></code> is used, the runtime <strong class="purple">must</strong> add
+When an application enables and uses <code><a href="#XR_KHR_vulkan_enable2">XR_KHR_vulkan_enable2</a></code> as the
+graphics binding extension, the runtime <strong class="purple">must</strong> add
 <code>VK_KHR_image_format_list</code> to the list of extensions enabled in
 <a href="#xrCreateVulkanDeviceKHR">xrCreateVulkanDeviceKHR</a>.</p>
 </div>
@@ -35281,6 +35295,19 @@ No such structures are defined in core OpenXR or this extension.</p>
 <ul>
 <li>
 <p>Fix reference to the mutable-format bit in Vulkan.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Revision 5, 2024-11-13 (Jakob Bornecrantz, NVIDIA)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix correct Vulkan enable extension being referenced.</p>
+</li>
+<li>
+<p>Clarify <code>XR_KHR_vulkan_enable2</code> being used by the app.</p>
 </li>
 </ul>
 </div>
@@ -36770,6 +36797,12 @@ from extensions.</p>
 <li>
 <p></p>
 <div class="paragraph">
+<p><code>XR_FB_touch_controller_pro</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
 <p><code>XR_HTC_vive_cosmos_controller_interaction</code></p>
 </div>
 </li>
@@ -36777,6 +36810,12 @@ from extensions.</p>
 <p></p>
 <div class="paragraph">
 <p><code>XR_HTC_vive_focus3_controller_interaction</code></p>
+</div>
+</li>
+<li>
+<p></p>
+<div class="paragraph">
+<p><code>XR_META_touch_controller_plus</code></p>
 </div>
 </li>
 <li>
@@ -36834,6 +36873,77 @@ In OpenXR 1.1, a runtime <strong class="purple">may</strong> support
 this is <strong class="purple">optional</strong> like the other view configuration types.
 Use <a href="#xrEnumerateViewConfigurations">xrEnumerateViewConfigurations</a> to determine if it is provided,
 rather than using the presence or absence of the extension.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_differences_relative_to_xr_fb_touch_controller_pro"><a class="anchor" href="#_differences_relative_to_xr_fb_touch_controller_pro"></a>Differences Relative to <code><code>XR_FB_touch_controller_pro</code></code></h5>
+<div class="paragraph">
+<p>The interaction profile path was changed from
+<em>/interaction_profiles/facebook/touch_controller_pro</em> to
+<em>/interaction_profiles/meta/touch_pro_controller.</em>
+Note the updated company name and different word order in the device name
+level.</p>
+</div>
+<div class="paragraph">
+<p>The following input/output subpaths were renamed when changing to this new
+interaction profile path:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>&#8230;/input/stylus_fb/force</em> &#8594; <em>&#8230;/input/stylus/force</em></p>
+</li>
+<li>
+<p><em>&#8230;/input/trigger/proximity_fb</em> &#8594;
+<em>&#8230;/input/trigger/proximity</em></p>
+</li>
+<li>
+<p><em>&#8230;/output/haptic_trigger_fb</em> &#8594;
+<em>&#8230;/output/haptic_trigger</em></p>
+</li>
+<li>
+<p><em>&#8230;/output/haptic_thumb_fb</em> &#8594; <em>&#8230;/output/haptic_thumb</em></p>
+</li>
+<li>
+<p><em>&#8230;/input/thumb_fb/proximity_fb</em> &#8594;
+<em>&#8230;/input/thumb_resting_surfaces/proximity</em></p>
+</li>
+<li>
+<p><em>&#8230;/input/trigger/curl_fb</em> &#8594;
+<em>&#8230;/input/trigger_curl/value</em></p>
+</li>
+<li>
+<p><em>&#8230;/input/trigger/slide_fb</em> &#8594;
+<em>&#8230;/input/trigger_slide/value</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The last two changes listed moved from being components on the trigger
+identifier to being independent identifiers in order to clarify how they
+relate to actions bound to other trigger components with regards to action
+priority.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_differences_relative_to_xr_meta_touch_controller_plus"><a class="anchor" href="#_differences_relative_to_xr_meta_touch_controller_plus"></a>Differences Relative to <code><code>XR_META_touch_controller_plus</code></code></h5>
+<div class="paragraph">
+<p>The interaction profile path was changed from
+<em>/interaction_profiles/meta/touch_controller_plus</em> to
+<em>/interaction_profiles/meta/touch_plus_controller.</em>
+Note the different word order in the device name level.</p>
+</div>
+<div class="paragraph">
+<p>The following input subpaths were renamed when changing to this new
+interaction profile path:
+* <em>&#8230;/input/trigger/proximity_meta</em> &#8594;
+  <em>&#8230;/input/trigger/proximity</em>
+* <em>&#8230;/input/thumb_meta/proximity_meta</em> &#8594;
+  <em>&#8230;/input/thumb_resting_surfaces/proximity</em>
+* <em>&#8230;/input/trigger/curl_meta</em> &#8594;
+  <em>&#8230;/input/trigger_curl/value</em>
+* <em>&#8230;/input/trigger/slide_meta</em> &#8594;
+  <em>&#8230;/input/trigger_slide/value</em></p>
 </div>
 </div>
 </div>
@@ -38785,7 +38895,7 @@ Macros</a>.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 42)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 43)
 </span></code></pre>
 </div>
 </div>
@@ -39941,7 +40051,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.42<br>
+Version 1.1.43<br>
 </div>
 </div>
 </body>
