@@ -62,8 +62,7 @@ pre.rouge .w {
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a> event structure is defined
-as:</p>
+<p>The <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a> structure is defined as:</p>
 </div>
 <div id="XrEventDataReferenceSpaceChangePending" class="paragraph">
 <p></p>
@@ -158,11 +157,11 @@ origin offsets specified by the application during calls to
 <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a>.
 If the runtime does not know the location of the space&#8217;s new origin relative
 to its previous origin, <code>poseValid</code> <strong class="purple">must</strong> be false, and the position and
-orientation of <code>poseInPreviousSpace</code> are undefined.
-.Valid Usage (Implicit)</p>
+orientation of <code>poseInPreviousSpace</code> are undefined.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
 <li>
@@ -181,7 +180,7 @@ orientation of <code>poseInPreviousSpace</code> are undefined.
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrReferenceSpaceType.html">XrReferenceSpaceType</a>, <a href="XrSession.html">XrSession</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrTime.html">XrTime</a>, <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a>, <a href="XrEventDataBuffer.html">XrEventDataBuffer</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrReferenceSpaceType.html">XrReferenceSpaceType</a>, <a href="XrSession.html">XrSession</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrTime.html">XrTime</a>, <a href="xrCreateReferenceSpace.html">xrCreateReferenceSpace</a>, <a href="xrPollEvent.html">xrPollEvent</a></p>
 </div>
 </div>
 </div>
@@ -201,7 +200,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -213,7 +212,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.43<br>
+Version 1.1.45<br>
 </div>
 </div>
 </body>

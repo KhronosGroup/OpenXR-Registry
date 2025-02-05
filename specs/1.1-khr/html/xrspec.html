@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.43 Specification (with all KHR extensions)</title>
+<title>The OpenXR™ 1.1.45 Specification (with all KHR extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -14,7 +14,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2024, The Khronos Group Inc.
+ * Copyright (c) 2017-2025 The Khronos Group Inc.
  * Copyright (c) 2013-2021 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -918,11 +918,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.43 Specification (with all KHR extensions)</h1>
+<h1>The OpenXR™ 1.1.45 Specification (with all KHR extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.43</span>
-<br><span id="revremark">from git ref release-1.1.43</span>
+<span id="revnumber">version 1.1.45</span>
+<br><span id="revremark">from git ref release-1.1.45</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1121,7 +1121,7 @@ pre.rouge .w {
 <h2 id="preamble"><a class="anchor" href="#preamble"></a>Preamble</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2017-2024, The Khronos Group Inc.</p>
+<p>Copyright (c) 2017-2025 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This Specification is protected by copyright laws and contains material
@@ -7521,6 +7521,9 @@ instance loss is detected.</p>
 <h4 id="_xreventdatainstancelosspending"><a class="anchor" href="#_xreventdatainstancelosspending"></a>4.4.2. XrEventDataInstanceLossPending</h4>
 <div class="openblock">
 <div class="content">
+<div class="paragraph">
+<p>The <a href="#XrEventDataInstanceLossPending">XrEventDataInstanceLossPending</a> structure is defined as:</p>
+</div>
 <div id="XrEventDataInstanceLossPending" class="paragraph">
 <p></p>
 </div>
@@ -7533,26 +7536,6 @@ instance loss is detected.</p>
     <span class="n">XrTime</span>             <span class="n">lossTime</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrEventDataInstanceLossPending</span><span class="p">;</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Receiving the <a href="#XrEventDataInstanceLossPending">XrEventDataInstanceLossPending</a> event structure indicates
-that the application is about to lose the indicated <a href="#XrInstance">XrInstance</a> at the
-indicated <code>lossTime</code> in the future.
-The application should call <a href="#xrDestroyInstance">xrDestroyInstance</a> and relinquish any
-instance-specific resources.
-This typically occurs to make way for a replacement of the underlying
-runtime, such as via a software update.</p>
-</div>
-<div class="paragraph">
-<p>After the application has destroyed all of its instances and their children
-and waited past the specified time, it may then re-try
-<a href="#xrCreateInstance">xrCreateInstance</a> in a loop waiting for whatever maintenance the
-runtime is performing to complete.
-The runtime will return <code>XR_ERROR_RUNTIME_UNAVAILABLE</code> from
-<a href="#xrCreateInstance">xrCreateInstance</a> as long as it is unable to create the instance.
-Once the runtime has returned and is able to continue, it <strong class="purple">must</strong> resume
-returning <code>XR_SUCCESS</code> from <a href="#xrCreateInstance">xrCreateInstance</a> if valid data is
-passed in.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -7574,6 +7557,26 @@ be considered lost and become unusable.</p>
 </ul>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>Receiving the <a href="#XrEventDataInstanceLossPending">XrEventDataInstanceLossPending</a> event structure indicates
+that the application is about to lose the indicated <a href="#XrInstance">XrInstance</a> at the
+indicated <code>lossTime</code> in the future.
+The application should call <a href="#xrDestroyInstance">xrDestroyInstance</a> and relinquish any
+instance-specific resources.
+This typically occurs to make way for a replacement of the underlying
+runtime, such as via a software update.</p>
+</div>
+<div class="paragraph">
+<p>After the application has destroyed all of its instances and their children
+and waited past the specified time, it may then re-try
+<a href="#xrCreateInstance">xrCreateInstance</a> in a loop waiting for whatever maintenance the
+runtime is performing to complete.
+The runtime will return <code>XR_ERROR_RUNTIME_UNAVAILABLE</code> from
+<a href="#xrCreateInstance">xrCreateInstance</a> as long as it is unable to create the instance.
+Once the runtime has returned and is able to continue, it <strong class="purple">must</strong> resume
+returning <code>XR_SUCCESS</code> from <a href="#xrCreateInstance">xrCreateInstance</a> if valid data is
+passed in.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -12984,8 +12987,7 @@ event.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>The <a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a> event structure is defined
-as:</p>
+<p>The <a href="#XrEventDataReferenceSpaceChangePending">XrEventDataReferenceSpaceChangePending</a> structure is defined as:</p>
 </div>
 <div id="XrEventDataReferenceSpaceChangePending" class="paragraph">
 <p></p>
@@ -13070,11 +13072,11 @@ origin offsets specified by the application during calls to
 <a href="#xrCreateReferenceSpace">xrCreateReferenceSpace</a>.
 If the runtime does not know the location of the space&#8217;s new origin relative
 to its previous origin, <code>poseValid</code> <strong class="purple">must</strong> be false, and the position and
-orientation of <code>poseInPreviousSpace</code> are undefined.
-.Valid Usage (Implicit)</p>
+orientation of <code>poseInPreviousSpace</code> are undefined.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="title">Valid Usage (Implicit)</div>
 <div class="ulist">
 <ul>
 <li>
@@ -14567,8 +14569,8 @@ chain, such as <a href="#XrSpaceVelocities">XrSpaceVelocities</a>.</p>
 the <code>locations</code> array.</p>
 </li>
 <li>
-<p><code>locations</code> is an array of <a href="#XrSpaceLocations">XrSpaceLocations</a> for the runtime to
-populate with the locations of the specified spaces in the
+<p><code>locations</code> is an array of <a href="#XrSpaceLocationData">XrSpaceLocationData</a> structures for
+the runtime to populate with the locations of the specified spaces in the
 <a href="#XrSpacesLocateInfo">XrSpacesLocateInfo</a>::<code>baseSpace</code> at the specified
 <a href="#XrSpacesLocateInfo">XrSpacesLocateInfo</a>::<code>time</code>.</p>
 </li>
@@ -32150,13 +32152,7 @@ the indices of the mask geometry in the <code>vertices</code> array.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>The <a href="#XrEventDataVisibilityMaskChangedKHR">XrEventDataVisibilityMaskChangedKHR</a> structure specifies an event
-which indicates that a given view mask has changed.
-The application <strong class="purple">should</strong> respond to the event by calling
-<a href="#xrGetVisibilityMaskKHR">xrGetVisibilityMaskKHR</a> to retrieve the updated mask.
-This event is per-view, so if the masks for multiple views in a
-configuration change then multiple instances of this event will be sent to
-the application, one per view.</p>
+<p>The <a href="#XrEventDataVisibilityMaskChangedKHR">XrEventDataVisibilityMaskChangedKHR</a> structure is defined as:</p>
 </div>
 <div id="XrEventDataVisibilityMaskChangedKHR" class="paragraph">
 <p></p>
@@ -32200,6 +32196,15 @@ which the change refers.</p>
 </ul>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>The <a href="#XrEventDataVisibilityMaskChangedKHR">XrEventDataVisibilityMaskChangedKHR</a> structure is queued to
+indicate that a given visibility mask has changed.
+The application <strong class="purple">should</strong> respond to the event by calling
+<a href="#xrGetVisibilityMaskKHR">xrGetVisibilityMaskKHR</a> to retrieve the updated mask.
+This event is per-view, so if the masks for multiple views in a
+configuration change then multiple instances of this event will be queued
+for the application, one per view.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -38895,7 +38900,7 @@ Macros</a>.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 43)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 45)
 </span></code></pre>
 </div>
 </div>
@@ -40051,7 +40056,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.43<br>
+Version 1.1.45<br>
 </div>
 </div>
 </body>

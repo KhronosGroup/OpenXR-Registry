@@ -62,13 +62,7 @@ pre.rouge .w {
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="XrEventDataVisibilityMaskChangedKHR.html">XrEventDataVisibilityMaskChangedKHR</a> structure specifies an event
-which indicates that a given view mask has changed.
-The application <strong class="purple">should</strong> respond to the event by calling
-<a href="xrGetVisibilityMaskKHR.html">xrGetVisibilityMaskKHR</a> to retrieve the updated mask.
-This event is per-view, so if the masks for multiple views in a
-configuration change then multiple instances of this event will be sent to
-the application, one per view.</p>
+<p>The <a href="XrEventDataVisibilityMaskChangedKHR.html">XrEventDataVisibilityMaskChangedKHR</a> structure is defined as:</p>
 </div>
 <div id="XrEventDataVisibilityMaskChangedKHR" class="paragraph">
 <p></p>
@@ -123,6 +117,15 @@ which the change refers.</p>
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrEventDataVisibilityMaskChangedKHR.html">XrEventDataVisibilityMaskChangedKHR</a> structure is queued to
+indicate that a given visibility mask has changed.
+The application <strong class="purple">should</strong> respond to the event by calling
+<a href="xrGetVisibilityMaskKHR.html">xrGetVisibilityMaskKHR</a> to retrieve the updated mask.
+This event is per-view, so if the masks for multiple views in a
+configuration change then multiple instances of this event will be queued
+for the application, one per view.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -147,7 +150,7 @@ which the change refers.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_KHR_visibility_mask.html">XR_KHR_visibility_mask</a>, <a href="XrSession.html">XrSession</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrViewConfigurationType.html">XrViewConfigurationType</a></p>
+<p><a href="XR_KHR_visibility_mask.html">XR_KHR_visibility_mask</a>, <a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a>, <a href="XrEventDataBuffer.html">XrEventDataBuffer</a>, <a href="XrSession.html">XrSession</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrViewConfigurationType.html">XrViewConfigurationType</a>, <a href="xrPollEvent.html">xrPollEvent</a></p>
 </div>
 </div>
 </div>
@@ -167,7 +170,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -179,7 +182,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.43<br>
+Version 1.1.45<br>
 </div>
 </div>
 </body>

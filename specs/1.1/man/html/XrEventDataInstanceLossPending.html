@@ -61,6 +61,9 @@ pre.rouge .w {
 <div class="sect1">
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrEventDataInstanceLossPending.html">XrEventDataInstanceLossPending</a> structure is defined as:</p>
+</div>
 <div id="XrEventDataInstanceLossPending" class="paragraph">
 <p></p>
 </div>
@@ -79,31 +82,6 @@ pre.rouge .w {
 <div class="sect1">
 <h2 id="_members">Members</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Receiving the <a href="XrEventDataInstanceLossPending.html">XrEventDataInstanceLossPending</a> event structure indicates
-that the application is about to lose the indicated <a href="XrInstance.html">XrInstance</a> at the
-indicated <code>lossTime</code> in the future.
-The application should call <a href="xrDestroyInstance.html">xrDestroyInstance</a> and relinquish any
-instance-specific resources.
-This typically occurs to make way for a replacement of the underlying
-runtime, such as via a software update.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>After the application has destroyed all of its instances and their children
-and waited past the specified time, it may then re-try
-<a href="xrCreateInstance.html">xrCreateInstance</a> in a loop waiting for whatever maintenance the
-runtime is performing to complete.
-The runtime will return <code>XR_ERROR_RUNTIME_UNAVAILABLE</code> from
-<a href="xrCreateInstance.html">xrCreateInstance</a> as long as it is unable to create the instance.
-Once the runtime has returned and is able to continue, it <strong class="purple">must</strong> resume
-returning <code>XR_SUCCESS</code> from <a href="xrCreateInstance.html">xrCreateInstance</a> if valid data is
-passed in.</p>
-</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Member Descriptions</div>
@@ -124,6 +102,31 @@ be considered lost and become unusable.</p>
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Receiving the <a href="XrEventDataInstanceLossPending.html">XrEventDataInstanceLossPending</a> event structure indicates
+that the application is about to lose the indicated <a href="XrInstance.html">XrInstance</a> at the
+indicated <code>lossTime</code> in the future.
+The application should call <a href="xrDestroyInstance.html">xrDestroyInstance</a> and relinquish any
+instance-specific resources.
+This typically occurs to make way for a replacement of the underlying
+runtime, such as via a software update.</p>
+</div>
+<div class="paragraph">
+<p>After the application has destroyed all of its instances and their children
+and waited past the specified time, it may then re-try
+<a href="xrCreateInstance.html">xrCreateInstance</a> in a loop waiting for whatever maintenance the
+runtime is performing to complete.
+The runtime will return <code>XR_ERROR_RUNTIME_UNAVAILABLE</code> from
+<a href="xrCreateInstance.html">xrCreateInstance</a> as long as it is unable to create the instance.
+Once the runtime has returned and is able to continue, it <strong class="purple">must</strong> resume
+returning <code>XR_SUCCESS</code> from <a href="xrCreateInstance.html">xrCreateInstance</a> if valid data is
+passed in.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -146,7 +149,7 @@ be considered lost and become unusable.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrTime.html">XrTime</a>, <a href="xrPollEvent.html">xrPollEvent</a></p>
+<p><a href="XR_VERSION_1_0.html">XR_VERSION_1_0</a>, <a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a>, <a href="XrEventDataBuffer.html">XrEventDataBuffer</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrTime.html">XrTime</a>, <a href="xrPollEvent.html">xrPollEvent</a></p>
 </div>
 </div>
 </div>
@@ -166,7 +169,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -178,7 +181,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.43<br>
+Version 1.1.45<br>
 </div>
 </div>
 </body>

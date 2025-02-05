@@ -61,6 +61,10 @@ pre.rouge .w {
 <div class="sect1">
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrEventDataMainSessionVisibilityChangedEXTX.html">XrEventDataMainSessionVisibilityChangedEXTX</a> structure is defined
+as:</p>
+</div>
 <div id="XrEventDataMainSessionVisibilityChangedEXTX" class="paragraph">
 <p></p>
 </div>
@@ -79,25 +83,6 @@ pre.rouge .w {
 </div>
 <div class="sect1">
 <h2 id="_members">Members</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Receiving the <a href="XrEventDataMainSessionVisibilityChangedEXTX.html">XrEventDataMainSessionVisibilityChangedEXTX</a> event
-structure indicates that the main session has gained or lost visibility.
-This can occur in many cases, one typical example is when a user switches
-from one OpenXR application to another.
-See <a href="XrEventDataMainSessionVisibilityChangedEXTX.html">XrEventDataMainSessionVisibilityChangedEXTX</a> for more information
-on the standard behavior.
-This structure contains additional information on the main session including
-<code>flags</code> which indicate additional state information of the main session.
-Currently, the only flag value supplied is
-<code>XR_OVERLAY_MAIN_SESSION_ENABLED_COMPOSITION_LAYER_INFO_DEPTH_BIT_EXTX</code>
-which indicates if the main session has enabled the
-<code><a href="XR_KHR_composition_layer_depth.html">XR_KHR_composition_layer_depth</a></code> extension.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="sidebarblock">
 <div class="content">
@@ -124,6 +109,25 @@ which indicates various state information for the main session.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Receiving the <a href="XrEventDataMainSessionVisibilityChangedEXTX.html">XrEventDataMainSessionVisibilityChangedEXTX</a> event
+structure indicates that the main session has gained or lost visibility.
+This can occur in many cases, one typical example is when a user switches
+from one OpenXR application to another.
+See <a href="XrEventDataMainSessionVisibilityChangedEXTX.html">XrEventDataMainSessionVisibilityChangedEXTX</a> for more information
+on the standard behavior.
+This structure contains additional information on the main session including
+<code>flags</code> which indicate additional state information of the main session.
+Currently, the only flag value supplied is
+<code>XR_OVERLAY_MAIN_SESSION_ENABLED_COMPOSITION_LAYER_INFO_DEPTH_BIT_EXTX</code>
+which indicates if the main session has enabled the
+<code><a href="XR_KHR_composition_layer_depth.html">XR_KHR_composition_layer_depth</a></code> extension.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -148,7 +152,7 @@ which indicates various state information for the main session.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_EXTX_overlay.html">XR_EXTX_overlay</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrOverlayMainSessionFlagsEXTX.html">XrOverlayMainSessionFlagsEXTX</a>, <a href="XrStructureType.html">XrStructureType</a></p>
+<p><a href="XR_EXTX_overlay.html">XR_EXTX_overlay</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a>, <a href="XrEventDataBuffer.html">XrEventDataBuffer</a>, <a href="XrOverlayMainSessionFlagsEXTX.html">XrOverlayMainSessionFlagsEXTX</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrPollEvent.html">xrPollEvent</a></p>
 </div>
 </div>
 </div>
@@ -168,7 +172,7 @@ Fixes and changes should be made to the Specification, not directly.</p>
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright 2014-2024, The Khronos Group Inc.</p>
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
 </div>
 <div class="paragraph">
 <p>This work is licensed under a
@@ -180,7 +184,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.43<br>
+Version 1.1.45<br>
 </div>
 </div>
 </body>
