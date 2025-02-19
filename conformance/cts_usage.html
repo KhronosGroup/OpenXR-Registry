@@ -14,7 +14,7 @@
  * Based on AsciiDoctor styles, which are built on Foundation 4.3.2,
  * which incorporates normalize.css v2.1.2.
  *
- * Copyright (c) 2017-2024, The Khronos Group Inc.
+ * Copyright (c) 2017-2025 The Khronos Group Inc.
  * Copyright (c) 2013-2021 Dan Allen
  * Copyright (c) 2013 ZURB, inc.
  * Copyright (c) Nicolas Gallagher and Jonathan Neal
@@ -890,8 +890,8 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <h1>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.43</span>
-<br><span id="revremark">from git ref cts-1.1.43.0-20241212</span>
+<span id="revnumber">version 1.1.45</span>
+<br><span id="revremark">from git ref cts-1.1.45.0-20250213</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -935,7 +935,7 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <li><a href="#_waivers">3.3.5. Waivers</a></li>
 </ul>
 </li>
-<li><a href="#submissions-criteria">3.4. Conformance Criteria</a></li>
+<li><a href="#submissions-criteria">3.4. Passing Criteria</a></li>
 </ul>
 </li>
 <li><a href="#_requirementsassumptions_for_testing">4. Requirements/Assumptions for Testing</a>
@@ -961,10 +961,16 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 </ul>
 </li>
 <li><a href="#selftests">5. Interactive Self Tests</a></li>
-<li><a href="#code">6. Test Source Code</a>
+<li><a href="#_automating_cts_for_internal_testing_and_development">6. Automating CTS for Internal Testing and Development</a>
 <ul class="sectlevel2">
-<li><a href="#code-assigning-tags">6.1. Assigning Tags</a></li>
-<li><a href="#code-choosing-assertion">6.2. Choosing an assertion</a></li>
+<li><a href="#_with_conformance_automation">6.1. With Conformance Automation</a></li>
+<li><a href="#_without_conformance_automation">6.2. Without Conformance Automation</a></li>
+</ul>
+</li>
+<li><a href="#code">7. Test Source Code</a>
+<ul class="sectlevel2">
+<li><a href="#code-assigning-tags">7.1. Assigning Tags</a></li>
+<li><a href="#code-choosing-assertion">7.2. Choosing an assertion</a></li>
 </ul>
 </li>
 </ul>
@@ -2211,14 +2217,36 @@ the potential impact and risk to the ecosystem of approving the submission.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="submissions-criteria">3.4. Conformance Criteria</h3>
+<h3 id="submissions-criteria">3.4. Passing Criteria</h3>
 <div class="paragraph">
-<p>A conformance run is considered passing if all tests finish with allowed
-result codes, and all warnings are acceptably explained to describe why they
+<p>A conformance run is considered passing if <strong>all tests</strong> required by the
+testing steps finish with allowed result codes (pass or skip as
+appropriate), and all warnings are acceptably explained to describe why they
 are not a conformance failure.
 <code>XR_EXT_conformance_automation</code> <strong>must</strong> not be used for conformance
-submission.
-Test results are contained in the output XML files, which are an extension
+submission.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any error or failure when testing functionality means your runtime is <strong>not
+conformant</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Any warnings <strong>may</strong> indicate non-conformance and <strong>must</strong> be explained in
+the submission package.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Test results are contained in the output XML files, which are an extension
 of the common "*Unit" schema with some custom elements.
 Each test case leaf section is reached by a run of its own, and is recorded
 with a <code>testcase</code> tag, e.g.:</p>
@@ -2271,25 +2299,6 @@ the number of top level test cases):</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;cts:results</span> <span class="na">testSuccessCount=</span><span class="s">"1"</span> <span class="na">testFailureCount=</span><span class="s">"0"</span><span class="nt">/&gt;</span></code></pre>
 </div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Any error or failure when testing <strong>core or KHR extension</strong> functionality
-means your runtime is <strong>not conformant</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Any warnings <strong>may</strong> indicate non-conformance and <strong>must</strong> be explained in
-the submission package.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -2582,7 +2591,176 @@ adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_self_test
 </div>
 </div>
 <div class="sect1">
-<h2 id="code">6. Test Source Code</h2>
+<h2 id="_automating_cts_for_internal_testing_and_development">6. Automating CTS for Internal Testing and Development</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the CTS can be a useful tool when developing and maintaining a runtime,
+there are ways to run it that are amenable to automation</p>
+</div>
+<div class="sect2">
+<h3 id="_with_conformance_automation">6.1. With Conformance Automation</h3>
+<div class="paragraph">
+<p>If your runtime implements <code>XR_EXT_conformance_automation</code>, you can run a
+large number of tests without actually interacting.</p>
+</div>
+<div class="paragraph">
+<p>The key parts to the command line here are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-E XR_EXT_conformance_automation</code> - Force enable the conformance
+automation extension.
+This is detected and used to replace user input in many tests.</p>
+</li>
+<li>
+<p><code>--autoSkipTimeout 3000</code> - Proceeds without interaction (via a test
+"skip") through tests awaiting user judgement, after 3 seconds (3000ms).
+This mainly affects the interactive composition tests.
+This is primarily to exercise runtime behavior incidentally triggered by
+these tests.</p>
+</li>
+<li>
+<p><code>exclude:[noauto]</code> - the <code>[noauto]</code> tag is applied to test cases that
+support neither conformance automation nor the auto-skip timeout.</p>
+</li>
+</ul>
+</div>
+<details>
+<summary class="title">Example command lines for OpenXR 1.0</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d11 <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_d3d11.xml <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d12 <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_d3d12.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_vulkan.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan2 <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_vulkan2.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> opengl <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_opengl.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> metal <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_metal.xml  <span class="nt">--reporter</span> console</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Corresponding ADB commands to launch on Android for OpenXR 1.0</summary>
+<div class="content">
+<div class="paragraph">
+<p>Omit any graphics API binding extensions your runtime does not support.
+These commands do not match one-to-one with the desktop examples due to
+different graphics API availability on Android.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[noauto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename conformance_automation_vulkan.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/conformance_automation_vulkan.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[noauto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan2 <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename conformance_automation_vulkan2.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/conformance_automation_vulkan2.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[noauto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin opengles <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename conformance_automation_opengles.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/conformance_automation_opengles.xml</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_without_conformance_automation">6.2. Without Conformance Automation</h3>
+<div class="paragraph">
+<p>If your runtime does not implement <code>XR_EXT_conformance_automation</code>, fewer
+tests are available for automatic use.</p>
+</div>
+<div class="paragraph">
+<p>The first collection of such tests are the non-interactive (automated)
+tests: see <a href="#submissions-testing-steps">Testing steps</a>.</p>
+</div>
+<div class="paragraph">
+<p>The second collection are the interactive composition tests, configured in
+auto-skip mode as previously discussed.
+The key parts to the command line here are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"[composition][interactive]"</code> - Select only the interactive composition
+tests, which are all compatible with auto-skip timeouts.</p>
+</li>
+<li>
+<p><code>--autoSkipTimeout 3000</code> - Proceeds without interaction (via a test
+"skip") through tests awaiting user judgement, after 3 seconds (3000ms).
+This is primarily to exercise runtime behavior incidentally triggered by
+these tests.</p>
+</li>
+</ul>
+</div>
+<details>
+<summary class="title">Example command lines for OpenXR 1.0</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d11 <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_d3d11.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d12 <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_d3d12.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_vulkan.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan2 <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_vulkan2.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> opengl <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_opengl.xml  <span class="nt">--reporter</span> console
+
+conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> metal <span class="nt">--apiVersion</span> 1.0 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_metal.xml  <span class="nt">--reporter</span> console</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Corresponding ADB commands to launch on Android for OpenXR 1.0</summary>
+<div class="content">
+<div class="paragraph">
+<p>Omit any graphics API binding extensions your runtime does not support.
+These commands do not match one-to-one with the desktop examples due to
+different graphics API availability on Android.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[composition][interactive],--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_composition_autoskip_vulkan.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_composition_autoskip_vulkan.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[composition][interactive],--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan2 <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_composition_autoskip_vulkan2.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_composition_autoskip_vulkan2.xml
+
+
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[composition][interactive],--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin opengles <span class="nt">-e</span> apiVersion 1.0 <span class="nt">-e</span> xmlFilename interactive_composition_autoskip_opengles.xml
+
+<span class="c"># Wait until tests complete, then retrieve results with</span>
+adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_composition_autoskip_opengles.xml</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="code">7. Test Source Code</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The CTS uses <a href="https://github.com/catchorg/Catch2">Catch2</a> as the testing
@@ -2592,7 +2770,7 @@ provides substantial features both for testing as well as for setting up
 preconditions to be able to test OpenXR functionality.</p>
 </div>
 <div class="sect2">
-<h3 id="code-assigning-tags">6.1. Assigning Tags</h3>
+<h3 id="code-assigning-tags">7.1. Assigning Tags</h3>
 <div class="paragraph">
 <p>Tests should be categorized using tags.
 The following common tags are used:</p>
@@ -2665,7 +2843,7 @@ development and testing.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="code-choosing-assertion">6.2. Choosing an assertion</h3>
+<h3 id="code-choosing-assertion">7.2. Choosing an assertion</h3>
 <div class="paragraph">
 <p>It provides <code>CHECK</code>, <code>REQUIRE</code>, and <code>WARN</code> families of macros, among others.
 In addition, the CTS framework provides a collection of <code>XRC_THROW_&#8230;&#8203;</code>
@@ -2761,7 +2939,7 @@ assertion documentation</a></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.43<br>
+Version 1.1.45<br>
 </div>
 </div>
 </body>
