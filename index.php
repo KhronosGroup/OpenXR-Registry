@@ -59,12 +59,13 @@ include_once("../../assets/static_pages/khr_page_top.php");
      and window systems, as well as all vendor-specific and multi-vendor
      <kbd>EXT</kbd> non-Khronos extensions that have been incorporated into
      the Specification Repository. </li>
-<li> <b>OpenXR 1.1 API + Khronos-defined Extensions</b>
+<li> <b>OpenXR 1.1 API + Ratified Extensions</b>
      <a href="specs/1.1-khr/html/xrspec.html">(Single-file HTML)</a>
      <a href="specs/1.1-khr/pdf/xrspec.pdf">(PDF)</a> <br>
      This Specification includes ratified Khronos-defined <kbd>KHR</kbd>
      extensions such as the graphics API interfaces used on different
-     platforms and window systems. </li>
+     platforms and window systems, as well as ratified multi-vendor
+     <kbd>EXT</kbd> extensions. </li>
 </ul>
 
 <h2 id="refguide"> <b>OpenXR 1.0 Reference Guide</b> </h2>
