@@ -7,7 +7,6 @@
 <meta name="generator" content="Asciidoctor 2.0.23">
 <title>xrCreateMarkerDetectorML(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/rouge-github.css">
 <style>
 /* Khronos overrides for Rouge 'github' theme for accessibility */
@@ -76,30 +75,10 @@ pre.rouge .w {
     <span class="n">XrMarkerDetectorML</span><span class="o">*</span>                         <span class="n">markerDetector</span><span class="p">);</span></code></pre>
 </div>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Parameter Descriptions</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>session</code> is an <a href="XrSession.html">XrSession</a> in which the marker detection will be
-active.</p>
-</li>
-<li>
-<p><code>createInfo</code> is the <a href="XrMarkerDetectorCreateInfoML.html">XrMarkerDetectorCreateInfoML</a> used to specify
-the marker detection.</p>
-</li>
-<li>
-<p><code>markerDetector</code> is the returned <a href="XrMarkerDetectorML.html">XrMarkerDetectorML</a> handle.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_parameters">Parameters</h2>
+<h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>An application creates an <a href="XrMarkerDetectorML.html">XrMarkerDetectorML</a> handle using the
@@ -107,11 +86,6 @@ the marker detection.</p>
 If <code>createInfo</code> contains mutually exclusive contents, the runtime <strong class="purple">must</strong>
 return <code>XR_ERROR_MARKER_DETECTOR_INVALID_CREATE_INFO_ML</code>.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>If a runtime is unable to create a marker detector due to some internal
 limit, the runtime <strong class="purple">must</strong> return <code>XR_ERROR_LIMIT_REACHED</code>.</p>
@@ -234,7 +208,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.45<br>
+Version 1.1.46<br>
 </div>
 </div>
 </body>

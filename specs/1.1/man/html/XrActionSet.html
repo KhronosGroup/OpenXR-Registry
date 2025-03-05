@@ -7,7 +7,6 @@
 <meta name="generator" content="Asciidoctor 2.0.23">
 <title>XrActionSet(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/rouge-github.css">
 <style>
 /* Khronos overrides for Rouge 'github' theme for accessibility */
@@ -78,19 +77,30 @@ pre.rouge .w {
 <p>Action sets are application-defined collections of actions.
 They are attached to a given <a href="XrSession.html">XrSession</a> with a
 <a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a> call.
-They are enabled or disabled by the application via <a href="xrSyncActions.html">xrSyncActions</a>
-depending on the current application context.
-For example, a game may have one set of actions that apply to controlling a
-character and another set for navigating a menu system.
-When these actions are grouped into two <a href="XrActionSet.html">XrActionSet</a> handles they can
-be selectively enabled and disabled using a single function call.</p>
+Enabled action sets are indicated by the application via <a href="xrSyncActions.html">xrSyncActions</a>
+depending on the current application context.</p>
+</div>
+<div class="paragraph">
+<p>For example, consider using one collection of actions that apply to
+controlling a character and another collection for navigating a menu system.
+When these actions are structured as two <a href="XrActionSet.html">XrActionSet</a> handles, the
+applicable action set is easy to specify according to application logic
+using a single function call.</p>
+</div>
+<div class="paragraph">
+<p>Further, suppose some actions only apply when operating a vehicle as a
+character.
+This is intended to be modeled as another separate action set.
+While the user is operating a vehicle, the application enables both the
+character-control and vehicle action sets simultaneously in each
+<a href="xrSyncActions.html">xrSyncActions</a> call.</p>
 </div>
 <div class="paragraph">
 <p>Actions are passed a handle to their <a href="XrActionSet.html">XrActionSet</a> when they are
 created.</p>
 </div>
 <div class="paragraph">
-<p>Action sets are created by calling <a href="xrCreateActionSet.html">xrCreateActionSet</a>:</p>
+<p>Action sets are created by calling <a href="xrCreateActionSet.html">xrCreateActionSet</a>.</p>
 </div>
 </div>
 </div>
@@ -98,7 +108,7 @@ created.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrActiveActionSet.html">XrActiveActionSet</a>, <a href="XrActiveActionSetPriorityEXT.html">XrActiveActionSetPriorityEXT</a>, <a href="XrInteractionProfileDpadBindingEXT.html">XrInteractionProfileDpadBindingEXT</a>, <a href="XrSessionActionSetsAttachInfo.html">XrSessionActionSetsAttachInfo</a>, <a href="xrCreateAction.html">xrCreateAction</a>, <a href="xrCreateActionSet.html">xrCreateActionSet</a>, <a href="xrDestroyActionSet.html">xrDestroyActionSet</a></p>
+<p><a href="XR_DEFINE_HANDLE.html">XR_DEFINE_HANDLE</a>, <a href="XrActiveActionSet.html">XrActiveActionSet</a>, <a href="XrActiveActionSetPriorityEXT.html">XrActiveActionSetPriorityEXT</a>, <a href="XrInteractionProfileDpadBindingEXT.html">XrInteractionProfileDpadBindingEXT</a>, <a href="XrSessionActionSetsAttachInfo.html">XrSessionActionSetsAttachInfo</a>, <a href="xrCreateAction.html">xrCreateAction</a>, <a href="xrCreateActionSet.html">xrCreateActionSet</a>, <a href="xrDestroyActionSet.html">xrDestroyActionSet</a></p>
 </div>
 </div>
 </div>
@@ -130,7 +140,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.45<br>
+Version 1.1.46<br>
 </div>
 </div>
 </body>
