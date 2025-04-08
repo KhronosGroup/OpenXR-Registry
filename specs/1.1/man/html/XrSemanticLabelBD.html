@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XrSemanticLabelBD(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSemanticLabelBD(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSemanticLabelBD - Semantic label type</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Specify the semantic labels of spatial entity.</p>
+</div>
+<div id="XrSemanticLabelBD" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_BD_spatial_sensing</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrSemanticLabelBD</span> <span class="p">{</span>
+    <span class="n">XR_SEMANTIC_LABEL_UNKNOWN_BD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_FLOOR_BD</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_CEILING_BD</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_WALL_BD</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_DOOR_BD</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_WINDOW_BD</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_OPENING_BD</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_TABLE_BD</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_SOFA_BD</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_CHAIR_BD</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_HUMAN_BD</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_BEAM_BD</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_COLUMN_BD</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_CURTAIN_BD</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_CABINET_BD</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_BED_BD</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_PLANT_BD</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_SCREEN_BD</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_VIRTUAL_WALL_BD</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_REFRIGERATOR_BD</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_WASHING_MACHINE_BD</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_AIR_CONDITIONER_BD</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_LAMP_BD</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_WALL_ART_BD</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_STAIRWAY_BD</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">XR_SEMANTIC_LABEL_MAX_ENUM_BD</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrSemanticLabelBD</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enum</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_UNKNOWN_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label that the runtime does not know.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_FLOOR_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of floor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_CEILING_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of ceiling.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_WALL_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of wall.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_DOOR_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of door.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_WINDOW_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of window.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_OPENING_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of opening, usually refers to a space that something or someone can pass through.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_TABLE_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of table.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_SOFA_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of sofa, usually refers to a seat that multiple people can sit on.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_CHAIR_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of chair, usually refers to a seat that for one person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_HUMAN_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of human.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_BEAM_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of beam, which usually supports weight in a building or other structure.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_COLUMN_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of column, which is vertical and used as a support for the roof of a building.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_CURTAIN_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of curtain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_CABINET_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of cabinet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_BED_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of bed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_PLANT_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of plant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_SCREEN_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of screen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_VIRTUAL_WALL_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of virtual wall, which is generated by the system scene capture app in order to create a closed space for users.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_REFRIGERATOR_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of refrigerator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_WASHING_MACHINE_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of washing machine.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_AIR_CONDITIONER_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of air conditioner.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_LAMP_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of lamp.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_WALL_ART_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of wall art, like a painting or a photo frame.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SEMANTIC_LABEL_STAIRWAY_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic label of stairway.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_BD_spatial_sensing.html">XR_BD_spatial_sensing</a>, <a href="XrSenseDataFilterSemanticBD.html">XrSenseDataFilterSemanticBD</a>, <a href="XrSpatialEntityComponentDataSemanticBD.html">XrSpatialEntityComponentDataSemanticBD</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSemanticLabelBD" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.47<br>
+</div>
+</div>
+</body>
+</html>

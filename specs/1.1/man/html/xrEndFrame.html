@@ -154,7 +154,7 @@ different layers.</p>
 <div class="paragraph">
 <p><code>XR_ERROR_LAYER_INVALID</code> <strong class="purple">must</strong> be returned if an unknown, unsupported
 layer type, or <code>NULL</code> pointer is passed as one of the
-<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::layers.</p>
+<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::<code>layers</code>.</p>
 </div>
 <div class="paragraph">
 <p><code>XR_ERROR_LAYER_INVALID</code> <strong class="purple">must</strong> be returned if a layer references a
@@ -162,18 +162,21 @@ swapchain that has no released swapchain image.</p>
 </div>
 <div class="paragraph">
 <p><code>XR_ERROR_LAYER_LIMIT_EXCEEDED</code> <strong class="purple">must</strong> be returned if
-<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::layerCount exceeds
+<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::<code>layerCount</code> exceeds
 <a href="XrSystemGraphicsProperties.html">XrSystemGraphicsProperties</a>::maxLayerCount or if the runtime is unable
 to composite the specified layers due to resource constraints.</p>
 </div>
 <div class="paragraph">
 <p><code>XR_ERROR_SWAPCHAIN_RECT_INVALID</code> <strong class="purple">must</strong> be returned if
-<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::layers contains a composition layer which references
-pixels outside of the associated swapchain image or if negatively sized.</p>
+<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::<code>layers</code> contains a composition layer which
+references pixels outside of the associated swapchain image or if negatively
+sized.</p>
 </div>
 <div class="paragraph">
-<p><code>XR_ERROR_ENVIRONMENT_BLEND_MODE_UNSUPPORTED</code> <strong class="purple">must</strong> be returned if
-<a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::environmentBlendMode is not supported.</p>
+<p><code>XR_ERROR_ENVIRONMENT_BLEND_MODE_UNSUPPORTED</code> <strong class="purple">must</strong> be returned if and
+only if the <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::<code>environmentBlendMode</code> was not
+enumerated by <a href="xrEnumerateEnvironmentBlendModes.html">xrEnumerateEnvironmentBlendModes</a> for the
+<a href="XrInstance.html">XrInstance</a> and <a href="XrSystemId.html">XrSystemId</a> used to create <code>session</code>.</p>
 </div>
 <div class="paragraph">
 <p><code>XR_ERROR_SESSION_NOT_RUNNING</code> <strong class="purple">must</strong> be returned if the <code>session</code>
@@ -330,7 +333,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.46<br>
+Version 1.1.47<br>
 </div>
 </div>
 </body>

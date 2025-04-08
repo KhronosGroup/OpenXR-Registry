@@ -764,8 +764,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.1.46</span>
-<br><span id="revremark">from git ref release-1.1.46</span>
+<span id="revnumber">version 1.1.47</span>
+<br><span id="revremark">from git ref release-1.1.47</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -922,6 +922,9 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <li><a href="#xml-interaction-profile-component">6.2.4. Interaction Profile Component (<code>component</code> tag)</a></li>
 <li><a href="#xml-require-interaction-profile">6.2.5. Contents of <code>require</code>: <code>interaction_profile</code> Tags</a></li>
 <li><a href="#xml-require-extend-interaction-profile">6.2.6. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles</a></li>
+<li><a href="#xml-require-extend-interaction-profile-predicate">6.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</a></li>
+<li><a href="#xml-extend-interaction-profile-predicate-condition">6.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</a></li>
+<li><a href="#xml-extend-interaction-profile-user_path">6.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</a></li>
 </ul>
 </li>
 </ul>
@@ -1182,7 +1185,7 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 46)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 47)</code></pre>
 </div>
 </div>
 </div>
@@ -5751,13 +5754,22 @@ and which may be used by other tools operating on the XML.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>In "Contents of <code>require</code> and <code>remove</code> tags", add:
-<a href="#xml-require-interaction-profile"><code>interaction_profile</code> Tags</a></p>
+<p>In "Contents of <code>require</code> and <code>remove</code> tags", add the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#xml-require-interaction-profile"><code>interaction_profile</code> Tags</a></p>
 </li>
 <li>
-<p>In "Contents of <code>require</code> and <code>remove</code> tags", add:
-<a href="#xml-require-extend-interaction-profile"><code>extend</code> Tags for interaction
+<p><a href="#xml-require-extend-interaction-profile"><code>extend</code> Tags for interaction
 profiles</a></p>
+</li>
+<li>
+<p><a href="#xml-require-extend-interaction-profile-predicate"><code>extend</code> Tags for
+interaction profiles matching a predicate</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -5812,6 +5824,12 @@ profiles:</p>
 </li>
 <li>
 <p><a href="#xml-interaction-profile-component">Interaction Profile Component (<code>component</code> tag)</a></p>
+</li>
+<li>
+<p><a href="#xml-extend-interaction-profile-user_path">Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</a></p>
+</li>
+<li>
+<p><a href="#xml-extend-interaction-profile-predicate-condition">Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</a></p>
 </li>
 </ul>
 </div>
@@ -6015,6 +6033,138 @@ same schema used directly within an <code>interaction_profile</code> block.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="xml-require-extend-interaction-profile-predicate">6.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</h4>
+<div class="paragraph">
+<p>Specifies additional component paths to accept in all interaction profiles
+that match the provided predicate and that are previously included in the
+specification by a dependency of this block&#8217;s parent.
+Valid only in <code>require</code> blocks.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>ExtendPredicateInteractionProfileElt</code> in the Relax-NG schema.</p>
+</div>
+<div class="sect4">
+<h5 id="_attributes_of_interaction_profile_extend_tags_in_require_blocks_2">Attributes of interaction profile <code>extend</code> tags in <code>require</code> blocks</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>interaction_profile_predicate</code> - required.
+Value must be <code>"true"</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_contents_of_interaction_profile_predicate_extend_tags_in_require_blocks">Contents of interaction profile predicate <code>extend</code> tags in <code>require</code> blocks</h5>
+<div class="paragraph">
+<p>One or more
+<a href="#xml-extend-interaction-profile-predicate-condition"><code>condition</code></a> tags, at
+least one of which must be matched by a given interaction profile for the
+modification to apply.</p>
+</div>
+<div class="paragraph">
+<p>Zero or more <a href="#xml-extend-interaction-profile-user_path"><code>user_path</code></a> tags,
+indicating additional top level <em>/user</em> paths to add to matching
+interaction profiles and how they interact with component sub-paths limited
+to select user paths.</p>
+</div>
+<div class="paragraph">
+<p>Zero or more <a href="#xml-interaction-profile-component"><code>component</code></a> tags, in the
+same schema used directly within an <code>interaction_profile</code> block, indicating
+additional components to add to matching interaction profiles.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xml-extend-interaction-profile-predicate-condition">6.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</h4>
+<div class="paragraph">
+<p>Specifies a collection of user paths and component sub-paths to check on a
+candidate interaction profile.
+If all tags within a given <code>condition</code> tag match an interaction profile, the
+condition is said to be matched.</p>
+</div>
+<div class="paragraph">
+<p>Valid only in <code>extend</code> blocks marked with
+<code>interaction_profile_predicate="true"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>ExtendPredicateInteractionProfileElt</code> in the Relax-NG schema.</p>
+</div>
+<div class="sect4">
+<h5 id="_attributes_of_condition_tags_in_interaction_profile_predicate_extend_blocks">Attributes of <code>condition</code> tags in interaction profile predicate <code>extend</code> blocks</h5>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_contents_of_condition_tags_in_interaction_profile_predicate_extend_blocks">Contents of <code>condition</code> tags in interaction profile predicate <code>extend</code> blocks</h5>
+<div class="paragraph">
+<p>One or more elements, of which each may be either of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <a href="#xml-interaction-profile-user-path"><code>user_path</code></a> tag, in the same
+schema used directly within an <code>interaction_profile</code> block.
+For each such tag, the tag is considered "matched" iff a given interaction
+profile contains a <code>user_path</code> tag with a matching <code>path</code> attribute, or if
+one is effectively added by another <code>extend</code> block.</p>
+</li>
+<li>
+<p>A <a href="#xml-interaction-profile-component"><code>component</code></a> tag, in the same
+schema used directly within an <code>interaction_profile</code> block, except that
+the <code>system</code> and <code>user_path</code> attributes are omitted and forbidden.
+same schema used directly within an <code>interaction_profile</code> block.
+For each such tag, the tag is considered "matched" iff a given interaction
+profile contains a <code>component</code> tag with matching <code>subpath</code> and <code>type</code>
+attributes, or if one is effectively added by another <code>extend</code> block.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xml-extend-interaction-profile-user_path">6.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</h4>
+<div class="paragraph">
+<p>Specifies a user path to add to the interaction profile or profiles being
+extended.</p>
+</div>
+<div class="paragraph">
+<p>Valid only in <code>extend</code> blocks.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>ExtendInteractionProfileUserPathElt</code> in the Relax-NG schema.</p>
+</div>
+<div class="sect4">
+<h5 id="_attributes_of_user_path_tags_in_interaction_profile_extend_blocks">Attributes of <code>user_path</code> tags in interaction profile <code>extend</code> blocks</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>path</code> - required.
+Full top-level <em>/user</em> path (starting with <em>/user/</em>)</p>
+</li>
+<li>
+<p><code>inherit</code> - optional.
+If provided, must be a full top-level <em>/user</em> path (starting with
+<em>/user/</em>).
+Each <code>component</code> with the indicated user path in its <code>user_path</code> attribute
+will be treated as if the component&#8217;s <code>user_path</code> attribute <strong>also</strong>
+listed the <code>path</code> attribute of this tag.
+That is, if a component is limited to only being present on some subset of
+user paths including the indicated user path, it will instead be limited
+to the subset plus the <code>path</code> attribute named by this tag.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_contents_of_user_path_tags_in_interaction_profile_extend_blocks">Contents of <code>user_path</code> tags in interaction profile <code>extend</code> blocks</h5>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -6088,6 +6238,11 @@ convention no longer used by Vulkan.</p>
 <p>2024-09-27 - Correct some errors in the text schema related to interaction
 profiles, and make other improvements in the schema chapter.</p>
 </li>
+<li>
+<p>2025-04-08 - Update the XML schema used for extending interaction
+profiles, providing a way to extend all interaction profiles that match a
+predicate.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -6095,7 +6250,7 @@ profiles, and make other improvements in the schema chapter.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.46<br>
+Version 1.1.47<br>
 </div>
 </div>
 </body>

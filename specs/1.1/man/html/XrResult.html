@@ -239,6 +239,26 @@ pre.rouge .w {
     <span class="n">XR_ERROR_HINT_ALREADY_SET_QCOM</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000306000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_HTC_anchor</span>
     <span class="n">XR_ERROR_NOT_AN_ANCHOR_HTC</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000319000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_sensing</span>
+    <span class="n">XR_ERROR_SPATIAL_ENTITY_ID_INVALID_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000389000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_sensing</span>
+    <span class="n">XR_ERROR_SPATIAL_SENSING_SERVICE_UNAVAILABLE_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000389001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_sensing</span>
+    <span class="n">XR_ERROR_ANCHOR_NOT_SUPPORTED_FOR_ENTITY_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000389002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_anchor</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_NOT_FOUND_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000390000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_anchor_sharing</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_SHARING_NETWORK_TIMEOUT_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000391000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_anchor_sharing</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_SHARING_AUTHENTICATION_FAILURE_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000391001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_anchor_sharing</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_SHARING_NETWORK_FAILURE_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000391002</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_anchor_sharing</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_SHARING_LOCALIZATION_FAIL_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000391003</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_anchor_sharing</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_SHARING_MAP_INSUFFICIENT_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000391004</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_spatial_scene</span>
+    <span class="n">XR_ERROR_SCENE_CAPTURE_FAILURE_BD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000392000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_plane_detection</span>
     <span class="n">XR_ERROR_SPACE_NOT_LOCATABLE_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000429000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_plane_detection</span>
@@ -805,6 +825,22 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The provided space is valid but not an anchor.  (Added by the <code><a href="XR_HTC_anchor.html">XR_HTC_anchor</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ENTITY_ID_INVALID_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The spatial entity id is invalid.  (Added by the <code><a href="XR_BD_spatial_sensing.html">XR_BD_spatial_sensing</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_SENSING_SERVICE_UNAVAILABLE_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The spatial sensing service is unavailable.  (Added by the <code><a href="XR_BD_spatial_sensing.html">XR_BD_spatial_sensing</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_ANCHOR_NOT_SUPPORTED_FOR_ENTITY_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The spatial entity does not support anchor.  (Added by the <code><a href="XR_BD_spatial_sensing.html">XR_BD_spatial_sensing</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SCENE_CAPTURE_FAILURE_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The scene capture is failed, for example exiting abnormally.  (Added by the <code><a href="XR_BD_spatial_scene.html">XR_BD_spatial_scene</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_NOT_LOCATABLE_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The space passed to the function was not locatable.  (Added by the <code><a href="XR_EXT_plane_detection.html">XR_EXT_plane_detection</a></code> extension)</p></td>
 </tr>
@@ -846,7 +882,7 @@ moment.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPACE_GROUP_NOT_FOUND_META</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The group UUID was not be found within the runtime  (Added by the <code><a href="XR_META_spatial_entity_group_sharing.html">XR_META_spatial_entity_group_sharing</a></code> extension)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The group UUID was not found within the runtime  (Added by the <code><a href="XR_META_spatial_entity_group_sharing.html">XR_META_spatial_entity_group_sharing</a></code> extension)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED_KHR</code></p></td>
@@ -865,7 +901,7 @@ moment.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrEventDataColocationAdvertisementCompleteMETA.html">XrEventDataColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataColocationDiscoveryCompleteMETA.html">XrEventDataColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataShareSpacesCompleteMETA.html">XrEventDataShareSpacesCompleteMETA</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrEventDataStartColocationAdvertisementCompleteMETA.html">XrEventDataStartColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStartColocationDiscoveryCompleteMETA.html">XrEventDataStartColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataStopColocationAdvertisementCompleteMETA.html">XrEventDataStopColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
+<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrEventDataColocationAdvertisementCompleteMETA.html">XrEventDataColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataColocationDiscoveryCompleteMETA.html">XrEventDataColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataShareSpacesCompleteMETA.html">XrEventDataShareSpacesCompleteMETA</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrEventDataStartColocationAdvertisementCompleteMETA.html">XrEventDataStartColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStartColocationDiscoveryCompleteMETA.html">XrEventDataStartColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataStopColocationAdvertisementCompleteMETA.html">XrEventDataStopColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrSenseDataQueryCompletionBD.html">XrSenseDataQueryCompletionBD</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorCreateCompletionBD.html">XrSpatialAnchorCreateCompletionBD</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
 </div>
 </div>
 </div>
@@ -897,7 +933,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.46<br>
+Version 1.1.47<br>
 </div>
 </div>
 </body>
