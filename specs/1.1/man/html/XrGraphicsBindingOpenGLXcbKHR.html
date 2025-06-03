@@ -103,8 +103,7 @@ No such structures are defined in core OpenXR or this extension.</p>
 <p><code>connection</code> is a valid <code>xcb_connection_t</code>.</p>
 </li>
 <li>
-<p><code>screenNumber</code> is an index indicating which screen should be used for
-rendering.</p>
+<p><code>screenNumber</code> is an index indicating the screen to for rendering.</p>
 </li>
 <li>
 <p><code>fbconfigid</code> is a valid XCB OpenGL GLX <code>xcb_glx_fbconfig_t</code>.</p>
@@ -128,10 +127,22 @@ rendering.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating an OpenGL-backed <a href="XrSession.html">XrSession</a> on any Linux/Unix platform
-that utilizes X11 and GLX, via the Xlib library, the application will
-provide a pointer to an <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a> in the <code>next</code>
-chain of the <a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>.</p>
+<p>To create an OpenGL-backed <a href="XrSession.html">XrSession</a> on any Linux/Unix platform that
+utilizes X11 and GLX, via the Xlib library, the application provides a
+pointer to an <a href="XrGraphicsBindingOpenGLXcbKHR.html">XrGraphicsBindingOpenGLXcbKHR</a> in the
+<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>next</code> chain when calling
+<a href="xrCreateSession.html">xrCreateSession</a>.</p>
+</div>
+<div class="paragraph">
+<p>Creating a session using this structure triggers several requirements on the
+runtime regarding swapchain images.
+See the specification of <a href="XrSwapchainImageOpenGLKHR.html">XrSwapchainImageOpenGLKHR</a> for details.</p>
+</div>
+<div class="paragraph">
+<p>By providing a GLX context as <code>glxContext</code>, the application becomes
+subject to restrictions on use of that context which effectively introduces
+additional external synchronization requirements on some OpenXR calls.
+See <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_opengl_enable-threading" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_opengl_enable-threading</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>The required window system configuration define to expose this structure
@@ -208,7 +219,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

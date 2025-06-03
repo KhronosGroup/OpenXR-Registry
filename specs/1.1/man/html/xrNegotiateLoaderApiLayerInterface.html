@@ -161,16 +161,16 @@ following is true:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>the API layer does not support the interface versions supported by the
-loader as specified by the parameters
-<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
-<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code></p>
+<p>The API layer does not support the interface versions supported by the
+loader, as specified by the range
+<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> through
+<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code> inclusive.</p>
 </li>
 <li>
-<p>the API layer does not support the API versions supported by the loader as
-specified by the parameters
-<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> and
-<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code>.</p>
+<p>The API layer does not support the API versions supported by the loader,
+ignoring "patch" version components, as specified by the range
+<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> through
+<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code> inclusive.</p>
 </li>
 </ul>
 </div>
@@ -183,16 +183,16 @@ not support the loader&#8217;s request.</p>
 <a href="XrNegotiateApiLayerRequest.html">XrNegotiateApiLayerRequest</a>::<code>layerInterfaceVersion</code> with the API
 layer interface version it desires to support.
 The <a href="XrNegotiateApiLayerRequest.html">XrNegotiateApiLayerRequest</a>::<code>layerInterfaceVersion</code> set <strong class="purple">must</strong>
-be between <a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code> and
-<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code>.</p>
+be in the range <a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minInterfaceVersion</code>
+through <a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxInterfaceVersion</code> inclusive.</p>
 </div>
 <div class="paragraph">
 <p>If the function succeeds, the API layer <strong class="purple">must</strong> set the
 <a href="XrNegotiateApiLayerRequest.html">XrNegotiateApiLayerRequest</a>::<code>layerApiVersion</code> with the API version
 of OpenXR it will execute under.
-The <a href="XrNegotiateApiLayerRequest.html">XrNegotiateApiLayerRequest</a>::<code>layerApiVersion</code> set <strong class="purple">must</strong> be
-between <a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> and
-<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code>.</p>
+The <a href="XrNegotiateApiLayerRequest.html">XrNegotiateApiLayerRequest</a>::<code>layerApiVersion</code> set <strong class="purple">must</strong> be in
+the range <a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>minApiVersion</code> through
+<a href="XrNegotiateLoaderInfo.html">XrNegotiateLoaderInfo</a>::<code>maxApiVersion</code> inclusive.</p>
 </div>
 <div class="paragraph">
 <p>If the function succeeds, the API layer <strong class="purple">must</strong> set the
@@ -300,7 +300,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

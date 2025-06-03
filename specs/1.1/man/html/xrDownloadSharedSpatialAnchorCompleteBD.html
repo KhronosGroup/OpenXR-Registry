@@ -165,14 +165,10 @@ Do not call until the <code>future</code> is <a href="https://registry.khronos.o
 set the <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>::<code>futureResult</code> value to
 <code>XR_SUCCESS</code>.
 This indicates that the spatial anchor has been successfully downloaded to
-the local device.
-Subsequently, the runtime will locate the downloaded spatial anchor again.
-Once the runtime has successfully located the downloaded spatial anchor
-again, it <strong class="purple">must</strong> queue an <a href="XrEventDataSenseDataUpdatedBD.html">XrEventDataSenseDataUpdatedBD</a> event.
-Upon receiving this event, to obtain the spatial anchors from the spatial
-anchor data provider, call <a href="xrQuerySenseDataAsyncBD.html">xrQuerySenseDataAsyncBD</a>,
-<a href="xrQuerySenseDataCompleteBD.html">xrQuerySenseDataCompleteBD</a>, <a href="xrGetQueriedSenseDataBD.html">xrGetQueriedSenseDataBD</a>, and
-<a href="xrCreateSpatialEntityAnchorBD.html">xrCreateSpatialEntityAnchorBD</a>.
+the local device and located.
+To obtain the spatial anchors from the spatial anchor data provider, call
+<a href="xrQuerySenseDataAsyncBD.html">xrQuerySenseDataAsyncBD</a>, <a href="xrQuerySenseDataCompleteBD.html">xrQuerySenseDataCompleteBD</a>,
+<a href="xrGetQueriedSenseDataBD.html">xrGetQueriedSenseDataBD</a>, and <a href="xrCreateSpatialEntityAnchorBD.html">xrCreateSpatialEntityAnchorBD</a>.
 All of these functions are defined in <code><a href="XR_BD_spatial_sensing.html">XR_BD_spatial_sensing</a></code>.</p>
 </div>
 <div class="admonitionblock note">
@@ -309,7 +305,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

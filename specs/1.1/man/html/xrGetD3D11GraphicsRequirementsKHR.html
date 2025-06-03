@@ -61,8 +61,7 @@ pre.rouge .w {
 <h2 id="_c_specification">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To retrieve the D3D11 feature level and graphics device for an instance and
-system, call:</p>
+<p>The <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a> function is defined as:</p>
 </div>
 <div id="xrGetD3D11GraphicsRequirementsKHR" class="paragraph">
 <p></p>
@@ -108,14 +107,18 @@ output structure.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a> function identifies to the
-application what graphics device (Windows LUID) needs to be used and the
-minimum feature level to use.
+<p>This call retrieves the D3D11 feature level and graphics device for an
+instance and system.
+The <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a> function identifies to the
+application the graphics device (Windows LUID) to be used and the minimum
+feature level to use.
 The runtime <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_REQUIREMENTS_CALL_MISSING</code>
 (<code>XR_ERROR_VALIDATION_FAILURE</code> <strong class="purple">may</strong> be returned due to legacy behavior)
 on calls to <a href="xrCreateSession.html">xrCreateSession</a> if <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a>
-has not been called for the same <code>instance</code> and <code>systemId</code>.
-The LUID and feature level that <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a>
+has not been called for the same <code>instance</code> and <code>systemId</code>.</p>
+</div>
+<div class="paragraph">
+<p>The LUID and feature level that <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a>
 returns <strong class="purple">must</strong> be used to create the <code>ID3D11Device</code> that the application
 passes to <a href="xrCreateSession.html">xrCreateSession</a> in the <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>.</p>
 </div>
@@ -219,7 +222,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

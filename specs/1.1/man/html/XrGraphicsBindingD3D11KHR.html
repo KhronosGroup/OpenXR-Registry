@@ -107,14 +107,19 @@ No such structures are defined in core OpenXR or this extension.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating a D3D11-backed <a href="XrSession.html">XrSession</a>, the application will provide a
-pointer to an <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a> in the
-<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>next</code> field of structure passed to
+<p>To create a D3D11-backed <a href="XrSession.html">XrSession</a>, the application provides a pointer
+to an <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a> structure in the
+<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>next</code> chain when calling
 <a href="xrCreateSession.html">xrCreateSession</a>.
 The D3D11 device specified in <a href="XrGraphicsBindingD3D11KHR.html">XrGraphicsBindingD3D11KHR</a>::<code>device</code>
 <strong class="purple">must</strong> be created in accordance with the requirements retrieved through
 <a href="xrGetD3D11GraphicsRequirementsKHR.html">xrGetD3D11GraphicsRequirementsKHR</a>, otherwise <a href="xrCreateSession.html">xrCreateSession</a>
 <strong class="purple">must</strong> return <code>XR_ERROR_GRAPHICS_DEVICE_INVALID</code>.</p>
+</div>
+<div class="paragraph">
+<p>Creating a session using this structure triggers several requirements on the
+runtime regarding swapchain images.
+See the specification of <a href="XrSwapchainImageD3D11KHR.html">XrSwapchainImageD3D11KHR</a> for details.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -175,7 +180,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

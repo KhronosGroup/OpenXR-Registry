@@ -99,8 +99,8 @@ No such structures are defined in core OpenXR or this extension.</p>
 <p><code>adapterLuid</code> identifies what graphics device needs to be used.</p>
 </li>
 <li>
-<p><code>minFeatureLevel</code> is the minimum feature level that the D3D12 device
-must be initialized with.</p>
+<p><code>minFeatureLevel</code> is the minimum feature level for which to initialize
+the D3D12 device.</p>
 </li>
 </ul>
 </div>
@@ -113,7 +113,8 @@ must be initialized with.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="XrGraphicsRequirementsD3D12KHR.html">XrGraphicsRequirementsD3D12KHR</a> is populated by
-<a href="xrGetD3D12GraphicsRequirementsKHR.html">xrGetD3D12GraphicsRequirementsKHR</a>.</p>
+<a href="xrGetD3D12GraphicsRequirementsKHR.html">xrGetD3D12GraphicsRequirementsKHR</a> with the runtime&#8217;s D3D12 API feature
+level and adapter requirements.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -177,7 +178,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

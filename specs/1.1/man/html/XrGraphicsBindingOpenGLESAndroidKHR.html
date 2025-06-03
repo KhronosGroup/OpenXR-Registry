@@ -115,10 +115,15 @@ No such structures are defined in core OpenXR or this extension.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating an OpenGL ES-backed <a href="XrSession.html">XrSession</a> on Android, the
-application will provide a pointer to an
-<a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a> structure in the <code>next</code> chain
-of the <a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>.</p>
+<p>To create an OpenGL ES-backed <a href="XrSession.html">XrSession</a> on Android, the application
+<strong class="purple">can</strong> provide a pointer to an <a href="XrGraphicsBindingOpenGLESAndroidKHR.html">XrGraphicsBindingOpenGLESAndroidKHR</a>
+structure in the <a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>next</code> chain when calling
+<a href="xrCreateSession.html">xrCreateSession</a>.</p>
+</div>
+<div class="paragraph">
+<p>Creating a session using this structure triggers several requirements on the
+runtime regarding swapchain images.
+See the specification of <a href="XrSwapchainImageOpenGLESKHR.html">XrSwapchainImageOpenGLESKHR</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>The required window system configuration define to expose this structure
@@ -189,7 +194,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

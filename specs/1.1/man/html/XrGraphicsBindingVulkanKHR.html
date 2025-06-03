@@ -124,9 +124,10 @@ synchronization.</p>
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When creating a Vulkan-backed <a href="XrSession.html">XrSession</a>, the application will provide
-a pointer to an <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a> in the <code>next</code> chain of the
-<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>.</p>
+<p>To create a Vulkan-backed <a href="XrSession.html">XrSession</a>, the application provides a
+pointer to an <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a> structure in the
+<a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a>::<code>next</code> chain when calling
+<a href="xrCreateSession.html">xrCreateSession</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -152,6 +153,13 @@ specified by <a href="xrGetVulkanGraphicsDeviceKHR.html">xrGetVulkanGraphicsDevi
 </ul>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>Creating a session using this structure triggers several requirements on the
+runtime regarding swapchain images.
+See the specification of <a href="XrSwapchainImageVulkanKHR.html">XrSwapchainImageVulkanKHR</a> for details.
+The application <strong class="purple">must</strong> externally synchronize the queue referred to by this
+structure according to <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_vulkan_enable-concurrency" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_vulkan_enable-concurrency</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -218,7 +226,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

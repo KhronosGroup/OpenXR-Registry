@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XR_KHR_vulkan_enable-concurrency(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_KHR_vulkan_enable-concurrency(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_KHR_vulkan_enable-concurrency - Vulkan API concurrency/threading requirements</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vulkan requires that concurrent access to a <code>VkQueue</code> from multiple
+threads be externally synchronized.
+Therefore, OpenXR functions that may access the <code>VkQueue</code> specified in
+the <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a> must also be externally synchronized.</p>
+</div>
+<div class="paragraph">
+<p>The list of OpenXR functions where the OpenXR runtime <strong class="purple">may</strong> access the
+<code>VkQueue</code> are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="xrBeginFrame.html">xrBeginFrame</a></p>
+</li>
+<li>
+<p><a href="xrEndFrame.html">xrEndFrame</a></p>
+</li>
+<li>
+<p><a href="xrAcquireSwapchainImage.html">xrAcquireSwapchainImage</a></p>
+</li>
+<li>
+<p><a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> not access the <code>VkQueue</code> in any OpenXR function that
+is not listed above or in an extension definition.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_vulkan_enable-concurrency" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.48<br>
+</div>
+</div>
+</body>
+</html>

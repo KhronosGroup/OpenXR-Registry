@@ -72,6 +72,8 @@ when creating an <a href="XrBodyTrackerFB.html">XrBodyTrackerFB</a>.</p>
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_FB_body_tracking</span>
 <span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrBodyJointSetFB</span> <span class="p">{</span>
     <span class="n">XR_BODY_JOINT_SET_DEFAULT_FB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_META_body_tracking_full_body</span>
+    <span class="n">XR_BODY_JOINT_SET_FULL_BODY_META</span> <span class="o">=</span> <span class="mi">1000274000</span><span class="p">,</span>
     <span class="n">XR_BODY_JOINT_SET_MAX_ENUM_FB</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrBodyJointSetFB</span><span class="p">;</span></code></pre>
 </div>
@@ -87,7 +89,10 @@ when creating an <a href="XrBodyTrackerFB.html">XrBodyTrackerFB</a>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>XR_BODY_JOINT_SET_DEFAULT_FB</code> &#8201;&#8212;&#8201;Indicates that the created <a href="XrBodyTrackerFB.html">XrBodyTrackerFB</a> tracks the set of body joints described by <a href="XrBodyJointFB.html">XrBodyJointFB</a> enum, i.e. the <a href="xrLocateBodyJointsFB.html">xrLocateBodyJointsFB</a> function returns an array of joint locations with the count of <code>XR_BODY_JOINT_COUNT_FB</code> and can be indexed using <a href="XrBodyJointFB.html">XrBodyJointFB</a>.</p>
+<p><code>XR_BODY_JOINT_SET_DEFAULT_FB</code> &#8201;&#8212;&#8201;Indicates that the created <a href="XrBodyTrackerFB.html">XrBodyTrackerFB</a> tracks the set of body joints described by <a href="XrBodyJointFB.html">XrBodyJointFB</a> enum, i.e. the <a href="xrLocateBodyJointsFB.html">xrLocateBodyJointsFB</a> function returns an array of joint locations with the count of <code>XR_BODY_JOINT_COUNT_FB</code> and can be indexed using <a href="XrBodyJointFB.html">XrBodyJointFB</a>. This includes the upper body, both hands, and torso.</p>
+</li>
+<li>
+<p><code>XR_BODY_JOINT_SET_FULL_BODY_META</code> &#8201;&#8212;&#8201;Indicates that the created <a href="XrBodyTrackerFB.html">XrBodyTrackerFB</a> tracks the set of body joints described by <a href="XrFullBodyJointMETA.html">XrFullBodyJointMETA</a> enum, i.e. the <a href="xrLocateBodyJointsFB.html">xrLocateBodyJointsFB</a> function returns an array of joint locations with the count of <code>XR_FULL_BODY_JOINT_COUNT_META</code> and can be indexed using <a href="XrFullBodyJointMETA.html">XrFullBodyJointMETA</a>. This extends the joints of <code>XR_BODY_JOINT_SET_DEFAULT_FB</code> by also including the lower body.  (Added by the <code><a href="XR_META_body_tracking_full_body.html">XR_META_body_tracking_full_body</a></code> extension)</p>
 </li>
 </ul>
 </div>
@@ -131,7 +136,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

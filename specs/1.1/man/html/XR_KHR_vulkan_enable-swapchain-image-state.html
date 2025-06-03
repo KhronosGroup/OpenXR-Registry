@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XR_KHR_vulkan_enable-swapchain-image-state(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_KHR_vulkan_enable-swapchain-image-state(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_KHR_vulkan_enable-swapchain-image-state - Swapchain image resource state in a Vulkan-based slink:XrSession.</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If an application waits on a swapchain image by calling
+<a href="xrWaitSwapchainImage.html">xrWaitSwapchainImage</a> in a session created using
+<a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>, and that call returns <code>XR_SUCCESS</code> or
+<code>XR_SESSION_LOSS_PENDING</code>, then the OpenXR runtime <strong class="purple">must</strong> guarantee that
+the following conditions are true, keeping in mind that the runtime <strong class="purple">must</strong>
+not access the <code>VkQueue</code> in <a href="xrWaitSwapchainImage.html">xrWaitSwapchainImage</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The image has a memory layout compatible with
+<code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code> for color images, or
+<code>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</code> for depth images.</p>
+</li>
+<li>
+<p>The <code>VkQueue</code> specified in <a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a> has
+ownership of the image.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When an application releases a swapchain image by calling
+<a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a>, in a session created using
+<a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>, the OpenXR runtime <strong class="purple">must</strong> interpret the
+image as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Having a memory layout compatible with
+<code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code> for color images, or
+<code>VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL</code> for depth images.</p>
+</li>
+<li>
+<p>Being owned by the <code>VkQueue</code> specified in
+<a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The application is responsible for transitioning the swapchain image back to
+the image layout and queue ownership that the OpenXR runtime requires.
+If the image is not in a layout compatible with the above specifications the
+runtime <strong class="purple">may</strong> exhibit undefined behavior.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XrGraphicsBindingVulkanKHR.html">XrGraphicsBindingVulkanKHR</a>, <a href="XrSwapchainImageVulkanKHR.html">XrSwapchainImageVulkanKHR</a>, <a href="xrReleaseSwapchainImage.html">xrReleaseSwapchainImage</a>, <a href="xrWaitSwapchainImage.html">xrWaitSwapchainImage</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_vulkan_enable-state" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.48<br>
+</div>
+</div>
+</body>
+</html>

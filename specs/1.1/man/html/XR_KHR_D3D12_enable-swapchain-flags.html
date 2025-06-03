@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XR_KHR_D3D12_enable-swapchain-flags(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XR_KHR_D3D12_enable-swapchain-flags(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XR_KHR_D3D12_enable-swapchain-flags - Meaning of elink:XrSwapchainUsageFlags values in a D3D12-based slink:XrSession.</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All valid <a href="XrSwapchainUsageFlags.html">XrSwapchainUsageFlags</a> values passed in a session created
+using <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a> <strong class="purple">must</strong> be interpreted as follows by the
+runtime, so that the returned swapchain images used by the application <strong class="purple">may</strong>
+be used as if they were created with the corresponding
+<code>D3D12_RESOURCE_FLAGS</code> flags and heap type.
+The runtime <strong class="purple">may</strong> set additional resource flags but <strong class="purple">must</strong> not restrict usage.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><a href="XrSwapchainUsageFlagBits.html">XrSwapchainUsageFlagBits</a></th>
+<th class="tableblock halign-left valign-top">Corresponding D3D12 resource flag bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_TRANSFER_SRC_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_TRANSFER_DST_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_SAMPLED_BIT</code> <strong>omitted</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>D3D12_RESOURCE_FLAG_DENY_SHADER_RESOURCE</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_KHR</code>
+  (Added by <code><a href="XR_KHR_swapchain_usage_input_attachment_bit.html">XR_KHR_swapchain_usage_input_attachment_bit</a></code> and only available when that extension is enabled)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ignored</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All D3D12 swapchain textures are created with <code>D3D12_HEAP_TYPE_DEFAULT</code> heap
+type.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>No cross-references are available</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_d3d12_enable-flags" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.48<br>
+</div>
+</div>
+</body>
+</html>

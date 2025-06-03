@@ -119,8 +119,13 @@ The runtime <strong class="purple">may</strong> return interaction profiles that
 physically present hardware, for example if the runtime is using a known
 interaction profile to bind to hardware that the application is not aware
 of.
-The runtime <strong class="purple">may</strong> return the last-known interaction profile in the event that
-no controllers are active.</p>
+The runtime <strong class="purple">may</strong> return an anticipated interaction profile, from the list of
+interaction profiles with suggested bindings (as supplied by the application
+through <a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a>) for this top level
+<em>/user</em> path, in the event that no controllers are active.
+Whether the runtime reports an interaction profile path or
+<a href="XR_NULL_PATH.html">XR_NULL_PATH</a> does <strong>not</strong> provide any signal to the application
+regarding presence or absence of a controller or other interaction method.</p>
 </div>
 <div class="paragraph">
 <p>If <a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a> has not yet been called for the
@@ -236,7 +241,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

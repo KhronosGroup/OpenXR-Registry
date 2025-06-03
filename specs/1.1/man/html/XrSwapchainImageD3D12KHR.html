@@ -108,7 +108,7 @@ No such structures are defined in core OpenXR or this extension.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If a given session was created with <a href="XrGraphicsBindingD3D12KHR.html">XrGraphicsBindingD3D12KHR</a>, the
-following conditions <strong class="purple">must</strong> apply.</p>
+following conditions apply.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -132,6 +132,14 @@ functionality.</p>
 <div class="paragraph">
 <p>The OpenXR runtime <strong class="purple">must</strong> interpret the swapchain images in a clip space of
 positive Y pointing up, near Z plane at 0, and far Z plane at 1.</p>
+</div>
+<div class="paragraph">
+<p>The OpenXR runtime <strong class="purple">must</strong> return a texture created in accordance with
+<a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_d3d12_enable-flags" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_d3d12_enable-flags</a>.</p>
+</div>
+<div class="paragraph">
+<p>The OpenXR runtime <strong class="purple">must</strong> manage image resource state in accordance with
+<a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_d3d12_enable-state" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#khr_d3d12_enable-state</a>.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -189,7 +197,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>

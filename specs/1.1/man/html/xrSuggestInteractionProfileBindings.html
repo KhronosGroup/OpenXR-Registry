@@ -123,10 +123,10 @@ bindings contain paths that do not follow the format defined in
 <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#semantic-paths-input" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#semantic-paths-input</a> (further described in
 <a href="XrActionSuggestedBinding.html">XrActionSuggestedBinding</a>), the runtime <strong class="purple">must</strong> return
 <code>XR_ERROR_PATH_UNSUPPORTED</code>.
-If the interaction profile or input source for any of the suggested bindings
-does not exist in the allowlist defined in
-<a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#semantic-paths-interaction-profiles" target="_blank" rel="noopener">Interaction Profile Paths</a>, the
-runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>.
+If the interaction profile path or binding path (top level <em>/user</em>
+path plus input subpath) for any of the suggested bindings does not exist in
+the allowlist defined in <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#semantic-paths-interaction-profiles" target="_blank" rel="noopener">Interaction
+Profile Paths</a>, the runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_UNSUPPORTED</code>.
 A runtime <strong class="purple">must</strong> accept every valid binding in the allowlist though it is
 free to ignore any of them.</p>
 </div>
@@ -235,7 +235,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>
