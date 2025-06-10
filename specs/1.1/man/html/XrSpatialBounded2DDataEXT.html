@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XrSpatialBounded2DDataEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSpatialBounded2DDataEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSpatialBounded2DDataEXT - Bounded 2D component data</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrSpatialBounded2DDataEXT.html">XrSpatialBounded2DDataEXT</a> structure is defined as:</p>
+</div>
+<div id="XrSpatialBounded2DDataEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_entity</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpatialBounded2DDataEXT</span> <span class="p">{</span>
+    <span class="n">XrPosef</span>        <span class="n">center</span><span class="p">;</span>
+    <span class="n">XrExtent2Df</span>    <span class="n">extents</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSpatialBounded2DDataEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>center</code> is an <a href="XrPosef.html">XrPosef</a> defining the geometric center of the
+bounded 2D component.</p>
+</li>
+<li>
+<p><code>extents</code> is extents of the bounded 2D component along the x-axis
+(extents.width), y-axis (extents.height), centered on <code>center</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>extents</code> of the <code>XR_SPATIAL_COMPONENT_TYPE_BOUNDED_2D_EXT</code>
+refer to the entity&#8217;s size in the <span class="eq">x-y</span> plane of the plane&#8217;s coordinate
+system.
+A plane with a position of {0, 0, 0}, rotation of {0, 0, 0, 1} (no
+rotation), and an extent of {1, 1} refers to a 1 meter x 1 meter plane
+centered at {0, 0, 0} with its front face normal vector pointing towards the
++Z direction in the component&#8217;s space.</p>
+</div>
+<div id="fig-EXT_spatial_entity-bounded2D-coordinate-system" class="imageblock text-center">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" width="470" height="298" style="background-color:#fff" viewBox="-0.5 -0.5 470 298"><path fill="#fff" stroke="#000" stroke-miterlimit="10" d="m163 199.5 80.98-59H458l-80.98 59Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="M309 170h63.63" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m377.88 170-7 3.5 1.75-3.5-1.75-3.5Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="m309 170 34.3-17.15" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m348 150.5-4.7 6.26v-3.91l-3.13-2.35Z" pointer-events="all"/><path fill="none" d="M379 160h20v20h-20z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:170px;margin-left:389px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">X</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="389" y="174" font-family="sans-serif" font-size="12" text-anchor="middle">X</text></switch><path fill="none" d="M349 140h20v20h-20z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:150px;margin-left:359px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">Y</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="359" y="154" font-family="sans-serif" font-size="12" text-anchor="middle">Y</text></switch><path fill="none" d="M299 80h20v20h-20z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:90px;margin-left:309px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">Z</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="309" y="94" font-family="sans-serif" font-size="12" text-anchor="middle">Z</text></switch><path fill="none" stroke="#000" stroke-miterlimit="10" d="m440.97 161.96 14.15-11.87" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m459.14 146.72-3.11 7.18-.91-3.81-3.59-1.55Z" pointer-events="all"/><path fill="none" d="m403.01 178.05 31.945-24.073 12.036 15.973-31.946 24.073z" pointer-events="all"/><switch transform="rotate(-37 424.003 174.497)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:38px;height:1px;padding-top:174px;margin-left:406px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:normal;word-wrap:normal">Height</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="425" y="178" font-family="sans-serif" font-size="12" text-anchor="middle">Height</text></switch><path fill="none" stroke="#000" stroke-miterlimit="10" d="m395.9 196.93 13.13-10.89" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m391.86 200.29 3.15-7.17.89 3.81 3.58 1.58Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="M309 170v-63.63" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m309 101.12 3.5 7-3.5-1.75-3.5 1.75Z" pointer-events="all"/><path fill="#fff" stroke="#000" stroke-miterlimit="10" d="m50.13-.49 77.75 66.43v175.57l-77.75-66.43Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="M84.12 137.5V73.87" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m84.12 68.62 3.5 7-3.5-1.75-3.5 1.75Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="m84.12 137.5 19.8 25.01" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m107.18 166.62-7.09-3.31 3.83-.8 1.66-3.55Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="m84.12 137.5-57.96 9.02" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m20.97 147.33 6.38-4.54-1.19 3.73 2.27 3.19Z" pointer-events="all"/><path fill="none" d="M75.12 48.5h18v18h-18z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:58px;margin-left:84px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">Y</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="84" y="61" font-family="sans-serif" font-size="12" text-anchor="middle">Y</text></switch><path fill="none" d="M-.13 148.5h17v18h-17z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:158px;margin-left:8px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">Z</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="8" y="161" font-family="sans-serif" font-size="12" text-anchor="middle">Z</text></switch><path fill="none" d="M108.12 164h20v20h-20z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:174px;margin-left:118px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">X</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="118" y="178" font-family="sans-serif" font-size="12" text-anchor="middle">X</text></switch><path fill="none" d="M38.12 276h90v20h-90z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:286px;margin-left:83px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">Vertical plane</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="83" y="290" font-family="sans-serif" font-size="12" text-anchor="middle">Vertical plane</text></switch><path fill="none" d="M249 276h100v20H249z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:286px;margin-left:299px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:nowrap">Horizontal Plane</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="299" y="290" font-family="sans-serif" font-size="12" text-anchor="middle">Horizontal Plane</text></switch><path fill="none" stroke="#000" stroke-miterlimit="10" d="M290 212h79.63" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m374.88 212-7 3.5 1.75-3.5-1.75-3.5Z" pointer-events="all"/><path fill="none" d="M250 202h40v20h-40z" pointer-events="all"/><switch transform="translate(-.5 -.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:38px;height:1px;padding-top:212px;margin-left:251px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:normal;word-wrap:normal">Width</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="270" y="216" font-family="sans-serif" font-size="12" text-anchor="middle">Width</text></switch><path fill="none" stroke="#000" stroke-miterlimit="10" d="M170.37 212H250" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m165.12 212 7-3.5-1.75 3.5 1.75 3.5Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="m101.76 231.53 16.55 15.17" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m122.18 250.24-7.53-2.15 3.66-1.39 1.07-3.77Z" pointer-events="all"/><path fill="none" d="m79.929 196.787 28.284 28.284-14.142 14.142-28.284-28.284z" pointer-events="all"/><switch transform="rotate(45 87.354 217.146)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:38px;height:1px;padding-top:218px;margin-left:68px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:normal;word-wrap:normal">Width</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="87" y="222" font-family="sans-serif" font-size="12" text-anchor="middle">Width</text></switch><path fill="none" stroke="#000" stroke-miterlimit="10" d="m56.7 190.3 15.52 14.19" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m52.83 186.75 7.52 2.14-3.65 1.41-1.07 3.76Z" pointer-events="all"/><path fill="none" stroke="#000" stroke-miterlimit="10" d="M138 171v58.63" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m138 234.88-3.5-7 3.5 1.75 3.5-1.75Z" pointer-events="all"/><path fill="none" d="M148 131v40h-20v-40z" pointer-events="all"/><switch transform="rotate(90 138 150.5)"><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:38px;height:1px;padding-top:151px;margin-left:119px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:normal;word-wrap:normal">Height</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="138" y="155" font-family="sans-serif" font-size="12" text-anchor="middle">Height</text></switch><path fill="none" stroke="#000" stroke-miterlimit="10" d="M138 77.37V131" pointer-events="stroke"/><path stroke="#000" stroke-miterlimit="10" d="m138 72.12 3.5 7-3.5-1.75-3.5 1.75Z" pointer-events="all"/><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/></switch></svg>
+</div>
+<div class="title">Figure 1. Bounded2D Component Coordinate System</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>OpenXR uses an X-Y plane with +Z as the plane normal but other APIs <strong class="purple">may</strong> use
+an X-Z plane with +Y as the plane normal.
+The X-Y plane <strong class="purple">can</strong> be converted to an X-Z plane by rotating <span class="eq">-π/2</span>
+radians around the +X axis.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialBounded2DDataEXT-extension-notenabled" href="#VUID-XrSpatialBounded2DDataEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSpatialBounded2DDataEXT.html">XrSpatialBounded2DDataEXT</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a>, <a href="XrExtent2Df.html">XrExtent2Df</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrSpatialComponentBounded2DListEXT.html">XrSpatialComponentBounded2DListEXT</a>, <a href="XrSpatialComponentDataQueryResultEXT.html">XrSpatialComponentDataQueryResultEXT</a>, <a href="XrSpatialComponentTypeEXT.html">XrSpatialComponentTypeEXT</a>, <a href="xrQuerySpatialComponentDataEXT.html">xrQuerySpatialComponentDataEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSpatialBounded2DDataEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>

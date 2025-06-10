@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrGetRenderModelAssetDataEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrGetRenderModelAssetDataEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrGetRenderModelAssetDataEXT - Copies the render model asset data and names of animatable nodes into application allocated memory</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetRenderModelAssetDataEXT.html">xrGetRenderModelAssetDataEXT</a> function is defined as:</p>
+</div>
+<div id="xrGetRenderModelAssetDataEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_render_model</span>
+<span class="n">XrResult</span> <span class="nf">xrGetRenderModelAssetDataEXT</span><span class="p">(</span>
+    <span class="n">XrRenderModelAssetEXT</span>                       <span class="n">asset</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrRenderModelAssetDataGetInfoEXT</span><span class="o">*</span>     <span class="n">getInfo</span><span class="p">,</span>
+    <span class="n">XrRenderModelAssetDataEXT</span><span class="o">*</span>                  <span class="n">buffer</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>asset</code> is an <a href="XrRenderModelAssetEXT.html">XrRenderModelAssetEXT</a> previously created by
+<a href="xrCreateRenderModelAssetEXT.html">xrCreateRenderModelAssetEXT</a>.</p>
+</li>
+<li>
+<p><code>getInfo</code> exists for extensibility purposes, it is <code>NULL</code> or a
+pointer to a valid <a href="XrRenderModelAssetDataGetInfoEXT.html">XrRenderModelAssetDataGetInfoEXT</a>.</p>
+</li>
+<li>
+<p><code>buffer</code> is a pointer to an <a href="XrRenderModelAssetDataEXT.html">XrRenderModelAssetDataEXT</a> structure
+for retrieving the glTF binary data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> use the <a href="xrGetRenderModelAssetDataEXT.html">xrGetRenderModelAssetDataEXT</a> function to
+populate application-allocated memory with the glTF 2.0 binary data and
+animatable node names of a render model asset.
+The application uses a <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#buffer-size-parameters" target="_blank" rel="noopener">two-call idiom</a> with
+<a href="xrGetRenderModelAssetDataEXT.html">xrGetRenderModelAssetDataEXT</a> to allocate the memory required for the
+binary asset data.</p>
+</div>
+<div class="paragraph">
+<p>The binary data copied by the <a href="xrGetRenderModelAssetDataEXT.html">xrGetRenderModelAssetDataEXT</a> function
+<strong class="purple">must</strong> conform to the <a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#glb-file-format-specification">glTF 2.0 binary format (GLB)</a> and <strong class="purple">must</strong>
+contain a valid glTF 2.0 asset that passes validation.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Runtimes are strongly encouraged to use a tool such as
+<a href="https://github.com/KhronosGroup/glTF-Validator">glTF Validator</a> to help detect issues that make their
+models invalid, and thus make their implementation of this extension
+non-conformant.
+Passing validation with such a tool is <em>necessary</em>, but not <em>sufficient</em>, to
+prove that an asset is valid in the context of this extension.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The glTF asset data returned from this function <strong class="purple">must</strong> not change during the
+lifetime of the corresponding <a href="XrRenderModelAssetEXT.html">XrRenderModelAssetEXT</a> handle.
+Further, the runtime <strong class="purple">must</strong> return the same glTF binary data for any
+<a href="XrRenderModelAssetEXT.html">XrRenderModelAssetEXT</a> handles created using the same <a href="XrUuidEXT.html">XrUuidEXT</a>
+<a href="XrRenderModelPropertiesEXT.html">XrRenderModelPropertiesEXT</a>::<code>cacheId</code>.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">may</strong> call <a href="xrDestroyRenderModelAssetEXT.html">xrDestroyRenderModelAssetEXT</a> after
+successfully populating the buffer with this call, and similar successful
+use of <a href="xrGetRenderModelAssetPropertiesEXT.html">xrGetRenderModelAssetPropertiesEXT</a>, as the only purpose of this
+handle is to manage the lifetime of the loaded glTF asset (copied into
+application-allocated memory by this call) and animatable node names (copied
+into application-allocated memory by
+<a href="xrGetRenderModelAssetPropertiesEXT.html">xrGetRenderModelAssetPropertiesEXT</a>) within the runtime.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrGetRenderModelAssetDataEXT-extension-notenabled" href="#VUID-xrGetRenderModelAssetDataEXT-extension-notenabled"></a> The <code><a href="XR_EXT_render_model.html">XR_EXT_render_model</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetRenderModelAssetDataEXT.html">xrGetRenderModelAssetDataEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrGetRenderModelAssetDataEXT-asset-parameter" href="#VUID-xrGetRenderModelAssetDataEXT-asset-parameter"></a> <code>asset</code> <strong class="purple">must</strong> be a valid <a href="XrRenderModelAssetEXT.html">XrRenderModelAssetEXT</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrGetRenderModelAssetDataEXT-getInfo-parameter" href="#VUID-xrGetRenderModelAssetDataEXT-getInfo-parameter"></a> If <code>getInfo</code> is not <code>NULL</code>, <code>getInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrRenderModelAssetDataGetInfoEXT.html">XrRenderModelAssetDataGetInfoEXT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrGetRenderModelAssetDataEXT-buffer-parameter" href="#VUID-xrGetRenderModelAssetDataEXT-buffer-parameter"></a> <code>buffer</code> <strong class="purple">must</strong> be a pointer to an <a href="XrRenderModelAssetDataEXT.html">XrRenderModelAssetDataEXT</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_render_model.html">XR_EXT_render_model</a>, <a href="XrRenderModelAssetDataEXT.html">XrRenderModelAssetDataEXT</a>, <a href="XrRenderModelAssetDataGetInfoEXT.html">XrRenderModelAssetDataGetInfoEXT</a>, <a href="XrRenderModelAssetEXT.html">XrRenderModelAssetEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrGetRenderModelAssetDataEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>

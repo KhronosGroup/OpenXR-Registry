@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrEnumerateRenderModelSubactionPathsEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrEnumerateRenderModelSubactionPathsEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrEnumerateRenderModelSubactionPathsEXT - Enumerate subaction paths for devices associated with bound input</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a> function is defined as:</p>
+</div>
+<div id="xrEnumerateRenderModelSubactionPathsEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_interaction_render_model</span>
+<span class="n">XrResult</span> <span class="nf">xrEnumerateRenderModelSubactionPathsEXT</span><span class="p">(</span>
+    <span class="n">XrRenderModelEXT</span>                            <span class="n">renderModel</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrInteractionRenderModelSubactionPathInfoEXT</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                                    <span class="n">pathCapacityInput</span><span class="p">,</span>
+    <span class="kt">uint32_t</span><span class="o">*</span>                                   <span class="n">pathCountOutput</span><span class="p">,</span>
+    <span class="n">XrPath</span><span class="o">*</span>                                     <span class="n">paths</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Description</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>renderModel</code> is a render model handle created from an
+<a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> value retrieved from this extension.</p>
+</li>
+<li>
+<p><code>info</code> exists for extensibility purposes, it is <code>NULL</code> or a pointer
+to a valid <a href="XrInteractionRenderModelSubactionPathInfoEXT.html">XrInteractionRenderModelSubactionPathInfoEXT</a> structure.</p>
+</li>
+<li>
+<p><code>pathCapacityInput</code> is the capacity of the <code>paths</code> array, or 0 to
+indicate a request to retrieve the required capacity.</p>
+</li>
+<li>
+<p><code>pathCountOutput</code> is a pointer to the count of <code>paths</code> written, or
+a pointer to the required capacity in the case that
+<code>pathCapacityInput</code> is insufficient.</p>
+</li>
+<li>
+<p><code>paths</code> is a pointer to an array of <a href="XrPath.html">XrPath</a> atoms, but <strong class="purple">can</strong> be
+<code>NULL</code> if <code>pathCapacityInput</code> is 0.</p>
+</li>
+<li>
+<p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#buffer-size-parameters" target="_blank" rel="noopener">Buffer Size Parameters</a> section for a
+detailed description of retrieving the required <code>paths</code> size.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a> allows the application to
+associate an interaction-related render model with the associated subaction
+paths according to the exposed current interaction profile and active action
+sets.</p>
+</div>
+<div class="paragraph">
+<p>If <code>renderModel</code> is valid but was not created from a render model ID
+from a call to <a href="xrEnumerateInteractionRenderModelIdsEXT.html">xrEnumerateInteractionRenderModelIdsEXT</a> earlier in the
+current session, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_NOT_INTERACTION_RENDER_MODEL_EXT</code>.</p>
+</div>
+<div class="paragraph">
+<p>The array enumerated by this function for a given render model <strong class="purple">must</strong> not
+change except during calls to <a href="xrSyncActions.html">xrSyncActions</a>.</p>
+</div>
+<div class="paragraph">
+<p>A given subaction path <strong class="purple">must</strong> be reported for a model if and only if both of
+the following are true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>That path appears in the corresponding
+<a href="XrActionCreateInfo.html">XrActionCreateInfo</a>::<code>subactionPaths</code> for some action or actions
+associated with it in the active action sets.</p>
+</li>
+<li>
+<p>That path is used as a top-level user path for some suggested binding of
+at least one such action in the current interaction profile.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This paragraph describes implications and clarifications of the preceding
+requirement.
+If a given path is used as a top-level user path for a suggested binding to
+an action with no subaction paths specified, or without that specific
+subaction path specified, it is not sufficient to require enumerating that
+path.
+The runtime <strong class="purple">must</strong> only enumerate subaction paths that are included in the
+reported current interaction profile and mentioned in the corresponding
+suggested bindings, even if one of the models is logically better described
+by a path not used by the application.
+For example, a treadmill-like interaction device with its input mapped to
+actions suggested for left and right hands enumerates the paths
+<em>/user/hand/left</em> and <em>/user/hand/right</em> even though
+<em>/user/treadmill</em> is defined in the specification.
+This also implies that a runtime <strong class="purple">must</strong> return no subaction paths prior to
+the first call to <a href="xrSyncActions.html">xrSyncActions</a> in a session, or when the most recent
+call to <a href="xrSyncActions.html">xrSyncActions</a> did not specify any active action sets.
+Additionally, the runtime <strong class="purple">must</strong> return no subaction paths when a given
+render model provides input only for actions that do not have a list of
+subaction paths specified in <a href="XrActionCreateInfo.html">XrActionCreateInfo</a>::<code>subactionPaths</code>.</p>
+</div>
+<div class="paragraph">
+<p>This function is intended for identifying models currently associated with
+any actions in an active action set, as well as identifying the subaction
+paths associated with the bound input.
+To identify which top-level <em>/user</em> path is most closely associated
+with the overall pose of any given interaction render model, see
+<a href="xrGetRenderModelPoseTopLevelUserPathEXT.html">xrGetRenderModelPoseTopLevelUserPathEXT</a>.
+The description of that function contains a further discussion of the
+differences with this function.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important</strong>: The order of values returned from this function is <strong>not</strong>
+meaningful, and the entire array <strong class="purple">should</strong> be iterated and treated uniformly
+by the application.
+An application <strong class="purple">should</strong> always be prepared for this function to return a list
+of any length, up to the total number of subaction paths used in suggested
+bindings.
+Most functionality in OpenXR is defined to operate as if the hardware
+corresponding to the current interaction profile were in use according to
+the suggested bindings.
+However, this function, and this extension in general, allows the
+application to access aspects of the user&#8217;s actual input configuration, to
+provide accurate and realistic feedback to the user.
+Special care is required to ensure that application code using this function
+is maximally general.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrEnumerateRenderModelSubactionPathsEXT-extension-notenabled" href="#VUID-xrEnumerateRenderModelSubactionPathsEXT-extension-notenabled"></a> The <code><a href="XR_EXT_interaction_render_model.html">XR_EXT_interaction_render_model</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateRenderModelSubactionPathsEXT-renderModel-parameter" href="#VUID-xrEnumerateRenderModelSubactionPathsEXT-renderModel-parameter"></a> <code>renderModel</code> <strong class="purple">must</strong> be a valid <a href="XrRenderModelEXT.html">XrRenderModelEXT</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateRenderModelSubactionPathsEXT-info-parameter" href="#VUID-xrEnumerateRenderModelSubactionPathsEXT-info-parameter"></a> If <code>info</code> is not <code>NULL</code>, <code>info</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrInteractionRenderModelSubactionPathInfoEXT.html">XrInteractionRenderModelSubactionPathInfoEXT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateRenderModelSubactionPathsEXT-pathCountOutput-parameter" href="#VUID-xrEnumerateRenderModelSubactionPathsEXT-pathCountOutput-parameter"></a> <code>pathCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateRenderModelSubactionPathsEXT-paths-parameter" href="#VUID-xrEnumerateRenderModelSubactionPathsEXT-paths-parameter"></a> If <code>pathCapacityInput</code> is not <code>0</code>, <code>paths</code> <strong class="purple">must</strong> be a pointer to an array of <code>pathCapacityInput</code> <a href="XrPath.html">XrPath</a> values</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_NOT_INTERACTION_RENDER_MODEL_EXT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_interaction_render_model.html">XR_EXT_interaction_render_model</a>, <a href="XrInteractionRenderModelSubactionPathInfoEXT.html">XrInteractionRenderModelSubactionPathInfoEXT</a>, <a href="XrPath.html">XrPath</a>, <a href="XrRenderModelEXT.html">XrRenderModelEXT</a>, <a href="xrGetRenderModelPoseTopLevelUserPathEXT.html">xrGetRenderModelPoseTopLevelUserPathEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrEnumerateRenderModelSubactionPathsEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrGetRenderModelPoseTopLevelUserPathEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrGetRenderModelPoseTopLevelUserPathEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrGetRenderModelPoseTopLevelUserPathEXT - Obtain the top level pathname:/user path associated with a render model id</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetRenderModelPoseTopLevelUserPathEXT.html">xrGetRenderModelPoseTopLevelUserPathEXT</a> function is defined as:</p>
+</div>
+<div id="xrGetRenderModelPoseTopLevelUserPathEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_interaction_render_model</span>
+<span class="n">XrResult</span> <span class="nf">xrGetRenderModelPoseTopLevelUserPathEXT</span><span class="p">(</span>
+    <span class="n">XrRenderModelEXT</span>                            <span class="n">renderModel</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrInteractionRenderModelTopLevelUserPathGetInfoEXT</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
+    <span class="n">XrPath</span><span class="o">*</span>                                     <span class="n">topLevelUserPath</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>renderModel</code> is an <a href="XrRenderModelEXT.html">XrRenderModelEXT</a> retrieved using the
+<a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> obtained through this extension.</p>
+</li>
+<li>
+<p><code>info</code> is parameters affecting the results of this function, including
+an array of top-level <em>/user</em> paths to limit results to.</p>
+</li>
+<li>
+<p><code>topLevelUserPath</code> is a pointer to an <a href="XrPath.html">XrPath</a> to which the top
+level <em>/user</em> path will be written.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This function returns the top level <em>/user</em> path most closely
+associated with the pose of a given render model, if any, and if that path
+is present in the list passed in <code>info</code>.</p>
+</div>
+<div class="paragraph">
+<p>A runtime <strong class="purple">must</strong> return:
+* the top level <em>/user</em> path from the list in <code>info</code> that is
+  <strong>most closely</strong> associated with the model pose as a physical reality (e.g.
+  a device currently held in the user&#8217;s left hand returns
+  <em>/user/hand/left</em>), if one exists.
+  Note that this requirement does provide fallback behavior.
+  That is, if a model pose is related to more than one top level
+  <em>/user</em> path, the runtime returns the path from <code>info</code> with the
+  closest association, even if it is less closely related than some other
+  path <strong>not</strong> included in <code>info</code>.
+* <a href="XR_NULL_PATH.html">XR_NULL_PATH</a> if no such path can be determined (e.g. the
+  corresponding device is currently not held by or attached to the user, or
+  no path associated with the model pose was provided in <code>info</code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong> that unlike <a href="xrGetCurrentInteractionProfile.html">xrGetCurrentInteractionProfile</a>, more than one
+model <strong class="purple">may</strong> report being most closely associated with a given top level
+<em>/user</em> path.
+For example, a runtime <strong class="purple">may</strong> represent a single controller as two render
+models, or a user <strong class="purple">may</strong> have both a handheld device and a wrist-mounted
+tracker.</p>
+</div>
+<div class="paragraph">
+<p>Changes to the top level <em>/user</em> path state of each render model
+<strong class="purple">must</strong> only occur during a call to <a href="xrSyncActions.html">xrSyncActions</a>.</p>
+</div>
+<div class="paragraph">
+<p>If <code>renderModel</code> is valid but was not retrieved from a call to
+<a href="xrEnumerateInteractionRenderModelIdsEXT.html">xrEnumerateInteractionRenderModelIdsEXT</a> earlier in the current
+session, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_NOT_INTERACTION_RENDER_MODEL_EXT</code>.</p>
+</div>
+<div class="paragraph">
+<p>This function differs from <a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a> by
+emphasizing poses and being broadly distinct from actions.
+<a href="xrGetRenderModelPoseTopLevelUserPathEXT.html">xrGetRenderModelPoseTopLevelUserPathEXT</a> focuses solely on poses
+related to a top level <em>/user</em> path and returning only most
+applicable result.
+Contrast with <a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a>, which reports
+all top level <em>/user</em> paths <strong>being used as subaction paths</strong> that
+are associated with <strong>actions in an active action set</strong>.
+That function is meant more for e.g. highlighting models providing input,
+especially non-pose input, associated with a subaction path.
+For example, the right hand might have a pie menu related action set active,
+and an application could show the devices that can interact with that menu
+in a highlighted way, while dimming the other models.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important</strong>: An application <strong class="purple">should</strong> always be prepared for this function
+to return any top-level <em>/user</em> path in their list or
+<a href="XR_NULL_PATH.html">XR_NULL_PATH</a> for any of the interaction render models.
+Many systems will not report <a href="XR_NULL_PATH.html">XR_NULL_PATH</a> for any models, provided
+that both <em>/user/hand/left</em> and <em>/user/hand/right</em> are
+included on the list in <code>info</code>, but application code <strong class="purple">must</strong> be prepared
+to handle this and that code path <strong class="purple">should</strong> be tested manually.
+Most functionality in OpenXR is defined to operate as if the hardware
+corresponding to the current interaction profile were in use according to
+the suggested bindings.
+However, this function, and this extension in general, allows the
+application to access aspects of the user&#8217;s actual input configuration, to
+provide accurate and realistic feedback to the user.
+Special care is required to ensure that application code using this function
+is maximally general.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrGetRenderModelPoseTopLevelUserPathEXT-extension-notenabled" href="#VUID-xrGetRenderModelPoseTopLevelUserPathEXT-extension-notenabled"></a> The <code><a href="XR_EXT_interaction_render_model.html">XR_EXT_interaction_render_model</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetRenderModelPoseTopLevelUserPathEXT.html">xrGetRenderModelPoseTopLevelUserPathEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrGetRenderModelPoseTopLevelUserPathEXT-renderModel-parameter" href="#VUID-xrGetRenderModelPoseTopLevelUserPathEXT-renderModel-parameter"></a> <code>renderModel</code> <strong class="purple">must</strong> be a valid <a href="XrRenderModelEXT.html">XrRenderModelEXT</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrGetRenderModelPoseTopLevelUserPathEXT-info-parameter" href="#VUID-xrGetRenderModelPoseTopLevelUserPathEXT-info-parameter"></a> <code>info</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrInteractionRenderModelTopLevelUserPathGetInfoEXT.html">XrInteractionRenderModelTopLevelUserPathGetInfoEXT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrGetRenderModelPoseTopLevelUserPathEXT-topLevelUserPath-parameter" href="#VUID-xrGetRenderModelPoseTopLevelUserPathEXT-topLevelUserPath-parameter"></a> <code>topLevelUserPath</code> <strong class="purple">must</strong> be a pointer to an <a href="XrPath.html">XrPath</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RENDER_MODEL_ID_INVALID_EXT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_PATH_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_NOT_INTERACTION_RENDER_MODEL_EXT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_interaction_render_model.html">XR_EXT_interaction_render_model</a>, <a href="XrInteractionRenderModelIdsEnumerateInfoEXT.html">XrInteractionRenderModelIdsEnumerateInfoEXT</a>, <a href="XrInteractionRenderModelTopLevelUserPathGetInfoEXT.html">XrInteractionRenderModelTopLevelUserPathGetInfoEXT</a>, <a href="XrPath.html">XrPath</a>, <a href="XrRenderModelEXT.html">XrRenderModelEXT</a>, <a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrGetRenderModelPoseTopLevelUserPathEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>

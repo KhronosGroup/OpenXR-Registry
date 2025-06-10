@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrEnumerateInteractionRenderModelIdsEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrEnumerateInteractionRenderModelIdsEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrEnumerateInteractionRenderModelIdsEXT - Enumerate render models for devices associated with interaction devices</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrEnumerateInteractionRenderModelIdsEXT.html">xrEnumerateInteractionRenderModelIdsEXT</a> function is defined as:</p>
+</div>
+<div id="xrEnumerateInteractionRenderModelIdsEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_interaction_render_model</span>
+<span class="n">XrResult</span> <span class="nf">xrEnumerateInteractionRenderModelIdsEXT</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrInteractionRenderModelIdsEnumerateInfoEXT</span><span class="o">*</span> <span class="n">getInfo</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                                    <span class="n">renderModelIdCapacityInput</span><span class="p">,</span>
+    <span class="kt">uint32_t</span><span class="o">*</span>                                   <span class="n">renderModelIdCountOutput</span><span class="p">,</span>
+    <span class="n">XrRenderModelIdEXT</span><span class="o">*</span>                         <span class="n">renderModelIds</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is an <a href="XrSession.html">XrSession</a> in which the render model will be
+valid.</p>
+</li>
+<li>
+<p><code>getInfo</code> exists for extensibility purposes, it is <code>NULL</code> or a
+pointer to a valid <a href="XrInteractionRenderModelIdsEnumerateInfoEXT.html">XrInteractionRenderModelIdsEnumerateInfoEXT</a>
+structure.</p>
+</li>
+<li>
+<p><code>renderModelIdCapacityInput</code> is the capacity of the
+<code>renderModelIds</code> array, or 0 to indicate a request to retrieve the
+required capacity.</p>
+</li>
+<li>
+<p><code>renderModelIdCountOutput</code> is a pointer to the count of
+<code>renderModelIds</code> written, or a pointer to the required capacity in the
+case that <code>renderModelIdCapacityInput</code> is insufficient.</p>
+</li>
+<li>
+<p><code>renderModelIds</code> is an array of <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> that will
+be populated with IDs for devices that are associated with actions.</p>
+</li>
+<li>
+<p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#buffer-size-parameters" target="_blank" rel="noopener">Buffer Size Parameters</a> section for a
+detailed description of retrieving the required <code>renderModelIds</code> size.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This function returns render model IDs associated with any device associated
+with actions, in any action set attached with <code>session</code> by
+<a href="xrAttachSessionActionSets.html">xrAttachSessionActionSets</a>.
+There is no specific meaning for array position.
+A runtime <strong class="purple">may</strong> return values in any order, although the enumerated array
+<strong class="purple">must</strong> remain constant between calls to <a href="xrSyncActions.html">xrSyncActions</a>.
+An application <strong class="purple">should</strong> not assume any meaning based on array order.
+Note that a runtime <strong class="purple">may</strong> shuffle the order of IDs returned each time that
+the list changes, to aid application developers in avoiding accidental
+dependence on enumeration order.</p>
+</div>
+<div class="paragraph">
+<p>An application <strong class="purple">must</strong> not assume any given size of this array based on
+suggested bindings: compatibility and user preference <strong class="purple">may</strong> result in more
+models being associated with actions than described in the suggested
+bindings.
+The runtime <strong class="purple">may</strong> return more models than the number of top level user paths
+in the suggested bindings due to user configuration and compatibility
+rebinding.
+The runtime <strong class="purple">should</strong> continue to return model IDs corresponding to any
+devices that has recently become inactive or disconnected, if they are
+reasonably expected to be used again soon, to minimize the need for
+applications to re-enumerate models and load assets.
+Similarly, the runtime <strong class="purple">may</strong> return model IDs for devices expected to be
+used, even if they are not yet connected or active.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return render model IDs reflecting the actual hardware
+used, which <strong class="purple">must</strong> be independent of the currently active interaction
+profile.
+Accordingly, as long as the same actions within an <a href="XrInstance.html">XrInstance</a> have
+suggested bindings, changing suggested bindings by adding or removing
+suggested bindings for an interaction profile <strong class="purple">must</strong> not change the
+underlying assets.
+Furthermore, provided that identical actions within an <a href="XrInstance.html">XrInstance</a> are
+associated with suggested bindings for a specified list of glTF extensions,
+the runtime <strong class="purple">must</strong> return an identical collection of render model asset
+UUIDs.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> monitor for the
+<a href="XrEventDataInteractionRenderModelsChangedEXT.html">XrEventDataInteractionRenderModelsChangedEXT</a> event to get notified
+when interaction render models need to be re-enumerated.</p>
+</div>
+<div class="paragraph">
+<p>Changes to the collection of models enumerated (for example, due to device
+change) <strong class="purple">must</strong> only occur during a call to <a href="xrSyncActions.html">xrSyncActions</a>.
+If the collection of models changes, the
+<a href="XrEventDataInteractionRenderModelsChangedEXT.html">XrEventDataInteractionRenderModelsChangedEXT</a> event <strong class="purple">must</strong> be queued
+during that call to <a href="xrSyncActions.html">xrSyncActions</a> to signal the need for
+re-enumeration.
+This implies that a runtime <strong class="purple">must</strong> enumerate <strong>no</strong> models prior to the first
+call to <a href="xrSyncActions.html">xrSyncActions</a> in a session.</p>
+</div>
+<div class="paragraph">
+<p>Note that the UUIDs associated with the enumerated render model IDs for a
+given system and list of glTF extensions <strong class="purple">may</strong> change between instances due
+to runtime changes.
+Additionally, as with all atom types like <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a>, the
+enumerated render model ID values associated with a logical device <strong class="purple">may</strong>
+change between sessions as render model ID atoms inherently only have
+meaning within the single <a href="XrSession.html">XrSession</a> they are enumerated from.</p>
+</div>
+<div class="paragraph">
+<p>If an <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> was enumerated during a call to
+<a href="xrEnumerateInteractionRenderModelIdsEXT.html">xrEnumerateInteractionRenderModelIdsEXT</a> during the current session,
+but the set of interaction render models has now changed and that
+<a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> would not enumerated by a call to
+<a href="xrEnumerateInteractionRenderModelIdsEXT.html">xrEnumerateInteractionRenderModelIdsEXT</a> after that change, a call to
+<a href="xrCreateRenderModelEXT.html">xrCreateRenderModelEXT</a> with that <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> <strong class="purple">must</strong>
+return <code>XR_ERROR_RENDER_MODEL_ID_INVALID_EXT</code>.
+(Note that a change in the set of interaction render models only occurs
+during calls to <a href="xrSyncActions.html">xrSyncActions</a>, and queues an
+<a href="XrEventDataInteractionRenderModelsChangedEXT.html">XrEventDataInteractionRenderModelsChangedEXT</a> event if it occurs.) That
+is, if an ID was previously enumerated with this function during the current
+session, but is no longer enumerated due to a change in interaction render
+models during an <a href="xrSyncActions.html">xrSyncActions</a> call, it is no longer valid to create a
+<a href="XrRenderModelEXT.html">XrRenderModelEXT</a> from that <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>Existing <a href="XrRenderModelEXT.html">XrRenderModelEXT</a> handles already created from an ID that is
+no longer enumerated remain valid, but "inactive" and effectively useless.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Locating an associated render model space <strong class="purple">must</strong> report
+untracked/unlocatable, and therefore the model is not to be rendered.</p>
+</li>
+<li>
+<p>Calls to <a href="xrGetRenderModelStateEXT.html">xrGetRenderModelStateEXT</a> <strong class="purple">may</strong> stop providing updated data,
+as they are assumed to not be rendered and thus the model state is
+irrelevant.</p>
+</li>
+<li>
+<p>The runtime <strong class="purple">may</strong> return <code>XR_ERROR_RENDER_MODEL_ASSET_UNAVAILABLE_EXT</code>
+from <a href="xrCreateRenderModelAssetEXT.html">xrCreateRenderModelAssetEXT</a> if called with the cache UUID of
+that render model, if no other active render model uses the same asset
+UUID.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">must</strong> not enumerate a render model ID that they previously
+enumerated, then no longer enumerated.
+That is, if a render model ID is made inactive, it will never again become
+active.
+If the associated device returns, it will use a new render model ID.</p>
+</div>
+<div class="paragraph">
+<p>A render model <a href="XrRenderModelEXT.html">XrRenderModelEXT</a> created from an
+<a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> enumerated by this function <strong class="purple">must</strong> not be
+visible/locatable when located by <a href="xrCreateRenderModelSpaceEXT.html">xrCreateRenderModelSpaceEXT</a> if the
+session state is not <code>XR_SESSION_STATE_FOCUSED</code>, to ensure render models
+are only being rendered once per frame.</p>
+</div>
+<div class="paragraph">
+<p>If the session is not running, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_SESSION_NOT_RUNNING</code>.</p>
+</div>
+<div class="paragraph">
+<p>A render model <a href="XrRenderModelEXT.html">XrRenderModelEXT</a> created from an
+<a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> enumerated by this function <strong class="purple">must</strong> be locatable
+and visible if the corresponding device is locatable and there exists some
+action in any action set with which the render model is associated.
+This avoids having interaction render models disappear during corner cases
+of application interaction, e.g. when a "menu" button present on only one
+controller is the only active input.
+If an application wishes to only show models for which there are active
+actions, use the output of <a href="xrEnumerateRenderModelSubactionPathsEXT.html">xrEnumerateRenderModelSubactionPathsEXT</a>
+which enumerates subaction paths per model for the active action sets only.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrEnumerateInteractionRenderModelIdsEXT-extension-notenabled" href="#VUID-xrEnumerateInteractionRenderModelIdsEXT-extension-notenabled"></a> The <code><a href="XR_EXT_interaction_render_model.html">XR_EXT_interaction_render_model</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrEnumerateInteractionRenderModelIdsEXT.html">xrEnumerateInteractionRenderModelIdsEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateInteractionRenderModelIdsEXT-session-parameter" href="#VUID-xrEnumerateInteractionRenderModelIdsEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateInteractionRenderModelIdsEXT-getInfo-parameter" href="#VUID-xrEnumerateInteractionRenderModelIdsEXT-getInfo-parameter"></a> <code>getInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrInteractionRenderModelIdsEnumerateInfoEXT.html">XrInteractionRenderModelIdsEnumerateInfoEXT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateInteractionRenderModelIdsEXT-renderModelIdCountOutput-parameter" href="#VUID-xrEnumerateInteractionRenderModelIdsEXT-renderModelIdCountOutput-parameter"></a> <code>renderModelIdCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
+</li>
+<li>
+<p><a id="VUID-xrEnumerateInteractionRenderModelIdsEXT-renderModelIds-parameter" href="#VUID-xrEnumerateInteractionRenderModelIdsEXT-renderModelIds-parameter"></a> If <code>renderModelIdCapacityInput</code> is not <code>0</code>, <code>renderModelIds</code> <strong class="purple">must</strong> be a pointer to an array of <code>renderModelIdCapacityInput</code> <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a> values</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_interaction_render_model.html">XR_EXT_interaction_render_model</a>, <a href="XrInteractionRenderModelIdsEnumerateInfoEXT.html">XrInteractionRenderModelIdsEnumerateInfoEXT</a>, <a href="XrRenderModelEXT.html">XrRenderModelEXT</a>, <a href="XrRenderModelIdEXT.html">XrRenderModelIdEXT</a>, <a href="XrSession.html">XrSession</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrEnumerateInteractionRenderModelIdsEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>

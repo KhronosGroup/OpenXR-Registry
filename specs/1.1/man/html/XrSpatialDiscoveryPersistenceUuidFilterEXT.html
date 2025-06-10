@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XrSpatialDiscoveryPersistenceUuidFilterEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSpatialDiscoveryPersistenceUuidFilterEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSpatialDiscoveryPersistenceUuidFilterEXT - Discover only the entities identified with the given uuids</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a> structure is defined
+as:</p>
+</div>
+<div id="XrSpatialDiscoveryPersistenceUuidFilterEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_persistence</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpatialDiscoveryPersistenceUuidFilterEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">persistedUuidCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrUuid</span><span class="o">*</span>      <span class="n">persistedUuids</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSpatialDiscoveryPersistenceUuidFilterEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>persistedUuidCount</code> is a <code>uint32_t</code> describing the count of
+elements in the <code>persistedUuids</code> array</p>
+</li>
+<li>
+<p><code>persistedUuids</code> is an array of <a href="XrUuid.html">XrUuid</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> use <a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a> in
+the next chain of <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a> to scope the
+discovery operation to just the entities whose persisted UUIDs are in the
+set of the UUIDs provided in <code>persistedUuids</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the application adds <a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a> in
+the next chain of <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a> but the
+<a href="xrCreateSpatialDiscoverySnapshotAsyncEXT.html">xrCreateSpatialDiscoverySnapshotAsyncEXT</a>::<code>spatialContext</code> was not
+configured with any <a href="XrSpatialPersistenceContextEXT.html">XrSpatialPersistenceContextEXT</a> using
+<a href="XrSpatialContextPersistenceConfigEXT.html">XrSpatialContextPersistenceConfigEXT</a>, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_VALIDATION_FAILURE</code> from
+<a href="xrCreateSpatialDiscoverySnapshotAsyncEXT.html">xrCreateSpatialDiscoverySnapshotAsyncEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> treat the <a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a>
+filter as an 'AND' condition with any other filters provided in
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a> or its next chain.
+The runtime <strong class="purple">must</strong> treat the <code>persistedUuids</code> array itself as an 'OR'
+condition i.e. filter for entities that have any of the UUIDs provided in
+that array.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> include one entry in the created snapshot for each of the
+UUIDs in <code>persistedUuids</code> for which it was able to determine the
+<a href="XrSpatialPersistenceStateEXT.html">XrSpatialPersistenceStateEXT</a> state at this time.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the runtime has successfully found the UUID in its storage, then -</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The runtime <strong class="purple">must</strong> set the <a href="XrSpatialPersistenceStateEXT.html">XrSpatialPersistenceStateEXT</a> in the
+<a href="XrSpatialPersistenceDataEXT.html">XrSpatialPersistenceDataEXT</a> of this entity to
+<code>XR_SPATIAL_PERSISTENCE_STATE_LOADED_EXT</code>.</p>
+</li>
+<li>
+<p>The runtime <strong class="purple">must</strong> include a valid <a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a> for this
+entity in the created snapshot.</p>
+</li>
+<li>
+<p>The runtime <strong class="purple">must</strong> set the <a href="XrSpatialEntityTrackingStateEXT.html">XrSpatialEntityTrackingStateEXT</a> of that
+entity to <code>XR_SPATIAL_ENTITY_TRACKING_STATE_TRACKING_EXT</code> if it is
+actively tracking the entity and has valid data for its components.
+Otherwise, the runtime <strong class="purple">must</strong> set the
+<a href="XrSpatialEntityTrackingStateEXT.html">XrSpatialEntityTrackingStateEXT</a> to
+<code>XR_SPATIAL_ENTITY_TRACKING_STATE_PAUSED_EXT</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the runtime has determined that the UUID is not present in its storage
+(regardless of whether that UUID was never in the storage or has was
+present once but has since been unpersisted), then -</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The runtime <strong class="purple">must</strong> set the <a href="XrSpatialPersistenceStateEXT.html">XrSpatialPersistenceStateEXT</a> in the
+<a href="XrSpatialPersistenceDataEXT.html">XrSpatialPersistenceDataEXT</a> of this entity to
+<code>XR_SPATIAL_PERSISTENCE_STATE_NOT_FOUND_EXT</code> to indicate to the
+application that this UUID is no longer present in the storage.</p>
+</li>
+<li>
+<p>The runtime <strong class="purple">must</strong> set the <a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a> for this entity
+in the created snapshot to <a href="XR_NULL_SPATIAL_ENTITY_ID_EXT.html">XR_NULL_SPATIAL_ENTITY_ID_EXT</a>.</p>
+</li>
+<li>
+<p>The runtime <strong class="purple">must</strong> set the <a href="XrSpatialEntityTrackingStateEXT.html">XrSpatialEntityTrackingStateEXT</a> of that
+entity to <code>XR_SPATIAL_ENTITY_TRACKING_STATE_STOPPED_EXT</code> to indicate
+to the application that this entity will never be tracked.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the runtime was not able to determine if the UUID is present in its
+storage or not, it <strong class="purple">must</strong> not include it in the snapshot.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> also use
+<a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a> in the next chain of
+<a href="XrSpatialComponentDataQueryConditionEXT.html">XrSpatialComponentDataQueryConditionEXT</a> to query for entities of
+specific UUIDs in existing snapshots.
+When used with <a href="XrSpatialComponentDataQueryConditionEXT.html">XrSpatialComponentDataQueryConditionEXT</a>, if
+<a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a>::<code>persistedUuids</code>
+contains any <a href="XrUuid.html">XrUuid</a> that is not in the <a href="XrSpatialSnapshotEXT.html">XrSpatialSnapshotEXT</a>, the
+runtime <strong class="purple">must</strong> not include an entry for that <a href="XrUuid.html">XrUuid</a> in the query
+result.
+Also, the order (sequence) of entities in the query result <strong class="purple">may</strong> not match
+the order of UUIDs provided in
+<a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a>::<code>persistedUuids</code>.
+Application <strong class="purple">should</strong> include <code>XR_SPATIAL_COMPONENT_TYPE_PERSISTENCE_EXT</code>
+in <a href="XrSpatialComponentDataQueryConditionEXT.html">XrSpatialComponentDataQueryConditionEXT</a>::<code>componentTypes</code> and
+<a href="XrSpatialComponentPersistenceListEXT.html">XrSpatialComponentPersistenceListEXT</a> in the next chain of
+<a href="XrSpatialComponentDataQueryResultEXT.html">XrSpatialComponentDataQueryResultEXT</a> and then check the
+<a href="XrSpatialPersistenceDataEXT.html">XrSpatialPersistenceDataEXT</a>::<code>persistUuid</code> of the each query
+result index to understand which UUID the current result index corresponds
+to.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-extension-notenabled" href="#VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_persistence.html">XR_EXT_spatial_persistence</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSpatialDiscoveryPersistenceUuidFilterEXT.html">XrSpatialDiscoveryPersistenceUuidFilterEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-type-type" href="#VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SPATIAL_DISCOVERY_PERSISTENCE_UUID_FILTER_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-next-next" href="#VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-persistedUuids-parameter" href="#VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-persistedUuids-parameter"></a> <code>persistedUuids</code> <strong class="purple">must</strong> be a pointer to an array of <code>persistedUuidCount</code> <a href="XrUuid.html">XrUuid</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-persistedUuidCount-arraylength" href="#VUID-XrSpatialDiscoveryPersistenceUuidFilterEXT-persistedUuidCount-arraylength"></a> The <code>persistedUuidCount</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_persistence.html">XR_EXT_spatial_persistence</a>, <a href="XrSpatialComponentDataQueryConditionEXT.html">XrSpatialComponentDataQueryConditionEXT</a>, <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrUuid.html">XrUuid</a>, <a href="xrCreateSpatialDiscoverySnapshotAsyncEXT.html">xrCreateSpatialDiscoverySnapshotAsyncEXT</a>, <a href="xrQuerySpatialComponentDataEXT.html">xrQuerySpatialComponentDataEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSpatialDiscoveryPersistenceUuidFilterEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>

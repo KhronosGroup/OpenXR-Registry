@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrCreateSpatialDiscoverySnapshotAsyncEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrCreateSpatialDiscoverySnapshotAsyncEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrCreateSpatialDiscoverySnapshotAsyncEXT - Create a discovery snapshot</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrCreateSpatialDiscoverySnapshotAsyncEXT.html">xrCreateSpatialDiscoverySnapshotAsyncEXT</a> function is defined as:</p>
+</div>
+<div id="xrCreateSpatialDiscoverySnapshotAsyncEXT" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_entity</span>
+<span class="n">XrResult</span> <span class="nf">xrCreateSpatialDiscoverySnapshotAsyncEXT</span><span class="p">(</span>
+    <span class="n">XrSpatialContextEXT</span>                         <span class="n">spatialContext</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrSpatialDiscoverySnapshotCreateInfoEXT</span><span class="o">*</span> <span class="n">createInfo</span><span class="p">,</span>
+    <span class="n">XrFutureEXT</span><span class="o">*</span>                                <span class="n">future</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>spatialContext</code> is an <a href="XrSpatialContextEXT.html">XrSpatialContextEXT</a> previously created by
+using <a href="xrCreateSpatialContextAsyncEXT.html">xrCreateSpatialContextAsyncEXT</a>.</p>
+</li>
+<li>
+<p><code>createInfo</code> is a pointer to an
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>.</p>
+</li>
+<li>
+<p><code>future</code> is a pointer to an <a href="XrFutureEXT.html">XrFutureEXT</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> discover spatial entities by creating a discovery
+snapshot by using <a href="xrCreateSpatialDiscoverySnapshotAsyncEXT.html">xrCreateSpatialDiscoverySnapshotAsyncEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>This function starts an asynchronous operation and creates a corresponding
+<a href="XrFutureEXT.html">XrFutureEXT</a>, usable with <a href="xrPollFutureEXT.html">xrPollFutureEXT</a> and related
+functions.
+The return value of this function only indicates whether the parameters were
+acceptable to schedule the asynchronous operation.
+The corresponding completion function is
+<a href="xrCreateSpatialDiscoverySnapshotCompleteEXT.html">xrCreateSpatialDiscoverySnapshotCompleteEXT</a>, usable when a future from
+this function is in the READY state, with outputs populated by that function
+in the completion structure
+<a href="XrCreateSpatialDiscoverySnapshotCompletionEXT.html">XrCreateSpatialDiscoverySnapshotCompletionEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> submit multiple discovery snapshot creation requests
+without needing to wait for the previous one to be completed.
+The runtime <strong class="purple">may</strong> process and complete the snapshot creation in any order.
+The runtime <strong class="purple">may</strong> delay the completion of the discovery snapshot creation to
+throttle the application if it needs to reduce the use of system resources
+due to power, thermal or other policies of the device.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">can</strong> use
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>::<code>componentTypes</code> to
+filter the list of entities and the components whose data the runtime <strong class="purple">must</strong>
+include in the snapshot.
+If the application provides a valid list of spatial component types in
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>::<code>componentTypes</code>, then
+the runtime <strong class="purple">must</strong> only include spatial entities in the snapshot that have at
+least one of the components provided in
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>::<code>componentTypes</code>.
+Also, the runtime <strong class="purple">must</strong> only include data for only those components in the
+snapshot.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_SPATIAL_COMPONENT_NOT_ENABLED_EXT</code> if
+any of the <a href="XrSpatialComponentTypeEXT.html">XrSpatialComponentTypeEXT</a> in
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>::<code>componentTypes</code> are not
+enabled for the spatial capabilities passed to
+<a href="XrSpatialContextCreateInfoEXT.html">XrSpatialContextCreateInfoEXT</a>::<code>capabilityConfigs</code> when creating
+<code>spatialContext</code>.</p>
+</div>
+<div class="paragraph">
+<p>If the application does not provide a list of spatial component types in
+<a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>::<code>componentTypes</code>, the
+runtime <strong class="purple">must</strong> include all the spatial entities in the snapshot that have the
+set of components which are enumerated in
+<a href="XrSpatialCapabilityConfigurationBaseHeaderEXT.html">XrSpatialCapabilityConfigurationBaseHeaderEXT</a>::enabledComponents for
+the capabilities configured for <code>spatialContext</code>.
+The runtime <strong class="purple">must</strong> include the data for all the enabled components of the
+capabilities configured for <code>spatialContext</code>.</p>
+</div>
+<div class="paragraph">
+<p>If <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a> is queued before the
+completion of <code>future</code>, and
+<a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>::<code>poseValid</code> is false, then
+the runtime <strong class="purple">may</strong> either create an <a href="XrSpatialSnapshotEXT.html">XrSpatialSnapshotEXT</a> that has no
+entities in it or set the <a href="XrSpatialEntityTrackingStateEXT.html">XrSpatialEntityTrackingStateEXT</a> of the
+entities that are no longer locatable in
+<a href="XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.html">XrCreateSpatialDiscoverySnapshotCompletionInfoEXT</a>::<code>baseSpace</code> at
+<a href="XrCreateSpatialDiscoverySnapshotCompletionInfoEXT.html">XrCreateSpatialDiscoverySnapshotCompletionInfoEXT</a>::<code>time</code> to
+<code>XR_SPATIAL_ENTITY_TRACKING_STATE_PAUSED_EXT</code> or
+<code>XR_SPATIAL_ENTITY_TRACKING_STATE_STOPPED_EXT</code>.
+The runtime <strong class="purple">must</strong> not set
+<a href="XrCreateSpatialContextCompletionEXT.html">XrCreateSpatialContextCompletionEXT</a>::<code>futureResult</code> to an error
+code because of <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-extension-notenabled" href="#VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrCreateSpatialDiscoverySnapshotAsyncEXT.html">xrCreateSpatialDiscoverySnapshotAsyncEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-spatialContext-parameter" href="#VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-spatialContext-parameter"></a> <code>spatialContext</code> <strong class="purple">must</strong> be a valid <a href="XrSpatialContextEXT.html">XrSpatialContextEXT</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-createInfo-parameter" href="#VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-createInfo-parameter"></a> <code>createInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-future-parameter" href="#VUID-xrCreateSpatialDiscoverySnapshotAsyncEXT-future-parameter"></a> <code>future</code> <strong class="purple">must</strong> be a pointer to an <a href="XrFutureEXT.html">XrFutureEXT</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_LIMIT_REACHED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SPATIAL_COMPONENT_NOT_ENABLED_EXT</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a>, <a href="XrFutureEXT.html">XrFutureEXT</a>, <a href="XrSpatialContextEXT.html">XrSpatialContextEXT</a>, <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>, <a href="xrCreateSpatialDiscoverySnapshotCompleteEXT.html">xrCreateSpatialDiscoverySnapshotCompleteEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrCreateSpatialDiscoverySnapshotAsyncEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.49<br>
+</div>
+</div>
+</body>
+</html>
