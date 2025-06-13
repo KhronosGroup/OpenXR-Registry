@@ -890,8 +890,8 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <h1>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.47</span>
-<br><span id="revremark">from git ref cts-1.1.47.0-20240424</span>
+<span id="revnumber">version 1.1.48</span>
+<br><span id="revremark">from git ref cts-1.1.48.0-20250612</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1327,11 +1327,12 @@ setup for runtime quality assurance.</p>
 <p>The following text lays out the steps to running conformance for submission.</p>
 </div>
 <div class="paragraph">
-<p>Note: If you do not support OpenXR 1.0, you must supply the <code>--minApiVersion</code>
-argument to specify the lowest OpenXR API version you support, e.g.
-<code>--minApiVersion 1.1</code>. Some tests will automatically test behaviour on higher
-API versions if your runtime supports them, but most tests will run on
-<code>minApiVersion</code>, which defaults to <code>1.0</code>.</p>
+<p>Note: If you do not support OpenXR 1.0, you must supply the
+<code>--minApiVersion</code> argument to specify the lowest OpenXR API version you
+support, e.g. <code>--minApiVersion 1.1</code>.
+Some tests will automatically test behavior on higher API versions if your
+runtime supports them, but most tests will run on <code>minApiVersion</code>, which
+defaults to <code>1.0</code>.</p>
 </div>
 <div class="paragraph">
 <p>Please be aware that depending on how you view these instructions, the (very
@@ -1353,17 +1354,17 @@ your runtime does not support.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_d3d11.xml
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_d3d11.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_d3d12.xml
+conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_d3d12.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_vulkan.xml
+conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_vulkan.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_vulkan2.xml
+conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_vulkan2.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_opengl.xml
+conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_opengl.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_metal.xml</code></pre>
+conformance_cli <span class="s2">"exclude:[interactive]"</span> <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>automated_metal.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -1421,17 +1422,17 @@ extensions your runtime does not support.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_d3d11.xml
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_d3d11.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_d3d12.xml
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_d3d12.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_vulkan.xml
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_vulkan.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_vulkan2.xml
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_vulkan2.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_opengl.xml
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_opengl.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_metal.xml</code></pre>
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_metal.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -1491,7 +1492,7 @@ actions and indicate pass or fail.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[scenario][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_scenarios.xml</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[scenario][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_scenarios.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -1523,18 +1524,6 @@ Pass the interaction profile to test, without the leading
 <p>One graphics API</p>
 </li>
 <li>
-<p>Each OpenXR API version</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If extensions are required for a specified interaction profile to be
-available, the CTS will automatically enable them for the entire test
-run.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Each interaction profile that is either:</p>
 <div class="ulist">
 <ul>
@@ -1559,6 +1548,11 @@ it is recommended to run specifying each of those interaction profiles.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Note that if any extension or extensions are required for a specified
+interaction profile to be available, the CTS will automatically enable them
+for the appropriate tests.</p>
 </div>
 <div class="paragraph">
 <p>One of these tests requires being able to activate all inputs specified (and
@@ -1595,20 +1589,20 @@ following interaction profiles, specify them as well.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh"><span class="c">## Generic: Simple controller</span>
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"khr/simple_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_simple_controller.xml
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"khr/simple_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_simple_controller.xml <span class="nt">--reporter</span> console
 
 <span class="c">## Generic: Hand interaction (whether via hand tracking or controller)</span>
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/hand_interaction_ext"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_hand_interaction_interaction.xml
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/hand_interaction_ext"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_hand_interaction_interaction.xml <span class="nt">--reporter</span> console
 
 <span class="c">## Generic: Eye gaze</span>
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/eye_gaze_interaction"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_eye_gaze_interaction.xml
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"ext/eye_gaze_interaction"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_ext_eye_gaze_interaction.xml <span class="nt">--reporter</span> console
 
 <span class="c"># Sample device-associated profiles</span>
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"microsoft/motion_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_microsoft_motion_controller.xml
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"microsoft/motion_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_microsoft_motion_controller.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"oculus/touch_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_oculus_touch_controller.xml
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"oculus/touch_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_oculus_touch_controller.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"htc/vive_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_htc_vive_controller.xml</code></pre>
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"htc/vive_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_htc_vive_controller.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -1618,7 +1612,7 @@ conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[gamepad]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"microsoft/xbox_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_microsoft_xbox_controller.xml</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[gamepad]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"microsoft/xbox_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_microsoft_xbox_controller.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -2188,11 +2182,11 @@ renderer.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_d3d11.xml
-conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_d3d12.xml
-conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_vulkan.xml
-conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_vulkan2.xml
-conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_opengl.xml</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_d3d11.xml <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_d3d12.xml <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_vulkan.xml <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_vulkan2.xml <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[self_test][interactive]"</span> <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_self_test_opengl.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -2260,7 +2254,7 @@ This is primarily to exercise runtime behavior incidentally triggered by
 these tests.</p>
 </li>
 <li>
-<p><code>exclude:[noauto]</code> - the <code>[noauto]</code> tag is applied to test cases that
+<p><code>exclude:[no_auto]</code> - the <code>[no_auto]</code> tag is applied to test cases that
 support neither conformance automation nor the auto-skip timeout.</p>
 </li>
 </ul>
@@ -2270,17 +2264,17 @@ support neither conformance automation nor the auto-skip timeout.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_d3d11.xml <span class="nt">--reporter</span> console
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"exclude:[no_auto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_d3d11.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_d3d12.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"exclude:[no_auto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_d3d12.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_vulkan.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"exclude:[no_auto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_vulkan.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_vulkan2.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"exclude:[no_auto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_vulkan2.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_opengl.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"exclude:[no_auto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_opengl.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"exclude:[noauto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_metal.xml  <span class="nt">--reporter</span> console</code></pre>
+conformance_cli <span class="s2">"exclude:[no_auto]"</span> <span class="nt">-E</span> XR_EXT_conformance_automation <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>conformance_automation_metal.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -2295,19 +2289,19 @@ different graphics API availability on Android.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[noauto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan <span class="nt">-e</span> xmlFilename conformance_automation_vulkan.xml
+<pre class="rouge highlight"><code data-lang="sh">adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[no_auto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan <span class="nt">-e</span> xmlFilename conformance_automation_vulkan.xml
 
 <span class="c"># Wait until tests complete, then retrieve results with</span>
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/conformance_automation_vulkan.xml
 
 
-adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[noauto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan2 <span class="nt">-e</span> xmlFilename conformance_automation_vulkan2.xml
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[no_auto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin vulkan2 <span class="nt">-e</span> xmlFilename conformance_automation_vulkan2.xml
 
 <span class="c"># Wait until tests complete, then retrieve results with</span>
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/conformance_automation_vulkan2.xml
 
 
-adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[noauto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin opengles <span class="nt">-e</span> xmlFilename conformance_automation_opengles.xml
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"exclude:[no_auto],-E,XR_EXT_conformance_automation,--autoSkipTimeout,3000"</span> <span class="nt">-e</span> graphicsPlugin opengles <span class="nt">-e</span> xmlFilename conformance_automation_opengles.xml
 
 <span class="c"># Wait until tests complete, then retrieve results with</span>
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/conformance_automation_opengles.xml</code></pre>
@@ -2350,17 +2344,17 @@ these tests.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_d3d11.xml  <span class="nt">--reporter</span> console
+<pre class="rouge highlight"><code data-lang="sh">conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d11 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_d3d11.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_d3d12.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> d3d12 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_d3d12.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_vulkan.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_vulkan.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_vulkan2.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> vulkan2 <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_vulkan2.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_opengl.xml  <span class="nt">--reporter</span> console
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> opengl <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_opengl.xml <span class="nt">--reporter</span> console
 
-conformance_cli <span class="s2">"[composition][interactive]"</span>  <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_metal.xml  <span class="nt">--reporter</span> console</code></pre>
+conformance_cli <span class="s2">"[composition][interactive]"</span> <span class="nt">--autoSkipTimeout</span> 3000 <span class="nt">-G</span> metal <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_composition_autoskip_metal.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -2578,7 +2572,7 @@ assertion documentation</a></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.47<br>
+Version 1.1.48<br>
 </div>
 </div>
 </body>
