@@ -73,8 +73,8 @@ pre.rouge .w {
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrResult</span>           <span class="n">futureResult</span><span class="p">;</span>
-    <span class="n">XrAnchorBD</span>         <span class="n">anchor</span><span class="p">;</span>
     <span class="n">XrUuidEXT</span>          <span class="n">uuid</span><span class="p">;</span>
+    <span class="n">XrAnchorBD</span>         <span class="n">anchor</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrSpatialAnchorCreateCompletionBD</span><span class="p">;</span></code></pre>
 </div>
 </div>
@@ -100,10 +100,10 @@ No such structures are defined in core OpenXR or this extension.</p>
 <p><code>futureResult</code> is the result of the future.</p>
 </li>
 <li>
-<p><code>anchor</code> is the handle of the created spatial anchor.</p>
+<p><code>uuid</code> is the <a href="XrUuidEXT.html">XrUuidEXT</a> of the created anchor.</p>
 </li>
 <li>
-<p><code>uuid</code> is the <a href="XrUuidEXT.html">XrUuidEXT</a> of the created anchor.</p>
+<p><code>anchor</code> is the handle of the created spatial anchor.</p>
 </li>
 </ul>
 </div>
@@ -232,7 +232,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.49<br>
+Version 1.1.50<br>
 </div>
 </div>
 </body>

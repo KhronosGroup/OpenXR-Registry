@@ -764,8 +764,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.1.49</span>
-<br><span id="revremark">from git ref release-1.1.49</span>
+<span id="revnumber">version 1.1.50</span>
+<br><span id="revremark">from git ref release-1.1.50</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -778,159 +778,182 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <li><a href="#introduction-normative">1.4. Normative References</a></li>
 </ul>
 </li>
-<li><a href="#naming">2. API Naming Conventions</a>
+<li><a href="#design">2. API Design Principles</a>
 <ul class="sectlevel2">
-<li><a href="#_general_naming_rules">2.1. General Naming Rules</a></li>
-<li><a href="#naming-preprocessor">2.2. Preprocessor Defines</a></li>
-<li><a href="#_type_names">2.3. Type Names</a>
+<li><a href="#design-goals-for-app-dev">2.1. Goals for Application Developers</a></li>
+<li><a href="#design-considerations">2.2. General Design Considerations</a>
 <ul class="sectlevel3">
-<li><a href="#naming-extension-structures">2.3.1. Extension Structure Names</a></li>
+<li><a href="#design-considerations-app-modularity">2.2.1. Keep in Mind App Modularity</a></li>
+<li><a href="#design-considerations-negotiation">2.2.2. Use App/Runtime Negotiation to Avoid Per-App Compatibility Workarounds</a></li>
+<li><a href="#design-considerations-avoid-ub">2.2.3. Avoid Undefined Behavior</a></li>
+<li><a href="#design-considerations-avoid-may-should">2.2.4. Avoid <strong class="purple">may</strong> and <strong class="purple">should</strong></a></li>
+<li><a href="#design-considerations-consider-layer-implementation">2.2.5. Consider Implementation as an API Layer</a></li>
+<li><a href="#design-considerations-middleware">2.2.6. Consider How Middleware Will Expose The Functionality</a></li>
+<li><a href="#design-considerations-consistency">2.2.7. Consistency</a></li>
+<li><a href="#design-considerations-runtime-variety">2.2.8. Design for Runtime Variety</a></li>
+<li><a href="#design-considerations-universal-access">2.2.9. Design for Universal Accessibility</a></li>
+<li><a href="#design-considerations-privacy">2.2.10. Design for Privacy</a></li>
+<li><a href="#design-considerations-individual-control">2.2.11. Design for Individual Control</a></li>
+<li><a href="#design-considerations-misc">2.2.12. Miscellaneous Design Advice</a></li>
 </ul>
 </li>
-<li><a href="#_enumerant_names">2.4. Enumerant Names</a></li>
-<li><a href="#_function_names">2.5. Function Names</a>
-<ul class="sectlevel3">
-<li><a href="#naming-funcpointers">2.5.1. Function Pointer Type Names</a></li>
+<li><a href="#design-idioms">2.3. Existing Idioms</a></li>
+<li><a href="#design-polymorphism">2.4. Modeling Polymorphism</a></li>
 </ul>
 </li>
-<li><a href="#_function_parameter_and_structunion_member_names">2.6. Function Parameter and Struct/Union Member Names</a>
-<ul class="sectlevel3">
-<li><a href="#naming-two-call-idiom">2.6.1. Two-call Idiom Parameter Names</a></li>
-<li><a href="#naming-exceptions">2.6.2. Naming exceptions</a></li>
-</ul>
-</li>
-<li><a href="#naming-extension-identifiers">2.7. Extension Identifier Naming Conventions</a>
-<ul class="sectlevel3">
-<li><a href="#_extension_type_names">2.7.1. Extension Type Names</a></li>
-<li><a href="#_extension_enumerant_names">2.7.2. Extension Enumerant Names</a></li>
-<li><a href="#_extension_function_names">2.7.3. Extension Function Names</a></li>
-<li><a href="#_extension_interaction_profile_names">2.7.4. Extension Interaction Profile Names</a></li>
-</ul>
-</li>
-<li><a href="#naming-abbreviations">2.8. Common Abbreviations</a></li>
-<li><a href="#naming-prefixes">2.9. Standard Prefixes</a></li>
-</ul>
-</li>
-<li><a href="#extensions">3. API Layers &amp; Extensions</a>
+<li><a href="#naming">3. API Naming Conventions</a>
 <ul class="sectlevel2">
-<li><a href="#_introduction">3.1. Introduction</a></li>
-<li><a href="#_general_rulesguidelines">3.2. General Rules/Guidelines</a></li>
-<li><a href="#extensions-naming-conventions">3.3. Extension and API Layer Naming Conventions</a>
+<li><a href="#_general_naming_rules">3.1. General Naming Rules</a></li>
+<li><a href="#naming-preprocessor">3.2. Preprocessor Defines</a></li>
+<li><a href="#_type_names">3.3. Type Names</a>
 <ul class="sectlevel3">
-<li><a href="#extensions-naming-conventions-name-strings">3.3.1. Extension and API Layer Name Strings</a></li>
-<li><a href="#_author_ids">3.3.2. Author IDs</a></li>
+<li><a href="#naming-extension-structures">3.3.1. Extension Structure Names</a></li>
 </ul>
 </li>
-<li><a href="#extensions-naming">3.4. Extension Function, Type, and Token Naming Conventions</a></li>
-<li><a href="#extensions-api-registry">3.5. The OpenXR Registry</a></li>
-<li><a href="#extensions-author-ID">3.6. Registering an Author ID with Khronos</a></li>
-<li><a href="#extensions-vendor-id">3.7. Registering a Vendor ID with Khronos</a></li>
-<li><a href="#_registering_extensions">3.8. Registering Extensions</a></li>
-<li><a href="#extensions-documenting">3.9. Documenting Extensions</a>
+<li><a href="#_enumerant_names">3.4. Enumerant Names</a></li>
+<li><a href="#_function_names">3.5. Function Names</a>
 <ul class="sectlevel3">
-<li><a href="#_extension_documentation_nameslocations">3.9.1. Extension Documentation Names/Locations</a></li>
-<li><a href="#_extension_documentation_conditions">3.9.2. Extension Documentation Conditions</a></li>
-<li><a href="#_specification_and_extension_documentation_requirements">3.9.3. Specification and Extension Documentation Requirements</a></li>
-<li><a href="#_extension_lifecycle">3.9.4. Extension Lifecycle</a></li>
+<li><a href="#naming-funcpointers">3.5.1. Function Pointer Type Names</a></li>
 </ul>
 </li>
-<li><a href="#_assigning_extension_token_values">3.10. Assigning Extension Token Values</a>
+<li><a href="#_function_parameter_and_structunion_member_names">3.6. Function Parameter and Struct/Union Member Names</a>
 <ul class="sectlevel3">
-<li><a href="#extensions-reserving-bitmask-values">3.10.1. Reserving Bitmask Values</a></li>
+<li><a href="#naming-two-call-idiom">3.6.1. Two-call Idiom Parameter Names</a></li>
+<li><a href="#naming-exceptions">3.6.2. Naming exceptions</a></li>
 </ul>
 </li>
-<li><a href="#_required_extension_tokens">3.11. Required Extension Tokens</a></li>
-<li><a href="#_extension_handles_objects_enums_and_typedefs">3.12. Extension Handles, Objects, Enums, and Typedefs</a></li>
-<li><a href="#extension-function_prototypes">3.13. Extension Function Prototypes</a></li>
-<li><a href="#_accessing_extension_functions_from_programs">3.14. Accessing Extension Functions from Programs</a></li>
-<li><a href="#extensions-interactions">3.15. Extension Interactions</a>
+<li><a href="#naming-extension-identifiers">3.7. Extension Identifier Naming Conventions</a>
 <ul class="sectlevel3">
-<li><a href="#_extending_command_structures">3.15.1. Extending Command Structures</a></li>
-<li><a href="#_extending_command_returns">3.15.2. Extending Command Returns</a></li>
+<li><a href="#_extension_type_names">3.7.1. Extension Type Names</a></li>
+<li><a href="#_extension_enumerant_names">3.7.2. Extension Enumerant Names</a></li>
+<li><a href="#_extension_function_names">3.7.3. Extension Function Names</a></li>
+<li><a href="#_extension_interaction_profile_names">3.7.4. Extension Interaction Profile Names</a></li>
 </ul>
 </li>
+<li><a href="#naming-abbreviations">3.8. Common Abbreviations</a></li>
+<li><a href="#naming-prefixes">3.9. Standard Prefixes</a></li>
 </ul>
 </li>
-<li><a href="#markup">4. Markup Style</a>
+<li><a href="#extensions">4. API Layers &amp; Extensions</a>
 <ul class="sectlevel2">
-<li><a href="#markup-sample-section">4.1. Sample Section</a></li>
-<li><a href="#markup-layout">4.2. Asciidoc Markup And Text Layout</a>
+<li><a href="#_introduction">4.1. Introduction</a></li>
+<li><a href="#_general_rulesguidelines">4.2. General Rules/Guidelines</a></li>
+<li><a href="#extensions-naming-conventions">4.3. Extension and API Layer Naming Conventions</a>
 <ul class="sectlevel3">
-<li><a href="#markup-blocks">4.2.1. Blocks</a></li>
-<li><a href="#markup-footnotes">4.2.2. Footnotes</a></li>
-<li><a href="#markup-sample-section-lists">4.2.3. Lists</a></li>
-<li><a href="#markup-sample-section-anchors">4.2.4. Anchors and Cross-references</a></li>
-<li><a href="#markup-sample-section-tables">4.2.5. Tables</a></li>
-<li><a href="#markup-sample-section-images">4.2.6. Figures</a></li>
+<li><a href="#extensions-naming-conventions-name-strings">4.3.1. Extension and API Layer Name Strings</a></li>
+<li><a href="#_author_ids">4.3.2. Author IDs</a></li>
 </ul>
 </li>
-<li><a href="#markup-macros">4.3. Markup Macros and Normative Terminology</a>
+<li><a href="#extensions-naming">4.4. Extension Function, Type, and Token Naming Conventions</a></li>
+<li><a href="#extensions-api-registry">4.5. The OpenXR Registry</a></li>
+<li><a href="#extensions-author-ID">4.6. Registering an Author ID with Khronos</a></li>
+<li><a href="#extensions-vendor-id">4.7. Registering a Vendor ID with Khronos</a></li>
+<li><a href="#_registering_extensions">4.8. Registering Extensions</a></li>
+<li><a href="#extensions-documenting">4.9. Documenting Extensions</a>
 <ul class="sectlevel3">
-<li><a href="#markup-macros-api">4.3.1. API Markup Macros</a></li>
-<li><a href="#_normative_terminology">4.3.2. Normative Terminology</a></li>
+<li><a href="#_extension_documentation_nameslocations">4.9.1. Extension Documentation Names/Locations</a></li>
+<li><a href="#_extension_documentation_conditions">4.9.2. Extension Documentation Conditions</a></li>
+<li><a href="#_specification_and_extension_documentation_requirements">4.9.3. Specification and Extension Documentation Requirements</a></li>
+<li><a href="#_extension_lifecycle">4.9.4. Extension Lifecycle</a></li>
 </ul>
 </li>
-<li><a href="#markup-informative">4.4. Informative, Editing and Implementor&#8217;s Notes</a>
+<li><a href="#_assigning_extension_token_values">4.10. Assigning Extension Token Values</a>
 <ul class="sectlevel3">
-<li><a href="#markup-informative-notes">4.4.1. Informative Notes</a></li>
-<li><a href="#markup-editing-notes">4.4.2. Editing Notes</a></li>
-<li><a href="#markup-implementors-notes">4.4.3. Implementor&#8217;s Notes</a></li>
+<li><a href="#extensions-reserving-bitmask-values">4.10.1. Reserving Bitmask Values</a></li>
 </ul>
 </li>
-<li><a href="#markup-word-choices">4.5. Word Choices</a>
+<li><a href="#_required_extension_tokens">4.11. Required Extension Tokens</a></li>
+<li><a href="#_extension_handles_objects_enums_and_typedefs">4.12. Extension Handles, Objects, Enums, and Typedefs</a></li>
+<li><a href="#extension-function_prototypes">4.13. Extension Function Prototypes</a></li>
+<li><a href="#_accessing_extension_functions_from_programs">4.14. Accessing Extension Functions from Programs</a></li>
+<li><a href="#extensions-interactions">4.15. Extension Interactions</a>
 <ul class="sectlevel3">
-<li><a href="#markup-avoid-contractions">4.5.1. Avoid Contractions</a></li>
-<li><a href="#markup-terms-caution">4.5.2. Terms to Use With Caution</a></li>
-<li><a href="#markup-terms-avoid">4.5.3. Terms to Avoid</a></li>
+<li><a href="#_extending_command_structures">4.15.1. Extending Command Structures</a></li>
+<li><a href="#_extending_command_returns">4.15.2. Extending Command Returns</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#writing">5. Writing Style</a>
+<li><a href="#markup">5. Markup Style</a>
 <ul class="sectlevel2">
-<li><a href="#writing-misc">5.1. Miscellaneous Grammar, Spelling, and Punctuation Issues</a>
+<li><a href="#markup-sample-section">5.1. Sample Section</a></li>
+<li><a href="#markup-layout">5.2. Asciidoc Markup And Text Layout</a>
 <ul class="sectlevel3">
-<li><a href="#_use_the_oxford_comma_serial_comma">5.1.1. Use the Oxford Comma (Serial Comma)</a></li>
-<li><a href="#_date_format">5.1.2. Date Format</a></li>
-<li><a href="#writing-misc-a-an">5.1.3. A/An and Markup Macros</a></li>
-<li><a href="#_numbers_in_text">5.1.4. Numbers in Text</a></li>
-<li><a href="#_use_american_spelling_conventions">5.1.5. Use American Spelling Conventions</a></li>
-<li><a href="#writing-compound-words">5.1.6. Compound Words and Preferred Orthography</a></li>
+<li><a href="#markup-blocks">5.2.1. Blocks</a></li>
+<li><a href="#markup-footnotes">5.2.2. Footnotes</a></li>
+<li><a href="#markup-sample-section-lists">5.2.3. Lists</a></li>
+<li><a href="#markup-sample-section-anchors">5.2.4. Anchors and Cross-references</a></li>
+<li><a href="#markup-sample-section-tables">5.2.5. Tables</a></li>
+<li><a href="#markup-sample-section-images">5.2.6. Figures</a></li>
 </ul>
 </li>
-<li><a href="#writing-describing">5.2. Describing Commands and Parameters</a></li>
-<li><a href="#writing-latexmath">5.3. Math Markup</a>
+<li><a href="#markup-macros">5.3. Markup Macros and Normative Terminology</a>
 <ul class="sectlevel3">
-<li><a href="#_asciidoc_math_markup">5.3.1. Asciidoc Math Markup</a></li>
-<li><a href="#_latex_math_markup">5.3.2. LaTeX Math Markup</a></li>
+<li><a href="#markup-macros-api">5.3.1. API Markup Macros</a></li>
+<li><a href="#_normative_terminology">5.3.2. Normative Terminology</a></li>
 </ul>
 </li>
-<li><a href="#writing-next-chain">5.4. Describing Structure Chains</a></li>
-<li><a href="#writing-example">5.5. An Example Command Description</a></li>
-<li><a href="#sample-command">5.6. Sample Command Description: Creating an Instance</a></li>
-<li><a href="#writing-refpages">5.7. Markup For Automatic Reference Page Extraction</a></li>
+<li><a href="#markup-informative">5.4. Informative, Editing and Implementor&#8217;s Notes</a>
+<ul class="sectlevel3">
+<li><a href="#markup-informative-notes">5.4.1. Informative Notes</a></li>
+<li><a href="#markup-editing-notes">5.4.2. Editing Notes</a></li>
+<li><a href="#markup-implementors-notes">5.4.3. Implementor&#8217;s Notes</a></li>
 </ul>
 </li>
-<li><a href="#schema">6. Registry XML Schema</a>
+<li><a href="#markup-word-choices">5.5. Word Choices</a>
+<ul class="sectlevel3">
+<li><a href="#markup-avoid-contractions">5.5.1. Avoid Contractions</a></li>
+<li><a href="#markup-terms-caution">5.5.2. Terms to Use With Caution</a></li>
+<li><a href="#markup-terms-avoid">5.5.3. Terms to Avoid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#writing">6. Writing Style</a>
 <ul class="sectlevel2">
-<li><a href="#_machine_readable_schema_definitions">6.1. Machine Readable Schema Definitions</a></li>
-<li><a href="#_xml_format_details">6.2. XML Format Details</a>
+<li><a href="#writing-misc">6.1. Miscellaneous Grammar, Spelling, and Punctuation Issues</a>
 <ul class="sectlevel3">
-<li><a href="#xml-interaction-profiles">6.2.1. Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</a></li>
-<li><a href="#xml-interaction-profile">6.2.2. Interaction Profiles (<code>interaction_profile</code> tag)</a></li>
-<li><a href="#xml-interaction-profile-user-path">6.2.3. Interaction Profile User Paths (<code>user_path</code> tag)</a></li>
-<li><a href="#xml-interaction-profile-component">6.2.4. Interaction Profile Component (<code>component</code> tag)</a></li>
-<li><a href="#xml-require-interaction-profile">6.2.5. Contents of <code>require</code>: <code>interaction_profile</code> Tags</a></li>
-<li><a href="#xml-require-extend-interaction-profile">6.2.6. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles</a></li>
-<li><a href="#xml-require-extend-interaction-profile-predicate">6.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</a></li>
-<li><a href="#xml-extend-interaction-profile-predicate-condition">6.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</a></li>
-<li><a href="#xml-extend-interaction-profile-user_path">6.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</a></li>
+<li><a href="#_use_the_oxford_comma_serial_comma">6.1.1. Use the Oxford Comma (Serial Comma)</a></li>
+<li><a href="#_date_format">6.1.2. Date Format</a></li>
+<li><a href="#writing-misc-a-an">6.1.3. A/An and Markup Macros</a></li>
+<li><a href="#_numbers_in_text">6.1.4. Numbers in Text</a></li>
+<li><a href="#_use_american_spelling_conventions">6.1.5. Use American Spelling Conventions</a></li>
+<li><a href="#writing-compound-words">6.1.6. Compound Words and Preferred Orthography</a></li>
+</ul>
+</li>
+<li><a href="#writing-describing">6.2. Describing Commands and Parameters</a></li>
+<li><a href="#writing-latexmath">6.3. Math Markup</a>
+<ul class="sectlevel3">
+<li><a href="#_asciidoc_math_markup">6.3.1. Asciidoc Math Markup</a></li>
+<li><a href="#_latex_math_markup">6.3.2. LaTeX Math Markup</a></li>
+</ul>
+</li>
+<li><a href="#writing-next-chain">6.4. Describing Structure Chains</a></li>
+<li><a href="#writing-example">6.5. An Example Command Description</a></li>
+<li><a href="#sample-command">6.6. Sample Command Description: Creating an Instance</a></li>
+<li><a href="#writing-refpages">6.7. Markup For Automatic Reference Page Extraction</a></li>
+</ul>
+</li>
+<li><a href="#schema">7. Registry XML Schema</a>
+<ul class="sectlevel2">
+<li><a href="#_machine_readable_schema_definitions">7.1. Machine Readable Schema Definitions</a></li>
+<li><a href="#_xml_format_details">7.2. XML Format Details</a>
+<ul class="sectlevel3">
+<li><a href="#xml-interaction-profiles">7.2.1. Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</a></li>
+<li><a href="#xml-interaction-profile">7.2.2. Interaction Profiles (<code>interaction_profile</code> tag)</a></li>
+<li><a href="#xml-interaction-profile-user-path">7.2.3. Interaction Profile User Paths (<code>user_path</code> tag)</a></li>
+<li><a href="#xml-interaction-profile-component">7.2.4. Interaction Profile Component (<code>component</code> tag)</a></li>
+<li><a href="#xml-require-interaction-profile">7.2.5. Contents of <code>require</code>: <code>interaction_profile</code> Tags</a></li>
+<li><a href="#xml-require-extend-interaction-profile">7.2.6. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles</a></li>
+<li><a href="#xml-require-extend-interaction-profile-predicate">7.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</a></li>
+<li><a href="#xml-extend-interaction-profile-predicate-condition">7.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</a></li>
+<li><a href="#xml-extend-interaction-profile-user_path">7.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_still_to_be_done">7. Still To Be Done</a></li>
-<li><a href="#_revision_history">8. Revision History</a></li>
+<li><a href="#_still_to_be_done">8. Still To Be Done</a></li>
+<li><a href="#_revision_history">9. Revision History</a></li>
 </ul>
 </div>
 </div>
@@ -1026,6 +1049,10 @@ conventions, common words and phrases to use and to avoid, linking and
 cross-referencing, etc.</p>
 </li>
 <li>
+<p><a href="#design">API Design Principles</a> - an informative discussion of API design principles encouraged
+by the Specification Editor and the broader Working Group.</p>
+</li>
+<li>
 <p><a href="#schema">Registry XML Schema</a> - a brief description of the XML registry format as well as the
 declarative schemas and tools available to assist in verification of
 changes.</p>
@@ -1078,7 +1105,615 @@ Also see <a href="https://www.w3.org/QA/Tips/iso-date" class="bare">https://www.
 </div>
 </div>
 <div class="sect1">
-<h2 id="naming">2. API Naming Conventions</h2>
+<h2 id="design">2. API Design Principles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter of the document is not inherently binding, but it captures some
+principles applied by the Working Group when designing new APIs.
+Contravening its principles will likely lead to resistance to your proposed
+API by the working group and/or specification editor, and makes your API
+less "OpenXR-like".</p>
+</div>
+<div class="sect2">
+<h3 id="design-goals-for-app-dev">2.1. Goals for Application Developers</h3>
+<div class="paragraph">
+<p>A version of this list was originally published on
+<a href="https://github.com/KhronosGroup/OpenXR-Guide/blob/main/chapters/goals_design_philosophy.md">the
+Goals and Design Philosophy document</a> in the OpenXR-Guide, focused on
+interaction.
+However, as included here, they apply more broadly to the overall design of
+OpenXR APIs.
+These are goals kept in mind by the Working Group regarding API usage by
+applications and engines: "we"/"our" refers to the working group in the
+design process, while "you" refers to the developer of an application or
+game.
+The goals have been assigned shorthand titles/mnemonics to make them easy to
+reference in subsequent discussion.</p>
+</div>
+<div id="design-goals-customize" class="dlist">
+<dl>
+<dt class="hdlist1">CUSTOMIZE</dt>
+<dd>
+<p>We want you to be able to customize how your software works on the devices
+you are focused on and testing most, and we want it to work the way you
+expect/intend on those devices by default.</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-compatibility" class="dlist">
+<dl>
+<dt class="hdlist1">COMPATIBILITY</dt>
+<dd>
+<p>At least within the scope of the OpenXR standard, we want to enable you to
+create applications that function seamlessly across hardware and runtimes
+you have not tested, as well as hardware that has not been invented yet.
+For feature differences, design for progressive enhancement by default, such
+as through extensions.</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-specified" class="dlist">
+<dl>
+<dt class="hdlist1">ONLY-DEPEND-ON-SPEC</dt>
+<dd>
+<p>We want your software to depend only on the specified, documented behavior,
+so that <a href="#design-goals-compatibility">COMPATIBILITY</a> is possible, and so that
+compatibility with your software does not constrain the design space of
+future XR systems.</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-avoid-appcompat" class="dlist">
+<dl>
+<dt class="hdlist1">AVOID-APPCOMPAT</dt>
+<dd>
+<p>We want to avoid writing compatibility code in runtimes to work around a bug
+in your software (or alternately, having to choose to simply let your
+software be unusable).</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-avoid-untested" class="dlist">
+<dl>
+<dt class="hdlist1">AVOID-UNTESTED-PATHS</dt>
+<dd>
+<p>As a consequence of <a href="#design-goals-avoid-appcompat">AVOID-APPCOMPAT</a>, we want to avoid
+encouraging or relying on untested code paths in your software: hardware you
+have not tested should use the same code paths that you use for hardware you
+did test.</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-avoid-permitted-surprises" class="dlist">
+<dl>
+<dt class="hdlist1">AVOID-PERMITTED-SURPRISES</dt>
+<dd>
+<p>As a consequence of <a href="#design-goals-avoid-appcompat">AVOID-APPCOMPAT</a> and corollary of
+<a href="#design-goals-avoid-untested">AVOID-UNTESTED-PATHS</a>, we want to avoid "surprising" your software
+with behavior permitted by the spec but not tested in your development
+process.</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-pit-of-success" class="dlist">
+<dl>
+<dt class="hdlist1">PIT-OF-SUCCESS</dt>
+<dd>
+<p>We want the common tasks to be as easy as possible without constraining
+future potential, so the natural choice is the right one or the best
+practice in most cases.</p>
+</dd>
+</dl>
+</div>
+<div id="design-goals-maybe-make-the-complicated-possible" class="dlist">
+<dl>
+<dt class="hdlist1">MAYBE-MAKE-THE-COMPLICATED-POSSIBLE</dt>
+<dd>
+<p>We want complicated and uncommon things to be possible, but <strong>not</strong> at the
+expense of making the common ones more error-prone.
+If it is possible for a given rare, complicated use to be implemented with
+the specification as-is, we are unlikely to add to the spec to make it
+easier if it might pose a trap for the more common use cases.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design-considerations">2.2. General Design Considerations</h3>
+<div class="paragraph">
+<p>The following design considerations are worth keeping in mind when composing
+new API for OpenXR (typically in the form of extensions.)</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-app-modularity">2.2.1. Keep in Mind App Modularity</h4>
+<div class="paragraph">
+<p>Applications may consist of components, such as an engine, plugins/addons,
+and application code itself, all of which might be compiled separately and
+against different versions of OpenXR headers.
+Often, the header and loader used by an engine is older (perhaps
+substantially) than the application code, and the ability of the application
+to affect how the engine creates an instance may be limited, for a concrete
+example.
+From this flows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Just enabling an extension <strong class="purple">should</strong> not change behavior</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Behavior changes <strong class="purple">should</strong> be controlled by a local opt-in via extension
+structure or different function name.
+Separate components <strong class="purple">should</strong> not have their assumptions broken because
+another component wants to use new features.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-negotiation">2.2.2. Use App/Runtime Negotiation to Avoid Per-App Compatibility Workarounds</h4>
+<div class="paragraph">
+<p>This principle is primarily demonstrated in the interaction system, but is
+applicable elsewhere.</p>
+</div>
+<div class="paragraph">
+<p>See also <a href="#design-goals-avoid-appcompat">AVOID-APPCOMPAT</a> for the app-facing goal related to
+this consideration.</p>
+</div>
+<div class="paragraph">
+<p>In brief, if an API has an open-ended return value for an application to
+handle, realistically only those values available to test by the developers
+will actually be tested.
+To avoid unexpected behavior then, appcompat code per-application is
+required to define the list of values that can be returned to an app without
+it exhibiting undesired behavior.
+This is not a scalable solution.</p>
+</div>
+<div class="paragraph">
+<p>Alternately, the application can declare to the runtime which values it is
+aware of, sometimes with a priority if it makes sense.
+Such a call carries the assertion that the application has been tested with
+all the suggested values.
+The runtime can then select the best value or values from those affimatively
+identified by the application.</p>
+</div>
+<div class="paragraph">
+<p>In the action system, this is the suggested bindings and interaction
+profiles.</p>
+</div>
+<div class="paragraph">
+<p>If this pattern is applied, it is important to identify the limits of
+emulating the behavior of the reported value.
+There are some parts of the interaction system that are insufficiently or
+unclearly specified with regards to whether they are limited to behaviors
+observable with the archetypical device of the current interaction profile,
+or whether they are not so limited.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-avoid-ub">2.2.3. Avoid Undefined Behavior</h4>
+<div class="paragraph">
+<p>OpenXR has borrowed many design principles from Vulkan, but compared to
+Vulkan, OpenXR is a relatively "low-frequency" API.
+The performance cost of verifying valid usage is broadly acceptable, though
+not uniformly required.
+However, in new API, prefer normative statements like "If value is outside
+of range XYZ, the runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>"
+(or a more specific applicable error) over statements like "the application
+<strong class="purple">must</strong> submit a value in XYZ".
+It is acceptable to include both, with the app "<strong class="purple">must</strong>" first, and the
+runtime "<strong class="purple">must</strong>" second.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-avoid-may-should">2.2.4. Avoid <strong class="purple">may</strong> and <strong class="purple">should</strong></h4>
+<div class="paragraph">
+<p>These provide flexibility for the runtime, but they do not usually add very
+much to the utility of the specification, since you cannot conformance-test
+them, and developers cannot rely on that behavior.
+Try to establish a "<strong class="purple">must</strong>".</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-consider-layer-implementation">2.2.5. Consider Implementation as an API Layer</h4>
+<div class="paragraph">
+<p>Considering whether a given piece of functionality might be suitable for
+implementation in an API layer can be a useful step in drafting OpenXR
+functionality/extensions.
+If functionality is suitable for implementation in an API layer, verify that
+the proposed API is feasible to implement this way.</p>
+</div>
+<div class="paragraph">
+<p>Not all functionality makes sense to implement in an API layer.
+Interactions and action system related functionality in particular is
+painful to implement in an API layer, by design.
+(There is data not exposed to the application API to avoid compatibility
+problems.) In addition, maintaining an API layer is substantial work as it
+often must be updated on every spec release for maximum compatibility, and
+can serve as a fragile link in the runtime environment.</p>
+</div>
+<div class="paragraph">
+<p>However, some functionality is suitable for API layer implementation.
+In particular, this can be helpful in compatibility (implement old
+functionality in terms of newer API, typically), as well as functionality
+that has limited interaction with other parts of OpenXR, such as
+platform-focused performance and thermal extensions.
+They can also be used to support added hardware, although the fragility
+concerns still apply, and not all platforms currently support
+field-installable API layers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-middleware">2.2.6. Consider How Middleware Will Expose The Functionality</h4>
+<div class="paragraph">
+<p>Many developers using OpenXR never interact directly with OpenXR API.
+Instead they interact only with the interface exposed by some middleware (a
+preferred game engine or abstraction layer) based on the OpenXR API.
+Make sure to consider how your functionality will fit into middleware and
+how they might expose it.
+If your API introduces a way of interacting with capabilities typically
+exposed in a different way in existing abstraction layers and engines, you
+may need to include engine and middleware vendors in the drafting and
+release process.
+Otherwise, it will likely be wrapped to expose a more conventional
+interface.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-consistency">2.2.7. Consistency</h4>
+<div class="paragraph">
+<p>People often understand new concepts by relating them to what they already
+know.
+Developers will assume that your API works in broadly the same way as other
+functionality in OpenXR, so avoid deviating from the overall conventions and
+"feel" of OpenXR in your design.
+Specifically, a few points:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create new uses for handles and atoms sparingly, as they add complexity.
+Carefully consider the hierarchy of handles, as this controls handle
+lifetime, and also helps developers to construct a mental model about the
+problem space.
+Use handles when the application needs the runtime to obtain or allocate
+resources, and atoms when referring to entities logically within an
+existing handle.
+Atoms are often obtained and used, with a parent handle, to selectively
+create a new handle.</p>
+</li>
+<li>
+<p>Do not define new values that are "similar but not" handles or atoms.
+Between handles, atoms, and UUIDs (which have no implicit lifetime), find
+the closest fit and accept all the parts of it.
+Developers will try to make your entity into one of those if you define
+your own anyway.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Relatedly: If you use UUIDs, be precise about the lifetime, and know that
+they are often assumed to exist beyond the bounds of a session or
+instance.
+If a UUID is transient, recommend including something to that effect in
+the name of the field or parameter.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use the units and types (meters, radians, coordinate systems,
+<code>XrTime</code>, <code>XrDuration</code>) that are typical to the rest of the
+specification.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-runtime-variety">2.2.8. Design for Runtime Variety</h4>
+<div class="paragraph">
+<p>There are many types of OpenXR runtimes, and they have different
+requirements and constraints.
+Examples of some runtime types that we know about today:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Some runtimes work on a desktop fixed spatial display.</p>
+</li>
+<li>
+<p>Some runtimes are for AR or MR devices rather than VR devices.</p>
+</li>
+<li>
+<p>Some runtimes are for desktop use, while others are for all-in-one
+untethered usage.</p>
+</li>
+<li>
+<p>Some runtimes are layered on top of another runtime.
+Often the same runtimes as those satisfying the next point.</p>
+</li>
+<li>
+<p>Some runtimes are remote/streaming, over connections with a variety of
+latencies and bandwidths.
+(Wired USB, WiFi to a local machine, WiFi to a cloud server, cellular data
+to an edge/cloud server) Generally it is best if the application does not
+need to care about this detail, but there may be some optional awareness
+that might affect how the application sets up the interaction.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Be aware of what latencies are easily hidden and which are not.
+Head motion graphical latency is relatively easily hidden through widely
+understood techniques, but the latency of e.g. bringing up a menu on a
+button press is harder to hide.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-universal-access">2.2.9. Design for Universal Accessibility</h4>
+<div class="paragraph">
+<p>Not all individuals are able to or even want to use an application exactly
+as it was designed.
+In most cases, we emphasize the autonomy and control of the individual in
+the XR experience.
+(The main conflict is, at which point does interaction customization become
+cheating, for potentially competitive applications.)</p>
+</div>
+<div class="paragraph">
+<p>Design so that the runtime can allow the individual to customize how they
+interact with an application without breaking the app or hitting
+<a href="#design-goals-avoid-untested">untested code paths</a>.
+For a specific example, design such that no matter how many devices are used
+to feed input into an application, the same code path is used to show
+renderable controller models.
+If there is a separate code path for the "uncommon" case of input remapping,
+that produces essentially an untested code path.</p>
+</div>
+<div class="paragraph">
+<p>If providing spatial input for the purpose of interaction, consider if there
+is a way to expose it such that it can be simulated or remapped according to
+individual preference or needs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-privacy">2.2.10. Design for Privacy</h4>
+<div class="paragraph">
+<p>XR technologies often acquire or use very detailed information that can be
+private and/or identifying.
+For example, even basic mouse input data can be used to infer medical
+conditions <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>, and XR motion tracking is higher
+dimension and typically higher frequency than mouse input.</p>
+</div>
+<div class="paragraph">
+<p>Always consider the privacy impact of exposing functionality.
+This may mean only providing high level functionality instead of raw data,
+e.g. environment blend modes for video passthrough, rather than exposing
+camera images for the application to render.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-individual-control">2.2.11. Design for Individual Control</h4>
+<div class="paragraph">
+<p>The application author specifies desired default behavior, where it is
+tested.
+The runtime attempts to provide a quality experience based on that
+demonstrated intent and the environment.
+The individual in control of the experience can choose, however, to
+configure the runtime (and application) to behave in a different way, even a
+non-conformant way.
+If such control breaks the app, it is that individual&#8217;s problem, although it
+is best to design the API to avoid breaking applications if possible.
+It is most visible in the interaction spec, where many of the requirements
+include the phrase "when obeying suggested bindings".
+The degree of individual control offered may vary between runtimes.
+Note that there is ample evidence that a subset of application users will go
+to dramatic lengths to restore their individual control if it is not
+preserved by the API and runtime, so designing with this control in mind can
+improve the experience quality.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-misc">2.2.12. Miscellaneous Design Advice</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Will an application make a big series of <code>if</code> statements (or a big
+<code>switch</code> block) to use this? This is broadly considered an anti-pattern
+and may indicate a less than ideal API.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can it be avoided by making a more declarative API?</p>
+</li>
+<li>
+<p>Can it be avoided by making the API higher-level and delegating more work
+to the runtime?</p>
+</li>
+<li>
+<p>If the app will put in a big <code>switch</code> statement, make sure that it only
+gets values back out that it has affirmatively specified.
+See <a href="#design-goals-avoid-permitted-surprises">AVOID-PERMITTED-SURPRISES</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Beware of API shapes where runtimes may want to return the "best" or
+"better" value of an enum, even though it does not strictly describe the
+environment, because that makes it functionally useless.</p>
+</li>
+<li>
+<p>Similarly, if providing a non-binary output (whether enumerants, integers,
+or floats), be sure the "transfer function" is specified, relating the
+value to a real-world property.
+If specifying the transfer function is difficult or prone to
+mis-interpretation, consider recommending a limited scope of use.
+(Note however that any outputs <strong>will</strong> eventually be used for whatever
+purpose a developer deems useful, even if it is discouraged by the
+specification.)</p>
+</li>
+<li>
+<p>Always consider the impact of functionality on the broader ecosystem of
+applications and runtimes.</p>
+</li>
+<li>
+<p>If code will need to be updated, favor putting it in the runtime.
+As an OpenXR WG member representative once said, "eventually all software
+becomes legacy software", and this happens quite quickly with many apps in
+the game industry.
+A developer may disband a team, leave the XR industry, or otherwise not
+update an application for newer runtimes, so prefer to design APIs that
+can make the runtime handle any compatibility burden.
+(Though keep in mind <a href="#design-goals-avoid-appcompat">AVOID-APPCOMPAT</a>.)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design-idioms">2.3. Existing Idioms</h3>
+<div class="paragraph">
+<p>Other parts of OpenXR demonstrate some solution patterns or idioms that may
+be useful in solving API design problems you encounter.
+The first place to start when designing an API for OpenXR is the
+Fundamentals chapter of the specification.
+It covers many applicable idioms widely used in OpenXR.
+Some specific idioms are called out in the following list for easy
+reference.
+Using these is a way to apply the design consideration of
+<a href="#design-considerations-consistency">Consistency</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Negotiate starting with a application - for details see
+<a href="#design-considerations-negotiation">Use App/Runtime Negotiation to Avoid Per-App Compatibility Workarounds</a>.</p>
+</li>
+<li>
+<p>Polymorphic properties for a uniform object type with otherwise uniform
+operations - see <a href="#XrSwapchain">XrSwapchain</a> and <a href="#xrEnumerateSwapchainImages">xrEnumerateSwapchainImages</a>.</p>
+</li>
+<li>
+<p>Two-call idiom for buffer sizes, including associated arrays with
+different sizes using the structure type (e.g. vector and index arrays in
+<code><a href="#XR_KHR_visibility_mask">XR_KHR_visibility_mask</a></code>)</p>
+</li>
+<li>
+<p>Arrays of output data, with indices in an enum.
+(Hand joints and joint sets)</p>
+</li>
+<li>
+<p>Hand tracking "data source" (or use case) rather than "quality"</p>
+</li>
+<li>
+<p>Hand tracking "motion range" (obstructed vs unobstructed - controllers
+simulate unobstructed from obstructed.)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design-polymorphism">2.4. Modeling Polymorphism</h3>
+<div class="paragraph">
+<p>We have two ways of having polymorphic inputs and outputs.
+The most frequently used one is the <code>next</code> chain, adapted from the Vulkan
+<code>pNext</code> chain.
+It is documented conceptually in the specification:
+<a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html#fundamentals-valid-usage-for-structure-pointer-chains">Valid
+Usage for Structure Pointer Chains</a>.</p>
+</div>
+<div class="paragraph">
+<p>The less common one is using a <code>BaseHeader</code> type and reinterpret-casting.
+This is used only a few places in the specification and does not have a
+section in Fundamentals.
+Except in legacy cases, <strong>do not</strong> use both on a single type.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Consider if you need polymorphism at that level at all: multiple functions
+create <code>XrSpace</code> handles from a variety of inputs, rather than a single
+<code>xrCreateSpace</code> with polymorphic inputs.</p>
+</li>
+<li>
+<p>If you do actually need polymorphism, strongly prefer <code>next</code> chain by
+default.
+They are more common, more familiar, and can be used without
+dangerous-looking code (<code>reinterpret_cast</code>) on the application side.</p>
+</li>
+<li>
+<p>If all the polymorphic structs share some initial members, this suggests
+<code>BaseHeader</code> might be suitable.
+(If they do not share initial members beyond <code>type</code> and <code>next</code>, this
+suggests not to use <code>BaseHeader</code>!) E.g. <a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a>
+composition layers work this way because they all are submitted with
+<code>flags</code> and in a <code>space</code>.</p>
+</li>
+<li>
+<p>If you need to have a heterogeneous array of one or more items of any
+given type, then use an array of pointers to <code>BaseHeader</code>.
+(Composition layers, for example)</p>
+</li>
+<li>
+<p>But, if you only need at most one of each type, use the <code>next</code> chain.</p>
+</li>
+<li>
+<p>If it doesn&#8217;t make sense without something chained into the <code>next</code> chain,
+that is a weak indication toward <code>BaseHeader</code>.
+It is weak because a lot of times we just put an empty struct in there and
+say, this is for extension.
+See e.g. <a href="#XrFrameWaitInfo">XrFrameWaitInfo</a></p>
+</li>
+<li>
+<p>Typically <code>Info</code> (input parameters) included in function declarations are
+not <code>BaseHeaders</code>.</p>
+</li>
+<li>
+<p>Existing, good applications of <code>BaseHeader</code> type structures:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>composition layers - this is the ideal usage.</p>
+</li>
+<li>
+<p>swapchain images</p>
+<div class="ulist">
+<ul>
+<li>
+<p>However, the API there is awkward, would be better to enumerate one at a
+time or an array of pointers to <code>BaseHeader</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Filters and query parameters in a variety of extensions.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>However, if these do not need to have more than one structure of each
+type, these are better as <code>next</code> chains.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="naming">3. API Naming Conventions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Identifiers in the OpenXR API (e.g. types, parameters, constants, etc.) all
@@ -1090,7 +1725,7 @@ Bindings to other languages can choose not to use these prefixes if the
 language provides an explicit namespace mechanism.</p>
 </div>
 <div class="sect2">
-<h3 id="_general_naming_rules">2.1. General Naming Rules</h3>
+<h3 id="_general_naming_rules">3.1. General Naming Rules</h3>
 <div class="paragraph">
 <p>Names of identifiers should generally be written with full words, avoiding
 abbreviations, as a concise description of what that identifier is.
@@ -1113,7 +1748,7 @@ place of the full word unless there is good reason not to.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="naming-preprocessor">2.2. Preprocessor Defines</h3>
+<h3 id="naming-preprocessor">3.2. Preprocessor Defines</h3>
 <div class="paragraph">
 <p>Preprocessor definitions include an underscore <code>_</code> as a delimiter between
 words, with every character in upper case.</p>
@@ -1185,12 +1820,12 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 49)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 50)</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_type_names">2.3. Type Names</h3>
+<h3 id="_type_names">3.3. Type Names</h3>
 <div class="paragraph">
 <p>Type names are declared with no separator between words.
 Each word starts with a capital letter, and other characters in each word
@@ -1239,7 +1874,7 @@ typedefs, and enumerant types.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="naming-extension-structures">2.3.1. Extension Structure Names</h4>
+<h4 id="naming-extension-structures">3.3.1. Extension Structure Names</h4>
 <div class="paragraph">
 <p>Structures which extend other structures through the <code>next</code> chain should
 reflect the name of the base structure they extend, or the role that they
@@ -1288,7 +1923,7 @@ that extension.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_enumerant_names">2.4. Enumerant Names</h3>
+<h3 id="_enumerant_names">3.4. Enumerant Names</h3>
 <div class="paragraph">
 <p>Enumerants include an underscore <code>_</code> as a delimiter between words, with
 every character in upper case.</p>
@@ -1372,7 +2007,7 @@ static const XrSwapchainCreateFlags XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT = 0x000
 </div>
 </div>
 <div class="sect2">
-<h3 id="_function_names">2.5. Function Names</h3>
+<h3 id="_function_names">3.5. Function Names</h3>
 <div class="paragraph">
 <p>Function names are declared with no separator between words.
 Each word starts with a capital letter, and every other character in each
@@ -1390,7 +2025,7 @@ XRAPI_ATTR XrResult XRAPI_CALL xrGetSystem( ... );</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="naming-funcpointers">2.5.1. Function Pointer Type Names</h4>
+<h4 id="naming-funcpointers">3.5.1. Function Pointer Type Names</h4>
 <div class="paragraph">
 <p>Function pointer names are declared exactly as the equivalent statically
 declared function would be declared, but prefixed with <code>PFN_</code>, standing for
@@ -1405,7 +2040,7 @@ declared function would be declared, but prefixed with <code>PFN_</code>, standi
 </div>
 </div>
 <div class="sect2">
-<h3 id="_function_parameter_and_structunion_member_names">2.6. Function Parameter and Struct/Union Member Names</h3>
+<h3 id="_function_parameter_and_structunion_member_names">3.6. Function Parameter and Struct/Union Member Names</h3>
 <div class="paragraph">
 <p>Function parameter names are declared with no separator between words.
 Each new word, <strong>except</strong> for the first, starts with a capital letter.
@@ -1437,7 +2072,7 @@ extension structure should include an array length member with the same name
 as the length in the base structure.</p>
 </div>
 <div class="sect3">
-<h4 id="naming-two-call-idiom">2.6.1. Two-call Idiom Parameter Names</h4>
+<h4 id="naming-two-call-idiom">3.6.1. Two-call Idiom Parameter Names</h4>
 <div class="paragraph">
 <p>The two-call idiom for buffer size parameters uses names as follows.</p>
 </div>
@@ -1551,7 +2186,7 @@ typedef struct XrCompositionLayerProjection {
 </div>
 </div>
 <div class="sect3">
-<h4 id="naming-exceptions">2.6.2. Naming exceptions</h4>
+<h4 id="naming-exceptions">3.6.2. Naming exceptions</h4>
 <div class="paragraph">
 <p>There are a few graphics API-related names that have specific capitalization
 that are an exception to these rules:</p>
@@ -1575,7 +2210,7 @@ enumerants.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="naming-extension-identifiers">2.7. Extension Identifier Naming Conventions</h3>
+<h3 id="naming-extension-identifiers">3.7. Extension Identifier Naming Conventions</h3>
 <div class="paragraph">
 <p>Identifiers defined by an extension are modified by appending the
 extension&#8217;s author ID to the end of the identifier, as described below.
@@ -1591,14 +2226,14 @@ The original identifiers should be kept in order to maintain source-level
 compatibility with existing software.</p>
 </div>
 <div class="sect3">
-<h4 id="_extension_type_names">2.7.1. Extension Type Names</h4>
+<h4 id="_extension_type_names">3.7.1. Extension Type Names</h4>
 <div class="paragraph">
 <p>Types defined by extensions have the author ID appended to the end of the
 type name.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_extension_enumerant_names">2.7.2. Extension Enumerant Names</h4>
+<h4 id="_extension_enumerant_names">3.7.2. Extension Enumerant Names</h4>
 <div class="paragraph">
 <p>Enumerants defined by extensions will have the author ID appended to the end
 of the enumerant name, separated by an underscore.
@@ -1607,7 +2242,7 @@ definitions by the generator scripts.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_extension_function_names">2.7.3. Extension Function Names</h4>
+<h4 id="_extension_function_names">3.7.3. Extension Function Names</h4>
 <div class="paragraph">
 <p>Function and function pointer type names defined by extensions have the
 author ID appended to the end of the name.</p>
@@ -1623,7 +2258,7 @@ author ID appended to the end of the name.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_extension_interaction_profile_names">2.7.4. Extension Interaction Profile Names</h4>
+<h4 id="_extension_interaction_profile_names">3.7.4. Extension Interaction Profile Names</h4>
 <div class="paragraph">
 <p>Interaction Profile names defined by extensions have the author ID appended
 to the end of the name.</p>
@@ -1645,7 +2280,7 @@ to the end of the name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="naming-abbreviations">2.8. Common Abbreviations</h3>
+<h3 id="naming-abbreviations">3.8. Common Abbreviations</h3>
 <div class="paragraph">
 <p>Abbreviations and acronyms are sometimes used in the
 <a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html">OpenXR API Specification</a> and the OpenXR API
@@ -1758,7 +2393,7 @@ If that decision is made these exceptions may be noted here.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="naming-prefixes">2.9. Standard Prefixes</h3>
+<h3 id="naming-prefixes">3.9. Standard Prefixes</h3>
 <div class="paragraph">
 <p>Prefixes are used in the API to denote specific semantic meaning of OpenXR
 names, or as a label to avoid name clashes, and are explained here:</p>
@@ -1783,7 +2418,7 @@ Denotes that a type is a function pointer.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="extensions">3. API Layers &amp; Extensions</h2>
+<h2 id="extensions">4. API Layers &amp; Extensions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter describes required and recommended processes for writing formal
@@ -1795,7 +2430,7 @@ The organizational processes behind extension creation are in a separate
 document, the <a href="https://registry.khronos.org/OpenXR/specs/1.1/extprocess.html">OpenXR Working Group Extension Processes</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="_introduction">3.1. Introduction</h3>
+<h3 id="_introduction">4.1. Introduction</h3>
 <div class="paragraph">
 <p>The Khronos extension registries and extension naming conventions serve
 several purposes:</p>
@@ -1845,7 +2480,7 @@ adaptations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_general_rulesguidelines">3.2. General Rules/Guidelines</h3>
+<h3 id="_general_rulesguidelines">4.2. General Rules/Guidelines</h3>
 <div class="paragraph">
 <p>Some general rules to simplify the specific rules below:</p>
 </div>
@@ -1880,7 +2515,7 @@ Prefer polling or event patterns.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-naming-conventions">3.3. Extension and API Layer Naming Conventions</h3>
+<h3 id="extensions-naming-conventions">4.3. Extension and API Layer Naming Conventions</h3>
 <div class="paragraph">
 <p>Extensions and API layers have formal <em>names</em>.
 These names are used in a variety of places:</p>
@@ -1950,7 +2585,7 @@ In addition, API layers add the <code>APILAYER_</code> prefix.</p>
 <p>Extension and API layer names must both be valid C language identifiers.</p>
 </div>
 <div class="sect3">
-<h4 id="extensions-naming-conventions-name-strings">3.3.1. Extension and API Layer Name Strings</h4>
+<h4 id="extensions-naming-conventions-name-strings">4.3.1. Extension and API Layer Name Strings</h4>
 <div class="paragraph">
 <p>The <code>&lt;name&gt;</code> portion of extension and API layer names is a concise name
 describing the purpose or functionality of the extension or API layer.
@@ -1959,7 +2594,7 @@ Every character of the name must be in lower case.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_author_ids">3.3.2. Author IDs</h4>
+<h4 id="_author_ids">4.3.2. Author IDs</h4>
 <div class="paragraph">
 <p>Extension and API layer names also contain an <em>author ID</em>, indicated by
 <code>AUTHOR</code> above, identifying the author of the extension/API layer.
@@ -2091,7 +2726,7 @@ used in the example above.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-naming">3.4. Extension Function, Type, and Token Naming Conventions</h3>
+<h3 id="extensions-naming">4.4. Extension Function, Type, and Token Naming Conventions</h3>
 <div class="paragraph">
 <p>Extensions may add new functions, types, and tokens, or collectively
 &#8220;entities&#8221;, to the OpenXR API.
@@ -2102,7 +2737,7 @@ section above.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-api-registry">3.5. The OpenXR Registry</h3>
+<h3 id="extensions-api-registry">4.5. The OpenXR Registry</h3>
 <div class="paragraph">
 <p>The canonical definition of the OpenXR APIs is kept in an XML file known as
 the <strong>OpenXR registry</strong>.
@@ -2122,7 +2757,7 @@ create tools, bindings, and other OpenXR-related software.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-author-ID">3.6. Registering an Author ID with Khronos</h3>
+<h3 id="extensions-author-ID">4.6. Registering an Author ID with Khronos</h3>
 <div class="paragraph">
 <p>Previous to Vulkan, Khronos APIs could only officially be modified by
 Khronos members.
@@ -2158,7 +2793,7 @@ faith.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-vendor-id">3.7. Registering a Vendor ID with Khronos</h3>
+<h3 id="extensions-vendor-id">4.7. Registering a Vendor ID with Khronos</h3>
 <div class="paragraph">
 <p>OpenXR implementers must report a valid vendor ID for their implementation
 when queried by <code>xrGetSystemProperties</code>, as described in the
@@ -2191,7 +2826,7 @@ effort to develop an OpenXR implementation and require one for that purpose.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_registering_extensions">3.8. Registering Extensions</h3>
+<h3 id="_registering_extensions">4.8. Registering Extensions</h3>
 <div class="paragraph">
 <p>Extensions must be registered with Khronos.
 Registration means:</p>
@@ -2347,7 +2982,7 @@ use the <code>xr.xml</code> as a source.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-documenting">3.9. Documenting Extensions</h3>
+<h3 id="extensions-documenting">4.9. Documenting Extensions</h3>
 <div class="paragraph">
 <p>Extensions are documented as added chapters to the OpenXR specification.
 Changes specific to an extension are protected by asciidoc conditionals.
@@ -2410,7 +3045,7 @@ See below for more details.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_extension_documentation_nameslocations">3.9.1. Extension Documentation Names/Locations</h4>
+<h4 id="_extension_documentation_nameslocations">4.9.1. Extension Documentation Names/Locations</h4>
 <div class="paragraph">
 <p>All extension specification documentation can be found under the
 <code>specification/sources/chapters/extensions</code> folder and should end with the
@@ -2433,7 +3068,7 @@ placed in the 'valve' sub-folder under
 </div>
 </div>
 <div class="sect3">
-<h4 id="_extension_documentation_conditions">3.9.2. Extension Documentation Conditions</h4>
+<h4 id="_extension_documentation_conditions">4.9.2. Extension Documentation Conditions</h4>
 <div class="paragraph">
 <p>If the extension asciidoc file for an extension is named correctly, and
 placed in the correct folder, then the specification scripts will
@@ -2471,7 +3106,7 @@ the specification build.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_specification_and_extension_documentation_requirements">3.9.3. Specification and Extension Documentation Requirements</h4>
+<h4 id="_specification_and_extension_documentation_requirements">4.9.3. Specification and Extension Documentation Requirements</h4>
 <div class="paragraph">
 <p>To create an extension, use an existing extension (such as
 <code>XR_KHR_opengl_enable</code>) as an example, making sure to keep the following in
@@ -2659,7 +3294,7 @@ there.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_extension_lifecycle">3.9.4. Extension Lifecycle</h4>
+<h4 id="_extension_lifecycle">4.9.4. Extension Lifecycle</h4>
 <div class="paragraph">
 <p>Extensions have a very well-defined lifecycle.</p>
 </div>
@@ -2794,7 +3429,7 @@ be used.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_assigning_extension_token_values">3.10. Assigning Extension Token Values</h3>
+<h3 id="_assigning_extension_token_values">4.10. Assigning Extension Token Values</h3>
 <div class="paragraph">
 <p>Extensions can define their own enumeration types and assign any values to
 their enumerants that they like.
@@ -2905,7 +3540,7 @@ same as they were in the original extension, in order to maintain binary
 compatibility with existing software.</p>
 </div>
 <div class="sect3">
-<h4 id="extensions-reserving-bitmask-values">3.10.1. Reserving Bitmask Values</h4>
+<h4 id="extensions-reserving-bitmask-values">4.10.1. Reserving Bitmask Values</h4>
 <div class="paragraph">
 <p>Enumerants which define bitmask values are a special case, since there are
 only a small number of unused bits available for extensions.
@@ -2925,7 +3560,7 @@ Extension Process discussion of this</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_required_extension_tokens">3.11. Required Extension Tokens</h3>
+<h3 id="_required_extension_tokens">4.11. Required Extension Tokens</h3>
 <div class="paragraph">
 <p>In addition to any tokens specific to the functionality of an extension, all
 extensions must define two additional tokens.</p>
@@ -2991,7 +3626,7 @@ writing the following definitions were in effect:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_extension_handles_objects_enums_and_typedefs">3.12. Extension Handles, Objects, Enums, and Typedefs</h3>
+<h3 id="_extension_handles_objects_enums_and_typedefs">4.12. Extension Handles, Objects, Enums, and Typedefs</h3>
 <div class="paragraph">
 <p>Expanding on previous discussion, extensions can add values to existing
 enums; and can add their own commands, enums, typedefs, etc.
@@ -3039,7 +3674,7 @@ compilation issues.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extension-function_prototypes">3.13. Extension Function Prototypes</h3>
+<h3 id="extension-function_prototypes">4.13. Extension Function Prototypes</h3>
 <div class="paragraph">
 <p>Function pointer declarations and function prototypes for all core OpenXR
 API commands are included the <code>openxr.h</code> header file.
@@ -3059,7 +3694,7 @@ interfaces appear in <code>openxr_platform.h</code> and are protected by <code>#
 </div>
 </div>
 <div class="sect2">
-<h3 id="_accessing_extension_functions_from_programs">3.14. Accessing Extension Functions from Programs</h3>
+<h3 id="_accessing_extension_functions_from_programs">4.14. Accessing Extension Functions from Programs</h3>
 <div class="paragraph">
 <p><a href="#xrGetInstanceProcAddr">xrGetInstanceProcAddr</a> can be used in order to obtain function pointer
 addresses for core and extension commands (per the description in the
@@ -3090,13 +3725,13 @@ functions for all core OpenXR API functions, and no extension functions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extensions-interactions">3.15. Extension Interactions</h3>
+<h3 id="extensions-interactions">4.15. Extension Interactions</h3>
 <div class="paragraph">
 <p>Extensions <strong class="purple">can</strong> modify existing commands in one or more of the following
 ways:</p>
 </div>
 <div class="sect3">
-<h4 id="_extending_command_structures">3.15.1. Extending Command Structures</h4>
+<h4 id="_extending_command_structures">4.15.1. Extending Command Structures</h4>
 <div class="paragraph">
 <p>Extensions modifying the behavior of existing commands should provide
 additional parameters by using the <code>next</code> field of an existing
@@ -3159,7 +3794,7 @@ the registry, as described in the description of attr:structextends in
 </div>
 </div>
 <div class="sect3">
-<h4 id="_extending_command_returns">3.15.2. Extending Command Returns</h4>
+<h4 id="_extending_command_returns">4.15.2. Extending Command Returns</h4>
 <div class="paragraph">
 <p>Sometimes, extensions <strong class="purple">may</strong> add additional return values to an existing
 OpenXR command.
@@ -3219,7 +3854,7 @@ part of the specification build process.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="markup">4. Markup Style</h2>
+<h2 id="markup">5. Markup Style</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This chapter demonstrates Asciidoc and Specification structure, including
@@ -3261,7 +3896,7 @@ file), and follow the title by a blank line, to set off sections visibly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="markup-sample-section">4.1. Sample Section</h3>
+<h3 id="markup-sample-section">5.1. Sample Section</h3>
 <div class="paragraph">
 <p>This is a sample section structurally similar to the <a href="#vulkan-spec">Vulkan
 API Specification</a>, nested one level inside a chapter.
@@ -3270,7 +3905,7 @@ in the Table of Contents.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="markup-layout">4.2. Asciidoc Markup And Text Layout</h3>
+<h3 id="markup-layout">5.2. Asciidoc Markup And Text Layout</h3>
 <div class="paragraph">
 <p>Asciidoc source should be text filled to 76 columns with hard line breaks.
 Each sentence in a paragraph ends with a newline to minimize git diff
@@ -3331,7 +3966,7 @@ compromising the output documents.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="markup-blocks">4.2.1. Blocks</h4>
+<h4 id="markup-blocks">5.2.1. Blocks</h4>
 <div class="paragraph">
 <p>There are a variety of asciidoc <em>block</em> constructs.
 With the exception of <a href="#markup-sample-section-tables">tables</a> and of <em>open
@@ -3403,7 +4038,7 @@ The block types and delimiters are shown in the following table.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="markup-footnotes">4.2.2. Footnotes</h4>
+<h4 id="markup-footnotes">5.2.2. Footnotes</h4>
 <div class="paragraph">
 <p>Use manually marked-up footnotes (the asciidoc footnote construct is OK for
 PDF outputs, but does not work well with long HTML documents since it places
@@ -3459,7 +4094,7 @@ long as the colliding numbers are not in the same section.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-sample-section-lists">4.2.3. Lists</h4>
+<h4 id="markup-sample-section-lists">5.2.3. Lists</h4>
 <div class="sect4">
 <h5 id="markup-sample-section-bullet-lists">Bullet Lists and Continuation Blocks</h5>
 <div class="ulist">
@@ -3576,7 +4211,7 @@ accumulating errors as edits are made.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-sample-section-anchors">4.2.4. Anchors and Cross-references</h4>
+<h4 id="markup-sample-section-anchors">5.2.4. Anchors and Cross-references</h4>
 <div class="paragraph">
 <p>In general, chapters and sections should always have anchors, following the
 naming convention <a href="#markup">discussed above</a>.
@@ -3633,7 +4268,7 @@ extension's spec itself), surrounding it with backticks is acceptable:
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-sample-section-tables">4.2.5. Tables</h4>
+<h4 id="markup-sample-section-tables">5.2.5. Tables</h4>
 <div class="paragraph">
 <p>Asciidoc tables should use the block prefix <code>|====</code>.
 Where feasible, align the <code>|</code> separating cells across rows.
@@ -3660,7 +4295,7 @@ all appear on a single line.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-sample-section-images">4.2.6. Figures</h4>
+<h4 id="markup-sample-section-images">5.2.6. Figures</h4>
 <div class="paragraph">
 <p>All figures (images) must be marked up as follows, to ensure there is an
 anchor and that the figure is given a caption which shows the figure number
@@ -3698,7 +4333,7 @@ In the &lt;&lt;fig-anchorname,Figure caption&gt;&gt; diagram, the diagram repres
 </div>
 </div>
 <div class="sect2">
-<h3 id="markup-macros">4.3. Markup Macros and Normative Terminology</h3>
+<h3 id="markup-macros">5.3. Markup Macros and Normative Terminology</h3>
 <div class="paragraph">
 <p>This section discusses Asciidoc macros used in the document.
 In addition to the macros defined by asciidoc itself, additional macros are
@@ -3706,7 +4341,7 @@ defined by the <a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/x
 Reference Page configuration files.</p>
 </div>
 <div class="sect3">
-<h4 id="markup-macros-api">4.3.1. API Markup Macros</h4>
+<h4 id="markup-macros-api">5.3.1. API Markup Macros</h4>
 <div class="paragraph">
 <p>These macros must be used to tag command, structure, enumeration, enumerant,
 and other OpenXR-specific names so they can be rendered in a distinctive
@@ -3961,7 +4596,7 @@ linkage between the glossary and definitions in the spec body.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_normative_terminology">4.3.2. Normative Terminology</h4>
+<h4 id="_normative_terminology">5.3.2. Normative Terminology</h4>
 <div class="paragraph">
 <p>Normative terminology is precisely defined in section 1.6 of the
 <a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html">OpenXR API Specification</a>, and is used to
@@ -4078,7 +4713,7 @@ The term <em>functionality</em> includes API features, extensions, and layers.</
 </div>
 </div>
 <div class="sect2">
-<h3 id="markup-informative">4.4. Informative, Editing and Implementor&#8217;s Notes</h3>
+<h3 id="markup-informative">5.4. Informative, Editing and Implementor&#8217;s Notes</h3>
 <div class="paragraph">
 <p>There are several possible types of notes.
 Depending on the type of output, they are rendered in different styles, but
@@ -4090,7 +4725,7 @@ note title.
 Each type of note is discussed below.</p>
 </div>
 <div class="sect3">
-<h4 id="markup-informative-notes">4.4.1. Informative Notes</h4>
+<h4 id="markup-informative-notes">5.4.1. Informative Notes</h4>
 <div class="paragraph">
 <p>Informative notes always appear as part of the document, but are considered
 non-normative.
@@ -4134,7 +4769,7 @@ with the sentence:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-editing-notes">4.4.2. Editing Notes</h4>
+<h4 id="markup-editing-notes">5.4.2. Editing Notes</h4>
 <div class="paragraph">
 <p>Editing notes usually only appear in internal (non-published) versions of
 documents, via asciidoc conditionals.
@@ -4161,7 +4796,7 @@ endif::editing-notes[]</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-implementors-notes">4.4.3. Implementor&#8217;s Notes</h4>
+<h4 id="markup-implementors-notes">5.4.3. Implementor&#8217;s Notes</h4>
 <div class="paragraph">
 <p>Implementor&#8217;s notes may or may not appear in published versions of
 documents, via asciidoc conditionals.
@@ -4185,7 +4820,7 @@ endif::implementation-guide[]</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="markup-word-choices">4.5. Word Choices</h3>
+<h3 id="markup-word-choices">5.5. Word Choices</h3>
 <div class="paragraph">
 <p>There are a variety of common terms that have several equivalent word
 choices.
@@ -4324,7 +4959,7 @@ This list may not be comprehensive; when in doubt, be guided by the existing
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="markup-avoid-contractions">4.5.1. Avoid Contractions</h4>
+<h4 id="markup-avoid-contractions">5.5.1. Avoid Contractions</h4>
 <div class="paragraph">
 <p>Contractions make the specification sound less formal and using them would
 be inconsistent with the many non-contraction forms already in use in the
@@ -4391,7 +5026,7 @@ spec.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="markup-terms-caution">4.5.2. Terms to Use With Caution</h4>
+<h4 id="markup-terms-caution">5.5.2. Terms to Use With Caution</h4>
 <div class="paragraph">
 <p>The term <em>subset</em> is sometimes used to refer to a <em>strict subset</em>, and
 sometimes used to refer to a subset which may be equal to the entire set.
@@ -4400,7 +5035,7 @@ Make sure to use either <em>subset</em> or <em>strict subset</em> as appropriate
 </div>
 </div>
 <div class="sect3">
-<h4 id="markup-terms-avoid">4.5.3. Terms to Avoid</h4>
+<h4 id="markup-terms-avoid">5.5.3. Terms to Avoid</h4>
 <div class="paragraph">
 <p>Do not describe anything in the documentation using vague or wishy-washy
 terms.
@@ -4448,12 +5083,12 @@ allowed, each choice still must have well-defined behavior.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="writing">5. Writing Style</h2>
+<h2 id="writing">6. Writing Style</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="writing-misc">5.1. Miscellaneous Grammar, Spelling, and Punctuation Issues</h3>
+<h3 id="writing-misc">6.1. Miscellaneous Grammar, Spelling, and Punctuation Issues</h3>
 <div class="sect3">
-<h4 id="_use_the_oxford_comma_serial_comma">5.1.1. Use the Oxford Comma (Serial Comma)</h4>
+<h4 id="_use_the_oxford_comma_serial_comma">6.1.1. Use the Oxford Comma (Serial Comma)</h4>
 <div class="paragraph">
 <p>When writing a sentence listing a series of items, include a comma before
 the &#8220;and&#8221; separating the last item.</p>
@@ -4469,7 +5104,7 @@ the &#8220;and&#8221; separating the last item.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_date_format">5.1.2. Date Format</h4>
+<h4 id="_date_format">6.1.2. Date Format</h4>
 <div class="paragraph">
 <p>Whenever possible, write dates in the <a href="#iso-8601">ISO 8601</a> format:
 YYYY-MM-DD.</p>
@@ -4491,7 +5126,7 @@ the month.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="writing-misc-a-an">5.1.3. A/An and Markup Macros</h4>
+<h4 id="writing-misc-a-an">6.1.3. A/An and Markup Macros</h4>
 <div class="paragraph">
 <p>Use &#8220;a&#8221; and &#8220;an&#8221; <a href="http://www.grammar.com/a-vs-an-when-to-use/">correctly</a>,
 based on the <strong>sound</strong> of the letter beginning the following word.</p>
@@ -4535,7 +5170,7 @@ automatically.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_numbers_in_text">5.1.4. Numbers in Text</h4>
+<h4 id="_numbers_in_text">6.1.4. Numbers in Text</h4>
 <div class="paragraph">
 <p>When describing the need for a small number of objects, smaller than ten,
 spell the number out (e.g. &#8220;one&#8221;).
@@ -4550,7 +5185,7 @@ applications, this value is 1.&#8221;</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_use_american_spelling_conventions">5.1.5. Use American Spelling Conventions</h4>
+<h4 id="_use_american_spelling_conventions">6.1.5. Use American Spelling Conventions</h4>
 <div class="paragraph">
 <p>In case of conflict, use American rather than British spelling conventions,
 except for noted exceptions in the table below.</p>
@@ -4594,7 +5229,7 @@ except for noted exceptions in the table below.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="writing-compound-words">5.1.6. Compound Words and Preferred Orthography</h4>
+<h4 id="writing-compound-words">6.1.6. Compound Words and Preferred Orthography</h4>
 <div class="paragraph">
 <p>Unless there is longstanding precedent in computer science literature, or
 the word is a noted exception in the table below, do not arbitrarily cram
@@ -4716,7 +5351,7 @@ This list is not intended to be complete.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="writing-describing">5.2. Describing Commands and Parameters</h3>
+<h3 id="writing-describing">6.2. Describing Commands and Parameters</h3>
 <div class="paragraph">
 <p>The <a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html">OpenXR API Specification</a> describes API
 commands followed by descriptions of their parameters, which are usually
@@ -4776,12 +5411,12 @@ Occasional non-normative explanations can be included in the
 </div>
 </div>
 <div class="sect2">
-<h3 id="writing-latexmath">5.3. Math Markup</h3>
+<h3 id="writing-latexmath">6.3. Math Markup</h3>
 <div class="paragraph">
 <p>There are two ways of marking up math expressions, described below.</p>
 </div>
 <div class="sect3">
-<h4 id="_asciidoc_math_markup">5.3.1. Asciidoc Math Markup</h4>
+<h4 id="_asciidoc_math_markup">6.3.1. Asciidoc Math Markup</h4>
 <div class="paragraph">
 <p>Where possible, math is marked up using straight asciidoc features.
 For commonality with LaTeX math (see below), some common LaTeX operators and
@@ -4875,7 +5510,7 @@ The complete set of these attributes is found in <code>config/attribs.adoc</code
 </table>
 </div>
 <div class="sect3">
-<h4 id="_latex_math_markup">5.3.2. LaTeX Math Markup</h4>
+<h4 id="_latex_math_markup">6.3.2. LaTeX Math Markup</h4>
 <div class="paragraph">
 <p>If we find we need math markup more complex than easily supported in
 straight asciidoc markup, we can re-introduce the use of KaTeX in-browser
@@ -4887,7 +5522,7 @@ because it was unused.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="writing-next-chain">5.4. Describing Structure Chains</h3>
+<h3 id="writing-next-chain">6.4. Describing Structure Chains</h3>
 <div class="paragraph">
 <p>When describing a chained structure which is passed to a command by placing
 it in the <code>next</code> chain of a structure parameter of that command,
@@ -4912,7 +5547,7 @@ error.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="writing-example">5.5. An Example Command Description</h3>
+<h3 id="writing-example">6.5. An Example Command Description</h3>
 <div class="paragraph">
 <p>The <a href="#sample-command">next section</a> is a sample based on the
 <a href="https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html">OpenXR API Specification</a>, and describes a
@@ -4923,7 +5558,7 @@ example description to explain how and why it looks as it does.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sample-command">5.6. Sample Command Description: Creating an Instance</h3>
+<h3 id="sample-command">6.6. Sample Command Description: Creating an Instance</h3>
 <div class="paragraph">
 <p>The <a href="#xrCreateInstance">xrCreateInstance</a> function is defined as:</p>
 </div>
@@ -5434,7 +6069,7 @@ themselves responsible for.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="writing-refpages">5.7. Markup For Automatic Reference Page Extraction</h3>
+<h3 id="writing-refpages">6.7. Markup For Automatic Reference Page Extraction</h3>
 <div class="paragraph">
 <p>The OpenXR reference pages are (mostly) being extracted from corresponding
 sections of the API Specification.
@@ -5584,7 +6219,7 @@ portion of the specification source.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema">6. Registry XML Schema</h2>
+<h2 id="schema">7. Registry XML Schema</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The definitive record of the OpenXR API is in part an XML file named
@@ -5622,7 +6257,7 @@ More recent changes have <strong>not</strong> been reviewed and may not apply to
 </table>
 </div>
 <div class="sect2">
-<h3 id="_machine_readable_schema_definitions">6.1. Machine Readable Schema Definitions</h3>
+<h3 id="_machine_readable_schema_definitions">7.1. Machine Readable Schema Definitions</h3>
 <div class="paragraph">
 <p>The schema is described in two ways within the specification source
 (<code>openxr</code> internal monorepo or <code>OpenXR-Docs</code> public GitHub repo):</p>
@@ -5690,7 +6325,7 @@ the rules behave as intended.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_xml_format_details">6.2. XML Format Details</h3>
+<h3 id="_xml_format_details">7.2. XML Format Details</h3>
 <div class="paragraph">
 <p>To avoid unnecessary maintenance burden, the meaning of the XML tags and
 attributes is in general deferred to the <a href="https://registry.khronos.org/vulkan/specs/1.3/registry.html">Vulkan schema
@@ -5837,7 +6472,7 @@ profiles:</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="xml-interaction-profiles">6.2.1. Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</h4>
+<h4 id="xml-interaction-profiles">7.2.1. Interaction Profiles Blocks (<code>interaction_profiles</code> tag)</h4>
 <div class="paragraph">
 <p>An <code>interaction_profiles</code> tag contains definitions of interaction profile
 paths and their associated valid component paths exposed through the API.</p>
@@ -5860,7 +6495,7 @@ arbitrary order.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-interaction-profile">6.2.2. Interaction Profiles (<code>interaction_profile</code> tag)</h4>
+<h4 id="xml-interaction-profile">7.2.2. Interaction Profiles (<code>interaction_profile</code> tag)</h4>
 <div class="paragraph">
 <p>An <code>interaction_profile</code> tag defines an interaction profile path, the user
 paths it is valid for, and the valid component subpaths and their action
@@ -5897,7 +6532,7 @@ meaningful, though all <code>user_path</code> tags must precede all <code>compon
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-interaction-profile-user-path">6.2.3. Interaction Profile User Paths (<code>user_path</code> tag)</h4>
+<h4 id="xml-interaction-profile-user-path">7.2.3. Interaction Profile User Paths (<code>user_path</code> tag)</h4>
 <div class="paragraph">
 <p>A <code>user_path</code> tag denotes a top-level user path, also known as a sub-action
 path, for which the enclosing interaction profile is accepted.</p>
@@ -5924,7 +6559,7 @@ Full top-level <em>/user</em> path (starting with <em>/user/</em>)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-interaction-profile-component">6.2.4. Interaction Profile Component (<code>component</code> tag)</h4>
+<h4 id="xml-interaction-profile-component">7.2.4. Interaction Profile Component (<code>component</code> tag)</h4>
 <div class="paragraph">
 <p>A <code>component</code> tag denotes a component subpath for the enclosing interaction
 profile that is valid on at least one of its user paths.</p>
@@ -5976,7 +6611,7 @@ level <em>/user</em> paths defined in this interaction profile.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-require-interaction-profile">6.2.5. Contents of <code>require</code>: <code>interaction_profile</code> Tags</h4>
+<h4 id="xml-require-interaction-profile">7.2.5. Contents of <code>require</code>: <code>interaction_profile</code> Tags</h4>
 <div class="paragraph">
 <p>Specifies a required interaction profile, by path, defined in an
 &lt;&lt;`interaction_profile`,xml-interaction-profile&gt;&gt; block within an
@@ -6001,7 +6636,7 @@ Must match the <code>name</code> attribute of an
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-require-extend-interaction-profile">6.2.6. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles</h4>
+<h4 id="xml-require-extend-interaction-profile">7.2.6. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles</h4>
 <div class="paragraph">
 <p>Specifies additional component paths to accept in an interaction profile
 previously included in the specification by a dependency of this block&#8217;s
@@ -6034,7 +6669,7 @@ same schema used directly within an <code>interaction_profile</code> block.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-require-extend-interaction-profile-predicate">6.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</h4>
+<h4 id="xml-require-extend-interaction-profile-predicate">7.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</h4>
 <div class="paragraph">
 <p>Specifies additional component paths to accept in all interaction profiles
 that match the provided predicate and that are previously included in the
@@ -6077,7 +6712,7 @@ additional components to add to matching interaction profiles.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-extend-interaction-profile-predicate-condition">6.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</h4>
+<h4 id="xml-extend-interaction-profile-predicate-condition">7.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</h4>
 <div class="paragraph">
 <p>Specifies a collection of user paths and component sub-paths to check on a
 candidate interaction profile.
@@ -6125,7 +6760,7 @@ attributes, or if one is effectively added by another <code>extend</code> block.
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-extend-interaction-profile-user_path">6.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</h4>
+<h4 id="xml-extend-interaction-profile-user_path">7.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</h4>
 <div class="paragraph">
 <p>Specifies a user path to add to the interaction profile or profiles being
 extended.</p>
@@ -6169,7 +6804,7 @@ to the subset plus the <code>path</code> attribute named by this tag.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_still_to_be_done">7. Still To Be Done</h2>
+<h2 id="_still_to_be_done">8. Still To Be Done</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -6184,7 +6819,7 @@ to the subset plus the <code>path</code> attribute named by this tag.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_revision_history">8. Revision History</h2>
+<h2 id="_revision_history">9. Revision History</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -6243,14 +6878,23 @@ profiles, and make other improvements in the schema chapter.</p>
 profiles, providing a way to extend all interaction profiles that match a
 predicate.</p>
 </li>
+<li>
+<p>2025-06-30 - Add an informative chapter on API design principles.</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+<div id="footnotes" style="max-width: 100;">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. White, R.W., Doraiswamy, P.M. &amp; Horvitz, E. Detecting neurodegenerative disorders from web search signals. <em>npj Digital Med</em> 1, 8 (2018). <a href="https://doi.org/10.1038/s41746-018-0016-6" class="bare">https://doi.org/10.1038/s41746-018-0016-6</a>
+</div>
+</div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.49<br>
+Version 1.1.50<br>
 </div>
 </div>
 </body>

@@ -99,31 +99,32 @@ pre.rouge .w {
 chain.</p>
 </li>
 <li>
-<p><code>entityIdCapacityInput</code> is the capacity of the array, or 0 to indicate
-a request to retrieve the required capacity.</p>
+<p><code>entityIdCapacityInput</code> is the capacity of the <code>entityIds</code> array,
+or 0 to indicate a request to retrieve the required capacity.</p>
 </li>
 <li>
-<p><code>entityIdCountOutput</code> is the number of <a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a>,
-or the required capacity in the case that <code>entityIdCapacityInput</code> is
-insufficient.</p>
+<p><code>entityIdCountOutput</code> is the number of <a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a>
+in <code>entityIds</code>, or the required capacity in the case that
+<code>entityIdCapacityInput</code> is insufficient.</p>
 </li>
 <li>
 <p><code>entityIds</code> is an array of <a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a>.
 It <strong class="purple">can</strong> be <code>NULL</code> if <code>entityIdCapacityInput</code> is 0.</p>
 </li>
 <li>
-<p><code>entityStateCapacityInput</code> is the capacity of the array, or 0 to
-indicate a request to retrieve the required capacity.</p>
+<p><code>entityStateCapacityInput</code> is the capacity of the <code>entityStates</code>
+array, or 0 to indicate a request to retrieve the required capacity.</p>
+</li>
+<li>
+<p><code>entityStateCountOutput</code> is the number of
+<a href="XrSpatialEntityTrackingStateEXT.html">XrSpatialEntityTrackingStateEXT</a> in <code>entityStates</code>, or the
+required capacity in the case that <code>entityStateCapacityInput</code> is
+insufficient.
+This <strong class="purple">must</strong> always be the same as <code>entityIdCountOutput</code>.</p>
 </li>
 <li>
 <p><code>entityStates</code> is an array of <a href="XrSpatialEntityTrackingStateEXT.html">XrSpatialEntityTrackingStateEXT</a>.
 It <strong class="purple">can</strong> be <code>NULL</code> if <code>entityStateCapacityInput</code> is 0.</p>
-</li>
-<li>
-<p><code>entityStateCountOutput</code> is the number of
-<a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a>, or the required capacity in the case that
-<code>entityIdCapacityInput</code> is insufficient and <strong class="purple">must</strong> be the same as
-<code>entityIdCountOutput</code>.</p>
 </li>
 <li>
 <p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters</a> section for a detailed
@@ -208,7 +209,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.49<br>
+Version 1.1.50<br>
 </div>
 </div>
 </body>

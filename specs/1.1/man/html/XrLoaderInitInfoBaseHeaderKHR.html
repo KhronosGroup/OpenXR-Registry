@@ -112,10 +112,10 @@ No such structures are defined in core OpenXR or this extension.</p>
 <p><a id="VUID-XrLoaderInitInfoBaseHeaderKHR-extension-notenabled" href="#VUID-XrLoaderInitInfoBaseHeaderKHR-extension-notenabled"></a> The <code><a href="XR_KHR_loader_init.html">XR_KHR_loader_init</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrLoaderInitInfoBaseHeaderKHR.html">XrLoaderInitInfoBaseHeaderKHR</a></p>
 </li>
 <li>
-<p><a id="VUID-XrLoaderInitInfoBaseHeaderKHR-type-type" href="#VUID-XrLoaderInitInfoBaseHeaderKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR</code></p>
+<p><a id="VUID-XrLoaderInitInfoBaseHeaderKHR-type-type" href="#VUID-XrLoaderInitInfoBaseHeaderKHR-type-type"></a> <code>type</code> <strong class="purple">must</strong> be one of the following XrStructureType values: <code>XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR</code>, <code>XR_TYPE_LOADER_INIT_INFO_PROPERTIES_EXT</code></p>
 </li>
 <li>
-<p><a id="VUID-XrLoaderInitInfoBaseHeaderKHR-next-next" href="#VUID-XrLoaderInitInfoBaseHeaderKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrLoaderInitInfoBaseHeaderKHR-next-next" href="#VUID-XrLoaderInitInfoBaseHeaderKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrLoaderInitInfoPropertiesEXT.html">XrLoaderInitInfoPropertiesEXT</a></p>
 </li>
 </ul>
 </div>
@@ -159,7 +159,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.49<br>
+Version 1.1.50<br>
 </div>
 </div>
 </body>
