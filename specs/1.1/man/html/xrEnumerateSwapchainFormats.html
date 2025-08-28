@@ -99,9 +99,10 @@ written, or a pointer to the required capacity in the case that
 <code>formatCapacityInput</code> is insufficient.</p>
 </li>
 <li>
-<p><code>formats</code> is a pointer to an array of <code>int64_t</code> format ids, but
+<p><code>formats</code> is a pointer to an array of <code>int64_t</code> format IDs, but
 <strong class="purple">can</strong> be <code>NULL</code> if <code>formatCapacityInput</code> is <code>0</code>.
-The format ids are specific to the specified graphics API.</p>
+The meanings of the format IDs are specific to the specified graphics API
+for the session.</p>
 </li>
 <li>
 <p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters</a> section for a detailed
@@ -119,8 +120,8 @@ description of retrieving the required <code>formats</code> size.</p>
 <div class="paragraph">
 <p><a href="xrEnumerateSwapchainFormats.html">xrEnumerateSwapchainFormats</a> enumerates the texture formats supported
 by the current session.
-The type of formats returned are dependent on the graphics API specified in
-<a href="xrCreateSession.html">xrCreateSession</a>.
+The type of formats returned are dependent on the graphics API specified by
+the graphics binding structure passed to <a href="xrCreateSession.html">xrCreateSession</a>.
 For example, if a DirectX graphics API was specified, then the enumerated
 formats correspond to the DXGI formats, such as
 <code>DXGI_FORMAT_R8G8B8A8_UNORM_SRGB</code>.
@@ -128,6 +129,10 @@ Texture formats <strong class="purple">should</strong> be in order from highest 
 preference.
 The application <strong class="purple">should</strong> use the highest preference format that it supports
 for optimal performance and quality.</p>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">should</strong> support <code>R8G8B8A8</code> and <code>R8G8B8A8</code> formats with
+non-linear ("sRGB") encoding if possible.</p>
 </div>
 <div class="paragraph">
 <p>Runtimes <strong class="purple">must</strong> always return identical buffer contents from this enumeration
@@ -236,7 +241,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.50<br>
+Version 1.1.51<br>
 </div>
 </div>
 </body>

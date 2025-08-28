@@ -74,16 +74,16 @@ pre.rouge .w {
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Normal XR applications will want to present rendered images to the user.
-To allow this, the runtime provides images organized in swapchains for the
-application to render into.
+<p>Most XR applications present rendered images to the user.
+To allow this, the runtime provides collections of images organized in
+"swapchains" for the application to render into and submit.
+Note that these do not necessarily correspond to objects defined by any
+given graphics API named "swapchains".
 The runtime <strong class="purple">must</strong> allow applications to create multiple swapchains.</p>
 </div>
 <div class="paragraph">
-<p>Swapchain image format support by the runtime is specified by the
-<a href="xrEnumerateSwapchainFormats.html">xrEnumerateSwapchainFormats</a> function.
-Runtimes <strong class="purple">should</strong> support <code>R8G8B8A8</code> and <code>R8G8B8A8</code> <code>sRGB</code> formats
-if possible.</p>
+<p>Swapchain image format support by the runtime is reported through use of the
+<a href="xrEnumerateSwapchainFormats.html">xrEnumerateSwapchainFormats</a> function.</p>
 </div>
 <div class="paragraph">
 <p>Swapchain images <strong class="purple">can</strong> be 2D or 2D Array.</p>
@@ -98,6 +98,11 @@ be created using an API-specific "sRGB" format (e.g.
 conversion (whether automatic or manual) when sampled by the runtime.
 All other formats will be treated as linear values.</p>
 </div>
+<div class="paragraph">
+<p>OpenXR applications <strong class="purple">should</strong> avoid submitting linear encoded 8 bit color data
+(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it <strong class="purple">may</strong> result
+in color banding.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -107,9 +112,7 @@ All other formats will be treated as linear values.</p>
 <td class="content">
 <div class="title">Note</div>
 <div class="paragraph">
-<p>OpenXR applications <strong class="purple">should</strong> avoid submitting linear encoded 8 bit color data
-(e.g. <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>) whenever possible as it <strong class="purple">may</strong> result
-in color banding.</p>
+<p>For additional information, see:</p>
 </div>
 <div class="paragraph">
 <p>Gritz, L. and d&#8217;Eon, E. 2007.
@@ -176,7 +179,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.50<br>
+Version 1.1.51<br>
 </div>
 </div>
 </body>
