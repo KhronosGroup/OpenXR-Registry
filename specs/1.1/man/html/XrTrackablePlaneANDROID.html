@@ -80,7 +80,7 @@ pre.rouge .w {
     <span class="n">XrTrackableANDROID</span>        <span class="n">subsumedByPlane</span><span class="p">;</span>
     <span class="n">XrTime</span>                    <span class="n">lastUpdatedTime</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                  <span class="n">vertexCapacityInput</span><span class="p">;</span>
-    <span class="kt">uint32_t</span>                  <span class="n">vertexCountOutput</span><span class="p">;</span>
+    <span class="kt">uint32_t</span><span class="o">*</span>                 <span class="n">vertexCountOutput</span><span class="p">;</span>
     <span class="n">XrVector2f</span><span class="o">*</span>               <span class="n">vertices</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrTrackablePlaneANDROID</span><span class="p">;</span></code></pre>
 </div>
@@ -149,7 +149,10 @@ The polygon <strong class="purple">may</strong> be concave and <strong class="pu
 </li>
 <li>
 <p>See the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters</a> section for a detailed
-description of retrieving the required <code>vertices</code> size.</p>
+description of retrieving the required <code>vertices</code> size.
+However, it is important to note that unlike the "structure form" example
+given in that section, <code>vertexCountOutput</code> is a pointer instead of a
+value type.</p>
 </li>
 </ul>
 </div>
@@ -169,6 +172,17 @@ When this happens, the plane information returned in both of the associated
 planes <strong class="purple">must</strong> be identical.
 The application <strong class="purple">should</strong> stop querying for information about planes that have
 been reported as subsumed.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Warning</div>
+<div class="paragraph">
+<p>Unlike the typical structure forms used for
+<a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters</a>,
+<a href="XrTrackablePlaneANDROID.html">XrTrackablePlaneANDROID</a>::<code>vertexCountOutput</code> is a pointer and not
+a value type.</p>
+</div>
+</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -192,6 +206,9 @@ been reported as subsumed.</p>
 </li>
 <li>
 <p><a id="VUID-XrTrackablePlaneANDROID-planeLabel-parameter" href="#VUID-XrTrackablePlaneANDROID-planeLabel-parameter"></a> <code>planeLabel</code> <strong class="purple">must</strong> be a valid <a href="XrPlaneLabelANDROID.html">XrPlaneLabelANDROID</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrTrackablePlaneANDROID-vertexCountOutput-parameter" href="#VUID-XrTrackablePlaneANDROID-vertexCountOutput-parameter"></a> If <code>vertexCountOutput</code> is not <code>NULL</code>, <code>vertexCountOutput</code> <strong class="purple">must</strong> be a pointer to a <code>uint32_t</code> value</p>
 </li>
 <li>
 <p><a id="VUID-XrTrackablePlaneANDROID-vertices-parameter" href="#VUID-XrTrackablePlaneANDROID-vertices-parameter"></a> If <code>vertexCapacityInput</code> is not <code>0</code>, <code>vertices</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCapacityInput</code> <a href="XrVector2f.html">XrVector2f</a> structures</p>
@@ -238,7 +255,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.51<br>
+Version 1.1.52<br>
 </div>
 </div>
 </body>

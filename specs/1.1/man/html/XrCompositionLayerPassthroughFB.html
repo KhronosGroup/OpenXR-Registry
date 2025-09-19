@@ -148,13 +148,13 @@ the actual passthrough contents.</p>
 <p><a id="VUID-XrCompositionLayerPassthroughFB-flags-requiredbitmask" href="#VUID-XrCompositionLayerPassthroughFB-flags-requiredbitmask"></a> <code>flags</code> <strong class="purple">must</strong> not be <code>0</code></p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerPassthroughFB-space-parameter" href="#VUID-XrCompositionLayerPassthroughFB-space-parameter"></a> <code>space</code> <strong class="purple">must</strong> be a valid <a href="XrSpace.html">XrSpace</a> handle</p>
+<p><a id="VUID-XrCompositionLayerPassthroughFB-space-parameter" href="#VUID-XrCompositionLayerPassthroughFB-space-parameter"></a> If <code>space</code> is not <a href="XR_NULL_HANDLE.html">XR_NULL_HANDLE</a>, <code>space</code> <strong class="purple">must</strong> be a valid <a href="XrSpace.html">XrSpace</a> handle</p>
 </li>
 <li>
 <p><a id="VUID-XrCompositionLayerPassthroughFB-layerHandle-parameter" href="#VUID-XrCompositionLayerPassthroughFB-layerHandle-parameter"></a> <code>layerHandle</code> <strong class="purple">must</strong> be a valid <a href="XrPassthroughLayerFB.html">XrPassthroughLayerFB</a> handle</p>
 </li>
 <li>
-<p><a id="VUID-XrCompositionLayerPassthroughFB-commonparent" href="#VUID-XrCompositionLayerPassthroughFB-commonparent"></a> Both of <code>layerHandle</code> and <code>space</code> <strong class="purple">must</strong> have been created, allocated, or retrieved from the same <a href="XrSession.html">XrSession</a></p>
+<p><a id="VUID-XrCompositionLayerPassthroughFB-commonparent" href="#VUID-XrCompositionLayerPassthroughFB-commonparent"></a> Both of <code>layerHandle</code> and <code>space</code> that are valid handles <strong class="purple">must</strong> have been created, allocated, or retrieved from the same <a href="XrSession.html">XrSession</a></p>
 </li>
 </ul>
 </div>
@@ -198,7 +198,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.51<br>
+Version 1.1.52<br>
 </div>
 </div>
 </body>
