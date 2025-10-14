@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>xrGetFaceStateANDROID(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrGetFaceStateANDROID(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrGetFaceStateANDROID - Obtain blend shapes of facial expressions</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrGetFaceStateANDROID.html">xrGetFaceStateANDROID</a> function returns blend shapes of facial
+expressions at a given time.</p>
+</div>
+<div id="xrGetFaceStateANDROID" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_ANDROID_face_tracking</span>
+<span class="n">XrResult</span> <span class="nf">xrGetFaceStateANDROID</span><span class="p">(</span>
+    <span class="n">XrFaceTrackerANDROID</span>                        <span class="n">faceTracker</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrFaceStateGetInfoANDROID</span><span class="o">*</span>            <span class="n">getInfo</span><span class="p">,</span>
+    <span class="n">XrFaceStateANDROID</span><span class="o">*</span>                         <span class="n">faceStateOutput</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>faceTracker</code> is an <a href="XrFaceTrackerANDROID.html">XrFaceTrackerANDROID</a> previously created by
+<a href="xrCreateFaceTrackerANDROID.html">xrCreateFaceTrackerANDROID</a>.</p>
+</li>
+<li>
+<p><code>getInfo</code> is a pointer to <a href="XrFaceStateGetInfoANDROID.html">XrFaceStateGetInfoANDROID</a> describing
+information to obtain face expressions.</p>
+</li>
+<li>
+<p><code>faceStateOutput</code> is a pointer to <a href="XrFaceStateANDROID.html">XrFaceStateANDROID</a> receiving
+the returned face tracking state and facial expressions.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrGetFaceStateANDROID-extension-notenabled" href="#VUID-xrGetFaceStateANDROID-extension-notenabled"></a> The <code><a href="XR_ANDROID_face_tracking.html">XR_ANDROID_face_tracking</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrGetFaceStateANDROID.html">xrGetFaceStateANDROID</a></p>
+</li>
+<li>
+<p><a id="VUID-xrGetFaceStateANDROID-faceTracker-parameter" href="#VUID-xrGetFaceStateANDROID-faceTracker-parameter"></a> <code>faceTracker</code> <strong class="purple">must</strong> be a valid <a href="XrFaceTrackerANDROID.html">XrFaceTrackerANDROID</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrGetFaceStateANDROID-getInfo-parameter" href="#VUID-xrGetFaceStateANDROID-getInfo-parameter"></a> <code>getInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrFaceStateGetInfoANDROID.html">XrFaceStateGetInfoANDROID</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrGetFaceStateANDROID-faceStateOutput-parameter" href="#VUID-xrGetFaceStateANDROID-faceStateOutput-parameter"></a> <code>faceStateOutput</code> <strong class="purple">must</strong> be a pointer to an <a href="XrFaceStateANDROID.html">XrFaceStateANDROID</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_LIMIT_REACHED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SIZE_INSUFFICIENT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_TIME_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SERVICE_NOT_READY_ANDROID</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_ANDROID_face_tracking.html">XR_ANDROID_face_tracking</a>, <a href="XrFaceStateANDROID.html">XrFaceStateANDROID</a>, <a href="XrFaceStateGetInfoANDROID.html">XrFaceStateGetInfoANDROID</a>, <a href="XrFaceTrackerANDROID.html">XrFaceTrackerANDROID</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrGetFaceStateANDROID" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.53<br>
+</div>
+</div>
+</body>
+</html>

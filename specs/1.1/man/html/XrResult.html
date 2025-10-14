@@ -297,6 +297,8 @@ pre.rouge .w {
     <span class="n">XR_ERROR_ANCHOR_NOT_TRACKING_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000457002</span><span class="p">,</span>
   <span class="c1">// Provided by XR_ANDROID_device_anchor_persistence</span>
     <span class="n">XR_ERROR_PERSISTED_DATA_NOT_READY_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000457003</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_face_tracking</span>
+    <span class="n">XR_ERROR_SERVICE_NOT_READY_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000458000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_future</span>
     <span class="n">XR_ERROR_FUTURE_PENDING_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000469001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_future</span>
@@ -993,6 +995,10 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Persisted data stored by this app has not been loaded yet.  (Added by the <code><a href="XR_ANDROID_device_anchor_persistence.html">XR_ANDROID_device_anchor_persistence</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SERVICE_NOT_READY_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The underlying tracking service is not yet ready.  (Added by the <code><a href="XR_ANDROID_face_tracking.html">XR_ANDROID_face_tracking</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FUTURE_PENDING_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returned by completion function to indicate future is not ready.  (Added by the <code><a href="XR_EXT_future.html">XR_EXT_future</a></code> extension)</p></td>
 </tr>
@@ -1113,7 +1119,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.52<br>
+Version 1.1.53<br>
 </div>
 </div>
 </body>

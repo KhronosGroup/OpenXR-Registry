@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XrFaceParameterIndicesANDROID(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrFaceParameterIndicesANDROID(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrFaceParameterIndicesANDROID - The names of trackable blend shapes</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div id="XrFaceParameterIndicesANDROID" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_ANDROID_face_tracking</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrFaceParameterIndicesANDROID</span> <span class="p">{</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_BROW_LOWERER_L_ANDROID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_BROW_LOWERER_R_ANDROID</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHEEK_PUFF_L_ANDROID</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHEEK_PUFF_R_ANDROID</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHEEK_RAISER_L_ANDROID</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHEEK_RAISER_R_ANDROID</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHEEK_SUCK_L_ANDROID</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHEEK_SUCK_R_ANDROID</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHIN_RAISER_B_ANDROID</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_CHIN_RAISER_T_ANDROID</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_DIMPLER_L_ANDROID</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_DIMPLER_R_ANDROID</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_CLOSED_L_ANDROID</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_CLOSED_R_ANDROID</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_DOWN_L_ANDROID</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_DOWN_R_ANDROID</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_LEFT_L_ANDROID</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_LEFT_R_ANDROID</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_RIGHT_L_ANDROID</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_RIGHT_R_ANDROID</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_UP_L_ANDROID</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_EYES_LOOK_UP_R_ANDROID</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_INNER_BROW_RAISER_L_ANDROID</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_INNER_BROW_RAISER_R_ANDROID</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_JAW_DROP_ANDROID</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_JAW_SIDEWAYS_LEFT_ANDROID</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_JAW_SIDEWAYS_RIGHT_ANDROID</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_JAW_THRUST_ANDROID</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LID_TIGHTENER_L_ANDROID</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LID_TIGHTENER_R_ANDROID</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_CORNER_DEPRESSOR_L_ANDROID</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_CORNER_DEPRESSOR_R_ANDROID</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_CORNER_PULLER_L_ANDROID</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_CORNER_PULLER_R_ANDROID</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_LB_ANDROID</span> <span class="o">=</span> <span class="mi">34</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_LT_ANDROID</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_RB_ANDROID</span> <span class="o">=</span> <span class="mi">36</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_RT_ANDROID</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_PRESSOR_L_ANDROID</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_PRESSOR_R_ANDROID</span> <span class="o">=</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_PUCKER_L_ANDROID</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_PUCKER_R_ANDROID</span> <span class="o">=</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_STRETCHER_L_ANDROID</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_STRETCHER_R_ANDROID</span> <span class="o">=</span> <span class="mi">43</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_SUCK_LB_ANDROID</span> <span class="o">=</span> <span class="mi">44</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_SUCK_LT_ANDROID</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_SUCK_RB_ANDROID</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_SUCK_RT_ANDROID</span> <span class="o">=</span> <span class="mi">47</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_TIGHTENER_L_ANDROID</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIP_TIGHTENER_R_ANDROID</span> <span class="o">=</span> <span class="mi">49</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LIPS_TOWARD_ANDROID</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LOWER_LIP_DEPRESSOR_L_ANDROID</span> <span class="o">=</span> <span class="mi">51</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_LOWER_LIP_DEPRESSOR_R_ANDROID</span> <span class="o">=</span> <span class="mi">52</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_MOUTH_LEFT_ANDROID</span> <span class="o">=</span> <span class="mi">53</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_MOUTH_RIGHT_ANDROID</span> <span class="o">=</span> <span class="mi">54</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_NOSE_WRINKLER_L_ANDROID</span> <span class="o">=</span> <span class="mi">55</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_NOSE_WRINKLER_R_ANDROID</span> <span class="o">=</span> <span class="mi">56</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_OUTER_BROW_RAISER_L_ANDROID</span> <span class="o">=</span> <span class="mi">57</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_OUTER_BROW_RAISER_R_ANDROID</span> <span class="o">=</span> <span class="mi">58</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_UPPER_LID_RAISER_L_ANDROID</span> <span class="o">=</span> <span class="mi">59</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_UPPER_LID_RAISER_R_ANDROID</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_UPPER_LIP_RAISER_L_ANDROID</span> <span class="o">=</span> <span class="mi">61</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_UPPER_LIP_RAISER_R_ANDROID</span> <span class="o">=</span> <span class="mi">62</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_TONGUE_OUT_ANDROID</span> <span class="o">=</span> <span class="mi">63</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_TONGUE_LEFT_ANDROID</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_TONGUE_RIGHT_ANDROID</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_TONGUE_UP_ANDROID</span> <span class="o">=</span> <span class="mi">66</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_TONGUE_DOWN_ANDROID</span> <span class="o">=</span> <span class="mi">67</span><span class="p">,</span>
+    <span class="n">XR_FACE_PARAMETER_INDICES_MAX_ENUM_ANDROID</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrFaceParameterIndicesANDROID</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enum</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_BROW_LOWERER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left brow lowerer blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_BROW_LOWERER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right brow lowerer blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHEEK_PUFF_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left cheek puff blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHEEK_PUFF_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right cheek puff blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHEEK_RAISER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left cheek raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHEEK_RAISER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right cheek raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHEEK_SUCK_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left cheek suck blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHEEK_SUCK_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right cheek suck blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHIN_RAISER_B_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bottom chin raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_CHIN_RAISER_T_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The top chin raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_DIMPLER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left dimpler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_DIMPLER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right dimpler lowerer blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_CLOSED_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left eyes closed blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_CLOSED_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right eyes closed blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_DOWN_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left eyes look down blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_DOWN_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right eyes look down blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_LEFT_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left look left blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_LEFT_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left look right blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_RIGHT_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right look left blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_RIGHT_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right look right blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_UP_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left eyes look up blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_EYES_LOOK_UP_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right eyes look up blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_INNER_BROW_RAISER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left inner brow raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_INNER_BROW_RAISER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right inner brow raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_JAW_DROP_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The jaw drop blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_JAW_SIDEWAYS_LEFT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left jaw sideways blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_JAW_SIDEWAYS_RIGHT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right jaw sideways blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_JAW_THRUST_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The jaw thrust blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LID_TIGHTENER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lid tightener blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LID_TIGHTENER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lid tightener blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_CORNER_DEPRESSOR_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left corner lip depressor blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_CORNER_DEPRESSOR_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right corner lip depressor blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_CORNER_PULLER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left corner lip puller blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_CORNER_PULLER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right corner lip puller blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_LB_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left bottom lip funneler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_LT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left top lip funneler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_RB_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right bottom lip funneler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_FUNNELER_RT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right top lip funneler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_PRESSOR_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lip pressor blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_PRESSOR_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lip pressor blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_PUCKER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lip pucker blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_PUCKER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lip pucker blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_STRETCHER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lip stretcher blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_STRETCHER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lip stretcher blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_SUCK_LB_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left bottom lip suck blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_SUCK_LT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left top lip suck blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_SUCK_RB_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right bottom lip suck blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_SUCK_RT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right top lip suck blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_TIGHTENER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lip tightener blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIP_TIGHTENER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lip tightener blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LIPS_TOWARD_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The lips toward blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LOWER_LIP_DEPRESSOR_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lower lip depressor blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_LOWER_LIP_DEPRESSOR_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lower lip depressor blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_MOUTH_LEFT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The mouth move left blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_MOUTH_RIGHT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The mouth move right blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_NOSE_WRINKLER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left nose wrinkler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_NOSE_WRINKLER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right nose wrinkler blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_OUTER_BROW_RAISER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left outer brow raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_OUTER_BROW_RAISER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right outer brow raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_UPPER_LID_RAISER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lid raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_UPPER_LID_RAISER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lid raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_UPPER_LIP_RAISER_L_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The left lip raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_UPPER_LIP_RAISER_R_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right lip raiser blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_TONGUE_OUT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tongue out blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_TONGUE_LEFT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tongue left puller blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_TONGUE_RIGHT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right right puller blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_TONGUE_UP_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right up puller blendshape parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_FACE_PARAMETER_INDICES_TONGUE_DOWN_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The right down puller blendshape parameter.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_ANDROID_face_tracking.html">XR_ANDROID_face_tracking</a>, <a href="xrGetFaceStateANDROID.html">xrGetFaceStateANDROID</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrFaceParameterIndicesANDROID" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.53<br>
+</div>
+</div>
+</body>
+</html>

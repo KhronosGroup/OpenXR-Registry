@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>XrFaceExpressionBD(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrFaceExpressionBD(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrFaceExpressionBD - The name of blend shapes of face that can be tracked</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div id="XrFaceExpressionBD" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_BD_facial_simulation</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrFaceExpressionBD</span> <span class="p">{</span>
+    <span class="n">XR_FACE_EXPRESSION_BROW_DROP_L_BD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_BROW_DROP_R_BD</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_BROW_INNER_UPWARDS_BD</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_BROW_OUTER_UPWARDS_L_BD</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_BROW_OUTER_UPWARDS_R_BD</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_BLINK_L_BD</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_DROP_L_BD</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_IN_L_BD</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_OUT_L_BD</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_UPWARDS_L_BD</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_SQUINT_L_BD</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_WIDE_L_BD</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_BLINK_R_BD</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_DROP_R_BD</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_IN_R_BD</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_OUT_R_BD</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_UPWARDS_R_BD</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_SQUINT_R_BD</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_EYE_LOOK_WIDE_R_BD</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_NOSE_SNEER_L_BD</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_NOSE_SNEER_R_BD</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_CHEEK_PUFF_BD</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_CHEEK_SQUINT_L_BD</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_CHEEK_SQUINT_R_BD</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_CLOSE_BD</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_FUNNEL_BD</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_PUCKER_BD</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_L_BD</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_R_BD</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_SMILE_L_BD</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_SMILE_R_BD</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_FROWN_L_BD</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_FROWN_R_BD</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_DIMPLE_L_BD</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_DIMPLE_R_BD</span> <span class="o">=</span> <span class="mi">34</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_STRETCH_L_BD</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_STRETCH_R_BD</span> <span class="o">=</span> <span class="mi">36</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_ROLL_LOWER_BD</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_ROLL_UPPER_BD</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_SHRUG_LOWER_BD</span> <span class="o">=</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_SHRUG_UPPER_BD</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_PRESS_L_BD</span> <span class="o">=</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_PRESS_R_BD</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_LOWER_DROP_L_BD</span> <span class="o">=</span> <span class="mi">43</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_LOWER_DROP_R_BD</span> <span class="o">=</span> <span class="mi">44</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_UPPER_UPWARDS_L_BD</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MOUTH_UPPER_UPWARDS_R_BD</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_JAW_FORWARD_BD</span> <span class="o">=</span> <span class="mi">47</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_JAW_L_BD</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_JAW_R_BD</span> <span class="o">=</span> <span class="mi">49</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_JAW_OPEN_BD</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_TONGUE_OUT_BD</span> <span class="o">=</span> <span class="mi">51</span><span class="p">,</span>
+    <span class="n">XR_FACE_EXPRESSION_MAX_ENUM_BD</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
+<span class="p">}</span> <span class="n">XrFaceExpressionBD</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_BD_facial_simulation.html">XR_BD_facial_simulation</a>, <a href="XrFacialSimulationDataBD.html">XrFacialSimulationDataBD</a>, <a href="XrFacialSimulationModeBD.html">XrFacialSimulationModeBD</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrFaceExpressionBD" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.53<br>
+</div>
+</div>
+</body>
+</html>
