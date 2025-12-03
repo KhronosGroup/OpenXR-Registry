@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.25">
 <title>xrDestroySwapchain(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -97,8 +97,20 @@ pre.rouge .w {
 <div class="sectionbody">
 <div class="paragraph">
 <p>All submitted graphics API commands that refer to <code>swapchain</code> <strong class="purple">must</strong> have
-completed execution.
-Runtimes <strong class="purple">may</strong> continue to utilize swapchain images after
+completed execution before calling this function.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>Note that in some graphics APIs, this implies that the application needs to
+perform a CPU wait on a synchronization primitive or perform a queue flush
+before calling this function.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">may</strong> continue to utilize swapchain images after
 <a href="xrDestroySwapchain.html">xrDestroySwapchain</a> is called.</p>
 </div>
 <div class="sidebarblock">
@@ -192,7 +204,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.53<br>
+Version 1.1.54<br>
 </div>
 </div>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.25">
 <meta name="author" content="Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector">
 <title>OpenXR™ Documentation and Extensions: Procedures and Conventions</title>
 <style>
@@ -764,8 +764,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.1.53</span>
-<br><span id="revremark">from git ref release-1.1.53</span>
+<span id="revnumber">version 1.1.54</span>
+<br><span id="revremark">from git ref release-1.1.54</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1820,7 +1820,7 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 53)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 54)</code></pre>
 </div>
 </div>
 </div>
@@ -3161,41 +3161,45 @@ significant direct contributions to this extension.</p>
 <p>Overview - a brief introduction</p>
 </li>
 <li>
-<p>New Object Types - leave empty if none.</p>
+<p>Refpages for new functions, structs, enums and enum values, bitfields and
+bits - usually these are ordered roughly in the order they are to be
+used.
+For example:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>an <code>XrSystemFooProperties</code> struct for querying supported features</p>
 </li>
 <li>
-<p>New Flag Types - leave empty if none.</p>
+<p>an <code>xrEnumerateFooCapabilities</code> function for querying possible
+parameters to create an object with</p>
 </li>
 <li>
-<p>New Enum Constants - leave empty if none.
-This is where you may add something like the following for additions to
-core enumerations - most often <code>XrStructureType</code>.</p>
-<div class="openblock">
-<div class="content">
-<div class="listingblock">
-<div class="title">Example Markup</div>
-<div class="content">
-<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">*New Enum Constants*
-
-elink:XrStructureType enumeration is extended with:
-
-* ename:XR_TYPE_COMPOSITION_LAYER_CYLINDER_KHR</code></pre>
+<p>an <code>XrFoo</code> handle definition</p>
+</li>
+<li>
+<p>an <code>xrCreateFoo</code> function for creating an object</p>
+</li>
+<li>
+<p>an <code>xrDestroyFoo</code> function for destroying an object may be put directly
+under its respective <code>xrCreateFoo</code> function, or later towards the end
+depending on most useful organization</p>
+</li>
+<li>
+<p>after each function, refpages for each new struct type that appears in
+the arguments of the preceding function such as <code>XrFooCreateInfo</code>.
+After those structs, refpages for structs that can be chained to these
+structs.</p>
+</li>
+</ul>
 </div>
-</div>
-</div>
-</div>
 </li>
 <li>
-<p>New Enums - leave empty if none.</p>
+<p>Example code - if any</p>
 </li>
 <li>
-<p>New Structures - leave empty if none.</p>
-</li>
-<li>
-<p>New Functions - leave empty if none.</p>
-</li>
-<li>
-<p>Issues</p>
+<p>A list of <code>New Object Types</code>, <code>New Enum Constants</code>, etc.
+is automatically generated and to be included as an asciidoc include</p>
 </li>
 <li>
 <p>Version History - this must be formatted exactly as found in existing
@@ -3207,7 +3211,17 @@ enum in the XML registry.</p>
 <div class="listingblock">
 <div class="title">Example Markup</div>
 <div class="content">
-<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">*Version History*
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">==== Overview
+
+// Refpages
+
+// Example code
+
+include::{generated}/interfaces/XR_KHR_foo.adoc[leveloffset=1]
+
+==== Issues
+
+==== Version History
 
 * Revision 1, 2019-07-12 (Rylie Pavlik, Collabora, Ltd.)
 ** A brief revision description goes here.
@@ -6881,6 +6895,10 @@ predicate.</p>
 <li>
 <p>2025-06-30 - Add an informative chapter on API design principles.</p>
 </li>
+<li>
+<p>2025-10-23 - Bring extension guidelines up to date with current practice,
+including interface include, ordering, and possible example code.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -6894,7 +6912,7 @@ predicate.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.53<br>
+Version 1.1.54<br>
 </div>
 </div>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.25">
 <title>XrSwapchainImageMetalKHR(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -71,7 +71,7 @@ pre.rouge .w {
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_metal_enable</span>
 <span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageMetalKHR</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">texture</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrSwapchainImageMetalKHR</span><span class="p">;</span></code></pre>
 </div>
@@ -131,10 +131,6 @@ pointer to an <a href="XrSwapchainImageMetalKHR.html">XrSwapchainImageMetalKHR</
 image as the coordinate origin unless specified otherwise by extension
 functionality.</p>
 </div>
-<div class="paragraph">
-<p>The OpenXR runtime <strong class="purple">must</strong> interpret the swapchain images in a clip space of
-positive Y pointing up, near Z plane at 0, and far Z plane at 1.</p>
-</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -148,9 +144,6 @@ positive Y pointing up, near Z plane at 0, and far Z plane at 1.</p>
 </li>
 <li>
 <p><a id="VUID-XrSwapchainImageMetalKHR-next-next" href="#VUID-XrSwapchainImageMetalKHR-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
-</li>
-<li>
-<p><a id="VUID-XrSwapchainImageMetalKHR-texture-parameter" href="#VUID-XrSwapchainImageMetalKHR-texture-parameter"></a> <code>texture</code> <strong class="purple">must</strong> be a pointer value</p>
 </li>
 </ul>
 </div>
@@ -194,7 +187,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.53<br>
+Version 1.1.54<br>
 </div>
 </div>
 </body>
