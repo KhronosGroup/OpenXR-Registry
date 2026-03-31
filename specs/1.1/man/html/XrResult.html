@@ -299,6 +299,8 @@ pre.rouge .w {
     <span class="n">XR_ERROR_PERSISTED_DATA_NOT_READY_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000457003</span><span class="p">,</span>
   <span class="c1">// Provided by XR_ANDROID_face_tracking</span>
     <span class="n">XR_ERROR_SERVICE_NOT_READY_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000458000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_composition_layer_passthrough_mesh</span>
+    <span class="n">XR_ERROR_MESH_DATA_LIMIT_EXCEEDED_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000462000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_future</span>
     <span class="n">XR_ERROR_FUTURE_PENDING_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000469001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_future</span>
@@ -343,6 +345,10 @@ pre.rouge .w {
     <span class="n">XR_ERROR_SPATIAL_PERSISTENCE_SCOPE_UNSUPPORTED_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000763001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_spatial_persistence_operations</span>
     <span class="n">XR_ERROR_SPATIAL_PERSISTENCE_SCOPE_INCOMPATIBLE_EXT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000781001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_entity_bound_anchor</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_ATTACHABLE_COMPONENT_NOT_FOUND_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000790001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_anchor_space</span>
+    <span class="n">XR_ERROR_SPATIAL_ANCHOR_ENTITY_ID_INVALID_ANDROID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000795001</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_maintenance1</span>
     <span class="n">XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED_KHR</span> <span class="o">=</span> <span class="n">XR_ERROR_EXTENSION_DEPENDENCY_NOT_ENABLED</span><span class="p">,</span>
   <span class="c1">// Provided by XR_KHR_maintenance1</span>
@@ -1001,6 +1007,10 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The underlying tracking service is not yet ready.  (Added by the <code><a href="XR_ANDROID_face_tracking.html">XR_ANDROID_face_tracking</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_MESH_DATA_LIMIT_EXCEEDED_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returned by passthrough layer functions to indicate the mesh data exceeds the supported limit.  (Added by the <code><a href="XR_ANDROID_composition_layer_passthrough_mesh.html">XR_ANDROID_composition_layer_passthrough_mesh</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_FUTURE_PENDING_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returned by completion function to indicate future is not ready.  (Added by the <code><a href="XR_EXT_future.html">XR_EXT_future</a></code> extension)</p></td>
 </tr>
@@ -1084,6 +1094,14 @@ moment.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_PERSISTENCE_SCOPE_INCOMPATIBLE_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The scope configured for the persistence context is incompatible for the current spatial entity.  (Added by the <code><a href="XR_EXT_spatial_persistence_operations.html">XR_EXT_spatial_persistence_operations</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_ATTACHABLE_COMPONENT_NOT_FOUND_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spatial entity with parent ID does not have at least one component enumerated by xrEnumerateSpatialAnchorAttachableComponentsANDROID  (Added by the <code><a href="XR_ANDROID_spatial_entity_bound_anchor.html">XR_ANDROID_spatial_entity_bound_anchor</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_ERROR_SPATIAL_ANCHOR_ENTITY_ID_INVALID_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified spatial entity ID is invalid for an anchor.  (Added by the <code><a href="XR_ANDROID_spatial_anchor_space.html">XR_ANDROID_spatial_anchor_space</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1093,7 +1111,7 @@ moment.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrCreateSpatialContextCompletionEXT.html">XrCreateSpatialContextCompletionEXT</a>, <a href="XrCreateSpatialDiscoverySnapshotCompletionEXT.html">XrCreateSpatialDiscoverySnapshotCompletionEXT</a>, <a href="XrCreateSpatialPersistenceContextCompletionEXT.html">XrCreateSpatialPersistenceContextCompletionEXT</a>, <a href="XrCreateTrackableImageDatabaseCompletionANDROID.html">XrCreateTrackableImageDatabaseCompletionANDROID</a>, <a href="XrEventDataColocationAdvertisementCompleteMETA.html">XrEventDataColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataColocationDiscoveryCompleteMETA.html">XrEventDataColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataShareSpacesCompleteMETA.html">XrEventDataShareSpacesCompleteMETA</a>, <a href="XrEventDataSpaceDiscoveryCompleteMETA.html">XrEventDataSpaceDiscoveryCompleteMETA</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpacesEraseResultMETA.html">XrEventDataSpacesEraseResultMETA</a>, <a href="XrEventDataSpacesSaveResultMETA.html">XrEventDataSpacesSaveResultMETA</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrEventDataStartColocationAdvertisementCompleteMETA.html">XrEventDataStartColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStartColocationDiscoveryCompleteMETA.html">XrEventDataStartColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataStopColocationAdvertisementCompleteMETA.html">XrEventDataStopColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrPersistSpatialEntityCompletionEXT.html">XrPersistSpatialEntityCompletionEXT</a>, <a href="XrSenseDataQueryCompletionBD.html">XrSenseDataQueryCompletionBD</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorCreateCompletionBD.html">XrSpatialAnchorCreateCompletionBD</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrUnpersistSpatialEntityCompletionEXT.html">XrUnpersistSpatialEntityCompletionEXT</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
+<p><a href="XrCreateSpatialAnchorsCompletionML.html">XrCreateSpatialAnchorsCompletionML</a>, <a href="XrCreateSpatialContextCompletionEXT.html">XrCreateSpatialContextCompletionEXT</a>, <a href="XrCreateSpatialDiscoverySnapshotCompletionEXT.html">XrCreateSpatialDiscoverySnapshotCompletionEXT</a>, <a href="XrCreateSpatialPersistenceContextCompletionEXT.html">XrCreateSpatialPersistenceContextCompletionEXT</a>, <a href="XrCreateTrackableImageDatabaseCompletionANDROID.html">XrCreateTrackableImageDatabaseCompletionANDROID</a>, <a href="XrEnvironmentRaycasterCreateCompletionMETA.html">XrEnvironmentRaycasterCreateCompletionMETA</a>, <a href="XrEventDataColocationAdvertisementCompleteMETA.html">XrEventDataColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataColocationDiscoveryCompleteMETA.html">XrEventDataColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataSceneCaptureCompleteFB.html">XrEventDataSceneCaptureCompleteFB</a>, <a href="XrEventDataShareSpacesCompleteMETA.html">XrEventDataShareSpacesCompleteMETA</a>, <a href="XrEventDataSpaceDiscoveryCompleteMETA.html">XrEventDataSpaceDiscoveryCompleteMETA</a>, <a href="XrEventDataSpaceEraseCompleteFB.html">XrEventDataSpaceEraseCompleteFB</a>, <a href="XrEventDataSpaceListSaveCompleteFB.html">XrEventDataSpaceListSaveCompleteFB</a>, <a href="XrEventDataSpaceQueryCompleteFB.html">XrEventDataSpaceQueryCompleteFB</a>, <a href="XrEventDataSpaceSaveCompleteFB.html">XrEventDataSpaceSaveCompleteFB</a>, <a href="XrEventDataSpaceSetStatusCompleteFB.html">XrEventDataSpaceSetStatusCompleteFB</a>, <a href="XrEventDataSpaceShareCompleteFB.html">XrEventDataSpaceShareCompleteFB</a>, <a href="XrEventDataSpacesEraseResultMETA.html">XrEventDataSpacesEraseResultMETA</a>, <a href="XrEventDataSpacesSaveResultMETA.html">XrEventDataSpacesSaveResultMETA</a>, <a href="XrEventDataSpatialAnchorCreateCompleteFB.html">XrEventDataSpatialAnchorCreateCompleteFB</a>, <a href="XrEventDataStartColocationAdvertisementCompleteMETA.html">XrEventDataStartColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStartColocationDiscoveryCompleteMETA.html">XrEventDataStartColocationDiscoveryCompleteMETA</a>, <a href="XrEventDataStopColocationAdvertisementCompleteMETA.html">XrEventDataStopColocationAdvertisementCompleteMETA</a>, <a href="XrEventDataStopColocationDiscoveryCompleteMETA.html">XrEventDataStopColocationDiscoveryCompleteMETA</a>, <a href="XrFutureCompletionBaseHeaderEXT.html">XrFutureCompletionBaseHeaderEXT</a>, <a href="XrFutureCompletionEXT.html">XrFutureCompletionEXT</a>, <a href="XrPersistSpatialEntityCompletionEXT.html">XrPersistSpatialEntityCompletionEXT</a>, <a href="XrSenseDataQueryCompletionBD.html">XrSenseDataQueryCompletionBD</a>, <a href="XrSpatialAnchorCompletionResultML.html">XrSpatialAnchorCompletionResultML</a>, <a href="XrSpatialAnchorCreateCompletionBD.html">XrSpatialAnchorCreateCompletionBD</a>, <a href="XrSpatialAnchorsDeleteCompletionML.html">XrSpatialAnchorsDeleteCompletionML</a>, <a href="XrSpatialAnchorsPublishCompletionML.html">XrSpatialAnchorsPublishCompletionML</a>, <a href="XrSpatialAnchorsQueryCompletionML.html">XrSpatialAnchorsQueryCompletionML</a>, <a href="XrSpatialAnchorsUpdateExpirationCompletionML.html">XrSpatialAnchorsUpdateExpirationCompletionML</a>, <a href="XrUnpersistSpatialEntityCompletionEXT.html">XrUnpersistSpatialEntityCompletionEXT</a>, <a href="XrWorldMeshRequestCompletionML.html">XrWorldMeshRequestCompletionML</a>, <a href="XrWorldMeshStateRequestCompletionML.html">XrWorldMeshStateRequestCompletionML</a>, <a href="xrResultToString.html">xrResultToString</a></p>
 </div>
 </div>
 </div>
@@ -1125,7 +1143,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.57<br>
+Version 1.1.58<br>
 </div>
 </div>
 </body>

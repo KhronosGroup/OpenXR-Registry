@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.25">
+<title>XrSoundObjectConfigBD(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSoundObjectConfigBD(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSoundObjectConfigBD - Describes configuration of sound objects</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrSoundObjectConfigBD.html">XrSoundObjectConfigBD</a> structure is defined as:</p>
+</div>
+<div id="XrSoundObjectConfigBD" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_BD_spatial_audio_rendering</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSoundObjectConfigBD</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>                              <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                                  <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrBool32</span>                                     <span class="n">enabled</span><span class="p">;</span>
+    <span class="n">XrPosef</span>                                      <span class="n">pose</span><span class="p">;</span>
+    <span class="n">XrSpace</span>                                      <span class="n">baseSpace</span><span class="p">;</span>
+    <span class="kt">float</span>                                        <span class="n">mainVolume</span><span class="p">;</span>
+    <span class="kt">float</span>                                        <span class="n">reflectionGain</span><span class="p">;</span>
+    <span class="n">XrBool32</span>                                     <span class="n">enableDoppler</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrSoundObjectDistanceAttenuationBD</span><span class="o">*</span>    <span class="n">directSoundAttenuation</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrSoundObjectDistanceAttenuationBD</span><span class="o">*</span>    <span class="n">indirectSoundAttenuation</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSoundObjectConfigBD</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>enabled</code> is an <a href="XrBool32.html">XrBool32</a>, indicating whether the sound object
+is enabled.</p>
+</li>
+<li>
+<p><code>pose</code> is an <a href="XrPosef.html">XrPosef</a> of the sound object.</p>
+</li>
+<li>
+<p><code>baseSpace</code> is an <a href="XrSpace.html">XrSpace</a> which the <code>pose</code> is defined in.</p>
+</li>
+<li>
+<p><code>mainVolume</code> is the main volume of the sound object.
+It acts as a linear gain attenuation of the input signal in the range
+<span class="eq">(0, 1)</span>.</p>
+</li>
+<li>
+<p><code>reflectionGain</code> is the reflection gain of the sound object.
+It acts as a linear gain attenuation of the input signal in the range
+<span class="eq">(0, 1)</span> on top of the main volume.</p>
+</li>
+<li>
+<p><code>enableDoppler</code> is an <a href="XrBool32.html">XrBool32</a>, indicating whether the
+Doppler effect is enabled.</p>
+</li>
+<li>
+<p><code>directSoundAttenuation</code> is the
+<a href="XrSoundObjectDistanceAttenuationBD.html">XrSoundObjectDistanceAttenuationBD</a> of the direct sound of the sound
+object, propagating along a straight line from the source to the listener.</p>
+</li>
+<li>
+<p><code>indirectSoundAttenuation</code> is the
+<a href="XrSoundObjectDistanceAttenuationBD.html">XrSoundObjectDistanceAttenuationBD</a> of the indirect sound of the
+sound object, which is any other propagation that is not considered
+"direct."</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Applications <strong class="purple">may</strong> specify the directivity and/or the shape of a sound
+object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To describe the sound object&#8217;s shape, applications chain
+<a href="XrSoundObjectShapeSphereBD.html">XrSoundObjectShapeSphereBD</a> to
+<a href="XrSoundObjectConfigBD.html">XrSoundObjectConfigBD</a>::<code>next</code></p>
+</li>
+<li>
+<p>To describe the directivity of a sound object by a cardioid polar pattern,
+applications chain <a href="XrSoundObjectDirectivityCardioidBD.html">XrSoundObjectDirectivityCardioidBD</a> to
+<a href="XrSoundObjectConfigBD.html">XrSoundObjectConfigBD</a>::<code>next</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the application does not chain <a href="XrSoundObjectShapeSphereBD.html">XrSoundObjectShapeSphereBD</a>, the
+sound object is defined as an infinitesimally small point.
+If the application does not change <a href="XrSoundObjectDirectivityCardioidBD.html">XrSoundObjectDirectivityCardioidBD</a>,
+the sound object is defined to be omnidirectional (uniform sound emission
+intensity over all directions).</p>
+</div>
+<div class="paragraph">
+<p>The behavior below specifies how the runtime renders audio when tracking
+quality changes for the <code>baseSpace</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>While the <code>baseSpace</code> pose is valid, but not tracked (i.e.
+<a href="xrLocateSpace.html">xrLocateSpace</a> reports its location with
+<code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> and
+<code>XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</code> set, but not
+<code>XR_SPACE_LOCATION_POSITION_TRACKED_BIT</code> and
+<code>XR_VIEW_STATE_POSITION_TRACKED_BIT</code>), the runtime <strong class="purple">must</strong> keep
+rendering the sound object using the most recent valid pose of that space.</p>
+</li>
+<li>
+<p>While the <code>baseSpace</code> pose is neither valid nor tracked (i.e.
+<a href="xrLocateSpace.html">xrLocateSpace</a> reports its location with
+<code>XR_SPACE_LOCATION_POSITION_VALID_BIT</code> and
+<code>XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</code> unset), the runtime <strong class="purple">should</strong>
+keep rendering the sound object using the most recent valid pose of that
+space relative to its parent.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSoundObjectConfigBD-extension-notenabled" href="#VUID-XrSoundObjectConfigBD-extension-notenabled"></a> The <code><a href="XR_BD_spatial_audio_rendering.html">XR_BD_spatial_audio_rendering</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSoundObjectConfigBD.html">XrSoundObjectConfigBD</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSoundObjectConfigBD-type-type" href="#VUID-XrSoundObjectConfigBD-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SOUND_OBJECT_CONFIG_BD</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSoundObjectConfigBD-next-next" href="#VUID-XrSoundObjectConfigBD-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrSoundObjectDirectivityCardioidBD.html">XrSoundObjectDirectivityCardioidBD</a>, <a href="XrSoundObjectShapeSphereBD.html">XrSoundObjectShapeSphereBD</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSoundObjectConfigBD-baseSpace-parameter" href="#VUID-XrSoundObjectConfigBD-baseSpace-parameter"></a> <code>baseSpace</code> <strong class="purple">must</strong> be a valid <a href="XrSpace.html">XrSpace</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-XrSoundObjectConfigBD-directSoundAttenuation-parameter" href="#VUID-XrSoundObjectConfigBD-directSoundAttenuation-parameter"></a> <code>directSoundAttenuation</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSoundObjectDistanceAttenuationBD.html">XrSoundObjectDistanceAttenuationBD</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-XrSoundObjectConfigBD-indirectSoundAttenuation-parameter" href="#VUID-XrSoundObjectConfigBD-indirectSoundAttenuation-parameter"></a> <code>indirectSoundAttenuation</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSoundObjectDistanceAttenuationBD.html">XrSoundObjectDistanceAttenuationBD</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_BD_spatial_audio_rendering.html">XR_BD_spatial_audio_rendering</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrPosef.html">XrPosef</a>, <a href="XrSoundObjectDistanceAttenuationBD.html">XrSoundObjectDistanceAttenuationBD</a>, <a href="XrSpace.html">XrSpace</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrCreateSoundObjectBD.html">xrCreateSoundObjectBD</a>, <a href="xrUpdateSoundObjectConfigBD.html">xrUpdateSoundObjectConfigBD</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSoundObjectConfigBD" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.58<br>
+</div>
+</div>
+</body>
+</html>

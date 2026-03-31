@@ -85,6 +85,12 @@ pre.rouge .w {
     <span class="n">XR_SPATIAL_COMPONENT_TYPE_ANCHOR_EXT</span> <span class="o">=</span> <span class="mi">1000762000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_spatial_persistence</span>
     <span class="n">XR_SPATIAL_COMPONENT_TYPE_PERSISTENCE_EXT</span> <span class="o">=</span> <span class="mi">1000763000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_object_tracking</span>
+    <span class="n">XR_SPATIAL_COMPONENT_TYPE_OBJECT_SEMANTIC_LABEL_ANDROID</span> <span class="o">=</span> <span class="mi">1000785000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_raycast</span>
+    <span class="n">XR_SPATIAL_COMPONENT_TYPE_RAYCAST_RESULT_ANDROID</span> <span class="o">=</span> <span class="mi">1000786000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_component_subsumed_by</span>
+    <span class="n">XR_SPATIAL_COMPONENT_TYPE_SUBSUMED_BY_ANDROID</span> <span class="o">=</span> <span class="mi">1000791000</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_COMPONENT_TYPE_MAX_ENUM_EXT</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrSpatialComponentTypeEXT</span><span class="p">;</span></code></pre>
 </div>
@@ -162,6 +168,18 @@ as documented.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_COMPONENT_TYPE_PERSISTENCE_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Component that provides the persisted UUID for a spatial entity. Corresponding list structure is <a href="XrSpatialComponentPersistenceListEXT.html">XrSpatialComponentPersistenceListEXT</a>; Corresponding data structure is <a href="XrSpatialPersistenceDataEXT.html">XrSpatialPersistenceDataEXT</a>  (Added by the <code><a href="XR_EXT_spatial_persistence.html">XR_EXT_spatial_persistence</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_COMPONENT_TYPE_OBJECT_SEMANTIC_LABEL_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Component that provides a semantic label for a object; Corresponding list structure is <a href="XrSpatialComponentObjectSemanticLabelListANDROID.html">XrSpatialComponentObjectSemanticLabelListANDROID</a>; Corresponding data structure is <a href="XrSpatialObjectSemanticLabelANDROID.html">XrSpatialObjectSemanticLabelANDROID</a>  (Added by the <code><a href="XR_ANDROID_spatial_object_tracking.html">XR_ANDROID_spatial_object_tracking</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_COMPONENT_TYPE_RAYCAST_RESULT_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Component that provides the pose of a raycast hit on an entity. Corresponding list structure is <a href="XrSpatialComponentRaycastResultListANDROID.html">XrSpatialComponentRaycastResultListANDROID</a>; Corresponding data structure is <a href="XrSpatialRaycastResultDataANDROID.html">XrSpatialRaycastResultDataANDROID</a>  (Added by the <code><a href="XR_ANDROID_spatial_discovery_raycast.html">XR_ANDROID_spatial_discovery_raycast</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_COMPONENT_TYPE_SUBSUMED_BY_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Component that provides entity ID of the entity subsuming the attached entity. Corresponding list structure is <a href="XrSpatialComponentSubsumedByListANDROID.html">XrSpatialComponentSubsumedByListANDROID</a>; Corresponding data structure is <a href="XrSpatialEntityIdEXT.html">XrSpatialEntityIdEXT</a>  (Added by the <code><a href="XR_ANDROID_spatial_component_subsumed_by.html">XR_ANDROID_spatial_component_subsumed_by</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -170,7 +188,7 @@ as documented.</p>
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a>, <a href="XrSpatialCapabilityComponentTypesEXT.html">XrSpatialCapabilityComponentTypesEXT</a>, <a href="XrSpatialCapabilityConfigurationAnchorEXT.html">XrSpatialCapabilityConfigurationAnchorEXT</a>, <a href="XrSpatialCapabilityConfigurationAprilTagEXT.html">XrSpatialCapabilityConfigurationAprilTagEXT</a>, <a href="XrSpatialCapabilityConfigurationArucoMarkerEXT.html">XrSpatialCapabilityConfigurationArucoMarkerEXT</a>, <a href="XrSpatialCapabilityConfigurationBaseHeaderEXT.html">XrSpatialCapabilityConfigurationBaseHeaderEXT</a>, <a href="XrSpatialCapabilityConfigurationMicroQrCodeEXT.html">XrSpatialCapabilityConfigurationMicroQrCodeEXT</a>, <a href="XrSpatialCapabilityConfigurationPlaneTrackingEXT.html">XrSpatialCapabilityConfigurationPlaneTrackingEXT</a>, <a href="XrSpatialCapabilityConfigurationQrCodeEXT.html">XrSpatialCapabilityConfigurationQrCodeEXT</a>, <a href="XrSpatialComponentDataQueryConditionEXT.html">XrSpatialComponentDataQueryConditionEXT</a>, <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>, <a href="XrSpatialUpdateSnapshotCreateInfoEXT.html">XrSpatialUpdateSnapshotCreateInfoEXT</a>, <a href="xrEnumerateSpatialCapabilityComponentTypesEXT.html">xrEnumerateSpatialCapabilityComponentTypesEXT</a></p>
+<p><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a>, <a href="XrSpatialCapabilityComponentTypesEXT.html">XrSpatialCapabilityComponentTypesEXT</a>, <a href="XrSpatialCapabilityConfigurationAnchorEXT.html">XrSpatialCapabilityConfigurationAnchorEXT</a>, <a href="XrSpatialCapabilityConfigurationAprilTagEXT.html">XrSpatialCapabilityConfigurationAprilTagEXT</a>, <a href="XrSpatialCapabilityConfigurationArucoMarkerEXT.html">XrSpatialCapabilityConfigurationArucoMarkerEXT</a>, <a href="XrSpatialCapabilityConfigurationBaseHeaderEXT.html">XrSpatialCapabilityConfigurationBaseHeaderEXT</a>, <a href="XrSpatialCapabilityConfigurationDepthRaycastANDROID.html">XrSpatialCapabilityConfigurationDepthRaycastANDROID</a>, <a href="XrSpatialCapabilityConfigurationMicroQrCodeEXT.html">XrSpatialCapabilityConfigurationMicroQrCodeEXT</a>, <a href="XrSpatialCapabilityConfigurationObjectTrackingANDROID.html">XrSpatialCapabilityConfigurationObjectTrackingANDROID</a>, <a href="XrSpatialCapabilityConfigurationPlaneTrackingEXT.html">XrSpatialCapabilityConfigurationPlaneTrackingEXT</a>, <a href="XrSpatialCapabilityConfigurationQrCodeEXT.html">XrSpatialCapabilityConfigurationQrCodeEXT</a>, <a href="XrSpatialComponentDataQueryConditionEXT.html">XrSpatialComponentDataQueryConditionEXT</a>, <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>, <a href="XrSpatialRaycastSnapshotCreateInfoANDROID.html">XrSpatialRaycastSnapshotCreateInfoANDROID</a>, <a href="XrSpatialUpdateSnapshotCreateInfoEXT.html">XrSpatialUpdateSnapshotCreateInfoEXT</a>, <a href="xrEnumerateSpatialAnchorAttachableComponentsANDROID.html">xrEnumerateSpatialAnchorAttachableComponentsANDROID</a>, <a href="xrEnumerateSpatialCapabilityComponentTypesEXT.html">xrEnumerateSpatialCapabilityComponentTypesEXT</a></p>
 </div>
 </div>
 </div>
@@ -202,7 +220,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.57<br>
+Version 1.1.58<br>
 </div>
 </div>
 </body>

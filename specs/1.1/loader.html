@@ -386,8 +386,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2026 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.1.57</span>
-<br><span id="revremark">from git ref release-1.1.57</span>
+<span id="revnumber">version 1.1.58</span>
+<br><span id="revremark">from git ref release-1.1.58</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -4307,7 +4307,7 @@ it requires a list of available runtime manifest files.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult RuntimeManifestFile::FindManifestFiles(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static XrResult RuntimeManifestFile::FindManifestFiles(
             const std::string &amp;openxr_command,
             std::vector&lt;std::unique_ptr&lt;RuntimeManifestFile&gt;&gt; &amp;manifest_files);</code></pre>
 </div>
@@ -4330,7 +4330,7 @@ available.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">void RuntimeManifestFile::CreateIfValid(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">void RuntimeManifestFile::CreateIfValid(
             std::string filename,
             std::vector&lt;std::unique_ptr&lt;RuntimeManifestFile&gt;&gt; &amp;manifest_files);</code></pre>
 </div>
@@ -4365,7 +4365,7 @@ it requires a list of available API layer manifest files.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult ApiLayerManifestFile::FindManifestFiles(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static XrResult ApiLayerManifestFile::FindManifestFiles(
             const std::string &amp;openxr_command, ManifestFileType type,
             std::vector&lt;std::unique_ptr&lt;ApiLayerManifestFile&gt;&gt; &amp;manifest_files);</code></pre>
 </div>
@@ -4394,7 +4394,7 @@ available.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">void ApiLayerManifestFile::CreateIfValid(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">void ApiLayerManifestFile::CreateIfValid(
             std::string filename,
             std::vector&lt;std::unique_ptr&lt;ApiLayerManifestFile&gt;&gt; &amp;manifest_files);</code></pre>
 </div>
@@ -4450,7 +4450,7 @@ been made.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult RuntimeInterface::LoadRuntime();</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static XrResult RuntimeInterface::LoadRuntime();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4462,7 +4462,7 @@ active runtime library.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult RuntimeInterface::UnloadRuntime();</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static XrResult RuntimeInterface::UnloadRuntime();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4472,7 +4472,7 @@ active runtime library.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static RuntimeInterface&amp; GetRuntime();</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static RuntimeInterface&amp; GetRuntime();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4483,7 +4483,7 @@ OpenXR loader:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult RuntimeInterface::CreateInstance(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">XrResult RuntimeInterface::CreateInstance(
         const XrInstanceCreateInfo* info);</code></pre>
 </div>
 </div>
@@ -4515,7 +4515,7 @@ the loader calls <code>DestroyInstance</code>;</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult RuntimeInterface::DestroyInstance();</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">XrResult RuntimeInterface::DestroyInstance();</code></pre>
 </div>
 </div>
 <div id="apilayerinterface" class="paragraph">
@@ -4538,7 +4538,7 @@ it requires load one or more API layers:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult ApiLayerInterface::LoadApiLayers(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static XrResult ApiLayerInterface::LoadApiLayers(
         std::vector&lt;std::unique_ptr&lt;ApiLayerManifestFile&gt;&gt;&amp; manifest_files,
         std::vector&lt;std::string&gt; enabled_layers,
         std::vector&lt;std::unique_ptr&lt;ApiLayerInterface&gt;&gt;&amp; api_layer_interfaces);</code></pre>
@@ -4579,7 +4579,7 @@ During <code>xrCreateInstance</code> the loader code calls
 </div>
 <div id="CreateInstance" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static XrResult LoaderInstance::CreateInstance(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static XrResult LoaderInstance::CreateInstance(
         PFN_xrGetInstanceProcAddr get_instance_proc_addr_term,
         PFN_xrCreateInstance create_instance_term,
         PFN_xrCreateApiLayerInstance create_api_layer_instance_term,
@@ -4672,7 +4672,7 @@ pointers/references around to the various loader objects.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static LoaderLogger&amp; LoaderLogger::GetInstance();</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static LoaderLogger&amp; LoaderLogger::GetInstance();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4683,7 +4683,7 @@ To add a <code>LoaderLogRecorder</code> to the <code>LoaderLogger</code>, call
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">void LoaderLogger::AddLogRecorder(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">void LoaderLogger::AddLogRecorder(
         std::unique_ptr&lt;LoaderLogRecorder&gt;&amp; recorder);</code></pre>
 </div>
 </div>
@@ -4703,7 +4703,7 @@ Any source inside of the loader may trigger a log message by using the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">bool LoaderLogger::LogMessage(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">bool LoaderLogger::LogMessage(
         XrLoaderLogMessageSeverityFlagBits message_severity,
         XrLoaderLogMessageTypeFlags message_type,
         const std::string&amp; message_id,
@@ -4745,7 +4745,7 @@ static methods for logging:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">static bool LogErrorMessage(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">static bool LogErrorMessage(
         const std::string&amp; command_name,
         const std::string&amp; message,
         const std::vector&lt;XrLoaderLogObjectInfo&gt;&amp; objects = {});
@@ -4791,7 +4791,7 @@ the <code>LoaderLogger</code>::<code>GetInstance</code>() and making the appropr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XrResult res = xrCreateInstance(info, instance);
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">XrResult res = xrCreateInstance(info, instance);
 if (XR_SUCCESS != res) {
     std::string error_message = "xrCreateInstance failed with result ";
     error_message += std::to_string(res);
@@ -4801,7 +4801,7 @@ if (XR_SUCCESS != res) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// After successfully adding all API layers
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">// After successfully adding all API layers
 LoaderLogger::LogInfoMessage("", "Loaded all API layers");</code></pre>
 </div>
 </div>
@@ -4827,7 +4827,7 @@ recorded.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">virtual bool LogMessage(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">virtual bool LogMessage(
         XrLoaderLogMessageSeverityFlagBits message_severity,
         XrLoaderLogMessageTypeFlags message_type,
         const XrLoaderLogMessengerCallbackData* callback_data) = 0;</code></pre>
@@ -4844,7 +4844,7 @@ the following utilities can be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">virtual void Pause();
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">virtual void Pause();
 virtual void Resume();
 bool IsPaused();</code></pre>
 </div>
@@ -4995,7 +4995,7 @@ structure which has a subset of the function pointers (defined in
 </div>
 <div id="XrGeneratedDispatchTable" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Generated dispatch table
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">// Generated dispatch table
 struct XrGeneratedDispatchTable {
 
     // ---- Core 1.0 commands
@@ -5019,7 +5019,7 @@ that can be used to populate a dispatch table once it has been created:</p>
 </div>
 <div id="GeneratedXrPopulateDispatchTable" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">void GeneratedXrPopulateDispatchTable(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">void GeneratedXrPopulateDispatchTable(
         struct XrGeneratedDispatchTable *table,
         XrInstance instance,
         PFN_xrGetInstanceProcAddr get_inst_proc_addr);</code></pre>
@@ -5163,7 +5163,7 @@ Most loader platform code can be found in the following source file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">src/loader/loader_platform.hpp</code></pre>
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">src/loader/loader_platform.hpp</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5181,7 +5181,7 @@ following prototype:</p>
 </div>
 <div id="LoaderPlatformLibraryOpen" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">LoaderPlatformLibraryHandle LoaderPlatformLibraryOpen(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">LoaderPlatformLibraryHandle LoaderPlatformLibraryOpen(
     const std::string &amp;path);</code></pre>
 </div>
 </div>
@@ -5201,7 +5201,7 @@ In the case of failure, the loader can call the
 </div>
 <div id="LoaderPlatformLibraryOpenError" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">const char *LoaderPlatformLibraryOpenError(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">const char *LoaderPlatformLibraryOpenError(
     const std::string &amp;path);</code></pre>
 </div>
 </div>
@@ -5225,7 +5225,7 @@ platform-specific error code that may have occurred.</p>
 </div>
 <div id="LoaderPlatformLibraryClose" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">void LoaderPlatformLibraryClose(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">void LoaderPlatformLibraryClose(
     LoaderPlatformLibraryHandle library)</code></pre>
 </div>
 </div>
@@ -5245,7 +5245,7 @@ function:</p>
 </div>
 <div id="LoaderPlatformLibraryGetProcAddr" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">void *LoaderPlatformLibraryGetProcAddr
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">void *LoaderPlatformLibraryGetProcAddr
     LoaderPlatformLibraryHandle library,
     const std::string &amp;name)</code></pre>
 </div>
@@ -5274,7 +5274,7 @@ To determine what might have happened, the loader will call the
 </div>
 <div id="LoaderPlatformLibraryGetProcAddrError" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">const char *LoaderPlatformLibraryGetProcAddrError(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">const char *LoaderPlatformLibraryGetProcAddrError(
     const std::string &amp;path);</code></pre>
 </div>
 </div>
@@ -5312,7 +5312,7 @@ source folder to use these utilities.</p>
 </div>
 <div id="PlatformUtilsGetEnv" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">std::string PlatformUtilsGetEnv(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">std::string PlatformUtilsGetEnv(
     const char *name);</code></pre>
 </div>
 </div>
@@ -5336,7 +5336,7 @@ all, if the underlying platform distinguishes these cases, use
 </div>
 <div id="PlatformUtilsGetEnvSet" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">bool PlatformUtilsGetEnvSet(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">bool PlatformUtilsGetEnvSet(
     const char *name);</code></pre>
 </div>
 </div>
@@ -5364,7 +5364,7 @@ environment variables can be set by non-admin (medium integrity) processes.</p>
 </div>
 <div id="PlatformUtilsGetSecureEnv" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">char *PlatformUtilsGetSecureEnv(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">char *PlatformUtilsGetSecureEnv(
     const char *name);</code></pre>
 </div>
 </div>
@@ -5400,7 +5400,7 @@ for querying the name of the file.</p>
 </div>
 <div id="PlatformGetGlobalRuntimeFileName" class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">bool PlatformGetGlobalRuntimeFileName(
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">bool PlatformGetGlobalRuntimeFileName(
     uint16_t major_version,
     std::string &amp;file_name);</code></pre>
 </div>
@@ -5708,7 +5708,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.57<br>
+Version 1.1.58<br>
 </div>
 </div>
 </body>

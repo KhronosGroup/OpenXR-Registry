@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.25">
+<title>XrPassthroughLayerMeshANDROID(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrPassthroughLayerMeshANDROID(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrPassthroughLayerMeshANDROID - Information to set the mesh of a passthrough layer</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrPassthroughLayerMeshANDROID.html">XrPassthroughLayerMeshANDROID</a> structure is defined as:</p>
+</div>
+<div id="XrPassthroughLayerMeshANDROID" class="paragraph">
+<p></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_ANDROID_composition_layer_passthrough_mesh</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrPassthroughLayerMeshANDROID</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>          <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrWindingOrderANDROID</span>    <span class="n">windingOrder</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                 <span class="n">vertexCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrVector3f</span><span class="o">*</span>        <span class="n">vertices</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                 <span class="n">indexCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">uint16_t</span><span class="o">*</span>          <span class="n">indices</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrPassthroughLayerMeshANDROID</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>windingOrder</code> is the <a href="XrWindingOrderANDROID.html">XrWindingOrderANDROID</a> of the mesh
+triangles.
+The runtime <strong class="purple">must</strong> use it for backface culling when rendering the mesh.</p>
+</li>
+<li>
+<p><code>vertexCount</code> is an <code>uint32_t</code> representing the number of vertices
+in the mesh.
+When <a href="XrPassthroughLayerCreateInfoANDROID.html">XrPassthroughLayerCreateInfoANDROID</a>::<code>vertexCapacity</code> is
+specified, the <code>vertexCount</code> <strong class="purple">must</strong> be less than or equal to the
+<a href="XrPassthroughLayerCreateInfoANDROID.html">XrPassthroughLayerCreateInfoANDROID</a>::<code>vertexCapacity</code>.</p>
+</li>
+<li>
+<p><code>vertices</code> is a pointer to an array of <code>vertexCount</code>
+<a href="XrVector3f.html">XrVector3f</a> which contains the vertex positions of the triangle mesh.</p>
+</li>
+<li>
+<p><code>indexCount</code> is an <code>uint32_t</code> representing the number of indices in
+the triangle mesh.
+The last <code>indexCount % 3</code> indices, if any, will not be drawn.
+When <a href="XrPassthroughLayerCreateInfoANDROID.html">XrPassthroughLayerCreateInfoANDROID</a>::<code>indexCapacity</code> is
+specified, the <code>indexCount</code> <strong class="purple">must</strong> be less than or equal to the
+<a href="XrPassthroughLayerCreateInfoANDROID.html">XrPassthroughLayerCreateInfoANDROID</a>::<code>indexCapacity</code>.</p>
+</li>
+<li>
+<p><code>indices</code> is a pointer to an array of <code>indexCount</code> <code>uint16_t</code>
+which contains the indices of the triangle mesh.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrPassthroughLayerMeshANDROID-extension-notenabled" href="#VUID-XrPassthroughLayerMeshANDROID-extension-notenabled"></a> The <code><a href="XR_ANDROID_composition_layer_passthrough_mesh.html">XR_ANDROID_composition_layer_passthrough_mesh</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrPassthroughLayerMeshANDROID.html">XrPassthroughLayerMeshANDROID</a></p>
+</li>
+<li>
+<p><a id="VUID-XrPassthroughLayerMeshANDROID-type-type" href="#VUID-XrPassthroughLayerMeshANDROID-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_PASSTHROUGH_LAYER_MESH_ANDROID</code></p>
+</li>
+<li>
+<p><a id="VUID-XrPassthroughLayerMeshANDROID-next-next" href="#VUID-XrPassthroughLayerMeshANDROID-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrPassthroughLayerMeshANDROID-windingOrder-parameter" href="#VUID-XrPassthroughLayerMeshANDROID-windingOrder-parameter"></a> <code>windingOrder</code> <strong class="purple">must</strong> be a valid <a href="XrWindingOrderANDROID.html">XrWindingOrderANDROID</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrPassthroughLayerMeshANDROID-vertices-parameter" href="#VUID-XrPassthroughLayerMeshANDROID-vertices-parameter"></a> If <code>vertexCount</code> is not <code>0</code>, <code>vertices</code> <strong class="purple">must</strong> be a pointer to an array of <code>vertexCount</code> <a href="XrVector3f.html">XrVector3f</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-XrPassthroughLayerMeshANDROID-indices-parameter" href="#VUID-XrPassthroughLayerMeshANDROID-indices-parameter"></a> If <code>indexCount</code> is not <code>0</code>, <code>indices</code> <strong class="purple">must</strong> be a pointer to an array of <code>indexCount</code> <code>uint16_t</code> values</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_ANDROID_composition_layer_passthrough_mesh.html">XR_ANDROID_composition_layer_passthrough_mesh</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrVector3f.html">XrVector3f</a>, <a href="XrWindingOrderANDROID.html">XrWindingOrderANDROID</a>, <a href="xrSetPassthroughLayerMeshANDROID.html">xrSetPassthroughLayerMeshANDROID</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrPassthroughLayerMeshANDROID" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.58<br>
+</div>
+</div>
+</body>
+</html>

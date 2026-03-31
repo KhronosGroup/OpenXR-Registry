@@ -79,6 +79,10 @@ pre.rouge .w {
     <span class="n">XR_SPATIAL_CAPABILITY_MARKER_TRACKING_APRIL_TAG_EXT</span> <span class="o">=</span> <span class="mi">1000743003</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_spatial_anchor</span>
     <span class="n">XR_SPATIAL_CAPABILITY_ANCHOR_EXT</span> <span class="o">=</span> <span class="mi">1000762000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_object_tracking</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_OBJECT_TRACKING_ANDROID</span> <span class="o">=</span> <span class="mi">1000785000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_raycast</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_DEPTH_RAYCAST_ANDROID</span> <span class="o">=</span> <span class="mi">1000786000</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_CAPABILITY_MAX_ENUM_EXT</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrSpatialCapabilityEXT</span><span class="p">;</span></code></pre>
 </div>
@@ -131,6 +135,14 @@ of capabilities that the runtime <strong class="purple">may</strong> support.</p
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_ANCHOR_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Capability to be able to create spatial anchors  (Added by the <code><a href="XR_EXT_spatial_anchor.html">XR_EXT_spatial_anchor</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_OBJECT_TRACKING_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object tracking  (Added by the <code><a href="XR_ANDROID_spatial_object_tracking.html">XR_ANDROID_spatial_object_tracking</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_DEPTH_RAYCAST_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raycast against depth buffer  (Added by the <code><a href="XR_ANDROID_spatial_discovery_raycast.html">XR_ANDROID_spatial_discovery_raycast</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -139,7 +151,7 @@ of capabilities that the runtime <strong class="purple">may</strong> support.</p
 <h2 id="_see_also">See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a>, <a href="XrSpatialCapabilityConfigurationAnchorEXT.html">XrSpatialCapabilityConfigurationAnchorEXT</a>, <a href="XrSpatialCapabilityConfigurationAprilTagEXT.html">XrSpatialCapabilityConfigurationAprilTagEXT</a>, <a href="XrSpatialCapabilityConfigurationArucoMarkerEXT.html">XrSpatialCapabilityConfigurationArucoMarkerEXT</a>, <a href="XrSpatialCapabilityConfigurationBaseHeaderEXT.html">XrSpatialCapabilityConfigurationBaseHeaderEXT</a>, <a href="XrSpatialCapabilityConfigurationMicroQrCodeEXT.html">XrSpatialCapabilityConfigurationMicroQrCodeEXT</a>, <a href="XrSpatialCapabilityConfigurationPlaneTrackingEXT.html">XrSpatialCapabilityConfigurationPlaneTrackingEXT</a>, <a href="XrSpatialCapabilityConfigurationQrCodeEXT.html">XrSpatialCapabilityConfigurationQrCodeEXT</a>, <a href="XrSpatialMarkerDataEXT.html">XrSpatialMarkerDataEXT</a>, <a href="xrEnumerateSpatialCapabilitiesEXT.html">xrEnumerateSpatialCapabilitiesEXT</a>, <a href="xrEnumerateSpatialCapabilityComponentTypesEXT.html">xrEnumerateSpatialCapabilityComponentTypesEXT</a>, <a href="xrEnumerateSpatialCapabilityFeaturesEXT.html">xrEnumerateSpatialCapabilityFeaturesEXT</a></p>
+<p><a href="XR_EXT_spatial_entity.html">XR_EXT_spatial_entity</a>, <a href="XrSpatialCapabilityConfigurationAnchorEXT.html">XrSpatialCapabilityConfigurationAnchorEXT</a>, <a href="XrSpatialCapabilityConfigurationAprilTagEXT.html">XrSpatialCapabilityConfigurationAprilTagEXT</a>, <a href="XrSpatialCapabilityConfigurationArucoMarkerEXT.html">XrSpatialCapabilityConfigurationArucoMarkerEXT</a>, <a href="XrSpatialCapabilityConfigurationBaseHeaderEXT.html">XrSpatialCapabilityConfigurationBaseHeaderEXT</a>, <a href="XrSpatialCapabilityConfigurationDepthRaycastANDROID.html">XrSpatialCapabilityConfigurationDepthRaycastANDROID</a>, <a href="XrSpatialCapabilityConfigurationMicroQrCodeEXT.html">XrSpatialCapabilityConfigurationMicroQrCodeEXT</a>, <a href="XrSpatialCapabilityConfigurationObjectTrackingANDROID.html">XrSpatialCapabilityConfigurationObjectTrackingANDROID</a>, <a href="XrSpatialCapabilityConfigurationPlaneTrackingEXT.html">XrSpatialCapabilityConfigurationPlaneTrackingEXT</a>, <a href="XrSpatialCapabilityConfigurationQrCodeEXT.html">XrSpatialCapabilityConfigurationQrCodeEXT</a>, <a href="XrSpatialMarkerDataEXT.html">XrSpatialMarkerDataEXT</a>, <a href="xrEnumerateSpatialCapabilitiesEXT.html">xrEnumerateSpatialCapabilitiesEXT</a>, <a href="xrEnumerateSpatialCapabilityComponentTypesEXT.html">xrEnumerateSpatialCapabilityComponentTypesEXT</a>, <a href="xrEnumerateSpatialCapabilityFeaturesEXT.html">xrEnumerateSpatialCapabilityFeaturesEXT</a></p>
 </div>
 </div>
 </div>
@@ -171,7 +183,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.57<br>
+Version 1.1.58<br>
 </div>
 </div>
 </body>

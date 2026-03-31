@@ -193,13 +193,13 @@ location and velocity of a space within a base space using the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="C++">XrSpace space;      // previously initialized
-XrSpace baseSpace;  // previously initialized
-XrTime time;        // previously initialized
+<pre class="rouge highlight"><code data-lang="cpp"><span class="n">XrSpace</span> <span class="n">space</span><span class="p">;</span>      <span class="c1">// previously initialized</span>
+<span class="n">XrSpace</span> <span class="n">baseSpace</span><span class="p">;</span>  <span class="c1">// previously initialized</span>
+<span class="n">XrTime</span> <span class="n">time</span><span class="p">;</span>        <span class="c1">// previously initialized</span>
 
-XrSpaceVelocity velocity {XR_TYPE_SPACE_VELOCITY};
-XrSpaceLocation location {XR_TYPE_SPACE_LOCATION, &amp;velocity};
-xrLocateSpace(space, baseSpace, time, &amp;location);</code></pre>
+<span class="n">XrSpaceVelocity</span> <span class="n">velocity</span> <span class="p">{</span><span class="n">XR_TYPE_SPACE_VELOCITY</span><span class="p">};</span>
+<span class="n">XrSpaceLocation</span> <span class="n">location</span> <span class="p">{</span><span class="n">XR_TYPE_SPACE_LOCATION</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">velocity</span><span class="p">};</span>
+<span class="n">xrLocateSpace</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">baseSpace</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">location</span><span class="p">);</span></code></pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -308,7 +308,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.57<br>
+Version 1.1.58<br>
 </div>
 </div>
 </body>

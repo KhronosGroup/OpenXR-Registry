@@ -141,6 +141,11 @@ and it <strong class="purple">must</strong> include the data for all the enabled
 capabilities configured for <code>spatialContext</code>.</p>
 </div>
 <div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> not include spatial entities that are not listed in
+<a href="XrSpatialUpdateSnapshotCreateInfoEXT.html">XrSpatialUpdateSnapshotCreateInfoEXT</a>::<code>entities</code> in
+<code>snapshot</code>.</p>
+</div>
+<div class="paragraph">
 <p>The application <strong class="purple">can</strong> create any number of snapshots it wants but <strong class="purple">must</strong> be
 mindful of the memory being allocated for each new snapshot and <strong class="purple">must</strong>
 destroy the snapshots once it no longer needs them.</p>
@@ -263,7 +268,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.57<br>
+Version 1.1.58<br>
 </div>
 </div>
 </body>
