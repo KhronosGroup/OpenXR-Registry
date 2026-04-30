@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.25">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <title>xrPersistSpatialAnchorMSFT(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -58,7 +58,7 @@ pre.rouge .w {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="xrPersistSpatialAnchorMSFT">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The application <strong class="purple">can</strong> use the <a href="xrPersistSpatialAnchorMSFT.html">xrPersistSpatialAnchorMSFT</a> function to
@@ -73,9 +73,6 @@ application.
 If there is already a spatial anchor of the same name persisted in the
 spatial anchor store, the existing spatial anchor will be replaced and
 <a href="xrPersistSpatialAnchorMSFT.html">xrPersistSpatialAnchorMSFT</a> <strong class="purple">must</strong> return <code>XR_SUCCESS</code>.</p>
-</div>
-<div id="xrPersistSpatialAnchorMSFT" class="paragraph">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -167,6 +164,9 @@ and its name to persist.</p>
 <p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -220,7 +220,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.58<br>
+Version 1.1.59<br>
 </div>
 </div>
 </body>

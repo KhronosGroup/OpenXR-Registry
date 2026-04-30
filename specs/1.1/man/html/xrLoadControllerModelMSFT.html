@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.25">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <title>xrLoadControllerModelMSFT(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -58,7 +58,7 @@ pre.rouge .w {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="xrLoadControllerModelMSFT">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="xrLoadControllerModelMSFT.html">xrLoadControllerModelMSFT</a> function loads the controller model as a
@@ -66,9 +66,6 @@ byte buffer containing a binary form of glTF (a.k.a GLB file format) for the
 controller.
 The binary glTF data <strong class="purple">must</strong> conform to glTF 2.0 format defined at
 <a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html" class="bare">https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html</a>.</p>
-</div>
-<div id="xrLoadControllerModelMSFT" class="paragraph">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -195,6 +192,9 @@ therefore <strong class="purple">should</strong> be invoked from a non-timing cr
 <p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -248,7 +248,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.58<br>
+Version 1.1.59<br>
 </div>
 </div>
 </body>

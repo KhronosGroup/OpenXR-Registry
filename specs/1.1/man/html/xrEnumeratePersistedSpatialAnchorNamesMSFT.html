@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.25">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <title>xrEnumeratePersistedSpatialAnchorNamesMSFT(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -58,7 +58,7 @@ pre.rouge .w {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="xrEnumeratePersistedSpatialAnchorNamesMSFT">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The application <strong class="purple">can</strong> use the
@@ -67,9 +67,6 @@ names of all spatial anchors currently persisted in the spatial anchor store
 for this application.
 This function follows the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#fundamentals-buffer-size-parameters" target="_blank" rel="noopener">two-call
 idiom</a> for filling the <code>spatialAnchorNames</code>.</p>
-</div>
-<div id="xrEnumeratePersistedSpatialAnchorNamesMSFT" class="paragraph">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -179,6 +176,9 @@ description of retrieving the required <code>spatialAnchorNames</code> size.</p>
 <p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -232,7 +232,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.58<br>
+Version 1.1.59<br>
 </div>
 </div>
 </body>

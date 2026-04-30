@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrStationaryReferenceSpaceGenerationIdResultEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrStationaryReferenceSpaceGenerationIdResultEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrStationaryReferenceSpaceGenerationIdResultEXT - Returns the stationary reference space generation ID</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrStationaryReferenceSpaceGenerationIdResultEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrStationaryReferenceSpaceGenerationIdResultEXT.html">XrStationaryReferenceSpaceGenerationIdResultEXT</a> structure is
+defined as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_stationary_reference_space</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrStationaryReferenceSpaceGenerationIdResultEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrUuid</span>             <span class="n">generationId</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrStationaryReferenceSpaceGenerationIdResultEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>generationId</code> is an <a href="XrUuid.html">XrUuid</a> that contains the returned space
+generation ID.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrStationaryReferenceSpaceGenerationIdResultEXT.html">XrStationaryReferenceSpaceGenerationIdResultEXT</a> structure returns
+the <code>STATIONARY</code> reference space generation ID.</p>
+</div>
+<div class="paragraph">
+<p>All <code>STATIONARY</code> reference <a href="XrSpace.html">XrSpace</a> handles share the same UUID in a
+given session.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> not return an empty UUID, i.e. a UUID with all zeros in
+its bytes.
+The empty UUID typically reserved to represent an invalid UUID value, and
+the generation ID of <code>STATIONARY</code> space <strong class="purple">must</strong> never be invalid.</p>
+</div>
+<div class="paragraph">
+<p>To detect whether the <code>STATIONARY</code> reference space origin has changed during
+a period in which the session was not running, an application gets the
+<code>generationId</code> after a successful <a href="xrBeginSession.html">xrBeginSession</a> and compares the
+<a href="XrUuid.html">XrUuid</a> with a <code>generationId</code> from a previous session.</p>
+</div>
+<div class="paragraph">
+<p>For this use case the application is responsible for remembering the ID from
+a previous session.</p>
+</div>
+<div class="paragraph">
+<p>The equality of <code>generationId</code> is a reliable indicator for the
+application to determine the equality of the <code>STATIONARY</code> space origin
+across multiple sessions, application restarts, or device restarts.</p>
+</div>
+<div class="paragraph">
+<p>However, this does not imply that when <code>generationId</code> is different, the
+origin is not at the same location or in close proximity.
+It also does not imply that the same origin always returns the same ID.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>If the application is interested in identifying the space the user is in, it
+should use the <code><a href="XR_EXT_spatial_persistence.html">XR_EXT_spatial_persistence</a></code> and
+<code><a href="XR_EXT_spatial_persistence_operations.html">XR_EXT_spatial_persistence_operations</a></code> extensions instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Because the generation ID of the <code>STATIONARY</code> reference space cannot be used
+to identify a space, the runtime <strong class="purple">must</strong> not require the application to
+request any permissions to use the stationary reference space.</p>
+</div>
+<div class="paragraph">
+<p>For systems that are not capable of relocating the <code>STATIONARY</code> space across
+sessions, for example because the tracking system does not support
+relocalization or the platform blocks location persistence due to privacy
+requirements, the runtime <strong class="purple">may</strong> return a different generation ID for each
+session, and the <code>STATIONARY</code> space origin <strong class="purple">may</strong> be at a different location
+in the physical world across sessions.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">may</strong> or <strong class="purple">may</strong> not use the same <code>generationId</code> for
+<code>STATIONARY</code> space across applications.</p>
+</div>
+<div class="paragraph">
+<p>When the runtime loses tracking or before relocating the space origin while
+starting a new session or application, it <strong class="purple">may</strong> attempt to relocate the space
+origin for reasonable duration.
+During this relocation phase, the runtime <strong class="purple">must</strong> return the previous
+<code>generationId</code> for the <code>STATIONARY</code> space, not raise the
+<a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a> event, and return untracked
+data for all space locate functions when using the <code>STATIONARY</code> space, such
+as <a href="xrLocateSpace.html">xrLocateSpace</a> or <a href="xrLocateViews.html">xrLocateViews</a>.</p>
+</div>
+<div class="paragraph">
+<p>When the runtime changes the placement of the <code>STATIONARY</code> space origin in
+the physical world, typically after a reasonable timeout during which it
+attempted but failed to relocate the previous space origin, or when the
+runtime is certain that the user has moved to a different physical space, it
+<strong class="purple">must</strong> raise an <a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a> event with
+<a href="XrEventDataReferenceSpaceChangePending.html">XrEventDataReferenceSpaceChangePending</a>::<code>poseValid</code> set to
+<code>XR_FALSE</code>, indicating that the new space and the old space are
+unrelated.
+The application then queries the
+<a href="xrGetStationaryReferenceSpaceGenerationIdEXT.html">xrGetStationaryReferenceSpaceGenerationIdEXT</a> function to obtain the
+changed <a href="XrUuid.html">XrUuid</a> if desired.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> not reuse the same <a href="XrUuid.html">XrUuid</a> once the corresponding
+origin of the <code>STATIONARY</code> reference space is changed, i.e. the returned
+<a href="XrUuid.html">XrUuid</a> <strong class="purple">must</strong> be unique once it is changed and will never repeat.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> generate a new UUID every time a new <code>generationId</code> is
+created, typically using the <code>uuid_generate*</code> function on Linux or the
+<code>CoCreateGuid</code> function on Windows.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">must</strong> not reuse any UUID from the underlying spatial anchor or
+spatial entity system.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrStationaryReferenceSpaceGenerationIdResultEXT-extension-notenabled" href="#VUID-XrStationaryReferenceSpaceGenerationIdResultEXT-extension-notenabled"></a> The <code><a href="XR_EXT_stationary_reference_space.html">XR_EXT_stationary_reference_space</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrStationaryReferenceSpaceGenerationIdResultEXT.html">XrStationaryReferenceSpaceGenerationIdResultEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrStationaryReferenceSpaceGenerationIdResultEXT-type-type" href="#VUID-XrStationaryReferenceSpaceGenerationIdResultEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_STATIONARY_REFERENCE_SPACE_GENERATION_ID_RESULT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrStationaryReferenceSpaceGenerationIdResultEXT-next-next" href="#VUID-XrStationaryReferenceSpaceGenerationIdResultEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_stationary_reference_space.html">XR_EXT_stationary_reference_space</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrUuid.html">XrUuid</a>, <a href="xrGetStationaryReferenceSpaceGenerationIdEXT.html">xrGetStationaryReferenceSpaceGenerationIdEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrStationaryReferenceSpaceGenerationIdResultEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.59<br>
+</div>
+</div>
+</body>
+</html>

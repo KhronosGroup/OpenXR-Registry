@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.25">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <title>XrFaceExpressionWeights2FB(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -58,13 +58,10 @@ pre.rouge .w {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="XrFaceExpressionWeights2FB">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="XrFaceExpressionWeights2FB.html">XrFaceExpressionWeights2FB</a> structure is defined as:</p>
-</div>
-<div id="XrFaceExpressionWeights2FB" class="paragraph">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -161,8 +158,19 @@ by the <a href="XrFaceExpressionSet2FB.html">XrFaceExpressionSet2FB</a> used to 
 <a href="XrFaceTracker2FB.html">XrFaceTracker2FB</a>.</p>
 </div>
 <div class="paragraph">
+<p>A special case applies when <a href="XrFaceTrackingVisemesMETA.html">XrFaceTrackingVisemesMETA</a> is added to the
+<code>next</code> chain.
+In this scenario, <code>weightCount</code> and <code>confidenceCount</code> can be set to
+0 to indicate that only visemes are requested.
+In such cases, it is not necessary to assign pointers to the <code>weights</code>
+and <code>confidences</code>.</p>
+</div>
+<div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> return <code>weights</code> representing the weights of blend
-shapes of current facial expression.</p>
+shapes of current facial expression.
+Each weight is a normalized value in the range <span class="eq">[0, 1]</span>, where <span class="eq">0</span>
+indicates the blend shape is not active and <span class="eq">1</span> indicates the blend
+shape is fully active.</p>
 </div>
 <div class="paragraph">
 <p>The runtime <strong class="purple">must</strong> update the <code>weights</code> array ordered so that the
@@ -240,7 +248,7 @@ and it <strong class="purple">must</strong> also set 8 expression weights with p
 <p><a id="VUID-XrFaceExpressionWeights2FB-type-type" href="#VUID-XrFaceExpressionWeights2FB-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_FACE_EXPRESSION_WEIGHTS2_FB</code></p>
 </li>
 <li>
-<p><a id="VUID-XrFaceExpressionWeights2FB-next-next" href="#VUID-XrFaceExpressionWeights2FB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+<p><a id="VUID-XrFaceExpressionWeights2FB-next-next" href="#VUID-XrFaceExpressionWeights2FB-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrFaceTrackingVisemesMETA.html">XrFaceTrackingVisemesMETA</a></p>
 </li>
 <li>
 <p><a id="VUID-XrFaceExpressionWeights2FB-weights-parameter" href="#VUID-XrFaceExpressionWeights2FB-weights-parameter"></a> <code>weights</code> <strong class="purple">must</strong> be a pointer to an array of <code>weightCount</code> <code>float</code> values</p>
@@ -299,7 +307,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.58<br>
+Version 1.1.59<br>
 </div>
 </div>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.25">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <title>xrUnpersistSpatialAnchorMSFT(3)</title>
 <link rel="stylesheet" href="css/khronos.css">
 <link rel="stylesheet" href="css/rouge-github.css">
@@ -58,7 +58,7 @@ pre.rouge .w {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_c_specification">C Specification</h2>
+<h2 id="xrUnpersistSpatialAnchorMSFT">C Specification</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The application <strong class="purple">can</strong> use the <a href="xrUnpersistSpatialAnchorMSFT.html">xrUnpersistSpatialAnchorMSFT</a> function to
@@ -68,9 +68,6 @@ previously created.
 If the <code>spatialAnchorPersistenceName</code> provided does not correspond to a
 currently stored anchor, the function <strong class="purple">must</strong> return
 <code>XR_ERROR_SPATIAL_ANCHOR_NAME_NOT_FOUND_MSFT</code>.</p>
-</div>
-<div id="xrUnpersistSpatialAnchorMSFT" class="paragraph">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -160,6 +157,9 @@ anchor store to perform the unpersist operation on.</p>
 <p><code>XR_ERROR_OUT_OF_MEMORY</code></p>
 </li>
 <li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
 <p><code>XR_ERROR_SESSION_LOST</code></p>
 </li>
 <li>
@@ -216,7 +216,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.58<br>
+Version 1.1.59<br>
 </div>
 </div>
 </body>
