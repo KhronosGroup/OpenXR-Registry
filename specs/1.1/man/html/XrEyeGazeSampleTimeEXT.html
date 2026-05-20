@@ -100,6 +100,26 @@ No such structures are defined in core OpenXR or this extension.</p>
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>One particularity for eye trackers compared to most other spatial input is
+that the runtime <strong class="purple">may</strong> lack the capability to predict or interpolate eye gaze
+poses.
+Runtimes that are unable to predict or interpolate eye gaze poses <strong class="purple">must</strong>
+clamp the gaze pose requested in the <a href="xrLocateSpace.html">xrLocateSpace</a> call to the value
+nearest to <code>time</code> requested in the call.
+To allow for an application to reason about high accuracy eye tracking, the
+application <strong class="purple">can</strong> chain in an <a href="XrEyeGazeSampleTimeEXT.html">XrEyeGazeSampleTimeEXT</a> to the next
+pointer of the <a href="XrSpaceLocation.html">XrSpaceLocation</a> structure passed into the
+<a href="xrLocateSpace.html">xrLocateSpace</a> call.
+The runtime <strong class="purple">must</strong> set <code>time</code> in the <a href="XrEyeGazeSampleTimeEXT.html">XrEyeGazeSampleTimeEXT</a>
+structure to the clamped, predicted, or interpolated time.
+The application <strong class="purple">should</strong> inspect the <a href="XrEyeGazeSampleTimeEXT.html">XrEyeGazeSampleTimeEXT</a>::<code>time</code>
+field to understand when in time the pose is expressed.
+The <code>time</code> field <strong class="purple">may</strong> be in the future if a runtime is able to predict
+gaze poses.
+The runtime <strong class="purple">must</strong> set the <code>time</code> field to 0 if the sample time is not
+available.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -156,7 +176,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.59<br>
+Version 1.1.60<br>
 </div>
 </div>
 </body>

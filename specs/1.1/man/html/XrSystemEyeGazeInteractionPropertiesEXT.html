@@ -105,6 +105,14 @@ set this to <code>XR_FALSE</code>.</p>
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Regardless of the value of <code>supportsEyeGazeInteraction</code>,
+<a href="xrSuggestInteractionProfileBindings.html">xrSuggestInteractionProfileBindings</a> <strong class="purple">must</strong> accept eye gaze binding
+paths.
+However, if <code>supportsEyeGazeInteraction</code> is <code>XR_FALSE</code>, the runtime
+<strong class="purple">should</strong> never report an action as active if its only suggested binding is an
+eye gaze binding path.</p>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -161,7 +169,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.59<br>
+Version 1.1.60<br>
 </div>
 </div>
 </body>

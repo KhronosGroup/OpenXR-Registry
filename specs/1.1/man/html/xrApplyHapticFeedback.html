@@ -132,7 +132,7 @@ and replace it with the new one.</p>
 <p><a id="VUID-xrApplyHapticFeedback-hapticActionInfo-parameter" href="#VUID-xrApplyHapticFeedback-hapticActionInfo-parameter"></a> <code>hapticActionInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrHapticActionInfo.html">XrHapticActionInfo</a> structure</p>
 </li>
 <li>
-<p><a id="VUID-xrApplyHapticFeedback-hapticFeedback-parameter" href="#VUID-xrApplyHapticFeedback-hapticFeedback-parameter"></a> <code>hapticFeedback</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>-based structure. See also: <a href="XrHapticAmplitudeEnvelopeVibrationFB.html">XrHapticAmplitudeEnvelopeVibrationFB</a>, <a href="XrHapticPcmVibrationFB.html">XrHapticPcmVibrationFB</a>, <a href="XrHapticVibration.html">XrHapticVibration</a></p>
+<p><a id="VUID-xrApplyHapticFeedback-hapticFeedback-parameter" href="#VUID-xrApplyHapticFeedback-hapticFeedback-parameter"></a> <code>hapticFeedback</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>-based structure. See also: <a href="XrHapticAmplitudeEnvelopeVibrationFB.html">XrHapticAmplitudeEnvelopeVibrationFB</a>, <a href="XrHapticParametricVibrationEXT.html">XrHapticParametricVibrationEXT</a>, <a href="XrHapticPcmVibrationFB.html">XrHapticPcmVibrationFB</a>, <a href="XrHapticVibration.html">XrHapticVibration</a></p>
 </li>
 </ul>
 </div>
@@ -190,6 +190,9 @@ and replace it with the new one.</p>
 <li>
 <p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
 </li>
+<li>
+<p><code>XR_ERROR_FEATURE_UNSUPPORTED</code> (if <code><a href="XR_EXT_haptic_parametric.html">XR_EXT_haptic_parametric</a></code> is enabled)</p>
+</li>
 </ul>
 </div>
 </dd>
@@ -235,7 +238,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.59<br>
+Version 1.1.60<br>
 </div>
 </div>
 </body>

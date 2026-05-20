@@ -386,8 +386,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.1.59</span>
-<br><span id="revremark">from git ref release-1.1.59</span>
+<span id="revnumber">version 1.1.60</span>
+<br><span id="revremark">from git ref release-1.1.60</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -552,7 +552,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 </li>
 <li><a href="#writing-next-chain">6.4. Describing Structure Chains</a></li>
 <li><a href="#writing-example">6.5. An Example Command Description</a></li>
-<li><a href="#sample-command">6.6. Sample Command Description: Creating an Instance</a></li>
+<li><a href="#XrInstanceCreateInfo">6.6. Sample Command Description: Creating an Instance</a></li>
 <li><a href="#writing-refpages">6.7. Markup For Automatic Reference Page Extraction</a></li>
 </ul>
 </li>
@@ -570,6 +570,7 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <li><a href="#xml-require-extend-interaction-profile-predicate">7.2.7. Contents of <code>require</code>: <code>extend</code> Tags for interaction profiles matching a predicate</a></li>
 <li><a href="#xml-extend-interaction-profile-predicate-condition">7.2.8. Contents of interaction profile predicate <code>extend</code>: <code>condition</code> Tags</a></li>
 <li><a href="#xml-extend-interaction-profile-user_path">7.2.9. Contents of interaction profile <code>extend</code>: <code>user_path</code> Tags</a></li>
+<li><a href="#xml-require-extend-return-codes">7.2.10. Contents of <code>require</code>: <code>extend</code> Tags for command return codes</a></li>
 </ul>
 </li>
 </ul>
@@ -1442,7 +1443,7 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 59)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 60)</code></pre>
 </div>
 </div>
 </div>
@@ -5194,12 +5195,9 @@ example description to explain how and why it looks as it does.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sample-command">6.6. Sample Command Description: Creating an Instance</h3>
+<h3 id="XrInstanceCreateInfo">6.6. Sample Command Description: Creating an Instance</h3>
 <div class="paragraph">
 <p>The <a href="#xrCreateInstance">xrCreateInstance</a> function is defined as:</p>
-</div>
-<div id="xrCreateInstance" class="paragraph docgenerator_link">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5471,9 +5469,6 @@ described next.
 </div>
 <div class="paragraph">
 <p>The <a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a> structure is defined as:</p>
-</div>
-<div id="XrInstanceCreateInfo" class="paragraph docgenerator_link">
-<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6020,6 +6015,19 @@ and which may be used by other tools operating on the XML.</p>
 </div>
 </li>
 <li>
+<p>Modify section 18 ("API Extensions (<code>extension</code> Tag)")</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In "Attributes of extension Tags", for attributes <code>promotedto</code>,
+<code>deprecatedby</code>, <code>obsoletedby</code>, replace "a name of an extension" with "the
+name or names of one or more extensions, in a list delimited by `+`", to
+account for functionality replaced by a combinations of extensions</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>Modify section 19 ("Required and Removed Interfaces (<code>require</code> and
 <code>remove</code> tags)")</p>
 <div class="ulist">
@@ -6436,6 +6444,50 @@ to the subset plus the <code>path</code> attribute named by this tag.</p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="xml-require-extend-return-codes">7.2.10. Contents of <code>require</code>: <code>extend</code> Tags for command return codes</h4>
+<div class="paragraph">
+<p>Specifies additional return codes to accept for a command previously
+included in the specification by a dependency of this block&#8217;s parent.
+Valid only in <code>require</code> blocks.</p>
+</div>
+<div class="paragraph">
+<p>Identified as <code>ExtendCommandReturnCodesElt</code> in the Relax-NG schema.</p>
+</div>
+<div class="paragraph">
+<p>At least one of <code>errorcodes</code> or <code>successcodes</code> is usually expected for this
+tag to have any effect, though both are technically optional.</p>
+</div>
+<div class="sect4">
+<h5 id="_attributes_of_command_return_code_extend_tags_in_require_blocks">Attributes of command return code <code>extend</code> tags in <code>require</code> blocks</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> - required.
+Value must be <code>"command"</code>.</p>
+</li>
+<li>
+<p><code>name</code> - required.
+Value is the command name to extend.</p>
+</li>
+<li>
+<p><code>errorcodes</code> - optional.
+Value is a comma-delimited sequence of error codes.</p>
+</li>
+<li>
+<p><code>successcodes</code> - optional.
+Value is a comma-delimited sequence of success codes.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_contents_of_command_return_code_extend_tags_in_require_blocks">Contents of command return code <code>extend</code> tags in <code>require</code> blocks</h5>
+<div class="paragraph">
+<p>None.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -6521,6 +6573,11 @@ predicate.</p>
 <p>2025-10-23 - Bring extension guidelines up to date with current practice,
 including interface include, ordering, and possible example code.</p>
 </li>
+<li>
+<p>2026-05-20 - In XML schema, allow deprecation expressions to be <code>+</code>
+delimited lists of extension names, and add an element to permit
+extensions to extend the list of valid return codes for a function.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -6534,7 +6591,7 @@ including interface include, ordering, and possible example code.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.59<br>
+Version 1.1.60<br>
 </div>
 </div>
 </body>

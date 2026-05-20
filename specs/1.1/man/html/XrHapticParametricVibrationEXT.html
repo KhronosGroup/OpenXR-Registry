@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrHapticParametricVibrationEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrHapticParametricVibrationEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrHapticParametricVibrationEXT - Parametric haptic event</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrHapticParametricVibrationEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrHapticParametricVibrationEXT.html">XrHapticParametricVibrationEXT</a> structure is defined as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_haptic_parametric</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrHapticParametricVibrationEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>                          <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                              <span class="n">next</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                                 <span class="n">amplitudePointCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrHapticParametricPointEXT</span><span class="o">*</span>        <span class="n">amplitudePoints</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                                 <span class="n">frequencyPointCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrHapticParametricPointEXT</span><span class="o">*</span>        <span class="n">frequencyPoints</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                                 <span class="n">transientCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrHapticParametricTransientEXT</span><span class="o">*</span>    <span class="n">transients</span><span class="p">;</span>
+    <span class="kt">float</span>                                    <span class="n">minFrequencyHz</span><span class="p">;</span>
+    <span class="kt">float</span>                                    <span class="n">maxFrequencyHz</span><span class="p">;</span>
+    <span class="n">XrHapticParametricStreamFrameTypeEXT</span>     <span class="n">streamFrameType</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrHapticParametricVibrationEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.
+No such structures are defined in core OpenXR or this extension.</p>
+</li>
+<li>
+<p><code>amplitudePointCount</code> is the number of points in
+<code>amplitudePoints</code>.</p>
+</li>
+<li>
+<p><code>amplitudePoints</code> is an array of <a href="XrHapticParametricPointEXT.html">XrHapticParametricPointEXT</a>,
+describing how the intensity of the vibration changes over time.</p>
+</li>
+<li>
+<p><code>frequencyPointCount</code> is the number of points in
+<code>frequencyPoints</code>.</p>
+</li>
+<li>
+<p><code>frequencyPoints</code> is an array of <a href="XrHapticParametricPointEXT.html">XrHapticParametricPointEXT</a>,
+describing how the frequency of the vibration changes over time.
+If it is <code>NULL</code>, a vibration frequency of 0.5 is used for the entire
+haptic event.</p>
+</li>
+<li>
+<p><code>transientCount</code> is the number of transients in <code>transients</code>.</p>
+</li>
+<li>
+<p><code>transients</code> is an array of <a href="XrHapticParametricTransientEXT.html">XrHapticParametricTransientEXT</a>,
+describing the transients in the haptic event.
+If it is <code>NULL</code>, the haptic event has no transients.</p>
+</li>
+<li>
+<p><code>minFrequencyHz</code> is the absolute frequency, in Hertz, that the
+normalized frequency of 0.0 maps to.
+If it is <a href="XR_FREQUENCY_UNSPECIFIED.html">XR_FREQUENCY_UNSPECIFIED</a>, the runtime maps 0.0 to the
+lowest frequency supported by the haptic element.</p>
+</li>
+<li>
+<p><code>maxFrequencyHz</code> is the absolute frequency, in Hertz, that the
+normalized frequency of 1.0 maps to.
+If it is <a href="XR_FREQUENCY_UNSPECIFIED.html">XR_FREQUENCY_UNSPECIFIED</a>, the runtime maps 1.0 to the
+highest frequency supported by the haptic element.</p>
+</li>
+<li>
+<p><code>streamFrameType</code> is the <a href="XrHapticParametricStreamFrameTypeEXT.html">XrHapticParametricStreamFrameTypeEXT</a>
+that describes if and how the data in this structure is part of a longer
+haptic <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#ext_haptic_parametric-streaming" target="_blank" rel="noopener">stream</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This structure describes a parametric haptic event.</p>
+</div>
+<div id="ext_haptic_parametric-validation" class="paragraph">
+<p>The runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code> from
+<a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a> if any of the following conditions are not met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code>streamFrameType</code> is
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_NONE_EXT</code> or
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_FIRST_FRAME_EXT</code>, the
+structure <strong class="purple">must</strong> contain at least two amplitude points.
+For all other values of <code>streamFrameType</code>, the structure <strong class="purple">must</strong> contain
+at least one amplitude point.</p>
+</li>
+<li>
+<p>The structure <strong class="purple">must</strong> not contain more than
+<a href="XR_HAPTIC_PARAMETRIC_MAX_POINTS_TRANSIENTS_EXT.html">XR_HAPTIC_PARAMETRIC_MAX_POINTS_TRANSIENTS_EXT</a> amplitude points,
+frequency points or transients, respectively.
+An application <strong class="purple">can</strong> trigger haptic events with more than
+<a href="XR_HAPTIC_PARAMETRIC_MAX_POINTS_TRANSIENTS_EXT.html">XR_HAPTIC_PARAMETRIC_MAX_POINTS_TRANSIENTS_EXT</a> amplitude points,
+frequency points or transients by calling <a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a>
+multiple times in a sequence, see <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#ext_haptic_parametric-streaming" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#ext_haptic_parametric-streaming</a> for
+details.</p>
+</li>
+<li>
+<p>When <code>streamFrameType</code> is
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_NONE_EXT</code> or
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_FIRST_FRAME_EXT</code>, the first
+amplitude and frequency point <strong class="purple">must</strong> be at time 0.</p>
+</li>
+<li>
+<p>When <code>streamFrameType</code> is
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_FIRST_FRAME_EXT</code>, the time of
+the last amplitude point in the frame <strong class="purple">must</strong> be greater than or equal to
+<a href="XrHapticParametricPropertiesEXT.html">XrHapticParametricPropertiesEXT</a>::<code>minimumFirstFrameDuration</code>.</p>
+</li>
+<li>
+<p>The time of the last frequency point and the last transient of the stream
+<strong class="purple">must</strong> be less than or equal to the time of the last amplitude point of the
+stream.</p>
+</li>
+<li>
+<p>When <code>streamFrameType</code> is
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_INTERMEDIATE_FRAME_EXT</code> or
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_LAST_FRAME_EXT</code>, a stream
+<strong class="purple">must</strong> already be running on the haptic element.</p>
+</li>
+<li>
+<p><code>minFrequencyHz</code> and <code>maxFrequencyHz</code> <strong class="purple">must</strong> either be both
+<a href="XR_FREQUENCY_UNSPECIFIED.html">XR_FREQUENCY_UNSPECIFIED</a>, or both specified in the range
+<a href="XR_HAPTIC_PARAMETRIC_FREQUENCY_MIN_HZ_EXT.html">XR_HAPTIC_PARAMETRIC_FREQUENCY_MIN_HZ_EXT</a> -
+<a href="XR_HAPTIC_PARAMETRIC_FREQUENCY_MAX_HZ_EXT.html">XR_HAPTIC_PARAMETRIC_FREQUENCY_MAX_HZ_EXT</a> (inclusive).</p>
+</li>
+<li>
+<p><code>maxFrequencyHz</code> <strong class="purple">must</strong> be equal to or larger than
+<code>minFrequencyHz</code>, or <a href="XR_FREQUENCY_UNSPECIFIED.html">XR_FREQUENCY_UNSPECIFIED</a>.</p>
+</li>
+<li>
+<p>When <code>streamFrameType</code> is
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_INTERMEDIATE_FRAME_EXT</code> or
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_LAST_FRAME_EXT</code>,
+<code>minFrequencyHz</code> and <code>maxFrequencyHz</code> <strong class="purple">must</strong> both be
+<a href="XR_FREQUENCY_UNSPECIFIED.html">XR_FREQUENCY_UNSPECIFIED</a>.
+The application <strong class="purple">may</strong> only set the absolute frequency range in the first
+<a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#ext_haptic_parametric-haptic-frame" class="bare" target="_blank" rel="noopener">https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#ext_haptic_parametric-haptic-frame</a>, and the runtime uses the range for
+the entire haptic event.</p>
+</li>
+<li>
+<p>Each amplitude point and frequency point <strong class="purple">must</strong> not have an earlier time
+than the one preceding it.</p>
+</li>
+<li>
+<p>Each transient <strong class="purple">must</strong> have a later time than the one preceding it.</p>
+</li>
+<li>
+<p>The amplitude and frequency of a point or transient <strong class="purple">must</strong> be between 0.0
+and 1.0 (inclusive).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to the restrictions above, the following is explicitly allowed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The first transient <strong class="purple">may</strong> be at any time, it does not need to be at time 0.</p>
+</li>
+<li>
+<p>The number of amplitude points, frequency points and transients <strong class="purple">may</strong> be
+completely independent of each other.</p>
+</li>
+<li>
+<p>Amplitude points, frequency points and transients with the same array
+index <strong class="purple">may</strong> be at a different times.</p>
+</li>
+<li>
+<p>There <strong class="purple">may</strong> be multiple amplitude points or frequency points at the same
+time.
+Applications <strong class="purple">can</strong> use this to model an abrupt jump in amplitude or
+frequency.
+The order of the points in the array determines the starting and ending
+values of the jump.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the time of the last frequency point of the stream is earlier than the
+time of the last amplitude point of the stream, the runtime <strong class="purple">must</strong> continue
+and finish the haptic event with the frequency of the last frequency point.
+As per the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#ext_haptic_parametric-validation" target="_blank" rel="noopener">validation rules</a>, the
+opposite case, a stream in which the time of the last amplitude point of the
+stream is earlier than the time of the last frequency point of the stream,
+is not allowed, and the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_VALIDATION_FAILURE</code> from <a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a>.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">may</strong> call <a href="xrHapticParametricGetPropertiesEXT.html">xrHapticParametricGetPropertiesEXT</a> to
+determine the frequency range supported by the haptic element.
+If the range specified by <code>minFrequencyHz</code> and <code>maxFrequencyHz</code> is
+outside of the supported range, the runtime <strong class="purple">must</strong> clamp the values to the
+supported range.
+The runtime then maps the normalized frequency range to the clamped absolute
+frequency range.</p>
+</div>
+<div class="paragraph">
+<p>When <code>streamFrameType</code> is
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_NONE_EXT</code> or
+<code>XR_HAPTIC_PARAMETRIC_STREAM_FRAME_TYPE_FIRST_FRAME_EXT</code>, a new haptic
+event is started.
+In this case, the runtime <strong class="purple">must</strong> cancel any unfinished haptic events
+currently running on the haptic element, as usual for the core
+specification.
+This applies to all types of haptic events, including e.g.
+<a href="XrHapticPcmVibrationFB.html">XrHapticPcmVibrationFB</a>, <a href="XrHapticVibration.html">XrHapticVibration</a> and
+<a href="XrHapticParametricVibrationEXT.html">XrHapticParametricVibrationEXT</a>.</p>
+</div>
+<div class="paragraph">
+<p>When the call to <a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a> fails with an error code, the
+runtime <strong class="purple">must</strong> ignore the new frame and discard the haptic data contained in
+it.
+The runtime <strong class="purple">must</strong> not cancel or otherwise modify an existing stream, if any,
+currently running on the haptic element.
+The runtime <strong class="purple">must</strong> not start a new haptic event.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-extension-notenabled" href="#VUID-XrHapticParametricVibrationEXT-extension-notenabled"></a> The <code><a href="XR_EXT_haptic_parametric.html">XR_EXT_haptic_parametric</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrHapticParametricVibrationEXT.html">XrHapticParametricVibrationEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-type-type" href="#VUID-XrHapticParametricVibrationEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_HAPTIC_PARAMETRIC_VIBRATION_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-next-next" href="#VUID-XrHapticParametricVibrationEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-amplitudePoints-parameter" href="#VUID-XrHapticParametricVibrationEXT-amplitudePoints-parameter"></a> <code>amplitudePoints</code> <strong class="purple">must</strong> be a pointer to an array of <code>amplitudePointCount</code> valid <a href="XrHapticParametricPointEXT.html">XrHapticParametricPointEXT</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-frequencyPoints-parameter" href="#VUID-XrHapticParametricVibrationEXT-frequencyPoints-parameter"></a> If <code>frequencyPointCount</code> is not <code>0</code>, <code>frequencyPoints</code> <strong class="purple">must</strong> be a pointer to an array of <code>frequencyPointCount</code> valid <a href="XrHapticParametricPointEXT.html">XrHapticParametricPointEXT</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-transients-parameter" href="#VUID-XrHapticParametricVibrationEXT-transients-parameter"></a> If <code>transientCount</code> is not <code>0</code>, <code>transients</code> <strong class="purple">must</strong> be a pointer to an array of <code>transientCount</code> valid <a href="XrHapticParametricTransientEXT.html">XrHapticParametricTransientEXT</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-streamFrameType-parameter" href="#VUID-XrHapticParametricVibrationEXT-streamFrameType-parameter"></a> <code>streamFrameType</code> <strong class="purple">must</strong> be a valid <a href="XrHapticParametricStreamFrameTypeEXT.html">XrHapticParametricStreamFrameTypeEXT</a> value</p>
+</li>
+<li>
+<p><a id="VUID-XrHapticParametricVibrationEXT-amplitudePointCount-arraylength" href="#VUID-XrHapticParametricVibrationEXT-amplitudePointCount-arraylength"></a> The <code>amplitudePointCount</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_haptic_parametric.html">XR_EXT_haptic_parametric</a>, <a href="XrHapticParametricPointEXT.html">XrHapticParametricPointEXT</a>, <a href="XrHapticParametricStreamFrameTypeEXT.html">XrHapticParametricStreamFrameTypeEXT</a>, <a href="XrHapticParametricTransientEXT.html">XrHapticParametricTransientEXT</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrApplyHapticFeedback.html">xrApplyHapticFeedback</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrHapticParametricVibrationEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.60<br>
+</div>
+</div>
+</body>
+</html>
