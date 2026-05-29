@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.25">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="The Khronos® OpenXR Working Group">
 <title>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</title>
 <style>
@@ -512,8 +512,8 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <h1>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.58</span>
-<br><span id="revremark">from git ref cts-1.1.58.0-20260409</span>
+<span id="revnumber">version 1.1.60</span>
+<br><span id="revremark">from git ref cts-1.1.60.0-20260528</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1193,6 +1193,9 @@ following interaction profiles, specify them as well.</p>
 <p><code>/interaction_profiles/khr/simple_controller</code></p>
 </li>
 <li>
+<p><code>/interaction_profiles/khr/generic_controller</code></p>
+</li>
+<li>
 <p><code>/interaction_profiles/ext/hand_interaction_ext</code></p>
 </li>
 <li>
@@ -1225,7 +1228,7 @@ conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt
 conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"htc/vive_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_htc_vive_controller.xml <span class="nt">--reporter</span> console
 
 <span class="c"># Multiple profiles</span>
-conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"khr/simple_controller"</span> <span class="nt">-I</span> <span class="s2">"microsoft/motion_controller"</span> <span class="nt">-I</span> <span class="s2">"oculus/touch_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_controller.xml <span class="nt">--reporter</span> console</code></pre>
+conformance_cli <span class="s2">"[actions][interactive]"</span> <span class="nt">-G</span> d3d11 <span class="nt">-I</span> <span class="s2">"khr/simple_controller"</span> <span class="nt">-I</span> <span class="s2">"khr/generic_controller"</span> <span class="nt">-I</span> <span class="s2">"microsoft/motion_controller"</span> <span class="nt">-I</span> <span class="s2">"oculus/touch_controller"</span> <span class="nt">--reporter</span> ctsxml::out<span class="o">=</span>interactive_action_controller.xml <span class="nt">--reporter</span> console</code></pre>
 </div>
 </div>
 </div>
@@ -1283,7 +1286,7 @@ adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_microsoft_xbox_controller.xml
 
 <span class="c">## Sample multiple profiles</span>
-adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,khr/simple_controller,-I,microsoft/motion_controller,-I,oculus/touch_controller"</span> <span class="nt">-e</span> xmlFilename interactive_action_controller.xml
+adb shell am start-activity <span class="nt">-S</span> <span class="nt">-n</span> org.khronos.openxr.cts/android.app.NativeActivity <span class="nt">--esa</span> args <span class="s2">"[actions][interactive],-I,khr/simple_controller,-I,khr/generic_controller,-I,microsoft/motion_controller,-I,oculus/touch_controller"</span> <span class="nt">-e</span> xmlFilename interactive_action_controller.xml
 
 <span class="c"># Wait until tests complete, then retrieve results with</span>
 adb pull /sdcard/Android/data/org.khronos.openxr.cts/files/interactive_action_controller.xml</code></pre>
@@ -2201,7 +2204,7 @@ assertion documentation</a></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.58<br>
+Version 1.1.60<br>
 </div>
 </div>
 </body>
