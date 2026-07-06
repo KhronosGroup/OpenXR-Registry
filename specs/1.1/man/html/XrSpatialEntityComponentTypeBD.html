@@ -74,8 +74,11 @@ different types of components that spatial entities <strong class="purple">may</
     <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_POLYGON_BD</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_BOUNDING_BOX_3D_BD</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_TRIANGLE_MESH_BD</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_SPHERE_BD</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
   <span class="c1">// Provided by XR_BD_spatial_plane</span>
     <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_PLANE_ORIENTATION_BD</span> <span class="o">=</span> <span class="mi">1000396000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_BD_dynamic_object_tracking</span>
+    <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_DYNAMIC_OBJECT_BD</span> <span class="o">=</span> <span class="mi">1000746000</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_ENTITY_COMPONENT_TYPE_MAX_ENUM_BD</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrSpatialEntityComponentTypeBD</span><span class="p">;</span></code></pre>
 </div>
@@ -122,8 +125,16 @@ different types of components that spatial entities <strong class="purple">may</
 <td class="tableblock halign-left valign-top"><p class="tableblock">The triangle mesh. Corresponds to component data structure <a href="XrSpatialEntityComponentDataTriangleMeshBD.html">XrSpatialEntityComponentDataTriangleMeshBD</a>.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_ENTITY_COMPONENT_TYPE_SPHERE_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Sphere. Corresponds to component data structure <a href="XrSpatialEntityComponentDataSphereBD.html">XrSpatialEntityComponentDataSphereBD</a>.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_ENTITY_COMPONENT_TYPE_PLANE_ORIENTATION_BD</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The plane orientation. Corresponds to component data structure <a href="XrSpatialEntityComponentDataPlaneOrientationBD.html">XrSpatialEntityComponentDataPlaneOrientationBD</a>.  (Added by the <code><a href="XR_BD_spatial_plane.html">XR_BD_spatial_plane</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_ENTITY_COMPONENT_TYPE_DYNAMIC_OBJECT_BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The dynamic object component. Corresponds to component data structure <a href="XrSpatialEntityComponentDataDynamicObjectBD.html">XrSpatialEntityComponentDataDynamicObjectBD</a>.  (Added by the <code><a href="XR_BD_dynamic_object_tracking.html">XR_BD_dynamic_object_tracking</a></code> extension)</p></td>
 </tr>
 </tbody>
 </table>
@@ -165,7 +176,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.60<br>
+Version 1.1.61<br>
 </div>
 </div>
 </body>

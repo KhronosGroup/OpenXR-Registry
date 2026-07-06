@@ -68,6 +68,12 @@ pre.rouge .w {
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_MARKER_TRACKING_FIXED_SIZE_MARKERS_EXT</span> <span class="o">=</span> <span class="mi">1000743000</span><span class="p">,</span>
   <span class="c1">// Provided by XR_EXT_spatial_marker_tracking</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_MARKER_TRACKING_STATIC_MARKERS_EXT</span> <span class="o">=</span> <span class="mi">1000743001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_SPHERE_BOUNDS_FILTER_ANDROID</span> <span class="o">=</span> <span class="mi">1000761000</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_BOX_BOUNDS_FILTER_ANDROID</span> <span class="o">=</span> <span class="mi">1000761001</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_FRUSTUM_BOUNDS_FILTER_ANDROID</span> <span class="o">=</span> <span class="mi">1000761002</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_MAX_ENUM_EXT</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrSpatialCapabilityFeatureEXT</span><span class="p">;</span></code></pre>
 </div>
@@ -128,6 +134,18 @@ corresponding capability.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_MARKER_TRACKING_STATIC_MARKERS_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Capability feature to allow applications to specify if markers are static. Corresponding config structure is <a href="XrSpatialMarkerStaticOptimizationEXT.html">XrSpatialMarkerStaticOptimizationEXT</a>  (Added by the <code><a href="XR_EXT_spatial_marker_tracking.html">XR_EXT_spatial_marker_tracking</a></code> extension)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_SPHERE_BOUNDS_FILTER_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime supports <a href="XrSpatialBoundsSpherefANDROID.html">XrSpatialBoundsSpherefANDROID</a> filter for <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>; This does not require any configuration structure to be included during spatial context creation.  (Added by the <code><a href="XR_ANDROID_spatial_discovery_bounds.html">XR_ANDROID_spatial_discovery_bounds</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_BOX_BOUNDS_FILTER_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime supports <a href="XrSpatialBoundsBoxfANDROID.html">XrSpatialBoundsBoxfANDROID</a> filter for <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>; This does not require any configuration structure to be included during spatial context creation.  (Added by the <code><a href="XR_ANDROID_spatial_discovery_bounds.html">XR_ANDROID_spatial_discovery_bounds</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_FRUSTUM_BOUNDS_FILTER_ANDROID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The runtime supports <a href="XrSpatialBoundsFrustumfANDROID.html">XrSpatialBoundsFrustumfANDROID</a> filter for <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>; This does not require any configuration structure to be included during spatial context creation.  (Added by the <code><a href="XR_ANDROID_spatial_discovery_bounds.html">XR_ANDROID_spatial_discovery_bounds</a></code> extension)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -168,7 +186,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.60<br>
+Version 1.1.61<br>
 </div>
 </div>
 </body>

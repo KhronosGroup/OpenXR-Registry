@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrBodyJointAccelerationBD(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrBodyJointAccelerationBD(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrBodyJointAccelerationBD - Body tracking joint acceleration</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_c_specification">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrBodyJointAccelerationBD.html">XrBodyJointAccelerationBD</a> structure is defined as:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>accelerationFlags</code> is a bitfield, with bit masks defined in
+<a href="XrSpaceAccelerationFlagBitsBD.html">XrSpaceAccelerationFlagBitsBD</a>, to indicate which members contain
+valid data.
+If none of the bits are set, no other fields in this structure <strong class="purple">should</strong> be
+considered to be valid or meaningful.</p>
+</li>
+<li>
+<p><code>linearAcceleration</code> is the linear acceleration of
+<a href="XrBodyJointLocationsBD.html">XrBodyJointLocationsBD</a>::<code>jointLocations</code> with respect to and
+expressed in the reference frame of
+<a href="XrBodyJointsLocateInfoBD.html">XrBodyJointsLocateInfoBD</a>::<code>baseSpace</code>.</p>
+</li>
+<li>
+<p><code>angularAcceleration</code> is the relative angular acceleration of
+<a href="XrBodyJointLocationsBD.html">XrBodyJointLocationsBD</a>::<code>jointLocations</code> with respect to
+<a href="XrBodyJointsLocateInfoBD.html">XrBodyJointsLocateInfoBD</a>::<code>baseSpace</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_BD_body_tracking_auxiliary_metrics.html">XR_BD_body_tracking_auxiliary_metrics</a>, <a href="XrBodyJointAccelerationsBD.html">XrBodyJointAccelerationsBD</a>, <a href="XrSpaceAccelerationFlagsBD.html">XrSpaceAccelerationFlagsBD</a>, <a href="XrVector3f.html">XrVector3f</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrBodyJointAccelerationBD" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.61<br>
+</div>
+</div>
+</body>
+</html>

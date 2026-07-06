@@ -194,8 +194,13 @@ location and velocity of a space within a base space using the
 <span class="n">XrSpace</span> <span class="n">baseSpace</span><span class="p">;</span>  <span class="c1">// previously initialized</span>
 <span class="n">XrTime</span> <span class="n">time</span><span class="p">;</span>        <span class="c1">// previously initialized</span>
 
-<span class="n">XrSpaceVelocity</span> <span class="n">velocity</span> <span class="p">{</span><span class="n">XR_TYPE_SPACE_VELOCITY</span><span class="p">};</span>
-<span class="n">XrSpaceLocation</span> <span class="n">location</span> <span class="p">{</span><span class="n">XR_TYPE_SPACE_LOCATION</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">velocity</span><span class="p">};</span>
+<span class="n">XrSpaceVelocity</span> <span class="n">velocity</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">XR_TYPE_SPACE_VELOCITY</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">XrSpaceLocation</span> <span class="n">location</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">XR_TYPE_SPACE_LOCATION</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">velocity</span><span class="p">,</span>
+<span class="p">};</span>
 <span class="n">xrLocateSpace</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">baseSpace</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">location</span><span class="p">);</span></code></pre>
 </div>
 </div>
@@ -305,7 +310,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.60<br>
+Version 1.1.61<br>
 </div>
 </div>
 </body>

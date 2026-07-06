@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>xrLocateGeospatialPoseFromPoseANDROID(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrLocateGeospatialPoseFromPoseANDROID(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrLocateGeospatialPoseFromPoseANDROID - Converts a pose to a geospatial pose</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="xrLocateGeospatialPoseFromPoseANDROID">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrLocateGeospatialPoseFromPoseANDROID.html">xrLocateGeospatialPoseFromPoseANDROID</a> function is defined as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_ANDROID_geospatial</span>
+<span class="n">XrResult</span> <span class="nf">xrLocateGeospatialPoseFromPoseANDROID</span><span class="p">(</span>
+    <span class="n">XrGeospatialTrackerANDROID</span>                  <span class="n">geospatialTracker</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrGeospatialPoseFromPoseLocateInfoANDROID</span><span class="o">*</span> <span class="n">locateInfo</span><span class="p">,</span>
+    <span class="n">XrGeospatialPoseResultANDROID</span><span class="o">*</span>              <span class="n">geospatialPoseResult</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>geospatialTracker</code> is the <a href="XrGeospatialTrackerANDROID.html">XrGeospatialTrackerANDROID</a> to use for
+conversion.</p>
+</li>
+<li>
+<p><code>locateInfo</code> is a pointer to
+<a href="XrGeospatialPoseFromPoseLocateInfoANDROID.html">XrGeospatialPoseFromPoseLocateInfoANDROID</a> containing query
+parameters.</p>
+</li>
+<li>
+<p><code>geospatialPoseResult</code> is a pointer to
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a> that receives the result.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrLocateGeospatialPoseFromPoseANDROID.html">xrLocateGeospatialPoseFromPoseANDROID</a> function converts a pose in
+<a href="XrGeospatialPoseFromPoseLocateInfoANDROID.html">XrGeospatialPoseFromPoseLocateInfoANDROID</a>::<code>space</code> to a geospatial
+pose.
+If the state of <code>geospatialTracker</code> is not
+<code>XR_GEOSPATIAL_TRACKER_STATE_RUNNING_ANDROID</code>, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID</code>.
+If the function returns <code>XR_SUCCESS</code>, the
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>::<code>poseFlags</code> field of
+<code>geospatialPoseResult</code> determines which output fields are valid.
+If <code>XR_GEOSPATIAL_POSE_POSITION_VALID_BIT_ANDROID</code> is not set in
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>::<code>poseFlags</code>, the application <strong class="purple">must</strong>
+not read the fields <a href="XrGeospatialPoseANDROID.html">XrGeospatialPoseANDROID</a>::<code>latitude</code>,
+<a href="XrGeospatialPoseANDROID.html">XrGeospatialPoseANDROID</a>::<code>longitude</code>,
+<a href="XrGeospatialPoseANDROID.html">XrGeospatialPoseANDROID</a>::<code>altitude</code>,
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>::<code>horizontalAccuracy</code> or
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>::<code>verticalAccuracy</code> in
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>.
+If <code>XR_GEOSPATIAL_POSE_ORIENTATION_VALID_BIT_ANDROID</code> is not set in
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>::<code>poseFlags</code>, the application <strong class="purple">must</strong>
+not read <a href="XrGeospatialPoseANDROID.html">XrGeospatialPoseANDROID</a>::<code>eastUpSouthOrientation</code> or
+<a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>::<code>orientationYawAccuracy</code>.
+If <code>XR_GEOSPATIAL_POSE_POSITION_VALID_BIT_ANDROID</code> is not set,
+<code>XR_GEOSPATIAL_POSE_ORIENTATION_VALID_BIT_ANDROID</code> <strong class="purple">must</strong> also not be
+set.</p>
+</div>
+<div class="paragraph">
+<p>If the accuracy is lower than expected, this <strong class="purple">may</strong> be an indication that the
+device is not utilizing VPS localization.
+The application <strong class="purple">can</strong> instruct the user to point their device at signs and
+buildings to improve localization.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrLocateGeospatialPoseFromPoseANDROID-extension-notenabled" href="#VUID-xrLocateGeospatialPoseFromPoseANDROID-extension-notenabled"></a> The <code><a href="XR_ANDROID_geospatial.html">XR_ANDROID_geospatial</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrLocateGeospatialPoseFromPoseANDROID.html">xrLocateGeospatialPoseFromPoseANDROID</a></p>
+</li>
+<li>
+<p><a id="VUID-xrLocateGeospatialPoseFromPoseANDROID-geospatialTracker-parameter" href="#VUID-xrLocateGeospatialPoseFromPoseANDROID-geospatialTracker-parameter"></a> <code>geospatialTracker</code> <strong class="purple">must</strong> be a valid <a href="XrGeospatialTrackerANDROID.html">XrGeospatialTrackerANDROID</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateGeospatialPoseFromPoseANDROID-locateInfo-parameter" href="#VUID-xrLocateGeospatialPoseFromPoseANDROID-locateInfo-parameter"></a> <code>locateInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrGeospatialPoseFromPoseLocateInfoANDROID.html">XrGeospatialPoseFromPoseLocateInfoANDROID</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateGeospatialPoseFromPoseANDROID-geospatialPoseResult-parameter" href="#VUID-xrLocateGeospatialPoseFromPoseANDROID-geospatialPoseResult-parameter"></a> <code>geospatialPoseResult</code> <strong class="purple">must</strong> be a pointer to an <a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_GEOSPATIAL_TRACKER_NOT_RUNNING_ANDROID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_POSE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_TIME_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_ANDROID_geospatial.html">XR_ANDROID_geospatial</a>, <a href="XrGeospatialPoseFromPoseLocateInfoANDROID.html">XrGeospatialPoseFromPoseLocateInfoANDROID</a>, <a href="XrGeospatialPoseResultANDROID.html">XrGeospatialPoseResultANDROID</a>, <a href="XrGeospatialTrackerANDROID.html">XrGeospatialTrackerANDROID</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrLocateGeospatialPoseFromPoseANDROID" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.61<br>
+</div>
+</div>
+</body>
+</html>

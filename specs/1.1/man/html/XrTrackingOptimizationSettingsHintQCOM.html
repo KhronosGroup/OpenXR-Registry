@@ -65,10 +65,18 @@ pre.rouge .w {
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_QCOM_tracking_optimization_settings</span>
 <span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrTrackingOptimizationSettingsHintQCOM</span> <span class="p">{</span>
     <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_NONE_QCOM</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORITIZATION_QCOM</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORITIZATION_QCOM</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORITIZATION_QCOM</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORITIZATION_QCOM</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_QCOM_tracking_optimization_settings</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORITIZATION_QCOM</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_QCOM_tracking_optimization_settings</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORITIZATION_QCOM</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_QCOM_tracking_optimization_settings</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORITIZATION_QCOM</span><span class="p">,</span>
+  <span class="c1">// Provided by XR_QCOM_tracking_optimization_settings</span>
+    <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM</span> <span class="o">=</span> <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORITIZATION_QCOM</span><span class="p">,</span>
     <span class="n">XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_MAX_ENUM_QCOM</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrTrackingOptimizationSettingsHintQCOM</span><span class="p">;</span></code></pre>
 </div>
@@ -87,16 +95,28 @@ pre.rouge .w {
 <p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_NONE_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it does not have a preference to optimize for. The run-time is understood to choose a balanced approach.</p>
 </li>
 <li>
-<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for long range, possibly at the expense of competing interests.</p>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORITIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for long range, possibly at the expense of competing interests.</p>
 </li>
 <li>
-<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for close range, possibly at the expense of competing interests.</p>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORITIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for close range, possibly at the expense of competing interests.</p>
 </li>
 <li>
-<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for low power consumption, possibly at the expense of competing interests.</p>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORITIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for low power consumption, possibly at the expense of competing interests.</p>
 </li>
 <li>
-<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for increased tracking performance, possibly at the cost of increased power consumption.</p>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORITIZATION_QCOM</code> &#8201;&#8212;&#8201;Used by the application to indicate that it prefers tracking to be optimized for increased tracking performance, possibly at the cost of increased power consumption.</p>
+</li>
+<li>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LONG_RANGE_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Backward-compatibility alias containing typo.  (Added by the <code><a href="XR_QCOM_tracking_optimization_settings.html">XR_QCOM_tracking_optimization_settings</a></code> extension)</p>
+</li>
+<li>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_CLOSE_RANGE_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Backward-compatibility alias containing typo.  (Added by the <code><a href="XR_QCOM_tracking_optimization_settings.html">XR_QCOM_tracking_optimization_settings</a></code> extension)</p>
+</li>
+<li>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_LOW_POWER_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Backward-compatibility alias containing typo.  (Added by the <code><a href="XR_QCOM_tracking_optimization_settings.html">XR_QCOM_tracking_optimization_settings</a></code> extension)</p>
+</li>
+<li>
+<p><code>XR_TRACKING_OPTIMIZATION_SETTINGS_HINT_HIGH_POWER_PRIORIZATION_QCOM</code> &#8201;&#8212;&#8201;Backward-compatibility alias containing typo.  (Added by the <code><a href="XR_QCOM_tracking_optimization_settings.html">XR_QCOM_tracking_optimization_settings</a></code> extension)</p>
 </li>
 </ul>
 </div>
@@ -140,7 +160,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.60<br>
+Version 1.1.61<br>
 </div>
 </div>
 </body>
