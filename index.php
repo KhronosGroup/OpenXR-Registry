@@ -38,7 +38,6 @@ include_once("../../assets/static_pages/khr_page_top.php");
         <li> <a href="#repo-cts"> KhronosGroup/<b>OpenXR-CTS Conformance Test Suite Repository</b> </a> </li>
         <li> <a href="#repo-other"> <b>Other Repositories</b> </a> </li>
         </ul> </li>
-    <li> <a href="#apispecs-1.0"> Obsolete: <b>OpenXR 1.0.34 API Specifications</b> </a> </li>
     <li> <a href="#provisional"> Obsolete: <b>OpenXR 0.90 Provisional Specification</b> </a> </li>
     <li> <a href="#feedback"> <b>Providing Feedback on the Registry</b> </a> </li>
 </ul>
@@ -300,21 +299,6 @@ include_once("../../assets/static_pages/khr_page_top.php");
      id="openxr-hpp">OpenXR-Hpp</a> repository contains code used to
      generate <kbd>openxr.hpp</kbd> and its included headers, which form
      a layered C++ binding for OpenXR. </li>
-</ul>
-
-<h2 id="apispecs-1.0"> Obsolete: <b>OpenXR 1.0.34 API Specifications</b> </h2>
-
-<p> These are retained for your convenience, as the last pre-1.1 release, but are no longer updated.
-    The OpenXR 1.1 specification includes all 1.0 content, and portions
-    exclusive to 1.1 are noted in the text.</p>
-
-<ul>
-<li> <b>OpenXR 1.0.34 API + all published Extensions</b>
-     <a href="specs/1.0/html/xrspec.html">(Single-file HTML)</a>
-     <a href="specs/1.0/pdf/xrspec.pdf">(PDF)</a></li>
-<li> <b>OpenXR 1.0.34 API + Khronos-defined Extensions</b>
-     <a href="specs/1.0-khr/html/xrspec.html">(Single-file HTML)</a>
-     <a href="specs/1.0-khr/pdf/xrspec.pdf">(PDF)</a></li>
 </ul>
 
 <h2 id="provisional"> Obsolete: <b>OpenXR 0.90 Provisional API Specification Resources</b> </h2>
