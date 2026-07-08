@@ -13,9 +13,8 @@ renamed to `main`.
 
 Interesting files in this repository include:
 
+* `specs/1.1/` - OpenXR 1.1 API specifications and reference pages.
 * `specs/1.0/` - OpenXR 1.0 API specifications and reference pages.
-* `specs/0.90/` - OpenXR 0.90 Provisional API specifications and reference pages and API
-  reference card.
 * `index.php` - toplevel index page for the web view of <https://www.khronos.org/registry/OpenXR/>.
   This relies on PHP
   include files found elsewhere on www.khronos.org and so is not very useful
