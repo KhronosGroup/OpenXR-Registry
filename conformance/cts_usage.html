@@ -512,8 +512,8 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <h1>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.60</span>
-<br><span id="revremark">from git ref cts-1.1.60.0-20260528</span>
+<span id="revnumber">version 1.1.61</span>
+<br><span id="revremark">from git ref cts-1.1.61.0-20260709</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1565,7 +1565,7 @@ with a <code>testcase</code> tag, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;testcase</span> <span class="na">classname=</span><span class="s">"global"</span> <span class="na">name=</span><span class="s">"Swapchains/Swapchain creation test parameters"</span> <span class="na">time=</span><span class="s">"1.207"</span> <span class="na">status=</span><span class="s">"run"</span><span class="nt">&gt;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;testcase</span> <span class="na">classname=</span><span class="s">"global"</span> <span class="na">name=</span><span class="s">"Swapchains/Swapchain creation test parameters"</span> <span class="na">time=</span><span class="s">"1.207"</span> <span class="na">cts:tags=</span><span class="s">"[composition]"</span> <span class="na">status=</span><span class="s">"run"</span><span class="nt">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1610,6 +1610,29 @@ the number of top level test cases):</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;cts:results</span> <span class="na">testSuccessCount=</span><span class="s">"1"</span> <span class="na">testFailureCount=</span><span class="s">"0"</span><span class="nt">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>cts:ctsTestEnvironment</code> block also records runtime capability data used
+to interpret the submission independently of the tester-selected command-line
+options. In addition to available API layers and instance extensions, it may
+contain the form factors for which the runtime returned a system, the view
+configurations available for each system, and the environment blend modes
+available for each view configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;cts:availableFormFactors&gt;</span>
+  <span class="nt">&lt;cts:formFactor</span> <span class="na">value=</span><span class="s">"XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cts:availableViewConfigurations&gt;</span>
+      <span class="nt">&lt;cts:viewConfiguration</span> <span class="na">value=</span><span class="s">"XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cts:availableEnvironmentBlendModes&gt;</span>
+          <span class="nt">&lt;cts:environmentBlendMode</span> <span class="na">value=</span><span class="s">"XR_ENVIRONMENT_BLEND_MODE_OPAQUE"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cts:availableEnvironmentBlendModes&gt;</span>
+      <span class="nt">&lt;/cts:viewConfiguration&gt;</span>
+    <span class="nt">&lt;/cts:availableViewConfigurations&gt;</span>
+  <span class="nt">&lt;/cts:formFactor&gt;</span>
+<span class="nt">&lt;/cts:availableFormFactors&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -2204,7 +2227,7 @@ assertion documentation</a></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.60<br>
+Version 1.1.61<br>
 </div>
 </div>
 </body>
