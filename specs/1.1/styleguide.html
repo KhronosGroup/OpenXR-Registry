@@ -386,8 +386,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR™ Documentation and Extensions: Procedures and Conventions</h1>
 <div class="details">
 <span id="author" class="author">Rylie Pavlik, Kaye Mason, Jon Leech, Tobias Hector</span><br>
-<span id="revnumber">version 1.1.61</span>
-<br><span id="revremark">from git ref release-1.1.61</span>
+<span id="revnumber">version 1.1.62</span>
+<br><span id="revremark">from git ref release-1.1.62</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1443,7 +1443,7 @@ was.</p>
 <div class="content">
 <pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
 // OpenXR current version number.
-#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 61)</code></pre>
+#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 62)</code></pre>
 </div>
 </div>
 </div>
@@ -1464,13 +1464,15 @@ typedefs, and enumerant types.</p>
 <div class="listingblock">
 <div class="title">Example: Handle</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">XR_DEFINE_HANDLE(XrInstance)</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+XR_DEFINE_HANDLE(XrInstance)</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example: Base Type</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef uint64_t XrFlags64;</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef uint64_t XrFlags64;</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1484,7 +1486,8 @@ typedefs, and enumerant types.</p>
 <div class="listingblock">
 <div class="title">Example: Structure</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrInstanceCreateInfo {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef struct XrInstanceCreateInfo {
     XrStructureType          type;
     const void*              next;
     XrInstanceCreateFlags    createFlags;
@@ -1607,12 +1610,14 @@ codes.</p>
 <div class="listingblock">
 <div class="title">Example: Flag Types and Bit Values (rule exception)</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef XrFlags64 XrSwapchainCreateFlags;</code></pre>
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef XrFlags64 XrSwapchainCreateFlags;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">// Flag bits for XrSwapchainCreateFlags
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+// Flag bits for XrSwapchainCreateFlags
 static const XrSwapchainCreateFlags XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT = 0x00000001;
 static const XrSwapchainCreateFlags XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT = 0x00000002;</code></pre>
 </div>
@@ -1764,7 +1769,8 @@ XrResult xrGetInputSourceLocalizedName(
 <div class="listingblock">
 <div class="title">Example: Structure Members (including the type exception and a double indirected pointer)</div>
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrFrameEndInfo {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef struct XrFrameEndInfo {
     XrStructureType                               type;
     const void*                                   next;
     XrTime                                        displayTime;
@@ -5472,7 +5478,8 @@ described next.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c++" data-lang="c++">typedef struct XrInstanceCreateInfo {
+<pre class="highlight"><code class="language-c++" data-lang="c++">// Provided by XR_VERSION_1_0
+typedef struct XrInstanceCreateInfo {
     XrStructureType          type;
     const void*              next;
     XrInstanceCreateFlags    createFlags;
@@ -6591,7 +6598,7 @@ extensions to extend the list of valid return codes for a function.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.61<br>
+Version 1.1.62<br>
 </div>
 </div>
 </body>

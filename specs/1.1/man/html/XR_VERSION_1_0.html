@@ -34,6 +34,9 @@
 <p><a href="XR_CURRENT_API_VERSION.html">XR_CURRENT_API_VERSION</a></p>
 </li>
 <li>
+<p><a href="XR_DEFINE_ATOM.html">XR_DEFINE_ATOM</a></p>
+</li>
+<li>
 <p><a href="XR_DEFINE_HANDLE.html">XR_DEFINE_HANDLE</a></p>
 </li>
 <li>
@@ -53,6 +56,9 @@
 </li>
 <li>
 <p><a href="XR_INFINITE_DURATION.html">XR_INFINITE_DURATION</a></p>
+</li>
+<li>
+<p><a href="XR_MAKE_VERSION.html">XR_MAKE_VERSION</a></p>
 </li>
 <li>
 <p><a href="XR_MAX_EVENT_DATA_SIZE.html">XR_MAX_EVENT_DATA_SIZE</a></p>
@@ -101,7 +107,50 @@
 <div class="ulist">
 <ul>
 <li>
+<p><a href="XrBool32.html">XrBool32</a></p>
+</li>
+<li>
+<p><a href="XrDuration.html">XrDuration</a></p>
+</li>
+<li>
+<p><a href="XrFlags64.html">XrFlags64</a></p>
+</li>
+<li>
+<p><a href="XrPath.html">XrPath</a></p>
+</li>
+<li>
+<p><a href="XrSystemId.html">XrSystemId</a></p>
+</li>
+<li>
+<p><a href="XrTime.html">XrTime</a></p>
+</li>
+<li>
 <p><a href="XrVersion.html">XrVersion</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_object_types">New Object Types</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrAction.html">XrAction</a></p>
+</li>
+<li>
+<p><a href="XrActionSet.html">XrActionSet</a></p>
+</li>
+<li>
+<p><a href="XrInstance.html">XrInstance</a></p>
+</li>
+<li>
+<p><a href="XrSession.html">XrSession</a></p>
+</li>
+<li>
+<p><a href="XrSpace.html">XrSpace</a></p>
+</li>
+<li>
+<p><a href="XrSwapchain.html">XrSwapchain</a></p>
 </li>
 </ul>
 </div>
@@ -283,22 +332,73 @@
 <div class="ulist">
 <ul>
 <li>
+<p><a href="XrActionCreateInfo.html">XrActionCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrActionSetCreateInfo.html">XrActionSetCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrActionSpaceCreateInfo.html">XrActionSpaceCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrActionStateBoolean.html">XrActionStateBoolean</a></p>
+</li>
+<li>
+<p><a href="XrActionStateFloat.html">XrActionStateFloat</a></p>
+</li>
+<li>
+<p><a href="XrActionStateGetInfo.html">XrActionStateGetInfo</a></p>
+</li>
+<li>
+<p><a href="XrActionStatePose.html">XrActionStatePose</a></p>
+</li>
+<li>
+<p><a href="XrActionStateVector2f.html">XrActionStateVector2f</a></p>
+</li>
+<li>
+<p><a href="XrActionSuggestedBinding.html">XrActionSuggestedBinding</a></p>
+</li>
+<li>
+<p><a href="XrActionsSyncInfo.html">XrActionsSyncInfo</a></p>
+</li>
+<li>
+<p><a href="XrActiveActionSet.html">XrActiveActionSet</a></p>
+</li>
+<li>
+<p><a href="XrApiLayerProperties.html">XrApiLayerProperties</a></p>
+</li>
+<li>
+<p><a href="XrApplicationInfo.html">XrApplicationInfo</a></p>
+</li>
+<li>
 <p><a href="XrBaseInStructure.html">XrBaseInStructure</a></p>
 </li>
 <li>
 <p><a href="XrBaseOutStructure.html">XrBaseOutStructure</a></p>
 </li>
 <li>
+<p><a href="XrBoundSourcesForActionEnumerateInfo.html">XrBoundSourcesForActionEnumerateInfo</a></p>
+</li>
+<li>
 <p><a href="XrColor4f.html">XrColor4f</a></p>
 </li>
 <li>
+<p><a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a></p>
+</li>
+<li>
 <p><a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a></p>
+</li>
+<li>
+<p><a href="XrCompositionLayerProjectionView.html">XrCompositionLayerProjectionView</a></p>
 </li>
 <li>
 <p><a href="XrCompositionLayerQuad.html">XrCompositionLayerQuad</a></p>
 </li>
 <li>
 <p><a href="XrEventDataBaseHeader.html">XrEventDataBaseHeader</a></p>
+</li>
+<li>
+<p><a href="XrEventDataBuffer.html">XrEventDataBuffer</a></p>
 </li>
 <li>
 <p><a href="XrEventDataEventsLost.html">XrEventDataEventsLost</a></p>
@@ -316,19 +416,139 @@
 <p><a href="XrEventDataSessionStateChanged.html">XrEventDataSessionStateChanged</a></p>
 </li>
 <li>
+<p><a href="XrExtensionProperties.html">XrExtensionProperties</a></p>
+</li>
+<li>
 <p><a href="XrExtent2Df.html">XrExtent2Df</a></p>
+</li>
+<li>
+<p><a href="XrExtent2Di.html">XrExtent2Di</a></p>
+</li>
+<li>
+<p><a href="XrFovf.html">XrFovf</a></p>
+</li>
+<li>
+<p><a href="XrFrameBeginInfo.html">XrFrameBeginInfo</a></p>
+</li>
+<li>
+<p><a href="XrFrameEndInfo.html">XrFrameEndInfo</a></p>
+</li>
+<li>
+<p><a href="XrFrameState.html">XrFrameState</a></p>
+</li>
+<li>
+<p><a href="XrFrameWaitInfo.html">XrFrameWaitInfo</a></p>
+</li>
+<li>
+<p><a href="XrHapticActionInfo.html">XrHapticActionInfo</a></p>
+</li>
+<li>
+<p><a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a></p>
 </li>
 <li>
 <p><a href="XrHapticVibration.html">XrHapticVibration</a></p>
 </li>
 <li>
+<p><a href="XrInputSourceLocalizedNameGetInfo.html">XrInputSourceLocalizedNameGetInfo</a></p>
+</li>
+<li>
+<p><a href="XrInstanceCreateInfo.html">XrInstanceCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrInstanceProperties.html">XrInstanceProperties</a></p>
+</li>
+<li>
+<p><a href="XrInteractionProfileState.html">XrInteractionProfileState</a></p>
+</li>
+<li>
+<p><a href="XrInteractionProfileSuggestedBinding.html">XrInteractionProfileSuggestedBinding</a></p>
+</li>
+<li>
 <p><a href="XrOffset2Df.html">XrOffset2Df</a></p>
+</li>
+<li>
+<p><a href="XrOffset2Di.html">XrOffset2Di</a></p>
+</li>
+<li>
+<p><a href="XrPosef.html">XrPosef</a></p>
+</li>
+<li>
+<p><a href="XrQuaternionf.html">XrQuaternionf</a></p>
 </li>
 <li>
 <p><a href="XrRect2Df.html">XrRect2Df</a></p>
 </li>
 <li>
+<p><a href="XrRect2Di.html">XrRect2Di</a></p>
+</li>
+<li>
+<p><a href="XrReferenceSpaceCreateInfo.html">XrReferenceSpaceCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrSessionActionSetsAttachInfo.html">XrSessionActionSetsAttachInfo</a></p>
+</li>
+<li>
+<p><a href="XrSessionBeginInfo.html">XrSessionBeginInfo</a></p>
+</li>
+<li>
+<p><a href="XrSessionCreateInfo.html">XrSessionCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrSpaceLocation.html">XrSpaceLocation</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainCreateInfo.html">XrSwapchainCreateInfo</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainImageAcquireInfo.html">XrSwapchainImageAcquireInfo</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainImageBaseHeader.html">XrSwapchainImageBaseHeader</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainImageReleaseInfo.html">XrSwapchainImageReleaseInfo</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainImageWaitInfo.html">XrSwapchainImageWaitInfo</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a></p>
+</li>
+<li>
+<p><a href="XrSystemGetInfo.html">XrSystemGetInfo</a></p>
+</li>
+<li>
+<p><a href="XrSystemGraphicsProperties.html">XrSystemGraphicsProperties</a></p>
+</li>
+<li>
+<p><a href="XrSystemProperties.html">XrSystemProperties</a></p>
+</li>
+<li>
+<p><a href="XrSystemTrackingProperties.html">XrSystemTrackingProperties</a></p>
+</li>
+<li>
+<p><a href="XrVector2f.html">XrVector2f</a></p>
+</li>
+<li>
+<p><a href="XrVector3f.html">XrVector3f</a></p>
+</li>
+<li>
 <p><a href="XrVector4f.html">XrVector4f</a></p>
+</li>
+<li>
+<p><a href="XrView.html">XrView</a></p>
+</li>
+<li>
+<p><a href="XrViewConfigurationProperties.html">XrViewConfigurationProperties</a></p>
+</li>
+<li>
+<p><a href="XrViewConfigurationView.html">XrViewConfigurationView</a></p>
+</li>
+<li>
+<p><a href="XrViewLocateInfo.html">XrViewLocateInfo</a></p>
+</li>
+<li>
+<p><a href="XrViewState.html">XrViewState</a></p>
 </li>
 <li>
 <p>Extending <a href="XrSpaceLocation.html">XrSpaceLocation</a>:</p>
@@ -344,11 +564,109 @@
 </div>
 </div>
 <div class="sect2">
+<h3 id="_new_function_pointers">New Function Pointers</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="PFN_xrVoidFunction.html">PFN_xrVoidFunction</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_new_enums">New Enums</h3>
 <div class="ulist">
 <ul>
 <li>
+<p><a href="XrActionType.html">XrActionType</a></p>
+</li>
+<li>
+<p><a href="XrCompositionLayerFlagBits.html">XrCompositionLayerFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrEnvironmentBlendMode.html">XrEnvironmentBlendMode</a></p>
+</li>
+<li>
+<p><a href="XrEyeVisibility.html">XrEyeVisibility</a></p>
+</li>
+<li>
+<p><a href="XrFormFactor.html">XrFormFactor</a></p>
+</li>
+<li>
+<p><a href="XrInputSourceLocalizedNameFlagBits.html">XrInputSourceLocalizedNameFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrInstanceCreateFlagBits.html">XrInstanceCreateFlagBits</a></p>
+</li>
+<li>
 <p><a href="XrObjectType.html">XrObjectType</a></p>
+</li>
+<li>
+<p><a href="XrReferenceSpaceType.html">XrReferenceSpaceType</a></p>
+</li>
+<li>
+<p><a href="XrResult.html">XrResult</a></p>
+</li>
+<li>
+<p><a href="XrSessionCreateFlagBits.html">XrSessionCreateFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrSessionState.html">XrSessionState</a></p>
+</li>
+<li>
+<p><a href="XrSpaceLocationFlagBits.html">XrSpaceLocationFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrSpaceVelocityFlagBits.html">XrSpaceVelocityFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrStructureType.html">XrStructureType</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainCreateFlagBits.html">XrSwapchainCreateFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainUsageFlagBits.html">XrSwapchainUsageFlagBits</a></p>
+</li>
+<li>
+<p><a href="XrViewConfigurationType.html">XrViewConfigurationType</a></p>
+</li>
+<li>
+<p><a href="XrViewStateFlagBits.html">XrViewStateFlagBits</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_bitmasks">New Bitmasks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="XrCompositionLayerFlags.html">XrCompositionLayerFlags</a></p>
+</li>
+<li>
+<p><a href="XrInputSourceLocalizedNameFlags.html">XrInputSourceLocalizedNameFlags</a></p>
+</li>
+<li>
+<p><a href="XrInstanceCreateFlags.html">XrInstanceCreateFlags</a></p>
+</li>
+<li>
+<p><a href="XrSessionCreateFlags.html">XrSessionCreateFlags</a></p>
+</li>
+<li>
+<p><a href="XrSpaceLocationFlags.html">XrSpaceLocationFlags</a></p>
+</li>
+<li>
+<p><a href="XrSpaceVelocityFlags.html">XrSpaceVelocityFlags</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainCreateFlags.html">XrSwapchainCreateFlags</a></p>
+</li>
+<li>
+<p><a href="XrSwapchainUsageFlags.html">XrSwapchainUsageFlags</a></p>
+</li>
+<li>
+<p><a href="XrViewStateFlags.html">XrViewStateFlags</a></p>
 </li>
 </ul>
 </div>
@@ -444,7 +762,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.61<br>
+Version 1.1.62<br>
 </div>
 </div>
 </body>

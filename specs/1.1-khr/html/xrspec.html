@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="The Khronos® OpenXR Working Group">
-<title>The OpenXR™ 1.1.61 Specification (with all ratified extensions)</title>
+<title>The OpenXR™ 1.1.62 Specification (with all ratified extensions)</title>
 <style>
 /*!
  * khronos.css:
@@ -540,11 +540,11 @@ pre.rouge .w {
 </head>
 <body class="book toc2 toc-left">
 <div id="header" style="max-width: 100;">
-<h1>The OpenXR™ 1.1.61 Specification (with all ratified extensions)</h1>
+<h1>The OpenXR™ 1.1.62 Specification (with all ratified extensions)</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.61</span>
-<br><span id="revremark">from git ref release-1.1.61</span>
+<span id="revnumber">version 1.1.62</span>
+<br><span id="revremark">from git ref release-1.1.62</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1778,7 +1778,8 @@ enumerated type in question.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="kt">uint64_t</span> <span class="n">XrFlags64</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="kt">uint64_t</span> <span class="n">XrFlags64</span><span class="p">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2050,7 +2051,8 @@ All run time error codes are negative values.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrResult</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrResult</span> <span class="p">{</span>
     <span class="n">XR_SUCCESS</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">XR_TIMEOUT_EXPIRED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_SESSION_LOSS_PENDING</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -3022,7 +3024,8 @@ clock changes, time zones, daylight savings, etc.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="kt">int64_t</span> <span class="n">XrTime</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="kt">int64_t</span> <span class="n">XrTime</span><span class="p">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3097,7 +3100,8 @@ timepoint.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="kt">int64_t</span> <span class="n">XrDuration</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="kt">int64_t</span> <span class="n">XrDuration</span><span class="p">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3301,7 +3305,8 @@ directions in a space.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrVector2f</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrVector2f</span> <span class="p">{</span>
     <span class="kt">float</span>    <span class="n">x</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">y</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrVector2f</span><span class="p">;</span></code></pre>
@@ -3335,7 +3340,8 @@ direction) and not otherwise specified, values <strong class="purple">must</stro
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrVector3f</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrVector3f</span> <span class="p">{</span>
     <span class="kt">float</span>    <span class="n">x</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">y</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">z</span><span class="p">;</span>
@@ -3418,7 +3424,8 @@ values <strong class="purple">must</strong> be in meters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrQuaternionf</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrQuaternionf</span> <span class="p">{</span>
     <span class="kt">float</span>    <span class="n">x</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">y</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">z</span><span class="p">;</span>
@@ -3456,7 +3463,8 @@ values <strong class="purple">must</strong> be in meters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrPosef</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrPosef</span> <span class="p">{</span>
     <span class="n">XrQuaternionf</span>    <span class="n">orientation</span><span class="p">;</span>
     <span class="n">XrVector3f</span>       <span class="n">position</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrPosef</span><span class="p">;</span></code></pre>
@@ -3567,7 +3575,8 @@ variant <a href="#XrOffset2Di">XrOffset2Di</a> is used instead.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrOffset2Di</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrOffset2Di</span> <span class="p">{</span>
     <span class="kt">int32_t</span>    <span class="n">x</span><span class="p">;</span>
     <span class="kt">int32_t</span>    <span class="n">y</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrOffset2Di</span><span class="p">;</span></code></pre>
@@ -3692,7 +3701,8 @@ The width, height, and depth values <strong class="purple">must</strong> be non-
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrExtent2Di</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrExtent2Di</span> <span class="p">{</span>
     <span class="kt">int32_t</span>    <span class="n">width</span><span class="p">;</span>
     <span class="kt">int32_t</span>    <span class="n">height</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrExtent2Di</span><span class="p">;</span></code></pre>
@@ -3780,7 +3790,8 @@ The other three corners are computed by adding the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrRect2Di</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrRect2Di</span> <span class="p">{</span>
     <span class="n">XrOffset2Di</span>    <span class="n">offset</span><span class="p">;</span>
     <span class="n">XrExtent2Di</span>    <span class="n">extent</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrRect2Di</span><span class="p">;</span></code></pre>
@@ -3997,7 +4008,8 @@ and will be interpreted as an angle, the value is defined to be in radians.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFovf</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFovf</span> <span class="p">{</span>
     <span class="kt">float</span>    <span class="n">angleLeft</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">angleRight</span><span class="p">;</span>
     <span class="kt">float</span>    <span class="n">angleUp</span><span class="p">;</span>
@@ -4057,7 +4069,8 @@ flipped vertically.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="kt">uint32_t</span> <span class="n">XrBool32</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="kt">uint32_t</span> <span class="n">XrBool32</span><span class="p">;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4353,7 +4366,8 @@ parameter.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrEventDataBuffer</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrEventDataBuffer</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="kt">uint8_t</span>            <span class="n">varying</span><span class="p">[</span><span class="mi">4000</span><span class="p">];</span>
@@ -4817,7 +4831,8 @@ first parameter) that is <code>instance</code> or a child of <code>instance</cod
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">XRAPI_PTR</span> <span class="o">*</span><span class="n">PFN_xrVoidFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">XRAPI_PTR</span> <span class="o">*</span><span class="n">PFN_xrVoidFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span></code></pre>
 </div>
 </div>
 <div class="sidebarblock">
@@ -4842,7 +4857,8 @@ queries, specifically those to <a href="#xrGetInstanceProcAddr">xrGetInstancePro
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="nf">XrResult</span> <span class="p">(</span><span class="n">XRAPI_PTR</span> <span class="o">*</span><span class="n">PFN_xrGetInstanceProcAddr</span><span class="p">)(</span><span class="n">XrInstance</span> <span class="n">instance</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="n">PFN_xrVoidFunction</span><span class="o">*</span> <span class="n">function</span><span class="p">);</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="nf">XrResult</span> <span class="p">(</span><span class="n">XRAPI_PTR</span> <span class="o">*</span><span class="n">PFN_xrGetInstanceProcAddr</span><span class="p">)(</span><span class="n">XrInstance</span> <span class="n">instance</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="n">PFN_xrVoidFunction</span><span class="o">*</span> <span class="n">function</span><span class="p">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4855,7 +4871,9 @@ queries, specifically those to <a href="#xrGetInstanceProcAddr">xrGetInstancePro
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerCreateInfo</span> <span class="n">XrApiLayerCreateInfo</span><span class="p">;</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerCreateInfo</span> <span class="n">XrApiLayerCreateInfo</span><span class="p">;</span>
 <span class="k">typedef</span> <span class="nf">XrResult</span> <span class="p">(</span><span class="n">XRAPI_PTR</span> <span class="o">*</span><span class="n">PFN_xrCreateApiLayerInstance</span><span class="p">)(</span>
             <span class="k">const</span> <span class="n">XrInstanceCreateInfo</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
             <span class="k">const</span> <span class="n">XrApiLayerCreateInfo</span><span class="o">*</span> <span class="n">apiLayerInfo</span><span class="p">,</span>
@@ -5088,7 +5106,8 @@ the loader to a runtime or an API layer.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrNegotiateLoaderInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrNegotiateLoaderInfo</span> <span class="p">{</span>
     <span class="n">XrLoaderInterfaceStructs</span>    <span class="n">structType</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                    <span class="n">structVersion</span><span class="p">;</span>
     <span class="kt">size_t</span>                      <span class="n">structSize</span><span class="p">;</span>
@@ -5166,7 +5185,8 @@ an API layer in an <a href="#xrNegotiateLoaderApiLayerInterface">xrNegotiateLoad
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrLoaderInterfaceStructs</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrLoaderInterfaceStructs</span> <span class="p">{</span>
     <span class="n">XR_LOADER_INTERFACE_STRUCT_UNINTIALIZED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">XR_LOADER_INTERFACE_STRUCT_LOADER_INFO</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_LOADER_INTERFACE_STRUCT_API_LAYER_REQUEST</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
@@ -5246,7 +5266,8 @@ about the runtime back to the loader.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrNegotiateRuntimeRequest</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrNegotiateRuntimeRequest</span> <span class="p">{</span>
     <span class="n">XrLoaderInterfaceStructs</span>     <span class="n">structType</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                     <span class="n">structVersion</span><span class="p">;</span>
     <span class="kt">size_t</span>                       <span class="n">structSize</span><span class="p">;</span>
@@ -5573,7 +5594,8 @@ about the API layer back to the loader.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrNegotiateApiLayerRequest</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrNegotiateApiLayerRequest</span> <span class="p">{</span>
     <span class="n">XrLoaderInterfaceStructs</span>        <span class="n">structType</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                        <span class="n">structVersion</span><span class="p">;</span>
     <span class="kt">size_t</span>                          <span class="n">structSize</span><span class="p">;</span>
@@ -5840,7 +5862,8 @@ required by a API layer during its create instance process.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerCreateInfo</span> <span class="p">{</span>
     <span class="n">XrLoaderInterfaceStructs</span>    <span class="n">structType</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                    <span class="n">structVersion</span><span class="p">;</span>
     <span class="kt">size_t</span>                      <span class="n">structSize</span><span class="p">;</span>
@@ -5950,7 +5973,8 @@ field.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerNextInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_LOADER_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerNextInfo</span> <span class="p">{</span>
     <span class="n">XrLoaderInterfaceStructs</span>        <span class="n">structType</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                        <span class="n">structVersion</span><span class="p">;</span>
     <span class="kt">size_t</span>                          <span class="n">structSize</span><span class="p">;</span>
@@ -6059,7 +6083,8 @@ field.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrInstance</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrInstance</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6246,7 +6271,8 @@ some of them become unavailable for future instances.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApiLayerProperties</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="kt">char</span>               <span class="n">layerName</span><span class="p">[</span><span class="n">XR_MAX_API_LAYER_NAME_SIZE</span><span class="p">];</span>
@@ -6477,7 +6503,8 @@ calls.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrExtensionProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrExtensionProperties</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="kt">char</span>               <span class="n">extensionName</span><span class="p">[</span><span class="n">XR_MAX_EXTENSION_NAME_SIZE</span><span class="p">];</span>
@@ -6672,7 +6699,8 @@ platform but no matching extension struct is provided in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInstanceCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInstanceCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>          <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrInstanceCreateFlags</span>    <span class="n">createFlags</span><span class="p">;</span>
@@ -6767,7 +6795,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrInstanceCreateFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrInstanceCreateFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -6780,7 +6809,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrInstanceCreateFlags</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrInstanceCreateFlags</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6796,7 +6826,8 @@ This is reserved for future use.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApplicationInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrApplicationInfo</span> <span class="p">{</span>
     <span class="kt">char</span>         <span class="n">applicationName</span><span class="p">[</span><span class="n">XR_MAX_APPLICATION_NAME_SIZE</span><span class="p">];</span>
     <span class="kt">uint32_t</span>     <span class="n">applicationVersion</span><span class="p">;</span>
     <span class="kt">char</span>         <span class="n">engineName</span><span class="p">[</span><span class="n">XR_MAX_ENGINE_NAME_SIZE</span><span class="p">];</span>
@@ -7083,7 +7114,8 @@ response to this call, with information as defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInstanceProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInstanceProperties</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrVersion</span>          <span class="n">runtimeVersion</span><span class="p">;</span>
@@ -7571,7 +7603,8 @@ headset.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrFormFactor</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrFormFactor</span> <span class="p">{</span>
     <span class="n">XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_FORM_FACTOR_HANDHELD_DISPLAY</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">XR_FORM_FACTOR_MAX_ENUM</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
@@ -7613,7 +7646,8 @@ an example of this form factor.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_ATOM</span><span class="p">(</span><span class="n">XrSystemId</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_ATOM</span><span class="p">(</span><span class="n">XrSystemId</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7759,7 +7793,8 @@ form factor to become available.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemGetInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemGetInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrFormFactor</span>       <span class="n">formFactor</span><span class="p">;</span>
@@ -7944,7 +7979,8 @@ properties.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemProperties</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>               <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>                         <span class="n">next</span><span class="p">;</span>
     <span class="n">XrSystemId</span>                    <span class="n">systemId</span><span class="p">;</span>
@@ -8017,7 +8053,8 @@ device or a Khronos vendor ID.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemGraphicsProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemGraphicsProperties</span> <span class="p">{</span>
     <span class="kt">uint32_t</span>    <span class="n">maxSwapchainImageHeight</span><span class="p">;</span>
     <span class="kt">uint32_t</span>    <span class="n">maxSwapchainImageWidth</span><span class="p">;</span>
     <span class="kt">uint32_t</span>    <span class="n">maxLayerCount</span><span class="p">;</span>
@@ -8074,7 +8111,8 @@ A runtime <strong class="purple">must</strong> return the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemTrackingProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSystemTrackingProperties</span> <span class="p">{</span>
     <span class="n">XrBool32</span>    <span class="n">orientationTracking</span><span class="p">;</span>
     <span class="n">XrBool32</span>    <span class="n">positionTracking</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrSystemTrackingProperties</span><span class="p">;</span></code></pre>
@@ -8172,7 +8210,8 @@ to naturally reflect varying system configuration and hardware availability.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_ATOM</span><span class="p">(</span><span class="n">XrPath</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_ATOM</span><span class="p">(</span><span class="n">XrPath</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12650,7 +12689,8 @@ how those frames of reference move relative to one another over time.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrSpace</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrSpace</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12724,7 +12764,8 @@ for non-head-mounted form factors.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrReferenceSpaceType</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrReferenceSpaceType</span> <span class="p">{</span>
     <span class="n">XR_REFERENCE_SPACE_TYPE_VIEW</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_REFERENCE_SPACE_TYPE_LOCAL</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">XR_REFERENCE_SPACE_TYPE_STAGE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -13588,7 +13629,8 @@ given reference space type is not supported by this <code>session</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrReferenceSpaceCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrReferenceSpaceCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>         <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>             <span class="n">next</span><span class="p">;</span>
     <span class="n">XrReferenceSpaceType</span>    <span class="n">referenceSpaceType</span><span class="p">;</span>
@@ -13785,7 +13827,8 @@ provided in <a href="#XrActionSpaceCreateInfo">XrActionSpaceCreateInfo</a>::<cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionSpaceCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionSpaceCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrAction</span>           <span class="n">action</span><span class="p">;</span>
@@ -14170,7 +14213,8 @@ location and velocity of a space within a base space using the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpaceLocation</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpaceLocation</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>         <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>                   <span class="n">next</span><span class="p">;</span>
     <span class="n">XrSpaceLocationFlags</span>    <span class="n">locationFlags</span><span class="p">;</span>
@@ -14235,7 +14279,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSpaceLocationFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSpaceLocationFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -14248,7 +14293,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrSpaceLocationFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrSpaceLocationFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSpaceLocationFlags</span> <span class="n">XR_SPACE_LOCATION_ORIENTATION_VALID_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSpaceLocationFlags</span> <span class="n">XR_SPACE_LOCATION_POSITION_VALID_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSpaceLocationFlags</span> <span class="n">XR_SPACE_LOCATION_ORIENTATION_TRACKED_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span>
@@ -14397,7 +14443,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSpaceVelocityFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSpaceVelocityFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -14410,7 +14457,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrSpaceVelocityFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrSpaceVelocityFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSpaceVelocityFlags</span> <span class="n">XR_SPACE_VELOCITY_LINEAR_VALID_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSpaceVelocityFlags</span> <span class="n">XR_SPACE_VELOCITY_ANGULAR_VALID_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span></code></pre>
 </div>
@@ -15028,7 +15076,8 @@ fallback.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrViewConfigurationType</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrViewConfigurationType</span> <span class="p">{</span>
     <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_MONO</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
   <span class="c1">// Provided by XR_VERSION_1_1</span>
@@ -15405,7 +15454,8 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_VIEW_CONFIGUR
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewConfigurationProperties</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewConfigurationProperties</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>                      <span class="n">next</span><span class="p">;</span>
     <span class="n">XrViewConfigurationType</span>    <span class="n">viewConfigurationType</span><span class="p">;</span>
@@ -15609,7 +15659,8 @@ of an individual view within a view configuration.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewConfigurationView</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewConfigurationView</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="kt">uint32_t</span>           <span class="n">recommendedImageRectWidth</span><span class="p">;</span>
@@ -15832,7 +15883,8 @@ count and association to the left and right eyes.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrSession</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrSession</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16157,7 +16209,8 @@ on calls to <a href="#xrCreateSession">xrCreateSession</a> if a function named l
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>         <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>             <span class="n">next</span><span class="p">;</span>
     <span class="n">XrSessionCreateFlags</span>    <span class="n">createFlags</span><span class="p">;</span>
@@ -16240,7 +16293,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSessionCreateFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSessionCreateFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -16253,7 +16307,8 @@ type, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrSessionCreateFlags</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrSessionCreateFlags</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16506,7 +16561,8 @@ the <code>session</code>, the runtime <strong class="purple">must</strong> retur
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionBeginInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionBeginInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                <span class="n">next</span><span class="p">;</span>
     <span class="n">XrViewConfigurationType</span>    <span class="n">primaryViewConfigurationType</span><span class="p">;</span>
@@ -16859,7 +16915,8 @@ that the application has changed lifecycle state.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrSessionState</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrSessionState</span> <span class="p">{</span>
     <span class="n">XR_SESSION_STATE_UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">XR_SESSION_STATE_IDLE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_SESSION_STATE_READY</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
@@ -17066,7 +17123,8 @@ resources associated with those handles.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrSwapchain</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrSwapchain</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -17413,7 +17471,8 @@ unsupported.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>           <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>               <span class="n">next</span><span class="p">;</span>
     <span class="n">XrSwapchainCreateFlags</span>    <span class="n">createFlags</span><span class="p">;</span>
@@ -17523,7 +17582,8 @@ defined in <a href="#XrSwapchainCreateFlagBits">XrSwapchainCreateFlagBits</a>.</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSwapchainCreateFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSwapchainCreateFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -17536,7 +17596,8 @@ defined in <a href="#XrSwapchainCreateFlagBits">XrSwapchainCreateFlagBits</a>.</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrSwapchainCreateFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrSwapchainCreateFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainCreateFlags</span> <span class="n">XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainCreateFlags</span> <span class="n">XR_SWAPCHAIN_CREATE_STATIC_IMAGE_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span></code></pre>
 </div>
@@ -17583,7 +17644,8 @@ and contains a bitwise-OR of one or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSwapchainUsageFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrSwapchainUsageFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -17601,7 +17663,8 @@ match the intended usage.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrSwapchainUsageFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrSwapchainUsageFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_COLOR_ATTACHMENT_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_UNORDERED_ACCESS_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span>
@@ -17610,6 +17673,7 @@ match the intended usage.</p>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_SAMPLED_BIT</span> <span class="o">=</span> <span class="mh">0x00000020</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_MUTABLE_FORMAT_BIT</span> <span class="o">=</span> <span class="mh">0x00000040</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND</span> <span class="o">=</span> <span class="mh">0x00000080</span><span class="p">;</span>
+  <span class="c1">// Provided by XR_KHR_swapchain_usage_input_attachment_bit</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrSwapchainUsageFlags</span> <span class="n">XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_KHR</span> <span class="o">=</span> <span class="mh">0x00000080</span><span class="p">;</span>  <span class="c1">// alias of XR_SWAPCHAIN_USAGE_INPUT_ATTACHMENT_BIT_MND</span></code></pre>
 </div>
 </div>
@@ -17948,7 +18012,8 @@ it has verified the <a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageBaseHeader</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageBaseHeader</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrSwapchainImageBaseHeader</span><span class="p">;</span></code></pre>
@@ -18132,7 +18197,8 @@ call before submitting graphics commands that write to the image.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageAcquireInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageAcquireInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrSwapchainImageAcquireInfo</span><span class="p">;</span></code></pre>
@@ -18313,7 +18379,8 @@ It is defined as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageWaitInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageWaitInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrDuration</span>         <span class="n">timeout</span><span class="p">;</span>
@@ -18482,7 +18549,8 @@ been waited on by calling <a href="#xrWaitSwapchainImage">xrWaitSwapchainImage</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageReleaseInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainImageReleaseInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrSwapchainImageReleaseInfo</span><span class="p">;</span></code></pre>
@@ -18705,7 +18773,8 @@ though an extension, then the runtime <strong class="purple">must</strong> retur
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewLocateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewLocateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                <span class="n">next</span><span class="p">;</span>
     <span class="n">XrViewConfigurationType</span>    <span class="n">viewConfigurationType</span><span class="p">;</span>
@@ -18780,7 +18849,8 @@ used to locate the view <a href="#XrView">XrView</a> structures.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrView</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrView</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrPosef</span>            <span class="n">pose</span><span class="p">;</span>
@@ -18840,7 +18910,8 @@ to render a single projection view in the view configuration.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewState</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrViewState</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>     <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>               <span class="n">next</span><span class="p">;</span>
     <span class="n">XrViewStateFlags</span>    <span class="n">viewStateFlags</span><span class="p">;</span>
@@ -18903,7 +18974,8 @@ contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrViewStateFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrViewStateFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -18916,7 +18988,8 @@ contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrViewStateFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrViewStateFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrViewStateFlags</span> <span class="n">XR_VIEW_STATE_ORIENTATION_VALID_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrViewStateFlags</span> <span class="n">XR_VIEW_STATE_POSITION_VALID_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrViewStateFlags</span> <span class="n">XR_VIEW_STATE_ORIENTATION_TRACKED_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span>
@@ -19171,7 +19244,8 @@ pass its computed display time through its pipeline, as <a href="#xrWaitFrame">x
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameWaitInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameWaitInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrFrameWaitInfo</span><span class="p">;</span></code></pre>
@@ -19224,7 +19298,8 @@ any relevant extensions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameState</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameState</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrTime</span>             <span class="n">predictedDisplayTime</span><span class="p">;</span>
@@ -19474,7 +19549,8 @@ Refer to <a href="#xrBeginSession">xrBeginSession</a> for details on how a trans
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameBeginInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameBeginInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrFrameBeginInfo</span><span class="p">;</span></code></pre>
@@ -19753,7 +19829,8 @@ implementations.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameEndInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrFrameEndInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>                               <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                                   <span class="n">next</span><span class="p">;</span>
     <span class="n">XrTime</span>                                        <span class="n">displayTime</span><span class="p">;</span>
@@ -19872,7 +19949,8 @@ layers, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrCompositionLayerFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrCompositionLayerFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -19885,7 +19963,8 @@ layers, and contains a bitwise-OR of zero or more of the bits defined in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrCompositionLayerFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrCompositionLayerFlags</span>
 <span class="c1">// XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT is deprecated and should not be used</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_CORRECT_CHROMATIC_ABERRATION_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrCompositionLayerFlags</span> <span class="n">XR_COMPOSITION_LAYER_BLEND_TEXTURE_SOURCE_ALPHA_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
@@ -19995,7 +20074,8 @@ the runtime might employ.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerBaseHeader</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerBaseHeader</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                <span class="n">next</span><span class="p">;</span>
     <span class="n">XrCompositionLayerFlags</span>    <span class="n">layerFlags</span><span class="p">;</span>
@@ -20074,7 +20154,8 @@ generic layer data stored in an <a href="#XrSwapchainSubImage">XrSwapchainSubIma
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainSubImage</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSwapchainSubImage</span> <span class="p">{</span>
     <span class="n">XrSwapchain</span>    <span class="n">swapchain</span><span class="p">;</span>
     <span class="n">XrRect2Di</span>      <span class="n">imageRect</span><span class="p">;</span>
     <span class="kt">uint32_t</span>       <span class="n">imageArrayIndex</span><span class="p">;</span>
@@ -20247,7 +20328,8 @@ layer reprojection.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerProjectionView</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCompositionLayerProjectionView</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>        <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>            <span class="n">next</span><span class="p">;</span>
     <span class="n">XrPosef</span>                <span class="n">pose</span><span class="p">;</span>
@@ -20440,7 +20522,8 @@ a layer to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrEyeVisibility</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrEyeVisibility</span> <span class="p">{</span>
     <span class="n">XR_EYE_VISIBILITY_BOTH</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">XR_EYE_VISIBILITY_LEFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_EYE_VISIBILITY_RIGHT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
@@ -20684,7 +20767,8 @@ enumeration:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrEnvironmentBlendMode</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrEnvironmentBlendMode</span> <span class="p">{</span>
     <span class="n">XR_ENVIRONMENT_BLEND_MODE_OPAQUE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_ENVIRONMENT_BLEND_MODE_ADDITIVE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">XR_ENVIRONMENT_BLEND_MODE_ALPHA_BLEND</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -20883,7 +20967,8 @@ input hardware and maximize user accessibility.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrActionSet</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrActionSet</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -21041,7 +21126,8 @@ handle to the created action set.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionSetCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionSetCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="kt">char</span>               <span class="n">actionSetName</span><span class="p">[</span><span class="n">XR_MAX_ACTION_SET_NAME_SIZE</span><span class="p">];</span>
@@ -21249,7 +21335,8 @@ instance containing those actions sets is destroyed.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrAction</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrAction</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -21395,7 +21482,8 @@ returned.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionCreateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionCreateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="kt">char</span>               <span class="n">actionName</span><span class="p">[</span><span class="n">XR_MAX_ACTION_NAME_SIZE</span><span class="p">];</span>
@@ -21582,7 +21670,8 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_PATH_FORMAT_I
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrActionType</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrActionType</span> <span class="p">{</span>
     <span class="n">XR_ACTION_TYPE_BOOLEAN_INPUT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_ACTION_TYPE_FLOAT_INPUT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">XR_ACTION_TYPE_VECTOR2F_INPUT</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -21965,7 +22054,8 @@ the implementation <strong class="purple">must</strong> return <code>XR_ERROR_AC
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInteractionProfileSuggestedBinding</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInteractionProfileSuggestedBinding</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>                    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrPath</span>                             <span class="n">interactionProfile</span><span class="p">;</span>
@@ -22033,7 +22123,8 @@ application&#8217;s suggested bindings for the specified interaction profile.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionSuggestedBinding</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionSuggestedBinding</span> <span class="p">{</span>
     <span class="n">XrAction</span>    <span class="n">action</span><span class="p">;</span>
     <span class="n">XrPath</span>      <span class="n">binding</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrActionSuggestedBinding</span><span class="p">;</span></code></pre>
@@ -22195,7 +22286,8 @@ runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTIONSET_NOT
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionActionSetsAttachInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionActionSetsAttachInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>       <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>           <span class="n">next</span><span class="p">;</span>
     <span class="kt">uint32_t</span>              <span class="n">countActionSets</span><span class="p">;</span>
@@ -22395,7 +22487,8 @@ in <a href="#semantic-paths-user">Top level /user paths</a>, the runtime <strong
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInteractionProfileState</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInteractionProfileState</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrPath</span>             <span class="n">interactionProfile</span><span class="p">;</span>
@@ -22632,7 +22725,8 @@ It is defined as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateGetInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateGetInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrAction</span>           <span class="n">action</span><span class="p">;</span>
@@ -22703,7 +22797,8 @@ It is defined as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrHapticActionInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrHapticActionInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrAction</span>           <span class="n">action</span><span class="p">;</span>
@@ -22889,7 +22984,8 @@ the state will be placed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateBoolean</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateBoolean</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrBool32</span>           <span class="n">currentState</span><span class="p">;</span>
@@ -23080,7 +23176,8 @@ the state will be placed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateFloat</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateFloat</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="kt">float</span>              <span class="n">currentState</span><span class="p">;</span>
@@ -23263,7 +23360,8 @@ the state will be placed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateVector2f</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStateVector2f</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrVector2f</span>         <span class="n">currentState</span><span class="p">;</span>
@@ -23455,7 +23553,8 @@ space within a base space using <a href="#xrLocateSpace">xrLocateSpace</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStatePose</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionStatePose</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
     <span class="n">XrBool32</span>           <span class="n">isActive</span><span class="p">;</span>
@@ -23680,7 +23779,8 @@ and replace it with the new one.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrHapticBaseHeader</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrHapticBaseHeader</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrHapticBaseHeader</span><span class="p">;</span></code></pre>
@@ -24068,7 +24168,8 @@ inactive.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionsSyncInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActionsSyncInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>             <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                 <span class="n">next</span><span class="p">;</span>
     <span class="kt">uint32_t</span>                    <span class="n">countActiveActionSets</span><span class="p">;</span>
@@ -24128,7 +24229,8 @@ more <a href="#XrActiveActionSet">XrActiveActionSet</a> structures that should b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActiveActionSet</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrActiveActionSet</span> <span class="p">{</span>
     <span class="n">XrActionSet</span>    <span class="n">actionSet</span><span class="p">;</span>
     <span class="n">XrPath</span>         <span class="n">subactionPath</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">XrActiveActionSet</span><span class="p">;</span></code></pre>
@@ -24363,7 +24465,8 @@ They are only intended for use in conjunction with
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrBoundSourcesForActionEnumerateInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrBoundSourcesForActionEnumerateInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrAction</span>           <span class="n">action</span><span class="p">;</span>
@@ -24556,7 +24659,8 @@ the runtime <strong class="purple">must</strong> return <code>XR_ERROR_ACTIONSET
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInputSourceLocalizedNameGetInfo</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrInputSourceLocalizedNameGetInfo</span> <span class="p">{</span>
     <span class="n">XrStructureType</span>                    <span class="n">type</span><span class="p">;</span>
     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                        <span class="n">next</span><span class="p">;</span>
     <span class="n">XrPath</span>                             <span class="n">sourcePath</span><span class="p">;</span>
@@ -24625,7 +24729,8 @@ bits defined in <a href="#XrInputSourceLocalizedNameFlagBits">XrInputSourceLocal
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrInputSourceLocalizedNameFlags</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrInputSourceLocalizedNameFlags</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -24634,7 +24739,8 @@ bits defined in <a href="#XrInputSourceLocalizedNameFlagBits">XrInputSourceLocal
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrInputSourceLocalizedNameFlags</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="c1">// Flag bits for XrInputSourceLocalizedNameFlags</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrInputSourceLocalizedNameFlags</span> <span class="n">XR_INPUT_SOURCE_LOCALIZED_NAME_USER_PATH_BIT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrInputSourceLocalizedNameFlags</span> <span class="n">XR_INPUT_SOURCE_LOCALIZED_NAME_INTERACTION_PROFILE_BIT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrInputSourceLocalizedNameFlags</span> <span class="n">XR_INPUT_SOURCE_LOCALIZED_NAME_COMPONENT_BIT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span></code></pre>
@@ -35413,7 +35519,8 @@ defined in <a href="#XrVulkanInstanceCreateFlagBitsKHR">XrVulkanInstanceCreateFl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrVulkanInstanceCreateFlagsKHR</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_vulkan_enable2</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrVulkanInstanceCreateFlagsKHR</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -35426,7 +35533,8 @@ defined in <a href="#XrVulkanInstanceCreateFlagBitsKHR">XrVulkanInstanceCreateFl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrVulkanInstanceCreateFlagsKHR</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_vulkan_enable2</span>
+<span class="c1">// Flag bits for XrVulkanInstanceCreateFlagsKHR</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -35847,7 +35955,8 @@ defined in <a href="#XrVulkanDeviceCreateFlagBitsKHR">XrVulkanDeviceCreateFlagBi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrVulkanDeviceCreateFlagsKHR</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_vulkan_enable2</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrVulkanDeviceCreateFlagsKHR</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -35860,7 +35969,8 @@ defined in <a href="#XrVulkanDeviceCreateFlagBitsKHR">XrVulkanDeviceCreateFlagBi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrVulkanDeviceCreateFlagsKHR</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_KHR_vulkan_enable2</span>
+<span class="c1">// Flag bits for XrVulkanDeviceCreateFlagsKHR</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -38100,7 +38210,8 @@ The next call to <a href="#xrSessionInsertDebugUtilsLabelEXT">xrSessionInsertDeb
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrDebugUtilsMessengerEXT</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_debug_utils</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrDebugUtilsMessengerEXT</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -38116,7 +38227,8 @@ filters registered with the runtime.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrDebugUtilsMessageSeverityFlagsEXT</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_debug_utils</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrDebugUtilsMessageSeverityFlagsEXT</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -38125,7 +38237,8 @@ filters registered with the runtime.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrDebugUtilsMessageSeverityFlagsEXT</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_debug_utils</span>
+<span class="c1">// Flag bits for XrDebugUtilsMessageSeverityFlagsEXT</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrDebugUtilsMessageSeverityFlagsEXT</span> <span class="n">XR_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrDebugUtilsMessageSeverityFlagsEXT</span> <span class="n">XR_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000010</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrDebugUtilsMessageSeverityFlagsEXT</span> <span class="n">XR_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000100</span><span class="p">;</span>
@@ -38138,7 +38251,8 @@ filters registered with the runtime.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrDebugUtilsMessageTypeFlagsEXT</span><span class="p">;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_debug_utils</span>
+<span class="k">typedef</span> <span class="n">XrFlags64</span> <span class="n">XrDebugUtilsMessageTypeFlagsEXT</span><span class="p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -38147,7 +38261,8 @@ filters registered with the runtime.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Flag bits for XrDebugUtilsMessageTypeFlagsEXT</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_debug_utils</span>
+<span class="c1">// Flag bits for XrDebugUtilsMessageTypeFlagsEXT</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrDebugUtilsMessageTypeFlagsEXT</span> <span class="n">XR_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000001</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrDebugUtilsMessageTypeFlagsEXT</span> <span class="n">XR_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000002</span><span class="p">;</span>
 <span class="k">static</span> <span class="k">const</span> <span class="n">XrDebugUtilsMessageTypeFlagsEXT</span> <span class="n">XR_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT</span> <span class="o">=</span> <span class="mh">0x00000004</span><span class="p">;</span>
@@ -43823,7 +43938,8 @@ of the specific hand.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrHandTrackerEXT</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_hand_tracking</span>
+<span class="n">XR_DEFINE_HANDLE</span><span class="p">(</span><span class="n">XrHandTrackerEXT</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -64864,7 +64980,7 @@ of <a href="#XrViewConfigurationView">XrViewConfigurationView</a>.</p>
 </dd>
 <dt class="hdlist1"><strong>Last Modified Date</strong></dt>
 <dd>
-<p>2024-01-19</p>
+<p>2026-07-10</p>
 </dd>
 <dt class="hdlist1"><strong>IP Status</strong></dt>
 <dd>
@@ -65473,7 +65589,7 @@ using the <a href="#xrLocateSpacesKHR">xrLocateSpacesKHR</a> function.</p>
     <span class="p">};</span>
 
     <span class="n">XrSpaceLocationsKHR</span> <span class="n">locations</span> <span class="p">{</span>
-        <span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">XR_TYPE_SPACES_LOCATE_INFO_KHR</span><span class="p">,</span>
+        <span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">XR_TYPE_SPACE_LOCATIONS_KHR</span><span class="p">,</span>
         <span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">velocities</span><span class="p">,</span>
         <span class="p">.</span><span class="n">locationCount</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">locationBuffer</span><span class="p">.</span><span class="n">size</span><span class="p">()),</span>
         <span class="p">.</span><span class="n">locations</span> <span class="o">=</span> <span class="n">locationBuffer</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
@@ -66344,6 +66460,51 @@ API layers, and is not typically directly used by an application.</p>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_new_structures_20"><a class="anchor" href="#_new_structures_20"></a>14.2.3. New Structures</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrApiLayerCreateInfo">XrApiLayerCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrApiLayerNextInfo">XrApiLayerNextInfo</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateApiLayerRequest">XrNegotiateApiLayerRequest</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateLoaderInfo">XrNegotiateLoaderInfo</a></p>
+</li>
+<li>
+<p><a href="#XrNegotiateRuntimeRequest">XrNegotiateRuntimeRequest</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_function_pointers"><a class="anchor" href="#_new_function_pointers"></a>14.2.4. New Function Pointers</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#PFN_xrCreateApiLayerInstance">PFN_xrCreateApiLayerInstance</a></p>
+</li>
+<li>
+<p><a href="#PFN_xrGetInstanceProcAddr">PFN_xrGetInstanceProcAddr</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_enums_7"><a class="anchor" href="#_new_enums_7"></a>14.2.5. New Enums</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrLoaderInterfaceStructs">XrLoaderInterfaceStructs</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="versions-1.0"><a class="anchor" href="#versions-1.0"></a>14.3. Version 1.0</h3>
@@ -66359,6 +66520,9 @@ API layers, and is not typically directly used by an application.</p>
 </li>
 <li>
 <p><a href="#XR_CURRENT_API_VERSION">XR_CURRENT_API_VERSION</a></p>
+</li>
+<li>
+<p><a href="#XR_DEFINE_ATOM">XR_DEFINE_ATOM</a></p>
 </li>
 <li>
 <p><a href="#XR_DEFINE_HANDLE">XR_DEFINE_HANDLE</a></p>
@@ -66380,6 +66544,9 @@ API layers, and is not typically directly used by an application.</p>
 </li>
 <li>
 <p><a href="#XR_INFINITE_DURATION">XR_INFINITE_DURATION</a></p>
+</li>
+<li>
+<p><a href="#XR_MAKE_VERSION">XR_MAKE_VERSION</a></p>
 </li>
 <li>
 <p><a href="#XR_MAX_EVENT_DATA_SIZE">XR_MAX_EVENT_DATA_SIZE</a></p>
@@ -66428,13 +66595,56 @@ API layers, and is not typically directly used by an application.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code><a href="#XrBool32">XrBool32</a></code></p>
+</li>
+<li>
+<p><code><a href="#XrDuration">XrDuration</a></code></p>
+</li>
+<li>
+<p><code><a href="#XrFlags64">XrFlags64</a></code></p>
+</li>
+<li>
+<p><code><a href="#XrPath">XrPath</a></code></p>
+</li>
+<li>
+<p><code><a href="#XrSystemId">XrSystemId</a></code></p>
+</li>
+<li>
+<p><code><a href="#XrTime">XrTime</a></code></p>
+</li>
+<li>
 <p><code><a href="#XrVersion">XrVersion</a></code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_new_commands_16"><a class="anchor" href="#_new_commands_16"></a>14.3.3. New Commands</h4>
+<h4 id="_new_object_types_4"><a class="anchor" href="#_new_object_types_4"></a>14.3.3. New Object Types</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrAction">XrAction</a></p>
+</li>
+<li>
+<p><a href="#XrActionSet">XrActionSet</a></p>
+</li>
+<li>
+<p><a href="#XrInstance">XrInstance</a></p>
+</li>
+<li>
+<p><a href="#XrSession">XrSession</a></p>
+</li>
+<li>
+<p><a href="#XrSpace">XrSpace</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchain">XrSwapchain</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_commands_16"><a class="anchor" href="#_new_commands_16"></a>14.3.4. New Commands</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -66606,9 +66816,48 @@ API layers, and is not typically directly used by an application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_new_structures_20"><a class="anchor" href="#_new_structures_20"></a>14.3.4. New Structures</h4>
+<h4 id="_new_structures_21"><a class="anchor" href="#_new_structures_21"></a>14.3.5. New Structures</h4>
 <div class="ulist">
 <ul>
+<li>
+<p><a href="#XrActionCreateInfo">XrActionCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrActionSetCreateInfo">XrActionSetCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrActionSpaceCreateInfo">XrActionSpaceCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrActionStateBoolean">XrActionStateBoolean</a></p>
+</li>
+<li>
+<p><a href="#XrActionStateFloat">XrActionStateFloat</a></p>
+</li>
+<li>
+<p><a href="#XrActionStateGetInfo">XrActionStateGetInfo</a></p>
+</li>
+<li>
+<p><a href="#XrActionStatePose">XrActionStatePose</a></p>
+</li>
+<li>
+<p><a href="#XrActionStateVector2f">XrActionStateVector2f</a></p>
+</li>
+<li>
+<p><a href="#XrActionSuggestedBinding">XrActionSuggestedBinding</a></p>
+</li>
+<li>
+<p><a href="#XrActionsSyncInfo">XrActionsSyncInfo</a></p>
+</li>
+<li>
+<p><a href="#XrActiveActionSet">XrActiveActionSet</a></p>
+</li>
+<li>
+<p><a href="#XrApiLayerProperties">XrApiLayerProperties</a></p>
+</li>
+<li>
+<p><a href="#XrApplicationInfo">XrApplicationInfo</a></p>
+</li>
 <li>
 <p><a href="#XrBaseInStructure">XrBaseInStructure</a></p>
 </li>
@@ -66616,16 +66865,28 @@ API layers, and is not typically directly used by an application.</p>
 <p><a href="#XrBaseOutStructure">XrBaseOutStructure</a></p>
 </li>
 <li>
+<p><a href="#XrBoundSourcesForActionEnumerateInfo">XrBoundSourcesForActionEnumerateInfo</a></p>
+</li>
+<li>
 <p><a href="#XrColor4f">XrColor4f</a></p>
 </li>
 <li>
+<p><a href="#XrCompositionLayerBaseHeader">XrCompositionLayerBaseHeader</a></p>
+</li>
+<li>
 <p><a href="#XrCompositionLayerProjection">XrCompositionLayerProjection</a></p>
+</li>
+<li>
+<p><a href="#XrCompositionLayerProjectionView">XrCompositionLayerProjectionView</a></p>
 </li>
 <li>
 <p><a href="#XrCompositionLayerQuad">XrCompositionLayerQuad</a></p>
 </li>
 <li>
 <p><a href="#XrEventDataBaseHeader">XrEventDataBaseHeader</a></p>
+</li>
+<li>
+<p><a href="#XrEventDataBuffer">XrEventDataBuffer</a></p>
 </li>
 <li>
 <p><a href="#XrEventDataEventsLost">XrEventDataEventsLost</a></p>
@@ -66643,19 +66904,139 @@ API layers, and is not typically directly used by an application.</p>
 <p><a href="#XrEventDataSessionStateChanged">XrEventDataSessionStateChanged</a></p>
 </li>
 <li>
+<p><a href="#XrExtensionProperties">XrExtensionProperties</a></p>
+</li>
+<li>
 <p><a href="#XrExtent2Df">XrExtent2Df</a></p>
+</li>
+<li>
+<p><a href="#XrExtent2Di">XrExtent2Di</a></p>
+</li>
+<li>
+<p><a href="#XrFovf">XrFovf</a></p>
+</li>
+<li>
+<p><a href="#XrFrameBeginInfo">XrFrameBeginInfo</a></p>
+</li>
+<li>
+<p><a href="#XrFrameEndInfo">XrFrameEndInfo</a></p>
+</li>
+<li>
+<p><a href="#XrFrameState">XrFrameState</a></p>
+</li>
+<li>
+<p><a href="#XrFrameWaitInfo">XrFrameWaitInfo</a></p>
+</li>
+<li>
+<p><a href="#XrHapticActionInfo">XrHapticActionInfo</a></p>
+</li>
+<li>
+<p><a href="#XrHapticBaseHeader">XrHapticBaseHeader</a></p>
 </li>
 <li>
 <p><a href="#XrHapticVibration">XrHapticVibration</a></p>
 </li>
 <li>
+<p><a href="#XrInputSourceLocalizedNameGetInfo">XrInputSourceLocalizedNameGetInfo</a></p>
+</li>
+<li>
+<p><a href="#XrInstanceCreateInfo">XrInstanceCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrInstanceProperties">XrInstanceProperties</a></p>
+</li>
+<li>
+<p><a href="#XrInteractionProfileState">XrInteractionProfileState</a></p>
+</li>
+<li>
+<p><a href="#XrInteractionProfileSuggestedBinding">XrInteractionProfileSuggestedBinding</a></p>
+</li>
+<li>
 <p><a href="#XrOffset2Df">XrOffset2Df</a></p>
+</li>
+<li>
+<p><a href="#XrOffset2Di">XrOffset2Di</a></p>
+</li>
+<li>
+<p><a href="#XrPosef">XrPosef</a></p>
+</li>
+<li>
+<p><a href="#XrQuaternionf">XrQuaternionf</a></p>
 </li>
 <li>
 <p><a href="#XrRect2Df">XrRect2Df</a></p>
 </li>
 <li>
+<p><a href="#XrRect2Di">XrRect2Di</a></p>
+</li>
+<li>
+<p><a href="#XrReferenceSpaceCreateInfo">XrReferenceSpaceCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSessionActionSetsAttachInfo">XrSessionActionSetsAttachInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSessionBeginInfo">XrSessionBeginInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSessionCreateInfo">XrSessionCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSpaceLocation">XrSpaceLocation</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainCreateInfo">XrSwapchainCreateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainImageAcquireInfo">XrSwapchainImageAcquireInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainImageBaseHeader">XrSwapchainImageBaseHeader</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainImageReleaseInfo">XrSwapchainImageReleaseInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainImageWaitInfo">XrSwapchainImageWaitInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainSubImage">XrSwapchainSubImage</a></p>
+</li>
+<li>
+<p><a href="#XrSystemGetInfo">XrSystemGetInfo</a></p>
+</li>
+<li>
+<p><a href="#XrSystemGraphicsProperties">XrSystemGraphicsProperties</a></p>
+</li>
+<li>
+<p><a href="#XrSystemProperties">XrSystemProperties</a></p>
+</li>
+<li>
+<p><a href="#XrSystemTrackingProperties">XrSystemTrackingProperties</a></p>
+</li>
+<li>
+<p><a href="#XrVector2f">XrVector2f</a></p>
+</li>
+<li>
+<p><a href="#XrVector3f">XrVector3f</a></p>
+</li>
+<li>
 <p><a href="#XrVector4f">XrVector4f</a></p>
+</li>
+<li>
+<p><a href="#XrView">XrView</a></p>
+</li>
+<li>
+<p><a href="#XrViewConfigurationProperties">XrViewConfigurationProperties</a></p>
+</li>
+<li>
+<p><a href="#XrViewConfigurationView">XrViewConfigurationView</a></p>
+</li>
+<li>
+<p><a href="#XrViewLocateInfo">XrViewLocateInfo</a></p>
+</li>
+<li>
+<p><a href="#XrViewState">XrViewState</a></p>
 </li>
 <li>
 <p>Extending <a href="#XrSpaceLocation">XrSpaceLocation</a>:</p>
@@ -66671,17 +67052,115 @@ API layers, and is not typically directly used by an application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_new_enums_7"><a class="anchor" href="#_new_enums_7"></a>14.3.5. New Enums</h4>
+<h4 id="_new_function_pointers_2"><a class="anchor" href="#_new_function_pointers_2"></a>14.3.6. New Function Pointers</h4>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#XrObjectType">XrObjectType</a></p>
+<p><a href="#PFN_xrVoidFunction">PFN_xrVoidFunction</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_new_headers"><a class="anchor" href="#_new_headers"></a>14.3.6. New Headers</h4>
+<h4 id="_new_enums_8"><a class="anchor" href="#_new_enums_8"></a>14.3.7. New Enums</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrActionType">XrActionType</a></p>
+</li>
+<li>
+<p><a href="#XrCompositionLayerFlagBits">XrCompositionLayerFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrEnvironmentBlendMode">XrEnvironmentBlendMode</a></p>
+</li>
+<li>
+<p><a href="#XrEyeVisibility">XrEyeVisibility</a></p>
+</li>
+<li>
+<p><a href="#XrFormFactor">XrFormFactor</a></p>
+</li>
+<li>
+<p><a href="#XrInputSourceLocalizedNameFlagBits">XrInputSourceLocalizedNameFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrInstanceCreateFlagBits">XrInstanceCreateFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrObjectType">XrObjectType</a></p>
+</li>
+<li>
+<p><a href="#XrReferenceSpaceType">XrReferenceSpaceType</a></p>
+</li>
+<li>
+<p><a href="#XrResult">XrResult</a></p>
+</li>
+<li>
+<p><a href="#XrSessionCreateFlagBits">XrSessionCreateFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrSessionState">XrSessionState</a></p>
+</li>
+<li>
+<p><a href="#XrSpaceLocationFlagBits">XrSpaceLocationFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrSpaceVelocityFlagBits">XrSpaceVelocityFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrStructureType">XrStructureType</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainCreateFlagBits">XrSwapchainCreateFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainUsageFlagBits">XrSwapchainUsageFlagBits</a></p>
+</li>
+<li>
+<p><a href="#XrViewConfigurationType">XrViewConfigurationType</a></p>
+</li>
+<li>
+<p><a href="#XrViewStateFlagBits">XrViewStateFlagBits</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_bitmasks_2"><a class="anchor" href="#_new_bitmasks_2"></a>14.3.8. New Bitmasks</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#XrCompositionLayerFlags">XrCompositionLayerFlags</a></p>
+</li>
+<li>
+<p><a href="#XrInputSourceLocalizedNameFlags">XrInputSourceLocalizedNameFlags</a></p>
+</li>
+<li>
+<p><a href="#XrInstanceCreateFlags">XrInstanceCreateFlags</a></p>
+</li>
+<li>
+<p><a href="#XrSessionCreateFlags">XrSessionCreateFlags</a></p>
+</li>
+<li>
+<p><a href="#XrSpaceLocationFlags">XrSpaceLocationFlags</a></p>
+</li>
+<li>
+<p><a href="#XrSpaceVelocityFlags">XrSpaceVelocityFlags</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainCreateFlags">XrSwapchainCreateFlags</a></p>
+</li>
+<li>
+<p><a href="#XrSwapchainUsageFlags">XrSwapchainUsageFlags</a></p>
+</li>
+<li>
+<p><a href="#XrViewStateFlags">XrViewStateFlags</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_headers"><a class="anchor" href="#_new_headers"></a>14.3.9. New Headers</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -66691,7 +67170,7 @@ API layers, and is not typically directly used by an application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_new_enum_constants_22"><a class="anchor" href="#_new_enum_constants_22"></a>14.3.7. New Enum Constants</h4>
+<h4 id="_new_enum_constants_22"><a class="anchor" href="#_new_enum_constants_22"></a>14.3.10. New Enum Constants</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -68386,7 +68865,8 @@ the application binary interface.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrStructureType</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrStructureType</span> <span class="p">{</span>
     <span class="n">XR_TYPE_UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">XR_TYPE_API_LAYER_PROPERTIES</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">XR_TYPE_EXTENSION_PROPERTIES</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
@@ -68800,7 +69280,7 @@ Each is packed into a 64-bit integer as described in
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
 <span class="c1">// OpenXR current version number.</span>
-<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 61)
+<span class="cp">#define XR_CURRENT_API_VERSION XR_MAKE_VERSION(1, 1, 62)
 </span></code></pre>
 </div>
 </div>
@@ -68860,7 +69340,8 @@ numbers.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="cp">#define XR_MAKE_VERSION(major, minor, patch) \
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="cp">#define XR_MAKE_VERSION(major, minor, patch) \
     ((((major) &amp; 0xffffULL) &lt;&lt; 48) | (((minor) &amp; 0xffffULL) &lt;&lt; 32) | ((patch) &amp; 0xffffffffULL))
 </span></code></pre>
 </div>
@@ -69049,7 +69530,8 @@ allowed.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="c++"><span class="cp">#if !defined(XR_DEFINE_ATOM)
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_VERSION_1_0</span>
+<span class="cp">#if !defined(XR_DEFINE_ATOM)
 </span>    <span class="cp">#define XR_DEFINE_ATOM(object) typedef uint64_t object;
 #endif
 </span></code></pre>
@@ -69938,7 +70420,7 @@ the time of their most recent contribution, are listed below.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.61<br>
+Version 1.1.62<br>
 </div>
 </div>
 </body>

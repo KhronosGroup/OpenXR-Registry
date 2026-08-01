@@ -386,8 +386,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2026 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.1.61</span>
-<br><span id="revremark">from git ref release-1.1.61</span>
+<span id="revnumber">version 1.1.62</span>
+<br><span id="revremark">from git ref release-1.1.62</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1256,6 +1256,11 @@ explicit is dependent on the operating system, as shown in the table below.</p>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Implicit API Layers are located in the "api_layers/implicit.d" folder under any of the
     <a href="#linux-manifest-search-paths">common API layer paths</a>.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Android</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Implicit API Layers are located in the
+    <a href="#android-api-layer-discovery">APK asset or system installed implicit layer directories</a>.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1988,13 +1993,43 @@ and implicit layers:</p>
 openxr/__major_ver__/api_layers/explicit.d</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>+
++In an Android Gradle project, these files are typically packaged from
++<code>src/main/assets/openxr/<em>major_ver</em>/api_layers/</code>.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Where <code><em>major_ver</em></code> is the integer number for the OpenXR API&#8217;s major
+version the API layers are associated with.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows the paths used when inspecting an APK as a
+ZIP for OpenXR 1.x application API layers.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. OpenXR 1.x Android APK ZIP Paths</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>assets/openxr/1/api_layers/implicit.d/*.json
+assets/openxr/1/api_layers/explicit.d/*.json</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The loader accesses these using the Android AssetManager classes.
+For APK asset discovery to work, an Android application must initialize the
+loader by calling <code>xrInitializeLoaderKHR</code> with an
+<code>XrLoaderInitInfoAndroidKHR</code> before attempting to enumerate or create OpenXR
+instances. This initialization provides the Android context needed to access
+the application&#8217;s assets and native library directory.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
-<div class="paragraph">
-<p>The loader accesses these using the Android AssetManager classes.</p>
-</div>
-</div>
-</div>
 <div class="paragraph">
 <p>The loader also looks for system installed API layers in a similar process
 as is used for active runtime discovery.
@@ -2002,8 +2037,9 @@ The following system directories are searched for
 <a href="#api-layer-manifest-file-format">Manifest files</a> in the following priority
 order for implicit and explicit API layers:</p>
 </div>
-<div class="sect4">
-<h5 id="_implicit_api_layers">Implicit API Layers</h5>
+<div class="paragraph">
+<p>===== Implicit API Layers</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2016,20 +2052,23 @@ order for implicit and explicit API layers:</p>
 <p><code>/oem/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 <li>
-<p><code>/system/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
+<p><code>/vendor/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 <li>
-<p><code>/vendor/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
+<p><code>/system/etc/openxr/<em>major_ver</em>/api_layers/implicit.d</code></p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>===== Explicit API Layers</p>
 </div>
-<div class="sect4">
-<h5 id="_explicit_api_layers">Explicit API Layers</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p><code>/product/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
+</li>
+<li>
+<p><code>/odm/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
 <li>
 <p><code>/oem/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
@@ -2040,11 +2079,17 @@ order for implicit and explicit API layers:</p>
 <li>
 <p><code>/system/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
 </li>
-<li>
-<p><code>/odm/etc/openxr/<em>major_ver</em>/api_layers/explicit.d</code></p>
-</li>
 </ol>
 </div>
+</div>
+</div>
+<div class="paragraph">
+<p>The directories above define where the loader searches for system installed
+API layer manifest files. They do not define where an API layer shared
+library must be installed, nor whether an application process is permitted to
+load that library. On Android, shared library loading can also be affected by
+linker namespace policy, public library allowlists, filesystem permissions,
+and SELinux policy, which are device-image specific.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2067,7 +2112,7 @@ The JSON file itself does not have any requirements for naming.
 The only requirement is that the filename extension is ".json".</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. API Layer Manifest Examples</div>
+<div class="title">Example 8. API Layer Manifest Examples</div>
 <div class="content">
 <div class="paragraph">
 <p><strong>Simple Explicit API Layer Manifest File</strong></p>
@@ -3314,7 +3359,7 @@ requirement of using the ".json" extension.</p>
 <p>Here is an example runtime JSON manifest file:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Runtime Manifest</div>
+<div class="title">Example 9. Runtime Manifest</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -3599,7 +3644,7 @@ environment variable.</p>
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Setting XR_RUNTIME_JSON Override</div>
+<div class="title">Example 10. Setting XR_RUNTIME_JSON Override</div>
 <div class="content">
 <div class="paragraph">
 <p><strong>Windows</strong></p>
@@ -3939,7 +3984,7 @@ In those cases, this requirement is waived.</p>
 <p>Namespaces outside of the OpenXR loader <strong class="purple">must</strong> not be enabled by default.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 10. Disallowed Namespace Usage</div>
+<div class="title">Example 11. Disallowed Namespace Usage</div>
 <div class="content">
 <div class="paragraph">
 <p>The following is disallowed:</p>
@@ -3957,7 +4002,7 @@ coming from a namespace, you must list the full namespace of that item.
 Some examples are as follows:</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 11. Valid Namespace Usage</div>
+<div class="title">Example 12. Valid Namespace Usage</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4017,7 +4062,7 @@ When used, you can find elements of this functionality with the prefix
 <code>std::experimental::filesystem</code>.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 12. Experimental Filesystem Usage</div>
+<div class="title">Example 13. Experimental Filesystem Usage</div>
 <div class="content">
 <div class="paragraph">
 <p>Using the experimental filesystem in the source:</p>
@@ -4083,7 +4128,7 @@ C++ files <strong class="purple">must</strong> end with either .cpp or .hpp to d
 Python scripts, must be named with a .py suffix.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13. Filenames</div>
+<div class="title">Example 14. Filenames</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4101,7 +4146,7 @@ loader_instance.cpp</code></pre>
 to a specific value.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 14. #define Values</div>
+<div class="title">Example 15. #define Values</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4120,7 +4165,7 @@ to a specific value.</p>
 lower-snake-case.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 15. Variable Names</div>
+<div class="title">Example 16. Variable Names</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4136,7 +4181,7 @@ std::string file_path_location;</code></pre>
 prefix of <code>g_</code> required to identify them as global variables.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16. Global Variable Names</div>
+<div class="title">Example 17. Global Variable Names</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4153,7 +4198,7 @@ prefix of <code>g_</code> required to identify them as global variables.</p>
 parameters <strong class="purple">must</strong> use lower-snake-case for their naming.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 17. Function and Parameter Naming</div>
+<div class="title">Example 18. Function and Parameter Naming</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4182,7 +4227,7 @@ Additionally, at least the first value in the enumeration list <strong class="pu
 defined to an integer value.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 18. Structure/Enumeration Naming</div>
+<div class="title">Example 19. Structure/Enumeration Naming</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4224,7 +4269,7 @@ lower-snake-case (just as functions defined above)</p>
 </ul>
 </div>
 <div class="exampleblock">
-<div class="title">Example 19. Class Component Naming</div>
+<div class="title">Example 20. Class Component Naming</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -4784,7 +4829,7 @@ the <code>LoaderLogger</code>::<code>GetInstance</code>() and making the appropr
 <code>LoaderLogger</code>::<code>LogMessage</code>().</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 20. Using the Log Messages</div>
+<div class="title">Example 21. Using the Log Messages</div>
 <div class="content">
 <div class="paragraph">
 <p>Here are a few examples of triggering a log message:</p>
@@ -5480,7 +5525,7 @@ you wish to see logged by the loader to std::cerr.</p>
 of any levels above it.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 21. Setting XR_LOADER_DEBUG</div>
+<div class="title">Example 22. Setting XR_LOADER_DEBUG</div>
 <div class="content">
 <div class="paragraph">
 <p><strong>Windows</strong></p>
@@ -5660,9 +5705,9 @@ discovery.</p>
     OpenXR <a href="#runtime-discovery">runtimes</a> and <a href="#api-layer-discovery">API layers</a>.
     On Windows and Linux, the discovery process typically focuses on searching
     for Manifest files.  While on Android, the discovery process uses
-    <a href="#android-api-layer-discovery">APK packaged Manifest json</a> files for API
-    layers and the <a href="#android-active-runtime-location">ContentProvider</a> for the
-    runtime.</p></td>
+    <a href="#android-api-layer-discovery">APK packaged and system installed manifest JSON</a>
+    files for API layers and the <a href="#android-active-runtime-location">ContentProvider</a>
+    for the runtime.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Extension</p></td>
@@ -5708,7 +5753,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.61<br>
+Version 1.1.62<br>
 </div>
 </div>
 </body>
