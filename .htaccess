@@ -1,0 +1,16 @@
+# So `specs/1.1/man/html/` lists all the refpages
+Options +Indexes
+
+RewriteEngine on
+
+# Avoid redirect loops
+RewriteCond %{ENV:REDIRECT_STATUS} 200
+RewriteRule ^ - [L]
+RewriteBase /OpenXR/
+
+# Permanent redirect (301) from 1.0 to 1.1 (latest)
+RewriteRule ^specs/1.0/man/html/(.*)$                           specs/1.1/man/html/$1 [L,R=301]
+RewriteRule ^specs/1.0/html/xrspec.html$                        specs/1.1/html/xrspec.html [L,R=301]
+RewriteRule ^specs/1.0/extprocess.html$                         specs/1.1/extprocess.html [L,R=301]
+RewriteRule ^specs/1.0/loader.html$                             specs/1.1/loader.html [L,R=301]
+RewriteRule ^specs/1.0/styleguide.html$                         specs/1.1/styleguide.html [L,R=301]
