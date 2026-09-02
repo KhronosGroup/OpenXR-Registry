@@ -112,6 +112,25 @@ entities with semantic labels that appear in this list.</p>
 <div class="sect1">
 <h2 id="_description">Description</h2>
 <div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>A runtime implementing an earlier version of this extension will not
+recognize <a href="XrSemanticLabelBD.html">XrSemanticLabelBD</a> values introduced in a later extension
+version and therefore is unable to filter on such labels.
+If a label introduced in a later version of the extension than the runtime
+reports is passed in <code>labels</code>, no corresponding data will be returned.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage (Implicit)</div>
@@ -174,7 +193,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.62<br>
+Version 1.1.63<br>
 </div>
 </div>
 </body>

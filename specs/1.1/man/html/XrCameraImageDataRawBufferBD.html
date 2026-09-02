@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrCameraImageDataRawBufferBD(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrCameraImageDataRawBufferBD(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrCameraImageDataRawBufferBD - Raw CPU buffer image data</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrCameraImageDataRawBufferBD">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrCameraImageDataRawBufferBD.html">XrCameraImageDataRawBufferBD</a> structure is defined as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_BD_camera_image</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrCameraImageDataRawBufferBD</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">next</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">width</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">height</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">stride</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">bytesPerPixel</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">pixelStride</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>           <span class="n">bufferSize</span><span class="p">;</span>
+    <span class="kt">uint8_t</span><span class="o">*</span>           <span class="n">buffer</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrCameraImageDataRawBufferBD</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a chain.
+It <strong class="purple">may</strong> include <a href="XrCameraIntrinsicsBD.html">XrCameraIntrinsicsBD</a> and/or
+<a href="XrCameraExtrinsicsBD.html">XrCameraExtrinsicsBD</a> to request intrinsics and/or extrinsics for the
+retrieved image.</p>
+</li>
+<li>
+<p><code>width</code> is the image width in pixels.</p>
+</li>
+<li>
+<p><code>height</code> is the image height in pixels.</p>
+</li>
+<li>
+<p><code>stride</code> is the number of bytes between the start of consecutive rows,
+where <code>stride</code> <strong class="purple">must</strong> be <span class="eq"><code>stride</code> ≥ <code>width</code> ×
+<code>pixelStride</code></span>.</p>
+</li>
+<li>
+<p><code>bytesPerPixel</code> is the number of bytes per pixel.</p>
+</li>
+<li>
+<p><code>pixelStride</code> is the number of bytes between consecutive pixels (for
+packed formats, this equals <code>bytesPerPixel</code>), where <code>pixelStride</code>
+<strong class="purple">must</strong> be <span class="eq"><code>pixelStride</code> ≥ <code>bytesPerPixel</code></span>.</p>
+</li>
+<li>
+<p><code>bufferSize</code> is the total size of the image <code>buffer</code> in bytes,
+where <code>bufferSize</code> <strong class="purple">must</strong> be <span class="eq"><code>bufferSize</code> ≥ <code>stride</code>
+× <code>height</code></span>.</p>
+</li>
+<li>
+<p><code>buffer</code> is a pointer to a runtime allocated buffer that contains the
+raw image data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This structure retrieves raw CPU buffer data for images transferred via
+<code>XR_CAMERA_DATA_TRANSFER_TYPE_RAW_BUFFER_BD</code>.
+The runtime <strong class="purple">must</strong> guarantee the <code>buffer</code>&#8217;s validity until the image is
+released.</p>
+</div>
+<div class="paragraph">
+<p>The application <strong class="purple">must</strong> not access the buffer after calling
+<a href="xrReleaseCameraImageBD.html">xrReleaseCameraImageBD</a> with this image ID.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrCameraImageDataRawBufferBD-extension-notenabled" href="#VUID-XrCameraImageDataRawBufferBD-extension-notenabled"></a> The <code><a href="XR_BD_camera_image.html">XR_BD_camera_image</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrCameraImageDataRawBufferBD.html">XrCameraImageDataRawBufferBD</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCameraImageDataRawBufferBD-type-type" href="#VUID-XrCameraImageDataRawBufferBD-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_CAMERA_IMAGE_DATA_RAW_BUFFER_BD</code></p>
+</li>
+<li>
+<p><a id="VUID-XrCameraImageDataRawBufferBD-next-next" href="#VUID-XrCameraImageDataRawBufferBD-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrCameraImageDataRawBufferBD-buffer-parameter" href="#VUID-XrCameraImageDataRawBufferBD-buffer-parameter"></a> <code>buffer</code> <strong class="purple">must</strong> be a pointer to an array of <code>bufferSize</code> <code>uint8_t</code> values</p>
+</li>
+<li>
+<p><a id="VUID-XrCameraImageDataRawBufferBD-bufferSize-arraylength" href="#VUID-XrCameraImageDataRawBufferBD-bufferSize-arraylength"></a> The <code>bufferSize</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_BD_camera_image.html">XR_BD_camera_image</a>, <a href="XrCameraImageDataBaseHeaderBD.html">XrCameraImageDataBaseHeaderBD</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="xrGetCameraImageDataBD.html">xrGetCameraImageDataBD</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrCameraImageDataRawBufferBD" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.63<br>
+</div>
+</div>
+</body>
+</html>

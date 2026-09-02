@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrSpatialContainerViewStateEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSpatialContainerViewStateEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSpatialContainerViewStateEXT - View suitability information for a spatial container</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrSpatialContainerViewStateEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a> structure is populated by calls to
+<a href="xrLocateSpatialContainerViewsEXT.html">xrLocateSpatialContainerViewsEXT</a> with per-spatial container rendering
+suitability information.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_container_self_rendering</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpatialContainerViewStateEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>            <span class="n">type</span><span class="p">;</span>
+    <span class="kt">void</span><span class="o">*</span>                      <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrViewStateFlags</span>           <span class="n">viewStateFlags</span><span class="p">;</span>
+    <span class="n">XrViewConfigurationType</span>    <span class="n">viewConfigurationType</span><span class="p">;</span>
+    <span class="n">XrBool32</span>                   <span class="n">shouldSubmitLayers</span><span class="p">;</span>
+    <span class="n">XrExtent2Di</span>                <span class="n">recommendedImageExtent</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSpatialContainerViewStateEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Description</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>viewStateFlags</code> is a bitmask of <a href="XrViewStateFlags.html">XrViewStateFlags</a>.
+These flags have the same purpose as the viewStateFlags in the core
+<a href="XrViewState.html">XrViewState</a> structure.</p>
+</li>
+<li>
+<p><code>viewConfigurationType</code> is an <a href="XrViewConfigurationType.html">XrViewConfigurationType</a> which
+indicates the view configuration type the runtime is using for the spatial
+container, which runtimes <strong class="purple">may</strong> decay to a view configuration with a lower
+number of views than the one requested.</p>
+</li>
+<li>
+<p><code>shouldSubmitLayers</code> is an <a href="XrBool32.html">XrBool32</a> returned by the runtime.
+If <code>XR_FALSE</code>, the app <strong class="purple">should</strong> avoid submitting composition for this
+spatial container as it is currently not visible or is in a state where
+rendering is not required.</p>
+</li>
+<li>
+<p><code>recommendedImageExtent</code> is an <a href="XrExtent2Di.html">XrExtent2Di</a> structure
+representing the recommended resolution for the spatial container.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with core OpenXR view location, the app <strong class="purple">must</strong> check the
+<a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a>::<code>viewStateFlags</code> to ensure the
+position and orientation are valid and tracked before using the view data
+for rendering.</p>
+</div>
+<div class="paragraph">
+<p>The app <strong class="purple">should</strong> check <code>shouldSubmitLayers</code> and
+<code>viewConfigurationType</code> to avoid rendering more than the runtime
+recommends.
+When <code>shouldSubmitLayers</code> is false, the app changes its rendering
+behavior as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The app <strong class="purple">must</strong> not read the corresponding <a href="XrView.html">XrView</a>::<code>fov</code>.</p>
+</li>
+<li>
+<p>The app <strong class="purple">must</strong> not read <code>recommendedImageExtent</code>.</p>
+</li>
+<li>
+<p>The app <strong class="purple">should</strong> avoid rendering to swapchains and submitting composition
+layers for the corresponding spatial container.</p>
+</li>
+<li>
+<p>The app <strong class="purple">should</strong> set
+<a href="XrSpatialContainerLayerEXT.html">XrSpatialContainerLayerEXT</a>::<code>retainPreviousSubmission</code> to true.
+If the app chooses to submit layers anyway, it is up to the runtime to
+determine what it wants to do with the layers (e.g. the runtime <strong class="purple">may</strong>
+choose to drop them).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>recommendedImageExtent</code> is explicitly for layers that will be updated
+based on the container position or user&#8217;s view.
+When updating layers with content that depends on the spatial container&#8217;s
+position or user&#8217;s view (such as normal 3D content), the app <strong class="purple">should</strong> render
+to this smaller viewport instead of the default recommended view size.
+When updating layers with content that does not depend on the spatial
+container&#8217;s position or user&#8217;s view (such as static quad layers), the app
+<strong class="purple">may</strong> safely ignore these values.
+For view dependent layers, <code>recommendedImageExtent</code> is a recommendation
+to the app from the runtime intended to minimize aliasing and improve
+rendering performance.
+The app is free to submit at full resolution if it wishes.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="XrExtent2Di.html">XrExtent2Di</a>::<code>width</code> and <a href="XrExtent2Di.html">XrExtent2Di</a>::<code>height</code> of
+<code>recommendedImageExtent</code> <strong class="purple">must</strong> always be a positive integer less than or
+equal to the <a href="XrViewConfigurationView.html">XrViewConfigurationView</a>::<code>recommendedImageRectWidth</code>
+and <a href="XrViewConfigurationView.html">XrViewConfigurationView</a>::<code>recommendedImageRectHeight</code> of the
+<a href="XrViewConfigurationView.html">XrViewConfigurationView</a> for the spatial container&#8217;s primary view
+configuration.
+An app <strong class="purple">should</strong> not recreate a swapchain solely because
+<code>recommendedImageExtent</code> changed, as it is a dynamic hint to the app
+specifying the <a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a>::<code>imageRect</code> to use in the
+<a href="XrSwapchainSubImage.html">XrSwapchainSubImage</a> of any full resolution composition layers it
+submits, and <strong class="purple">can</strong> change every frame.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialContainerViewStateEXT-extension-notenabled" href="#VUID-XrSpatialContainerViewStateEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerViewStateEXT-type-type" href="#VUID-XrSpatialContainerViewStateEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SPATIAL_CONTAINER_VIEW_STATE_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerViewStateEXT-next-next" href="#VUID-XrSpatialContainerViewStateEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerViewStateEXT-viewStateFlags-parameter" href="#VUID-XrSpatialContainerViewStateEXT-viewStateFlags-parameter"></a> <code>viewStateFlags</code> <strong class="purple">must</strong> be a valid combination of <a href="XrViewStateFlagBits.html">XrViewStateFlagBits</a> values</p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerViewStateEXT-viewStateFlags-requiredbitmask" href="#VUID-XrSpatialContainerViewStateEXT-viewStateFlags-requiredbitmask"></a> <code>viewStateFlags</code> <strong class="purple">must</strong> not be <code>0</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerViewStateEXT-viewConfigurationType-parameter" href="#VUID-XrSpatialContainerViewStateEXT-viewConfigurationType-parameter"></a> <code>viewConfigurationType</code> <strong class="purple">must</strong> be a valid <a href="XrViewConfigurationType.html">XrViewConfigurationType</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrExtent2Di.html">XrExtent2Di</a>, <a href="XrStructureType.html">XrStructureType</a>, <a href="XrViewConfigurationType.html">XrViewConfigurationType</a>, <a href="XrViewStateFlags.html">XrViewStateFlags</a>, <a href="xrLocateSpatialContainerViewsEXT.html">xrLocateSpatialContainerViewsEXT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSpatialContainerViewStateEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.63<br>
+</div>
+</div>
+</body>
+</html>

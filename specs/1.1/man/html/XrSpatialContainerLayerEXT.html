@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrSpatialContainerLayerEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSpatialContainerLayerEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSpatialContainerLayerEXT - Layers associated with a specific spatial container</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrSpatialContainerLayerEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="XrSpatialContainerLayerEXT.html">XrSpatialContainerLayerEXT</a> structure groups standard composition
+layers and associates them with a specific spatial container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_container_self_rendering</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpatialContainerLayerEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>                               <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                                   <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrSpatialContainerEXT</span>                         <span class="n">spatialContainer</span><span class="p">;</span>
+    <span class="n">XrBool32</span>                                      <span class="n">retainPreviousSubmission</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                                      <span class="n">layerCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">XrCompositionLayerBaseHeader</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span>    <span class="n">layers</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSpatialContainerLayerEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Description</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>spatialContainer</code> is the <a href="XrSpatialContainerEXT.html">XrSpatialContainerEXT</a> identifying the
+target container.</p>
+</li>
+<li>
+<p><code>retainPreviousSubmission</code> is an <a href="XrBool32.html">XrBool32</a>.
+If <code>XR_TRUE</code>, the runtime will retain the last submitted frame for
+this spatial container.</p>
+</li>
+<li>
+<p><code>layerCount</code> is the number of composition layers in the <code>layers</code>
+array.</p>
+</li>
+<li>
+<p><code>layers</code> is a pointer to an array of
+<a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a> pointers.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When <code>retainPreviousSubmission</code> is <code>XR_TRUE</code>, the runtime <strong class="purple">must</strong>
+reuse the composition layers and swapchain image contents as latched during
+the most recent <a href="xrEndFrame.html">xrEndFrame</a> call where <code>retainPreviousSubmission</code>
+was <code>XR_FALSE</code>.
+Any subsequent modifications to swapchains used by retained layers <strong class="purple">must</strong> not
+be reflected in the rendered output.</p>
+</div>
+<div class="paragraph">
+<p>For layers submitted for an individual spatial container (intra-container
+rendering), the runtime <strong class="purple">must</strong> follow the already specified rules for layer
+composition ordering.
+That is to say the layers within containers <strong class="purple">must</strong> be drawn in the same order
+as they are specified, composed via painter&#8217;s algorithm.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>"Clearing" a spatial container refers to the removal of all content from a
+spatial container, resulting in nothing being rendered for that container in
+the current frame.
+Runtimes <strong class="purple">must</strong> treat this equivalent to the app submitting transparent black
+(all bits 0) for every pixel inside the container.
+"Retaining" a spatial container refers to the runtime continuing to display
+the most recently submitted set of layers for that container.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For each spatial container the app <strong class="purple">can</strong> specify whether to submit new
+layers, retain the previous submission, or clear the spatial container:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To submit new layers, the app provides a non-zero <code>layerCount</code> and a
+valid <code>layers</code> pointer.</p>
+</li>
+<li>
+<p>To clear a spatial container, the <code>layerCount</code> for its entry <strong class="purple">must</strong> be
+0 and <code>retainPreviousSubmission</code> <strong class="purple">must</strong> be <code>XR_FALSE</code>.</p>
+</li>
+<li>
+<p>To retain the last submitted layers and swapchain images (retaining), the
+<code>layerCount</code> for its entry <strong class="purple">must</strong> be 0 and
+<code>retainPreviousSubmission</code> <strong class="purple">must</strong> be <code>XR_TRUE</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This explicit per-container control ensures that the app&#8217;s intent is clearly
+communicated in every frame.</p>
+</div>
+<div class="paragraph">
+<p>If <code>retainPreviousSubmission</code> is <code>XR_TRUE</code> and <code>layerCount</code> is
+not 0, the runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="paragraph">
+<p>If <a href="XrSpatialContainerCompositionLayerViewConfigurationEXT.html">XrSpatialContainerCompositionLayerViewConfigurationEXT</a> is not
+chained to an <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a> that is part of a spatial
+container, the runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.
+This structure is only applicable to <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>
+layers.
+If it is chained to other layer types (e.g. quad or cylinder layers), the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerEXT-extension-notenabled" href="#VUID-XrSpatialContainerLayerEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSpatialContainerLayerEXT.html">XrSpatialContainerLayerEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerEXT-type-type" href="#VUID-XrSpatialContainerLayerEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SPATIAL_CONTAINER_LAYER_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerEXT-next-next" href="#VUID-XrSpatialContainerLayerEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: <a href="XrSpatialContainerLayerVolumeClippingEXT.html">XrSpatialContainerLayerVolumeClippingEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerEXT-spatialContainer-parameter" href="#VUID-XrSpatialContainerLayerEXT-spatialContainer-parameter"></a> <code>spatialContainer</code> <strong class="purple">must</strong> be a valid <a href="XrSpatialContainerEXT.html">XrSpatialContainerEXT</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerEXT-layers-parameter" href="#VUID-XrSpatialContainerLayerEXT-layers-parameter"></a> If <code>layerCount</code> is not <code>0</code>, <code>layers</code> <strong class="purple">must</strong> be a pointer to an array of <code>layerCount</code> valid <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>-based structures. See also: <a href="XrCompositionLayerCubeKHR.html">XrCompositionLayerCubeKHR</a>, <a href="XrCompositionLayerCylinderKHR.html">XrCompositionLayerCylinderKHR</a>, <a href="XrCompositionLayerEquirect2KHR.html">XrCompositionLayerEquirect2KHR</a>, <a href="XrCompositionLayerEquirectKHR.html">XrCompositionLayerEquirectKHR</a>, <a href="XrCompositionLayerPassthroughANDROID.html">XrCompositionLayerPassthroughANDROID</a>, <a href="XrCompositionLayerPassthroughFB.html">XrCompositionLayerPassthroughFB</a>, <a href="XrCompositionLayerPassthroughHTC.html">XrCompositionLayerPassthroughHTC</a>, <a href="XrCompositionLayerProjection.html">XrCompositionLayerProjection</a>, <a href="XrCompositionLayerQuad.html">XrCompositionLayerQuad</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a>, <a href="XrBool32.html">XrBool32</a>, <a href="XrCompositionLayerBaseHeader.html">XrCompositionLayerBaseHeader</a>, <a href="XrSpatialContainerEXT.html">XrSpatialContainerEXT</a>, <a href="XrSpatialContainerLayerFrameEndInfoEXT.html">XrSpatialContainerLayerFrameEndInfoEXT</a>, <a href="XrStructureType.html">XrStructureType</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSpatialContainerLayerEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.63<br>
+</div>
+</div>
+</body>
+</html>

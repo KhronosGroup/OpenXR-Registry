@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrSessionCreateInfoSpatialContainersEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSessionCreateInfoSpatialContainersEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSessionCreateInfoSpatialContainersEXT - Enable spatial containers for a session</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrSessionCreateInfoSpatialContainersEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spatial container support is enabled for a session by chaining an
+<a href="XrSessionCreateInfoSpatialContainersEXT.html">XrSessionCreateInfoSpatialContainersEXT</a> when calling
+<a href="xrCreateSession.html">xrCreateSession</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_container</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSessionCreateInfoSpatialContainersEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>    <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSessionCreateInfoSpatialContainersEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When spatial container support is enabled, an <a href="XrSession.html">XrSession</a> behaves
+differently.
+This is because when using spatial containers the session no longer presents
+image content on the display(s), the spatial containers do so instead.
+Therefore, when this extension is enabled a session is effectively
+"headless".
+Unlike other headless extensions, apps <strong class="purple">can</strong> submit image data through the
+spatial containers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enabling spatial container support alters core OpenXR APIs in the following
+way.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" width="363" height="576" style="background:#fff;background-color:#fff;color-scheme:light" viewBox="0 0 363 576"><rect width="100%" height="100%" fill="#fff" style="fill:#fff"/><g data-cell-id="0"><g data-cell-id="1"><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-5"><g stroke="#000" stroke-miterlimit="10"><path fill="none" d="M187 247v73.63" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m187 325.88-3.5-7 3.5 1.75 3.5-1.75Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:287px;margin-left:187px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap">runtime: losing system or device</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="290" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">runtime: losing system or device</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-9"><g stroke="#000" stroke-miterlimit="10"><path fill="none" d="M127 227H47v240h113.63" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m165.88 467-7 3.5 1.75-3.5-1.75-3.5Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:287px;margin-left:47px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap"><xhtml:b>xrDestroySession</xhtml:b></xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="47" y="290" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">xrDestroySession</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-1"><rect width="120" height="40" x="127" y="207" fill="#fff" stroke="#000" pointer-events="all" rx="6" ry="6" style="fill:#fff;stroke:#000" transform="translate(.5 .5)"/><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:118px;height:1px;padding-top:227px;margin-left:128px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:normal;word-wrap:normal">IDLE<br/>(running)</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="231" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="12" text-anchor="middle">IDLE...</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-4"><g stroke="#000" stroke-miterlimit="10"><path fill="none" d="M187 127v73.63" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m187 205.88-3.5-7 3.5 1.75 3.5-1.75Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:167px;margin-left:187px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap"><xhtml:b>xrGetSystem<br/>xrCreateSession</xhtml:b></xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="170" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">xrGetSystem...</text></switch></g><circle cx="187" cy="107" r="20" fill="#fff" stroke="#000" data-cell-id="kNo0oJ6OMJB5dBDQuu8H-2" pointer-events="all" style="fill:#fff;stroke:#000" transform="translate(.5 .5)"/><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-3"><g stroke="#000" stroke-miterlimit="10"><path fill="none" d="M187 7v73.63" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m187 85.88-3.5-7 3.5 1.75 3.5-1.75Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:47px;margin-left:187px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap"><xhtml:b>xrCreateInstance</xhtml:b></xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="50" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">xrCreateIn...</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-8"><g stroke="#000" stroke-miterlimit="10"><path fill="none" d="M187 367v73.63" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m187 445.88-3.5-7 3.5 1.75 3.5-1.75Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:407px;margin-left:187px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap"><xhtml:b>xrDestroySession</xhtml:b></xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="410" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">xrDestroySession</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-6"><rect width="120" height="40" x="127" y="327" fill="#fff" stroke="#000" pointer-events="all" rx="6" ry="6" style="fill:#fff;stroke:#000" transform="translate(.5 .5)"/><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:118px;height:1px;padding-top:347px;margin-left:128px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000"><xhtml:div style="display:inline-block;font-size:12px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;white-space:normal;word-wrap:normal">LOSS_PENDING<br/>(not running)</xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="351" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="12" text-anchor="middle">LOSS_PENDING...</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-10"><g stroke="#000" stroke-miterlimit="10"><path fill="none" d="M187 487v73.63" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m187 565.88-3.5-7 3.5 1.75 3.5-1.75Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:527px;margin-left:187px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap"><xhtml:b>xrDestroyInstance</xhtml:b></xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="187" y="530" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">xrDestroyInstance</text></switch></g><g data-cell-id="kNo0oJ6OMJB5dBDQuu8H-11"><g stroke="#000" stroke-miterlimit="10"><path fill="none" stroke-dasharray="3 3" d="M207 467h120V107H213.37" pointer-events="stroke" style="stroke:#000" transform="translate(.5 .5)"/><path d="m208.12 107 7-3.5-1.75 3.5 1.75 3.5Z" pointer-events="all" style="fill:#000;stroke:#000" transform="translate(.5 .5)"/></g><switch><foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left"><xhtml:div style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:1px;height:1px;padding-top:287px;margin-left:327px"><xhtml:div style="box-sizing:border-box;font-size:0;text-align:center;color:#000;background-color:#fff"><xhtml:div style="display:inline-block;font-size:11px;font-family:sans-serif;color:#000;line-height:1.2;pointer-events:all;background-color:#fff;white-space:nowrap"><xhtml:span style="background-color:light-dark(#ffc,#660)">app: optionally<br/>relaunch XR</xhtml:span></xhtml:div></xhtml:div></xhtml:div></foreignObject><text x="327" y="290" fill="light-dark(#000000, #ffffff)" font-family="sans-serif" font-size="11" text-anchor="middle">app: optionally...</text></switch></g><circle cx="187" cy="467" r="20" fill="#fff" stroke="#000" data-cell-id="kNo0oJ6OMJB5dBDQuu8H-7" pointer-events="all" style="fill:#fff;stroke:#000" transform="translate(.5 .5)"/></g></g></svg>
+</div>
+<div class="title">Figure 1. New session state machine</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The session never enters the states <code>XR_SESSION_STATE_VISIBLE</code>,
+<code>XR_SESSION_STATE_FOCUSED</code>, or <code>XR_SESSION_STATE_EXITING</code>.
+Runtimes <strong class="purple">must</strong> never queue events for these states.
+These states are replaced by per-spatial container events
+<a href="XrEventDataSpatialContainerVisibleChangedEXT.html">XrEventDataSpatialContainerVisibleChangedEXT</a>,
+<a href="XrEventDataSpatialContainerInteractableChangedEXT.html">XrEventDataSpatialContainerInteractableChangedEXT</a>, and
+<a href="XrEventDataSpatialContainerClosedEXT.html">XrEventDataSpatialContainerClosedEXT</a>, respectively.</p>
+</li>
+<li>
+<p>The session also never enters the states <code>XR_SESSION_STATE_READY</code>,
+<code>XR_SESSION_STATE_SYNCHRONIZED</code>, <code>XR_SESSION_STATE_STOPPING</code>.
+Runtimes <strong class="purple">must</strong> never queue events for these states.
+There are no replacement for these states.</p>
+</li>
+<li>
+<p>Runtimes <strong class="purple">must</strong> treat the session as running when it is in the state
+<code>XR_SESSION_STATE_IDLE</code>.</p>
+</li>
+<li>
+<p>Runtimes <strong class="purple">must</strong> treat the session as focused when it is in the state
+<code>XR_SESSION_STATE_IDLE</code> and at least one spatial container exists
+which is interactable.</p>
+</li>
+<li>
+<p>The <a href="xrBeginSession.html">xrBeginSession</a> and <a href="xrEndSession.html">xrEndSession</a> functions are no longer
+needed.
+Runtimes <strong class="purple">must</strong> return <code>XR_ERROR_SPATIAL_CONTAINERS_ENABLED_EXT</code> when
+these functions are called.
+Other extensions <strong class="purple">may</strong> provide replacements for these functions.</p>
+</li>
+<li>
+<p>The <a href="xrRequestExitSession.html">xrRequestExitSession</a> function is also no longer needed.
+Runtimes <strong class="purple">must</strong> return <code>XR_ERROR_SPATIAL_CONTAINERS_ENABLED_EXT</code> when
+this function is called.
+Apps that want to exit a running session instead <strong class="purple">can</strong> call
+<a href="xrRequestSpatialContainerVisibleEXT.html">xrRequestSpatialContainerVisibleEXT</a> to hide their containers, and
+destroy the session after all containers are no longer visible.</p>
+</li>
+<li>
+<p>Extensions that would queue additional events when the session starts
+running is called now <strong class="purple">must</strong> queue those events after session creation.
+Such extensions are called out below.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Extension</th>
+<th class="tableblock halign-left valign-top">Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_EXT_user_presence</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XrEventDataUserPresenceChangedEXT</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_META_boundary_visibility</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XrEventDataBoundaryVisibilityChangedMETA</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="xrLocateViews.html">xrLocateViews</a> function is not valid to call for the session.
+Runtimes <strong class="purple">must</strong> return <code>XR_ERROR_SPATIAL_CONTAINERS_ENABLED_EXT</code> from
+<a href="xrLocateViews.html">xrLocateViews</a>.
+Other extensions <strong class="purple">may</strong> provide ways to locate the views for a particular
+spatial container.</p>
+</li>
+<li>
+<p>The <a href="xrWaitFrame.html">xrWaitFrame</a> function <strong class="purple">must</strong> always set
+<a href="XrFrameState.html">XrFrameState</a>::<code>shouldRender</code> to false.
+Other extensions <strong class="purple">may</strong> provide ways to know if a particular spatial
+container <strong class="purple">should</strong> update its composition layers.</p>
+</li>
+<li>
+<p>The <a href="xrEndFrame.html">xrEndFrame</a> function is not a valid way to submit composition
+layers.
+If an app sets <a href="XrFrameEndInfo.html">XrFrameEndInfo</a>::<code>layerCount</code> to a non-zero value,
+runtimes <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.
+Other extensions <strong class="purple">may</strong> provide ways to submit composition layers for a
+particular spatial container.</p>
+</li>
+<li>
+<p>Entering the state <code>XR_SESSION_STATE_LOSS_PENDING</code> also closes all
+spatial containers.
+Runtimes <strong class="purple">must</strong> queue an <a href="XrEventDataSpatialContainerClosedEXT.html">XrEventDataSpatialContainerClosedEXT</a> event
+for each active spatial container before queueing a session state change
+for <code>XR_SESSION_STATE_LOSS_PENDING</code>.</p>
+</li>
+<li>
+<p>The <a href="xrCreateSession.html">xrCreateSession</a> function no longer needs a graphics API binding
+structure.
+Other extensions <strong class="purple">may</strong> require a graphics binding, for example for a
+spatial container to render using a graphics API.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The above behavior is slightly different from the behavior in
+<code><a href="XR_MND_headless.html">XR_MND_headless</a></code>.
+Runtimes <strong class="purple">must</strong> not enable the headless session behavior from
+<code><a href="XR_MND_headless.html">XR_MND_headless</a></code> when spatial container support is enabled for that
+session.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Note</div>
+<div class="paragraph">
+<p>When spatial containers are enabled, a session transitions between only two
+states: <code>XR_SESSION_STATE_IDLE</code> (running) and
+<code>XR_SESSION_STATE_LOSS_PENDING</code> (not running).
+As a result, runtimes no longer return <code>XR_ERROR_SESSION_RUNNING</code> or
+<code>XR_ERROR_SESSION_NOT_RUNNING</code>.
+Instead, when a session is not running, runtimes return either
+<code>XR_ERROR_SESSION_LOST</code> or <code>XR_SESSION_LOSS_PENDING</code> following the
+rules in OpenXR core.
+Furthermore, <a href="xrBeginSession.html">xrBeginSession</a>, the only function that returns
+<code>XR_ERROR_SESSION_RUNNING</code>, will now always return
+<code>XR_ERROR_SPATIAL_CONTAINERS_ENABLED_EXT</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSessionCreateInfoSpatialContainersEXT-extension-notenabled" href="#VUID-XrSessionCreateInfoSpatialContainersEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_container.html">XR_EXT_spatial_container</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSessionCreateInfoSpatialContainersEXT.html">XrSessionCreateInfoSpatialContainersEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSessionCreateInfoSpatialContainersEXT-type-type" href="#VUID-XrSessionCreateInfoSpatialContainersEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SESSION_CREATE_INFO_SPATIAL_CONTAINERS_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSessionCreateInfoSpatialContainersEXT-next-next" href="#VUID-XrSessionCreateInfoSpatialContainersEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_container.html">XR_EXT_spatial_container</a>, <a href="XrStructureType.html">XrStructureType</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSessionCreateInfoSpatialContainersEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.63<br>
+</div>
+</div>
+</body>
+</html>

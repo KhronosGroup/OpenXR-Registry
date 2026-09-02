@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>xrLocateSpatialContainerViewsEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>xrLocateSpatialContainerViewsEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>xrLocateSpatialContainerViewsEXT - Locate views for a set of spatial containers</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="xrLocateSpatialContainerViewsEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="xrLocateSpatialContainerViewsEXT.html">xrLocateSpatialContainerViewsEXT</a> function locates views for a set
+of spatial containers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_container_self_rendering</span>
+<span class="n">XrResult</span> <span class="nf">xrLocateSpatialContainerViewsEXT</span><span class="p">(</span>
+    <span class="n">XrSession</span>                                   <span class="n">session</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">XrSpatialContainerViewsLocateInfoEXT</span><span class="o">*</span> <span class="n">locateInfo</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                                    <span class="n">viewStateCount</span><span class="p">,</span>
+    <span class="n">XrSpatialContainerViewStateEXT</span><span class="o">*</span>             <span class="n">viewStates</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                                    <span class="n">viewCount</span><span class="p">,</span>
+    <span class="n">XrView</span><span class="o">*</span>                                     <span class="n">views</span><span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameters">Parameters</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Parameter Descriptions</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>session</code> is the <a href="XrSession.html">XrSession</a>.</p>
+</li>
+<li>
+<p><code>locateInfo</code> is a pointer to an
+<a href="XrSpatialContainerViewsLocateInfoEXT.html">XrSpatialContainerViewsLocateInfoEXT</a> structure.</p>
+</li>
+<li>
+<p><code>viewStateCount</code> is the count of the <code>viewStates</code> array.</p>
+</li>
+<li>
+<p><code>viewStates</code> is a pointer to an array of
+<a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a> structures to be populated by the
+runtime.</p>
+</li>
+<li>
+<p><code>viewCount</code> is the count of the <code>views</code> array.</p>
+</li>
+<li>
+<p><code>views</code> is a pointer to an array of <a href="XrView.html">XrView</a> structures.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This function replaces <a href="xrLocateViews.html">xrLocateViews</a>, allowing an app to query views
+for multiple spatial containers simultaneously.</p>
+</div>
+<div class="paragraph">
+<p>Views for all spatial containers are returned in the single <code>views</code>
+array.
+The views are ordered based on the index of the spatial container in the
+<a href="XrSpatialContainerViewsLocateInfoEXT.html">XrSpatialContainerViewsLocateInfoEXT</a>::<code>viewLocateInfos</code> array,
+then the view index for that container.</p>
+</div>
+<div class="paragraph">
+<p>For example, if an app provides three spatial containers in
+<a href="XrSpatialContainerViewsLocateInfoEXT.html">XrSpatialContainerViewsLocateInfoEXT</a>::<code>viewLocateInfos</code>:</p>
+</div>
+<div class="ulist square">
+<ul class="square">
+<li>
+<p>Index 0: <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_MONO</code> (1 view)</p>
+</li>
+<li>
+<p>Index 1: <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</code> (2 views)</p>
+</li>
+<li>
+<p>Index 2:
+<code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO_WITH_FOVEATED_INSET</code> (4
+views)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then the runtime <strong class="purple">must</strong> fill out the <code>views</code> array with 7 views:</p>
+</div>
+<div class="ulist square">
+<ul class="square">
+<li>
+<p><code>views</code>[0] is the view for container 0.</p>
+</li>
+<li>
+<p><code>views</code>[1] is the left eye view for container 1.</p>
+</li>
+<li>
+<p><code>views</code>[2] is the right eye view for container 1.</p>
+</li>
+<li>
+<p><code>views</code>[3] is the left eye view for container 2.</p>
+</li>
+<li>
+<p><code>views</code>[4] is the right eye view for container 2.</p>
+</li>
+<li>
+<p><code>views</code>[5] is the left eye inset view for container 2.</p>
+</li>
+<li>
+<p><code>views</code>[6] is the right eye inset view for container 2.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If <code>viewCount</code> is not equal to the sum of the view counts for each
+spatial container&#8217;s requested view configuration type, the runtime <strong class="purple">must</strong>
+return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">may</strong> decay the view configuration to a type with fewer views for
+optimization purposes (e.g. a container is very far away and small such that
+stereo is imperceptible).
+If the runtime decays the view configuration, the runtime <strong class="purple">must</strong> still return
+the original number of views for that container, populating the extra views
+with duplicates of the decayed views.
+For example, if <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO</code> is decayed
+to <code>XR_VIEW_CONFIGURATION_TYPE_PRIMARY_MONO</code>, both index 0 and index 1
+will contain the single mono view.
+Consequently, the total number of views returned in the <code>views</code> array is
+independent of if the runtime decided to decay any view configurations or
+not.</p>
+</div>
+<div class="paragraph">
+<p>The runtime <strong class="purple">should</strong> adapt each <a href="XrView.html">XrView</a>::<code>fov</code> returned such that
+the frustum is as small as possible while still containing the entire bounds
+of the corresponding spatial container.
+Runtimes <strong class="purple">may</strong> return non-symmetrical FOVs, for example if a spatial
+container is at an oblique angle to the user&#8217;s view, or is partially
+occluded by another object.
+Runtimes <strong class="purple">may</strong> freely position the target rendering surface for the spatial
+container.
+Due to the nature of multi-app rendering, where spatial containers are
+detached from the user, the runtime <strong class="purple">may</strong> return <a href="XrView.html">XrView</a> values not
+suitable for pixel rendering, for example if the spatial container is not
+visible on screen there are no valid values to set <a href="XrView.html">XrView</a>::<code>fov</code>
+to.
+In such cases, runtimes <strong class="purple">must</strong> set
+<a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a>::<code>shouldSubmitLayers</code> to false.</p>
+</div>
+<div class="paragraph">
+<p>The runtime returns additional per-spatial container rendering state
+information in the <code>viewStates</code> array.
+If <code>viewStateCount</code> is not equal to
+<a href="XrSpatialContainerViewsLocateInfoEXT.html">XrSpatialContainerViewsLocateInfoEXT</a>::<code>viewLocateInfoCount</code>, the
+runtime <strong class="purple">must</strong> return <code>XR_ERROR_VALIDATION_FAILURE</code>.</p>
+</div>
+<div class="paragraph">
+<p>After the runtime queues an <a href="XrEventDataSpatialContainerClosedEXT.html">XrEventDataSpatialContainerClosedEXT</a> event
+for a spatial container, this function <strong class="purple">must</strong> return <code>XR_FALSE</code> in
+<a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a>::<code>shouldSubmitLayers</code> and 0 in
+<a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a>::<code>viewStateFlags</code> for the
+corresponding spatial container.</p>
+</div>
+<div class="paragraph">
+<p>For spatial containers with actively changing locations in the real world,
+the runtime <strong class="purple">should</strong> take the container&#8217;s motion into account when filling
+out <code>views</code> to minimize reprojection artifacts.</p>
+</div>
+<div class="paragraph">
+<p>If <a href="xrLocateSpatialContainerViewsEXT.html">xrLocateSpatialContainerViewsEXT</a> is called for one or more spatial
+containers not currently in the active render set, the runtime <strong class="purple">must</strong> return
+<code>XR_ERROR_SPATIAL_CONTAINER_NOT_RENDERING_EXT</code>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-extension-notenabled" href="#VUID-xrLocateSpatialContainerViewsEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a></code> extension <strong class="purple">must</strong> be enabled prior to calling <a href="xrLocateSpatialContainerViewsEXT.html">xrLocateSpatialContainerViewsEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-session-parameter" href="#VUID-xrLocateSpatialContainerViewsEXT-session-parameter"></a> <code>session</code> <strong class="purple">must</strong> be a valid <a href="XrSession.html">XrSession</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-locateInfo-parameter" href="#VUID-xrLocateSpatialContainerViewsEXT-locateInfo-parameter"></a> <code>locateInfo</code> <strong class="purple">must</strong> be a pointer to a valid <a href="XrSpatialContainerViewsLocateInfoEXT.html">XrSpatialContainerViewsLocateInfoEXT</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-viewStates-parameter" href="#VUID-xrLocateSpatialContainerViewsEXT-viewStates-parameter"></a> <code>viewStates</code> <strong class="purple">must</strong> be a pointer to an array of <code>viewStateCount</code> <a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-views-parameter" href="#VUID-xrLocateSpatialContainerViewsEXT-views-parameter"></a> <code>views</code> <strong class="purple">must</strong> be a pointer to an array of <code>viewCount</code> <a href="XrView.html">XrView</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-viewStateCount-arraylength" href="#VUID-xrLocateSpatialContainerViewsEXT-viewStateCount-arraylength"></a> The <code>viewStateCount</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
+</li>
+<li>
+<p><a id="VUID-xrLocateSpatialContainerViewsEXT-viewCount-arraylength" href="#VUID-xrLocateSpatialContainerViewsEXT-viewCount-arraylength"></a> The <code>viewCount</code> parameter <strong class="purple">must</strong> be greater than <code>0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Return Codes</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">On success, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_SUCCESS</code></p>
+</li>
+<li>
+<p><code>XR_SESSION_LOSS_PENDING</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">On failure, this command returns</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XR_ERROR_FUNCTION_UNSUPPORTED</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_HANDLE_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_INSTANCE_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_RUNTIME_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SESSION_LOST</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_SPATIAL_CONTAINER_NOT_RENDERING_EXT</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_TIME_INVALID</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VALIDATION_FAILURE</code></p>
+</li>
+<li>
+<p><code>XR_ERROR_VIEW_CONFIGURATION_TYPE_UNSUPPORTED</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a>, <a href="XrSession.html">XrSession</a>, <a href="XrSpatialContainerViewStateEXT.html">XrSpatialContainerViewStateEXT</a>, <a href="XrSpatialContainerViewsLocateInfoEXT.html">XrSpatialContainerViewsLocateInfoEXT</a>, <a href="XrView.html">XrView</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#xrLocateSpatialContainerViewsEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.63<br>
+</div>
+</div>
+</body>
+</html>

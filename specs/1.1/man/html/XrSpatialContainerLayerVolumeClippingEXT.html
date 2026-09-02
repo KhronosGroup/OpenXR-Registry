@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>XrSpatialContainerLayerVolumeClippingEXT(3)</title>
+<link rel="stylesheet" href="css/khronos.css">
+<link rel="stylesheet" href="css/rouge-github.css">
+<style>
+/* Khronos overrides for Rouge 'github' theme for accessibility */
+/* Basically everything is overridden, but it is unclear how to add a new Rouge theme */
+/* Codelike overrides */
+pre.rouge .cm, pre.rouge .cp, pre.rouge .c1, pre.rouge .cs,
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf,
+pre.rouge .gh, pre.rouge .bp {
+  color: #5f5f5f;
+}
+/* Numberlike overrides */
+pre.rouge .mf, pre.rouge .mh, pre.rouge .il, pre.rouge .mi,
+pre.rouge .mo, pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #007979;
+}
+/* Namelike overrides */
+pre.rouge .ne, pre.rouge .nf, pre.rouge .fm, pre.rouge .nl {
+  color: #5f0000;
+}
+/* Other things ANDI warns about - unsure of their purposes */
+pre.rouge .go, pre.rouge .gu {
+  color: #727272;
+}
+pre.rouge .s {
+  color: #d70b3e;
+}
+pre.rouge .sr {
+  color: #008512;
+}
+pre.rouge .na, pre.rouge .nb {
+  color: #007979;
+}
+pre.rouge .no, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi,
+pre.rouge .nv, pre.rouge .vm {
+  color: #007f7f;
+}
+pre.rouge .w {
+  color: #727272;
+}
+</style>
+</head>
+<body class="manpage">
+<div id="header">
+<h1>XrSpatialContainerLayerVolumeClippingEXT(3) Manual Page</h1>
+<h2 id="_name">Name</h2>
+<div class="sectionbody">
+<p>XrSpatialContainerLayerVolumeClippingEXT - Specify what volume clipping an app has done when submitting layers</p>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="XrSpatialContainerLayerVolumeClippingEXT">C Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apps <strong class="purple">should</strong> inform the runtime if they render pixels outside of a spatial
+container&#8217;s bounds or not by chaining
+<a href="XrSpatialContainerLayerVolumeClippingEXT.html">XrSpatialContainerLayerVolumeClippingEXT</a> when submitting composition
+layers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_container_self_rendering</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">XrSpatialContainerLayerVolumeClippingEXT</span> <span class="p">{</span>
+    <span class="n">XrStructureType</span>                        <span class="n">type</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                            <span class="n">next</span><span class="p">;</span>
+    <span class="n">XrSpatialContainerVolumeClippingEXT</span>    <span class="n">volumeClipping</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">XrSpatialContainerLayerVolumeClippingEXT</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_members">Members</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Member Description</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> is the <a href="XrStructureType.html">XrStructureType</a> of this structure.</p>
+</li>
+<li>
+<p><code>next</code> is <code>NULL</code> or a pointer to the next structure in a structure
+chain.</p>
+</li>
+<li>
+<p><code>volumeClipping</code> is the <a href="XrSpatialContainerVolumeClippingEXT.html">XrSpatialContainerVolumeClippingEXT</a> the
+app has applied.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This structure serves as a hint for if the app renders pixels outside the
+bounds of a spatial container.
+When a spatial container is in immersive mode, because the bounds are
+infinite this hint has no meaning.</p>
+</div>
+<div class="paragraph">
+<p>For bounded spatial containers using self rendering, the runtime needs to
+reason about both the 3D volume bounds and the 2D pixel bounds.
+The 3D volume bounds is returned from <a href="xrGetSpatialContainerBoundsEXT.html">xrGetSpatialContainerBoundsEXT</a>.
+The 2D pixel bounds is the projection of the 3D volume bounds onto each
+display for the system.</p>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">must</strong> discard pixels from swapchain images outside the 2D pixel
+bounds, however runtimes <strong class="purple">must</strong> not discard pixels that are inside the 2D
+pixel bounds but outside of the 3D volume bounds.
+Stereo effects where content appears to extend beyond or in front of the
+container&#8217;s 3D volume bounds are possible.
+Apps <strong class="purple">may</strong> discard pixels outside of the 3D volume bounds of a bounded
+spatial container to reduce depth paradoxes and <strong class="purple">should</strong> set
+<code>volumeClipping</code> based on how they do so.
+Depth paradoxes often cause eye strain and user discomfort.</p>
+</div>
+<div class="paragraph">
+<p>Runtimes <strong class="purple">may</strong> use <code>volumeClipping</code> to adjust how they display a
+particular spatial container.
+For example, when set to
+<code>XR_SPATIAL_CONTAINER_VOLUME_CLIPPING_STRICT_EXT</code> a runtime could render
+rear faces of the 3D volume bounds that would cause depth paradoxes if the
+spatial container drew pixels behind the container&#8217;s 3D volume bounds.</p>
+</div>
+<div class="paragraph">
+<p>Future extensions <strong class="purple">may</strong> allow for clipping based the 3D volume bounds if
+depth information is submitted.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerVolumeClippingEXT-extension-notenabled" href="#VUID-XrSpatialContainerLayerVolumeClippingEXT-extension-notenabled"></a> The <code><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a></code> extension <strong class="purple">must</strong> be enabled prior to using <a href="XrSpatialContainerLayerVolumeClippingEXT.html">XrSpatialContainerLayerVolumeClippingEXT</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerVolumeClippingEXT-type-type" href="#VUID-XrSpatialContainerLayerVolumeClippingEXT-type-type"></a> <code>type</code> <strong class="purple">must</strong> be <code>XR_TYPE_SPATIAL_CONTAINER_LAYER_VOLUME_CLIPPING_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerVolumeClippingEXT-next-next" href="#VUID-XrSpatialContainerLayerVolumeClippingEXT-next-next"></a> <code>next</code> <strong class="purple">must</strong> be <code>NULL</code> or a valid pointer to the <a href="../../html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></p>
+</li>
+<li>
+<p><a id="VUID-XrSpatialContainerLayerVolumeClippingEXT-volumeClipping-parameter" href="#VUID-XrSpatialContainerLayerVolumeClippingEXT-volumeClipping-parameter"></a> <code>volumeClipping</code> <strong class="purple">must</strong> be a valid <a href="XrSpatialContainerVolumeClippingEXT.html">XrSpatialContainerVolumeClippingEXT</a> value</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">See Also</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="XR_EXT_spatial_container_self_rendering.html">XR_EXT_spatial_container_self_rendering</a>, <a href="XrSpatialContainerVolumeClippingEXT.html">XrSpatialContainerVolumeClippingEXT</a>, <a href="XrStructureType.html">XrStructureType</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_document_notes">Document Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information, see the <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XrSpatialContainerLayerVolumeClippingEXT" target="_blank" rel="noopener">OpenXR Specification</a></p>
+</div>
+<div class="paragraph">
+<p>This page is extracted from the OpenXR Specification.
+Fixes and changes should be made to the Specification, not directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copyright">Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2026 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
+International License</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.1.63<br>
+</div>
+</div>
+</body>
+</html>
