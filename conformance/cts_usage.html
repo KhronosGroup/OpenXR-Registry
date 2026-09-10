@@ -512,8 +512,8 @@ details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top
 <h1>OpenXR™ Conformance Test Suite Usage Instructions and Developer Guide</h1>
 <div class="details">
 <span id="author" class="author">The Khronos<sup>®</sup> OpenXR Working Group</span><br>
-<span id="revnumber">version 1.1.61</span>
-<br><span id="revremark">from git ref cts-1.1.61.0-20260709</span>
+<span id="revnumber">version 1.1.63</span>
+<br><span id="revremark">from git ref cts-1.1.63.0-20260910</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -901,16 +901,19 @@ This layer <strong>must</strong> be loaded and active for a test run to be consi
 valid.</p>
 </div>
 <div class="paragraph">
-<p>When you plan to submit for conformance, please observe the following
-considerations to ensure that the build system has accurate source code
-revision information available to embed in the test suite and output
-reports.
-You <strong>must</strong> build from a git repo (forked from either the internal Gitlab
-or public GitHub) with tags available (a full clone, not shallow).
-You also <strong>must</strong> either perform a clean build, from an empty binary tree,
-or at least run <code>cmake</code> immediately before building to pick up current
-source tree status.
-If your "porting" process (as described by the conformance process
+<p>If you are not using one of the pre-built CTS binaries created with the
+CTS release, then when you plan to submit for conformance, please observe
+the following considerations to ensure that the build system has accurate
+source code revision information available to embed in the test suite and
+output reports.
+* You <strong>must</strong> build from a git repo (forked from either the internal Gitlab
+  or public GitHub) with tags available (a full clone, not shallow).
+* You also <strong>must</strong> either perform a clean build, from an empty binary tree,
+  or at least run <code>cmake</code> immediately before building to pick up current
+  source tree status.</p>
+</div>
+<div class="paragraph">
+<p>If your "porting" process (as described by the conformance process
 documents) involves replacing the build system, you <strong>must</strong> populate the
 revision data constants in <code>utilities/git_revision.cpp.in</code> accurately.
 The contents of that file affect all "ctsxml" format outputs, as well as an
@@ -2227,7 +2230,7 @@ assertion documentation</a></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.61<br>
+Version 1.1.63<br>
 </div>
 </div>
 </body>
