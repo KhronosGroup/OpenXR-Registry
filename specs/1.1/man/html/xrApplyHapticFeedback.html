@@ -108,8 +108,8 @@ with an <a href="XrHapticBaseHeader.html">XrHapticBaseHeader</a>.</p>
 The runtime <strong class="purple">should</strong> deliver this request to the appropriate device, but
 exactly which device, if any, this event is sent to is up to the runtime to
 decide.
-If an appropriate device is unavailable the runtime <strong class="purple">may</strong> ignore this request
-for haptic feedback.</p>
+If an appropriate device is unavailable, the runtime <strong class="purple">may</strong> return
+<code>XR_SUCCESS</code> without producing any haptic output.</p>
 </div>
 <div class="paragraph">
 <p>If <code>session</code> is not focused, the runtime <strong class="purple">must</strong> return
@@ -238,7 +238,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.63<br>
+Version 1.1.65<br>
 </div>
 </div>
 </body>

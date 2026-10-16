@@ -121,9 +121,9 @@ Larger priority numbers take precedence over smaller priority numbers.</p>
 <div class="paragraph">
 <p>When multiple actions are bound to the same input source, the <code>priority</code>
 of each action set determines which bindings are suppressed.
-Runtimes <strong class="purple">must</strong> ignore input sources from action sets with a lower priority
-number if those specific input sources are also present in active actions
-within a higher priority action set.
+Runtimes <strong class="purple">must</strong> suppress bindings in action sets with a lower priority number
+when those specific input sources are also bound by active actions within a
+higher priority action set.
 If multiple action sets with the same priority are bound to the same input
 source and that is the highest priority number, runtimes <strong class="purple">must</strong> process all
 those bindings at the same time.</p>
@@ -134,8 +134,8 @@ the same <a href="https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html
 segments, even if they have different component segments.</p>
 </div>
 <div class="paragraph">
-<p>When runtimes are ignoring bindings because of priority, they <strong class="purple">must</strong> treat
-the binding to that input source as though they do not exist.
+<p>When runtimes suppress bindings because of priority, they <strong class="purple">must</strong> treat each
+suppressed binding as though it does not exist.
 That means the <code>isActive</code> field <strong class="purple">must</strong> be <code>XR_FALSE</code> when retrieving
 action data, and that the runtime <strong class="purple">must</strong> not provide any visual, haptic, or
 other feedback related to the binding of that action to that input source.
@@ -215,7 +215,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.63<br>
+Version 1.1.65<br>
 </div>
 </div>
 </body>

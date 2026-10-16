@@ -386,8 +386,8 @@ li > p > a[id^="VUID-"].link:hover { color: black; }
 <h1>OpenXR&#8482;  Loader - Design and Operation</h1>
 <div class="details">
 <span id="author" class="author">Copyright (c) 2017-2026 The Khronos Group Inc.</span><br>
-<span id="revnumber">version 1.1.63</span>
-<br><span id="revremark">from git ref release-1.1.63</span>
+<span id="revnumber">version 1.1.65</span>
+<br><span id="revremark">from git ref release-1.1.65</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -3944,7 +3944,7 @@ whenever possible.</p>
 <h4 id="_language_selection">6.3.2. Language Selection</h4>
 <div class="paragraph">
 <p>Internally, the loader is implemented using the C++ language, taking
-advantage of C++11 standard features.
+advantage of C++17 standard features.
 Since the OpenXR API is exposed using C, all exported commands <strong class="purple">must</strong> be
 properly wrapped using <code>extern "C" {</code> and <code>}</code>.</p>
 </div>
@@ -4008,7 +4008,7 @@ Some examples are as follows:</p>
 <div class="content">
 <pre class="highlight"><code class="language-cpp" data-lang="cpp">std::string my_string;
 std::cout &lt;&lt; std::to_string(5);
-std::experimental::filesystem::path search_path;</code></pre>
+std::chrono::nanoseconds duration;</code></pre>
 </div>
 </div>
 </div>
@@ -4048,35 +4048,33 @@ uncaught to trigger a debugger.</p>
 </ul>
 </div>
 <div class="paragraph">
-<div class="title">Experimental Filesystem Usage</div>
+<div class="title">Filesystem Usage</div>
 <p>In order to simplify the file management, especially with regards to loading
-JSON manifest files or finding dynamic library files, the
-experimental/filesystem is used.
-This is a set of features which are part of the upcoming C++17
-feature set designed to make file management easier.</p>
+JSON manifest files or finding dynamic library files, the C++17
+<code>&lt;filesystem&gt;</code> library is used.</p>
 </div>
 <div class="paragraph">
-<p>Since no compiler currently supports C++17, most have enabled a chunk
-of functionality using the "experimental" namespace.
-When used, you can find elements of this functionality with the prefix
-<code>std::experimental::filesystem</code>.</p>
+<p>Direct use of it is confined to <code>filesystem_utils.cpp</code>, which wraps it in the
+<code>FileSysUtils*</code> functions declared in <code>filesystem_utils.hpp</code>.
+Code elsewhere in the loader <strong class="purple">should</strong> call those functions rather than using
+<code>std::filesystem</code> directly.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13. Experimental Filesystem Usage</div>
+<div class="title">Example 13. Filesystem Usage</div>
 <div class="content">
 <div class="paragraph">
-<p>Using the experimental filesystem in the source:</p>
+<p>Using the filesystem in the source:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;experimental/filesystem&gt;
+<pre class="highlight"><code class="language-cpp" data-lang="cpp">#include &lt;filesystem&gt;
 
 static void checkAllFilesInThePath(const std::string &amp;search_path) {
     try {
         // If the file exists, try to add it
-        if (std::experimental::filesystem::is_regular_file(search_path)) {
-            std::experimental::filesystem::path absolute_path =
-                std::experimental::filesystem::absolute(search_path);
+        if (std::filesystem::is_regular_file(search_path)) {
+            std::filesystem::path absolute_path =
+                std::filesystem::absolute(search_path);
         }
     } catch (...) {
     }
@@ -5753,7 +5751,7 @@ discovery.</p>
 </div>
 <div id="footer" style="max-width: 100;">
 <div id="footer-text">
-Version 1.1.63<br>
+Version 1.1.65<br>
 </div>
 </div>
 </body>

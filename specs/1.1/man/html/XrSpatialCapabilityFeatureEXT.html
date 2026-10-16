@@ -64,22 +64,28 @@ pre.rouge .w {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by XR_EXT_spatial_entity</span>
 <span class="k">typedef</span> <span class="k">enum</span> <span class="n">XrSpatialCapabilityFeatureEXT</span> <span class="p">{</span>
-  <span class="c1">// Provided by XR_EXT_spatial_marker_tracking</span>
+    <span class="c1">// Provided by XR_EXT_spatial_marker_tracking</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_MARKER_TRACKING_FIXED_SIZE_MARKERS_EXT</span> <span class="o">=</span> <span class="mi">1000743000</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_EXT_spatial_marker_tracking</span>
+    <span class="c1">// Provided by XR_EXT_spatial_marker_tracking</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_MARKER_TRACKING_STATIC_MARKERS_EXT</span> <span class="o">=</span> <span class="mi">1000743001</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
+    <span class="c1">// Provided by XR_EXT_spatial_object_tracking</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_OBJECT_SEMANTIC_LABEL_SUBSET_EXT</span> <span class="o">=</span> <span class="mi">1000744000</span><span class="p">,</span>
+    <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_SPHERE_BOUNDS_FILTER_ANDROID</span> <span class="o">=</span> <span class="mi">1000761000</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
+    <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_BOX_BOUNDS_FILTER_ANDROID</span> <span class="o">=</span> <span class="mi">1000761001</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
+    <span class="c1">// Provided by XR_ANDROID_spatial_discovery_bounds</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_FRUSTUM_BOUNDS_FILTER_ANDROID</span> <span class="o">=</span> <span class="mi">1000761002</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_EXT_spatial_image_tracking</span>
+    <span class="c1">// Provided by XR_EXT_spatial_image_tracking</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_IMAGE_TRACKING_AUTOMATIC_SIZE_IMAGES_EXT</span> <span class="o">=</span> <span class="mi">1000782000</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_EXT_spatial_image_tracking</span>
+    <span class="c1">// Provided by XR_EXT_spatial_image_tracking</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_IMAGE_TRACKING_STATIC_IMAGES_EXT</span> <span class="o">=</span> <span class="mi">1000782001</span><span class="p">,</span>
-  <span class="c1">// Provided by XR_EXT_spatial_image_tracking</span>
+    <span class="c1">// Provided by XR_EXT_spatial_image_tracking</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_IMAGE_TRACKING_FIXED_SIZE_IMAGES_EXT</span> <span class="o">=</span> <span class="mi">1000782002</span><span class="p">,</span>
+    <span class="c1">// Provided by XR_EXT_spatial_mesh_tracking</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_TRACK_WATERTIGHT_MESH_EXT</span> <span class="o">=</span> <span class="mi">1000783000</span><span class="p">,</span>
+    <span class="c1">// Provided by XR_EXT_spatial_plane_semantic_label2</span>
+    <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_PLANE_SEMANTIC_LABEL2_SUBSET_EXT</span> <span class="o">=</span> <span class="mi">1000869000</span><span class="p">,</span>
     <span class="n">XR_SPATIAL_CAPABILITY_FEATURE_MAX_ENUM_EXT</span> <span class="o">=</span> <span class="mh">0x7FFFFFFF</span>
 <span class="p">}</span> <span class="n">XrSpatialCapabilityFeatureEXT</span><span class="p">;</span></code></pre>
 </div>
@@ -141,6 +147,10 @@ corresponding capability.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Capability feature to allow applications to specify if markers are static. Corresponding config structure is <a href="XrSpatialMarkerStaticOptimizationEXT.html">XrSpatialMarkerStaticOptimizationEXT</a>  (Added by the <code><a href="XR_EXT_spatial_marker_tracking.html">XR_EXT_spatial_marker_tracking</a></code> extension)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_OBJECT_SEMANTIC_LABEL_SUBSET_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spatial feature allowing applications to specify a subset of labels from <a href="XrSpatialObjectSemanticLabelEXT.html">XrSpatialObjectSemanticLabelEXT</a> for the runtime to track; Corresponding config structure is <a href="XrSpatialFeatureObjectSemanticLabelSubsetEXT.html">XrSpatialFeatureObjectSemanticLabelSubsetEXT</a>.  (Added by the <code><a href="XR_EXT_spatial_object_tracking.html">XR_EXT_spatial_object_tracking</a></code> extension)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_SPHERE_BOUNDS_FILTER_ANDROID</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The runtime supports <a href="XrSpatialBoundsSpherefANDROID.html">XrSpatialBoundsSpherefANDROID</a> filter for <a href="XrSpatialDiscoverySnapshotCreateInfoEXT.html">XrSpatialDiscoverySnapshotCreateInfoEXT</a>; This does not require any configuration structure to be included during spatial context creation.  (Added by the <code><a href="XR_ANDROID_spatial_discovery_bounds.html">XR_ANDROID_spatial_discovery_bounds</a></code> extension)</p></td>
 </tr>
@@ -163,6 +173,14 @@ corresponding capability.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_IMAGE_TRACKING_FIXED_SIZE_IMAGES_EXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The runtime supports fixed size images. Corresponding config structure is <a href="XrSpatialImageSizeEXT.html">XrSpatialImageSizeEXT</a>.  (Added by the <code><a href="XR_EXT_spatial_image_tracking.html">XR_EXT_spatial_image_tracking</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_TRACK_WATERTIGHT_MESH_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Capability feature to track a watertight mesh of the environment. Corresponding config structure is <a href="XrSpatialFeatureTrackWatertightMeshEXT.html">XrSpatialFeatureTrackWatertightMeshEXT</a>.  (Added by the <code><a href="XR_EXT_spatial_mesh_tracking.html">XR_EXT_spatial_mesh_tracking</a></code> extension)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XR_SPATIAL_CAPABILITY_FEATURE_PLANE_SEMANTIC_LABEL2_SUBSET_EXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Spatial feature allowing applications to specify a subset of labels from <a href="XrSpatialPlaneSemanticLabel2EXT.html">XrSpatialPlaneSemanticLabel2EXT</a> for the runtime to track. Corresponding config structure is <a href="XrSpatialFeaturePlaneSemanticLabel2SubsetEXT.html">XrSpatialFeaturePlaneSemanticLabel2SubsetEXT</a>  (Added by the <code><a href="XR_EXT_spatial_plane_semantic_label2.html">XR_EXT_spatial_plane_semantic_label2</a></code> extension)</p></td>
 </tr>
 </tbody>
 </table>
@@ -204,7 +222,7 @@ International License</a>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.63<br>
+Version 1.1.65<br>
 </div>
 </div>
 </body>
